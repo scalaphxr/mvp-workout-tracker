@@ -1,0 +1,30 @@
+{
+  "name": "@mvp/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.3",
+    "@mvp/db": "workspace:*",
+    "@mvp/schemas": "workspace:*",
+    "drizzle-orm": "^0.45.3",
+    "hono": "^4.13.12",
+    "jose": "^6.2.12",
+    "nodemailer": "^10.0.14",
+    "uuid": "^14.0.2",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "@types/nodemailer": "^8.0.2",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.3",
+    "vitest": "^4.1.11"
+  }
+}

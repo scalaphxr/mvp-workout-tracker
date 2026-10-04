@@ -1,0 +1,62 @@
+{
+  "tabs": {
+    "today": "Today",
+    "programs": "Programs",
+    "exercises": "Exercises",
+    "progress": "Progress",
+    "profile": "Profile"
+  },
+  "today": {
+    "emptyTitle": "No workout yet",
+    "emptyText": "The next workout of your program will show up here."
+  },
+  "programs": {
+    "emptyTitle": "No programs yet",
+    "emptyText": "Your programs will live here: build one, import it from text or take one by code."
+  },
+  "exercises": {
+    "emptyTitle": "Exercise library",
+    "emptyText": "Exercises with filters, technique and videos will show up here."
+  },
+  "progress": {
+    "emptyTitle": "Nothing to show yet",
+    "emptyText": "Body weight, exercise charts and workout history will show up here."
+  },
+  "profile": {
+    "account": "Account",
+    "guestTitle": "You are not signed in",
+    "guestText": "The app works without an account: your data stays on this phone. Sign in to sync it between devices.",
+    "signIn": "Sign in with email",
+    "signedInAs": "Signed in as",
+    "signOut": "Sign out",
+    "loadError": "Could not load the profile. Check your connection.",
+    "retry": "Try again",
+    "language": "Language",
+    "languageSystem": "System",
+    "languageRu": "Русский",
+    "languageEn": "English"
+  },
+  "signIn": {
+    "title": "Sign in",
+    "emailTitle": "Sign in with email",
+    "emailHint": "We will email you a sign-in code. No password needed.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "sendCode": "Get the code",
+    "codeTitle": "Enter the code",
+    "codeHint": "We sent a 6-digit code to {{email}}",
+    "codeLabel": "Code from the email",
+    "submit": "Sign in",
+    "resend": "Send again",
+    "resendIn": "Send again in {{seconds}} s",
+    "changeEmail": "Change email"
+  },
+  "errors": {
+    "invalidEmail": "Check the email address.",
+    "invalid_code": "The code is wrong or has expired.",
+    "too_many_attempts": "Too many wrong attempts. Request a new code.",
+    "rate_limited": "Too many requests. Try again later.",
+    "network": "No connection to the server. Check your network.",
+    "unknown": "Something went wrong. Try again."
+  }
+}

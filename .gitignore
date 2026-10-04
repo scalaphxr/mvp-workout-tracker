@@ -1,0 +1,15 @@
+node_modules/
+.turbo/
+dist/
+coverage/
+*.tsbuildinfo
+
+# local env files
+.env
+.env.local
+.env.*.local
+
+# local dev database (PGlite)
+.data/
+
+.DS_Store
