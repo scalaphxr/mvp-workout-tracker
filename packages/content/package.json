@@ -1,0 +1,27 @@
+{
+  "name": "@mvp/content",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "assign-ids": "tsx scripts/assign-ids.ts",
+    "import-catalog": "tsx scripts/import.ts"
+  },
+  "dependencies": {
+    "@mvp/schemas": "workspace:*"
+  },
+  "devDependencies": {
+    "@mvp/domain": "workspace:*",
+    "@types/node": "^20.19.43",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.3",
+    "uuid": "^14.0.2",
+    "vitest": "^4.1.11",
+    "zod": "^4.6.5"
+  }
+}

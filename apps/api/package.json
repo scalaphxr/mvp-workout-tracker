@@ -12,6 +12,7 @@
   "dependencies": {
     "@hono/node-server": "^2.1.3",
     "@mvp/db": "workspace:*",
+    "@mvp/domain": "workspace:*",
     "@mvp/schemas": "workspace:*",
     "drizzle-orm": "^0.45.3",
     "hono": "^4.13.12",
@@ -21,6 +22,7 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@mvp/content": "workspace:*",
     "@types/node": "^20.19.43",
     "@types/nodemailer": "^8.0.2",
     "tsx": "^4.23.15",

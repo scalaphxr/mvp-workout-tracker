@@ -1,0 +1,372 @@
+[
+  {
+    "id": "01a10818-99d4-7447-84fe-8efd5a782e5f",
+    "slug": "barbell-bench-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps", "front_delts"],
+    "equipment": ["barbell", "flat_bench", "rack"],
+    "translations": {
+      "ru": {
+        "name": "Жим штанги лёжа",
+        "aliases": ["жим лёжа", "жим лежа", "жим штанги на горизонтальной скамье"],
+        "description": "Базовое упражнение для груди: штанга опускается к груди и выжимается вверх на горизонтальной скамье.",
+        "technique_steps": [
+          "Лягте так, чтобы глаза были под грифом. Сведите лопатки и прижмите их к скамье, стопы плотно упираются в пол.",
+          "Возьмите гриф чуть шире плеч и снимите его со стоек на прямые руки.",
+          "На вдохе опустите штангу к нижней части груди, локти под углом около 45–60° к корпусу.",
+          "На выдохе выжмите штангу вверх и немного назад, к линии плеч, не отрывая таз от скамьи."
+        ],
+        "common_mistakes": [
+          "Отбив штанги от груди вместо контролируемого касания.",
+          "Локти разведены в стороны под 90° – перегружаются плечи.",
+          "Таз отрывается от скамьи, лопатки расходятся."
+        ],
+        "warnings": ["С весом, близким к предельному, работайте со страховкой или в раме с ограничителями."]
+      },
+      "en": {
+        "name": "Barbell bench press",
+        "aliases": ["bench press", "flat bench press", "bench"],
+        "description": "The main chest lift: the bar is lowered to the chest and pressed back up on a flat bench.",
+        "technique_steps": [
+          "Lie with your eyes under the bar. Pull your shoulder blades together and down, feet planted on the floor.",
+          "Grip the bar slightly wider than shoulder width and unrack it to straight arms.",
+          "Inhale and lower the bar to your lower chest, elbows at about 45–60° to the torso.",
+          "Exhale and press the bar up and slightly back towards the shoulders, hips staying on the bench."
+        ],
+        "common_mistakes": [
+          "Bouncing the bar off the chest instead of a controlled touch.",
+          "Elbows flared out to 90°, which overloads the shoulders.",
+          "Hips lifting off the bench and shoulder blades coming apart."
+        ],
+        "warnings": ["With near-maximal weights use a spotter or the safety pins of a rack."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dumbbell-bench-press", "weight_ratio": 0.4, "priority": 20 },
+      { "slug": "chest-press-machine", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a10818-99d4-7447-84fe-9b060434944e",
+    "slug": "dumbbell-bench-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps", "front_delts"],
+    "equipment": ["dumbbells", "flat_bench"],
+    "translations": {
+      "ru": {
+        "name": "Жим гантелей лёжа",
+        "aliases": ["жим гантелей", "жим гантелей на горизонтальной скамье"],
+        "description": "Жим на горизонтальной скамье с гантелями: амплитуда больше, чем со штангой, каждая рука работает отдельно. Вес указывается для одной гантели.",
+        "technique_steps": [
+          "Сядьте на край скамьи с гантелями на бёдрах, лягте и выведите гантели к груди.",
+          "Сведите лопатки, стопы на полу, гантели над грудью на прямых руках.",
+          "На вдохе опустите гантели к краям груди, локти под углом около 45° к корпусу.",
+          "На выдохе выжмите гантели вверх, слегка сводя их, но не ударяя друг о друга."
+        ],
+        "common_mistakes": [
+          "Гантели опускаются слишком близко к плечам, а не к груди.",
+          "Неполная амплитуда: гантели не доходят до уровня груди.",
+          "Гантели бросаются на пол из положения лёжа с рывком в плечах."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Dumbbell bench press",
+        "aliases": ["flat dumbbell press", "db bench press"],
+        "description": "A flat bench press with dumbbells: more range of motion than the barbell and each arm works on its own. The weight is per dumbbell.",
+        "technique_steps": [
+          "Sit on the end of the bench with the dumbbells on your thighs, lie back and bring them to your chest.",
+          "Pull your shoulder blades together, feet on the floor, dumbbells above the chest on straight arms.",
+          "Inhale and lower the dumbbells to the sides of the chest, elbows at about 45° to the torso.",
+          "Exhale and press up, bringing the dumbbells slightly together without clanging them."
+        ],
+        "common_mistakes": [
+          "Lowering the dumbbells towards the shoulders instead of the chest.",
+          "Cutting the range short: the dumbbells never reach chest level.",
+          "Dropping the dumbbells from the lying position with a jerk in the shoulders."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "barbell-bench-press", "weight_ratio": 2.5, "priority": 20 },
+      { "slug": "chest-press-machine", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a10818-99d4-7447-84fe-a4a3daadbdb9",
+    "slug": "incline-dumbbell-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["front_delts", "triceps"],
+    "equipment": ["dumbbells", "adjustable_bench"],
+    "translations": {
+      "ru": {
+        "name": "Жим гантелей на наклонной скамье",
+        "aliases": ["жим гантелей на наклонной", "наклонный жим гантелей", "жим гантелей под углом"],
+        "description": "Жим гантелей на скамье с наклоном 30–45°: акцент на верхнюю часть груди. Вес указывается для одной гантели.",
+        "technique_steps": [
+          "Установите спинку скамьи под углом 30–45°, сядьте и поднимите гантели к плечам.",
+          "Сведите лопатки, поясница сохраняет естественный прогиб, стопы на полу.",
+          "На вдохе опустите гантели к верхней части груди, предплечья вертикальны.",
+          "На выдохе выжмите гантели вверх над ключицами, не разгибая локти рывком."
+        ],
+        "common_mistakes": [
+          "Слишком крутой наклон скамьи – нагрузка уходит в плечи.",
+          "Лопатки расходятся в верхней точке, плечи выезжают вперёд.",
+          "Гантели сталкиваются наверху, теряется напряжение в груди."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Incline dumbbell press",
+        "aliases": ["incline db press", "incline dumbbell bench press"],
+        "description": "A dumbbell press on a bench set to 30–45°: emphasis on the upper chest. The weight is per dumbbell.",
+        "technique_steps": [
+          "Set the backrest to 30–45°, sit down and bring the dumbbells to your shoulders.",
+          "Pull your shoulder blades together, keep a natural arch in the lower back, feet on the floor.",
+          "Inhale and lower the dumbbells to the upper chest, forearms vertical.",
+          "Exhale and press the dumbbells up above the collarbones without snapping the elbows."
+        ],
+        "common_mistakes": [
+          "A bench set too steep, which shifts the load to the shoulders.",
+          "Shoulder blades coming apart at the top and shoulders rolling forward.",
+          "Clanging the dumbbells at the top and losing tension in the chest."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dumbbell-bench-press", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a10818-99d4-7447-84fe-ac21ba3fd319",
+    "slug": "chest-press-machine",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps", "front_delts"],
+    "equipment": ["chest_press_machine"],
+    "translations": {
+      "ru": {
+        "name": "Жим от груди в тренажёре",
+        "aliases": ["жим в тренажёре сидя", "жим в хаммере", "жим от груди сидя"],
+        "description": "Жим сидя в тренажёре: траектория задана, удобно новичкам и для добивания груди после свободных весов.",
+        "technique_steps": [
+          "Отрегулируйте сиденье так, чтобы рукояти были на уровне середины груди.",
+          "Прижмите спину и лопатки к спинке, стопы на полу.",
+          "На выдохе выжмите рукояти вперёд, не разгибая локти до щелчка.",
+          "На вдохе плавно верните рукояти, не опуская груз на стек."
+        ],
+        "common_mistakes": [
+          "Сиденье слишком низко – рукояти на уровне плеч.",
+          "Плечи отрываются от спинки и выезжают вперёд.",
+          "Груз бросается вниз без контроля."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Machine chest press",
+        "aliases": ["seated chest press", "chest press machine", "hammer strength chest press"],
+        "description": "A seated press in a machine: the path is fixed, which suits beginners and finishing the chest after free weights.",
+        "technique_steps": [
+          "Adjust the seat so the handles are level with the middle of your chest.",
+          "Press your back and shoulder blades into the pad, feet on the floor.",
+          "Exhale and press the handles forward without locking the elbows hard.",
+          "Inhale and return the handles under control without letting the stack touch down."
+        ],
+        "common_mistakes": [
+          "A seat set too low, with the handles at shoulder level.",
+          "Shoulders leaving the pad and rolling forward.",
+          "Letting the weight drop without control."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dumbbell-bench-press", "weight_ratio": null, "priority": 10 },
+      { "slug": "barbell-bench-press", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a10818-99d4-7447-84fe-b9bad1ea4261",
+    "slug": "cable-crossover-fly",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "chest_fly",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["front_delts"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {
+        "name": "Сведение рук в кроссовере",
+        "aliases": ["кроссовер", "сведения в кроссовере", "сведение рук на блоках"],
+        "description": "Изолирующее упражнение для груди: руки сводятся перед собой по дуге против тяги блоков. Вес указывается для одной стороны.",
+        "technique_steps": [
+          "Установите блоки выше плеч, возьмите рукояти и сделайте шаг вперёд.",
+          "Слегка наклоните корпус, локти чуть согнуты и зафиксированы.",
+          "На выдохе сведите руки перед собой на уровне нижней части груди.",
+          "На вдохе плавно разведите руки до ощущения растяжения в груди."
+        ],
+        "common_mistakes": [
+          "Локти сгибаются и разгибаются – движение превращается в жим.",
+          "Слишком большой вес, корпус раскачивается.",
+          "Плечи поднимаются к ушам."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Cable crossover fly",
+        "aliases": ["cable fly", "cable crossover", "cable chest fly"],
+        "description": "An isolation exercise for the chest: the arms come together in an arc against the pull of the cables. The weight is per side.",
+        "technique_steps": [
+          "Set the pulleys above shoulder height, take the handles and step forward.",
+          "Lean the torso slightly forward, elbows slightly bent and fixed.",
+          "Exhale and bring your hands together in front of the lower chest.",
+          "Inhale and open the arms under control until you feel a stretch in the chest."
+        ],
+        "common_mistakes": [
+          "Bending and straightening the elbows, which turns the fly into a press.",
+          "Too much weight and a swinging torso.",
+          "Shoulders shrugging towards the ears."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "01a10818-99d4-7447-84fe-bca9b537b709",
+    "slug": "push-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps", "front_delts", "abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Отжимания от пола",
+        "aliases": ["отжимания", "классические отжимания"],
+        "description": "Отжимания в упоре лёжа: грудь, трицепс и плечи с собственным весом, без оборудования.",
+        "technique_steps": [
+          "Примите упор лёжа: ладони чуть шире плеч, тело – прямая линия от пяток до макушки.",
+          "Напрягите пресс и ягодицы, взгляд в пол чуть впереди ладоней.",
+          "На вдохе опуститесь, пока грудь почти не коснётся пола, локти под углом около 45° к корпусу.",
+          "На выдохе выжмите себя вверх, не теряя прямой линии тела."
+        ],
+        "common_mistakes": [
+          "Провисает поясница или поднимается таз.",
+          "Локти разведены строго в стороны.",
+          "Неполная амплитуда: грудь остаётся далеко от пола."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Push-up",
+        "aliases": ["push up", "pushup", "press-up"],
+        "description": "A push-up from the floor: chest, triceps and shoulders with body weight and no equipment.",
+        "technique_steps": [
+          "Get into a plank on your hands: palms slightly wider than the shoulders, body in a straight line from heels to head.",
+          "Brace your abs and glutes, look at the floor just ahead of your hands.",
+          "Inhale and lower yourself until the chest almost touches the floor, elbows at about 45° to the torso.",
+          "Exhale and press back up without losing the straight line."
+        ],
+        "common_mistakes": [
+          "Sagging lower back or hips piking up.",
+          "Elbows flared straight out to the sides.",
+          "Cutting the range short: the chest stays far from the floor."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "01a10818-99d4-7447-84fe-c27791f6143a",
+    "slug": "parallel-bar-dip",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest", "triceps"],
+    "secondary_muscles": ["front_delts"],
+    "equipment": ["dip_bars"],
+    "translations": {
+      "ru": {
+        "name": "Отжимания на брусьях",
+        "aliases": ["брусья", "отжимания от брусьев"],
+        "description": "Отжимания на параллельных брусьях: с наклоном корпуса вперёд больше работает грудь, с вертикальным корпусом – трицепс.",
+        "technique_steps": [
+          "Выйдите в упор на прямые руки, плечи опущены и отведены от ушей.",
+          "Слегка наклоните корпус вперёд, ноги согнуты и скрещены.",
+          "На вдохе опуститесь, пока плечи не окажутся примерно на уровне локтей.",
+          "На выдохе выжмите себя вверх до прямых рук без рывка."
+        ],
+        "common_mistakes": [
+          "Слишком глубокое опускание с болью в плечах.",
+          "Плечи поднимаются к ушам, корпус проваливается.",
+          "Раскачивание ногами для инерции."
+        ],
+        "warnings": ["При дискомфорте в плечевых суставах уменьшите глубину или замените упражнение."]
+      },
+      "en": {
+        "name": "Parallel bar dip",
+        "aliases": ["dip", "dips", "chest dip"],
+        "description": "Dips on parallel bars: leaning the torso forward loads the chest more, an upright torso loads the triceps.",
+        "technique_steps": [
+          "Support yourself on straight arms, shoulders down and away from the ears.",
+          "Lean the torso slightly forward, legs bent and crossed.",
+          "Inhale and lower yourself until the shoulders are about level with the elbows.",
+          "Exhale and press back up to straight arms without a jerk."
+        ],
+        "common_mistakes": [
+          "Going too deep with pain in the shoulders.",
+          "Shoulders shrugging up and the torso sinking.",
+          "Swinging the legs for momentum."
+        ],
+        "warnings": ["If the shoulder joints feel uncomfortable, reduce the depth or swap the exercise."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "push-up", "weight_ratio": null, "priority": 10 }
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+[
+  { "id": "01a10818-99d4-7447-84fd-e7c86a62426c", "code": "chest", "name": { "ru": "Грудь", "en": "Chest" }, "svg_region": "chest", "svg_side": "front" },
+  { "id": "01a10818-99d4-7447-84fd-eb122b5f8aea", "code": "front_delts", "name": { "ru": "Передние дельты", "en": "Front delts" }, "svg_region": "deltoids", "svg_side": "front" },
+  { "id": "01a10818-99d4-7447-84fd-ed4913d24d3d", "code": "side_delts", "name": { "ru": "Средние дельты", "en": "Side delts" }, "svg_region": "deltoids", "svg_side": "both" },
+  { "id": "01a10818-99d4-7447-84fd-f2f0756a3c37", "code": "rear_delts", "name": { "ru": "Задние дельты", "en": "Rear delts" }, "svg_region": "deltoids", "svg_side": "back" },
+  { "id": "01a10818-99d4-7447-84fd-f532490eed24", "code": "triceps", "name": { "ru": "Трицепс", "en": "Triceps" }, "svg_region": "triceps", "svg_side": "both" },
+  { "id": "01a10818-99d4-7447-84fd-f9c353e13dbe", "code": "biceps", "name": { "ru": "Бицепс", "en": "Biceps" }, "svg_region": "biceps", "svg_side": "front" },
+  { "id": "01a10818-99d4-7447-84fd-ff524c219315", "code": "forearms", "name": { "ru": "Предплечья", "en": "Forearms" }, "svg_region": "forearm", "svg_side": "both" },
+  { "id": "01a10818-99d4-7447-84fe-02b144b1b8f7", "code": "traps", "name": { "ru": "Трапеции", "en": "Traps" }, "svg_region": "trapezius", "svg_side": "both" },
+  { "id": "01a10818-99d4-7447-84fe-044c1ff4c894", "code": "lats", "name": { "ru": "Широчайшие", "en": "Lats" }, "svg_region": "upper-back", "svg_side": "back" },
+  { "id": "01a10818-99d4-7447-84fe-0b1614f47816", "code": "upper_back", "name": { "ru": "Середина спины", "en": "Mid back" }, "svg_region": "upper-back", "svg_side": "back" },
+  { "id": "01a10818-99d4-7447-84fe-0ec7c700cdc7", "code": "lower_back", "name": { "ru": "Поясница", "en": "Lower back" }, "svg_region": "lower-back", "svg_side": "back" },
+  { "id": "01a10818-99d4-7447-84fe-123da5117965", "code": "abs", "name": { "ru": "Пресс", "en": "Abs" }, "svg_region": "abs", "svg_side": "front" },
+  { "id": "01a10818-99d4-7447-84fe-165df4716cdf", "code": "obliques", "name": { "ru": "Косые мышцы живота", "en": "Obliques" }, "svg_region": "obliques", "svg_side": "front" },
+  { "id": "01a10818-99d4-7447-84fe-186be9fedfaf", "code": "glutes", "name": { "ru": "Ягодицы", "en": "Glutes" }, "svg_region": "gluteal", "svg_side": "back" },
+  { "id": "01a10818-99d4-7447-84fe-1e256d1e05ab", "code": "quads", "name": { "ru": "Квадрицепс", "en": "Quads" }, "svg_region": "quadriceps", "svg_side": "front" },
+  { "id": "01a10818-99d4-7447-84fe-221e5544da08", "code": "hamstrings", "name": { "ru": "Бицепс бедра", "en": "Hamstrings" }, "svg_region": "hamstring", "svg_side": "back" },
+  { "id": "01a10818-99d4-7447-84fe-249791ecaa3e", "code": "adductors", "name": { "ru": "Приводящие", "en": "Adductors" }, "svg_region": "adductors", "svg_side": "both" },
+  { "id": "01a10818-99d4-7447-84fe-286d392a6c79", "code": "calves", "name": { "ru": "Икры", "en": "Calves" }, "svg_region": "calves", "svg_side": "both" }
+]

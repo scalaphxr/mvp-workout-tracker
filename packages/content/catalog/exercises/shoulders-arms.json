@@ -1,0 +1,367 @@
+[
+  {
+    "id": "01a10818-99d6-72a2-b37d-9081d2306430",
+    "slug": "overhead-barbell-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["side_delts", "triceps", "traps"],
+    "equipment": ["barbell", "rack"],
+    "translations": {
+      "ru": {
+        "name": "Жим штанги стоя",
+        "aliases": ["армейский жим", "жим стоя", "жим штанги над головой"],
+        "description": "Жим штанги от груди вверх стоя: базовое упражнение для плеч, в котором корпус работает как опора.",
+        "technique_steps": [
+          "Снимите штангу со стоек на верх груди, хват чуть шире плеч, локти слегка впереди грифа.",
+          "Напрягите пресс и ягодицы, стопы на ширине таза.",
+          "На выдохе выжмите штангу вверх, слегка убрав голову назад, и выведите гриф над макушкой.",
+          "На вдохе плавно опустите штангу на верх груди."
+        ],
+        "common_mistakes": [
+          "Сильный прогиб в пояснице.",
+          "Толчок ногами для разгона штанги.",
+          "Штанга идёт вперёд по дуге, а не вертикально."
+        ],
+        "warnings": ["Осторожно при болях в пояснице: выберите жим сидя с опорой на спинку."]
+      },
+      "en": {
+        "name": "Overhead barbell press",
+        "aliases": ["overhead press", "ohp", "military press", "standing barbell press"],
+        "description": "A standing press from the chest to overhead: the basic shoulder lift in which the torso acts as the support.",
+        "technique_steps": [
+          "Unrack the bar onto your upper chest, grip slightly wider than the shoulders, elbows a little in front of the bar.",
+          "Brace your abs and glutes, feet hip-width apart.",
+          "Exhale and press the bar up, moving your head back slightly, and finish with the bar over the crown of the head.",
+          "Inhale and lower the bar to the upper chest under control."
+        ],
+        "common_mistakes": [
+          "A deep arch in the lower back.",
+          "Using the legs to launch the bar.",
+          "The bar travelling forward in an arc instead of straight up."
+        ],
+        "warnings": ["Take care with lower back pain: choose a seated press with back support."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "seated-dumbbell-shoulder-press", "weight_ratio": 0.4, "priority": 20 }
+    ]
+  },
+  {
+    "id": "01a10818-99d6-72a2-b37d-98317f11e6c3",
+    "slug": "seated-dumbbell-shoulder-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["side_delts", "triceps"],
+    "equipment": ["dumbbells", "adjustable_bench"],
+    "translations": {
+      "ru": {
+        "name": "Жим гантелей сидя",
+        "aliases": ["жим гантелей над головой", "жим гантелей вверх сидя", "жим на плечи с гантелями"],
+        "description": "Жим гантелей вверх сидя с опорой на спинку: плечи нагружаются без участия ног и поясницы. Вес указывается для одной гантели.",
+        "technique_steps": [
+          "Установите спинку почти вертикально, сядьте и поднимите гантели к плечам.",
+          "Локти под гантелями и чуть впереди линии корпуса, предплечья вертикальны.",
+          "На выдохе выжмите гантели вверх до почти прямых рук.",
+          "На вдохе опустите гантели до уровня ушей или чуть ниже."
+        ],
+        "common_mistakes": [
+          "Поясница отрывается от спинки, сильный прогиб.",
+          "Слишком короткая амплитуда.",
+          "Гантели заваливаются внутрь или наружу."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Seated dumbbell shoulder press",
+        "aliases": ["dumbbell shoulder press", "seated dumbbell press", "db shoulder press"],
+        "description": "A seated dumbbell press with back support: the shoulders are loaded without help from the legs and lower back. The weight is per dumbbell.",
+        "technique_steps": [
+          "Set the backrest almost upright, sit down and bring the dumbbells to your shoulders.",
+          "Elbows under the dumbbells and slightly in front of the torso, forearms vertical.",
+          "Exhale and press the dumbbells up to almost straight arms.",
+          "Inhale and lower the dumbbells to ear level or slightly below."
+        ],
+        "common_mistakes": [
+          "The lower back lifting off the pad with a deep arch.",
+          "A range of motion that is too short.",
+          "Dumbbells tipping inwards or outwards."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "overhead-barbell-press", "weight_ratio": 2.5, "priority": 20 }
+    ]
+  },
+  {
+    "id": "01a10818-99d6-72a2-b37d-a1c773b085a2",
+    "slug": "dumbbell-lateral-raise",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lateral_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["side_delts"],
+    "secondary_muscles": ["traps"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {
+        "name": "Разведение гантелей в стороны",
+        "aliases": ["махи гантелями в стороны", "махи в стороны", "разводка гантелей стоя"],
+        "description": "Подъём гантелей через стороны стоя: изолирующее упражнение для средних дельт. Вес указывается для одной гантели.",
+        "technique_steps": [
+          "Встаньте прямо, гантели по бокам, локти слегка согнуты.",
+          "Слегка наклоните корпус вперёд, плечи опущены.",
+          "На выдохе поднимите гантели через стороны до уровня плеч, локти ведут движение.",
+          "На вдохе плавно опустите гантели, не расслабляя плечи внизу."
+        ],
+        "common_mistakes": [
+          "Раскачивание корпусом и заброс гантелей.",
+          "Подъём плеч к ушам – нагрузка уходит в трапеции.",
+          "Кисти выше локтей."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Dumbbell lateral raise",
+        "aliases": ["lateral raise", "side raise", "side lateral raise"],
+        "description": "A standing raise of the dumbbells out to the sides: an isolation exercise for the side delts. The weight is per dumbbell.",
+        "technique_steps": [
+          "Stand tall, dumbbells at your sides, elbows slightly bent.",
+          "Lean the torso slightly forward, shoulders down.",
+          "Exhale and raise the dumbbells out to the sides to shoulder height, leading with the elbows.",
+          "Inhale and lower them under control without relaxing the shoulders at the bottom."
+        ],
+        "common_mistakes": [
+          "Swinging the torso and throwing the dumbbells up.",
+          "Shrugging the shoulders, which shifts the load to the traps.",
+          "Hands higher than the elbows."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "01a10818-99d6-72a2-b37d-a7b74c301ad0",
+    "slug": "cable-face-pull",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "rear_delt",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["rear_delts"],
+    "secondary_muscles": ["upper_back", "traps"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {
+        "name": "Тяга каната к лицу",
+        "aliases": ["тяга к лицу", "фейспул", "лицевая тяга"],
+        "description": "Тяга канатной рукояти к лицу с блока на уровне глаз: задние дельты и мышцы, удерживающие лопатки.",
+        "technique_steps": [
+          "Установите блок на уровне лица, возьмите канат хватом сверху и отойдите на шаг.",
+          "Встаньте устойчиво, руки вытянуты, плечи опущены.",
+          "На выдохе тяните канат к лицу, разводя концы в стороны и поднимая локти до уровня плеч.",
+          "На вдохе плавно выпрямите руки."
+        ],
+        "common_mistakes": [
+          "Слишком большой вес и отклонение корпуса назад.",
+          "Локти опущены ниже кистей.",
+          "Нет паузы в конечной точке."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Cable face pull",
+        "aliases": ["face pull", "rope face pull", "facepull"],
+        "description": "A rope pull to the face from a pulley at eye level: rear delts and the muscles that hold the shoulder blades.",
+        "technique_steps": [
+          "Set the pulley at face height, take the rope with an overhand grip and step back.",
+          "Stand firmly, arms extended, shoulders down.",
+          "Exhale and pull the rope to your face, spreading the ends apart and lifting the elbows to shoulder height.",
+          "Inhale and straighten the arms under control."
+        ],
+        "common_mistakes": [
+          "Too much weight and leaning back.",
+          "Elbows dropping below the hands.",
+          "No pause at the end of the pull."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "01a10818-99d6-72a2-b37d-aac16bf2bf0c",
+    "slug": "barbell-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {
+        "name": "Подъём штанги на бицепс",
+        "aliases": ["сгибание рук со штангой", "бицепс со штангой", "подъем штанги на бицепс стоя"],
+        "description": "Сгибание рук со штангой стоя: основное упражнение для бицепса.",
+        "technique_steps": [
+          "Встаньте прямо, возьмите штангу хватом снизу на ширине плеч, локти прижаты к корпусу.",
+          "Напрягите пресс, плечи опущены и отведены назад.",
+          "На выдохе согните руки, поднимая штангу к плечам, локти остаются на месте.",
+          "На вдохе плавно опустите штангу до почти прямых рук."
+        ],
+        "common_mistakes": [
+          "Раскачивание корпусом и помощь спиной.",
+          "Локти уходят вперёд.",
+          "Штанга бросается вниз без контроля."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Barbell curl",
+        "aliases": ["barbell biceps curl", "standing barbell curl", "bb curl"],
+        "description": "A standing curl with a barbell: the main biceps exercise.",
+        "technique_steps": [
+          "Stand tall and take the bar with an underhand, shoulder-width grip, elbows at your sides.",
+          "Brace your abs, shoulders down and back.",
+          "Exhale and curl the bar to your shoulders while the elbows stay in place.",
+          "Inhale and lower the bar under control to almost straight arms."
+        ],
+        "common_mistakes": [
+          "Swinging the torso and helping with the back.",
+          "Elbows drifting forward.",
+          "Dropping the bar without control."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dumbbell-hammer-curl", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a10818-99d6-72a2-b37d-b2b4a1a297a6",
+    "slug": "dumbbell-hammer-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {
+        "name": "Молотки с гантелями",
+        "aliases": ["молотки", "молотковые сгибания", "сгибания молот"],
+        "description": "Сгибание рук с гантелями нейтральным хватом: бицепс, плечевая мышца и предплечья. Вес указывается для одной гантели.",
+        "technique_steps": [
+          "Встаньте прямо, гантели по бокам, ладони смотрят друг на друга.",
+          "Локти прижаты к корпусу, плечи опущены.",
+          "На выдохе согните руки, не разворачивая кисти, до уровня плеч.",
+          "На вдохе плавно опустите гантели до почти прямых рук."
+        ],
+        "common_mistakes": [
+          "Раскачивание корпусом.",
+          "Локти уходят вперёд или в стороны.",
+          "Неполное опускание."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Dumbbell hammer curl",
+        "aliases": ["hammer curl", "hammer curls", "neutral grip curl"],
+        "description": "A dumbbell curl with a neutral grip: biceps, brachialis and forearms. The weight is per dumbbell.",
+        "technique_steps": [
+          "Stand tall, dumbbells at your sides, palms facing each other.",
+          "Elbows at your sides, shoulders down.",
+          "Exhale and curl to shoulder height without turning the wrists.",
+          "Inhale and lower the dumbbells under control to almost straight arms."
+        ],
+        "common_mistakes": [
+          "Swinging the torso.",
+          "Elbows drifting forward or out.",
+          "Not lowering all the way."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "barbell-curl", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a10818-99d6-72a2-b37d-b8f5375acb34",
+    "slug": "cable-rope-pushdown",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": [],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {
+        "name": "Разгибание рук на блоке с канатом",
+        "aliases": ["разгибания на канате", "разгибания на блоке", "трицепс на блоке", "разгибание рук в кроссовере"],
+        "description": "Разгибание рук вниз с канатной рукоятью на верхнем блоке: изолирующее упражнение для трицепса.",
+        "technique_steps": [
+          "Установите блок вверху, возьмите канат нейтральным хватом, локти прижаты к корпусу.",
+          "Слегка наклоните корпус вперёд, плечи опущены.",
+          "На выдохе разогните руки вниз, в конце разводя концы каната в стороны.",
+          "На вдохе плавно согните руки до угла чуть меньше 90°."
+        ],
+        "common_mistakes": [
+          "Локти гуляют вперёд-назад.",
+          "Давление весом корпуса сверху.",
+          "Неполное разгибание рук."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Cable rope pushdown",
+        "aliases": ["triceps pushdown", "rope pushdown", "tricep pushdown", "cable pushdown"],
+        "description": "A downward arm extension with a rope on a high pulley: an isolation exercise for the triceps.",
+        "technique_steps": [
+          "Set the pulley high, take the rope with a neutral grip, elbows at your sides.",
+          "Lean the torso slightly forward, shoulders down.",
+          "Exhale and straighten your arms down, spreading the rope ends apart at the bottom.",
+          "Inhale and bend the arms under control to a little past 90°."
+        ],
+        "common_mistakes": [
+          "Elbows moving back and forth.",
+          "Pressing down with body weight.",
+          "Not straightening the arms fully."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": []
+  }
+]

@@ -1,0 +1,638 @@
+[
+  {
+    "id": "01a10818-99d5-731e-ad63-8c43a9854374",
+    "slug": "barbell-back-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["hamstrings", "adductors", "lower_back"],
+    "equipment": ["barbell", "rack"],
+    "translations": {
+      "ru": {
+        "name": "Приседания со штангой на спине",
+        "aliases": ["приседания со штангой", "присед", "приседания", "присед со штангой"],
+        "description": "Приседания со штангой на плечах: главное базовое упражнение для ног и ягодиц.",
+        "technique_steps": [
+          "Подойдите под гриф, положите его на трапеции, сведите лопатки и снимите штангу со стоек.",
+          "Сделайте шаг назад, стопы на ширине плеч или чуть шире, носки слегка развёрнуты.",
+          "На вдохе опускайтесь, отводя таз назад и разводя колени по направлению носков, до параллели бёдер с полом или ниже.",
+          "На выдохе встаньте, упираясь всей стопой в пол и сохраняя наклон корпуса."
+        ],
+        "common_mistakes": [
+          "Колени заваливаются внутрь.",
+          "Пятки отрываются от пола.",
+          "Округление поясницы в нижней точке."
+        ],
+        "warnings": ["Работайте в раме с ограничителями. Осторожно при болях в коленях и пояснице."]
+      },
+      "en": {
+        "name": "Barbell back squat",
+        "aliases": ["back squat", "squat", "barbell squat", "bb squat"],
+        "description": "A squat with the bar on the shoulders: the main basic exercise for the legs and glutes.",
+        "technique_steps": [
+          "Step under the bar, rest it on your traps, pull the shoulder blades together and unrack it.",
+          "Step back, feet shoulder-width apart or slightly wider, toes turned out a little.",
+          "Inhale and descend, sitting the hips back and pushing the knees out over the toes, until the thighs are parallel to the floor or lower.",
+          "Exhale and stand up, pressing through the whole foot and keeping the torso angle."
+        ],
+        "common_mistakes": [
+          "Knees caving inwards.",
+          "Heels lifting off the floor.",
+          "Rounding the lower back at the bottom."
+        ],
+        "warnings": ["Squat in a rack with safety pins. Take care with knee and lower back pain."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "leg-press", "weight_ratio": null, "priority": 15 }
+    ]
+  },
+  {
+    "id": "01a10818-99d5-731e-ad63-96b4fba5ef00",
+    "slug": "leg-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["hamstrings", "adductors"],
+    "equipment": ["leg_press_machine"],
+    "translations": {
+      "ru": {
+        "name": "Жим ногами",
+        "aliases": ["жим ногами в тренажёре", "жим платформы", "жим ногами лёжа"],
+        "description": "Жим платформы ногами в тренажёре: ноги нагружаются без осевой нагрузки на позвоночник.",
+        "technique_steps": [
+          "Сядьте в тренажёр, поясница и таз плотно прижаты к спинке, стопы на платформе на ширине плеч.",
+          "Выжмите платформу и снимите её с упоров.",
+          "На вдохе опустите платформу, сгибая колени примерно до 90°, таз не отрывается от сиденья.",
+          "На выдохе выжмите платформу, не выпрямляя колени до упора."
+        ],
+        "common_mistakes": [
+          "Таз отрывается от сиденья и поясница округляется.",
+          "Колени выпрямляются до щелчка.",
+          "Колени сводятся внутрь."
+        ],
+        "warnings": ["Не блокируйте колени в верхней точке."]
+      },
+      "en": {
+        "name": "Leg press",
+        "aliases": ["seated leg press", "45 degree leg press", "machine leg press"],
+        "description": "Pressing a platform with the legs in a machine: the legs are loaded without axial load on the spine.",
+        "technique_steps": [
+          "Sit in the machine with the lower back and hips pressed into the pad, feet shoulder-width apart on the platform.",
+          "Press the platform up and release the safeties.",
+          "Inhale and lower the platform, bending the knees to about 90°, hips staying on the seat.",
+          "Exhale and press the platform up without locking the knees."
+        ],
+        "common_mistakes": [
+          "Hips lifting off the seat and the lower back rounding.",
+          "Snapping the knees straight.",
+          "Knees caving inwards."
+        ],
+        "warnings": ["Do not lock your knees at the top."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "barbell-back-squat", "weight_ratio": null, "priority": 15 }
+    ]
+  },
+  {
+    "id": "01a10818-99d5-731e-ad63-9d8ad3460869",
+    "slug": "conventional-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes", "hamstrings", "lower_back"],
+    "secondary_muscles": ["quads", "traps", "forearms", "upper_back"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {
+        "name": "Становая тяга",
+        "aliases": ["классическая становая тяга", "становая", "тяга штанги с пола"],
+        "description": "Подъём штанги с пола до полного выпрямления: базовое упражнение для всей задней цепи.",
+        "technique_steps": [
+          "Встаньте так, чтобы гриф был над серединой стопы, стопы на ширине таза.",
+          "Наклонитесь и возьмите гриф снаружи от голеней, спина прямая, плечи чуть впереди грифа.",
+          "На выдохе оттолкнитесь ногами от пола и выпрямитесь, ведя гриф вплотную к ногам.",
+          "На вдохе опустите штангу тем же путём: сначала таз назад, после колен – сгибание ног."
+        ],
+        "common_mistakes": [
+          "Круглая спина при срыве.",
+          "Штанга уходит от ног вперёд.",
+          "Переразгибание поясницы в верхней точке."
+        ],
+        "warnings": ["Осторожно при болях в пояснице. Начинайте с лёгкого веса и отрабатывайте технику."]
+      },
+      "en": {
+        "name": "Deadlift",
+        "aliases": ["conventional deadlift", "barbell deadlift", "dl"],
+        "description": "Lifting the bar from the floor to a full lockout: a basic exercise for the whole posterior chain.",
+        "technique_steps": [
+          "Stand with the bar over the middle of your feet, feet hip-width apart.",
+          "Hinge down and grip the bar outside your shins, back flat, shoulders slightly in front of the bar.",
+          "Exhale, push the floor away with your legs and stand up, keeping the bar close to the legs.",
+          "Inhale and lower the bar the same way: hips back first, then bend the knees once the bar passes them."
+        ],
+        "common_mistakes": [
+          "A rounded back off the floor.",
+          "The bar drifting away from the legs.",
+          "Over-arching the lower back at the top."
+        ],
+        "warnings": ["Take care with lower back pain. Start light and drill the technique."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "romanian-deadlift", "weight_ratio": null, "priority": 15 }
+    ]
+  },
+  {
+    "id": "01a10818-99d5-731e-ad63-a5aee1820184",
+    "slug": "romanian-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["hamstrings", "glutes"],
+    "secondary_muscles": ["lower_back", "forearms"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {
+        "name": "Румынская тяга",
+        "aliases": ["румынская становая тяга", "румынка", "тяга на прямых ногах"],
+        "description": "Наклон со штангой на почти прямых ногах: акцент на заднюю поверхность бедра и ягодицы.",
+        "technique_steps": [
+          "Встаньте прямо со штангой в руках, стопы на ширине таза, колени слегка согнуты.",
+          "На вдохе отводите таз назад и наклоняйтесь, ведя гриф вдоль бёдер.",
+          "Опускайте штангу до середины голени или до ощущения сильного растяжения в бёдрах, спина прямая.",
+          "На выдохе вернитесь вверх, подавая таз вперёд."
+        ],
+        "common_mistakes": [
+          "Округление спины внизу.",
+          "Сгибание колен, как в приседании.",
+          "Штанга уходит далеко от ног."
+        ],
+        "warnings": ["Осторожно при болях в пояснице."]
+      },
+      "en": {
+        "name": "Romanian deadlift",
+        "aliases": ["rdl", "romanian dead lift", "stiff-leg deadlift"],
+        "description": "A hinge with the bar on almost straight legs: emphasis on the hamstrings and glutes.",
+        "technique_steps": [
+          "Stand tall holding the bar, feet hip-width apart, knees slightly bent.",
+          "Inhale, push the hips back and hinge forward, sliding the bar along the thighs.",
+          "Lower the bar to mid-shin or until you feel a strong stretch in the hamstrings, back flat.",
+          "Exhale and come back up by driving the hips forward."
+        ],
+        "common_mistakes": [
+          "Rounding the back at the bottom.",
+          "Bending the knees as in a squat.",
+          "The bar drifting far from the legs."
+        ],
+        "warnings": ["Take care with lower back pain."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "lying-leg-curl", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a10818-99d5-731e-ad63-ae6db5b07eae",
+    "slug": "dumbbell-lunge",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["hamstrings", "adductors"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {
+        "name": "Выпады с гантелями",
+        "aliases": ["выпады", "выпады вперёд с гантелями", "выпады на месте"],
+        "description": "Шаг вперёд с опусканием в выпад с гантелями в руках: ноги и ягодицы работают по одной стороне. Вес указывается для одной гантели.",
+        "technique_steps": [
+          "Встаньте прямо с гантелями по бокам, стопы на ширине таза.",
+          "Сделайте широкий шаг вперёд и опуститесь, сгибая оба колена примерно до 90°.",
+          "Заднее колено почти касается пола, корпус вертикален.",
+          "Оттолкнитесь передней ногой и вернитесь в исходное положение, затем смените ногу."
+        ],
+        "common_mistakes": [
+          "Короткий шаг: колено уходит далеко за носок, пятка отрывается.",
+          "Наклон корпуса вперёд.",
+          "Колено передней ноги заваливается внутрь."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Dumbbell lunge",
+        "aliases": ["lunge", "forward lunge", "dumbbell lunges", "db lunge"],
+        "description": "A step forward into a lunge with dumbbells in the hands: legs and glutes work one side at a time. The weight is per dumbbell.",
+        "technique_steps": [
+          "Stand tall with the dumbbells at your sides, feet hip-width apart.",
+          "Take a long step forward and lower yourself, bending both knees to about 90°.",
+          "The back knee almost touches the floor, torso upright.",
+          "Push off the front leg to return to the start, then switch legs."
+        ],
+        "common_mistakes": [
+          "A short step: the knee travels far past the toes and the heel lifts.",
+          "Leaning the torso forward.",
+          "The front knee caving inwards."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "01a10818-99d5-731e-ad63-b24e1557775b",
+    "slug": "leg-extension",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "knee_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads"],
+    "secondary_muscles": [],
+    "equipment": ["leg_extension_machine"],
+    "translations": {
+      "ru": {
+        "name": "Разгибание ног в тренажёре",
+        "aliases": ["разгибания ног", "разгибание ног сидя", "экстензия ног"],
+        "description": "Разгибание ног сидя в тренажёре: изолирующее упражнение для квадрицепса.",
+        "technique_steps": [
+          "Отрегулируйте спинку так, чтобы ось тренажёра совпадала с коленями, валик лежит на нижней части голени.",
+          "Возьмитесь за рукояти, спина прижата к спинке.",
+          "На выдохе разогните ноги до почти прямых и задержитесь на секунду.",
+          "На вдохе плавно опустите валик, не бросая вес."
+        ],
+        "common_mistakes": [
+          "Рывок весом и отрыв таза от сиденья.",
+          "Слишком быстрая негативная фаза.",
+          "Колени не совпадают с осью тренажёра."
+        ],
+        "warnings": ["Осторожно при болях в коленях: уменьшите вес и амплитуду."]
+      },
+      "en": {
+        "name": "Leg extension",
+        "aliases": ["leg extensions", "seated leg extension", "quad extension"],
+        "description": "A seated leg extension in a machine: an isolation exercise for the quads.",
+        "technique_steps": [
+          "Adjust the backrest so the machine's pivot lines up with your knees, with the pad on the lower shin.",
+          "Hold the handles, back pressed into the pad.",
+          "Exhale and extend the legs until almost straight, pausing for a second.",
+          "Inhale and lower the pad under control without dropping the weight."
+        ],
+        "common_mistakes": [
+          "Jerking the weight and lifting the hips off the seat.",
+          "Lowering too fast.",
+          "Knees out of line with the machine's pivot."
+        ],
+        "warnings": ["Take care with knee pain: reduce the weight and the range."]
+      }
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "01a10818-99d5-731e-ad63-b7f56acbd026",
+    "slug": "lying-leg-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "knee_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["hamstrings"],
+    "secondary_muscles": ["calves"],
+    "equipment": ["leg_curl_machine"],
+    "translations": {
+      "ru": {
+        "name": "Сгибание ног лёжа в тренажёре",
+        "aliases": ["сгибания ног", "сгибание ног лёжа", "сгибание ног в тренажёре"],
+        "description": "Сгибание ног лёжа в тренажёре: изолирующее упражнение для задней поверхности бедра.",
+        "technique_steps": [
+          "Лягте на тренажёр, колени чуть выступают за край скамьи, валик над пятками.",
+          "Возьмитесь за рукояти, таз прижат к скамье.",
+          "На выдохе согните ноги, подтягивая валик к ягодицам.",
+          "На вдохе плавно выпрямите ноги почти до конца."
+        ],
+        "common_mistakes": [
+          "Таз поднимается от скамьи.",
+          "Рывки и бросание веса.",
+          "Неполная амплитуда."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Lying leg curl",
+        "aliases": ["leg curl", "hamstring curl", "prone leg curl", "leg curls"],
+        "description": "A lying leg curl in a machine: an isolation exercise for the hamstrings.",
+        "technique_steps": [
+          "Lie on the machine with your knees just past the edge of the bench and the pad above your heels.",
+          "Hold the handles, hips pressed into the bench.",
+          "Exhale and curl your legs, bringing the pad towards the glutes.",
+          "Inhale and straighten the legs under control almost all the way."
+        ],
+        "common_mistakes": [
+          "Hips lifting off the bench.",
+          "Jerking and dropping the weight.",
+          "A partial range of motion."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "romanian-deadlift", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a10818-99d5-731e-ad63-bc0073c90ed0",
+    "slug": "barbell-hip-thrust",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings"],
+    "equipment": ["barbell", "flat_bench"],
+    "translations": {
+      "ru": {
+        "name": "Ягодичный мост со штангой",
+        "aliases": ["ягодичный мост", "хип траст", "подъём таза со штангой"],
+        "description": "Подъём таза со штангой с опорой лопатками на скамью: основное упражнение для ягодиц.",
+        "technique_steps": [
+          "Сядьте на пол, лопатки упираются в край скамьи, штанга лежит на сгибе бёдер через мягкую накладку.",
+          "Стопы на ширине таза, голени в верхней точке будут вертикальны.",
+          "На выдохе поднимите таз до прямой линии от плеч до колен, сжимая ягодицы.",
+          "На вдохе плавно опустите таз, не касаясь пола."
+        ],
+        "common_mistakes": [
+          "Переразгибание поясницы вместо работы ягодиц.",
+          "Стопы слишком далеко или слишком близко.",
+          "Голова запрокидывается назад."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Barbell hip thrust",
+        "aliases": ["hip thrust", "hip thrusts", "barbell glute bridge"],
+        "description": "A hip raise with a barbell and the shoulder blades on a bench: the main exercise for the glutes.",
+        "technique_steps": [
+          "Sit on the floor with your shoulder blades against the edge of the bench and the padded bar in the hip crease.",
+          "Feet hip-width apart, placed so the shins are vertical at the top.",
+          "Exhale and lift the hips until the body is straight from shoulders to knees, squeezing the glutes.",
+          "Inhale and lower the hips under control without touching the floor."
+        ],
+        "common_mistakes": [
+          "Over-arching the lower back instead of using the glutes.",
+          "Feet too far away or too close.",
+          "Throwing the head back."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "01a10818-99d5-731e-ad63-c18eeacae47f",
+    "slug": "standing-calf-raise-machine",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "calf_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": ["calf_raise_machine"],
+    "translations": {
+      "ru": {
+        "name": "Подъёмы на носки стоя в тренажёре",
+        "aliases": ["подъёмы на носки стоя", "икры стоя", "подъем на носки в тренажере"],
+        "description": "Подъёмы на носки стоя в тренажёре для икр: основное упражнение для икроножных мышц.",
+        "technique_steps": [
+          "Встаньте под упоры, носки на краю платформы, пятки свисают.",
+          "Выпрямите ноги, колени чуть согнуты и зафиксированы.",
+          "На выдохе поднимитесь на носки как можно выше и задержитесь на секунду.",
+          "На вдохе плавно опустите пятки ниже платформы до растяжения икр."
+        ],
+        "common_mistakes": [
+          "Пружинящие короткие повторения без паузы.",
+          "Сгибание колен для помощи ногами.",
+          "Стопы заваливаются наружу."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Standing machine calf raise",
+        "aliases": ["standing calf raise", "calf raise", "machine calf raise", "calf raises"],
+        "description": "A standing calf raise in a calf machine: the main exercise for the calves.",
+        "technique_steps": [
+          "Stand under the pads with the balls of your feet on the edge of the platform, heels hanging off.",
+          "Straighten your legs, knees slightly bent and fixed.",
+          "Exhale and rise as high as you can on your toes, pausing for a second.",
+          "Inhale and lower the heels below the platform until the calves are stretched."
+        ],
+        "common_mistakes": [
+          "Short bouncing reps with no pause.",
+          "Bending the knees to help with the legs.",
+          "Feet rolling outwards."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "smith-machine-calf-raise", "weight_ratio": null, "priority": 20 },
+      { "slug": "single-leg-dumbbell-calf-raise", "weight_ratio": null, "priority": 15 },
+      { "slug": "leg-press-calf-raise", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a10818-99d5-731e-ad63-d02d9abf0746",
+    "slug": "smith-machine-calf-raise",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "calf_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": ["smith_machine"],
+    "translations": {
+      "ru": {
+        "name": "Подъёмы на носки стоя в Смите",
+        "aliases": ["икры в смите", "подъём на носки в тренажёре смита", "подъемы на носки в смите"],
+        "description": "Подъёмы на носки со штангой тренажёра Смита на плечах: замена тренажёру для икр.",
+        "technique_steps": [
+          "Поставьте под гриф устойчивую подставку или блин, встаньте носками на её край.",
+          "Положите гриф на трапеции и снимите его с упоров.",
+          "На выдохе поднимитесь на носки как можно выше и задержитесь на секунду.",
+          "На вдохе плавно опустите пятки ниже подставки."
+        ],
+        "common_mistakes": [
+          "Неустойчивая подставка, которая сдвигается.",
+          "Короткая амплитуда без растяжения внизу.",
+          "Сгибание колен."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Smith machine calf raise",
+        "aliases": ["smith calf raise", "standing smith machine calf raise"],
+        "description": "A calf raise with the Smith machine bar on the shoulders: a substitute for the calf machine.",
+        "technique_steps": [
+          "Put a stable step or a plate under the bar and stand with the balls of your feet on its edge.",
+          "Rest the bar on your traps and unrack it.",
+          "Exhale and rise as high as you can on your toes, pausing for a second.",
+          "Inhale and lower the heels below the step under control."
+        ],
+        "common_mistakes": [
+          "An unstable step that slides.",
+          "A short range with no stretch at the bottom.",
+          "Bending the knees."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "standing-calf-raise-machine", "weight_ratio": null, "priority": 20 },
+      { "slug": "single-leg-dumbbell-calf-raise", "weight_ratio": null, "priority": 15 },
+      { "slug": "leg-press-calf-raise", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a10818-99d5-731e-ad63-e063df5a5541",
+    "slug": "single-leg-dumbbell-calf-raise",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "calf_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {
+        "name": "Подъёмы на носок одной ноги с гантелью",
+        "aliases": ["подъём на носки с гантелью", "икры с гантелью", "подъем на одной ноге с гантелью"],
+        "description": "Подъём на носок одной ноги с гантелью в руке: вариант для икр, которому нужна только гантель и ступенька.",
+        "technique_steps": [
+          "Встаньте носком одной ноги на край ступеньки или блина, гантель в руке с той же стороны.",
+          "Свободной рукой держитесь за опору, вторая нога согнута.",
+          "На выдохе поднимитесь на носок как можно выше и задержитесь на секунду.",
+          "На вдохе плавно опустите пятку ниже ступеньки, затем смените ногу."
+        ],
+        "common_mistakes": [
+          "Раскачивание корпусом для помощи.",
+          "Короткая амплитуда.",
+          "Опорное колено сгибается."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Single-leg dumbbell calf raise",
+        "aliases": ["one leg calf raise", "dumbbell calf raise", "single leg calf raise"],
+        "description": "A calf raise on one leg with a dumbbell in the hand: a calf variant that needs only a dumbbell and a step.",
+        "technique_steps": [
+          "Stand with the ball of one foot on the edge of a step or plate, dumbbell in the hand on the same side.",
+          "Hold on to a support with the free hand, the other leg bent.",
+          "Exhale and rise as high as you can on your toes, pausing for a second.",
+          "Inhale and lower the heel below the step under control, then switch legs."
+        ],
+        "common_mistakes": [
+          "Swinging the torso to help.",
+          "A short range of motion.",
+          "The supporting knee bending."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "standing-calf-raise-machine", "weight_ratio": null, "priority": 15 },
+      { "slug": "smith-machine-calf-raise", "weight_ratio": null, "priority": 15 }
+    ]
+  },
+  {
+    "id": "01a10818-99d5-731e-ad63-ed267a0bdb14",
+    "slug": "leg-press-calf-raise",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "calf_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": ["leg_press_machine"],
+    "translations": {
+      "ru": {
+        "name": "Подъёмы на носки в тренажёре для жима ногами",
+        "aliases": ["икры в жиме ногами", "жим носками", "подъём на носки в жиме ногами"],
+        "description": "Жим платформы носками в тренажёре для жима ногами: вариант для икр без нагрузки на спину.",
+        "technique_steps": [
+          "Сядьте в тренажёр, поставьте носки на нижний край платформы, пятки свисают.",
+          "Выжмите платформу на почти прямые ноги, упоры не снимайте.",
+          "На выдохе выжмите платформу носками как можно дальше и задержитесь на секунду.",
+          "На вдохе плавно опустите пятки, растягивая икры."
+        ],
+        "common_mistakes": [
+          "Сняты упоры безопасности: стопы могут соскользнуть.",
+          "Сгибание колен вместо работы стоп.",
+          "Короткая амплитуда."
+        ],
+        "warnings": ["Оставляйте упоры безопасности закрытыми: стопы стоят на краю платформы."]
+      },
+      "en": {
+        "name": "Leg press calf raise",
+        "aliases": ["calf press", "calf raise on leg press", "leg press calf press"],
+        "description": "Pressing the platform with the toes in a leg press machine: a calf variant with no load on the back.",
+        "technique_steps": [
+          "Sit in the machine and place the balls of your feet on the lower edge of the platform, heels hanging off.",
+          "Press the platform to almost straight legs and leave the safeties engaged.",
+          "Exhale and push the platform with your toes as far as you can, pausing for a second.",
+          "Inhale and lower the heels under control, stretching the calves."
+        ],
+        "common_mistakes": [
+          "Releasing the safeties: the feet can slip.",
+          "Bending the knees instead of working the ankles.",
+          "A short range of motion."
+        ],
+        "warnings": ["Keep the safeties engaged: your feet are on the edge of the platform."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "standing-calf-raise-machine", "weight_ratio": null, "priority": 15 },
+      { "slug": "smith-machine-calf-raise", "weight_ratio": null, "priority": 15 }
+    ]
+  }
+]

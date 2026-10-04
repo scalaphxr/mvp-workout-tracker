@@ -5,7 +5,7 @@ import { z } from 'zod';
 /** Thrown anywhere in a request; `app.onError` turns it into the error envelope. */
 export class ApiError extends Error {
   constructor(
-    readonly status: 400 | 401 | 404 | 429,
+    readonly status: 400 | 401 | 403 | 404 | 429,
     readonly code: ErrorCode,
     message: string,
     readonly headers: Record<string, string> = {},
@@ -22,6 +22,14 @@ export const rateLimited = (retryAfterSec: number) =>
 export async function parseBody<T extends z.ZodType>(c: Context, schema: T): Promise<z.output<T>> {
   const json: unknown = await c.req.json().catch(() => undefined);
   const result = schema.safeParse(json);
+  if (!result.success) {
+    throw new ApiError(400, 'validation_error', z.prettifyError(result.error));
+  }
+  return result.data;
+}
+
+export function parseQuery<T extends z.ZodType>(c: Context, schema: T): z.output<T> {
+  const result = schema.safeParse(c.req.query());
   if (!result.success) {
     throw new ApiError(400, 'validation_error', z.prettifyError(result.error));
   }

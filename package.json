@@ -12,7 +12,8 @@
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
     "lint": "turbo run lint",
-    "db:generate": "pnpm --filter @mvp/db generate"
+    "db:generate": "pnpm --filter @mvp/db generate",
+    "catalog:import": "pnpm --filter @mvp/content import-catalog"
   },
   "devDependencies": {
     "turbo": "^2.11.7",

@@ -1,6 +1,8 @@
 import {
   ApiErrorSchema,
   AuthResponseSchema,
+  CatalogResponseSchema,
+  CatalogVersionResponseSchema,
   EmailStartResponseSchema,
   type Locale,
   MeResponseSchema,
@@ -126,4 +128,10 @@ export const api = {
     }),
 
   me: () => authedRequest('/v1/me', MeResponseSchema),
+
+  catalogVersion: () => request('/v1/catalog/version', { schema: CatalogVersionResponseSchema }),
+
+  /** `since` – the version the phone already has. */
+  catalog: (since: number) =>
+    request(`/v1/catalog?since=${since}`, { schema: CatalogResponseSchema }),
 };

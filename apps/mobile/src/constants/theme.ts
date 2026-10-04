@@ -15,6 +15,10 @@ export const Colors = {
     accent: '#0B63CE',
     onAccent: '#ffffff',
     danger: '#B3261E',
+    // The body map: muscles an exercise works, on a neutral body.
+    musclePrimary: '#D7263D',
+    muscleSecondary: '#F3B0A6',
+    bodyFill: '#D9DBE0',
   },
   dark: {
     text: '#ffffff',
@@ -25,6 +29,9 @@ export const Colors = {
     accent: '#5AA2FF',
     onAccent: '#00152E',
     danger: '#FF8A80',
+    musclePrimary: '#FF4D5E',
+    muscleSecondary: '#8A3A44',
+    bodyFill: '#3A3D42',
   },
 } as const;
 

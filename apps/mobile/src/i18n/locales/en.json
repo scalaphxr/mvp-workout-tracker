@@ -15,8 +15,54 @@
     "emptyText": "Your programs will live here: build one, import it from text or take one by code."
   },
   "exercises": {
-    "emptyTitle": "Exercise library",
-    "emptyText": "Exercises with filters, technique and videos will show up here."
+    "searchPlaceholder": "Search exercises",
+    "filters": "Filters",
+    "filtersActive": "Filters: {{count}}",
+    "found_one": "{{count}} exercise",
+    "found_other": "{{count}} exercises",
+    "nothingTitle": "Nothing found",
+    "nothingText": "Try another name or turn some filters off.",
+    "resetFilters": "Reset filters"
+  },
+  "filters": {
+    "title": "Filters",
+    "muscles": "Muscles",
+    "equipment": "Equipment",
+    "level": "Level",
+    "reset": "Reset",
+    "show_one": "Show {{count}} exercise",
+    "show_other": "Show {{count}} exercises"
+  },
+  "exercise": {
+    "notFoundTitle": "No such exercise",
+    "notFoundText": "It may have been removed from the library.",
+    "mapLabel": "Body map. Primary muscles: {{primary}}. Secondary muscles: {{secondary}}.",
+    "mapLabelPrimaryOnly": "Body map. Primary muscles: {{primary}}.",
+    "primaryMuscles": "Primary muscles",
+    "secondaryMuscles": "Secondary muscles",
+    "equipment": "Equipment",
+    "noEquipment": "No equipment needed",
+    "technique": "Technique",
+    "mistakes": "Common mistakes",
+    "warnings": "Take care",
+    "alternatives": "Alternatives",
+    "videoInOtherLanguage": "There is no video in your language yet, so this one is in another language."
+  },
+  "level": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
+  },
+  "mechanics": {
+    "compound": "Compound",
+    "isolation": "Isolation"
+  },
+  "kind": {
+    "strength": "Strength",
+    "bodyweight": "Body weight",
+    "cardio": "Cardio",
+    "timed": "Timed",
+    "stretch": "Stretching"
   },
   "progress": {
     "emptyTitle": "Nothing to show yet",

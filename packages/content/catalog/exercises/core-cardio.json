@@ -1,0 +1,314 @@
+[
+  {
+    "id": "01a10818-99d5-731e-ad63-6a3d7573af11",
+    "slug": "plank",
+    "kind": "timed",
+    "tracking": "time",
+    "movement_pattern": "core_stability",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques", "front_delts", "glutes"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Планка",
+        "aliases": ["планка на локтях", "классическая планка", "упор лёжа на предплечьях"],
+        "description": "Удержание прямого корпуса в упоре на предплечьях: упражнение на время для мышц кора.",
+        "technique_steps": [
+          "Встаньте в упор на предплечья, локти под плечами, ноги выпрямлены.",
+          "Напрягите пресс и ягодицы, тело – прямая линия от пяток до макушки.",
+          "Дышите ровно и удерживайте положение заданное время.",
+          "Закончите подход, как только поясница начинает провисать."
+        ],
+        "common_mistakes": [
+          "Провисание поясницы.",
+          "Таз поднят слишком высоко.",
+          "Задержка дыхания."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Plank",
+        "aliases": ["forearm plank", "elbow plank", "front plank"],
+        "description": "Holding a straight body on the forearms: a timed exercise for the core.",
+        "technique_steps": [
+          "Support yourself on your forearms, elbows under the shoulders, legs straight.",
+          "Brace your abs and glutes; the body is a straight line from heels to head.",
+          "Breathe evenly and hold the position for the set time.",
+          "End the set as soon as the lower back starts to sag."
+        ],
+        "common_mistakes": [
+          "A sagging lower back.",
+          "Hips raised too high.",
+          "Holding the breath."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "01a10818-99d5-731e-ad63-6d4b719adc59",
+    "slug": "hanging-leg-raise",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques", "forearms"],
+    "equipment": ["pull_up_bar"],
+    "translations": {
+      "ru": {
+        "name": "Подъём ног в висе",
+        "aliases": ["подъёмы ног в висе", "подъём ног на турнике", "подъем коленей в висе"],
+        "description": "Подъём ног в висе на перекладине: упражнение для пресса с собственным весом. Облегчённый вариант – подъём согнутых коленей.",
+        "technique_steps": [
+          "Повисните на перекладине прямым хватом, плечи опущены от ушей.",
+          "Напрягите пресс и погасите раскачивание.",
+          "На выдохе поднимите ноги до параллели с полом или выше, подкручивая таз.",
+          "На вдохе плавно опустите ноги, не раскачиваясь."
+        ],
+        "common_mistakes": [
+          "Раскачивание и заброс ног инерцией.",
+          "Движение только в тазобедренных суставах без подкручивания таза.",
+          "Ноги бросаются вниз."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Hanging leg raise",
+        "aliases": ["hanging leg raises", "hanging knee raise", "leg raise on bar"],
+        "description": "Raising the legs while hanging from a bar: a body-weight exercise for the abs. The easier variant is raising bent knees.",
+        "technique_steps": [
+          "Hang from the bar with an overhand grip, shoulders down away from the ears.",
+          "Brace your abs and stop any swinging.",
+          "Exhale and raise your legs to parallel with the floor or higher, curling the pelvis up.",
+          "Inhale and lower the legs under control without swinging."
+        ],
+        "common_mistakes": [
+          "Swinging and throwing the legs up with momentum.",
+          "Moving only at the hips without curling the pelvis.",
+          "Dropping the legs."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "crunch", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a10818-99d5-731e-ad63-76a94ea577b5",
+    "slug": "crunch",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Скручивания",
+        "aliases": ["скручивания на пресс", "скручивания лёжа", "кранчи"],
+        "description": "Скручивания лёжа на полу: подъём лопаток за счёт сгибания корпуса, поясница остаётся на полу.",
+        "technique_steps": [
+          "Лягте на спину, колени согнуты, стопы на полу, руки у висков или на груди.",
+          "Прижмите поясницу к полу.",
+          "На выдохе скрутите корпус, отрывая лопатки от пола и приближая рёбра к тазу.",
+          "На вдохе плавно опуститесь, не расслабляя пресс полностью."
+        ],
+        "common_mistakes": [
+          "Руки тянут голову вперёд.",
+          "Подъём всего корпуса за счёт сгибателей бедра.",
+          "Быстрые повторения по инерции."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Crunch",
+        "aliases": ["crunches", "ab crunch", "floor crunch"],
+        "description": "Crunches on the floor: the shoulder blades lift by curling the torso while the lower back stays down.",
+        "technique_steps": [
+          "Lie on your back, knees bent, feet on the floor, hands at your temples or on your chest.",
+          "Press your lower back into the floor.",
+          "Exhale and curl the torso, lifting the shoulder blades and bringing the ribs towards the pelvis.",
+          "Inhale and lower yourself under control without fully relaxing the abs."
+        ],
+        "common_mistakes": [
+          "Pulling the head forward with the hands.",
+          "Sitting all the way up with the hip flexors.",
+          "Fast reps driven by momentum."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "01a10818-99d5-731e-ad63-7bdabea8556e",
+    "slug": "treadmill-run",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads", "calves"],
+    "secondary_muscles": ["hamstrings", "glutes"],
+    "equipment": ["treadmill"],
+    "translations": {
+      "ru": {
+        "name": "Бег на дорожке",
+        "aliases": ["беговая дорожка", "дорожка", "ходьба на дорожке"],
+        "description": "Бег или ходьба на беговой дорожке. Записываются время, дистанция, скорость и наклон.",
+        "technique_steps": [
+          "Встаньте на боковые панели, запустите дорожку на малой скорости и шагните на полотно.",
+          "Плавно увеличьте скорость до рабочей, корпус прямой, взгляд вперёд.",
+          "Приземляйтесь на середину стопы под центром тяжести, руки согнуты и движутся вдоль корпуса.",
+          "В конце плавно снизьте скорость и пройдитесь 2–3 минуты."
+        ],
+        "common_mistakes": [
+          "Держаться за поручни во время бега.",
+          "Слишком длинный шаг с приземлением на пятку далеко впереди.",
+          "Резкая остановка без заминки."
+        ],
+        "warnings": ["Пристегните ключ безопасности к одежде."]
+      },
+      "en": {
+        "name": "Treadmill run",
+        "aliases": ["treadmill", "treadmill running", "treadmill walk"],
+        "description": "Running or walking on a treadmill. Time, distance, speed and incline are logged.",
+        "technique_steps": [
+          "Stand on the side rails, start the belt at a low speed and step on.",
+          "Bring the speed up gradually, torso upright, eyes forward.",
+          "Land on the midfoot under your centre of mass, arms bent and moving along the body.",
+          "At the end slow down gradually and walk for 2–3 minutes."
+        ],
+        "common_mistakes": [
+          "Holding the handrails while running.",
+          "Over-striding and landing on the heel far in front.",
+          "Stopping abruptly with no cool-down."
+        ],
+        "warnings": ["Clip the safety key to your clothes."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "stationary-bike", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a10818-99d5-731e-ad63-81b8d2c76aaf",
+    "slug": "stationary-bike",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads"],
+    "secondary_muscles": ["hamstrings", "glutes", "calves"],
+    "equipment": ["stationary_bike"],
+    "translations": {
+      "ru": {
+        "name": "Велотренажёр",
+        "aliases": ["велосипед", "вело", "езда на велотренажёре"],
+        "description": "Езда на велотренажёре. Записываются время, дистанция, сопротивление и пульс.",
+        "technique_steps": [
+          "Отрегулируйте высоту седла: в нижней точке педали нога почти выпрямлена.",
+          "Сядьте, корпус слегка наклонён, плечи расслаблены.",
+          "Крутите педали ровно, выбирая сопротивление, при котором каденс остаётся стабильным.",
+          "В конце снизьте сопротивление и покрутите педали 2–3 минуты в лёгком темпе."
+        ],
+        "common_mistakes": [
+          "Седло слишком низко – перегружаются колени.",
+          "Раскачивание таза из стороны в сторону.",
+          "Колени разведены в стороны."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Stationary bike",
+        "aliases": ["exercise bike", "bike", "cycling", "spin bike"],
+        "description": "Riding a stationary bike. Time, distance, resistance and heart rate are logged.",
+        "technique_steps": [
+          "Set the saddle height so the leg is almost straight at the bottom of the pedal stroke.",
+          "Sit down with the torso leaning slightly forward and the shoulders relaxed.",
+          "Pedal smoothly at a resistance that lets you keep a steady cadence.",
+          "At the end lower the resistance and pedal easily for 2–3 minutes."
+        ],
+        "common_mistakes": [
+          "A saddle set too low, which overloads the knees.",
+          "Hips rocking from side to side.",
+          "Knees pointing outwards."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "treadmill-run", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a10818-99d5-731e-ad63-8a614accb9cf",
+    "slug": "standing-hamstring-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["hamstrings"],
+    "secondary_muscles": ["calves"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Растяжка задней поверхности бедра стоя",
+        "aliases": ["растяжка бицепса бедра", "наклон к прямой ноге", "растяжка задней поверхности бедра"],
+        "description": "Наклон к выставленной вперёд прямой ноге: статическая растяжка задней поверхности бедра на время.",
+        "technique_steps": [
+          "Встаньте прямо и выставьте одну ногу вперёд на пятку, носок на себя.",
+          "Слегка согните опорную ногу и отведите таз назад.",
+          "Наклонитесь с прямой спиной до ощущения растяжения под бедром и удерживайте положение.",
+          "Дышите ровно, затем смените ногу."
+        ],
+        "common_mistakes": [
+          "Округление спины вместо наклона от таза.",
+          "Пружинящие движения.",
+          "Растяжка через резкую боль."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Standing hamstring stretch",
+        "aliases": ["hamstring stretch", "standing hamstring stretch one leg"],
+        "description": "A hinge towards a straight leg placed in front: a timed static stretch for the hamstrings.",
+        "technique_steps": [
+          "Stand tall and place one leg forward on its heel, toes pulled up.",
+          "Bend the supporting leg slightly and push the hips back.",
+          "Hinge forward with a flat back until you feel a stretch under the thigh, and hold.",
+          "Breathe evenly, then switch legs."
+        ],
+        "common_mistakes": [
+          "Rounding the back instead of hinging at the hips.",
+          "Bouncing.",
+          "Stretching through sharp pain."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": []
+  }
+]

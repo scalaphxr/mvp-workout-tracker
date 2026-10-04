@@ -2,9 +2,17 @@ import { users } from '@mvp/db';
 import {
   type ApiErrorBody,
   type AuthResponse,
+  type CatalogImportResponse,
+  CatalogQuerySchema,
+  type CatalogResponse,
+  CatalogSeedSchema,
+  type CatalogVersionResponse,
   EmailStartRequestSchema,
   type EmailStartResponse,
   EmailVerifyRequestSchema,
+  type ExerciseListResponse,
+  type ExerciseResponse,
+  ExerciseSearchQuerySchema,
   type MeResponse,
   RefreshRequestSchema,
   type Tokens,
@@ -22,12 +30,14 @@ import {
   verifyAccessToken,
   verifyEmailCode,
 } from './auth';
-import { ApiError, parseBody } from './errors';
+import { type CatalogDeps, createCatalogService, requireAdmin } from './catalog';
+import { ApiError, parseBody, parseQuery } from './errors';
 
-export type AppDeps = AuthDeps;
+export type AppDeps = AuthDeps & CatalogDeps;
 
 export function createApp(deps: AppDeps) {
   const app = new Hono<{ Variables: { userId: string } }>();
+  const catalog = createCatalogService(deps);
 
   // Auth is a Bearer token, not a cookie, so any origin may call the API.
   app.use('/v1/*', cors());
@@ -65,6 +75,38 @@ export function createApp(deps: AppDeps) {
     const [user] = await deps.db.select().from(users).where(eq(users.id, c.get('userId')));
     if (!user) throw new ApiError(401, 'unauthorized', 'The account no longer exists');
     return c.json<MeResponse>({ user: toUserDto(user) });
+  });
+
+  app.get('/v1/catalog/version', async (c) =>
+    c.json<CatalogVersionResponse>({ version: await catalog.version() }),
+  );
+
+  app.get('/v1/catalog', async (c) => {
+    const { since } = parseQuery(c, CatalogQuerySchema);
+    return c.json<CatalogResponse>(await catalog.since(since));
+  });
+
+  app.get('/v1/exercises', async (c) => {
+    const query = parseQuery(c, ExerciseSearchQuerySchema);
+    const filters = {
+      query: query.q,
+      muscles: query.muscle,
+      equipment: query.equipment,
+      level: query.level,
+    };
+    return c.json<ExerciseListResponse>(
+      await catalog.search(filters, query.locale, Number(query.cursor ?? 0), query.limit),
+    );
+  });
+
+  app.get('/v1/exercises/:id', async (c) =>
+    c.json<ExerciseResponse>({ exercise: await catalog.exercise(c.req.param('id')) }),
+  );
+
+  app.post('/v1/admin/catalog/import', async (c) => {
+    requireAdmin(deps, c.req.header('Authorization'));
+    const seed = await parseBody(c, CatalogSeedSchema);
+    return c.json<CatalogImportResponse>(await catalog.import(seed));
   });
 
   app.notFound((c) =>

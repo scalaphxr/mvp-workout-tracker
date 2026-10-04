@@ -6,6 +6,7 @@ export const ERROR_CODES = [
   'too_many_attempts',
   'rate_limited',
   'unauthorized',
+  'forbidden',
   'invalid_refresh_token',
   'not_found',
   'internal',

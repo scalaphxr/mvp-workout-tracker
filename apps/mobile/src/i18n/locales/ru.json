@@ -15,8 +15,58 @@
     "emptyText": "Здесь будут ваши программы: соберите свою, вставьте из текста или возьмите по коду."
   },
   "exercises": {
-    "emptyTitle": "Библиотека упражнений",
-    "emptyText": "Здесь появятся упражнения с фильтрами, техникой и видео."
+    "searchPlaceholder": "Поиск упражнений",
+    "filters": "Фильтры",
+    "filtersActive": "Фильтры: {{count}}",
+    "found_one": "{{count}} упражнение",
+    "found_few": "{{count}} упражнения",
+    "found_many": "{{count}} упражнений",
+    "found_other": "{{count}} упражнения",
+    "nothingTitle": "Ничего не найдено",
+    "nothingText": "Попробуйте другое название или отключите часть фильтров.",
+    "resetFilters": "Сбросить фильтры"
+  },
+  "filters": {
+    "title": "Фильтры",
+    "muscles": "Мышцы",
+    "equipment": "Оборудование",
+    "level": "Уровень",
+    "reset": "Сбросить",
+    "show_one": "Показать {{count}} упражнение",
+    "show_few": "Показать {{count}} упражнения",
+    "show_many": "Показать {{count}} упражнений",
+    "show_other": "Показать {{count}} упражнения"
+  },
+  "exercise": {
+    "notFoundTitle": "Такого упражнения нет",
+    "notFoundText": "Возможно, его убрали из библиотеки.",
+    "mapLabel": "Карта мышц. Основные мышцы: {{primary}}. Вспомогательные мышцы: {{secondary}}.",
+    "mapLabelPrimaryOnly": "Карта мышц. Основные мышцы: {{primary}}.",
+    "primaryMuscles": "Основные мышцы",
+    "secondaryMuscles": "Вспомогательные мышцы",
+    "equipment": "Оборудование",
+    "noEquipment": "Оборудование не нужно",
+    "technique": "Техника",
+    "mistakes": "Частые ошибки",
+    "warnings": "Осторожно",
+    "alternatives": "Чем заменить",
+    "videoInOtherLanguage": "Ролика на вашем языке пока нет, поэтому показан ролик на другом языке."
+  },
+  "level": {
+    "beginner": "Новичок",
+    "intermediate": "Средний",
+    "advanced": "Продвинутый"
+  },
+  "mechanics": {
+    "compound": "Базовое",
+    "isolation": "Изолирующее"
+  },
+  "kind": {
+    "strength": "Силовое",
+    "bodyweight": "Собственный вес",
+    "cardio": "Кардио",
+    "timed": "На время",
+    "stretch": "Растяжка"
   },
   "progress": {
     "emptyTitle": "Пока нечего показать",
