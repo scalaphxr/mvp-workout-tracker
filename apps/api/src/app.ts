@@ -1,5 +1,7 @@
 import { users } from '@mvp/db';
 import {
+  AdoptRequestSchema,
+  type AdoptResponse,
   type ApiErrorBody,
   type AuthResponse,
   type CatalogImportResponse,
@@ -15,10 +17,17 @@ import {
   ExerciseSearchQuerySchema,
   type MeResponse,
   RefreshRequestSchema,
+  type ShareCode,
+  ShareCodeCreateRequestSchema,
+  type ShareCodeListResponse,
+  type ShareCodePreviewResponse,
+  SyncPushRequestSchema,
+  type SyncPushResponse,
   type Tokens,
 } from '@mvp/schemas';
-import { eq } from 'drizzle-orm';
-import { Hono } from 'hono';
+import { eq } from '@mvp/db';
+import { getConnInfo } from '@hono/node-server/conninfo';
+import { type Context, Hono } from 'hono';
 import { cors } from 'hono/cors';
 
 import {
@@ -32,12 +41,33 @@ import {
 } from './auth';
 import { type CatalogDeps, createCatalogService, requireAdmin } from './catalog';
 import { ApiError, parseBody, parseQuery } from './errors';
+import { type Caller, createShareService } from './share';
+import { pushChanges } from './sync';
 
 export type AppDeps = AuthDeps & CatalogDeps;
 
+type Env = { Variables: { userId: string } };
+
 export function createApp(deps: AppDeps) {
-  const app = new Hono<{ Variables: { userId: string } }>();
+  const app = new Hono<Env>();
   const catalog = createCatalogService(deps);
+  const share = createShareService({ ...deps, exercises: catalog.exercises });
+
+  /**
+   * The reverse proxy puts the client address into X-Forwarded-For; without a proxy
+   * (development) it is taken from the connection.
+   */
+  const caller = (c: Context<Env>): Caller => {
+    let ip = c.req.header('X-Forwarded-For')?.split(',')[0]?.trim() || null;
+    if (!ip) {
+      try {
+        ip = getConnInfo(c).remote.address ?? null;
+      } catch {
+        // No connection behind the request (tests).
+      }
+    }
+    return { userId: c.get('userId'), ip };
+  };
 
   // Auth is a Bearer token, not a cookie, so any origin may call the API.
   app.use('/v1/*', cors());
@@ -65,10 +95,47 @@ export function createApp(deps: AppDeps) {
     return c.body(null, 204);
   });
 
-  app.use('/v1/me', async (c, next) => {
-    const [scheme, token] = (c.req.header('Authorization') ?? '').split(' ');
-    c.set('userId', await verifyAccessToken(deps, scheme === 'Bearer' && token ? token : ''));
-    await next();
+  // Everything below needs a signed-in user.
+  for (const path of ['/v1/me', '/v1/sync/*', '/v1/programs/*', '/v1/share-codes/*']) {
+    app.use(path, async (c, next) => {
+      const [scheme, token] = (c.req.header('Authorization') ?? '').split(' ');
+      c.set('userId', await verifyAccessToken(deps, scheme === 'Bearer' && token ? token : ''));
+      await next();
+    });
+  }
+
+  app.post('/v1/sync/push', async (c) => {
+    const body = await parseBody(c, SyncPushRequestSchema);
+    return c.json<SyncPushResponse>(await pushChanges(deps, c.get('userId'), body.changes));
+  });
+
+  app.post('/v1/programs/:id/share-codes', async (c) => {
+    const body = await parseBody(c, ShareCodeCreateRequestSchema);
+    return c.json<ShareCode>(
+      await share.create(c.get('userId'), c.req.param('id'), body.expires_in_days),
+    );
+  });
+
+  app.get('/v1/programs/:id/share-codes', async (c) =>
+    c.json<ShareCodeListResponse>({
+      codes: await share.list(c.get('userId'), c.req.param('id')),
+    }),
+  );
+
+  app.delete('/v1/share-codes/:code', async (c) => {
+    await share.revoke(c.get('userId'), c.req.param('code'));
+    return c.body(null, 204);
+  });
+
+  app.get('/v1/share-codes/:code', async (c) =>
+    c.json<ShareCodePreviewResponse>(await share.preview(caller(c), c.req.param('code'))),
+  );
+
+  app.post('/v1/share-codes/:code/adopt', async (c) => {
+    const body = await parseBody(c, AdoptRequestSchema);
+    return c.json<AdoptResponse>(
+      await share.adopt(caller(c), c.req.param('code'), body.gym_profile_id),
+    );
   });
 
   app.get('/v1/me', async (c) => {

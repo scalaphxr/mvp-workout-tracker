@@ -1,4 +1,3 @@
-import { searchExercises } from '@mvp/domain';
 import { LEVELS } from '@mvp/schemas';
 import { useRouter } from 'expo-router';
 import type { ReactNode } from 'react';
@@ -13,7 +12,7 @@ import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { useLocale } from '@/hooks/use-locale';
 import { useTheme } from '@/hooks/use-theme';
 import { useCatalog } from '@/lib/catalog';
-import { activeFilterCount, useLibraryFilters } from '@/lib/library-filters';
+import { activeFilterCount, useFoundExercises, useLibraryFilters } from '@/lib/library-filters';
 
 export default function ExerciseFiltersScreen() {
   const { t } = useTranslation();
@@ -24,11 +23,19 @@ export default function ExerciseFiltersScreen() {
   const { catalog } = useCatalog();
   const filters = useLibraryFilters();
 
-  const found = searchExercises(catalog.exercises, filters, locale).length;
+  const found = useFoundExercises().length;
 
   return (
     <View style={[styles.screen, { backgroundColor: theme.background }]}>
       <ScrollView contentContainerStyle={styles.content}>
+        <Section title={t('filters.availability')}>
+          <Chip
+            label={t('filters.onlyMyGym')}
+            selected={filters.onlyMyGym}
+            onPress={filters.toggleOnlyMyGym}
+          />
+        </Section>
+
         <Section title={t('filters.level')}>
           {LEVELS.map((level) => (
             <Chip

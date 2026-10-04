@@ -1,12 +1,15 @@
-import '@/i18n';
-
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { EmptyState } from '@/components/empty-state';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import { syncCatalog } from '@/lib/catalog';
+import i18n from '@/i18n';
+import { syncCatalog, useCatalog } from '@/lib/catalog';
+import { dataReady } from '@/lib/db';
+import { ensureDefaultGym } from '@/lib/gym';
 
 const queryClient = new QueryClient();
 
@@ -16,9 +19,39 @@ function CatalogSync() {
   return null;
 }
 
+/** The phone database opens and migrates before the first screen is drawn. */
+function useDatabase(): 'opening' | 'ready' | 'failed' {
+  const [state, setState] = useState<'opening' | 'ready' | 'failed'>('opening');
+
+  useEffect(() => {
+    let mounted = true;
+    dataReady.then(
+      (ctx) => {
+        ensureDefaultGym(ctx, useCatalog.getState().catalog, i18n.t('gym.defaultName'));
+        if (mounted) setState('ready');
+      },
+      (error: unknown) => {
+        console.error(error);
+        if (mounted) setState('failed');
+      },
+    );
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  return state;
+}
+
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const { t } = useTranslation();
+  const database = useDatabase();
+
+  if (database === 'opening') return null;
+  if (database === 'failed') {
+    return <EmptyState title={t('errors.databaseTitle')} text={t('errors.databaseText')} />;
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -37,6 +70,14 @@ export default function RootLayout() {
           />
           {/* The name of the exercise is the heading of the screen itself. */}
           <Stack.Screen name="exercise/[id]" options={{ title: '' }} />
+          <Stack.Screen name="exercise-picker" options={{ title: t('picker.title') }} />
+          <Stack.Screen name="gym/index" options={{ title: t('gym.title') }} />
+          <Stack.Screen name="gym/[id]" options={{ title: '' }} />
+          <Stack.Screen name="program/[id]" options={{ title: '' }} />
+          <Stack.Screen name="program/item/[id]" options={{ title: '' }} />
+          <Stack.Screen name="program/replace/[id]" options={{ title: t('replace.title') }} />
+          <Stack.Screen name="program/share/[id]" options={{ title: t('share.title') }} />
+          <Stack.Screen name="code" options={{ title: t('code.title') }} />
         </Stack>
         <StatusBar style="auto" />
       </ThemeProvider>

@@ -6,13 +6,93 @@
     "progress": "Progress",
     "profile": "Profile"
   },
+  "common": {
+    "confirm": "Are you sure?",
+    "yes": "Yes",
+    "cancel": "Cancel"
+  },
+  "units": {
+    "kg": "{{value}} kg",
+    "sec": "{{value}} s",
+    "min": "{{value}} min",
+    "minSec": "{{min}} min {{sec}} s"
+  },
   "today": {
     "emptyTitle": "No workout yet",
     "emptyText": "The next workout of your program will show up here."
   },
   "programs": {
     "emptyTitle": "No programs yet",
-    "emptyText": "Your programs will live here: build one, import it from text or take one by code."
+    "emptyText": "Build a program yourself or take a ready one by code.",
+    "create": "Create a program",
+    "enterCode": "Enter a code",
+    "active": "Active",
+    "others": "Others",
+    "newTitle": "New program",
+    "dayTitle": "Day {{number}}",
+    "days_one": "{{count}} day",
+    "days_other": "{{count}} days",
+    "exercises_one": "{{count}} exercise",
+    "exercises_other": "{{count}} exercises"
+  },
+  "program": {
+    "notFoundTitle": "No such program",
+    "notFoundText": "It may have been deleted.",
+    "titleLabel": "Program name",
+    "makeActive": "Make active",
+    "isActive": "This is the active program",
+    "share": "Share",
+    "delete": "Delete the program",
+    "forked": "Taken by code",
+    "addDay": "Add a day",
+    "addEverySession": "Add an \"every workout\" block",
+    "everySessionTitle": "Every workout",
+    "everySessionHint": "These exercises are added to the end of every workout.",
+    "addExercise": "Add an exercise",
+    "emptyDay": "This day has no exercises yet.",
+    "dayTitleLabel": "Day name",
+    "deleteDay": "Delete the day",
+    "moveUp": "Move up",
+    "moveDown": "Move down",
+    "superset": "Superset",
+    "sets": "{{sets}} × {{range}}",
+    "rest": "rest {{rest}}",
+    "unavailable": "Your gym has no equipment for this exercise",
+    "unknownExercise": "The exercise was removed from the library"
+  },
+  "item": {
+    "sets": "Sets",
+    "repsMin": "Reps from",
+    "repsMax": "Reps to",
+    "secondsMin": "Seconds from",
+    "secondsMax": "Seconds to",
+    "minutesMin": "Minutes from",
+    "minutesMax": "Minutes to",
+    "rest": "Rest between sets",
+    "rir": "Reps in reserve (RIR)",
+    "rirNone": "Not set",
+    "rirMore": "4+",
+    "step": "Weight step",
+    "stepAuto": "As in the gym",
+    "notes": "Note",
+    "notesPlaceholder": "For example: lower slowly",
+    "replace": "Replace the exercise",
+    "linkNext": "Join with the next one into a superset",
+    "unlink": "Take out of the superset",
+    "openCard": "Technique and muscles",
+    "delete": "Remove from the program",
+    "decrease": "Less",
+    "increase": "More"
+  },
+  "replace": {
+    "title": "Replace with",
+    "instead": "Instead of: {{name}}",
+    "noneTitle": "Your gym has no suitable replacement",
+    "noneText": "Tick more equipment in the gym profile or pick an exercise from the library.",
+    "fromLibrary": "Pick from the library"
+  },
+  "picker": {
+    "title": "Pick an exercise"
   },
   "exercises": {
     "searchPlaceholder": "Search exercises",
@@ -29,6 +109,8 @@
     "muscles": "Muscles",
     "equipment": "Equipment",
     "level": "Level",
+    "availability": "Availability",
+    "onlyMyGym": "Only for my gym",
     "reset": "Reset",
     "show_one": "Show {{count}} exercise",
     "show_other": "Show {{count}} exercises"
@@ -64,6 +146,83 @@
     "timed": "Timed",
     "stretch": "Stretching"
   },
+  "gym": {
+    "title": "Places to train",
+    "defaultName": "My gym",
+    "newName": "New place",
+    "add": "Add a place",
+    "default": "Main",
+    "makeDefault": "Make it the main one",
+    "isDefault": "This is your main place: exercises and replacements are picked for it.",
+    "notFoundTitle": "No such place",
+    "notFoundText": "It may have been deleted.",
+    "nameLabel": "Name",
+    "type": "Where it is",
+    "location": {
+      "gym": "Gym",
+      "home": "Home with equipment",
+      "home_no_equipment": "Home without equipment",
+      "outdoor": "Outdoors"
+    },
+    "equipment_one": "{{count}} piece of equipment",
+    "equipment_other": "{{count}} pieces of equipment",
+    "presets": "Quick pick",
+    "presetFull": "Full gym",
+    "presetHome": "Home gym",
+    "presetNone": "Clear all",
+    "steps": "Weight steps",
+    "stepDumbbells": "Dumbbell step",
+    "stepPlates": "Barbell step",
+    "stepPlatesHint": "Two of your lightest plates: a pair of 1.25 kg makes a 2.5 kg step.",
+    "stepStack": "Machine stack step",
+    "equipment": "Equipment",
+    "category": {
+      "barbells": "Barbells and bars",
+      "dumbbells": "Dumbbells",
+      "machines": "Machines",
+      "cables": "Cables",
+      "bodyweight": "Pull-up and dip bars",
+      "cardio": "Cardio",
+      "other": "Other"
+    },
+    "delete": "Delete the place"
+  },
+  "share": {
+    "title": "Share the program",
+    "signInTitle": "Sign in first",
+    "signInText": "A program can be shared by code once you are signed in: the other person takes it from the server.",
+    "signIn": "Sign in with email",
+    "intro": "Anyone you give the code to can take the program. Your later edits will not change their copy.",
+    "expiry": "A new code is valid for",
+    "forever": "No limit",
+    "days7": "7 days",
+    "days30": "30 days",
+    "create": "Create a code",
+    "codes": "Codes that work",
+    "noCodes": "There are no working codes.",
+    "expires": "Valid until {{date}}",
+    "noExpiry": "Valid with no time limit",
+    "used_one": "The program was taken {{count}} time",
+    "used_other": "The program was taken {{count}} times",
+    "qrLabel": "QR code with a link to the program",
+    "copy": "Copy the code",
+    "copied": "Copied",
+    "send": "Send",
+    "revoke": "Revoke the code",
+    "message": "My program \"{{title}}\". Code: {{code}}\n{{link}}"
+  },
+  "code": {
+    "title": "A program by code",
+    "signInText": "You can take a program by code once you are signed in.",
+    "label": "Program code",
+    "find": "Find the program",
+    "gym": "For which place",
+    "fits": "You have all the equipment this program needs.",
+    "replaced": "Replaced to fit your gym",
+    "replacement": "{{from}} → {{to}}",
+    "noReplacement": "{{from}}: no replacement, the exercise stays",
+    "adopt": "Take it"
+  },
   "progress": {
     "emptyTitle": "Nothing to show yet",
     "emptyText": "Body weight, exercise charts and workout history will show up here."
@@ -77,6 +236,7 @@
     "signOut": "Sign out",
     "loadError": "Could not load the profile. Check your connection.",
     "retry": "Try again",
+    "training": "Training",
     "language": "Language",
     "languageSystem": "System",
     "languageRu": "Русский",
@@ -102,7 +262,10 @@
     "invalid_code": "The code is wrong or has expired.",
     "too_many_attempts": "Too many wrong attempts. Request a new code.",
     "rate_limited": "Too many requests. Try again later.",
+    "invalid_share_code": "The program code is wrong, expired or revoked.",
     "network": "No connection to the server. Check your network.",
-    "unknown": "Something went wrong. Try again."
+    "unknown": "Something went wrong. Try again.",
+    "databaseTitle": "The app could not open its data",
+    "databaseText": "Restart the app. If that does not help, free up some storage on the phone."
   }
 }

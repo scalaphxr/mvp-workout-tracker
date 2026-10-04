@@ -73,7 +73,9 @@ export default function SignInScreen() {
       const { user, ...tokens } = await api.verifyEmailCode(sentTo, value);
       setSession(tokens);
       queryClient.setQueryData(['me'], { user });
-      router.back();
+      // Opened by a link, the screen has nothing behind it to return to.
+      if (router.canGoBack()) router.back();
+      else router.replace('/profile');
     } catch (e) {
       setError(errorKey(e));
       setBusy(false);

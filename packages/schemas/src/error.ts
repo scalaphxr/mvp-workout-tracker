@@ -8,6 +8,7 @@ export const ERROR_CODES = [
   'unauthorized',
   'forbidden',
   'invalid_refresh_token',
+  'invalid_share_code',
   'not_found',
   'internal',
 ] as const;

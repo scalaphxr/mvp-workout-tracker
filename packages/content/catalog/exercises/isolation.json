@@ -1,0 +1,372 @@
+[
+  {
+    "id": "01a10853-b081-7445-8142-8b295314427c",
+    "slug": "cable-lateral-raise",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lateral_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["side_delts"],
+    "secondary_muscles": ["traps"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {
+        "name": "Отведение руки в сторону на блоке",
+        "aliases": ["махи в сторону на блоке", "отведение руки в кроссовере", "махи на нижнем блоке"],
+        "description": "Подъём руки через сторону с нижнего блока: средние дельты под нагрузкой на всей амплитуде. Выполняется по одной руке.",
+        "technique_steps": [
+          "Установите блок внизу, встаньте к нему боком и возьмите рукоять дальней рукой.",
+          "Свободной рукой держитесь за стойку, локоть рабочей руки слегка согнут.",
+          "На выдохе поднимите руку через сторону до уровня плеча, локоть ведёт движение.",
+          "На вдохе плавно опустите руку перед собой, затем смените сторону."
+        ],
+        "common_mistakes": [
+          "Рывок корпусом в сторону.",
+          "Подъём плеча к уху.",
+          "Кисть выше локтя."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Cable lateral raise",
+        "aliases": ["single arm cable lateral raise", "cable side raise", "low pulley lateral raise"],
+        "description": "Raising the arm out to the side from a low pulley: the side delts stay loaded through the whole range. Done one arm at a time.",
+        "technique_steps": [
+          "Set the pulley low, stand side-on to it and take the handle with the far hand.",
+          "Hold the frame with the free hand, the working elbow slightly bent.",
+          "Exhale and raise the arm out to the side to shoulder height, leading with the elbow.",
+          "Inhale and lower the arm in front of you under control, then switch sides."
+        ],
+        "common_mistakes": [
+          "Jerking the torso to the side.",
+          "Shrugging the shoulder towards the ear.",
+          "The hand higher than the elbow."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dumbbell-lateral-raise", "weight_ratio": null, "priority": 20 }
+    ]
+  },
+  {
+    "id": "01a10853-b081-7445-8142-8eefc24368c0",
+    "slug": "barbell-upright-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lateral_raise",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["side_delts", "traps"],
+    "secondary_muscles": ["biceps", "front_delts"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {
+        "name": "Тяга штанги к подбородку",
+        "aliases": ["протяжка", "тяга к подбородку", "протяжка со штангой"],
+        "description": "Тяга штанги вдоль корпуса вверх с разведением локтей: средние дельты и трапеции.",
+        "technique_steps": [
+          "Встаньте прямо, возьмите штангу хватом сверху чуть шире плеч.",
+          "Плечи опущены, штанга у бёдер.",
+          "На выдохе тяните штангу вдоль корпуса до уровня нижней части груди, локти идут вверх и в стороны.",
+          "На вдохе плавно опустите штангу."
+        ],
+        "common_mistakes": [
+          "Слишком узкий хват и подъём штанги до подбородка.",
+          "Локти ниже кистей.",
+          "Раскачивание корпусом."
+        ],
+        "warnings": ["При дискомфорте в плечах возьмите хват шире и поднимайте штангу ниже."]
+      },
+      "en": {
+        "name": "Barbell upright row",
+        "aliases": ["upright row", "upright rows", "bb upright row"],
+        "description": "Pulling the bar up along the body with the elbows flaring out: side delts and traps.",
+        "technique_steps": [
+          "Stand tall and take the bar with an overhand grip slightly wider than the shoulders.",
+          "Shoulders down, the bar at your thighs.",
+          "Exhale and pull the bar up along the body to the lower chest, elbows going up and out.",
+          "Inhale and lower the bar under control."
+        ],
+        "common_mistakes": [
+          "A grip that is too narrow and pulling the bar up to the chin.",
+          "Elbows below the hands.",
+          "Swinging the torso."
+        ],
+        "warnings": ["If the shoulders feel uncomfortable, widen the grip and stop the bar lower."]
+      }
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "01a10853-b081-7445-8142-901ed2a5231f",
+    "slug": "dumbbell-reverse-fly",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "rear_delt",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["rear_delts"],
+    "secondary_muscles": ["upper_back", "traps"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {
+        "name": "Разведение гантелей в наклоне",
+        "aliases": ["махи в наклоне", "разводка в наклоне", "махи гантелями в наклоне"],
+        "description": "Разведение гантелей в стороны в наклоне: изолирующее упражнение для задних дельт. Вес указывается для одной гантели.",
+        "technique_steps": [
+          "Наклонитесь почти до параллели с полом, спина прямая, гантели висят под плечами.",
+          "Локти слегка согнуты и зафиксированы.",
+          "На выдохе разведите гантели в стороны до уровня плеч, локти ведут движение.",
+          "На вдохе плавно опустите гантели."
+        ],
+        "common_mistakes": [
+          "Корпус поднимается на каждом повторении.",
+          "Сведение лопаток вместо работы плеч.",
+          "Слишком тяжёлые гантели и рывки."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Dumbbell reverse fly",
+        "aliases": ["bent-over reverse fly", "rear delt fly", "bent over lateral raise"],
+        "description": "Raising the dumbbells out to the sides from a bent-over position: an isolation exercise for the rear delts. The weight is per dumbbell.",
+        "technique_steps": [
+          "Hinge forward almost to parallel with the floor, back flat, dumbbells hanging under the shoulders.",
+          "Elbows slightly bent and fixed.",
+          "Exhale and raise the dumbbells out to the sides to shoulder height, leading with the elbows.",
+          "Inhale and lower the dumbbells under control."
+        ],
+        "common_mistakes": [
+          "The torso rising on every rep.",
+          "Squeezing the shoulder blades instead of working the shoulders.",
+          "Dumbbells that are too heavy and jerky reps."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "cable-face-pull", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a10853-b081-7445-8142-94a69953b86c",
+    "slug": "reverse-pec-deck-fly",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "rear_delt",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["rear_delts"],
+    "secondary_muscles": ["upper_back", "traps"],
+    "equipment": ["pec_deck"],
+    "translations": {
+      "ru": {
+        "name": "Обратные разведения в тренажёре",
+        "aliases": ["обратная бабочка", "обратные разведения в бабочке", "разведения на заднюю дельту в тренажёре"],
+        "description": "Разведение рук назад в тренажёре «бабочка» лицом к спинке: задние дельты без нагрузки на поясницу.",
+        "technique_steps": [
+          "Сядьте лицом к спинке, рукояти на уровне плеч, грудь прижата к упору.",
+          "Возьмите рукояти, локти слегка согнуты.",
+          "На выдохе разведите руки назад по дуге до линии плеч.",
+          "На вдохе плавно верните рукояти, не опуская груз на стек."
+        ],
+        "common_mistakes": [
+          "Грудь отрывается от упора.",
+          "Плечи поднимаются к ушам.",
+          "Движение выполняется рывком."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Reverse pec deck fly",
+        "aliases": ["reverse pec deck", "rear delt machine fly", "reverse machine fly"],
+        "description": "Opening the arms backwards in a pec deck machine while facing the pad: rear delts with no load on the lower back.",
+        "technique_steps": [
+          "Sit facing the pad with the handles at shoulder height and the chest pressed into the pad.",
+          "Take the handles, elbows slightly bent.",
+          "Exhale and open the arms back in an arc until they are in line with the shoulders.",
+          "Inhale and return the handles under control without letting the stack touch down."
+        ],
+        "common_mistakes": [
+          "The chest leaving the pad.",
+          "Shoulders shrugging towards the ears.",
+          "Jerking the weight."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "cable-face-pull", "weight_ratio": null, "priority": 10 },
+      { "slug": "dumbbell-reverse-fly", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a10853-b081-7445-8142-99ce9e7f9172",
+    "slug": "cable-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {
+        "name": "Сгибание рук на нижнем блоке",
+        "aliases": ["бицепс на блоке", "сгибания на блоке", "сгибание рук в кроссовере"],
+        "description": "Сгибание рук с рукоятью нижнего блока: бицепс под нагрузкой на всей амплитуде.",
+        "technique_steps": [
+          "Установите блок внизу, возьмите рукоять хватом снизу и сделайте шаг назад.",
+          "Локти прижаты к корпусу, плечи опущены.",
+          "На выдохе согните руки, поднимая рукоять к плечам.",
+          "На вдохе плавно опустите рукоять до почти прямых рук."
+        ],
+        "common_mistakes": [
+          "Локти уходят вперёд.",
+          "Отклонение корпуса назад.",
+          "Неполное разгибание рук."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Cable curl",
+        "aliases": ["cable biceps curl", "low pulley curl", "standing cable curl"],
+        "description": "A curl with a handle on a low pulley: the biceps stay loaded through the whole range.",
+        "technique_steps": [
+          "Set the pulley low, take the handle with an underhand grip and step back.",
+          "Elbows at your sides, shoulders down.",
+          "Exhale and curl the handle up to your shoulders.",
+          "Inhale and lower the handle under control to almost straight arms."
+        ],
+        "common_mistakes": [
+          "Elbows drifting forward.",
+          "Leaning the torso back.",
+          "Not straightening the arms."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "barbell-curl", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a10853-b081-7445-8142-9e3bd5c98024",
+    "slug": "ez-bar-skull-crusher",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_extension",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": [],
+    "equipment": ["ez_bar", "flat_bench"],
+    "translations": {
+      "ru": {
+        "name": "Французский жим лёжа",
+        "aliases": ["французский жим", "разгибания рук лёжа с EZ-грифом", "французский жим с ez грифом"],
+        "description": "Разгибание рук с EZ-грифом лёжа на скамье: изолирующее упражнение для трицепса.",
+        "technique_steps": [
+          "Лягте на скамью, выжмите гриф на прямые руки над грудью, хват узкий.",
+          "Слегка отведите руки к голове: плечи наклонены, а не вертикальны.",
+          "На вдохе согните руки, опуская гриф ко лбу или за голову, локти неподвижны.",
+          "На выдохе разогните руки, не разводя локти."
+        ],
+        "common_mistakes": [
+          "Локти расходятся в стороны.",
+          "Плечи двигаются вместе с предплечьями.",
+          "Слишком большой вес и рывок из нижней точки."
+        ],
+        "warnings": ["Осторожно при болях в локтях: уменьшите вес и опускайте гриф за голову."]
+      },
+      "en": {
+        "name": "EZ-bar skull crusher",
+        "aliases": ["skull crusher", "skullcrusher", "lying triceps extension", "french press"],
+        "description": "A lying arm extension with an EZ bar: an isolation exercise for the triceps.",
+        "technique_steps": [
+          "Lie on the bench and press the bar to straight arms above the chest with a narrow grip.",
+          "Tilt the arms slightly towards your head, so the upper arms are not vertical.",
+          "Inhale and bend the arms, lowering the bar to the forehead or behind the head, elbows still.",
+          "Exhale and straighten the arms without letting the elbows flare."
+        ],
+        "common_mistakes": [
+          "Elbows flaring out.",
+          "Upper arms moving along with the forearms.",
+          "Too much weight and a jerk out of the bottom."
+        ],
+        "warnings": ["Take care with elbow pain: reduce the weight and lower the bar behind the head."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "cable-rope-pushdown", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a10853-b081-7445-8142-a39862bfd148",
+    "slug": "superman",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "spinal_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lower_back"],
+    "secondary_muscles": ["glutes"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Супермен",
+        "aliases": ["лодочка на животе", "упражнение супермен", "подъём рук и ног лёжа на животе"],
+        "description": "Одновременный подъём рук и ног лёжа на животе: разгибатели спины и ягодицы без оборудования.",
+        "technique_steps": [
+          "Лягте на живот, руки вытянуты вперёд, ноги прямые.",
+          "Взгляд в пол, шея продолжает линию спины.",
+          "На выдохе поднимите руки, грудь и ноги на несколько сантиметров и задержитесь на секунду.",
+          "На вдохе плавно опуститесь."
+        ],
+        "common_mistakes": [
+          "Запрокидывание головы.",
+          "Рывок вместо плавного подъёма.",
+          "Слишком высокий подъём с заломом в пояснице."
+        ],
+        "warnings": ["При болях в пояснице поднимайтесь ниже или пропустите упражнение."]
+      },
+      "en": {
+        "name": "Superman",
+        "aliases": ["superman hold", "superman exercise", "prone back extension"],
+        "description": "Raising the arms and legs together while lying face down: spinal erectors and glutes with no equipment.",
+        "technique_steps": [
+          "Lie face down, arms stretched forward, legs straight.",
+          "Eyes on the floor, the neck in line with the back.",
+          "Exhale and lift the arms, chest and legs a few centimetres, pausing for a second.",
+          "Inhale and lower yourself under control."
+        ],
+        "common_mistakes": [
+          "Throwing the head back.",
+          "Jerking up instead of lifting smoothly.",
+          "Lifting too high and pinching the lower back."
+        ],
+        "warnings": ["With lower back pain lift lower or skip the exercise."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "back-extension", "weight_ratio": null, "priority": 10 }
+    ]
+  }
+]

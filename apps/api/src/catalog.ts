@@ -15,7 +15,7 @@ import {
 } from '@mvp/db';
 import { type ExerciseFilters, findCatalogProblems, searchExercises } from '@mvp/domain';
 import type { Catalog, CatalogSeed, Exercise, Locale } from '@mvp/schemas';
-import { and, desc, eq, inArray, isNull, notInArray, sql } from 'drizzle-orm';
+import { and, desc, eq, inArray, isNull, notInArray, sql } from '@mvp/db';
 
 import { ApiError } from './errors';
 
@@ -63,6 +63,11 @@ export function createCatalogService(deps: CatalogDeps) {
   }
 
   return {
+    /** Exercises of the current catalog. */
+    async exercises(): Promise<readonly Exercise[]> {
+      return (await latest())?.exercises ?? [];
+    },
+
     async version(): Promise<number> {
       return (await latest())?.version ?? 0;
     },

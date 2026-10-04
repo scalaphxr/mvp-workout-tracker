@@ -7,6 +7,7 @@ import { ActivityIndicator, Pressable, ScrollView, StyleSheet, View } from 'reac
 import { Button } from '@/components/button';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { Card, LinkRow } from '@/components/ui';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 import { getLanguagePreference, type LanguagePreference, setLanguagePreference } from '@/i18n';
@@ -22,6 +23,7 @@ const LANGUAGES = [
 export default function ProfileScreen() {
   const { t } = useTranslation();
   const theme = useTheme();
+  const router = useRouter();
 
   return (
     <ScrollView
@@ -31,6 +33,13 @@ export default function ProfileScreen() {
         {t('profile.account')}
       </ThemedText>
       <Account />
+
+      <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
+        {t('profile.training')}
+      </ThemedText>
+      <Card>
+        <LinkRow title={t('gym.title')} onPress={() => router.push('/gym')} />
+      </Card>
 
       <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
         {t('profile.language')}
@@ -114,7 +123,7 @@ function LanguagePicker() {
           <Pressable
             key={value}
             accessibilityRole="radio"
-            accessibilityState={{ selected }}
+            aria-checked={selected}
             onPress={() => select(value)}
             style={[styles.segment, selected && { backgroundColor: theme.backgroundSelected }]}>
             <ThemedText type={selected ? 'smallBold' : 'small'} style={styles.segmentLabel}>

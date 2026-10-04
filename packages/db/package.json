@@ -4,21 +4,30 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./sqlite": "./src/sqlite/index.ts",
+    "./sqlite/expo": "./src/sqlite/expo.ts",
+    "./sqlite/testing": "./src/sqlite/testing.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "generate": "drizzle-kit generate"
+    "test": "vitest run",
+    "generate": "drizzle-kit generate && drizzle-kit generate --config drizzle.sqlite.config.ts && tsx scripts/bundle-sqlite-migrations.ts"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.8",
+    "@mvp/schemas": "workspace:*",
     "drizzle-orm": "^0.45.3",
     "pg": "^8.23.1"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^9.6.0",
     "@types/node": "^20.19.43",
     "@types/pg": "^8.23.1",
+    "better-sqlite3": "^12.11.1",
     "drizzle-kit": "^0.31.11",
-    "typescript": "~6.0.3"
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.3",
+    "vitest": "^4.1.11"
   }
 }

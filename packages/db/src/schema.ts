@@ -199,3 +199,137 @@ export const catalogVersions = pgTable('catalog_versions', {
   snapshot: jsonb('snapshot').notNull(),
   createdAt: timestamptz('created_at').notNull().defaultNow(),
 });
+
+// --- User data (spec, section 7): created on the phone, arrives here through sync ---
+
+/** A trainer and a client. The trainer's cabinet comes later; access checks use it already. */
+export const coachClients = pgTable('coach_clients', {
+  ...common,
+  coachId: uuid('coach_id')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  clientId: uuid('client_id')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  status: text('status', { enum: ['invited', 'active', 'ended'] }).notNull(),
+});
+
+export const gymProfiles = pgTable('gym_profiles', {
+  ...common,
+  userId: uuid('user_id')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  name: text('name').notNull(),
+  locationType: text('location_type', {
+    enum: ['gym', 'home', 'home_no_equipment', 'outdoor'],
+  }).notNull(),
+  isDefault: boolean('is_default').notNull().default(false),
+});
+
+export const gymEquipment = pgTable('gym_equipment', {
+  ...common,
+  gymProfileId: uuid('gym_profile_id')
+    .notNull()
+    .references(() => gymProfiles.id, { onDelete: 'cascade' }),
+  equipmentId: uuid('equipment_id')
+    .notNull()
+    .references(() => equipment.id),
+  /** The weight step in this gym; `null` – the default of the equipment. */
+  incrementKg: doublePrecision('increment_kg'),
+});
+
+export const programs = pgTable('programs', {
+  ...common,
+  ownerId: uuid('owner_id')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  title: text('title').notNull(),
+  description: text('description').notNull().default(''),
+  goal: text('goal', {
+    enum: ['mass', 'strength', 'cut', 'maintenance', 'endurance', 'fitness'],
+  }),
+  level: text('level', { enum: ['beginner', 'intermediate', 'advanced'] }),
+  daysPerWeek: integer('days_per_week'),
+  visibility: text('visibility', { enum: ['private', 'code', 'public'] })
+    .notNull()
+    .default('private'),
+  // Not a foreign key: the copy outlives the original.
+  forkedFromId: uuid('forked_from_id'),
+  /** The trainer who assigned the program; such a program gets no auto-progression. */
+  assignedById: uuid('assigned_by_id').references(() => users.id, { onDelete: 'set null' }),
+});
+
+export const programDays = pgTable(
+  'program_days',
+  {
+    ...common,
+    programId: uuid('program_id')
+      .notNull()
+      .references(() => programs.id, { onDelete: 'cascade' }),
+    position: integer('position').notNull(),
+    title: text('title').notNull(),
+    kind: text('kind', { enum: ['regular', 'every_session'] }).notNull(),
+  },
+  (t) => [index('program_days_program_id_idx').on(t.programId)],
+);
+
+export const programItems = pgTable(
+  'program_items',
+  {
+    ...common,
+    programDayId: uuid('program_day_id')
+      .notNull()
+      .references(() => programDays.id, { onDelete: 'cascade' }),
+    position: integer('position').notNull(),
+    exerciseId: uuid('exercise_id')
+      .notNull()
+      .references(() => exercises.id),
+    sets: integer('sets').notNull(),
+    // The range is two numbers, never a string.
+    repMin: integer('rep_min').notNull(),
+    repMax: integer('rep_max').notNull(),
+    restSec: integer('rest_sec').notNull(),
+    targetRir: integer('target_rir'),
+    supersetGroup: integer('superset_group'),
+    incrementKg: doublePrecision('increment_kg'),
+    notes: text('notes').notNull().default(''),
+  },
+  (t) => [index('program_items_program_day_id_idx').on(t.programDayId)],
+);
+
+/** Codes a program is shared by. The code is stored without the dash. */
+export const programShares = pgTable(
+  'program_shares',
+  {
+    code: text('code').primaryKey(),
+    programId: uuid('program_id')
+      .notNull()
+      .references(() => programs.id, { onDelete: 'cascade' }),
+    createdBy: uuid('created_by')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    expiresAt: timestamptz('expires_at'),
+    revokedAt: timestamptz('revoked_at'),
+    usesCount: integer('uses_count').notNull().default(0),
+    createdAt: timestamptz('created_at').notNull().defaultNow(),
+  },
+  (t) => [index('program_shares_program_id_idx').on(t.programId)],
+);
+
+/** Every attempt to enter a code: what the limits against guessing count. */
+export const shareCodeAttempts = pgTable(
+  'share_code_attempts',
+  {
+    id: uuid('id').primaryKey(),
+    userId: uuid('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    ip: text('ip').notNull(),
+    succeeded: boolean('succeeded').notNull(),
+    createdAt: timestamptz('created_at').notNull().defaultNow(),
+  },
+  (t) => [
+    index('share_code_attempts_user_id_idx').on(t.userId, t.createdAt),
+    index('share_code_attempts_ip_idx').on(t.ip, t.createdAt),
+  ],
+);

@@ -1,4 +1,5 @@
 import {
+  AdoptResponseSchema,
   ApiErrorSchema,
   AuthResponseSchema,
   CatalogResponseSchema,
@@ -6,6 +7,11 @@ import {
   EmailStartResponseSchema,
   type Locale,
   MeResponseSchema,
+  ShareCodeListResponseSchema,
+  ShareCodePreviewResponseSchema,
+  ShareCodeSchema,
+  type SyncChange,
+  SyncPushResponseSchema,
   TokensSchema,
 } from '@mvp/schemas';
 import type { z } from 'zod';
@@ -26,7 +32,7 @@ export class ApiRequestError extends Error {
 }
 
 interface RequestOptions<S extends z.ZodType | null> {
-  method?: 'GET' | 'POST';
+  method?: 'GET' | 'POST' | 'DELETE';
   body?: unknown;
   accessToken?: string;
   /** Schema of the response body, `null` for responses without a body. */
@@ -92,16 +98,20 @@ function refreshAccessToken(refreshToken: string): Promise<string> {
   return refreshing;
 }
 
-async function authedRequest<S extends z.ZodType>(path: string, schema: S) {
+/** A request on behalf of the signed-in user; an expired access token is refreshed once. */
+async function authedRequest<S extends z.ZodType | null>(
+  path: string,
+  options: Omit<RequestOptions<S>, 'accessToken'>,
+) {
   const session = useAuthStore.getState().session;
   if (!session) throw new ApiRequestError('unauthorized', 'Not signed in');
 
   try {
-    return await request(path, { accessToken: session.accessToken, schema });
+    return await request(path, { ...options, accessToken: session.accessToken });
   } catch (error) {
     if (!(error instanceof ApiRequestError) || error.code !== 'unauthorized') throw error;
     const accessToken = await refreshAccessToken(session.refreshToken);
-    return request(path, { accessToken, schema });
+    return request(path, { ...options, accessToken });
   }
 }
 
@@ -127,11 +137,44 @@ export const api = {
       schema: null,
     }),
 
-  me: () => authedRequest('/v1/me', MeResponseSchema),
+  me: () => authedRequest('/v1/me', { schema: MeResponseSchema }),
 
   catalogVersion: () => request('/v1/catalog/version', { schema: CatalogVersionResponseSchema }),
 
   /** `since` – the version the phone already has. */
   catalog: (since: number) =>
     request(`/v1/catalog?since=${since}`, { schema: CatalogResponseSchema }),
+
+  syncPush: (deviceId: string, changes: SyncChange[]) =>
+    authedRequest('/v1/sync/push', {
+      method: 'POST',
+      body: { device_id: deviceId, changes },
+      schema: SyncPushResponseSchema,
+    }),
+
+  shareCodes: (programId: string) =>
+    authedRequest(`/v1/programs/${programId}/share-codes`, { schema: ShareCodeListResponseSchema }),
+
+  createShareCode: (programId: string, expiresInDays: 7 | 30 | null) =>
+    authedRequest(`/v1/programs/${programId}/share-codes`, {
+      method: 'POST',
+      body: { expires_in_days: expiresInDays },
+      schema: ShareCodeSchema,
+    }),
+
+  revokeShareCode: (code: string) =>
+    authedRequest(`/v1/share-codes/${code}`, { method: 'DELETE', schema: null }),
+
+  /** `code` – whatever the user typed; the server normalises it. */
+  previewShareCode: (code: string) =>
+    authedRequest(`/v1/share-codes/${encodeURIComponent(code.trim())}`, {
+      schema: ShareCodePreviewResponseSchema,
+    }),
+
+  adoptShareCode: (code: string, gymProfileId: string) =>
+    authedRequest(`/v1/share-codes/${encodeURIComponent(code.trim())}/adopt`, {
+      method: 'POST',
+      body: { gym_profile_id: gymProfileId },
+      schema: AdoptResponseSchema,
+    }),
 };

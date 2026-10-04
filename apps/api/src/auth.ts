@@ -2,7 +2,7 @@ import { createHash, createHmac, randomBytes, randomInt, timingSafeEqual } from 
 
 import { type Db, emailCodes, refreshTokens, type UserRow, users } from '@mvp/db';
 import type { AuthResponse, Locale, Tokens, User } from '@mvp/schemas';
-import { and, desc, eq, gt, isNull, lt, sql } from 'drizzle-orm';
+import { and, desc, eq, gt, isNull, lt, sql } from '@mvp/db';
 import { jwtVerify, SignJWT } from 'jose';
 import { v7 as uuidv7 } from 'uuid';
 

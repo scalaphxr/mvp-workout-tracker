@@ -21,6 +21,7 @@ packages/
 pnpm install
 pnpm dev:api      # API на http://localhost:3000
 pnpm dev:mobile   # Expo: w – браузер, a – Android, QR – телефон
+pnpm catalog:import   # один раз: загрузить каталог упражнений в API
 ```
 
 - **База.** Без настроек API работает на PGlite – PostgreSQL внутри процесса, данные лежат в
@@ -57,5 +58,22 @@ pnpm lint
 pnpm test
 ```
 
-После изменения `packages/db/src/schema.ts` – `pnpm db:generate`, новая миграция появится в
-`packages/db/drizzle`.
+## Базы данных
+
+- **Сервер** – PostgreSQL, схема в `packages/db/src/schema.ts`, миграции в `packages/db/drizzle`.
+- **Телефон** – SQLite, схема в `packages/db/src/sqlite/schema.ts`, миграции в
+  `packages/db/drizzle-sqlite`. Данные пользователя (места тренировок, программы) создаются на
+  телефоне и работают без сети; на сервер они уходят через `POST /v1/sync/push`.
+
+После изменения любой из схем – `pnpm db:generate`: команда создаёт миграции для обеих баз и
+упаковывает миграции телефона в модуль, который попадает в сборку приложения.
+
+`drizzle-orm` установлен только в `packages/db`. Остальные пакеты берут операторы запросов из
+`@mvp/db` (сервер) и `@mvp/db/sqlite` (телефон): две копии `drizzle-orm` несовместимы по типам.
+
+## Веб-версия
+
+Веб-сборка нужна только для разработки – чтобы смотреть экраны в браузере. Для неё в проекте
+есть две подпорки: заголовки изоляции в `apps/mobile/metro.config.js` (SQLite в браузере без
+них не запускается) и патч `patches/expo-sqlite@57.0.3.patch` (исправляет в веб-версии
+expo-sqlite обрезание ответов длиннее 255 байт). На Android и iOS они не влияют.

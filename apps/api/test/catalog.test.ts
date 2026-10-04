@@ -13,8 +13,8 @@ import {
   muscles,
 } from '@mvp/db';
 import type { Catalog, CatalogSeed, Exercise } from '@mvp/schemas';
-import { eq } from 'drizzle-orm';
-import type { PgTable } from 'drizzle-orm/pg-core';
+import { eq } from '@mvp/db';
+import type { PgTable } from '@mvp/db';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
 import { createApp } from '../src/app';
@@ -238,8 +238,10 @@ describe('exercise search', () => {
 
   it('finds exercises by text in either language', async () => {
     const ru = await get<List>(`/v1/exercises?locale=ru&q=${encodeURIComponent('жим лежа')}`);
-    // Two names match; the leg press only has the alias «жим ногами лёжа», so it comes last.
-    expect(slugs(ru.body)).toEqual(['dumbbell-bench-press', 'barbell-bench-press', 'leg-press']);
+    const found = slugs(ru.body);
+    expect(found.slice(0, 2)).toEqual(['dumbbell-bench-press', 'barbell-bench-press']);
+    // The leg press only has the alias «жим ногами лёжа», so it comes after every name match.
+    expect(found.at(-1)).toBe('leg-press');
 
     const en = await get<List>('/v1/exercises?q=bench%20press');
     expect(slugs(en.body)).toContain('barbell-bench-press');
