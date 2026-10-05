@@ -1,6 +1,7 @@
 import {
   and,
   asc,
+  bodyLogs,
   type Db,
   eq,
   equipment,
@@ -283,6 +284,19 @@ const HANDLERS: { [T in SyncTable]: Handler<T> } = {
       avg_hr: as(row.avgHr),
       calories: as(row.calories),
       completed_at: as(iso(row.completedAt)),
+    }),
+  },
+  body_logs: {
+    table: bodyLogs,
+    toDb: (row) => ({
+      date: row.date,
+      weightKg: row.weight_kg,
+      measuredAt: date(row.measured_at),
+    }),
+    fromDb: (row) => ({
+      date: as(row.date),
+      weight_kg: as(row.weightKg),
+      measured_at: as(iso(row.measuredAt)),
     }),
   },
 };

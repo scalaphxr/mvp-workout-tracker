@@ -323,6 +323,67 @@ export function setSuperset(ctx: DataContext, itemId: string, action: 'link-next
   });
 }
 
+// --- A whole program at once ---
+
+/** A program that is not saved yet: made from the questionnaire or read from pasted text. */
+export interface ProgramDraft {
+  title: string;
+  goal: ProgramRow['goal'];
+  level: ProgramRow['level'];
+  days_per_week: number | null;
+  days: {
+    title: string;
+    items: (ItemParams & { exercise_id: string; superset?: boolean })[];
+  }[];
+}
+
+/** Saves a draft as an ordinary program that the constructor can edit. */
+export function createProgramFromDraft(ctx: DataContext, draft: ProgramDraft): ProgramRow {
+  return ctx.db.transaction((tx) => {
+    const inTx = { ...ctx, db: tx };
+    const program = ProgramRowSchema.parse({
+      ...fresh(ctx),
+      title: draft.title,
+      description: '',
+      goal: draft.goal,
+      level: draft.level,
+      days_per_week: draft.days_per_week,
+      visibility: 'private',
+      forked_from_id: null,
+    });
+    tx.insert(programs).values(program).run();
+
+    for (const day of draft.days) {
+      const { id: dayId } = addDay(inTx, program.id, day.title, 'regular');
+      // An item marked as a superset shares a group with the item above it.
+      const joined: (number | null)[] = [];
+      day.items.forEach((item, position) => {
+        const above = joined[position - 1];
+        if (!item.superset || position === 0) joined.push(null);
+        else {
+          if (above == null) joined[position - 1] = position;
+          joined.push(joined[position - 1] ?? null);
+        }
+      });
+      const groups = normalizeSupersets(joined);
+
+      day.items.forEach(({ exercise_id, superset: _superset, ...params }, position) => {
+        const row = ProgramItemRowSchema.parse({
+          ...fresh(ctx),
+          program_day_id: dayId,
+          position,
+          exercise_id,
+          ...params,
+          superset_group: groups[position] ?? null,
+          increment_kg: null,
+          notes: '',
+        });
+        tx.insert(program_items).values(row).run();
+      });
+    }    return program;
+  });
+}
+
 // --- Exchange with the server ---
 
 /** Saves a program received from the server (taken by code) as it is. */

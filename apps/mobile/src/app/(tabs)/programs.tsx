@@ -76,6 +76,16 @@ export default function ProgramsScreen() {
 
       <View style={styles.actions}>
         <Button title={t('programs.create')} onPress={create} />
+        <Button
+          variant="secondary"
+          title={t('questionnaire.open')}
+          onPress={() => router.push('/questionnaire')}
+        />
+        <Button
+          variant="secondary"
+          title={t('importText.open')}
+          onPress={() => router.push('/import-text')}
+        />
         <Button variant="secondary" title={t('programs.enterCode')} onPress={() => router.push('/code')} />
       </View>
     </Screen>

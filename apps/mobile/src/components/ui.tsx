@@ -107,6 +107,35 @@ export function TextField({ label, style, ...rest }: TextInputProps & { label: s
   );
 }
 
+/** The round − or + button of a number. */
+export function StepButton({
+  label,
+  icon,
+  disabled,
+  onPress,
+}: {
+  label: string;
+  icon: 'remove' | 'add';
+  disabled?: boolean;
+  onPress: () => void;
+}) {
+  const theme = useTheme();
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      disabled={disabled}
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.stepButton,
+        { backgroundColor: theme.backgroundSelected },
+        (pressed || disabled) && styles.pressed,
+      ]}>
+      <Ionicons name={icon} size={24} color={theme.text} />
+    </Pressable>
+  );
+}
+
 /** A number changed with − and + buttons: reps, sets, rest. */
 export function Stepper({
   label,
@@ -127,24 +156,16 @@ export function Stepper({
   step?: number;
 }) {
   const { t } = useTranslation();
-  const theme = useTheme();
 
   const button = (delta: number, icon: 'remove' | 'add', hint: string) => {
     const next = value + delta;
-    const disabled = next < min || next > max;
     return (
-      <Pressable
-        accessibilityRole="button"
-        accessibilityLabel={`${label}: ${hint}`}
-        disabled={disabled}
+      <StepButton
+        label={`${label}: ${hint}`}
+        icon={icon}
+        disabled={next < min || next > max}
         onPress={() => onChange(next)}
-        style={({ pressed }) => [
-          styles.stepButton,
-          { backgroundColor: theme.backgroundSelected },
-          (pressed || disabled) && styles.pressed,
-        ]}>
-        <Ionicons name={icon} size={24} color={theme.text} />
-      </Pressable>
+      />
     );
   };
 

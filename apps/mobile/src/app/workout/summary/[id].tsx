@@ -138,7 +138,14 @@ export default function WorkoutSummaryScreen() {
         </View>
       </Group>
 
-      <Button title={t('summary.close')} onPress={() => router.dismissTo('/')} />
+      <View style={styles.choice}>
+        <Button
+          variant="secondary"
+          title={t('report.open')}
+          onPress={() => router.push({ pathname: '/report', params: { kind: 'session', id: session.id } })}
+        />
+        <Button title={t('summary.close')} onPress={() => router.dismissTo('/')} />
+      </View>
     </Screen>
   );
 }

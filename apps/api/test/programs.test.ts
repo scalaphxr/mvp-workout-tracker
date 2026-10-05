@@ -890,3 +890,67 @@ describe('workouts in sync, and pull', () => {
     expect((await request(anna, 'GET', '/v1/sync/pull?cursor=abc')).status).toBe(400);
   });
 });
+
+describe('body weight and generation', () => {
+  it('syncs a morning weight to the other devices of the user', async () => {
+    const entry = {
+      id: uuidv7(),
+      ...stamps(),
+      date: '2026-10-04',
+      weight_kg: 84.6,
+      measured_at: now.toISOString(),
+    };
+    const result = await push(anna, [upsert('body_logs', entry)]);
+    expect(result.rejected).toEqual([]);
+
+    const response = await request(anna, 'GET', '/v1/sync/pull');
+    const { changes } = (await response.json()) as { changes: { table: string; row: unknown }[] };
+    expect(changes).toEqual([{ table: 'body_logs', row: entry }]);
+  });
+
+  it.each([
+    ['a date that is not a calendar day', { date: '04.10.2026' }],
+    ['a weight no person has', { weight_kg: 846 }],
+  ])('rejects %s', async (_name, broken) => {
+    const entry = {
+      id: uuidv7(),
+      ...stamps(),
+      date: '2026-10-04',
+      weight_kg: 84.6,
+      measured_at: now.toISOString(),
+      ...broken,
+    };
+    expect((await push(anna, [upsert('body_logs', entry)])).rejected).toEqual([
+      { id: entry.id, code: 'validation_error' },
+    ]);
+  });
+
+  it('drafts a program from the questionnaire for the equipment of a gym, saving nothing', async () => {
+    const answers = { goal: 'mass', level: 'beginner', frequency: 3, duration_min: 60, split: 'auto' };
+    const response = await request(anna, 'POST', '/v1/programs/generate', {
+      answers,
+      equipment: ALL_EQUIPMENT.filter((code) => code !== 't_bar'),
+    });
+    expect(response.status).toBe(200);
+    const draft = (await response.json()) as {
+      split: string;
+      days: { key: string; items: { exercise_id: string; sets: number }[] }[];
+    };
+
+    expect(draft.split).toBe('full_body_abc');
+    expect(draft.days.map((day) => day.key)).toEqual(['full_body_a', 'full_body_b', 'full_body_c']);
+    const used = draft.days.flatMap((day) => day.items.map((item) => item.exercise_id));
+    expect(used).not.toContain(exerciseId('t-bar-row'));
+    expect(used).toContain(exerciseId('barbell-bent-over-row'));
+    expect(await database.db.select().from(programs)).toHaveLength(0);
+  });
+
+  it('answers 400 for a questionnaire that is not filled in properly', async () => {
+    const response = await request(anna, 'POST', '/v1/programs/generate', {
+      answers: { goal: 'mass', level: 'beginner', frequency: 7, duration_min: 60, split: 'auto' },
+      equipment: [],
+    });
+    expect(response.status).toBe(400);
+    expect(await errorCode(response)).toBe('validation_error');
+  });
+});

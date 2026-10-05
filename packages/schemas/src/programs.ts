@@ -2,6 +2,8 @@ import { z } from 'zod';
 
 import { LevelSchema } from './catalog';
 import {
+  type BodyLogRow,
+  BodyLogRowSchema,
   type ProgramStateRow,
   ProgramStateRowSchema,
   type ProgressionStateRow,
@@ -130,6 +132,7 @@ export const SYNC_TABLES = [
   'sessions',
   'session_exercises',
   'set_logs',
+  'body_logs',
 ] as const;
 export type SyncTable = (typeof SYNC_TABLES)[number];
 
@@ -144,6 +147,7 @@ export interface SyncRows {
   sessions: SessionRow;
   session_exercises: SessionExerciseRow;
   set_logs: SetLogRow;
+  body_logs: BodyLogRow;
 }
 
 export const SYNC_ROW_SCHEMAS = {
@@ -157,6 +161,7 @@ export const SYNC_ROW_SCHEMAS = {
   sessions: SessionRowSchema,
   session_exercises: SessionExerciseRowSchema,
   set_logs: SetLogRowSchema,
+  body_logs: BodyLogRowSchema,
 } satisfies { [T in SyncTable]: z.ZodType<SyncRows[T]> };
 
 /**
@@ -267,3 +272,37 @@ export const AdoptResponseSchema = z.object({
   substitutions: z.array(SubstitutionSchema),
 });
 export type AdoptResponse = z.infer<typeof AdoptResponseSchema>;
+
+// --- A program from the questionnaire ---
+
+/** What the questionnaire asks (spec 4.2). */
+export const GenerationAnswersSchema = z.object({
+  goal: z.enum(GOALS),
+  level: LevelSchema,
+  /** Workouts a week; `'2-3'` – it varies. */
+  frequency: z.union([
+    z.literal(2),
+    z.literal(3),
+    z.literal(4),
+    z.literal(5),
+    z.literal(6),
+    z.literal('2-3'),
+  ]),
+  duration_min: z.union([
+    z.literal(30),
+    z.literal(45),
+    z.literal(60),
+    z.literal(75),
+    z.literal(90),
+  ]),
+  /** Only matters for 3 workouts a week past the beginner level. */
+  split: z.enum(['auto', 'full_body', 'chest_back_legs']),
+});
+export type GenerationAnswers = z.infer<typeof GenerationAnswersSchema>;
+
+// POST /v1/programs/generate
+export const GenerateRequestSchema = z.object({
+  answers: GenerationAnswersSchema,
+  /** Equipment codes of the gym the program is for. */
+  equipment: z.array(z.string()).max(200),
+});

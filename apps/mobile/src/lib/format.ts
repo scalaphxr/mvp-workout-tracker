@@ -32,3 +32,9 @@ export function formatItemPlan(
     range: exercise?.tracking === 'time' ? t('units.sec', { value: range }) : range,
   });
 }
+
+/** The calendar day of a moment where the user is, as YYYY-MM-DD. */
+export function toLocalDate(date: Date): string {
+  const pad = (value: number) => String(value).padStart(2, '0');
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+}

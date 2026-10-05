@@ -1,4 +1,5 @@
 import type {
+  BodyLogRow,
   GymEquipmentRow,
   GymProfileRow,
   ProgramDayRow,
@@ -174,6 +175,17 @@ export const set_logs = sqliteTable(
   (t) => [index('set_logs_session_exercise_id_idx').on(t.session_exercise_id)],
 );
 
+export const body_logs = sqliteTable(
+  'body_logs',
+  {
+    ...sync,
+    date: text('date').notNull(),
+    weight_kg: real('weight_kg').notNull(),
+    measured_at: text('measured_at').notNull(),
+  },
+  (t) => [index('body_logs_date_idx').on(t.date)],
+);
+
 // --- Sync bookkeeping: stays on the phone ---
 
 /**
@@ -207,6 +219,7 @@ export const syncedTables = {
   sessions,
   session_exercises,
   set_logs,
+  body_logs,
 };
 
 // A table and its sync row must have the same shape, in both directions.
@@ -222,4 +235,5 @@ export const rowShapesMatch: [
   Same<typeof sessions.$inferSelect, SessionRow>,
   Same<typeof session_exercises.$inferSelect, SessionExerciseRow>,
   Same<typeof set_logs.$inferSelect, SetLogRow>,
-] = [true, true, true, true, true, true, true, true, true, true];
+  Same<typeof body_logs.$inferSelect, BodyLogRow>,
+] = [true, true, true, true, true, true, true, true, true, true, true];

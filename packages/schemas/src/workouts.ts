@@ -113,3 +113,13 @@ export const ProgramStateRowSchema = z.object({
   deload_cycle: z.number().int().min(1).nullable(),
 });
 export type ProgramStateRow = z.infer<typeof ProgramStateRowSchema>;
+
+/** A morning weight. The phone keeps one per calendar day: entering it again replaces it. */
+export const BodyLogRowSchema = z.object({
+  ...syncFields,
+  /** The calendar day in the user's own time zone, YYYY-MM-DD. */
+  date: z.iso.date(),
+  weight_kg: z.number().min(20).max(400),
+  measured_at: z.iso.datetime(),
+});
+export type BodyLogRow = z.infer<typeof BodyLogRowSchema>;

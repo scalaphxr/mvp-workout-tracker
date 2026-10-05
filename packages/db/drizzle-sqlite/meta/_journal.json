@@ -22,6 +22,13 @@
       "when": 1791178177753,
       "tag": "0002_sync_triggers",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1791180209502,
+      "tag": "0003_body_logs",
+      "breakpoints": true
     }
   ]
 }

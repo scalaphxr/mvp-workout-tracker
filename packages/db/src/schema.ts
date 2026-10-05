@@ -2,6 +2,7 @@ import { sql } from 'drizzle-orm';
 import {
   bigint,
   boolean,
+  date,
   doublePrecision,
   index,
   integer,
@@ -426,6 +427,18 @@ export const setLogs = pgTable(
     completedAt: timestamptz('completed_at').notNull(),
   },
   (t) => [index('set_logs_sync_idx').on(t.ownerId, t.syncSeq)],
+);
+
+/** A morning weight, one row per entry; the phone keeps one per calendar day. */
+export const bodyLogs = pgTable(
+  'body_logs',
+  {
+    ...synced('user_id'),
+    date: date('date', { mode: 'string' }).notNull(),
+    weightKg: doublePrecision('weight_kg').notNull(),
+    measuredAt: timestamptz('measured_at').notNull(),
+  },
+  (t) => [index('body_logs_sync_idx').on(t.ownerId, t.syncSeq)],
 );
 
 /** Codes a program is shared by. The code is stored without the dash. */

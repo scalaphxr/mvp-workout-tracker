@@ -1,4 +1,6 @@
+import { programTemplates } from '@mvp/content';
 import { users } from '@mvp/db';
+import { generateProgram } from '@mvp/domain';
 import {
   AdoptRequestSchema,
   type AdoptResponse,
@@ -15,6 +17,7 @@ import {
   type ExerciseListResponse,
   type ExerciseResponse,
   ExerciseSearchQuerySchema,
+  GenerateRequestSchema,
   type MeResponse,
   RefreshRequestSchema,
   type ShareCode,
@@ -115,6 +118,19 @@ export function createApp(deps: AppDeps) {
     const { cursor } = parseQuery(c, SyncPullQuerySchema);
     return c.json<SyncPullResponse>(
       await pullChanges(deps, c.get('userId'), Number(cursor ?? 0)),
+    );
+  });
+
+  // The same generation the phone runs offline, for clients that would rather ask.
+  app.post('/v1/programs/generate', async (c) => {
+    const body = await parseBody(c, GenerateRequestSchema);
+    return c.json(
+      generateProgram(
+        body.answers,
+        programTemplates,
+        await catalog.exercises(),
+        new Set(body.equipment),
+      ),
     );
   });
 

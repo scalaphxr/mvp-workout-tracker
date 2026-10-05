@@ -2,6 +2,7 @@ import type { CatalogSeed } from '@mvp/schemas';
 
 import equipment from '../catalog/equipment.json';
 import back from '../catalog/exercises/back.json';
+import bodyweight from '../catalog/exercises/bodyweight.json';
 import chest from '../catalog/exercises/chest.json';
 import coreCardio from '../catalog/exercises/core-cardio.json';
 import isolation from '../catalog/exercises/isolation.json';
@@ -17,5 +18,15 @@ import muscles from '../catalog/muscles.json';
 export const catalogSeed = {
   equipment,
   muscles,
-  exercises: [...chest, ...back, ...shouldersArms, ...isolation, ...legs, ...coreCardio],
+  exercises: [
+    ...chest,
+    ...back,
+    ...shouldersArms,
+    ...isolation,
+    ...legs,
+    ...bodyweight,
+    ...coreCardio,
+  ],
 } as CatalogSeed;
+
+export { programTemplates } from './templates';

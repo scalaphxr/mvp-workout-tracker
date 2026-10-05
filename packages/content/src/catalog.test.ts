@@ -2,8 +2,11 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 import {
+  type Answers,
   DEFAULT_STEPS_KG,
   findCatalogProblems,
+  generateProgram,
+  isAvailable,
   planSubstitutions,
   rankAlternatives,
   stepGroup,
@@ -12,7 +15,7 @@ import { CatalogSeedSchema, EXERCISE_KINDS } from '@mvp/schemas';
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 
-import { catalogSeed } from './index';
+import { catalogSeed, programTemplates } from './index';
 
 describe('catalog seed', () => {
   it('matches the seed schema', () => {
@@ -124,5 +127,101 @@ describe('replacements in the catalog', () => {
       });
       expect(alternatives.length, exercise.slug).toBeGreaterThanOrEqual(2);
     }
+  });
+});
+
+/** Programs made from the questionnaire, on the real catalog and the real templates. */
+describe('generated programs', () => {
+  const { exercises } = catalogSeed;
+  const everything = catalogSeed.equipment.map((item) => item.code);
+  const gymWithout = (...codes: string[]) => new Set(everything.filter((c) => !codes.includes(c)));
+  const slugOf = (id: string) => exercises.find((exercise) => exercise.id === id)?.slug;
+  const answers: Answers = {
+    goal: 'mass',
+    level: 'intermediate',
+    frequency: 4,
+    duration_min: 60,
+    split: 'auto',
+  };
+  const slugs = (gym: ReadonlySet<string>, overrides: Partial<Answers> = {}) =>
+    generateProgram({ ...answers, ...overrides }, programTemplates, exercises, gym).days.map(
+      (day) => day.items.map((item) => slugOf(item.exercise_id)),
+    );
+
+  it('know every exercise their templates name, and every day a split needs', () => {
+    const known = new Set(exercises.map((exercise) => exercise.slug));
+    for (const [key, slot] of Object.entries(programTemplates.slots)) {
+      for (const slug of slot.candidates) expect(known.has(slug), `${key}: ${slug}`).toBe(true);
+    }
+    for (const [day, slotKeys] of Object.entries(programTemplates.days)) {
+      for (const key of slotKeys) expect(programTemplates.slots[key], `${day}: ${key}`).toBeDefined();
+    }
+    for (const frequency of [2, 3, 4, 5, 6, '2-3'] as const) {
+      for (const level of ['beginner', 'advanced'] as const) {
+        const draft = generateProgram(
+          { ...answers, frequency, level },
+          programTemplates,
+          exercises,
+          new Set(everything),
+        );
+        expect(draft.days.length, `${frequency} ${level}`).toBeGreaterThanOrEqual(2);
+        for (const day of draft.days) {
+          expect(day.items.length, `${frequency} ${level} ${day.key}`).toBeGreaterThanOrEqual(2);
+          const sets = day.items.reduce((sum, item) => sum + item.sets, 0);
+          expect(sets, `${frequency} ${level} ${day.key}`).toBeLessThanOrEqual(draft.set_cap);
+        }
+      }
+    }
+  });
+
+  it('give the big muscle groups the weekly volume of the level when a workout is an hour', () => {
+    const draft = generateProgram(
+      { ...answers, level: 'beginner', frequency: 3 },
+      programTemplates,
+      exercises,
+      new Set(everything),
+    );
+    // An hour is 16 sets: a day keeps five exercises, and the sets of the sixth go to the rest.
+    for (const day of draft.days) expect(day.items, day.key).toHaveLength(5);
+    for (const group of ['chest', 'back', 'shoulders', 'quads'] as const) {
+      expect(draft.weekly_sets[group], group).toBeGreaterThanOrEqual(8);
+      expect(draft.weekly_sets[group], group).toBeLessThanOrEqual(10);
+    }
+  });
+
+  it('have the T-bar row in a full gym and a row of the same movement in a gym without a T-bar', () => {
+    expect(slugs(new Set(everything)).flat()).toContain('t-bar-row');
+
+    const withoutTBar = slugs(gymWithout('t_bar')).flat();
+    expect(withoutTBar).not.toContain('t-bar-row');
+    expect(withoutTBar).toContain('barbell-bent-over-row');
+  });
+
+  it('have calf raises in a variant the gym has when there is no calf machine', () => {
+    const legs = (gym: ReadonlySet<string>) => slugs(gym, { duration_min: 90 }).flat();
+
+    expect(legs(new Set(everything))).toContain('standing-calf-raise-machine');
+    const withoutMachine = legs(gymWithout('calf_raise_machine'));
+    expect(withoutMachine).not.toContain('standing-calf-raise-machine');
+    expect(withoutMachine).toContain('smith-machine-calf-raise');
+    expect(legs(gymWithout('calf_raise_machine', 'smith_machine'))).toContain(
+      'single-leg-dumbbell-calf-raise',
+    );
+  });
+
+  it('use only exercises the gym has equipment for', () => {
+    const home = new Set(['dumbbells', 'adjustable_bench', 'pull_up_bar', 'mat']);
+    for (const slug of slugs(home, { frequency: 3 }).flat()) {
+      const exercise = exercises.find((candidate) => candidate.slug === slug);
+      expect(isAvailable(exercise!, home), slug).toBe(true);
+    }
+  });
+
+  it('still make a program for training with no equipment at all', () => {
+    const days = slugs(new Set(['mat']), { frequency: 2, level: 'beginner' });
+    expect(days).toHaveLength(2);
+    for (const day of days) expect(day.length).toBeGreaterThanOrEqual(2);
+    expect(days.flat()).toContain('push-up');
+    expect(days.flat()).toContain('bodyweight-squat');
   });
 });

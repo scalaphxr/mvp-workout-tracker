@@ -115,6 +115,9 @@ export default function RootLayout() {
             options={{ title: t('busy.title'), ...darkHeader }}
           />
           <Stack.Screen name="workout/summary/[id]" options={{ title: '' }} />
+          <Stack.Screen name="report" options={{ title: t('report.title') }} />
+          <Stack.Screen name="questionnaire" options={{ title: t('questionnaire.title') }} />
+          <Stack.Screen name="import-text" options={{ title: t('importText.title') }} />
         </Stack>
         <StatusBar style="auto" />
       </ThemeProvider>

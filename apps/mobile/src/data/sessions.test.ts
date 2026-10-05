@@ -1,11 +1,26 @@
-import { outbox, program_state, set_logs } from '@mvp/db/sqlite';
+import { body_logs, outbox, program_state, set_logs } from '@mvp/db/sqlite';
 import { createTestDb } from '@mvp/db/sqlite/testing';
 import { type ItemParams, uuidv7 } from '@mvp/domain';
 import type { ProgramItemRow } from '@mvp/schemas';
 import { beforeEach, describe, expect, it } from 'vitest';
 
+import { deleteWeight, listWeights, setWeight } from './body';
 import type { DataContext } from './context';
-import { addDay, addItem, createProgram, getProgramTree, updateItem } from './programs';
+import {
+  exerciseProgress,
+  exercisesWithProgress,
+  getWorkout,
+  listWorkouts,
+  workoutsOfCycle,
+} from './history';
+import {
+  addDay,
+  addItem,
+  createProgram,
+  createProgramFromDraft,
+  getProgramTree,
+  updateItem,
+} from './programs';
 import {
   abandonSession,
   activeSession,
@@ -450,5 +465,85 @@ describe('the queue of unsent rows', () => {
       { table_name: 'program_items', row_id: bench.id },
     ]);
     expect(getSyncState(ctx, 'applying')).toBeNull();
+  });
+});
+
+describe('stage 4 data', () => {
+  it('keeps one weight per day, replaces it on a second entry, and can remove it', () => {
+    setWeight(ctx, '2026-10-03', 85);
+    setWeight(ctx, '2026-10-04', 84.6);
+    setWeight(ctx, '2026-10-04', 84.4);
+
+    expect(listWeights(ctx)).toEqual([
+      { date: '2026-10-03', weight_kg: 85 },
+      { date: '2026-10-04', weight_kg: 84.4 },
+    ]);
+    expect(ctx.db.select().from(body_logs).all()).toHaveLength(2);
+
+    deleteWeight(ctx, '2026-10-03');
+    expect(listWeights(ctx)).toEqual([{ date: '2026-10-04', weight_kg: 84.4 }]);
+    expect(() => setWeight(ctx, '2026-10-05', 5)).toThrow();
+  });
+
+  it('takes the entry written last when two devices logged the same day', () => {
+    setWeight(ctx, '2026-10-04', 84.6);
+    applyPulled(ctx, [
+      {
+        table: 'body_logs',
+        row: {
+          id: id(77),
+          created_at: '2027-01-01T00:00:00.000Z',
+          updated_at: '2027-01-01T00:00:00.000Z',
+          deleted_at: null,
+          date: '2026-10-04',
+          weight_kg: 84.1,
+          measured_at: '2027-01-01T00:00:00.000Z',
+        },
+      },
+    ]);
+    expect(listWeights(ctx)).toEqual([{ date: '2026-10-04', weight_kg: 84.1 }]);
+  });
+
+  it('saves a draft as a program, supersets included', () => {
+    const item = (exercise_id: string, superset = false) => ({ ...PARAMS, exercise_id, superset });
+    const created = createProgramFromDraft(ctx, {
+      title: 'From text',
+      goal: 'mass',
+      level: 'beginner',
+      days_per_week: 2,
+      days: [
+        { title: 'Day 1', items: [item(BENCH), item(CURL), item(PLANK, true), item(DUMBBELL_BENCH)] },
+        { title: 'Day 2', items: [item(CURL, true), item(BENCH, true), item(PLANK, true)] },
+      ],
+    });
+
+    const tree = getProgramTree(ctx, created.id)!;
+    expect(tree.program).toMatchObject({ title: 'From text', goal: 'mass', days_per_week: 2 });
+    expect(tree.days.map((day) => day.title)).toEqual(['Day 1', 'Day 2']);
+    const groupsOf = (dayIndex: number) =>
+      tree.items.filter((i) => i.program_day_id === tree.days[dayIndex]!.id).map((i) => i.superset_group);
+    expect(groupsOf(0)).toEqual([null, 1, 1, null]);
+    // A "superset" mark on the first item of a day has nothing above it to join.
+    expect(groupsOf(1)).toEqual([1, 1, 1]);
+  });
+
+  it('numbers workouts, lists them newest first and tracks an exercise over time', () => {
+    const { id: programId, day1, day2 } = program();
+    const first = workout(programId, day1.id, { [BENCH]: [80, [10, 10]] });
+    const second = workout(programId, day2.id, { [BENCH]: [82.5, [8]] });
+
+    expect(listWorkouts(ctx).map((entry) => [entry.session.id, entry.number, entry.dayTitle])).toEqual([
+      [second, 2, 'Day 2'],
+      [first, 1, 'Day 1'],
+    ]);
+    expect(getWorkout(ctx, first)).toMatchObject({ number: 1, programTitle: 'Upper', volumeKg: 1600 });
+    expect(workoutsOfCycle(ctx, programId, 1).map((entry) => entry.session.id)).toEqual([first, second]);
+    expect(workoutsOfCycle(ctx, programId, 2)).toEqual([]);
+
+    expect(exerciseProgress(ctx, BENCH).map((point) => [point.weight_kg, Math.round(point.e1rm)])).toEqual([
+      [80, 107],
+      [82.5, 105],
+    ]);
+    expect(exercisesWithProgress(ctx)).toEqual([BENCH]);
   });
 });

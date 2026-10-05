@@ -1,0 +1,106 @@
+[
+  {
+    "id": "01a10aa8-7a36-7668-9ce0-1a57dae2ee05",
+    "slug": "bodyweight-squat",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["hamstrings", "adductors"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Приседания без веса",
+        "aliases": ["приседания с собственным весом", "воздушные приседания", "приседания без отягощения"],
+        "description": "Приседания с собственным весом: ноги и ягодицы без оборудования, дома или на улице.",
+        "technique_steps": [
+          "Встаньте прямо, стопы на ширине плеч, носки слегка развёрнуты.",
+          "Вытяните руки перед собой для равновесия, спина прямая.",
+          "На вдохе опуститесь, отводя таз назад, до параллели бёдер с полом или ниже.",
+          "На выдохе встаньте, упираясь всей стопой в пол."
+        ],
+        "common_mistakes": [
+          "Колени заваливаются внутрь.",
+          "Пятки отрываются от пола.",
+          "Округление спины в нижней точке."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Bodyweight squat",
+        "aliases": ["air squat", "body weight squat", "squat without weight"],
+        "description": "A squat with body weight: legs and glutes with no equipment, at home or outdoors.",
+        "technique_steps": [
+          "Stand tall, feet shoulder-width apart, toes turned out a little.",
+          "Reach your arms forward for balance, back flat.",
+          "Inhale and descend, sitting the hips back, until the thighs are parallel to the floor or lower.",
+          "Exhale and stand up, pressing through the whole foot."
+        ],
+        "common_mistakes": [
+          "Knees caving inwards.",
+          "Heels lifting off the floor.",
+          "Rounding the back at the bottom."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "01a10aa8-7a37-7607-a613-64e0124e5224",
+    "slug": "glute-bridge",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Ягодичный мост без веса",
+        "aliases": ["ягодичный мостик", "подъём таза лёжа", "мостик на ягодицы"],
+        "description": "Подъём таза лёжа на спине: ягодицы и задняя поверхность бедра с собственным весом.",
+        "technique_steps": [
+          "Лягте на спину, колени согнуты, стопы на полу на ширине таза.",
+          "Руки вдоль корпуса, поясница прижата к полу.",
+          "На выдохе поднимите таз до прямой линии от плеч до колен, сжимая ягодицы.",
+          "На вдохе плавно опустите таз, не расслабляясь внизу."
+        ],
+        "common_mistakes": [
+          "Прогиб в пояснице вместо работы ягодиц.",
+          "Стопы слишком далеко от таза.",
+          "Быстрые повторения без паузы наверху."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Bodyweight glute bridge",
+        "aliases": ["glute bridge", "hip bridge", "floor glute bridge"],
+        "description": "Raising the hips while lying on the back: glutes and hamstrings with body weight.",
+        "technique_steps": [
+          "Lie on your back, knees bent, feet on the floor hip-width apart.",
+          "Arms along the body, lower back pressed into the floor.",
+          "Exhale and lift the hips until the body is straight from shoulders to knees, squeezing the glutes.",
+          "Inhale and lower the hips under control without relaxing at the bottom."
+        ],
+        "common_mistakes": [
+          "Arching the lower back instead of using the glutes.",
+          "Feet too far from the hips.",
+          "Fast reps with no pause at the top."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "barbell-hip-thrust", "weight_ratio": null, "priority": 10 }
+    ]
+  }
+]

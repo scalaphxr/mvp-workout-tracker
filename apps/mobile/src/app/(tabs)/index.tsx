@@ -8,6 +8,7 @@ import { Chip } from '@/components/chip';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Group, LinkRow, Screen } from '@/components/ui';
+import { WeightCard } from '@/components/weight-card';
 import { Spacing } from '@/constants/theme';
 import { getProgramTree } from '@/data/programs';
 import {
@@ -97,6 +98,8 @@ export default function TodayScreen() {
           <Button title={t('today.toPrograms')} onPress={() => router.push('/programs')} />
         </View>
       )}
+
+      <WeightCard />
 
       {last && (
         <Group title={t('today.last')}>
