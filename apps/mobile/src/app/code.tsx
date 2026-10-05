@@ -12,16 +12,16 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Group, Screen, TextField } from '@/components/ui';
 import { Spacing } from '@/constants/theme';
-import { gymChanges, listGymProfiles } from '@/data/gym';
-import { importTree } from '@/data/programs';
+import { listGymProfiles } from '@/data/gym';
+import { applyPulled } from '@/data/sync';
 import { useLocale } from '@/hooks/use-locale';
 import { api, ApiRequestError } from '@/lib/api';
 import { useAuthStore } from '@/lib/auth-store';
 import { useCatalog } from '@/lib/catalog';
-import { data } from '@/lib/db';
 import { formatItemPlan } from '@/lib/format';
 import { useGym } from '@/lib/gym';
-import { mutate, pushChanges, useActiveProgram, useLocal } from '@/lib/local';
+import { mutate, useActiveProgram, useLocal } from '@/lib/local';
+import { syncNow } from '@/lib/sync';
 
 const ERROR_KEYS = {
   invalid_share_code: 'errors.invalid_share_code',
@@ -109,11 +109,18 @@ function Preview({ code, tree }: { code: string; tree: ProgramTree }) {
     mutationFn: async () => {
       if (!gym) throw new Error('No gym profile');
       // The server fits the program to a gym profile, so it needs the profile first.
-      await pushChanges(gymChanges(data(), gym.profile.id));
+      await syncNow(true);
       return api.adoptShareCode(code, gym.profile.id);
     },
     onSuccess: ({ tree: copy }) => {
-      mutate((ctx) => importTree(ctx, copy));
+      // The copy is already on the server: it is written here as a row that came from there.
+      mutate((ctx) =>
+        applyPulled(ctx, [
+          { table: 'programs', row: copy.program },
+          ...copy.days.map((row) => ({ table: 'program_days' as const, row })),
+          ...copy.items.map((row) => ({ table: 'program_items' as const, row })),
+        ]),
+      );
       if (!hasActive) setActive(copy.program.id);
       router.replace({ pathname: '/program/[id]', params: { id: copy.program.id } });
     },

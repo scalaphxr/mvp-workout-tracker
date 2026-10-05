@@ -11,6 +11,7 @@ import {
   ShareCodePreviewResponseSchema,
   ShareCodeSchema,
   type SyncChange,
+  SyncPullResponseSchema,
   SyncPushResponseSchema,
   TokensSchema,
 } from '@mvp/schemas';
@@ -150,6 +151,11 @@ export const api = {
       method: 'POST',
       body: { device_id: deviceId, changes },
       schema: SyncPushResponseSchema,
+    }),
+
+  syncPull: (cursor: string | null) =>
+    authedRequest(`/v1/sync/pull${cursor ? `?cursor=${cursor}` : ''}`, {
+      schema: SyncPullResponseSchema,
     }),
 
   shareCodes: (programId: string) =>

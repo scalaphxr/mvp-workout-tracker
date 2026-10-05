@@ -1,6 +1,18 @@
 import { z } from 'zod';
 
 import { LevelSchema } from './catalog';
+import {
+  type ProgramStateRow,
+  ProgramStateRowSchema,
+  type ProgressionStateRow,
+  ProgressionStateRowSchema,
+  type SessionExerciseRow,
+  SessionExerciseRowSchema,
+  type SessionRow,
+  SessionRowSchema,
+  type SetLogRow,
+  SetLogRowSchema,
+} from './workouts';
 
 /**
  * Rows of the user's own data. They are created on the phone (ids are UUID v7), live in its
@@ -113,6 +125,11 @@ export const SYNC_TABLES = [
   'programs',
   'program_days',
   'program_items',
+  'program_state',
+  'progression_state',
+  'sessions',
+  'session_exercises',
+  'set_logs',
 ] as const;
 export type SyncTable = (typeof SYNC_TABLES)[number];
 
@@ -122,6 +139,11 @@ export interface SyncRows {
   programs: ProgramRow;
   program_days: ProgramDayRow;
   program_items: ProgramItemRow;
+  program_state: ProgramStateRow;
+  progression_state: ProgressionStateRow;
+  sessions: SessionRow;
+  session_exercises: SessionExerciseRow;
+  set_logs: SetLogRow;
 }
 
 export const SYNC_ROW_SCHEMAS = {
@@ -130,6 +152,11 @@ export const SYNC_ROW_SCHEMAS = {
   programs: ProgramRowSchema,
   program_days: ProgramDayRowSchema,
   program_items: ProgramItemRowSchema,
+  program_state: ProgramStateRowSchema,
+  progression_state: ProgressionStateRowSchema,
+  sessions: SessionRowSchema,
+  session_exercises: SessionExerciseRowSchema,
+  set_logs: SetLogRowSchema,
 } satisfies { [T in SyncTable]: z.ZodType<SyncRows[T]> };
 
 /**
@@ -173,6 +200,22 @@ export const SyncPushResponseSchema = z.object({
   cursor: z.string(),
 });
 export type SyncPushResponse = z.infer<typeof SyncPushResponseSchema>;
+
+// GET /v1/sync/pull?cursor=<cursor>
+export const SyncPullQuerySchema = z.object({
+  /** The cursor of the previous pull; absent on the first one. */
+  cursor: z.string().regex(/^\d+$/).optional(),
+});
+
+export const SyncPullResponseSchema = z.object({
+  /** Rows that changed on the server since the cursor, oldest change first. */
+  changes: z.array(
+    z.object({ table: z.enum(SYNC_TABLES), row: z.looseObject({ id: z.uuid() }) }),
+  ),
+  cursor: z.string(),
+  has_more: z.boolean(),
+});
+export type SyncPullResponse = z.infer<typeof SyncPullResponseSchema>;
 
 // --- Program codes ---
 

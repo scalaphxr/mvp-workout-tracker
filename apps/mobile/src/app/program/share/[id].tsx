@@ -16,12 +16,12 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { ConfirmButton, Group, Screen } from '@/components/ui';
 import { Spacing } from '@/constants/theme';
-import { getProgramTree, programChanges, updateProgram } from '@/data/programs';
+import { getProgramTree, updateProgram } from '@/data/programs';
 import { useLocale } from '@/hooks/use-locale';
 import { api, ApiRequestError } from '@/lib/api';
 import { useAuthStore } from '@/lib/auth-store';
-import { data } from '@/lib/db';
-import { mutate, pushChanges, useLocal } from '@/lib/local';
+import { mutate, useLocal } from '@/lib/local';
+import { syncNow } from '@/lib/sync';
 
 const EXPIRY_OPTIONS = [
   { days: null, label: 'share.forever' },
@@ -45,7 +45,7 @@ export default function ShareProgramScreen() {
 
   const queryKey = ['share-codes', id];
   // The server shares what it has: the program is sent there first, in its current state.
-  const sendProgram = () => pushChanges(programChanges(data(), id));
+  const sendProgram = () => syncNow(true);
 
   const codes = useQuery({
     queryKey,

@@ -1,9 +1,12 @@
+import { sql } from 'drizzle-orm';
 import {
+  bigint,
   boolean,
   doublePrecision,
   index,
   integer,
   jsonb,
+  pgSequence,
   pgTable,
   primaryKey,
   text,
@@ -214,55 +217,78 @@ export const coachClients = pgTable('coach_clients', {
   status: text('status', { enum: ['invited', 'active', 'ended'] }).notNull(),
 });
 
-export const gymProfiles = pgTable('gym_profiles', {
+/** Numbers every write of a synced row; a phone pulls what is above the number it has seen. */
+export const syncSequence = pgSequence('sync_seq');
+
+/**
+ * Fields of every synced table. The owner is stored on each row, children included, so
+ * that access checks and sync pull need no joins.
+ */
+const synced = (ownerColumn: 'user_id' | 'owner_id') => ({
   ...common,
-  userId: uuid('user_id')
+  ownerId: uuid(ownerColumn)
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
-  name: text('name').notNull(),
-  locationType: text('location_type', {
-    enum: ['gym', 'home', 'home_no_equipment', 'outdoor'],
-  }).notNull(),
-  isDefault: boolean('is_default').notNull().default(false),
+  syncSeq: bigint('sync_seq', { mode: 'number' })
+    .notNull()
+    .default(sql`nextval('sync_seq')`),
 });
 
-export const gymEquipment = pgTable('gym_equipment', {
-  ...common,
-  gymProfileId: uuid('gym_profile_id')
-    .notNull()
-    .references(() => gymProfiles.id, { onDelete: 'cascade' }),
-  equipmentId: uuid('equipment_id')
-    .notNull()
-    .references(() => equipment.id),
-  /** The weight step in this gym; `null` – the default of the equipment. */
-  incrementKg: doublePrecision('increment_kg'),
-});
+export const gymProfiles = pgTable(
+  'gym_profiles',
+  {
+    ...synced('user_id'),
+    name: text('name').notNull(),
+    locationType: text('location_type', {
+      enum: ['gym', 'home', 'home_no_equipment', 'outdoor'],
+    }).notNull(),
+    isDefault: boolean('is_default').notNull().default(false),
+  },
+  (t) => [index('gym_profiles_sync_idx').on(t.ownerId, t.syncSeq)],
+);
 
-export const programs = pgTable('programs', {
-  ...common,
-  ownerId: uuid('owner_id')
-    .notNull()
-    .references(() => users.id, { onDelete: 'cascade' }),
-  title: text('title').notNull(),
-  description: text('description').notNull().default(''),
-  goal: text('goal', {
-    enum: ['mass', 'strength', 'cut', 'maintenance', 'endurance', 'fitness'],
-  }),
-  level: text('level', { enum: ['beginner', 'intermediate', 'advanced'] }),
-  daysPerWeek: integer('days_per_week'),
-  visibility: text('visibility', { enum: ['private', 'code', 'public'] })
-    .notNull()
-    .default('private'),
-  // Not a foreign key: the copy outlives the original.
-  forkedFromId: uuid('forked_from_id'),
-  /** The trainer who assigned the program; such a program gets no auto-progression. */
-  assignedById: uuid('assigned_by_id').references(() => users.id, { onDelete: 'set null' }),
-});
+export const gymEquipment = pgTable(
+  'gym_equipment',
+  {
+    ...synced('owner_id'),
+    gymProfileId: uuid('gym_profile_id')
+      .notNull()
+      .references(() => gymProfiles.id, { onDelete: 'cascade' }),
+    equipmentId: uuid('equipment_id')
+      .notNull()
+      .references(() => equipment.id),
+    /** The weight step in this gym; `null` – the default of the equipment. */
+    incrementKg: doublePrecision('increment_kg'),
+  },
+  (t) => [index('gym_equipment_sync_idx').on(t.ownerId, t.syncSeq)],
+);
+
+export const programs = pgTable(
+  'programs',
+  {
+    ...synced('owner_id'),
+    title: text('title').notNull(),
+    description: text('description').notNull().default(''),
+    goal: text('goal', {
+      enum: ['mass', 'strength', 'cut', 'maintenance', 'endurance', 'fitness'],
+    }),
+    level: text('level', { enum: ['beginner', 'intermediate', 'advanced'] }),
+    daysPerWeek: integer('days_per_week'),
+    visibility: text('visibility', { enum: ['private', 'code', 'public'] })
+      .notNull()
+      .default('private'),
+    // Not a foreign key: the copy outlives the original.
+    forkedFromId: uuid('forked_from_id'),
+    /** The trainer who assigned the program; such a program gets no auto-progression. */
+    assignedById: uuid('assigned_by_id').references(() => users.id, { onDelete: 'set null' }),
+  },
+  (t) => [index('programs_sync_idx').on(t.ownerId, t.syncSeq)],
+);
 
 export const programDays = pgTable(
   'program_days',
   {
-    ...common,
+    ...synced('owner_id'),
     programId: uuid('program_id')
       .notNull()
       .references(() => programs.id, { onDelete: 'cascade' }),
@@ -270,13 +296,16 @@ export const programDays = pgTable(
     title: text('title').notNull(),
     kind: text('kind', { enum: ['regular', 'every_session'] }).notNull(),
   },
-  (t) => [index('program_days_program_id_idx').on(t.programId)],
+  (t) => [
+    index('program_days_program_id_idx').on(t.programId),
+    index('program_days_sync_idx').on(t.ownerId, t.syncSeq),
+  ],
 );
 
 export const programItems = pgTable(
   'program_items',
   {
-    ...common,
+    ...synced('owner_id'),
     programDayId: uuid('program_day_id')
       .notNull()
       .references(() => programDays.id, { onDelete: 'cascade' }),
@@ -294,7 +323,109 @@ export const programItems = pgTable(
     incrementKg: doublePrecision('increment_kg'),
     notes: text('notes').notNull().default(''),
   },
-  (t) => [index('program_items_program_day_id_idx').on(t.programDayId)],
+  (t) => [
+    index('program_items_program_day_id_idx').on(t.programDayId),
+    index('program_items_sync_idx').on(t.ownerId, t.syncSeq),
+  ],
+);
+
+/** Where the user is in a program: the next day of the round and the number of the round. */
+export const programState = pgTable(
+  'program_state',
+  {
+    ...synced('user_id'),
+    programId: uuid('program_id')
+      .notNull()
+      .references(() => programs.id, { onDelete: 'cascade' }),
+    nextDayPosition: integer('next_day_position').notNull(),
+    cycleNumber: integer('cycle_number').notNull(),
+    deloadCycle: integer('deload_cycle'),
+  },
+  (t) => [index('program_state_sync_idx').on(t.ownerId, t.syncSeq)],
+);
+
+/** The plan of a program item for the next workout and why it is what it is. */
+export const progressionState = pgTable(
+  'progression_state',
+  {
+    ...synced('user_id'),
+    programItemId: uuid('program_item_id')
+      .notNull()
+      .references(() => programItems.id, { onDelete: 'cascade' }),
+    nextWeightKg: doublePrecision('next_weight_kg'),
+    nextTargetReps: integer('next_target_reps').notNull(),
+    failStreak: integer('fail_streak').notNull().default(0),
+    reasonCode: text('reason_code').notNull(),
+    reasonParams: jsonb('reason_params').$type<Record<string, number>>().notNull(),
+  },
+  (t) => [index('progression_state_sync_idx').on(t.ownerId, t.syncSeq)],
+);
+
+export const sessions = pgTable(
+  'sessions',
+  {
+    ...synced('user_id'),
+    programId: uuid('program_id')
+      .notNull()
+      .references(() => programs.id, { onDelete: 'cascade' }),
+    programDayId: uuid('program_day_id')
+      .notNull()
+      .references(() => programDays.id, { onDelete: 'cascade' }),
+    cycleNumber: integer('cycle_number').notNull(),
+    status: text('status', { enum: ['active', 'finished', 'abandoned'] }).notNull(),
+    startedAt: timestamptz('started_at').notNull(),
+    finishedAt: timestamptz('finished_at'),
+    wellbeing: integer('wellbeing'),
+    notes: text('notes').notNull().default(''),
+  },
+  (t) => [index('sessions_sync_idx').on(t.ownerId, t.syncSeq)],
+);
+
+/** An exercise of a workout; `substitutedFromId` records a replacement made for that workout. */
+export const sessionExercises = pgTable(
+  'session_exercises',
+  {
+    ...synced('owner_id'),
+    sessionId: uuid('session_id')
+      .notNull()
+      .references(() => sessions.id, { onDelete: 'cascade' }),
+    position: integer('position').notNull(),
+    // Not a foreign key: the workout outlives the item of the program.
+    programItemId: uuid('program_item_id'),
+    exerciseId: uuid('exercise_id')
+      .notNull()
+      .references(() => exercises.id),
+    substitutedFromId: uuid('substituted_from_id').references(() => exercises.id),
+  },
+  (t) => [index('session_exercises_sync_idx').on(t.ownerId, t.syncSeq)],
+);
+
+/** One set. Sets are only added and softly deleted. */
+export const setLogs = pgTable(
+  'set_logs',
+  {
+    ...synced('owner_id'),
+    sessionExerciseId: uuid('session_exercise_id')
+      .notNull()
+      .references(() => sessionExercises.id, { onDelete: 'cascade' }),
+    setNumber: integer('set_number').notNull(),
+    isWarmup: boolean('is_warmup').notNull().default(false),
+    plannedWeightKg: doublePrecision('planned_weight_kg'),
+    plannedRepMin: integer('planned_rep_min'),
+    plannedRepMax: integer('planned_rep_max'),
+    weightKg: doublePrecision('weight_kg'),
+    reps: integer('reps'),
+    rir: integer('rir'),
+    durationSec: integer('duration_sec'),
+    distanceM: doublePrecision('distance_m'),
+    speedKmh: doublePrecision('speed_kmh'),
+    inclinePct: doublePrecision('incline_pct'),
+    resistanceLevel: doublePrecision('resistance_level'),
+    avgHr: integer('avg_hr'),
+    calories: integer('calories'),
+    completedAt: timestamptz('completed_at').notNull(),
+  },
+  (t) => [index('set_logs_sync_idx').on(t.ownerId, t.syncSeq)],
 );
 
 /** Codes a program is shared by. The code is stored without the dash. */

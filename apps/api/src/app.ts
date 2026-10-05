@@ -21,6 +21,8 @@ import {
   ShareCodeCreateRequestSchema,
   type ShareCodeListResponse,
   type ShareCodePreviewResponse,
+  SyncPullQuerySchema,
+  type SyncPullResponse,
   SyncPushRequestSchema,
   type SyncPushResponse,
   type Tokens,
@@ -42,7 +44,7 @@ import {
 import { type CatalogDeps, createCatalogService, requireAdmin } from './catalog';
 import { ApiError, parseBody, parseQuery } from './errors';
 import { type Caller, createShareService } from './share';
-import { pushChanges } from './sync';
+import { pullChanges, pushChanges } from './sync';
 
 export type AppDeps = AuthDeps & CatalogDeps;
 
@@ -107,6 +109,13 @@ export function createApp(deps: AppDeps) {
   app.post('/v1/sync/push', async (c) => {
     const body = await parseBody(c, SyncPushRequestSchema);
     return c.json<SyncPushResponse>(await pushChanges(deps, c.get('userId'), body.changes));
+  });
+
+  app.get('/v1/sync/pull', async (c) => {
+    const { cursor } = parseQuery(c, SyncPullQuerySchema);
+    return c.json<SyncPullResponse>(
+      await pullChanges(deps, c.get('userId'), Number(cursor ?? 0)),
+    );
   });
 
   app.post('/v1/programs/:id/share-codes', async (c) => {

@@ -1,9 +1,7 @@
-import type { SyncChange } from '@mvp/schemas';
 import { create } from 'zustand';
 
 import type { DataContext } from '@/data/context';
 
-import { api } from './api';
 import { data } from './db';
 import { settingsStorage } from './storage';
 
@@ -43,28 +41,3 @@ export const useActiveProgram = create<{ id: string | null; set(id: string | nul
     },
   }),
 );
-
-// --- Sending rows to the server ---
-
-const DEVICE_ID_KEY = 'device.id';
-
-function deviceId(): string {
-  let id = settingsStorage.get(DEVICE_ID_KEY);
-  if (!id) {
-    id = data().newId();
-    settingsStorage.set(DEVICE_ID_KEY, id);
-  }
-  return id;
-}
-
-/**
- * Sends rows to the server before something there needs them (a program before it is shared,
- * a gym profile before a program is fitted to it). Throws if the server refuses any row.
- */
-export async function pushChanges(changes: SyncChange[]): Promise<void> {
-  if (changes.length === 0) return;
-  const { rejected } = await api.syncPush(deviceId(), changes);
-  if (rejected.length > 0) {
-    throw new Error(`The server rejected ${rejected.length} rows: ${rejected[0]?.code}`);
-  }
-}

@@ -3,19 +3,47 @@ import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { AppState } from 'react-native';
 
 import { EmptyState } from '@/components/empty-state';
+import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import i18n from '@/i18n';
+import { useAuthStore } from '@/lib/auth-store';
 import { syncCatalog, useCatalog } from '@/lib/catalog';
 import { dataReady } from '@/lib/db';
 import { ensureDefaultGym } from '@/lib/gym';
+import { loadSyncInfo, syncNow } from '@/lib/sync';
 
 const queryClient = new QueryClient();
 
 /** Once per launch: picks up a newer exercise catalog when the server is reachable. */
 function CatalogSync() {
   useQuery({ queryKey: ['catalog-sync'], queryFn: syncCatalog, staleTime: Infinity, retry: false });
+  return null;
+}
+
+const darkHeader = {
+  headerStyle: { backgroundColor: Colors.dark.background },
+  headerTintColor: Colors.dark.text,
+};
+
+/**
+ * Sync runs in the background and never blocks a screen: at launch, after signing in, and
+ * whenever the app comes back to the foreground.
+ */
+function SyncDriver() {
+  const signedIn = useAuthStore((state) => state.session !== null);
+
+  useEffect(() => {
+    if (!signedIn) return;
+    void syncNow();
+    const subscription = AppState.addEventListener('change', (state) => {
+      if (state === 'active') void syncNow();
+    });
+    return () => subscription.remove();
+  }, [signedIn]);
+
   return null;
 }
 
@@ -28,6 +56,7 @@ function useDatabase(): 'opening' | 'ready' | 'failed' {
     dataReady.then(
       (ctx) => {
         ensureDefaultGym(ctx, useCatalog.getState().catalog, i18n.t('gym.defaultName'));
+        loadSyncInfo();
         if (mounted) setState('ready');
       },
       (error: unknown) => {
@@ -56,6 +85,7 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <CatalogSync />
+      <SyncDriver />
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         {/* Without the minimal mode a back button is labelled with the route name, "(tabs)". */}
         <Stack screenOptions={{ headerBackButtonDisplayMode: 'minimal' }}>
@@ -78,6 +108,13 @@ export default function RootLayout() {
           <Stack.Screen name="program/replace/[id]" options={{ title: t('replace.title') }} />
           <Stack.Screen name="program/share/[id]" options={{ title: t('share.title') }} />
           <Stack.Screen name="code" options={{ title: t('code.title') }} />
+          {/* The workout is dark whatever the system theme is, header included. */}
+          <Stack.Screen name="workout/[id]" options={{ title: '', ...darkHeader }} />
+          <Stack.Screen
+            name="workout/replace/[id]"
+            options={{ title: t('busy.title'), ...darkHeader }}
+          />
+          <Stack.Screen name="workout/summary/[id]" options={{ title: '' }} />
         </Stack>
         <StatusBar style="auto" />
       </ThemeProvider>

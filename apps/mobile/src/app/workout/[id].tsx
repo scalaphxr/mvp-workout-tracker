@@ -1,0 +1,469 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { hasFeature, substitutedWeight } from '@mvp/domain';
+import type { Exercise } from '@mvp/schemas';
+import { useKeepAwake } from 'expo-keep-awake';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+import { Button } from '@/components/button';
+import { Chip } from '@/components/chip';
+import { EmptyState } from '@/components/empty-state';
+import { RestTimer } from '@/components/rest-timer';
+import { ThemedText } from '@/components/themed-text';
+import { ConfirmButton, Stepper } from '@/components/ui';
+import { MaxContentWidth, Spacing } from '@/constants/theme';
+import { afterSet } from '@/data/flow';
+import {
+  abandonSession,
+  finishSession,
+  getSession,
+  lastPerformance,
+  logSet,
+  removeLastSet,
+  type SessionExerciseView,
+} from '@/data/sessions';
+import { useLocale } from '@/hooks/use-locale';
+import { ThemeOverride, useTheme } from '@/hooks/use-theme';
+import { useCatalog } from '@/lib/catalog';
+import { haptic } from '@/lib/feedback';
+import { formatRange } from '@/lib/format';
+import { mutate, useLocal } from '@/lib/local';
+import { useRestTimer } from '@/lib/rest-timer';
+import { syncNow } from '@/lib/sync';
+import { explainPlan, formatKg, useExerciseFacts } from '@/lib/workout';
+
+/** RIR is marked in one tap: 0, 1, 2, 3 or "4 and more". */
+const RIR_OPTIONS = [0, 1, 2, 3, 4] as const;
+
+export default function WorkoutScreen() {
+  // The workout screen is dark whatever the system theme is.
+  return (
+    <ThemeOverride.Provider value="dark">
+      <Workout />
+    </ThemeOverride.Provider>
+  );
+}
+
+function Workout() {
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const { t } = useTranslation();
+  const theme = useTheme();
+  const locale = useLocale();
+  const router = useRouter();
+  const insets = useSafeAreaInsets();
+  const { exerciseById } = useCatalog();
+  const facts = useExerciseFacts();
+  const startRest = useRestTimer((state) => state.start);
+  const stopRest = useRestTimer((state) => state.stop);
+  const view = useLocal((ctx) => getSession(ctx, id));
+  // What the user tapped in the list; otherwise the workout leads on by itself.
+  const [chosenId, setChosenId] = useState<string | null>(null);
+  useKeepAwake();
+
+  if (!view || view.session.status !== 'active') {
+    return <EmptyState title={t('workout.notFoundTitle')} text={t('workout.notFoundText')} />;
+  }
+  const { exercises } = view;
+  const firstUnfinished = exercises.find((entry) => entry.sets.length < entry.plannedSets);
+  const current =
+    exercises.find((entry) => entry.exercise.id === chosenId) ?? firstUnfinished ?? exercises.at(-1);
+
+  /** A superset is the items of one day with one group number. */
+  const groupOf = ({ item }: SessionExerciseView) =>
+    item?.superset_group != null ? `${item.program_day_id}:${item.superset_group}` : null;
+
+  const onLogged = (entry: SessionExerciseView) => {
+    haptic('done');
+    const { nextId, rest_sec } = afterSet(
+      exercises.map((other) => ({
+        id: other.exercise.id,
+        group: groupOf(other),
+        // The screen still holds the state from before this set.
+        done: other.sets.length + (other === entry ? 1 : 0),
+        planned: other.plannedSets,
+        rest_sec: other.item?.rest_sec ?? 0,
+      })),
+      entry.exercise.id,
+    );
+    setChosenId(nextId);
+    startRest(rest_sec, {
+      title: t('rest.overTitle'),
+      body: t('rest.overBody'),
+      channel: t('rest.channel'),
+    });
+  };
+
+  const finish = () => {
+    stopRest();
+    mutate((ctx) =>
+      finishSession(ctx, view.session.id, facts, {
+        smart: hasFeature(null, 'smart_progression'),
+      }),
+    );
+    void syncNow();
+    router.replace({ pathname: '/workout/summary/[id]', params: { id: view.session.id } });
+  };
+
+  const abandon = () => {
+    stopRest();
+    mutate((ctx) => abandonSession(ctx, view.session.id));
+    router.back();
+  };
+
+  return (
+    <View style={[styles.screen, { backgroundColor: theme.background }]}>
+      <ScrollView contentContainerStyle={styles.list}>
+        {exercises.map((entry, index) => {
+          const exercise = exerciseById.get(entry.exercise.exercise_id);
+          const isCurrent = entry === current;
+          const group = groupOf(entry);
+          return (
+            <Pressable
+              key={entry.exercise.id}
+              accessibilityRole="button"
+              aria-selected={isCurrent}
+              onPress={() => setChosenId(entry.exercise.id)}
+              style={[
+                styles.row,
+                isCurrent && { backgroundColor: theme.backgroundElement },
+                group !== null && { borderLeftWidth: 3, borderLeftColor: theme.accent },
+              ]}>
+              <View style={styles.rowText}>
+                {group !== null && group !== (exercises[index - 1] && groupOf(exercises[index - 1]!)) && (
+                  <ThemedText type="smallBold" style={{ color: theme.accent }}>
+                    {t('workout.superset')}
+                  </ThemedText>
+                )}
+                <ThemedText>
+                  {exercise?.translations[locale].name ?? t('program.unknownExercise')}
+                </ThemedText>
+                {entry.sets.length > 0 && (
+                  <ThemedText type="small" themeColor="textSecondary">
+                    {entry.sets
+                      .map((set) =>
+                        set.reps !== null
+                          ? `${set.weight_kg ? `${formatKg(t, locale, set.weight_kg)} × ` : ''}${set.reps}`
+                          : t('units.sec', { value: set.duration_sec ?? 0 }),
+                      )
+                      .join(', ')}
+                  </ThemedText>
+                )}
+              </View>
+              <ThemedText type="small" themeColor="textSecondary">
+                {t('workout.progress', { done: entry.sets.length, total: entry.plannedSets })}
+              </ThemedText>
+              {entry.sets.length >= entry.plannedSets && (
+                <Ionicons name="checkmark-circle" size={20} color={theme.accent} />
+              )}
+            </Pressable>
+          );
+        })}
+
+        <View style={styles.ending}>
+          <Button
+            variant={firstUnfinished ? 'secondary' : 'primary'}
+            title={t('workout.finish')}
+            onPress={finish}
+          />
+          <ConfirmButton title={t('workout.abandon')} onConfirm={abandon} />
+        </View>
+      </ScrollView>
+
+      {/* Everything a set needs sits in the lower half of the screen, under one thumb. */}
+      <View
+        style={[
+          styles.panel,
+          { borderTopColor: theme.backgroundElement, paddingBottom: insets.bottom + Spacing.three },
+        ]}>
+        <RestTimer />
+        {current && (
+          <SetEntry
+            // A new set starts from its own defaults.
+            key={`${current.exercise.id}:${current.exercise.exercise_id}:${current.sets.length}`}
+            sessionId={view.session.id}
+            entry={current}
+            exercise={exerciseById.get(current.exercise.exercise_id)}
+            stepKg={current.item ? (current.item.increment_kg ?? facts(current.exercise.exercise_id, current.item)?.step_kg ?? null) : null}
+            onLogged={() => onLogged(current)}
+          />
+        )}
+      </View>
+    </View>
+  );
+}
+
+function SetEntry({
+  sessionId,
+  entry,
+  exercise,
+  stepKg,
+  onLogged,
+}: {
+  sessionId: string;
+  entry: SessionExerciseView;
+  exercise: Exercise | undefined;
+  stepKg: number | null;
+  onLogged: () => void;
+}) {
+  const { t } = useTranslation();
+  const locale = useLocale();
+  const router = useRouter();
+  const { exerciseById } = useCatalog();
+  const { item, plan, sets } = entry;
+  const last = useLocal((ctx) => lastPerformance(ctx, entry.exercise.exercise_id, sessionId));
+
+  const tracking = exercise?.tracking ?? 'weight_reps';
+  const setIndex = sets.length;
+  const previous = sets.at(-1);
+  const lastSame = last[setIndex] ?? last.at(-1);
+  const replaced = item !== null && entry.exercise.exercise_id !== item.exercise_id;
+
+  // The weight to start from. For a replacement: its own history, else the weight of the
+  // planned exercise through the ratio of the hand-made link, else nothing ("find the weight").
+  const link = replaced
+    ? exerciseById.get(item.exercise_id)?.alternatives.find((alt) => alt.slug === exercise?.slug)
+    : undefined;
+  const swapped = replaced
+    ? substitutedWeight({
+        historyWeightKg: lastSame?.weight_kg ?? null,
+        currentWeightKg: plan?.next_weight_kg ?? null,
+        weightRatio: link?.weight_ratio ?? null,
+        stepKg: stepKg ?? 0,
+      })
+    : null;
+  const plannedWeight = swapped
+    ? swapped.kind === 'find'
+      ? null
+      : swapped.weightKg
+    : (plan?.next_weight_kg ?? lastSame?.weight_kg ?? null);
+  // A new or lighter weight starts from the bottom of the range; otherwise from last time.
+  const freshWeight = plan?.reason_code === 'increase' || plan?.reason_code === 'increase_fast' || plan?.reason_code === 'reduced';
+  const plannedReps = freshWeight ? item?.rep_min : (lastSame?.reps ?? item?.rep_min);
+
+  const [weight, setWeight] = useState(previous?.weight_kg ?? plannedWeight ?? 0);
+  const [reps, setReps] = useState(previous?.reps ?? plannedReps ?? item?.rep_min ?? 10);
+  const [rir, setRir] = useState<number | null>(null);
+  const [seconds, setSeconds] = useState(previous?.duration_sec ?? item?.rep_min ?? 30);
+  const [minutes, setMinutes] = useState(item?.rep_min ?? 20);
+  const [distance, setDistance] = useState(0);
+
+  const tap = <T,>(set: (value: T) => void) => (value: T) => {
+    haptic('tap');
+    set(value);
+  };
+  const loaded = tracking === 'weight_reps' && stepKg !== null;
+
+  const save = () => {
+    const planned = {
+      planned_weight_kg: loaded ? plannedWeight : null,
+      planned_rep_min: item?.rep_min ?? null,
+      planned_rep_max: item?.rep_max ?? null,
+    };
+    const done =
+      tracking === 'time'
+        ? { duration_sec: seconds }
+        : tracking === 'distance_time'
+          ? { duration_sec: minutes * 60, distance_m: Math.round(distance * 1000) }
+          : // A weight left at zero means it was not entered: the set counts by reps alone.
+            { weight_kg: loaded && weight > 0 ? weight : null, reps, rir };
+    // The set is in the database before the screen moves on.
+    mutate((ctx) => logSet(ctx, entry.exercise.id, { ...planned, ...done }));
+    onLogged();
+  };
+
+  const range = item ? formatRange(item.rep_min, item.rep_max) : '';
+  const beyond = setIndex >= entry.plannedSets;
+
+  return (
+    <View style={styles.entry}>
+      <View>
+        <ThemedText type="small" themeColor="textSecondary">
+          {beyond
+            ? t('workout.extraSet', { number: setIndex + 1 })
+            : t('workout.set', { number: setIndex + 1, total: entry.plannedSets })}
+          {replaced ? ` · ${t('workout.replaced')}` : ''}
+        </ThemedText>
+        <ThemedText style={styles.name} numberOfLines={2}>
+          {exercise?.translations[locale].name ?? t('program.unknownExercise')}
+        </ThemedText>
+        {(tracking === 'weight_reps' || tracking === 'reps') && (
+          <ThemedText style={styles.plan}>
+            {loaded && plannedWeight !== null
+              ? t('workout.plan', { weight: formatKg(t, locale, plannedWeight), range })
+              : t('workout.planNoWeight', { range })}
+          </ThemedText>
+        )}
+        {loaded && plannedWeight === null && (
+          <ThemedText type="small" themeColor="textSecondary">
+            {t('workout.findWeight')}
+          </ThemedText>
+        )}
+        {last.length > 0 && tracking !== 'time' && tracking !== 'distance_time' && (
+          <ThemedText type="small" themeColor="textSecondary">
+            {t('workout.lastTime', {
+              sets: `${last[0]?.weight_kg ? `${formatKg(t, locale, last[0].weight_kg)} × ` : ''}${last.map((set) => set.reps).join(', ')}`,
+            })}
+          </ThemedText>
+        )}
+        {plan && !replaced && setIndex === 0 && (
+          <ThemedText type="small" themeColor="textSecondary">
+            {explainPlan(t, locale, plan)}
+          </ThemedText>
+        )}
+      </View>
+
+      {tracking === 'time' && (
+        <Stepper label={t('workout.seconds')} value={seconds} min={5} max={3600} step={5} onChange={tap(setSeconds)} />
+      )}
+      {tracking === 'distance_time' && (
+        <>
+          <Stepper label={t('workout.minutes')} value={minutes} min={1} max={600} onChange={tap(setMinutes)} />
+          <Stepper
+            label={t('workout.distance')}
+            value={distance}
+            text={distance.toFixed(1)}
+            min={0}
+            max={200}
+            step={0.5}
+            onChange={tap(setDistance)}
+          />
+        </>
+      )}
+      {(tracking === 'weight_reps' || tracking === 'reps') && (
+        <>
+          {loaded && (
+            <Stepper
+              label={t('workout.weight')}
+              value={weight}
+              text={formatKg(t, locale, weight)}
+              min={0}
+              max={1000}
+              step={stepKg}
+              onChange={tap(setWeight)}
+            />
+          )}
+          <Stepper label={t('workout.reps')} value={reps} min={0} max={200} onChange={tap(setReps)} />
+          <View style={styles.rir} accessibilityLabel={t('workout.rir')}>
+            <ThemedText type="small" themeColor="textSecondary">
+              RIR
+            </ThemedText>
+            {RIR_OPTIONS.map((option) => (
+              <Chip
+                key={option}
+                label={option === 4 ? t('item.rirMore') : String(option)}
+                selected={rir === option}
+                onPress={() => tap(setRir)(rir === option ? null : option)}
+              />
+            ))}
+          </View>
+        </>
+      )}
+
+      <View style={styles.buttons}>
+        {lastSame && (tracking === 'weight_reps' || tracking === 'reps') && (
+          <Button
+            variant="secondary"
+            title={t('workout.likeLastTime')}
+            onPress={() => {
+              haptic('tap');
+              if (lastSame.weight_kg !== null) setWeight(lastSame.weight_kg);
+              if (lastSame.reps !== null) setReps(lastSame.reps);
+              setRir(lastSame.rir);
+            }}
+          />
+        )}
+        <View style={styles.done}>
+          <Button title={t('workout.done')} onPress={save} />
+        </View>
+      </View>
+
+      <View style={styles.links}>
+        {exercise && exercise.equipment.length > 0 && sets.length === 0 && (
+          <Button
+            variant="secondary"
+            title={t('workout.busy')}
+            onPress={() =>
+              router.push({ pathname: '/workout/replace/[id]', params: { id: entry.exercise.id } })
+            }
+          />
+        )}
+        {sets.length > 0 && (
+          <Button
+            variant="secondary"
+            title={t('workout.undo')}
+            onPress={() => mutate((ctx) => removeLastSet(ctx, entry.exercise.id))}
+          />
+        )}
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    width: '100%',
+    maxWidth: MaxContentWidth,
+    alignSelf: 'center',
+  },
+  list: {
+    padding: Spacing.two,
+    gap: Spacing.one,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.two,
+    minHeight: 48,
+    paddingHorizontal: Spacing.two,
+    paddingVertical: Spacing.one,
+    borderRadius: Spacing.two,
+  },
+  rowText: {
+    flex: 1,
+  },
+  ending: {
+    gap: Spacing.two,
+    paddingTop: Spacing.three,
+  },
+  panel: {
+    gap: Spacing.two,
+    paddingHorizontal: Spacing.three,
+    paddingTop: Spacing.two,
+    borderTopWidth: StyleSheet.hairlineWidth,
+  },
+  entry: {
+    gap: Spacing.one,
+  },
+  name: {
+    fontSize: 20,
+    lineHeight: 26,
+    fontWeight: 600,
+  },
+  plan: {
+    fontSize: 32,
+    lineHeight: 40,
+    fontWeight: 700,
+  },
+  rir: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.two,
+    flexWrap: 'wrap',
+  },
+  buttons: {
+    flexDirection: 'row',
+    gap: Spacing.two,
+    marginTop: Spacing.one,
+  },
+  done: {
+    flex: 1,
+  },
+  links: {
+    flexDirection: 'row',
+    gap: Spacing.two,
+  },
+});

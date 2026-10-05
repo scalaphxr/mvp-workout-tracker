@@ -32,6 +32,7 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { createApp } from '../src/app';
 import type { LoginCodeMail } from '../src/mailer';
 import { MAX_ATTEMPTS_PER_MINUTE, MAX_FAILURES_PER_HOUR } from '../src/share';
+import { pullChanges } from '../src/sync';
 
 const ADMIN_TOKEN = 'test-admin-token-123';
 
@@ -260,7 +261,7 @@ describe('sync push', () => {
     const [storedItem] = await database.db.select().from(programItems);
     expect(storedItem).toMatchObject({ repMin: 8, repMax: 10, restSec: 120, targetRir: 1 });
     const [storedProfile] = await database.db.select().from(gymProfiles);
-    expect(storedProfile).toMatchObject({ userId: anna.id, locationType: 'gym', isDefault: true });
+    expect(storedProfile).toMatchObject({ ownerId: anna.id, locationType: 'gym', isDefault: true });
   });
 
   it('changes nothing when the same batch is pushed again', async () => {
@@ -674,5 +675,218 @@ describe('limits on entering codes', () => {
   it('needs a signed-in user', async () => {
     expect((await request(null, 'GET', '/v1/share-codes/KX7P2QMD')).status).toBe(401);
     expect((await request(null, 'POST', `/v1/programs/${uuidv7()}/share-codes`, {})).status).toBe(401);
+  });
+});
+
+describe('workouts in sync, and pull', () => {
+  type Pull = { changes: { table: string; row: { id: string } }[]; cursor: string; has_more: boolean };
+
+  const pull = async (user: User, cursor?: string) => {
+    const response = await request(user, 'GET', `/v1/sync/pull${cursor ? `?cursor=${cursor}` : ''}`);
+    expect(response.status).toBe(200);
+    return (await response.json()) as Pull;
+  };
+
+  /** A finished workout of the pushed program: one exercise, two sets, the plan for next time. */
+  function workout(root: ProgramRow, first: ProgramDayRow, row: ProgramItemRow) {
+    const session = {
+      id: uuidv7(),
+      ...stamps(),
+      program_id: root.id,
+      program_day_id: first.id,
+      cycle_number: 1,
+      status: 'finished',
+      started_at: now.toISOString(),
+      finished_at: now.toISOString(),
+      wellbeing: 4,
+      notes: '',
+    };
+    const exercise = {
+      id: uuidv7(),
+      ...stamps(),
+      session_id: session.id,
+      position: 0,
+      program_item_id: row.id,
+      exercise_id: row.exercise_id,
+      substituted_from_id: null,
+    };
+    const sets = [10, 9].map((reps, index) => ({
+      id: uuidv7(),
+      ...stamps(),
+      session_exercise_id: exercise.id,
+      set_number: index + 1,
+      is_warmup: false,
+      planned_weight_kg: 60,
+      planned_rep_min: 8,
+      planned_rep_max: 10,
+      weight_kg: 60,
+      reps,
+      rir: 1,
+      duration_sec: null,
+      distance_m: null,
+      speed_kmh: null,
+      incline_pct: null,
+      resistance_level: null,
+      avg_hr: null,
+      calories: null,
+      completed_at: now.toISOString(),
+    }));
+    const progression = {
+      id: row.id,
+      ...stamps(),
+      program_item_id: row.id,
+      next_weight_kg: 60,
+      next_target_reps: 10,
+      fail_streak: 0,
+      reason_code: 'same',
+      reason_params: { set_number: 2, target_reps: 10 },
+    };
+    const pointer = {
+      id: root.id,
+      ...stamps(),
+      program_id: root.id,
+      next_day_position: 0,
+      cycle_number: 2,
+      deload_cycle: null,
+    };
+    return {
+      session,
+      exercise,
+      sets,
+      progression,
+      pointer,
+      changes: [
+        upsert('program_state', pointer),
+        upsert('progression_state', progression),
+        upsert('sessions', session),
+        upsert('session_exercises', exercise),
+        ...sets.map((row) => upsert('set_logs', row)),
+      ],
+    };
+  }
+
+  it('stores a workout with its sets and the plan for the next one', async () => {
+    const { root, first, row } = await pushedProgram(anna);
+    const { changes, sets, progression } = workout(root, first, row);
+
+    const result = await push(anna, changes);
+    expect(result.rejected).toEqual([]);
+
+    const pulled = await pull(anna);
+    const logged = pulled.changes.filter((change) => change.table === 'set_logs');
+    expect(logged.map((change) => change.row)).toEqual(sets);
+    const plan = pulled.changes.find((change) => change.table === 'progression_state');
+    expect(plan?.row).toEqual(progression);
+  });
+
+  it('hands a device everything of the user in the order it changed, then only what is new', async () => {
+    const { root, first, row, pullUp } = await pushedProgram(anna);
+
+    const everything = await pull(anna);
+    expect(everything.changes.map((change) => change.row.id)).toEqual([
+      root.id,
+      first.id,
+      row.id,
+      pullUp.id,
+    ]);
+    expect(everything.has_more).toBe(false);
+    expect((await pull(anna, everything.cursor)).changes).toEqual([]);
+
+    advance(60_000);
+    await push(anna, [upsert('programs', { ...root, title: 'Renamed', updated_at: now.toISOString() })]);
+    const later = await pull(anna, everything.cursor);
+    expect(later.changes).toHaveLength(1);
+    expect(later.changes[0]).toMatchObject({ table: 'programs', row: { id: root.id, title: 'Renamed' } });
+    expect(Number(later.cursor)).toBeGreaterThan(Number(everything.cursor));
+  });
+
+  it('does not count a row sent back unchanged as a new change', async () => {
+    const { root, first } = await pushedProgram(anna);
+    const { cursor } = await pull(anna);
+
+    // A phone that has just pulled these rows queues and sends them again.
+    await push(anna, [upsert('programs', root), upsert('program_days', first)]);
+    expect((await pull(anna, cursor)).changes).toEqual([]);
+  });
+
+  it('includes deletions, as rows marked deleted', async () => {
+    const { row } = await pushedProgram(anna);
+    const { cursor } = await pull(anna);
+    advance(60_000);
+    await push(anna, [
+      { table: 'program_items', op: 'delete', id: row.id, updated_at: now.toISOString() },
+    ]);
+
+    const { changes } = await pull(anna, cursor);
+    expect(changes).toEqual([
+      { table: 'program_items', row: expect.objectContaining({ id: row.id, deleted_at: now.toISOString() }) },
+    ]);
+  });
+
+  it("never hands out another user's rows", async () => {
+    const { root, first, row } = await pushedProgram(anna);
+    await push(anna, workout(root, first, row).changes);
+
+    expect((await pull(boris)).changes).toEqual([]);
+  });
+
+  it('delivers a program taken by code to the other devices of the taker', async () => {
+    const { root } = await pushedProgram(anna);
+    const { code } = await createCode(anna, root.id);
+    const gym = await pushedGym(boris, ALL_EQUIPMENT);
+    const { cursor } = await pull(boris);
+
+    const adopted = (await (
+      await request(boris, 'POST', `/v1/share-codes/${code}/adopt`, { gym_profile_id: gym.id })
+    ).json()) as AdoptResponse;
+
+    const { changes } = await pull(boris, cursor);
+    expect(changes.map((change) => change.table).sort()).toEqual([
+      'program_days',
+      'program_items',
+      'program_items',
+      'programs',
+    ]);
+    expect(changes.find((change) => change.table === 'programs')?.row).toEqual(adopted.tree.program);
+  });
+
+  it("rejects sets logged into another user's workout, and sets of an unknown workout", async () => {
+    const { root, first, row } = await pushedProgram(anna);
+    const { exercise, sets, changes } = workout(root, first, row);
+    await push(anna, changes);
+
+    const intruder = { ...sets[0]!, id: uuidv7() };
+    const orphan = { ...sets[0]!, id: uuidv7(), session_exercise_id: uuidv7() };
+    const result = await push(boris, [upsert('set_logs', intruder), upsert('set_logs', orphan)]);
+
+    expect(result.rejected).toEqual([
+      { id: intruder.id, code: 'forbidden' },
+      { id: orphan.id, code: 'missing_parent' },
+    ]);
+    expect(exercise.session_id).toBeDefined();
+  });
+
+  it('pages through a long history without gaps or repeats', async () => {
+    const { root, first, row } = await pushedProgram(anna);
+    await push(anna, workout(root, first, row).changes);
+
+    const seen: string[] = [];
+    let cursor = 0;
+    for (let page = 0; page < 20; page++) {
+      const result = await pullChanges({ db: database.db }, anna.id, cursor, 3);
+      expect(result.changes.length).toBeLessThanOrEqual(3);
+      // The plan of an item and the pointer of a program share the id of what they describe.
+      seen.push(...result.changes.map((change) => `${change.table}:${change.row.id}`));
+      cursor = Number(result.cursor);
+      if (!result.has_more) break;
+    }
+    // The program (4 rows) and the workout (6 rows).
+    expect(seen).toHaveLength(10);
+    expect(new Set(seen).size).toBe(10);
+  });
+
+  it('needs a signed-in user and a well-formed cursor', async () => {
+    expect((await request(null, 'GET', '/v1/sync/pull')).status).toBe(401);
+    expect((await request(anna, 'GET', '/v1/sync/pull?cursor=abc')).status).toBe(400);
   });
 });

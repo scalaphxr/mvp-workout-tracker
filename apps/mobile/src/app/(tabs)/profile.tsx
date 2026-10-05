@@ -13,6 +13,10 @@ import { useTheme } from '@/hooks/use-theme';
 import { getLanguagePreference, type LanguagePreference, setLanguagePreference } from '@/i18n';
 import { api, ApiRequestError } from '@/lib/api';
 import { useAuthStore } from '@/lib/auth-store';
+import { pendingCount } from '@/data/sync';
+import { useLocale } from '@/hooks/use-locale';
+import { useLocal } from '@/lib/local';
+import { syncNow, useSync } from '@/lib/sync';
 
 const LANGUAGES = [
   { value: 'system', label: 'profile.languageSystem' },
@@ -42,10 +46,64 @@ export default function ProfileScreen() {
       </Card>
 
       <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
+        {t('sync.title')}
+      </ThemedText>
+      <SyncInfo />
+
+      <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
         {t('profile.language')}
       </ThemedText>
       <LanguagePicker />
     </ScrollView>
+  );
+}
+
+/** Where the user's data stands: what is on the server and what is still waiting to go. */
+function SyncInfo() {
+  const { t } = useTranslation();
+  const locale = useLocale();
+  const signedIn = useAuthStore((state) => state.session !== null);
+  const { status, syncedAt } = useSync();
+  const pending = useLocal(pendingCount);
+
+  const state = !signedIn
+    ? t('sync.guest')
+    : status === 'syncing'
+      ? t('sync.syncing')
+      : status === 'failed'
+        ? t('sync.failed')
+        : status === 'other_account'
+          ? t('sync.otherAccount')
+          : syncedAt
+            ? t('sync.syncedAt', {
+                time: new Intl.DateTimeFormat(locale, {
+                  dateStyle: 'medium',
+                  timeStyle: 'short',
+                }).format(new Date(syncedAt)),
+              })
+            : t('sync.never');
+
+  return (
+    <ThemedView type="backgroundElement" style={styles.card}>
+      <View>
+        <ThemedText type="small" themeColor={status === 'failed' ? 'danger' : 'text'}>
+          {state}
+        </ThemedText>
+        {pending > 0 && (
+          <ThemedText type="small" themeColor="textSecondary">
+            {t('sync.pending', { count: pending })}
+          </ThemedText>
+        )}
+      </View>
+      {signedIn && status !== 'other_account' && (
+        <Button
+          variant="secondary"
+          title={t('sync.now')}
+          loading={status === 'syncing'}
+          onPress={() => void syncNow()}
+        />
+      )}
+    </ThemedView>
   );
 }
 

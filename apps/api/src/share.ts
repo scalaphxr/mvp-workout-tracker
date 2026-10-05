@@ -25,6 +25,7 @@ import { and, asc, desc, eq, gt, inArray, isNull, or, sql } from '@mvp/db';
 import { v7 as uuidv7 } from 'uuid';
 
 import { ApiError, rateLimited } from './errors';
+import { toColumns, toWire } from './sync';
 
 export const MAX_ATTEMPTS_PER_MINUTE = 10;
 export const MAX_FAILURES_PER_HOUR = 30;
@@ -59,49 +60,6 @@ const toShareCode = (row: typeof programShares.$inferSelect): ShareCode => ({
   expires_at: iso(row.expiresAt),
   created_at: row.createdAt.toISOString(),
   uses_count: row.usesCount,
-});
-
-const toProgramRow = (row: typeof programs.$inferSelect): ProgramRow => ({
-  id: row.id,
-  created_at: row.createdAt.toISOString(),
-  updated_at: row.updatedAt.toISOString(),
-  deleted_at: iso(row.deletedAt),
-  title: row.title,
-  description: row.description,
-  goal: row.goal,
-  level: row.level,
-  days_per_week: row.daysPerWeek,
-  visibility: row.visibility,
-  forked_from_id: row.forkedFromId,
-});
-
-const toDayRow = (row: typeof programDays.$inferSelect): ProgramDayRow => ({
-  id: row.id,
-  created_at: row.createdAt.toISOString(),
-  updated_at: row.updatedAt.toISOString(),
-  deleted_at: iso(row.deletedAt),
-  program_id: row.programId,
-  position: row.position,
-  title: row.title,
-  kind: row.kind,
-});
-
-const toItemRow = (row: typeof programItems.$inferSelect): ProgramItemRow => ({
-  id: row.id,
-  created_at: row.createdAt.toISOString(),
-  updated_at: row.updatedAt.toISOString(),
-  deleted_at: iso(row.deletedAt),
-  program_day_id: row.programDayId,
-  position: row.position,
-  exercise_id: row.exerciseId,
-  sets: row.sets,
-  rep_min: row.repMin,
-  rep_max: row.repMax,
-  rest_sec: row.restSec,
-  target_rir: row.targetRir,
-  superset_group: row.supersetGroup,
-  increment_kg: row.incrementKg,
-  notes: row.notes,
 });
 
 export function createShareService(deps: ShareDeps) {
@@ -143,9 +101,9 @@ export function createShareService(deps: ShareDeps) {
             .orderBy(asc(programItems.position));
 
     return {
-      program: toProgramRow(program),
-      days: days.map(toDayRow),
-      items: items.map(toItemRow),
+      program: toWire('programs', program),
+      days: days.map((day) => toWire('program_days', day)),
+      items: items.map((item) => toWire('program_items', item)),
     };
   }
 
@@ -289,7 +247,7 @@ export function createShareService(deps: ShareDeps) {
         .where(
           and(
             eq(gymProfiles.id, gymProfileId),
-            eq(gymProfiles.userId, caller.userId),
+            eq(gymProfiles.ownerId, caller.userId),
             isNull(gymProfiles.deletedAt),
           ),
         );
@@ -339,51 +297,30 @@ export function createShareService(deps: ShareDeps) {
         item.increment_kg = null;
       }
 
-      const at = new Date(now);
-      const stamps = { createdAt: at, updatedAt: at };
+      // The copy is new on the server, so the taker's other devices get it through sync pull.
       await db.transaction(async (tx) => {
-        await tx.insert(programs).values({
-          id: copy.id,
-          ...stamps,
-          ownerId: caller.userId,
-          title: copy.title,
-          description: copy.description,
-          goal: copy.goal,
-          level: copy.level,
-          daysPerWeek: copy.days_per_week,
-          visibility: copy.visibility,
-          forkedFromId: copy.forked_from_id,
-        });
+        await tx
+          .insert(programs)
+          .values(toColumns('programs', copy, caller.userId) as typeof programs.$inferInsert);
         if (days.length > 0) {
-          await tx.insert(programDays).values(
-            days.map((day) => ({
-              id: day.id,
-              ...stamps,
-              programId: day.program_id,
-              position: day.position,
-              title: day.title,
-              kind: day.kind,
-            })),
-          );
+          await tx
+            .insert(programDays)
+            .values(
+              days.map(
+                (day) =>
+                  toColumns('program_days', day, caller.userId) as typeof programDays.$inferInsert,
+              ),
+            );
         }
         if (items.length > 0) {
-          await tx.insert(programItems).values(
-            items.map((item) => ({
-              id: item.id,
-              ...stamps,
-              programDayId: item.program_day_id,
-              position: item.position,
-              exerciseId: item.exercise_id,
-              sets: item.sets,
-              repMin: item.rep_min,
-              repMax: item.rep_max,
-              restSec: item.rest_sec,
-              targetRir: item.target_rir,
-              supersetGroup: item.superset_group,
-              incrementKg: item.increment_kg,
-              notes: item.notes,
-            })),
-          );
+          await tx
+            .insert(programItems)
+            .values(
+              items.map(
+                (item) =>
+                  toColumns('program_items', item, caller.userId) as typeof programItems.$inferInsert,
+              ),
+            );
         }
         await tx
           .update(programShares)
