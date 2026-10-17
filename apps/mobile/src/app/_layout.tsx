@@ -118,6 +118,9 @@ export default function RootLayout() {
           <Stack.Screen name="report" options={{ title: t('report.title') }} />
           <Stack.Screen name="questionnaire" options={{ title: t('questionnaire.title') }} />
           <Stack.Screen name="import-text" options={{ title: t('importText.title') }} />
+          <Stack.Screen name="interval/index" options={{ title: t('interval.title') }} />
+          <Stack.Screen name="interval/preset" options={{ title: '' }} />
+          <Stack.Screen name="interval/run" options={{ title: t('interval.title'), ...darkHeader }} />
         </Stack>
         <StatusBar style="auto" />
       </ThemeProvider>

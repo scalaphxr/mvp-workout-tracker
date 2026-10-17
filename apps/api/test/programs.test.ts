@@ -925,6 +925,33 @@ describe('body weight and generation', () => {
     ]);
   });
 
+  it('syncs an interval preset of the user and keeps it from other users', async () => {
+    const preset = {
+      id: uuidv7(),
+      ...stamps(),
+      title: 'Hill sprints',
+      work_sec: 30,
+      rest_sec: 90,
+      rounds: 6,
+      cycles: 1,
+      cycle_rest_sec: 0,
+    };
+    expect((await push(anna, [upsert('interval_presets', preset)])).rejected).toEqual([]);
+    expect((await push(anna, [upsert('interval_presets', { ...preset, rounds: 0 })])).rejected).toEqual([
+      { id: preset.id, code: 'validation_error' },
+    ]);
+
+    const response = await request(anna, 'GET', '/v1/sync/pull');
+    const { changes } = (await response.json()) as { changes: { table: string; row: unknown }[] };
+    expect(changes).toEqual([{ table: 'interval_presets', row: preset }]);
+
+    advance(1000);
+    const stolen = { ...preset, title: 'Mine now', updated_at: now.toISOString() };
+    expect((await push(boris, [upsert('interval_presets', stolen)])).rejected).toEqual([
+      { id: preset.id, code: 'forbidden' },
+    ]);
+  });
+
   it('drafts a program from the questionnaire for the equipment of a gym, saving nothing', async () => {
     const answers = { goal: 'mass', level: 'beginner', frequency: 3, duration_min: 60, split: 'auto' };
     const response = await request(anna, 'POST', '/v1/programs/generate', {
@@ -952,5 +979,64 @@ describe('body weight and generation', () => {
     });
     expect(response.status).toBe(400);
     expect(await errorCode(response)).toBe('validation_error');
+  });
+});
+
+describe('account deletion', () => {
+  it('deletes the user with everything the user owns, and nothing of anyone else', async () => {
+    const { root } = await pushedProgram(anna);
+    await pushedGym(anna, ALL_EQUIPMENT);
+    const weight = { id: uuidv7(), ...stamps(), date: '2026-10-04', weight_kg: 80, measured_at: now.toISOString() };
+    expect((await push(anna, [upsert('body_logs', weight)])).rejected).toEqual([]);
+    const { code } = await createCode(anna, root.id);
+    const borisGym = await pushedGym(boris, ALL_EQUIPMENT);
+    const adopted = await request(boris, 'POST', `/v1/share-codes/${code}/adopt`, {
+      gym_profile_id: borisGym.id,
+    });
+    expect(adopted.status).toBe(200);
+
+    const response = await request(anna, 'DELETE', '/v1/me');
+    expect(response.status).toBe(204);
+
+    expect(await database.db.select().from(users).where(eq(users.id, anna.id))).toEqual([]);
+    for (const table of [programs, programDays, programItems, gymProfiles]) {
+      expect(await database.db.select().from(table).where(eq(table.ownerId, anna.id))).toEqual([]);
+    }
+    expect(await pullChanges({ db: database.db }, anna.id, 0)).toMatchObject({ changes: [] });
+    expect(await database.db.select().from(programShares)).toEqual([]);
+    expect(
+      await database.db.select().from(emailCodes).where(eq(emailCodes.email, 'anna@example.com')),
+    ).toEqual([]);
+
+    // The copy Boris took is his: it stays, and so does his account.
+    const left = await database.db.select().from(programs).where(eq(programs.ownerId, boris.id));
+    expect(left).toHaveLength(1);
+    expect((await request(boris, 'GET', '/v1/me')).status).toBe(200);
+  });
+
+  it('ends the sessions: the profile is gone and a second delete is refused', async () => {
+    expect((await request(anna, 'DELETE', '/v1/me')).status).toBe(204);
+
+    const me = await request(anna, 'GET', '/v1/me');
+    expect(me.status).toBe(401);
+    const again = await request(anna, 'DELETE', '/v1/me');
+    expect(again.status).toBe(401);
+    expect(await errorCode(again)).toBe('unauthorized');
+  });
+
+  it('signing in with the same email afterwards starts a new, empty account', async () => {
+    const { root } = await pushedProgram(anna);
+    expect((await request(anna, 'DELETE', '/v1/me')).status).toBe(204);
+
+    advance(2 * 60 * 1000);
+    const again = await signIn('anna@example.com');
+    expect(again.id).not.toBe(anna.id);
+    const pulled = await request(again, 'GET', '/v1/sync/pull');
+    expect(((await pulled.json()) as { changes: unknown[] }).changes).toEqual([]);
+    expect(await database.db.select().from(programs).where(eq(programs.id, root.id))).toEqual([]);
+  });
+
+  it('needs a signed-in user', async () => {
+    expect((await request(null, 'DELETE', '/v1/me')).status).toBe(401);
   });
 });

@@ -441,6 +441,21 @@ export const bodyLogs = pgTable(
   (t) => [index('body_logs_sync_idx').on(t.ownerId, t.syncSeq)],
 );
 
+/** The user's own presets of the interval timer. */
+export const intervalPresets = pgTable(
+  'interval_presets',
+  {
+    ...synced('user_id'),
+    title: text('title').notNull(),
+    workSec: integer('work_sec').notNull(),
+    restSec: integer('rest_sec').notNull(),
+    rounds: integer('rounds').notNull(),
+    cycles: integer('cycles').notNull(),
+    cycleRestSec: integer('cycle_rest_sec').notNull(),
+  },
+  (t) => [index('interval_presets_sync_idx').on(t.ownerId, t.syncSeq)],
+);
+
 /** Codes a program is shared by. The code is stored without the dash. */
 export const programShares = pgTable(
   'program_shares',

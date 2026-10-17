@@ -230,6 +230,19 @@ export async function logout(deps: AuthDeps, refreshToken: string): Promise<void
     .where(and(eq(refreshTokens.tokenHash, sha256(refreshToken)), isNull(refreshTokens.revokedAt)));
 }
 
+/**
+ * Deletes the account for good, not softly: the user, everything the user owns (every table
+ * of user data references the user with a cascade), sessions and login codes of the email.
+ * Copies of the user's programs that others took by code are theirs and stay.
+ */
+export async function deleteAccount(deps: AuthDeps, userId: string): Promise<void> {
+  await deps.db.transaction(async (tx) => {
+    const [user] = await tx.delete(users).where(eq(users.id, userId)).returning();
+    if (!user) throw new ApiError(401, 'unauthorized', 'The account no longer exists');
+    if (user.email) await tx.delete(emailCodes).where(eq(emailCodes.email, user.email));
+  });
+}
+
 /** Returns the user id from a valid access token. */
 export async function verifyAccessToken(deps: AuthDeps, token: string): Promise<string> {
   try {

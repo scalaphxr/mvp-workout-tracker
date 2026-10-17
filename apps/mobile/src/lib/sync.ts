@@ -1,11 +1,14 @@
 import { create } from 'zustand';
 
-import { getSyncState, pendingCount, runSync, setSyncState } from '@/data/sync';
+import { getSyncState, pendingCount, runSync, setSyncState, wipeLocalData } from '@/data/sync';
+import i18n from '@/i18n';
 
 import { api } from './api';
 import { useAuthStore } from './auth-store';
+import { useCatalog } from './catalog';
 import { data } from './db';
-import { mutate } from './local';
+import { ensureDefaultGym } from './gym';
+import { mutate, useActiveProgram } from './local';
 import { settingsStorage } from './storage';
 
 const DEVICE_ID_KEY = 'device.id';
@@ -89,6 +92,32 @@ async function sync(): Promise<void> {
     useSync.setState({ status: 'failed' });
     throw error;
   }
+}
+
+/**
+ * Deletes the account on the server, then everything of it on this phone: the app starts over
+ * as on the first launch. Nothing is touched on the phone unless the server has done its part,
+ * and data on the phone that belongs to another account stays.
+ */
+export async function deleteAccount(): Promise<void> {
+  const session = useAuthStore.getState().session;
+  if (!session) return;
+  // A sync on its way would push rows after the account is gone or pull them back in.
+  await running?.catch(() => {});
+  await api.deleteAccount();
+
+  // Data of another account on this phone (see `other_account`) is not this account's to delete.
+  const owner = getSyncState(data(), ACCOUNT_KEY);
+  if (owner === null || owner === accountOf(session.accessToken)) {
+    mutate((ctx) => {
+      wipeLocalData(ctx);
+      ensureDefaultGym(ctx, useCatalog.getState().catalog, i18n.t('gym.defaultName'));
+    });
+    useActiveProgram.getState().set(null);
+    useSync.setState({ syncedAt: null });
+  }
+  useSync.setState({ status: 'idle' });
+  useAuthStore.getState().clearSession();
 }
 
 /** What the profile shows about sync, read once the database is open. */

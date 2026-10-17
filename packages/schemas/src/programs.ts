@@ -4,6 +4,8 @@ import { LevelSchema } from './catalog';
 import {
   type BodyLogRow,
   BodyLogRowSchema,
+  type IntervalPresetRow,
+  IntervalPresetRowSchema,
   type ProgramStateRow,
   ProgramStateRowSchema,
   type ProgressionStateRow,
@@ -133,6 +135,7 @@ export const SYNC_TABLES = [
   'session_exercises',
   'set_logs',
   'body_logs',
+  'interval_presets',
 ] as const;
 export type SyncTable = (typeof SYNC_TABLES)[number];
 
@@ -148,6 +151,7 @@ export interface SyncRows {
   session_exercises: SessionExerciseRow;
   set_logs: SetLogRow;
   body_logs: BodyLogRow;
+  interval_presets: IntervalPresetRow;
 }
 
 export const SYNC_ROW_SCHEMAS = {
@@ -162,6 +166,7 @@ export const SYNC_ROW_SCHEMAS = {
   session_exercises: SessionExerciseRowSchema,
   set_logs: SetLogRowSchema,
   body_logs: BodyLogRowSchema,
+  interval_presets: IntervalPresetRowSchema,
 } satisfies { [T in SyncTable]: z.ZodType<SyncRows[T]> };
 
 /**

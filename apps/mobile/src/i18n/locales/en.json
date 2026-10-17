@@ -489,7 +489,11 @@
     "language": "Language",
     "languageSystem": "System",
     "languageRu": "Русский",
-    "languageEn": "English"
+    "languageEn": "English",
+    "deleteTitle": "Delete account",
+    "deleteText": "The account and all its data – programs, workouts, weight – will be deleted from the server and from this phone. This cannot be undone.",
+    "delete": "Delete account",
+    "deleteFailed": "Could not delete the account. Check the connection and try again."
   },
   "signIn": {
     "title": "Sign in",
@@ -516,5 +520,62 @@
     "unknown": "Something went wrong. Try again.",
     "databaseTitle": "The app could not open its data",
     "databaseText": "Restart the app. If that does not help, free up some storage on the phone."
+  },
+  "interval": {
+    "title": "Interval timer",
+    "todayHint": "Tabata, EMOM, HIIT and your own presets",
+    "builtIn": "Ready-made",
+    "mine": "My presets",
+    "mineEmpty": "Make a preset of your own: work, rest, rounds and cycles.",
+    "create": "New preset",
+    "edit": "Edit preset {{title}}",
+    "presets": {
+      "tabata": "Tabata",
+      "emom": "EMOM",
+      "hiit": "HIIT",
+      "circuit": "Circuit"
+    },
+    "plan": "{{work}} / {{rest}} × {{rounds}}",
+    "planNoRest": "{{work}} × {{rounds}}",
+    "cycles_one": "{{count}} cycle",
+    "cycles_other": "{{count}} cycles",
+    "total": "{{time}} in all",
+    "phase": {
+      "prepare": "Get ready",
+      "work": "Work",
+      "rest": "Rest",
+      "cycle_rest": "Rest between cycles"
+    },
+    "round": "Round {{round}} of {{rounds}}",
+    "cycle": "cycle {{cycle}} of {{cycles}}",
+    "next": "Next: {{phase}}, {{time}}",
+    "pause": "Pause",
+    "resume": "Resume",
+    "stop": "Stop",
+    "paused": "Paused",
+    "doneTitle": "Done!",
+    "doneText": "The interval workout is over.",
+    "again": "Once more",
+    "close": "Close",
+    "running": "The interval timer is running",
+    "toTimer": "To the timer",
+    "channel": "Interval timer",
+    "left": "{{phase}}: {{time}} left",
+    "notFoundTitle": "Preset not found",
+    "notFoundText": "It may have been deleted on another device.",
+    "form": {
+      "title": "Name",
+      "titlePlaceholder": "For example, hill sprints",
+      "work": "Work",
+      "rest": "Rest",
+      "rounds": "Rounds",
+      "cycles": "Cycles",
+      "cycleRest": "Rest between cycles",
+      "total": "In all: {{time}}",
+      "save": "Save",
+      "delete": "Delete preset",
+      "newTitle": "New preset",
+      "editTitle": "Preset"
+    }
   }
 }

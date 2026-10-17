@@ -7,7 +7,7 @@ import { ActivityIndicator, Pressable, ScrollView, StyleSheet, View } from 'reac
 import { Button } from '@/components/button';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Card, LinkRow } from '@/components/ui';
+import { Card, ConfirmButton, LinkRow } from '@/components/ui';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 import { getLanguagePreference, type LanguagePreference, setLanguagePreference } from '@/i18n';
@@ -16,7 +16,7 @@ import { useAuthStore } from '@/lib/auth-store';
 import { pendingCount } from '@/data/sync';
 import { useLocale } from '@/hooks/use-locale';
 import { useLocal } from '@/lib/local';
-import { syncNow, useSync } from '@/lib/sync';
+import { deleteAccount, syncNow, useSync } from '@/lib/sync';
 
 const LANGUAGES = [
   { value: 'system', label: 'profile.languageSystem' },
@@ -54,6 +54,8 @@ export default function ProfileScreen() {
         {t('profile.language')}
       </ThemedText>
       <LanguagePicker />
+
+      <DeleteAccount />
     </ScrollView>
   );
 }
@@ -160,6 +162,50 @@ function Account() {
       )}
       <Button variant="secondary" title={t('profile.signOut')} onPress={signOut} />
     </ThemedView>
+  );
+}
+
+/** Deleting the account is final, so it is the last thing on the screen and asks once more. */
+function DeleteAccount() {
+  const { t } = useTranslation();
+  const queryClient = useQueryClient();
+  const signedIn = useAuthStore((state) => state.session !== null);
+  const [state, setState] = useState<'idle' | 'deleting' | 'failed'>('idle');
+
+  if (!signedIn) return null;
+
+  const remove = async () => {
+    setState('deleting');
+    try {
+      await deleteAccount();
+      queryClient.removeQueries({ queryKey: ['me'] });
+      setState('idle');
+    } catch {
+      setState('failed');
+    }
+  };
+
+  return (
+    <>
+      <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
+        {t('profile.deleteTitle')}
+      </ThemedText>
+      <ThemedView type="backgroundElement" style={styles.card}>
+        <ThemedText type="small" themeColor="textSecondary">
+          {t('profile.deleteText')}
+        </ThemedText>
+        {state === 'failed' && (
+          <ThemedText type="small" themeColor="danger">
+            {t('profile.deleteFailed')}
+          </ThemedText>
+        )}
+        {state === 'deleting' ? (
+          <ActivityIndicator />
+        ) : (
+          <ConfirmButton title={t('profile.delete')} onConfirm={() => void remove()} />
+        )}
+      </ThemedView>
+    </>
   );
 }
 

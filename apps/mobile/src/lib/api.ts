@@ -140,6 +140,9 @@ export const api = {
 
   me: () => authedRequest('/v1/me', { schema: MeResponseSchema }),
 
+  /** Deletes the account and all its data on the server, for good. */
+  deleteAccount: () => authedRequest('/v1/me', { method: 'DELETE', schema: null }),
+
   catalogVersion: () => request('/v1/catalog/version', { schema: CatalogVersionResponseSchema }),
 
   /** `since` – the version the phone already has. */

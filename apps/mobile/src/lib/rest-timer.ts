@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import { cancelRestEnd, scheduleRestEnd } from './feedback';
+import { cancelAlert, scheduleRestEnd } from './feedback';
 
 interface RestText {
   title: string;
@@ -27,12 +27,12 @@ interface RestTimer {
 export const useRestTimer = create<RestTimer>((set, get) => {
   /** Moves the notification to the new end of the rest. */
   const reschedule = (endsAt: number, text: RestText) => {
-    cancelRestEnd(get().notification);
+    cancelAlert(get().notification);
     set({ endsAt, text, notification: null });
     void scheduleRestEnd(Math.round((endsAt - Date.now()) / 1000), text).then((notification) => {
       // The rest may have been changed or stopped while the notification was being scheduled.
       if (get().endsAt === endsAt) set({ notification });
-      else cancelRestEnd(notification);
+      else cancelAlert(notification);
     });
   };
 
@@ -51,7 +51,7 @@ export const useRestTimer = create<RestTimer>((set, get) => {
       else reschedule(next, text);
     },
     stop() {
-      cancelRestEnd(get().notification);
+      cancelAlert(get().notification);
       set({ endsAt: null, notification: null, text: null });
     },
   };

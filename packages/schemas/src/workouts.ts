@@ -123,3 +123,30 @@ export const BodyLogRowSchema = z.object({
   measured_at: z.iso.datetime(),
 });
 export type BodyLogRow = z.infer<typeof BodyLogRowSchema>;
+
+/** The limits of an interval timer preset: what the steppers of its form allow. */
+export const INTERVAL_LIMITS = {
+  work_sec: { min: 5, max: 3600 },
+  rest_sec: { min: 0, max: 3600 },
+  rounds: { min: 1, max: 99 },
+  cycles: { min: 1, max: 20 },
+  cycle_rest_sec: { min: 0, max: 3600 },
+} as const;
+
+const limited = ({ min, max }: { min: number; max: number }) => z.number().int().min(min).max(max);
+
+/**
+ * A preset of the user's own for the interval timer: work and rest make a round, rounds
+ * make a cycle, cycles are parted by a longer rest. Built-in presets (Tabata, EMOM) are
+ * part of the app, not rows.
+ */
+export const IntervalPresetRowSchema = z.object({
+  ...syncFields,
+  title: z.string().trim().min(1).max(80),
+  work_sec: limited(INTERVAL_LIMITS.work_sec),
+  rest_sec: limited(INTERVAL_LIMITS.rest_sec),
+  rounds: limited(INTERVAL_LIMITS.rounds),
+  cycles: limited(INTERVAL_LIMITS.cycles),
+  cycle_rest_sec: limited(INTERVAL_LIMITS.cycle_rest_sec),
+});
+export type IntervalPresetRow = z.infer<typeof IntervalPresetRowSchema>;

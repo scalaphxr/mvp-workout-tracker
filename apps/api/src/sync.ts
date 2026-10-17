@@ -9,6 +9,7 @@ import {
   gt,
   gymEquipment,
   gymProfiles,
+  intervalPresets,
   type PgColumn,
   type PgTable,
   programDays,
@@ -297,6 +298,25 @@ const HANDLERS: { [T in SyncTable]: Handler<T> } = {
       date: as(row.date),
       weight_kg: as(row.weightKg),
       measured_at: as(iso(row.measuredAt)),
+    }),
+  },
+  interval_presets: {
+    table: intervalPresets,
+    toDb: (row) => ({
+      title: row.title,
+      workSec: row.work_sec,
+      restSec: row.rest_sec,
+      rounds: row.rounds,
+      cycles: row.cycles,
+      cycleRestSec: row.cycle_rest_sec,
+    }),
+    fromDb: (row) => ({
+      title: as(row.title),
+      work_sec: as(row.workSec),
+      rest_sec: as(row.restSec),
+      rounds: as(row.rounds),
+      cycles: as(row.cycles),
+      cycle_rest_sec: as(row.cycleRestSec),
     }),
   },
 };

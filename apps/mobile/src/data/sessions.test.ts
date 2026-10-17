@@ -7,6 +7,12 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { deleteWeight, listWeights, setWeight } from './body';
 import type { DataContext } from './context';
 import {
+  deleteIntervalPreset,
+  getIntervalPreset,
+  listIntervalPresets,
+  saveIntervalPreset,
+} from './intervals';
+import {
   exerciseProgress,
   exercisesWithProgress,
   getWorkout,
@@ -19,6 +25,7 @@ import {
   createProgram,
   createProgramFromDraft,
   getProgramTree,
+  listPrograms,
   updateItem,
 } from './programs';
 import {
@@ -39,7 +46,15 @@ import {
   startSession,
   substituteExercise,
 } from './sessions';
-import { applyPulled, getSyncState, markPushed, pendingChanges, pendingCount } from './sync';
+import {
+  applyPulled,
+  getSyncState,
+  markPushed,
+  pendingChanges,
+  pendingCount,
+  setSyncState,
+  wipeLocalData,
+} from './sync';
 
 let ctx: DataContext;
 let clock: number;
@@ -465,6 +480,55 @@ describe('the queue of unsent rows', () => {
       { table_name: 'program_items', row_id: bench.id },
     ]);
     expect(getSyncState(ctx, 'applying')).toBeNull();
+  });
+});
+
+describe('interval presets', () => {
+  const plan = { title: 'Sprints', work_sec: 30, rest_sec: 90, rounds: 6, cycles: 1, cycle_rest_sec: 0 };
+
+  it('are saved, changed and deleted softly, each change queued for the server', () => {
+    const created = saveIntervalPreset(ctx, plan);
+    expect(listIntervalPresets(ctx)).toEqual([created]);
+
+    saveIntervalPreset(ctx, { ...plan, rounds: 8 }, created.id);
+    expect(getIntervalPreset(ctx, created.id)).toMatchObject({ rounds: 8, created_at: created.created_at });
+    expect(pendingChanges(ctx).changes).toMatchObject([
+      { table: 'interval_presets', row: { id: created.id, rounds: 8 } },
+    ]);
+
+    deleteIntervalPreset(ctx, created.id);
+    expect(listIntervalPresets(ctx)).toEqual([]);
+    expect(pendingChanges(ctx).changes).toMatchObject([
+      { table: 'interval_presets', row: { id: created.id, deleted_at: expect.any(String) } },
+    ]);
+  });
+
+  it('refuse values out of the limits', () => {
+    expect(() => saveIntervalPreset(ctx, { ...plan, work_sec: 0 })).toThrow();
+    expect(() => saveIntervalPreset(ctx, { ...plan, title: ' ' })).toThrow();
+    expect(listIntervalPresets(ctx)).toEqual([]);
+  });
+});
+
+describe('after the account is deleted', () => {
+  it('the phone forgets every row, the queue and whose data it was', () => {
+    const { id: programId, day1 } = program();
+    workout(programId, day1.id, { [BENCH]: [80, [12, 12, 12]] });
+    setWeight(ctx, '2026-10-04', 84.6);
+    saveIntervalPreset(ctx, { title: 'Mine', work_sec: 30, rest_sec: 30, rounds: 5, cycles: 1, cycle_rest_sec: 0 });
+    setSyncState(ctx, 'account_id', id(99));
+    setSyncState(ctx, 'pull_cursor', '42');
+
+    wipeLocalData(ctx);
+
+    expect(listPrograms(ctx)).toEqual([]);
+    expect(lastFinishedSession(ctx)).toBeNull();
+    expect(ctx.db.select().from(set_logs).all()).toEqual([]);
+    expect(listWeights(ctx)).toEqual([]);
+    expect(listIntervalPresets(ctx)).toEqual([]);
+    expect(pendingCount(ctx)).toBe(0);
+    expect(getSyncState(ctx, 'account_id')).toBeNull();
+    expect(getSyncState(ctx, 'pull_cursor')).toBeNull();
   });
 });
 

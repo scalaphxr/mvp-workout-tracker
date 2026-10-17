@@ -29,6 +29,13 @@
       "when": 1791180209502,
       "tag": "0003_body_logs",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1792261814014,
+      "tag": "0004_interval_presets",
+      "breakpoints": true
     }
   ]
 }

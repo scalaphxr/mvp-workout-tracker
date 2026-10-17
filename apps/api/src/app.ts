@@ -37,6 +37,7 @@ import { cors } from 'hono/cors';
 
 import {
   type AuthDeps,
+  deleteAccount,
   logout,
   refreshSession,
   startEmailLogin,
@@ -167,6 +168,11 @@ export function createApp(deps: AppDeps) {
     const [user] = await deps.db.select().from(users).where(eq(users.id, c.get('userId')));
     if (!user) throw new ApiError(401, 'unauthorized', 'The account no longer exists');
     return c.json<MeResponse>({ user: toUserDto(user) });
+  });
+
+  app.delete('/v1/me', async (c) => {
+    await deleteAccount(deps, c.get('userId'));
+    return c.body(null, 204);
   });
 
   app.get('/v1/catalog/version', async (c) =>

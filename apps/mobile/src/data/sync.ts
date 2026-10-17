@@ -176,3 +176,15 @@ export async function runSync(
   }
   return { pushed, pulled };
 }
+/**
+ * Forgets all of the user's data on this phone, the queue and the sync state with it: after
+ * the account is deleted the phone starts over as on the first launch, a guest with no data.
+ */
+export function wipeLocalData(ctx: DataContext): void {
+  ctx.db.transaction((tx) => {
+    // Children before parents: rows reference the rows they hang on.
+    for (const table of [...SYNC_TABLES].reverse()) tx.delete(tableOf(table)).run();
+    tx.delete(outbox).run();
+    tx.delete(sync_state).run();
+  });
+}

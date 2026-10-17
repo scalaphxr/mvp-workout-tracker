@@ -101,6 +101,14 @@ export default function TodayScreen() {
 
       <WeightCard />
 
+      <ThemedView type="backgroundElement" style={styles.row}>
+        <LinkRow
+          title={t('interval.title')}
+          subtitle={t('interval.todayHint')}
+          onPress={() => router.push('/interval')}
+        />
+      </ThemedView>
+
       {last && (
         <Group title={t('today.last')}>
           <ThemedView type="backgroundElement" style={styles.row}>
