@@ -1,10 +1,11 @@
 import { shiftDate, type WeightEntry, weightStats } from '@mvp/domain';
+import type { ActivityLogRow } from '@mvp/schemas';
 import type { TFunction } from 'i18next';
 
 import type { WorkoutRecord } from '@/data/history';
 import type { SummaryExercise } from '@/data/sessions';
 
-import { formatDuration, formatNumber, toLocalDate } from './format';
+import { formatActivity, formatCardio, formatDuration, formatNumber, toLocalDate } from './format';
 
 interface ReportContext {
   t: TFunction;
@@ -24,11 +25,16 @@ const shortDate = (locale: string, date: Date | string, year = true) =>
     ...(year && { year: 'numeric' }),
   }).format(typeof date === 'string' ? new Date(date) : date);
 
-/** What was done in an exercise: "80 кг: 12, 12, 11", "12, 10" or "60 с, 45 с". */
+/**
+ * What was done in an exercise: "80 кг: 12, 12, 11", "12, 10", "60 с, 45 с" or, for cardio,
+ * "25 мин, 4,2 км, пульс 145".
+ */
 function done(ctx: ReportContext, { sets }: SummaryExercise, colon: boolean): string {
   const lifted = sets.filter((set) => set.reps !== null);
   if (lifted.length === 0) {
-    return sets.map((set) => formatDuration(ctx.t, set.duration_sec ?? 0)).join(', ');
+    const parts = sets.map((set) => formatCardio(ctx.t, ctx.locale, set));
+    // Sets that say more than their time are parted more clearly than "60 с, 45 с".
+    return parts.join(parts.some((part) => part.includes(',')) ? '; ' : ', ');
   }
   // No weight and a weight of zero are the same thing here: the body's own weight.
   const weightOf = (set: (typeof lifted)[number]) => set.weight_kg || null;
@@ -90,15 +96,18 @@ function exerciseLines(ctx: ReportContext, workout: WorkoutRecord): string[] {
   return lines;
 }
 
-const totals = (ctx: ReportContext, workouts: readonly WorkoutRecord[]) =>
-  ctx.t('report.totals', {
-    volume: kg(ctx, Math.round(workouts.reduce((sum, workout) => sum + workout.volumeKg, 0))),
-    duration: formatDuration(
-      ctx.t,
-      // A report rounds the time to minutes.
-      Math.max(60, Math.round(workouts.reduce((sum, w) => sum + w.durationSec, 0) / 60) * 60),
-    ),
-  });
+function totals(ctx: ReportContext, workouts: readonly WorkoutRecord[]): string {
+  const volume = Math.round(workouts.reduce((sum, workout) => sum + workout.volumeKg, 0));
+  const duration = formatDuration(
+    ctx.t,
+    // A report rounds the time to minutes.
+    Math.max(60, Math.round(workouts.reduce((sum, w) => sum + w.durationSec, 0) / 60) * 60),
+  );
+  // Cardio alone lifts nothing: no "volume 0 kg".
+  return volume > 0
+    ? ctx.t('report.totals', { volume: kg(ctx, volume), duration })
+    : ctx.t('report.totalsTime', { duration });
+}
 
 /** The line about the morning weight on a day, if there is anything to say. */
 function weightLine(ctx: ReportContext, date: string): string | null {
@@ -130,7 +139,24 @@ function workoutBlock(ctx: ReportContext, workout: WorkoutRecord): string[] {
 export type ReportKind =
   | { kind: 'session'; workout: WorkoutRecord }
   | { kind: 'cycle'; workouts: WorkoutRecord[]; cycle: number; program: string }
-  | { kind: 'week'; workouts: WorkoutRecord[]; today: string };
+  | { kind: 'week'; workouts: WorkoutRecord[]; activities: ActivityLogRow[]; today: string };
+
+/** The activities of a week outside the program, one line each, and what they add up to. */
+function activityBlock(ctx: ReportContext, activities: readonly ActivityLogRow[]): string[] {
+  if (activities.length === 0) return [];
+  const minutes = Math.round(activities.reduce((sum, a) => sum + a.duration_sec, 0) / 60);
+  return [
+    ctx.t('report.activities'),
+    ...activities.map(
+      (activity) =>
+        `${shortDate(ctx.locale, activity.started_at, false)} ${formatActivity(ctx.t, ctx.locale, activity)}`,
+    ),
+    ctx.t('report.activitiesTotal', {
+      count: activities.length,
+      duration: formatDuration(ctx.t, Math.max(1, minutes) * 60),
+    }),
+  ];
+}
 
 /**
  * The text of a report, ready for a messenger (spec 6.6). Nothing is stored: a report is
@@ -156,14 +182,18 @@ export function buildReport(ctx: ReportContext, report: ReportKind): string {
             from: shortDate(ctx.locale, `${shiftDate(report.today, -6)}T12:00:00`, false),
             to: shortDate(ctx.locale, `${report.today}T12:00:00`, false),
           });
+    const activities = report.kind === 'week' ? report.activities : [];
     blocks.push([header, report.kind === 'week' ? weightLine(ctx, report.today) : null]);
-    if (workouts.length === 0) blocks.push([ctx.t('report.empty')]);
+    if (workouts.length === 0 && activities.length === 0) {
+      blocks.push([ctx.t(report.kind === 'week' ? 'report.emptyWeek' : 'report.empty')]);
+    }
     for (const workout of workouts) blocks.push(workoutBlock(ctx, workout));
     if (workouts.length > 0) {
       blocks.push([
         `${ctx.t('report.workouts', { count: workouts.length })} · ${totals(ctx, workouts)}`,
       ]);
     }
+    blocks.push(activityBlock(ctx, activities));
   }
 
   return blocks

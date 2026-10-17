@@ -1,4 +1,5 @@
 import {
+  activityLogs,
   and,
   asc,
   bodyLogs,
@@ -317,6 +318,29 @@ const HANDLERS: { [T in SyncTable]: Handler<T> } = {
       rounds: as(row.rounds),
       cycles: as(row.cycles),
       cycle_rest_sec: as(row.cycleRestSec),
+    }),
+  },
+  activity_logs: {
+    table: activityLogs,
+    toDb: (row) => ({
+      activityType: row.activity_type,
+      startedAt: date(row.started_at),
+      durationSec: row.duration_sec,
+      intensity: row.intensity,
+      distanceM: row.distance_m,
+      avgHr: row.avg_hr,
+      calories: row.calories,
+      notes: row.notes,
+    }),
+    fromDb: (row) => ({
+      activity_type: as(row.activityType),
+      started_at: as(iso(row.startedAt)),
+      duration_sec: as(row.durationSec),
+      intensity: as(row.intensity),
+      distance_m: as(row.distanceM),
+      avg_hr: as(row.avgHr),
+      calories: as(row.calories),
+      notes: as(row.notes),
     }),
   },
 };

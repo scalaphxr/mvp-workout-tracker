@@ -456,6 +456,23 @@ export const intervalPresets = pgTable(
   (t) => [index('interval_presets_sync_idx').on(t.ownerId, t.syncSeq)],
 );
 
+/** Free records of any activity outside the program. */
+export const activityLogs = pgTable(
+  'activity_logs',
+  {
+    ...synced('user_id'),
+    activityType: text('activity_type').notNull(),
+    startedAt: timestamptz('started_at').notNull(),
+    durationSec: integer('duration_sec').notNull(),
+    intensity: integer('intensity'),
+    distanceM: doublePrecision('distance_m'),
+    avgHr: integer('avg_hr'),
+    calories: integer('calories'),
+    notes: text('notes').notNull().default(''),
+  },
+  (t) => [index('activity_logs_sync_idx').on(t.ownerId, t.syncSeq)],
+);
+
 /** Codes a program is shared by. The code is stored without the dash. */
 export const programShares = pgTable(
   'program_shares',

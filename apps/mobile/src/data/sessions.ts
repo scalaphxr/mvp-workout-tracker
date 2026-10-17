@@ -277,6 +277,11 @@ export type SetValues = Partial<
     | 'rir'
     | 'duration_sec'
     | 'distance_m'
+    | 'speed_kmh'
+    | 'incline_pct'
+    | 'resistance_level'
+    | 'avg_hr'
+    | 'calories'
   >
 >;
 

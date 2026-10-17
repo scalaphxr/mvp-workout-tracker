@@ -1,6 +1,8 @@
 import { createInstance, type TFunction } from 'i18next';
 import { describe, expect, it } from 'vitest';
 
+import type { ActivityLogRow } from '@mvp/schemas';
+
 import type { WorkoutRecord } from '../data/history';
 import type { SummaryExercise } from '../data/sessions';
 import en from '../i18n/locales/en.json';
@@ -14,6 +16,7 @@ const NAMES: Record<string, string> = {
   pushdown: 'разгибания на канате',
   pullup: 'Подтягивания',
   plank: 'Планка',
+  treadmill: 'Бег на дорожке',
 };
 
 async function context(locale: 'ru' | 'en') {
@@ -38,7 +41,16 @@ async function context(locale: 'ru' | 'en') {
 
 interface Done {
   id: string;
-  sets: { weight?: number | null; reps?: number; rir?: number; sec?: number }[];
+  sets: {
+    weight?: number | null;
+    reps?: number;
+    rir?: number;
+    sec?: number;
+    meters?: number;
+    kmh?: number;
+    incline?: number;
+    hr?: number;
+  }[];
   next?: number;
   superset?: number;
 }
@@ -62,6 +74,12 @@ const workout = (number: number, day: string, date: string, minutes: number, vol
             reps: set.reps ?? null,
             rir: set.rir ?? null,
             duration_sec: set.sec ?? null,
+            distance_m: set.meters ?? null,
+            speed_kmh: set.kmh ?? null,
+            incline_pct: set.incline ?? null,
+            resistance_level: null,
+            avg_hr: set.hr ?? null,
+            calories: null,
           })),
           records: [],
           plan: next === undefined ? null : { next_weight_kg: next },
@@ -119,7 +137,7 @@ describe('a report', () => {
     ]);
     const ctx = await context('ru');
 
-    const week = plain(buildReport(ctx, { kind: 'week', workouts: [chest, legs], today: '2026-10-04' }));
+    const week = plain(buildReport(ctx, { kind: 'week', workouts: [chest, legs], activities: [], today: '2026-10-04' }));
     expect(week.split('\n')[0]).toBe('Неделя 28.09 – 04.10');
     expect(week).toContain('Тренировка 12 · Грудь · 02.10.2026');
     expect(week).toContain('Тренировка 13 · Ноги · 04.10.2026');
@@ -132,9 +150,49 @@ describe('a report', () => {
     // The weight of a day belongs to a day: a round does not have one.
     expect(round).not.toContain('Вес');
 
-    expect(plain(buildReport(ctx, { kind: 'week', workouts: [], today: '2026-10-04' }))).toContain(
-      'За это время тренировок не было.',
-    );
+    expect(
+      plain(buildReport(ctx, { kind: 'week', workouts: [], activities: [], today: '2026-10-04' })),
+    ).toContain('За эту неделю тренировок и активностей не было.');
+  });
+
+  it('writes a cardio set with what was entered on the machine', async () => {
+    const run = workout(14, 'Кардио', '2026-10-04', 30, 0, [
+      { id: 'treadmill', sets: [{ sec: 25 * 60 + 30, meters: 4200, kmh: 10, incline: 2, hr: 145 }] },
+    ]);
+    const lines = plain(buildReport(await context('ru'), { kind: 'session', workout: run })).split('\n');
+    expect(lines).toContain('Бег на дорожке: 25 мин 30 с, 4,2 км, 10 км/ч, наклон 2 %, пульс 145');
+    expect(lines).toContain('Время: 30 мин');
+    expect(lines.join('\n')).not.toContain('Объём');
+  });
+
+  it('adds the activities of the week after its workouts', async () => {
+    const activity = (type: string, date: string, minutes: number, extra: object = {}) =>
+      ({
+        activity_type: type,
+        started_at: new Date(`${date}T18:00:00`).toISOString(),
+        duration_sec: minutes * 60,
+        intensity: null,
+        distance_m: null,
+        avg_hr: null,
+        calories: null,
+        notes: '',
+        ...extra,
+      }) as unknown as ActivityLogRow;
+    const ctx = await context('ru');
+    const activities = [
+      activity('football', '2026-10-01', 90, { intensity: 7, distance_m: 8200 }),
+      activity('Сапборд', '2026-10-03', 45),
+    ];
+
+    const week = plain(buildReport(ctx, { kind: 'week', workouts: [chest], activities, today: '2026-10-04' }));
+    expect(week).toContain('Активность:');
+    expect(week).toContain('01.10 Футбол: 90 мин, 8,2 км, интенсивность 7/10');
+    expect(week).toContain('03.10 Сапборд: 45 мин');
+    expect(week).toContain('2 активности · 135 мин');
+    expect(week.indexOf('Тренировка 12')).toBeLessThan(week.indexOf('Активность:'));
+
+    const only = plain(buildReport(ctx, { kind: 'week', workouts: [], activities, today: '2026-10-04' }));
+    expect(only).not.toContain('не было');
   });
 
   it('is written in English too, with nothing left in Russian but the names', async () => {

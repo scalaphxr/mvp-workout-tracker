@@ -43,6 +43,13 @@
       "when": 1792261813484,
       "tag": "0005_interval_presets",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1792266043738,
+      "tag": "0006_activity_logs",
+      "breakpoints": true
     }
   ]
 }

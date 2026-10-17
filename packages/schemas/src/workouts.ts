@@ -150,3 +150,21 @@ export const IntervalPresetRowSchema = z.object({
   cycle_rest_sec: limited(INTERVAL_LIMITS.cycle_rest_sec),
 });
 export type IntervalPresetRow = z.infer<typeof IntervalPresetRowSchema>;
+
+/**
+ * A free record of any activity outside the program: a walk, a match, a swim. `activity_type`
+ * is a key of the list the app offers, or a name the user typed.
+ */
+export const ActivityLogRowSchema = z.object({
+  ...syncFields,
+  activity_type: z.string().trim().min(1).max(60),
+  started_at: z.iso.datetime(),
+  duration_sec: z.number().int().min(1).max(24 * 60 * 60),
+  /** How hard it felt, 1 to 10. */
+  intensity: z.number().int().min(1).max(10).nullable(),
+  distance_m: z.number().min(0).max(500_000).nullable(),
+  avg_hr: z.number().int().min(30).max(250).nullable(),
+  calories: z.number().int().min(0).max(10_000).nullable(),
+  notes: z.string().max(1000),
+});
+export type ActivityLogRow = z.infer<typeof ActivityLogRowSchema>;

@@ -5,10 +5,11 @@ import { useKeepAwake } from 'expo-keep-awake';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/button';
+import { CardioSet } from '@/components/cardio-set';
 import { Chip } from '@/components/chip';
 import { EmptyState } from '@/components/empty-state';
 import { RestTimer } from '@/components/rest-timer';
@@ -29,7 +30,7 @@ import { useLocale } from '@/hooks/use-locale';
 import { ThemeOverride, useTheme } from '@/hooks/use-theme';
 import { useCatalog } from '@/lib/catalog';
 import { haptic } from '@/lib/feedback';
-import { formatRange } from '@/lib/format';
+import { formatCardio, formatRange } from '@/lib/format';
 import { mutate, useLocal } from '@/lib/local';
 import { useRestTimer } from '@/lib/rest-timer';
 import { syncNow } from '@/lib/sync';
@@ -114,7 +115,10 @@ function Workout() {
   };
 
   return (
-    <View style={[styles.screen, { backgroundColor: theme.background }]}>
+    // The fields of a cardio set are typed in: the keyboard must not cover them.
+    <KeyboardAvoidingView
+      style={[styles.screen, { backgroundColor: theme.background }]}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <ScrollView contentContainerStyle={styles.list}>
         {exercises.map((entry, index) => {
           const exercise = exerciseById.get(entry.exercise.exercise_id);
@@ -146,9 +150,9 @@ function Workout() {
                       .map((set) =>
                         set.reps !== null
                           ? `${set.weight_kg ? `${formatKg(t, locale, set.weight_kg)} × ` : ''}${set.reps}`
-                          : t('units.sec', { value: set.duration_sec ?? 0 }),
+                          : formatCardio(t, locale, set),
                       )
-                      .join(', ')}
+                      .join(exercise?.tracking === 'distance_time' ? '; ' : ', ')}
                   </ThemedText>
                 )}
               </View>
@@ -191,7 +195,7 @@ function Workout() {
           />
         )}
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -247,8 +251,6 @@ function SetEntry({
   const [reps, setReps] = useState(previous?.reps ?? plannedReps ?? item?.rep_min ?? 10);
   const [rir, setRir] = useState<number | null>(null);
   const [seconds, setSeconds] = useState(previous?.duration_sec ?? item?.rep_min ?? 30);
-  const [minutes, setMinutes] = useState(item?.rep_min ?? 20);
-  const [distance, setDistance] = useState(0);
 
   const tap = <T,>(set: (value: T) => void) => (value: T) => {
     haptic('tap');
@@ -265,10 +267,8 @@ function SetEntry({
     const done =
       tracking === 'time'
         ? { duration_sec: seconds }
-        : tracking === 'distance_time'
-          ? { duration_sec: minutes * 60, distance_m: Math.round(distance * 1000) }
-          : // A weight left at zero means it was not entered: the set counts by reps alone.
-            { weight_kg: loaded && weight > 0 ? weight : null, reps, rir };
+        : // A weight left at zero means it was not entered: the set counts by reps alone.
+          { weight_kg: loaded && weight > 0 ? weight : null, reps, rir };
     // The set is in the database before the screen moves on.
     mutate((ctx) => logSet(ctx, entry.exercise.id, { ...planned, ...done }));
     onLogged();
@@ -319,18 +319,23 @@ function SetEntry({
         <Stepper label={t('workout.seconds')} value={seconds} min={5} max={3600} step={5} onChange={tap(setSeconds)} />
       )}
       {tracking === 'distance_time' && (
-        <>
-          <Stepper label={t('workout.minutes')} value={minutes} min={1} max={600} onChange={tap(setMinutes)} />
-          <Stepper
-            label={t('workout.distance')}
-            value={distance}
-            text={distance.toFixed(1)}
-            min={0}
-            max={200}
-            step={0.5}
-            onChange={tap(setDistance)}
-          />
-        </>
+        <CardioSet
+          watchKey={entry.exercise.id}
+          exercise={exercise}
+          plannedMinutes={item?.rep_min ?? null}
+          previous={previous}
+          last={setIndex === 0 ? last : []}
+          onSave={(values) => {
+            mutate((ctx) =>
+              logSet(ctx, entry.exercise.id, {
+                planned_rep_min: item?.rep_min ?? null,
+                planned_rep_max: item?.rep_max ?? null,
+                ...values,
+              }),
+            );
+            onLogged();
+          }}
+        />
       )}
       {(tracking === 'weight_reps' || tracking === 'reps') && (
         <>
@@ -362,23 +367,26 @@ function SetEntry({
         </>
       )}
 
-      <View style={styles.buttons}>
-        {lastSame && (tracking === 'weight_reps' || tracking === 'reps') && (
-          <Button
-            variant="secondary"
-            title={t('workout.likeLastTime')}
-            onPress={() => {
-              haptic('tap');
-              if (lastSame.weight_kg !== null) setWeight(lastSame.weight_kg);
-              if (lastSame.reps !== null) setReps(lastSame.reps);
-              setRir(lastSame.rir);
-            }}
-          />
-        )}
-        <View style={styles.done}>
-          <Button title={t('workout.done')} onPress={save} />
+      {/* A cardio set has its own "done", under its stopwatch. */}
+      {tracking !== 'distance_time' && (
+        <View style={styles.buttons}>
+          {lastSame && (tracking === 'weight_reps' || tracking === 'reps') && (
+            <Button
+              variant="secondary"
+              title={t('workout.likeLastTime')}
+              onPress={() => {
+                haptic('tap');
+                if (lastSame.weight_kg !== null) setWeight(lastSame.weight_kg);
+                if (lastSame.reps !== null) setReps(lastSame.reps);
+                setRir(lastSame.rir);
+              }}
+            />
+          )}
+          <View style={styles.done}>
+            <Button title={t('workout.done')} onPress={save} />
+          </View>
         </View>
-      </View>
+      )}
 
       <View style={styles.links}>
         {exercise && exercise.equipment.length > 0 && sets.length === 0 && (

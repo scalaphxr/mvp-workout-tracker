@@ -4,6 +4,13 @@ import { type ItemParams, uuidv7 } from '@mvp/domain';
 import type { ProgramItemRow } from '@mvp/schemas';
 import { beforeEach, describe, expect, it } from 'vitest';
 
+import {
+  activitiesSince,
+  deleteActivity,
+  getActivity,
+  listActivities,
+  saveActivity,
+} from './activities';
 import { deleteWeight, listWeights, setWeight } from './body';
 import type { DataContext } from './context';
 import {
@@ -13,7 +20,9 @@ import {
   saveIntervalPreset,
 } from './intervals';
 import {
+  cardioProgress,
   exerciseProgress,
+  exercisesOnTime,
   exercisesWithProgress,
   getWorkout,
   listWorkouts,
@@ -483,6 +492,77 @@ describe('the queue of unsent rows', () => {
   });
 });
 
+describe('cardio and free activity, with no network at all', () => {
+  const TREADMILL = id(15);
+
+  it('a cardio set keeps every number of the machine and is queued for the server', () => {
+    const created = createProgram(ctx, { title: 'Cardio', firstDayTitle: 'Run' });
+    const [day] = getProgramTree(ctx, created.id)!.days;
+    addItem(ctx, day!.id, TREADMILL, { ...PARAMS, sets: 1, rep_min: 20, rep_max: 30, target_rir: null });
+    const session = startSession(ctx, created.id, day!.id);
+    const [entry] = getSession(ctx, session.id)!.exercises;
+    logSet(ctx, entry!.exercise.id, {
+      duration_sec: 25 * 60 + 30,
+      distance_m: 4200,
+      speed_kmh: 10,
+      incline_pct: 2,
+      resistance_level: null,
+      avg_hr: 145,
+      calories: 310,
+    });
+    finishSession(ctx, session.id, facts, { smart: false });
+
+    const [set] = getWorkout(ctx, session.id)!.exercises[0]!.sets;
+    expect(set).toMatchObject({ duration_sec: 1530, distance_m: 4200, incline_pct: 2, avg_hr: 145, reps: null });
+    expect(pendingChanges(ctx, 1000).changes).toContainEqual(
+      expect.objectContaining({ table: 'set_logs', row: expect.objectContaining({ distance_m: 4200 }) }),
+    );
+    // A chart of distance, with no progression behind it.
+    expect(exercisesOnTime(ctx)).toEqual([TREADMILL]);
+    expect(exercisesWithProgress(ctx)).toEqual([]);
+    expect(cardioProgress(ctx, TREADMILL)).toEqual([
+      { date: session.started_at, distance_m: 4200, duration_sec: 1530 },
+    ]);
+  });
+
+  const football = {
+    activity_type: 'football',
+    started_at: '2026-10-03T16:00:00.000Z',
+    duration_sec: 90 * 60,
+    intensity: 7,
+    distance_m: 8200,
+    avg_hr: null,
+    calories: null,
+    notes: '',
+  };
+
+  it('an activity is saved, changed and deleted softly, each change queued', () => {
+    const saved = saveActivity(ctx, football);
+    saveActivity(ctx, { ...football, activity_type: 'Сапборд', started_at: '2026-10-04T08:00:00.000Z' });
+    expect(listActivities(ctx).map((a) => a.activity_type)).toEqual(['Сапборд', 'football']);
+    expect(activitiesSince(ctx, '2026-10-04T00:00:00.000Z').map((a) => a.activity_type)).toEqual(['Сапборд']);
+
+    saveActivity(ctx, { ...football, intensity: 9 }, saved.id);
+    expect(getActivity(ctx, saved.id)).toMatchObject({ intensity: 9, created_at: saved.created_at });
+
+    deleteActivity(ctx, saved.id);
+    expect(listActivities(ctx)).toHaveLength(1);
+    expect(pendingChanges(ctx).changes).toContainEqual(
+      expect.objectContaining({
+        table: 'activity_logs',
+        row: expect.objectContaining({ id: saved.id, deleted_at: expect.any(String) }),
+      }),
+    );
+  });
+
+  it('an activity out of the limits is refused', () => {
+    expect(() => saveActivity(ctx, { ...football, intensity: 11 })).toThrow();
+    expect(() => saveActivity(ctx, { ...football, duration_sec: 0 })).toThrow();
+    expect(() => saveActivity(ctx, { ...football, activity_type: '  ' })).toThrow();
+    expect(listActivities(ctx)).toEqual([]);
+  });
+});
+
 describe('interval presets', () => {
   const plan = { title: 'Sprints', work_sec: 30, rest_sec: 90, rounds: 6, cycles: 1, cycle_rest_sec: 0 };
 
@@ -516,6 +596,16 @@ describe('after the account is deleted', () => {
     workout(programId, day1.id, { [BENCH]: [80, [12, 12, 12]] });
     setWeight(ctx, '2026-10-04', 84.6);
     saveIntervalPreset(ctx, { title: 'Mine', work_sec: 30, rest_sec: 30, rounds: 5, cycles: 1, cycle_rest_sec: 0 });
+    saveActivity(ctx, {
+      activity_type: 'walking',
+      started_at: '2026-10-04T08:00:00.000Z',
+      duration_sec: 1800,
+      intensity: null,
+      distance_m: null,
+      avg_hr: null,
+      calories: null,
+      notes: '',
+    });
     setSyncState(ctx, 'account_id', id(99));
     setSyncState(ctx, 'pull_cursor', '42');
 
@@ -526,6 +616,7 @@ describe('after the account is deleted', () => {
     expect(ctx.db.select().from(set_logs).all()).toEqual([]);
     expect(listWeights(ctx)).toEqual([]);
     expect(listIntervalPresets(ctx)).toEqual([]);
+    expect(listActivities(ctx)).toEqual([]);
     expect(pendingCount(ctx)).toBe(0);
     expect(getSyncState(ctx, 'account_id')).toBeNull();
     expect(getSyncState(ctx, 'pull_cursor')).toBeNull();

@@ -11,6 +11,7 @@ import { Button } from '@/components/button';
 import { ThemedText } from '@/components/themed-text';
 import { Screen } from '@/components/ui';
 import { Colors, Spacing } from '@/constants/theme';
+import { activitiesSince } from '@/data/activities';
 import { listWeights } from '@/data/body';
 import { getWorkout, workoutsOfCycle, workoutsSince } from '@/data/history';
 import { useLocale } from '@/hooks/use-locale';
@@ -48,7 +49,12 @@ export default function ReportScreen() {
     }
     // A week is the last 7 calendar days, today included.
     const since = new Date(`${shiftDate(today, -6)}T00:00:00`).toISOString();
-    return { kind: 'week', workouts: workoutsSince(ctx, since), today };
+    return {
+      kind: 'week',
+      workouts: workoutsSince(ctx, since),
+      activities: activitiesSince(ctx, since),
+      today,
+    };
   });
   const weights = useLocal(listWeights);
 

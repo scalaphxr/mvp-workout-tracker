@@ -15,7 +15,10 @@
     "kg": "{{value}} кг",
     "sec": "{{value}} с",
     "min": "{{value}} мин",
-    "minSec": "{{min}} мин {{sec}} с"
+    "minSec": "{{min}} мин {{sec}} с",
+    "km": "{{value}} км",
+    "kmh": "{{value}} км/ч",
+    "kcal": "{{value}} ккал"
   },
   "today": {
     "emptyTitle": "Тренировки пока нет",
@@ -45,8 +48,6 @@
     "weight": "Вес",
     "reps": "Повторения",
     "seconds": "Секунды",
-    "minutes": "Минуты",
-    "distance": "Дистанция, км",
     "rir": "Запас повторений",
     "likeLastTime": "Как в прошлый раз",
     "done": "Готово",
@@ -98,7 +99,8 @@
     "deloadYes": "Да, лёгкий круг",
     "deloadAccepted": "Следующий круг будет лёгким.",
     "wellbeing": "Самочувствие",
-    "close": "Закрыть"
+    "close": "Закрыть",
+    "cardio": "Кардио"
   },
   "reason": {
     "increase_one": "+{{step}}: {{count}} подход по {{reps}} – верх диапазона",
@@ -373,14 +375,16 @@
     "weight": "Вес",
     "exercises": "Упражнения",
     "history": "История",
-    "noExercises": "После первой тренировки с весом здесь появятся графики по упражнениям.",
+    "noExercises": "После первой тренировки с весом или кардио здесь появятся графики по упражнениям.",
     "topWeight": "Рабочий вес",
     "e1rm": "Расчётный максимум",
     "chartLabel": "{{name}}: от {{from}} до {{to}}",
-    "noHistory": "Завершённых тренировок пока нет.",
+    "noHistory": "Завершённых тренировок и активностей пока нет.",
     "workout": "Тренировка {{number}}",
     "weekReport": "Отчёт за неделю",
-    "cycleReport": "Отчёт за круг"
+    "cycleReport": "Отчёт за круг",
+    "distance": "Дистанция",
+    "time": "Время"
   },
   "report": {
     "title": "Отчёт",
@@ -395,6 +399,7 @@
     "next": "→ дальше {{weight}}",
     "superset": "Суперсет: {{items}}",
     "totals": "Объём: {{volume}} · Время: {{duration}}",
+    "totalsTime": "Время: {{duration}}",
     "workouts_one": "{{count}} тренировка",
     "workouts_few": "{{count}} тренировки",
     "workouts_many": "{{count}} тренировок",
@@ -403,7 +408,13 @@
     "copy": "Скопировать текст",
     "copied": "Скопировано",
     "shareImage": "Поделиться картинкой",
-    "cardLabel": "Карточка отчёта"
+    "cardLabel": "Карточка отчёта",
+    "activities": "Активность:",
+    "activitiesTotal_one": "{{count}} активность · {{duration}}",
+    "activitiesTotal_few": "{{count}} активности · {{duration}}",
+    "activitiesTotal_many": "{{count}} активностей · {{duration}}",
+    "activitiesTotal_other": "{{count}} активности · {{duration}}",
+    "emptyWeek": "За эту неделю тренировок и активностей не было."
   },
   "questionnaire": {
     "title": "Подбор программы",
@@ -606,6 +617,72 @@
       "delete": "Удалить пресет",
       "newTitle": "Новый пресет",
       "editTitle": "Пресет"
+    }
+  },
+  "cardio": {
+    "stopwatch": "Секундомер",
+    "start": "Старт",
+    "stop": "Стоп",
+    "reset": "Сбросить",
+    "time": "Время",
+    "timePlaceholder": "мин или мм:сс",
+    "fields": {
+      "distance_m": "Дистанция, км",
+      "speed_kmh": "Скорость, км/ч",
+      "incline_pct": "Наклон, %",
+      "resistance_level": "Сопротивление",
+      "avg_hr": "Пульс, уд/мин",
+      "calories": "Калории, ккал"
+    },
+    "inclineValue": "наклон {{value}} %",
+    "resistanceValue": "сопротивление {{value}}",
+    "hrValue": "пульс {{value}}",
+    "invalidTime": "Введите время: минуты (25) или минуты и секунды (25:30).",
+    "invalidField": "Проверьте поле «{{field}}»."
+  },
+  "activity": {
+    "title": "Активность",
+    "record": "Записать активность",
+    "todayHint": "Прогулка, матч, бассейн – всё, что вне программы",
+    "newTitle": "Новая активность",
+    "editTitle": "Активность",
+    "type": "Вид",
+    "own": "Свой вид",
+    "ownPlaceholder": "Например, сапборд",
+    "day": "Когда",
+    "today": "Сегодня",
+    "yesterday": "Вчера",
+    "dayBefore": "Позавчера",
+    "duration": "Время",
+    "intensity": "Интенсивность",
+    "intensityHint": "1 – совсем легко, 10 – на пределе",
+    "intensityValue": "интенсивность {{value}}/10",
+    "notes": "Заметка",
+    "notesPlaceholder": "Как прошло",
+    "save": "Сохранить",
+    "delete": "Удалить запись",
+    "chooseType": "Выберите вид активности или впишите свой.",
+    "notFoundTitle": "Записи нет",
+    "notFoundText": "Возможно, её удалили на другом устройстве.",
+    "types": {
+      "walking": "Прогулка",
+      "running": "Бег",
+      "cycling": "Велосипед",
+      "swimming": "Плавание",
+      "hiking": "Поход",
+      "yoga": "Йога",
+      "pilates": "Пилатес",
+      "stretching": "Растяжка",
+      "dancing": "Танцы",
+      "football": "Футбол",
+      "basketball": "Баскетбол",
+      "volleyball": "Волейбол",
+      "tennis": "Теннис",
+      "martial_arts": "Единоборства",
+      "climbing": "Скалолазание",
+      "skiing": "Лыжи",
+      "skating": "Коньки",
+      "rowing": "Гребля"
     }
   }
 }

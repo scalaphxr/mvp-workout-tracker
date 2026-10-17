@@ -14,7 +14,7 @@ import { Spacing } from '@/constants/theme';
 import { resolveReduction, sessionSummary, setWellbeing, startDeload } from '@/data/sessions';
 import { useLocale } from '@/hooks/use-locale';
 import { useCatalog } from '@/lib/catalog';
-import { formatDuration, formatNumber } from '@/lib/format';
+import { formatCardio, formatDuration, formatNumber } from '@/lib/format';
 import { mutate, useLocal } from '@/lib/local';
 import { syncNow } from '@/lib/sync';
 import { explainPlan, formatKg } from '@/lib/workout';
@@ -55,13 +55,21 @@ export default function WorkoutSummaryScreen() {
     }),
   );
   const planned = summary.exercises.filter((entry) => entry.plan !== null);
+  // Cardio has no plan for next time: what was done is what there is to show.
+  const cardio = summary.exercises.filter(
+    ({ exercise, sets }) =>
+      sets.length > 0 && exerciseById.get(exercise.exercise_id)?.tracking === 'distance_time',
+  );
 
   return (
     <Screen>
       <ThemedText style={styles.title}>{t('summary.title')}</ThemedText>
 
       <View style={styles.totals}>
-        <Total label={t('summary.volume')} value={kg(Math.round(summary.volumeKg))} />
+        {/* A workout of cardio alone has no volume to speak of. */}
+        {summary.volumeKg > 0 && (
+          <Total label={t('summary.volume')} value={kg(Math.round(summary.volumeKg))} />
+        )}
         <Total label={t('summary.duration')} value={formatDuration(t, summary.durationSec)} />
       </View>
 
@@ -69,6 +77,19 @@ export default function WorkoutSummaryScreen() {
         <Group title={t('summary.records')}>
           {records.map((record) => (
             <ThemedText key={record}>{record}</ThemedText>
+          ))}
+        </Group>
+      )}
+
+      {cardio.length > 0 && (
+        <Group title={t('summary.cardio')}>
+          {cardio.map(({ exercise, sets }) => (
+            <ThemedView key={exercise.id} type="backgroundElement" style={styles.card}>
+              <ThemedText type="smallBold">{name(exercise.exercise_id)}</ThemedText>
+              {sets.map((set) => (
+                <ThemedText key={set.id}>{formatCardio(t, locale, set)}</ThemedText>
+              ))}
+            </ThemedView>
           ))}
         </Group>
       )}

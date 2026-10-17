@@ -1,4 +1,5 @@
 import type {
+  ActivityLogRow,
   BodyLogRow,
   GymEquipmentRow,
   IntervalPresetRow,
@@ -197,6 +198,22 @@ export const interval_presets = sqliteTable('interval_presets', {
   cycle_rest_sec: integer('cycle_rest_sec').notNull(),
 });
 
+export const activity_logs = sqliteTable(
+  'activity_logs',
+  {
+    ...sync,
+    activity_type: text('activity_type').notNull(),
+    started_at: text('started_at').notNull(),
+    duration_sec: integer('duration_sec').notNull(),
+    intensity: integer('intensity'),
+    distance_m: real('distance_m'),
+    avg_hr: integer('avg_hr'),
+    calories: integer('calories'),
+    notes: text('notes').notNull(),
+  },
+  (t) => [index('activity_logs_started_at_idx').on(t.started_at)],
+);
+
 // --- Sync bookkeeping: stays on the phone ---
 
 /**
@@ -232,6 +249,7 @@ export const syncedTables = {
   set_logs,
   body_logs,
   interval_presets,
+  activity_logs,
 };
 
 // A table and its sync row must have the same shape, in both directions.
@@ -249,4 +267,5 @@ export const rowShapesMatch: [
   Same<typeof set_logs.$inferSelect, SetLogRow>,
   Same<typeof body_logs.$inferSelect, BodyLogRow>,
   Same<typeof interval_presets.$inferSelect, IntervalPresetRow>,
-] = [true, true, true, true, true, true, true, true, true, true, true, true];
+  Same<typeof activity_logs.$inferSelect, ActivityLogRow>,
+] = [true, true, true, true, true, true, true, true, true, true, true, true, true];

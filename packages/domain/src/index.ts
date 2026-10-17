@@ -1,4 +1,5 @@
 ﻿export * from './body';
+export * from './cardio';
 export * from './catalog';
 export * from './features';
 export * from './generation';

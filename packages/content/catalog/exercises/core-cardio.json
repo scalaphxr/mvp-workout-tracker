@@ -310,5 +310,221 @@
     },
     "media": [],
     "alternatives": []
+  },
+  {
+    "id": "01a14b60-3694-7008-a686-706df528acbe",
+    "slug": "elliptical",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["hamstrings", "calves"],
+    "equipment": ["elliptical"],
+    "translations": {
+      "ru": {
+        "name": "Эллипс",
+        "aliases": ["эллиптический тренажёр", "орбитрек", "эллипсоид"],
+        "description": "Ходьба на эллиптическом тренажёре без ударной нагрузки. Записываются время, дистанция, сопротивление и пульс.",
+        "technique_steps": [
+          "Встаньте на педали всей стопой, возьмитесь за подвижные рукояти.",
+          "Начните движение в лёгком темпе, корпус прямой, взгляд вперёд.",
+          "Толкайте педали ногами и помогайте руками, не перенося вес на рукояти.",
+          "В конце снизьте сопротивление и темп на 2–3 минуты."
+        ],
+        "common_mistakes": [
+          "Наваливаться на рукояти и сутулиться.",
+          "Отрывать пятки от педалей.",
+          "Слишком низкое сопротивление при очень высоком темпе."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Elliptical",
+        "aliases": ["elliptical trainer", "cross trainer", "elliptical machine"],
+        "description": "Low-impact striding on an elliptical trainer. Time, distance, resistance and heart rate are logged.",
+        "technique_steps": [
+          "Stand on the pedals with the whole foot and hold the moving handles.",
+          "Start at an easy pace, torso upright, eyes forward.",
+          "Drive the pedals with the legs and help with the arms without leaning on the handles.",
+          "At the end lower the resistance and the pace for 2–3 minutes."
+        ],
+        "common_mistakes": [
+          "Leaning on the handles and rounding the back.",
+          "Lifting the heels off the pedals.",
+          "Too little resistance at a very fast pace."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "stationary-bike", "weight_ratio": null, "priority": 10 },
+      { "slug": "treadmill-run", "weight_ratio": null, "priority": 20 }
+    ]
+  },
+  {
+    "id": "01a14b60-3694-7008-a686-74835169f10b",
+    "slug": "rowing-machine",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["upper_back", "quads"],
+    "secondary_muscles": ["lats", "biceps", "glutes", "hamstrings"],
+    "equipment": ["rowing_machine"],
+    "translations": {
+      "ru": {
+        "name": "Гребной тренажёр",
+        "aliases": ["гребля", "гребной", "концепт"],
+        "description": "Гребля на тренажёре: работают ноги, спина и руки. Записываются время, дистанция, сопротивление, пульс и калории.",
+        "technique_steps": [
+          "Закрепите стопы ремнями, возьмитесь за рукоять прямыми руками.",
+          "Толкнитесь ногами, затем отклоните корпус назад и подтяните рукоять к низу груди.",
+          "Возвращайтесь в обратном порядке: руки, корпус, затем согните ноги.",
+          "Держите ровный ритм: тяга в два раза быстрее возврата."
+        ],
+        "common_mistakes": [
+          "Тянуть руками раньше, чем выпрямились ноги.",
+          "Круглая спина в начале гребка.",
+          "Слишком частые короткие гребки."
+        ],
+        "warnings": ["При болях в пояснице начните с малого сопротивления."]
+      },
+      "en": {
+        "name": "Rowing machine",
+        "aliases": ["rower", "erg", "ergometer", "indoor rowing"],
+        "description": "Rowing on a machine with the legs, back and arms. Time, distance, resistance, heart rate and calories are logged.",
+        "technique_steps": [
+          "Strap the feet in and hold the handle with straight arms.",
+          "Push with the legs, then lean the torso back and pull the handle to the lower chest.",
+          "Return in reverse order: arms, torso, then bend the legs.",
+          "Keep a steady rhythm, the drive twice as fast as the recovery."
+        ],
+        "common_mistakes": [
+          "Pulling with the arms before the legs have straightened.",
+          "A rounded back at the catch.",
+          "Too many short, rushed strokes."
+        ],
+        "warnings": ["With lower back pain start at a low resistance."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "elliptical", "weight_ratio": null, "priority": 10 },
+      { "slug": "stationary-bike", "weight_ratio": null, "priority": 20 }
+    ]
+  },
+  {
+    "id": "01a14b60-3694-7008-a686-7841cdad4d6a",
+    "slug": "jump-rope",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": ["quads", "forearms", "front_delts"],
+    "equipment": ["jump_rope"],
+    "translations": {
+      "ru": {
+        "name": "Скакалка",
+        "aliases": ["прыжки на скакалке", "прыжки через скакалку"],
+        "description": "Прыжки через скакалку дома или в зале. Записываются время, пульс и калории.",
+        "technique_steps": [
+          "Подберите длину: ручки на уровне подмышек, когда стоите на середине скакалки.",
+          "Локти прижаты к корпусу, вращайте скакалку запястьями.",
+          "Прыгайте невысоко на передней части стопы, колени слегка согнуты.",
+          "Начните с отрезков по 30–60 секунд с отдыхом."
+        ],
+        "common_mistakes": [
+          "Вращать скакалку всей рукой от плеча.",
+          "Прыгать слишком высоко и приземляться на пятки.",
+          "Слишком длинная или короткая скакалка."
+        ],
+        "warnings": ["Прыгайте на упругом покрытии, а не на бетоне."]
+      },
+      "en": {
+        "name": "Jump rope",
+        "aliases": ["skipping rope", "skipping", "rope jumping"],
+        "description": "Skipping rope at home or in the gym. Time, heart rate and calories are logged.",
+        "technique_steps": [
+          "Pick the length: handles at the armpits when standing on the middle of the rope.",
+          "Keep the elbows close to the body and turn the rope with the wrists.",
+          "Jump low on the balls of the feet with the knees slightly bent.",
+          "Start with bouts of 30–60 seconds with rest between them."
+        ],
+        "common_mistakes": [
+          "Turning the rope with the whole arm from the shoulder.",
+          "Jumping too high and landing on the heels.",
+          "A rope that is too long or too short."
+        ],
+        "warnings": ["Jump on a springy surface, not on concrete."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "outdoor-run", "weight_ratio": null, "priority": 10 },
+      { "slug": "treadmill-run", "weight_ratio": null, "priority": 20 }
+    ]
+  },
+  {
+    "id": "01a14b60-3694-7008-a686-7fcf83d47aa0",
+    "slug": "outdoor-run",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads", "calves"],
+    "secondary_muscles": ["hamstrings", "glutes"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Бег на улице",
+        "aliases": ["бег", "пробежка", "бег трусцой"],
+        "description": "Бег или быстрая ходьба на улице. Записываются время, дистанция и пульс.",
+        "technique_steps": [
+          "Начните с 5 минут быстрой ходьбы или лёгкого бега для разминки.",
+          "Корпус прямой, слегка наклонён вперёд, плечи расслаблены.",
+          "Приземляйтесь на середину стопы под центром тяжести, шаг короткий и частый.",
+          "В конце перейдите на шаг на 3–5 минут."
+        ],
+        "common_mistakes": [
+          "Слишком быстрый старт и выдохшиеся последние минуты.",
+          "Длинный шаг с приземлением на пятку.",
+          "Напряжённые плечи и сжатые кулаки."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Outdoor run",
+        "aliases": ["run", "running", "jogging"],
+        "description": "Running or brisk walking outdoors. Time, distance and heart rate are logged.",
+        "technique_steps": [
+          "Start with 5 minutes of brisk walking or easy jogging to warm up.",
+          "Torso upright and leaning slightly forward, shoulders relaxed.",
+          "Land on the midfoot under your centre of mass with short, quick steps.",
+          "At the end walk for 3–5 minutes."
+        ],
+        "common_mistakes": [
+          "Starting too fast and fading at the end.",
+          "Over-striding and landing on the heel.",
+          "Tense shoulders and clenched fists."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "treadmill-run", "weight_ratio": null, "priority": 10 },
+      { "slug": "jump-rope", "weight_ratio": null, "priority": 20 }
+    ]
   }
 ]

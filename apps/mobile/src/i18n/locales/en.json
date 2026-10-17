@@ -15,7 +15,10 @@
     "kg": "{{value}} kg",
     "sec": "{{value}} s",
     "min": "{{value}} min",
-    "minSec": "{{min}} min {{sec}} s"
+    "minSec": "{{min}} min {{sec}} s",
+    "km": "{{value}} km",
+    "kmh": "{{value}} km/h",
+    "kcal": "{{value}} kcal"
   },
   "today": {
     "emptyTitle": "No workout yet",
@@ -45,8 +48,6 @@
     "weight": "Weight",
     "reps": "Reps",
     "seconds": "Seconds",
-    "minutes": "Minutes",
-    "distance": "Distance, km",
     "rir": "Reps in reserve",
     "likeLastTime": "Like last time",
     "done": "Done",
@@ -98,7 +99,8 @@
     "deloadYes": "Yes, a light round",
     "deloadAccepted": "The next round will be light.",
     "wellbeing": "How you felt",
-    "close": "Close"
+    "close": "Close",
+    "cardio": "Cardio"
   },
   "reason": {
     "increase_one": "+{{step}}: {{count}} set of {{reps}}, the top of the range",
@@ -351,14 +353,16 @@
     "weight": "Weight",
     "exercises": "Exercises",
     "history": "History",
-    "noExercises": "Exercise charts show up after your first workout with weights.",
+    "noExercises": "Charts of exercises appear here after the first workout with weights or cardio.",
     "topWeight": "Working weight",
     "e1rm": "Estimated maximum",
     "chartLabel": "{{name}}: from {{from}} to {{to}}",
-    "noHistory": "No finished workouts yet.",
+    "noHistory": "No finished workouts or activities yet.",
     "workout": "Workout {{number}}",
     "weekReport": "Report for the week",
-    "cycleReport": "Report for the round"
+    "cycleReport": "Report for the round",
+    "distance": "Distance",
+    "time": "Time"
   },
   "report": {
     "title": "Report",
@@ -373,13 +377,18 @@
     "next": "→ next {{weight}}",
     "superset": "Superset: {{items}}",
     "totals": "Volume: {{volume}} · Time: {{duration}}",
+    "totalsTime": "Time: {{duration}}",
     "workouts_one": "{{count}} workout",
     "workouts_other": "{{count}} workouts",
     "share": "Share the text",
     "copy": "Copy the text",
     "copied": "Copied",
     "shareImage": "Share the picture",
-    "cardLabel": "Report card"
+    "cardLabel": "Report card",
+    "activities": "Activity:",
+    "activitiesTotal_one": "{{count}} activity · {{duration}}",
+    "activitiesTotal_other": "{{count}} activities · {{duration}}",
+    "emptyWeek": "No workouts or activities this week."
   },
   "questionnaire": {
     "title": "Find a program",
@@ -576,6 +585,72 @@
       "delete": "Delete preset",
       "newTitle": "New preset",
       "editTitle": "Preset"
+    }
+  },
+  "cardio": {
+    "stopwatch": "Stopwatch",
+    "start": "Start",
+    "stop": "Stop",
+    "reset": "Reset",
+    "time": "Time",
+    "timePlaceholder": "min or mm:ss",
+    "fields": {
+      "distance_m": "Distance, km",
+      "speed_kmh": "Speed, km/h",
+      "incline_pct": "Incline, %",
+      "resistance_level": "Resistance",
+      "avg_hr": "Heart rate, bpm",
+      "calories": "Calories, kcal"
+    },
+    "inclineValue": "incline {{value}} %",
+    "resistanceValue": "resistance {{value}}",
+    "hrValue": "heart rate {{value}}",
+    "invalidTime": "Enter the time: minutes (25) or minutes and seconds (25:30).",
+    "invalidField": "Check the field “{{field}}”."
+  },
+  "activity": {
+    "title": "Activity",
+    "record": "Log an activity",
+    "todayHint": "A walk, a match, a swim – anything outside the program",
+    "newTitle": "New activity",
+    "editTitle": "Activity",
+    "type": "Kind",
+    "own": "Other",
+    "ownPlaceholder": "For example, paddleboarding",
+    "day": "When",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "dayBefore": "Two days ago",
+    "duration": "Time",
+    "intensity": "Intensity",
+    "intensityHint": "1 – very easy, 10 – all out",
+    "intensityValue": "intensity {{value}}/10",
+    "notes": "Note",
+    "notesPlaceholder": "How it went",
+    "save": "Save",
+    "delete": "Delete the record",
+    "chooseType": "Pick a kind of activity or type your own.",
+    "notFoundTitle": "No such record",
+    "notFoundText": "It may have been deleted on another device.",
+    "types": {
+      "walking": "Walking",
+      "running": "Running",
+      "cycling": "Cycling",
+      "swimming": "Swimming",
+      "hiking": "Hiking",
+      "yoga": "Yoga",
+      "pilates": "Pilates",
+      "stretching": "Stretching",
+      "dancing": "Dancing",
+      "football": "Football",
+      "basketball": "Basketball",
+      "volleyball": "Volleyball",
+      "tennis": "Tennis",
+      "martial_arts": "Martial arts",
+      "climbing": "Climbing",
+      "skiing": "Skiing",
+      "skating": "Skating",
+      "rowing": "Rowing"
     }
   }
 }

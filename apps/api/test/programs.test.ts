@@ -952,6 +952,32 @@ describe('body weight and generation', () => {
     ]);
   });
 
+  it('syncs a free activity and refuses one that does not add up', async () => {
+    const activity = {
+      id: uuidv7(),
+      ...stamps(),
+      activity_type: 'football',
+      started_at: '2026-10-04T08:00:00.000Z',
+      duration_sec: 90 * 60,
+      intensity: 7,
+      distance_m: 8200,
+      avg_hr: 151,
+      calories: null,
+      notes: 'Sunday match',
+    };
+    expect((await push(anna, [upsert('activity_logs', activity)])).rejected).toEqual([]);
+    for (const broken of [{ intensity: 11 }, { duration_sec: 0 }, { activity_type: ' ' }]) {
+      const row = { ...activity, id: uuidv7(), ...broken };
+      expect((await push(anna, [upsert('activity_logs', row)])).rejected).toEqual([
+        { id: row.id, code: 'validation_error' },
+      ]);
+    }
+
+    const response = await request(anna, 'GET', '/v1/sync/pull');
+    const { changes } = (await response.json()) as { changes: { table: string; row: unknown }[] };
+    expect(changes).toEqual([{ table: 'activity_logs', row: activity }]);
+  });
+
   it('drafts a program from the questionnaire for the equipment of a gym, saving nothing', async () => {
     const answers = { goal: 'mass', level: 'beginner', frequency: 3, duration_min: 60, split: 'auto' };
     const response = await request(anna, 'POST', '/v1/programs/generate', {

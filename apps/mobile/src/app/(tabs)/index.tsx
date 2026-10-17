@@ -103,6 +103,11 @@ export default function TodayScreen() {
 
       <ThemedView type="backgroundElement" style={styles.row}>
         <LinkRow
+          title={t('activity.record')}
+          subtitle={t('activity.todayHint')}
+          onPress={() => router.push('/activity')}
+        />
+        <LinkRow
           title={t('interval.title')}
           subtitle={t('interval.todayHint')}
           onPress={() => router.push('/interval')}

@@ -10,12 +10,20 @@ import { ThemedText } from '@/components/themed-text';
 import { WeightCard } from '@/components/weight-card';
 import { Card, LinkRow, Screen } from '@/components/ui';
 import { Spacing } from '@/constants/theme';
+import { listActivities } from '@/data/activities';
 import { listWeights } from '@/data/body';
-import { exerciseProgress, exercisesWithProgress, listWorkouts } from '@/data/history';
+import {
+  cardioProgress,
+  exerciseProgress,
+  exercisesOnTime,
+  exercisesWithProgress,
+  listWorkouts,
+} from '@/data/history';
 import { useLocale } from '@/hooks/use-locale';
 import { useTheme } from '@/hooks/use-theme';
 import { useCatalog } from '@/lib/catalog';
 import { useLocal } from '@/lib/local';
+import { activityName, formatActivity, formatDistance, formatDuration } from '@/lib/format';
 import { formatKg } from '@/lib/workout';
 
 const TABS = ['weight', 'exercises', 'history'] as const;
@@ -71,10 +79,15 @@ function Exercises() {
   const locale = useLocale();
   const theme = useTheme();
   const { exerciseById } = useCatalog();
-  const ids = useLocal(exercisesWithProgress);
+  // Cardio gets a chart too, without any progression behind it.
+  const ids = useLocal((ctx) => [
+    ...exercisesWithProgress(ctx),
+    ...exercisesOnTime(ctx).filter((id) => exerciseById.get(id)?.tracking === 'distance_time'),
+  ]);
   const [chosen, setChosen] = useState<string | null>(null);
   const exerciseId = chosen ?? ids[0] ?? null;
-  const points = useLocal((ctx) => (exerciseId ? exerciseProgress(ctx, exerciseId) : []));
+  const cardio = exerciseId !== null && exerciseById.get(exerciseId)?.tracking === 'distance_time';
+  const points = useLocal((ctx) => (exerciseId && !cardio ? exerciseProgress(ctx, exerciseId) : []));
   const name = (id: string) => exerciseById.get(id)?.translations[locale].name ?? id;
   const kg = (value: number) => formatKg(t, locale, Math.round(value * 10) / 10);
 
@@ -86,38 +99,96 @@ function Exercises() {
           <Chip key={id} label={name(id)} selected={id === exerciseId} onPress={() => setChosen(id)} />
         ))}
       </View>
-      <LineChart
-        series={[
-          {
-            values: points.map((point) => point.e1rm),
-            color: theme.textSecondary,
-            title: t('progress.e1rm'),
-          },
-          {
-            values: points.map((point) => point.weight_kg),
-            color: theme.accent,
-            title: t('progress.topWeight'),
-          },
-        ]}
-        format={kg}
-        label={t('progress.chartLabel', {
-          name: name(exerciseId),
-          from: kg(points[0]?.weight_kg ?? 0),
-          to: kg(points.at(-1)?.weight_kg ?? 0),
-        })}
-      />
+      {cardio ? (
+        <CardioChart exerciseId={exerciseId} name={name(exerciseId)} />
+      ) : (
+        <LineChart
+          series={[
+            {
+              values: points.map((point) => point.e1rm),
+              color: theme.textSecondary,
+              title: t('progress.e1rm'),
+            },
+            {
+              values: points.map((point) => point.weight_kg),
+              color: theme.accent,
+              title: t('progress.topWeight'),
+            },
+          ]}
+          format={kg}
+          label={t('progress.chartLabel', {
+            name: name(exerciseId),
+            from: kg(points[0]?.weight_kg ?? 0),
+            to: kg(points.at(-1)?.weight_kg ?? 0),
+          })}
+        />
+      )}
     </>
   );
 }
 
+/** The distance of a cardio exercise per workout, or its time when no distance was logged. */
+function CardioChart({ exerciseId, name }: { exerciseId: string; name: string }) {
+  const { t } = useTranslation();
+  const locale = useLocale();
+  const theme = useTheme();
+  const points = useLocal((ctx) => cardioProgress(ctx, exerciseId));
+  const byDistance = points.some((point) => point.distance_m > 0);
+  const values = points.map((point) => (byDistance ? point.distance_m : point.duration_sec));
+  const format = (value: number) =>
+    byDistance ? formatDistance(t, locale, value) : formatDuration(t, Math.round(value / 60) * 60);
+
+  return (
+    <LineChart
+      series={[
+        {
+          values,
+          color: theme.accent,
+          title: byDistance ? t('progress.distance') : t('progress.time'),
+        },
+      ]}
+      format={format}
+      label={t('progress.chartLabel', {
+        name,
+        from: format(values[0] ?? 0),
+        to: format(values.at(-1) ?? 0),
+      })}
+    />
+  );
+}
+
+/** Workouts and free activities together, newest first. */
 function History() {
   const { t } = useTranslation();
   const locale = useLocale();
   const router = useRouter();
   const workouts = useLocal(listWorkouts);
+  const activities = useLocal(listActivities);
   const [latest] = workouts;
+  const date = (iso: string) =>
+    new Intl.DateTimeFormat(locale, { dateStyle: 'medium' }).format(new Date(iso));
 
-  if (!latest) return <ThemedText themeColor="textSecondary">{t('progress.noHistory')}</ThemedText>;
+  const entries = [
+    ...workouts.map((workout) => ({
+      key: workout.session.id,
+      at: workout.session.started_at,
+      title: `${t('progress.workout', { number: workout.number })}, ${workout.dayTitle}`,
+      subtitle: `${date(workout.session.started_at)}, ${formatKg(t, locale, Math.round(workout.volumeKg))}`,
+      open: () =>
+        router.push({ pathname: '/workout/summary/[id]', params: { id: workout.session.id } }),
+    })),
+    ...activities.map((activity) => ({
+      key: activity.id,
+      at: activity.started_at,
+      title: activityName(t, activity.activity_type),
+      subtitle: `${date(activity.started_at)}, ${formatActivity(t, locale, activity).split(': ').slice(1).join(': ')}`,
+      open: () => router.push({ pathname: '/activity', params: { id: activity.id } }),
+    })),
+  ].sort((a, b) => b.at.localeCompare(a.at));
+
+  if (entries.length === 0) {
+    return <ThemedText themeColor="textSecondary">{t('progress.noHistory')}</ThemedText>;
+  }
   return (
     <>
       <View style={styles.actions}>
@@ -126,33 +197,26 @@ function History() {
           title={t('progress.weekReport')}
           onPress={() => router.push({ pathname: '/report', params: { kind: 'week' } })}
         />
-        <Button
-          variant="secondary"
-          title={t('progress.cycleReport')}
-          onPress={() =>
-            router.push({
-              pathname: '/report',
-              params: {
-                kind: 'cycle',
-                program: latest.session.program_id,
-                cycle: String(latest.session.cycle_number),
-              },
-            })
-          }
-        />
-      </View>
-      <Card>
-        {workouts.map((workout) => (
-          <LinkRow
-            key={workout.session.id}
-            title={`${t('progress.workout', { number: workout.number })}, ${workout.dayTitle}`}
-            subtitle={`${new Intl.DateTimeFormat(locale, { dateStyle: 'medium' }).format(
-              new Date(workout.session.started_at),
-            )}, ${formatKg(t, locale, Math.round(workout.volumeKg))}`}
+        {latest && (
+          <Button
+            variant="secondary"
+            title={t('progress.cycleReport')}
             onPress={() =>
-              router.push({ pathname: '/workout/summary/[id]', params: { id: workout.session.id } })
+              router.push({
+                pathname: '/report',
+                params: {
+                  kind: 'cycle',
+                  program: latest.session.program_id,
+                  cycle: String(latest.session.cycle_number),
+                },
+              })
             }
           />
+        )}
+      </View>
+      <Card>
+        {entries.map((entry) => (
+          <LinkRow key={entry.key} title={entry.title} subtitle={entry.subtitle} onPress={entry.open} />
         ))}
       </Card>
     </>

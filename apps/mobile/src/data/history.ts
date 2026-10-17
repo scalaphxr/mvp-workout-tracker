@@ -124,3 +124,45 @@ export function exercisesWithProgress(ctx: DataContext): string[] {
     .all();
   return rows.map((row) => row.id);
 }
+
+/** How a cardio exercise went over time: per workout, the distance and the time of its sets. */
+export function cardioProgress(
+  ctx: DataContext,
+  exerciseId: string,
+): { date: string; distance_m: number; duration_sec: number }[] {
+  const rows = ctx.db
+    .select({
+      started_at: sessions.started_at,
+      distance_m: set_logs.distance_m,
+      duration_sec: set_logs.duration_sec,
+    })
+    .from(set_logs)
+    .innerJoin(session_exercises, eq(session_exercises.id, set_logs.session_exercise_id))
+    .innerJoin(sessions, eq(sessions.id, session_exercises.session_id))
+    .where(and(finished, eq(session_exercises.exercise_id, exerciseId), isNull(set_logs.deleted_at)))
+    .orderBy(asc(sessions.started_at))
+    .all();
+
+  const byWorkout = new Map<string, { date: string; distance_m: number; duration_sec: number }>();
+  for (const row of rows) {
+    const point = byWorkout.get(row.started_at) ?? { date: row.started_at, distance_m: 0, duration_sec: 0 };
+    point.distance_m += row.distance_m ?? 0;
+    point.duration_sec += row.duration_sec ?? 0;
+    byWorkout.set(row.started_at, point);
+  }
+  return [...byWorkout.values()].filter((point) => point.duration_sec > 0);
+}
+
+/** Ids of exercises with a set on time and no reps in a finished workout: cardio and holds. */
+export function exercisesOnTime(ctx: DataContext): string[] {
+  const rows = ctx.db
+    .selectDistinct({ id: session_exercises.exercise_id })
+    .from(set_logs)
+    .innerJoin(session_exercises, eq(session_exercises.id, set_logs.session_exercise_id))
+    .innerJoin(sessions, eq(sessions.id, session_exercises.session_id))
+    .where(
+      and(finished, isNull(set_logs.deleted_at), isNull(set_logs.reps), gt(set_logs.duration_sec, 0)),
+    )
+    .all();
+  return rows.map((row) => row.id);
+}
