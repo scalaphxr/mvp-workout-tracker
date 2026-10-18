@@ -21,14 +21,18 @@ jobs:
       - run: pnpm lint
       - run: pnpm test
 
-  # The image of the server (deploy/api.Dockerfile) still builds and the server starts in it.
+  # The image of the server (deploy/api.Dockerfile) builds and starts against a real PostgreSQL,
+  # with the settings production requires; the migrations run on it.
   docker:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: docker build -f deploy/api.Dockerfile -t mvp-api .
       - run: |
-          docker run -d --name api -p 3000:3000 mvp-api
+          docker network create ci
+          docker run -d --name db --network ci -e POSTGRES_USER=mvp -e POSTGRES_PASSWORD=mvp -e POSTGRES_DB=mvp postgres:17
+          until docker exec db pg_isready -U mvp -d mvp; do sleep 1; done
+          docker run -d --name api --network ci -p 3000:3000 --env-file deploy/ci.env mvp-api
           for i in $(seq 1 30); do curl -sf localhost:3000/health && exit 0; sleep 1; done
           docker logs api
           exit 1
