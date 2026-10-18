@@ -11,7 +11,7 @@ import { haptic } from '@/lib/feedback';
 import { formatNumber, toLocalDate } from '@/lib/format';
 import { mutate, useActiveProgram, useLocal } from '@/lib/local';
 import { syncNow } from '@/lib/sync';
-import { formatKg } from '@/lib/workout';
+import { fromUnits, toUnits, useUnits, useWeightFormat } from '@/lib/units';
 
 import { Button } from './button';
 import { ThemedText } from './themed-text';
@@ -21,7 +21,8 @@ import { StepButton, TextField } from './ui';
 /** The limits of `BodyLogRowSchema`. */
 const MIN_KG = 20;
 const MAX_KG = 400;
-const STEP_KG = 0.1;
+/** The step of the − and + buttons, in the user's units. */
+const STEP = 0.1;
 
 /** The morning weight: entering today's, the 7-day average and the change over the week. */
 export function WeightCard() {
@@ -32,15 +33,20 @@ export function WeightCard() {
   const programId = useActiveProgram((state) => state.id);
   const goal = useLocal((ctx) => (programId ? getProgramTree(ctx, programId)?.program.goal : null));
   const stats = weightStats(weights, today);
+  const units = useUnits();
+  const weight = useWeightFormat();
+  /** A number in the user's units, kept to a tenth. */
+  const shown = (kg: number) => Math.round(toUnits(kg, units) * 10) / 10;
 
   const [editing, setEditing] = useState(false);
   // The field starts from the last known weight: today's is rarely far from it.
   const known = stats.today ?? weights.at(-1)?.weight_kg;
-  const [text, setText] = useState(known === undefined ? '' : formatNumber(known, locale));
-  // Typed with a comma or a point, kept to 0.1 kg.
+  const [text, setText] = useState(known === undefined ? '' : formatNumber(shown(known), locale));
+  // Typed with a comma or a point in the user's units, kept to a tenth.
   const value = Math.round(Number(text.trim().replace(',', '.')) * 10) / 10;
-  const valid = text.trim() !== '' && value >= MIN_KG && value <= MAX_KG;
-  const kg = (weight: number) => formatKg(t, locale, Math.round(weight * 10) / 10);
+  const valueKg = fromUnits(value, units);
+  const valid = text.trim() !== '' && valueKg >= MIN_KG && valueKg <= MAX_KG;
+  const kg = (kilograms: number) => weight(Math.round(kilograms * 10) / 10);
   const signed = (number: number, digits: number) =>
     `${number > 0 ? '+' : number < 0 ? '−' : ''}${formatNumber(Math.abs(Number(number.toFixed(digits))), locale)}`;
 
@@ -51,7 +57,8 @@ export function WeightCard() {
   };
   const save = () => {
     if (!valid) return;
-    mutate((ctx) => setWeight(ctx, today, value));
+    // Stored in kilograms, to the gram: a weight typed in pounds comes back the same.
+    mutate((ctx) => setWeight(ctx, today, Math.round(valueKg * 1000) / 1000));
     setText(formatNumber(value, locale));
     setEditing(false);
     haptic('tap');
@@ -76,31 +83,31 @@ export function WeightCard() {
           {/* Typed for the first time, then nudged by 0.1 kg from yesterday's. */}
           <View style={styles.row}>
             <StepButton
-              label={`${t('weight.label')}: ${t('item.decrease')}`}
+              label={`${t(units === 'lb' ? 'weight.labelLb' : 'weight.label')}: ${t('item.decrease')}`}
               icon="remove"
-              disabled={!valid || value - STEP_KG < MIN_KG}
-              onPress={() => step(-STEP_KG)}
+              disabled={!valid || fromUnits(value - STEP, units) < MIN_KG}
+              onPress={() => step(-STEP)}
             />
             <TextField
-              label={t('weight.label')}
+              label={t(units === 'lb' ? 'weight.labelLb' : 'weight.label')}
               value={text}
               onChangeText={setText}
-              placeholder={t('weight.placeholder')}
+              placeholder={t(units === 'lb' ? 'weight.placeholderLb' : 'weight.placeholder')}
               inputMode="decimal"
               returnKeyType="done"
               onSubmitEditing={save}
               style={styles.input}
             />
             <StepButton
-              label={`${t('weight.label')}: ${t('item.increase')}`}
+              label={`${t(units === 'lb' ? 'weight.labelLb' : 'weight.label')}: ${t('item.increase')}`}
               icon="add"
-              disabled={!valid || value + STEP_KG > MAX_KG}
-              onPress={() => step(STEP_KG)}
+              disabled={!valid || fromUnits(value + STEP, units) > MAX_KG}
+              onPress={() => step(STEP)}
             />
           </View>
           {text.trim() !== '' && !valid && (
             <ThemedText type="small" themeColor="danger" accessibilityRole="alert">
-              {t('weight.invalid', { min: MIN_KG, max: MAX_KG })}
+              {t('weight.invalid', { min: weight(MIN_KG), max: weight(MAX_KG) })}
             </ThemedText>
           )}
           <Button title={t('weight.save')} disabled={!valid} onPress={save} />
@@ -116,7 +123,9 @@ export function WeightCard() {
         {stats.change_kg !== null && stats.change_pct !== null && (
           <ThemedText type="small" themeColor="textSecondary">
             {t('weight.weekChange', {
-              change: t('units.kg', { value: signed(stats.change_kg, 1) }),
+              change: t(units === 'lb' ? 'units.lb' : 'units.kg', {
+                value: signed(toUnits(stats.change_kg, units), 1),
+              }),
               percent: signed(stats.change_pct, 1),
             })}
           </ThemedText>

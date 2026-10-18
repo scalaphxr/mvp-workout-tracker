@@ -20,13 +20,14 @@ import {
 } from '@/data/programs';
 import { useLocale } from '@/hooks/use-locale';
 import { useCatalog } from '@/lib/catalog';
-import { formatDuration, formatNumber } from '@/lib/format';
+import { formatDuration } from '@/lib/format';
 import { useGym } from '@/lib/gym';
 import { mutate, useLocal } from '@/lib/local';
+import { fromUnits, useUnits, useWeightFormat } from '@/lib/units';
 
 /** RIR is marked in one tap: 0, 1, 2, 3 or "4 and more". */
 const RIR_OPTIONS = [0, 1, 2, 3, 4] as const;
-const STEP_OPTIONS = [0.5, 1, 1.25, 2, 2.5, 5, 10] as const;
+const STEP_OPTIONS = { kg: [0.5, 1, 1.25, 2, 2.5, 5, 10], lb: [1, 2.5, 5, 10, 20] } as const;
 
 /** How the range of an item is called, by how the exercise is counted. */
 const RANGE_LABELS = {
@@ -43,6 +44,8 @@ export default function ProgramItemScreen() {
   const router = useRouter();
   const { catalog, exerciseById } = useCatalog();
   const gym = useGym();
+  const units = useUnits();
+  const kg = useWeightFormat();
   const item = useLocal((ctx) => getItem(ctx, id));
   const siblings = useLocal((ctx) => (item ? dayItems(ctx, item.program_day_id) : []));
   const [notes, setNotes] = useState(item?.notes ?? '');
@@ -55,12 +58,11 @@ export default function ProgramItemScreen() {
   const [minLabel, maxLabel] = RANGE_LABELS[tracking];
   const isLast = siblings.at(-1)?.id === item.id;
   // The step of the equipment in the main gym: what "as in the gym" means for this exercise.
-  const gymStep = exercise ? weightStepKg(exercise, catalog.equipment, gym?.steps) : null;
+  const gymStep = exercise ? weightStepKg(exercise, catalog.equipment, gym?.steps, units) : null;
   // Timed holds and cardio are planned in bigger steps than reps.
   const rangeStep = tracking === 'time' ? 5 : 1;
 
   const change = (patch: ItemPatch) => mutate((ctx) => updateItem(ctx, item.id, patch));
-  const kg = (value: number) => t('units.kg', { value: formatNumber(value, locale) });
 
   return (
     <Screen>
@@ -136,12 +138,15 @@ export default function ProgramItemScreen() {
               selected={item.increment_kg === null}
               onPress={() => change({ increment_kg: null })}
             />
-            {STEP_OPTIONS.map((step) => (
+            {STEP_OPTIONS[units].map((option) => (
               <Chip
-                key={step}
-                label={kg(step)}
-                selected={item.increment_kg === step}
-                onPress={() => change({ increment_kg: step })}
+                key={option}
+                label={kg(fromUnits(option, units))}
+                selected={
+                  item.increment_kg !== null &&
+                  Math.abs(item.increment_kg - fromUnits(option, units)) < 1e-6
+                }
+                onPress={() => change({ increment_kg: fromUnits(option, units) })}
               />
             ))}
           </View>

@@ -13,3 +13,6 @@ coverage/
 .data/
 
 .DS_Store
+
+# database dumps of the production server
+deploy/backups/

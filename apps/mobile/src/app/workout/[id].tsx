@@ -27,6 +27,7 @@ import {
   recordsOfSet,
   removeLastSet,
   type SessionExerciseView,
+  type SetRecords,
 } from '@/data/sessions';
 import { useLocale } from '@/hooks/use-locale';
 import { ThemeOverride, useTheme } from '@/hooks/use-theme';
@@ -36,7 +37,8 @@ import { formatCardio, formatDistance, formatDuration, formatRange } from '@/lib
 import { mutate, useLocal } from '@/lib/local';
 import { useRestTimer } from '@/lib/rest-timer';
 import { syncNow } from '@/lib/sync';
-import { explainPlan, formatKg, useExerciseFacts } from '@/lib/workout';
+import { useUnits, useWeightFormat } from '@/lib/units';
+import { explainPlan, useExerciseFacts } from '@/lib/workout';
 
 /** RIR is marked in one tap: 0, 1, 2, 3 or "4 and more". */
 const RIR_OPTIONS = [0, 1, 2, 3, 4] as const;
@@ -59,6 +61,7 @@ function Workout() {
   const insets = useSafeAreaInsets();
   const { exerciseById } = useCatalog();
   const facts = useExerciseFacts();
+  const weight = useWeightFormat();
   const startRest = useRestTimer((state) => state.start);
   const stopRest = useRestTimer((state) => state.stop);
   const view = useLocal((ctx) => getSession(ctx, id));
@@ -158,7 +161,7 @@ function Workout() {
                     {entry.sets
                       .map((set) =>
                         set.reps !== null
-                          ? `${set.weight_kg ? `${formatKg(t, locale, set.weight_kg)} × ` : ''}${set.reps}`
+                          ? `${set.weight_kg ? `${weight(set.weight_kg)} × ` : ''}${set.reps}`
                           : formatCardio(t, locale, set),
                       )
                       .join(exercise?.tracking === 'distance_time' ? '; ' : ', ')}
@@ -235,6 +238,8 @@ function SetEntry({
   const { exerciseById } = useCatalog();
   const { item, plan, sets } = entry;
   const last = useLocal((ctx) => lastPerformance(ctx, entry.exercise.exercise_id, sessionId));
+  const units = useUnits();
+  const kg = useWeightFormat();
 
   const tracking = exercise?.tracking ?? 'weight_reps';
   const setIndex = sets.length;
@@ -286,9 +291,32 @@ function SetEntry({
         ? { duration_sec: seconds }
         : // A weight left at zero means it was not entered: the set counts by reps alone.
           { weight_kg: loaded && weight > 0 ? weight : null, reps, rir };
-    // The set is in the database before the screen moves on.
-    mutate((ctx) => logSet(ctx, entry.exercise.id, { ...planned, ...done }));
+    // The set is in the database before the screen moves on; its records are checked before
+    // it is saved, so it is not compared with itself.
+    const records = mutate((ctx) => {
+      const found = recordsOfSet(ctx, entry.exercise.id, done);
+      logSet(ctx, entry.exercise.id, { ...planned, ...done });
+      return found;
+    });
     onLogged();
+    celebrate(records);
+  };
+
+  /** "Record! 85 kg × 8", "Record! 5,1 km, 30 min" – one line however many records it is. */
+  const celebrate = ({ weight, cardio }: SetRecords) => {
+    // A new top weight says more than a new estimated maximum with it.
+    const lifted = weight.find((record) => record.kind !== 'e1rm') ?? weight[0];
+    const parts = [
+      lifted
+        ? lifted.kind === 'e1rm'
+          ? t('workout.recordE1rm')
+          : `${kg(lifted.weight_kg)} × ${lifted.reps}`
+        : null,
+      ...cardio.map((found) =>
+        found.kind === 'distance' ? formatDistance(t, locale, found.value) : formatDuration(t, found.value),
+      ),
+    ].filter(Boolean);
+    if (parts.length > 0) onRecord(t('workout.recordSet', { records: parts.join(', ') }));
   };
 
   const range = item ? formatRange(item.rep_min, item.rep_max) : '';
@@ -309,7 +337,7 @@ function SetEntry({
         {(tracking === 'weight_reps' || tracking === 'reps') && (
           <ThemedText style={styles.plan}>
             {loaded && plannedWeight !== null
-              ? t('workout.plan', { weight: formatKg(t, locale, plannedWeight), range })
+              ? t('workout.plan', { weight: kg(plannedWeight), range })
               : t('workout.planNoWeight', { range })}
           </ThemedText>
         )}
@@ -321,13 +349,13 @@ function SetEntry({
         {last.length > 0 && tracking !== 'time' && tracking !== 'distance_time' && (
           <ThemedText type="small" themeColor="textSecondary">
             {t('workout.lastTime', {
-              sets: `${last[0]?.weight_kg ? `${formatKg(t, locale, last[0].weight_kg)} × ` : ''}${last.map((set) => set.reps).join(', ')}`,
+              sets: `${last[0]?.weight_kg ? `${kg(last[0].weight_kg)} × ` : ''}${last.map((set) => set.reps).join(', ')}`,
             })}
           </ThemedText>
         )}
         {plan && !replaced && setIndex === 0 && (
           <ThemedText type="small" themeColor="textSecondary">
-            {explainPlan(t, locale, plan)}
+            {explainPlan(t, locale, plan, units)}
           </ThemedText>
         )}
       </View>
@@ -344,7 +372,6 @@ function SetEntry({
           last={setIndex === 0 ? last : []}
           onSave={(values) => {
             const records = mutate((ctx) => {
-              // Checked before the set is saved, so it is not compared with itself.
               const found = recordsOfSet(ctx, entry.exercise.id, values);
               logSet(ctx, entry.exercise.id, {
                 planned_rep_min: item?.rep_min ?? null,
@@ -354,19 +381,7 @@ function SetEntry({
               return found;
             });
             onLogged();
-            if (records.length > 0) {
-              onRecord(
-                t('workout.recordSet', {
-                  records: records
-                    .map((found) =>
-                      found.kind === 'distance'
-                        ? formatDistance(t, locale, found.value)
-                        : formatDuration(t, found.value),
-                    )
-                    .join(', '),
-                }),
-              );
-            }
+            celebrate(records);
           }}
         />
       )}
@@ -376,7 +391,7 @@ function SetEntry({
             <Stepper
               label={t('workout.weight')}
               value={weight}
-              text={formatKg(t, locale, weight)}
+              text={kg(weight)}
               min={0}
               max={1000}
               step={stepKg}

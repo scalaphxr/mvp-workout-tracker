@@ -1,16 +1,17 @@
-import { useRouter } from 'expo-router';
+import { Redirect, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 
 import { Button } from '@/components/button';
 import { Chip } from '@/components/chip';
+import { StreakCard } from '@/components/streak-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Group, LinkRow, Screen } from '@/components/ui';
 import { WeightCard } from '@/components/weight-card';
 import { Spacing } from '@/constants/theme';
-import { getProgramTree } from '@/data/programs';
+import { getProgramTree, listPrograms } from '@/data/programs';
 import {
   activeSession,
   lastFinishedSession,
@@ -21,16 +22,21 @@ import {
 import { useLocale } from '@/hooks/use-locale';
 import { formatDuration } from '@/lib/format';
 import { mutate, useActiveProgram, useLocal } from '@/lib/local';
-import { formatKg } from '@/lib/workout';
+import { usePreferences } from '@/lib/preferences';
+import { useWeightFormat } from '@/lib/units';
 
 export default function TodayScreen() {
   const { t } = useTranslation();
   const locale = useLocale();
   const router = useRouter();
+  const weight = useWeightFormat();
   const programId = useActiveProgram((state) => state.id);
   const [pickedDayId, setPickedDayId] = useState<string | null>(null);
   const [choosing, setChoosing] = useState(false);
 
+  const onboarded = usePreferences((state) => state.onboarded);
+  // Someone who already has programs or workouts (an update, a second device) needs no slides.
+  const fresh = useLocal((ctx) => listPrograms(ctx).length === 0 && lastFinishedSession(ctx) === null);
   const today = useLocal((ctx) => {
     const last = lastFinishedSession(ctx);
     return {
@@ -47,6 +53,8 @@ export default function TodayScreen() {
   const { running, tree, next, last } = today;
   const day = next?.days.find((candidate) => candidate.id === pickedDayId) ?? next?.day;
   const exercises = tree && day ? tree.items.filter((item) => item.program_day_id === day.id) : [];
+
+  if (!onboarded && fresh) return <Redirect href="/onboarding" />;
 
   return (
     <Screen>
@@ -99,6 +107,8 @@ export default function TodayScreen() {
         </View>
       )}
 
+      <StreakCard />
+
       <WeightCard />
 
       <ThemedView type="backgroundElement" style={styles.row}>
@@ -121,7 +131,15 @@ export default function TodayScreen() {
               title={new Intl.DateTimeFormat(locale, { dateStyle: 'long' }).format(
                 new Date(last.session.started_at),
               )}
-              subtitle={`${t('today.volume', { volume: formatKg(t, locale, Math.round(last.volumeKg)) })}, ${t('today.duration', { duration: formatDuration(t, last.durationSec) })}`}
+              subtitle={[
+                // Cardio alone lifts nothing: no "volume 0 kg".
+                last.volumeKg > 0
+                  ? t('today.volume', { volume: weight(Math.round(last.volumeKg)) })
+                  : null,
+                t('today.duration', { duration: formatDuration(t, last.durationSec) }),
+              ]
+                .filter(Boolean)
+                .join(', ')}
               onPress={() =>
                 router.push({ pathname: '/workout/summary/[id]', params: { id: last.session.id } })
               }

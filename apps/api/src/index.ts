@@ -17,7 +17,7 @@ await database.migrate();
 
 const app = createApp({
   db: database.db,
-  mailer: config.smtpUrl ? smtpMailer(config.smtpUrl, config.mailFrom) : consoleMailer(),
+  mailer: config.smtpUrl ? smtpMailer(config.smtpUrl, config.mailFrom, config.supportEmail) : consoleMailer(),
   jwtSecret: config.jwtSecret,
   adminToken: config.adminToken,
   now: () => new Date(),

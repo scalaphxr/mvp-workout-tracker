@@ -30,6 +30,11 @@ pnpm catalog:import   # один раз: загрузить каталог уп�
 - **Почта.** Пока не задан `SMTP_URL`, код для входа печатается в консоль сервера.
 - **Адрес API для телефона** задаётся в `apps/mobile/.env.local` (пример – `apps/mobile/.env.example`).
 
+## Деплой
+
+Сервер для продакшена – `deploy/`: Docker Compose с API, PostgreSQL, HTTPS (Caddy) и ежедневными
+бэкапами; инструкция в `deploy/README.md`. Сборки приложения – EAS, профили в `apps/mobile/eas.json`.
+
 ## Каталог упражнений
 
 Каталог лежит в `packages/content/catalog`: оборудование, мышцы и упражнения на двух языках.

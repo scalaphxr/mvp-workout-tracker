@@ -20,3 +20,15 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm lint
       - run: pnpm test
+
+  # The image of the server (deploy/api.Dockerfile) still builds and the server starts in it.
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -f deploy/api.Dockerfile -t mvp-api .
+      - run: |
+          docker run -d --name api -p 3000:3000 mvp-api
+          for i in $(seq 1 30); do curl -sf localhost:3000/health && exit 0; sleep 1; done
+          docker logs api
+          exit 1

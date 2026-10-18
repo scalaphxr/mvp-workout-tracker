@@ -360,3 +360,39 @@ describe('error envelope', () => {
     expect(await response.json()).toEqual({ ok: true });
   });
 });
+
+describe('profile settings', () => {
+  const patchMe = (token: string, body: unknown) =>
+    app.request('/v1/me', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      body: JSON.stringify(body),
+    });
+
+  it('changes only the fields sent and returns the profile', async () => {
+    const { access_token } = await signIn();
+    const response = await patchMe(access_token, { units: 'lb', default_rest_sec: 90 });
+    expect(response.status).toBe(200);
+    expect(((await response.json()) as { user: unknown }).user).toMatchObject({
+      units: 'lb',
+      default_rest_sec: 90,
+      locale: 'en',
+    });
+
+    await patchMe(access_token, { locale: 'ru' });
+    const me = (await (await getMe(access_token)).json()) as { user: unknown };
+    expect(me.user).toMatchObject({ units: 'lb', default_rest_sec: 90, locale: 'ru' });
+  });
+
+  it('refuses values out of range and needs a signed-in user', async () => {
+    const { access_token } = await signIn();
+    expect((await patchMe(access_token, { units: 'stone' })).status).toBe(400);
+    expect((await patchMe(access_token, { default_rest_sec: 5000 })).status).toBe(400);
+    const anonymous = await app.request('/v1/me', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ units: 'lb' }),
+    });
+    expect(anonymous.status).toBe(401);
+  });
+});

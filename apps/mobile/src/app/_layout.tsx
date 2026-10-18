@@ -13,6 +13,7 @@ import { useAuthStore } from '@/lib/auth-store';
 import { syncCatalog, useCatalog } from '@/lib/catalog';
 import { dataReady } from '@/lib/db';
 import { ensureDefaultGym } from '@/lib/gym';
+import { useReminderDriver } from '@/lib/reminders';
 import { loadSyncInfo, syncNow } from '@/lib/sync';
 
 const queryClient = new QueryClient();
@@ -44,6 +45,12 @@ function SyncDriver() {
     return () => subscription.remove();
   }, [signedIn]);
 
+  return null;
+}
+
+/** Reminders follow the data; rendered once the database is open. */
+function ReminderDriver() {
+  useReminderDriver();
   return null;
 }
 
@@ -86,10 +93,12 @@ export default function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <CatalogSync />
       <SyncDriver />
+      <ReminderDriver />
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         {/* Without the minimal mode a back button is labelled with the route name, "(tabs)". */}
         <Stack screenOptions={{ headerBackButtonDisplayMode: 'minimal' }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="onboarding" options={{ headerShown: false, gestureEnabled: false }} />
           <Stack.Screen
             name="sign-in"
             options={{ presentation: 'modal', title: t('signIn.title') }}
@@ -119,6 +128,7 @@ export default function RootLayout() {
           <Stack.Screen name="questionnaire" options={{ title: t('questionnaire.title') }} />
           <Stack.Screen name="import-text" options={{ title: t('importText.title') }} />
           <Stack.Screen name="activity" options={{ title: '' }} />
+          <Stack.Screen name="support" options={{ title: t('support.title') }} />
           <Stack.Screen name="interval/index" options={{ title: t('interval.title') }} />
           <Stack.Screen name="interval/preset" options={{ title: '' }} />
           <Stack.Screen name="interval/run" options={{ title: t('interval.title'), ...darkHeader }} />

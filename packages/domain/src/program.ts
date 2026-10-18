@@ -118,6 +118,8 @@ export const LOCATION_PRESETS: Record<LocationType, readonly string[] | null> = 
 export type StepGroup = 'dumbbells' | 'plates' | 'stack';
 
 export const DEFAULT_STEPS_KG: Record<StepGroup, number> = { dumbbells: 2, plates: 2.5, stack: 5 };
+/** The same in pounds (spec, "Локализация"): 5 lb dumbbells and barbell, 10 lb machines. */
+export const DEFAULT_STEPS_LB: Record<StepGroup, number> = { dumbbells: 5, plates: 5, stack: 10 };
 
 // Machines loaded with plates rather than a weight stack. Lives here until the catalog itself
 // says how a piece of equipment is loaded.

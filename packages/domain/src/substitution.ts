@@ -137,20 +137,29 @@ export function planSubstitutions(
   return substitutions;
 }
 
+/** A pound in kilograms, exactly. Weights are stored in kilograms whatever the user sees. */
+export const LB_KG = 0.45359237;
+
 /**
- * The weight step of an exercise in a gym: the step of the equipment that carries the load,
- * as set in the gym profile, else the catalog default. `null` – nothing to load (body weight).
+ * The weight step of an exercise in a gym, in kilograms: the step of the equipment that carries
+ * the load, as set in the gym profile, else the catalog default – in pounds for someone who
+ * trains in pounds (5 lb plates are not 2.5 kg). `null` – nothing to load (body weight).
  */
 export function weightStepKg(
   exercise: Exercise,
   catalogEquipment: readonly Equipment[],
   /** Steps set in the gym profile, by equipment code. */
   gymSteps: ReadonlyMap<string, number | null> = new Map(),
+  units: 'kg' | 'lb' = 'kg',
 ): number | null {
   for (const code of exercise.equipment) {
     const item = catalogEquipment.find((candidate) => candidate.code === code);
     if (!item || item.default_increment_kg === null) continue;
-    return gymSteps.get(code) ?? item.default_increment_kg;
+    const own = gymSteps.get(code);
+    if (own != null) return own;
+    return units === 'lb' && item.default_increment_lb !== null
+      ? item.default_increment_lb * LB_KG
+      : item.default_increment_kg;
   }
   return null;
 }

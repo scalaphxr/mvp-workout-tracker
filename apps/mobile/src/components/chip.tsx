@@ -10,10 +10,13 @@ export function Chip({
   label,
   selected,
   onPress,
+  onCard,
 }: {
   label: string;
   selected: boolean;
   onPress: () => void;
+  /** On a card of the element colour: an unselected chip takes a darker one to stay visible. */
+  onCard?: boolean;
 }) {
   const theme = useTheme();
 
@@ -24,7 +27,13 @@ export function Chip({
       onPress={onPress}
       style={({ pressed }) => [
         styles.chip,
-        { backgroundColor: selected ? theme.accent : theme.backgroundElement },
+        {
+          backgroundColor: selected
+            ? theme.accent
+            : onCard
+              ? theme.backgroundSelected
+              : theme.backgroundElement,
+        },
         pressed && styles.pressed,
       ]}>
       <ThemedText type="small" style={{ color: selected ? theme.onAccent : theme.text }}>

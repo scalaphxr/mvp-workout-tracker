@@ -543,7 +543,7 @@ describe('cardio and free activity, with no network at all', () => {
       const session = startSession(ctx, created.id, day!.id);
       const entryId = getSession(ctx, session.id)!.exercises[0]!.exercise.id;
       const found = sets.map((set) => {
-        const records = recordsOfSet(ctx, entryId, set);
+        const records = recordsOfSet(ctx, entryId, set).cardio;
         logSet(ctx, entryId, set);
         return records;
       });
@@ -605,6 +605,32 @@ describe('cardio and free activity, with no network at all', () => {
     expect(() => saveActivity(ctx, { ...football, duration_sec: 0 })).toThrow();
     expect(() => saveActivity(ctx, { ...football, activity_type: '  ' })).toThrow();
     expect(listActivities(ctx)).toEqual([]);
+  });
+});
+
+describe('records right on the set', () => {
+  it('a heavier set is a record before it is saved; the first workout sets none', () => {
+    const { id: programId, day1, day2 } = program();
+    const benchOf = (sessionId: string) =>
+      getSession(ctx, sessionId)!.exercises.find((entry) => entry.exercise.exercise_id === BENCH)!;
+
+    const first = startSession(ctx, programId, day1.id);
+    expect(recordsOfSet(ctx, benchOf(first.id).exercise.id, { weight_kg: 80, reps: 10 }).weight).toEqual([]);
+    logSet(ctx, benchOf(first.id).exercise.id, { weight_kg: 80, reps: 10, rir: 1 });
+    finishSession(ctx, first.id, facts, { smart: false });
+
+    const second = startSession(ctx, programId, day2.id);
+    const entryId = benchOf(second.id).exercise.id;
+    expect(recordsOfSet(ctx, entryId, { weight_kg: 80, reps: 10 })).toEqual({ weight: [], cardio: [] });
+    expect(recordsOfSet(ctx, entryId, { weight_kg: 82.5, reps: 10 }).weight).toEqual([
+      { kind: 'weight', weight_kg: 82.5, reps: 10 },
+      { kind: 'e1rm', weight_kg: 82.5, reps: 10 },
+    ]);
+    expect(recordsOfSet(ctx, entryId, { weight_kg: 80, reps: 12 }).weight).toContainEqual({
+      kind: 'reps_at_weight',
+      weight_kg: 80,
+      reps: 12,
+    });
   });
 });
 

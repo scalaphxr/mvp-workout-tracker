@@ -18,6 +18,7 @@ import { useLocale } from '@/hooks/use-locale';
 import { useCatalog } from '@/lib/catalog';
 import { toLocalDate } from '@/lib/format';
 import { useLocal } from '@/lib/local';
+import { useUnits } from '@/lib/units';
 import { buildReport, type ReportKind } from '@/lib/report';
 
 /**
@@ -57,6 +58,7 @@ export default function ReportScreen() {
     };
   });
   const weights = useLocal(listWeights);
+  const units = useUnits();
 
   if (!report) return <Screen>{<ThemedText>{t('report.empty')}</ThemedText>}</Screen>;
   const text = buildReport(
@@ -64,6 +66,7 @@ export default function ReportScreen() {
       t,
       locale,
       weights,
+      units,
       nameOf: (id) => exerciseById.get(id)?.translations[locale].name ?? t('program.unknownExercise'),
     },
     report,

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { Button } from '@/components/button';
+import { ReminderSettings, TrainingSettings } from '@/components/settings';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Card, ConfirmButton, LinkRow } from '@/components/ui';
@@ -44,6 +45,12 @@ export default function ProfileScreen() {
       <Card>
         <LinkRow title={t('gym.title')} onPress={() => router.push('/gym')} />
       </Card>
+      <TrainingSettings />
+
+      <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
+        {t('reminders.title')}
+      </ThemedText>
+      <ReminderSettings />
 
       <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
         {t('sync.title')}
@@ -54,6 +61,17 @@ export default function ProfileScreen() {
         {t('profile.language')}
       </ThemedText>
       <LanguagePicker />
+
+      <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
+        {t('support.section')}
+      </ThemedText>
+      <Card>
+        <LinkRow
+          title={t('support.title')}
+          subtitle={t('support.hint')}
+          onPress={() => router.push('/support')}
+        />
+      </Card>
 
       <DeleteAccount />
     </ScrollView>

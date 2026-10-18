@@ -1,0 +1,75 @@
+# Production on one VPS (spec, "Инфраструктура"): the API, PostgreSQL, a reverse proxy with
+# HTTPS and daily backups kept for 14 days. See deploy/README.md.
+#   cd deploy && docker compose up -d --build
+name: mvp
+
+services:
+  postgres:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: mvp
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in deploy/.env}
+      POSTGRES_DB: mvp
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U mvp -d mvp']
+      interval: 10s
+      retries: 10
+    # No published port: only the API and the backups reach the database.
+
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/api.Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://mvp:${POSTGRES_PASSWORD}@postgres:5432/mvp
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # HTTPS with certificates from Let's Encrypt, renewed on its own.
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+    environment:
+      API_DOMAIN: ${API_DOMAIN:?set API_DOMAIN in deploy/.env}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - api
+
+  # A dump of the database every day; dumps older than 14 days are removed.
+  backup:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./backups:/backups
+    depends_on:
+      postgres:
+        condition: service_healthy
+    entrypoint:
+      - sh
+      - -c
+      - |
+        while true; do
+          pg_dump -h postgres -U mvp -d mvp --format=custom -f /backups/mvp-$$(date +%F).dump \
+            && echo "backup done: mvp-$$(date +%F).dump"
+          find /backups -name 'mvp-*.dump' -mtime +14 -delete
+          sleep 86400
+        done
+
+volumes:
+  pgdata:
+  caddy_data:
+  caddy_config:

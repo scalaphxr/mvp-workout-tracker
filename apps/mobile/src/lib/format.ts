@@ -1,5 +1,5 @@
-import { isKnownActivity } from '@mvp/domain';
-import type { ActivityLogRow, Exercise, ProgramItemRow, SetLogRow } from '@mvp/schemas';
+import { isKnownActivity, LB_KG } from '@mvp/domain';
+import type { ActivityLogRow, Exercise, ProgramItemRow, SetLogRow, Units } from '@mvp/schemas';
 import type { TFunction } from 'i18next';
 
 /** `8–10`, or `8` when both ends are the same. A range is always shown with an en dash. */
@@ -93,4 +93,18 @@ export function formatActivity(
     .filter(Boolean)
     .join(', ');
   return `${activityName(t, activity.activity_type)}: ${details}`;
+}
+
+/** A weight in kilograms as a number in the user's units. */
+export const toUnits = (kg: number, units: Units) => (units === 'lb' ? kg / LB_KG : kg);
+/** A number typed in the user's units, in kilograms. */
+export const fromUnits = (value: number, units: Units) => (units === 'lb' ? value * LB_KG : value);
+
+/**
+ * `84,6 кг` or `186.5 lb`. Weights are stored in kilograms; pounds are kept to a tenth, so a
+ * weight made of pound steps comes out whole.
+ */
+export function formatWeight(t: TFunction, locale: string, kg: number, units: Units): string {
+  const value = units === 'lb' ? Math.round(toUnits(kg, units) * 10) / 10 : kg;
+  return t(units === 'lb' ? 'units.lb' : 'units.kg', { value: formatNumber(value, locale) });
 }

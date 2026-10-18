@@ -8,6 +8,7 @@ const EnvSchema = z.object({
   ADMIN_TOKEN: z.string().min(16).optional(),
   SMTP_URL: z.string().min(1).optional(),
   MAIL_FROM: z.string().min(1).default('MVP <no-reply@localhost>'),
+  SUPPORT_EMAIL: z.email().optional(),
 });
 
 export interface Config {
@@ -19,6 +20,8 @@ export interface Config {
   /** Without it login codes go to the console instead of email. */
   smtpUrl: string | undefined;
   mailFrom: string;
+  /** Where messages of the support form are sent on; they are kept in the database either way. */
+  supportEmail: string | undefined;
 }
 
 const DEV_DATABASE_URL = 'pglite://.data/pglite';
@@ -45,5 +48,6 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
       parsed.ADMIN_TOKEN ?? (parsed.NODE_ENV === 'production' ? undefined : DEV_ADMIN_TOKEN),
     smtpUrl: parsed.SMTP_URL,
     mailFrom: parsed.MAIL_FROM,
+    supportEmail: parsed.SUPPORT_EMAIL,
   };
 }

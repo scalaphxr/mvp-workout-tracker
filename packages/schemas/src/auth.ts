@@ -65,3 +65,27 @@ export type RefreshRequest = z.infer<typeof RefreshRequestSchema>;
 // GET /v1/me
 export const MeResponseSchema = z.object({ user: UserSchema });
 export type MeResponse = z.infer<typeof MeResponseSchema>;
+
+// POST /v1/support
+export const SupportRequestSchema = z.object({
+  message: z.string().trim().min(1).max(5000),
+  /** Where to answer; a signed-in user's own email is used when this is left out. */
+  email: EmailSchema.optional(),
+  app_version: z.string().max(40),
+  device: z.string().max(200),
+  last_sync_at: z.iso.datetime().nullable(),
+  locale: LocaleSchema,
+});
+export type SupportRequest = z.input<typeof SupportRequestSchema>;
+
+// PATCH /v1/me – only the fields that change.
+export const MeUpdateSchema = z
+  .object({
+    display_name: z.string().trim().max(80).nullable(),
+    locale: LocaleSchema,
+    units: UnitsSchema,
+    default_rest_sec: z.number().int().min(0).max(600),
+    ai_enabled: z.boolean(),
+  })
+  .partial();
+export type MeUpdate = z.infer<typeof MeUpdateSchema>;

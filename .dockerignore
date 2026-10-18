@@ -1,0 +1,12 @@
+# The image installs its own dependencies; local ones (and secrets) stay out of it.
+**/node_modules
+**/.turbo
+**/.data
+**/.env
+**/.env.*
+!**/.env.example
+.git
+# The app itself is not needed, only its manifest: the lockfile knows the whole workspace.
+apps/mobile/**
+!apps/mobile/package.json
+deploy/backups

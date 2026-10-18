@@ -9,4 +9,5 @@ export * from './interval';
 export * from './program';
 export * from './progression';
 export * from './share-code';
+export * from './streak';
 export * from './substitution';

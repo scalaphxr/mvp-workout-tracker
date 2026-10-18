@@ -509,3 +509,21 @@ export const shareCodeAttempts = pgTable(
     index('share_code_attempts_ip_idx').on(t.ip, t.createdAt),
   ],
 );
+/** Messages from the support form of the app, with what helps to answer them. */
+export const supportMessages = pgTable(
+  'support_messages',
+  {
+    id: uuid('id').primaryKey(),
+    /** `null` – sent by a guest. The message goes with the account when it is deleted. */
+    userId: uuid('user_id').references(() => users.id, { onDelete: 'cascade' }),
+    email: text('email'),
+    message: text('message').notNull(),
+    appVersion: text('app_version').notNull(),
+    device: text('device').notNull(),
+    lastSyncAt: timestamptz('last_sync_at'),
+    locale: text('locale', { enum: ['ru', 'en'] }).notNull(),
+    ip: text('ip').notNull(),
+    createdAt: timestamptz('created_at').notNull().defaultNow(),
+  },
+  (t) => [index('support_messages_ip_idx').on(t.ip, t.createdAt)],
+);

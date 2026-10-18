@@ -385,26 +385,37 @@ function earlierSets(ctx: DataContext, exerciseId: string, exceptSessionId: stri
     .all();
 }
 
+export interface SetRecords {
+  weight: SummaryExercise['records'];
+  cardio: CardioRecord[];
+}
+
 /**
- * The records a set on time is about to set, before it is saved: against every earlier workout
- * and the sets already done in this one. What the screen celebrates right on the set.
+ * The records a set is about to set, before it is saved: against every earlier workout and
+ * the sets already done in this one. What the screen celebrates right on the set.
  */
 export function recordsOfSet(
   ctx: DataContext,
   sessionExerciseId: string,
-  values: Pick<SetLogRow, 'duration_sec' | 'distance_m'>,
-): CardioRecord[] {
+  values: Partial<Pick<SetLogRow, 'weight_kg' | 'reps' | 'duration_sec' | 'distance_m'>>,
+): SetRecords {
   const entry = ctx.db
     .select()
     .from(session_exercises)
     .where(eq(session_exercises.id, sessionExerciseId))
     .get();
-  if (!entry) return [];
+  if (!entry) return { weight: [], cardio: [] };
   const earlier = [
     ...earlierSets(ctx, entry.exercise_id, entry.session_id).map((row) => row.set),
     ...setsOf(ctx, [sessionExerciseId]),
   ];
-  return findCardioRecords([{ reps: null, ...values }], earlier);
+  const set = {
+    weight_kg: values.weight_kg ?? null,
+    reps: values.reps ?? null,
+    duration_sec: values.duration_sec ?? null,
+    distance_m: values.distance_m ?? null,
+  };
+  return { weight: findRecords([set], earlier), cardio: findCardioRecords([set], earlier) };
 }
 
 /** What was done in this exercise the last time: "last time: 80 × 12, 11, 10". */

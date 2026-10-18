@@ -1,11 +1,19 @@
 import { shiftDate, type WeightEntry, weightStats } from '@mvp/domain';
-import type { ActivityLogRow } from '@mvp/schemas';
+import type { ActivityLogRow, Units } from '@mvp/schemas';
 import type { TFunction } from 'i18next';
 
 import type { WorkoutRecord } from '@/data/history';
 import type { SummaryExercise } from '@/data/sessions';
 
-import { formatActivity, formatCardio, formatDuration, formatNumber, toLocalDate } from './format';
+import {
+  formatActivity,
+  formatCardio,
+  formatDuration,
+  formatNumber,
+  formatWeight,
+  toLocalDate,
+  toUnits,
+} from './format';
 
 interface ReportContext {
   t: TFunction;
@@ -13,10 +21,10 @@ interface ReportContext {
   /** The name of an exercise in the user's language. */
   nameOf: (exerciseId: string) => string;
   weights: readonly WeightEntry[];
+  units: Units;
 }
 
-const kg = ({ t, locale }: ReportContext, value: number) =>
-  t('units.kg', { value: formatNumber(value, locale) });
+const kg = ({ t, locale, units }: ReportContext, value: number) => formatWeight(t, locale, value, units);
 
 const shortDate = (locale: string, date: Date | string, year = true) =>
   new Intl.DateTimeFormat(locale, {
@@ -125,7 +133,8 @@ function weightLine(ctx: ReportContext, date: string): string | null {
     return stats.average7 !== null
       ? ctx.t('report.morningWeightAverage', {
           weight: kg(ctx, stats.today),
-          average: formatNumber(Math.round(stats.average7 * 10) / 10, ctx.locale),
+          // The number alone, in the units of the weight before it.
+          average: formatNumber(Math.round(toUnits(stats.average7, ctx.units) * 10) / 10, ctx.locale),
         })
       : ctx.t('report.morningWeight', { weight: kg(ctx, stats.today) });
   }

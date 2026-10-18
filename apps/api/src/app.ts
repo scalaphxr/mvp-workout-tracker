@@ -19,6 +19,7 @@ import {
   ExerciseSearchQuerySchema,
   GenerateRequestSchema,
   type MeResponse,
+  MeUpdateSchema,
   RefreshRequestSchema,
   type ShareCode,
   ShareCodeCreateRequestSchema,
@@ -26,6 +27,7 @@ import {
   type ShareCodePreviewResponse,
   SyncPullQuerySchema,
   type SyncPullResponse,
+  SupportRequestSchema,
   SyncPushRequestSchema,
   type SyncPushResponse,
   type Tokens,
@@ -48,6 +50,7 @@ import {
 import { type CatalogDeps, createCatalogService, requireAdmin } from './catalog';
 import { ApiError, parseBody, parseQuery } from './errors';
 import { type Caller, createShareService } from './share';
+import { sendSupportMessage } from './support';
 import { pullChanges, pushChanges } from './sync';
 
 export type AppDeps = AuthDeps & CatalogDeps;
@@ -170,8 +173,36 @@ export function createApp(deps: AppDeps) {
     return c.json<MeResponse>({ user: toUserDto(user) });
   });
 
+  app.patch('/v1/me', async (c) => {
+    const body = await parseBody(c, MeUpdateSchema);
+    const [user] = await deps.db
+      .update(users)
+      .set({
+        ...(body.display_name !== undefined && { displayName: body.display_name }),
+        ...(body.locale && { locale: body.locale }),
+        ...(body.units && { units: body.units }),
+        ...(body.default_rest_sec !== undefined && { defaultRestSec: body.default_rest_sec }),
+        ...(body.ai_enabled !== undefined && { aiEnabled: body.ai_enabled }),
+        updatedAt: deps.now(),
+      })
+      .where(eq(users.id, c.get('userId')))
+      .returning();
+    if (!user) throw new ApiError(401, 'unauthorized', 'The account no longer exists');
+    return c.json<MeResponse>({ user: toUserDto(user) });
+  });
+
   app.delete('/v1/me', async (c) => {
     await deleteAccount(deps, c.get('userId'));
+    return c.body(null, 204);
+  });
+
+  // Guests write to support too: the token is used when there is one, never required.
+  app.post('/v1/support', async (c) => {
+    const body = await parseBody(c, SupportRequestSchema);
+    const [scheme, token] = (c.req.header('Authorization') ?? '').split(' ');
+    const userId =
+      scheme === 'Bearer' && token ? await verifyAccessToken(deps, token).catch(() => null) : null;
+    await sendSupportMessage(deps, body, { userId, ip: caller(c).ip });
     return c.body(null, 204);
   });
 

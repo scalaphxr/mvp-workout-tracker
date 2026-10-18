@@ -27,16 +27,21 @@ import {
 import { useLocale } from '@/hooks/use-locale';
 import { useTheme } from '@/hooks/use-theme';
 import { useCatalog } from '@/lib/catalog';
-import { formatNumber } from '@/lib/format';
-import { presetSelection, stepsOf, useGym } from '@/lib/gym';
+import { defaultSteps, presetSelection, stepsOf, useGym } from '@/lib/gym';
 import { mutate, useLocal } from '@/lib/local';
+import { fromUnits, useUnits, useWeightFormat } from '@/lib/units';
 
-/** The steps a gym can be set to, kg. For a barbell the step is two of the lightest plates. */
-const STEP_OPTIONS: Record<StepGroup, readonly number[]> = {
-  dumbbells: [0.5, 1, 2, 2.5],
-  plates: [0.5, 1, 2.5, 5],
-  stack: [2.5, 5, 10],
+/**
+ * The steps a gym can be set to, in the user's units. For a barbell the step is two of the
+ * lightest plates.
+ */
+const STEP_OPTIONS: Record<'kg' | 'lb', Record<StepGroup, readonly number[]>> = {
+  kg: { dumbbells: [0.5, 1, 2, 2.5], plates: [0.5, 1, 2.5, 5], stack: [2.5, 5, 10] },
+  lb: { dumbbells: [2.5, 5, 10], plates: [2.5, 5, 10], stack: [5, 10, 15] },
 };
+
+/** Steps are stored in kilograms; one made of pounds is a long fraction of them. */
+const same = (a: number, b: number) => Math.abs(a - b) < 1e-6;
 
 const STEP_TITLES = {
   dumbbells: 'gym.stepDumbbells',
@@ -52,18 +57,20 @@ export default function GymProfileScreen() {
   const router = useRouter();
   const { catalog } = useCatalog();
   const gym = useGym(id);
+  const units = useUnits();
+  const weight = useWeightFormat();
   const isOnly = useLocal((ctx) => listGymProfiles(ctx).length === 1);
   // The name is saved as it is typed; an empty one is not saved and the last good name stays.
   const [name, setName] = useState(gym?.profile.name ?? '');
 
   if (!gym) return <EmptyState title={t('gym.notFoundTitle')} text={t('gym.notFoundText')} />;
   const { profile } = gym;
-  const steps = stepsOf(catalog, gym);
+  const steps = stepsOf(catalog, gym, units);
 
-  /** The step stored for a piece of equipment: nothing when it is the catalog default. */
+  /** The step stored for a piece of equipment: nothing when it is the default of the units. */
   const stored = (item: Equipment, chosen: Record<StepGroup, number>) => {
     const group = stepGroup(item);
-    if (!group || chosen[group] === item.default_increment_kg) return null;
+    if (!group || same(chosen[group], defaultSteps(units)[group])) return null;
     return chosen[group];
   };
 
@@ -127,20 +134,23 @@ export default function GymProfileScreen() {
           <View key={group} style={styles.step}>
             <ThemedText>{t(STEP_TITLES[group])}</ThemedText>
             <View style={styles.chips}>
-              {STEP_OPTIONS[group].map((value) => (
+              {STEP_OPTIONS[units][group].map((option) => (
                 <Chip
-                  key={value}
-                  label={t('units.kg', { value: formatNumber(value, locale) })}
-                  selected={steps[group] === value}
+                  key={option}
+                  label={weight(fromUnits(option, units))}
+                  selected={same(steps[group], fromUnits(option, units))}
                   onPress={() =>
-                    save((item) => gym.equipment.has(item.code), { ...steps, [group]: value })
+                    save((item) => gym.equipment.has(item.code), {
+                      ...steps,
+                      [group]: fromUnits(option, units),
+                    })
                   }
                 />
               ))}
             </View>
             {group === 'plates' && (
               <ThemedText type="small" themeColor="textSecondary">
-                {t('gym.stepPlatesHint')}
+                {t(units === 'lb' ? 'gym.stepPlatesHintLb' : 'gym.stepPlatesHint')}
               </ThemedText>
             )}
           </View>

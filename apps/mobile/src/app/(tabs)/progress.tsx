@@ -23,8 +23,8 @@ import { useLocale } from '@/hooks/use-locale';
 import { useTheme } from '@/hooks/use-theme';
 import { useCatalog } from '@/lib/catalog';
 import { useLocal } from '@/lib/local';
+import { useWeightFormat } from '@/lib/units';
 import { activityName, formatActivity, formatDistance, formatDuration } from '@/lib/format';
-import { formatKg } from '@/lib/workout';
 
 const TABS = ['weight', 'exercises', 'history'] as const;
 
@@ -48,12 +48,12 @@ export default function ProgressScreen() {
 
 function Weight() {
   const { t } = useTranslation();
-  const locale = useLocale();
   const theme = useTheme();
   const weights = useLocal(listWeights);
   // The chart shows the last three months: enough to see a trend, few enough to read.
   const recent = weights.slice(-90);
-  const kg = (value: number) => formatKg(t, locale, Math.round(value * 10) / 10);
+  const weight = useWeightFormat();
+  const kg = (value: number) => weight(Math.round(value * 10) / 10);
 
   return (
     <>
@@ -89,7 +89,8 @@ function Exercises() {
   const cardio = exerciseId !== null && exerciseById.get(exerciseId)?.tracking === 'distance_time';
   const points = useLocal((ctx) => (exerciseId && !cardio ? exerciseProgress(ctx, exerciseId) : []));
   const name = (id: string) => exerciseById.get(id)?.translations[locale].name ?? id;
-  const kg = (value: number) => formatKg(t, locale, Math.round(value * 10) / 10);
+  const weight = useWeightFormat();
+  const kg = (value: number) => weight(Math.round(value * 10) / 10);
 
   if (!exerciseId) return <ThemedText themeColor="textSecondary">{t('progress.noExercises')}</ThemedText>;
   return (
@@ -163,6 +164,7 @@ function History() {
   const locale = useLocale();
   const router = useRouter();
   const workouts = useLocal(listWorkouts);
+  const weight = useWeightFormat();
   const activities = useLocal(listActivities);
   const [latest] = workouts;
   const date = (iso: string) =>
@@ -173,7 +175,10 @@ function History() {
       key: workout.session.id,
       at: workout.session.started_at,
       title: `${t('progress.workout', { number: workout.number })}, ${workout.dayTitle}`,
-      subtitle: `${date(workout.session.started_at)}, ${formatKg(t, locale, Math.round(workout.volumeKg))}`,
+      subtitle:
+        workout.volumeKg > 0
+          ? `${date(workout.session.started_at)}, ${weight(Math.round(workout.volumeKg))}`
+          : `${date(workout.session.started_at)}, ${formatDuration(t, Math.max(60, Math.round(workout.durationSec / 60) * 60))}`,
       open: () =>
         router.push({ pathname: '/workout/summary/[id]', params: { id: workout.session.id } }),
     })),

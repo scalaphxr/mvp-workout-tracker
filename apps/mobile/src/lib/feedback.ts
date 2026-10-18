@@ -52,10 +52,16 @@ export function beep(): void {
 }
 
 /** Android channels: each kind of alert can be muted on its own in the system settings. */
-export type AlertChannel = 'rest' | 'interval';
+export type AlertChannel = 'rest' | 'interval' | 'reminders';
 
 let permitted: Promise<boolean> | null = null;
 const channels = new Map<AlertChannel, Promise<unknown>>();
+
+/** Notifications are allowed already: reminders planned in the background never ask. */
+async function allowed(): Promise<boolean> {
+  if (!native) return false;
+  return (await Notifications.getPermissionsAsync().catch(() => null))?.granted ?? false;
+}
 
 /** Asks for permission to notify once, and sets up the Android channel of the alert. */
 function prepare(channel: AlertChannel, channelName: string): Promise<boolean> {
@@ -121,8 +127,11 @@ export function scheduleRestEnd(seconds: number, text: AlertText): Promise<strin
   return scheduleAlert('rest', new Date(Date.now() + seconds * 1000), text);
 }
 
-/** iOS keeps at most 64 pending notifications of an app; the rest are scheduled later. */
-export const MAX_SCHEDULED_ALERTS = 60;
+/**
+ * iOS keeps at most 64 pending notifications of an app; the rest are scheduled later. Room is
+ * left for the reminders of the coming week (at most 17).
+ */
+export const MAX_SCHEDULED_ALERTS = 40;
 
 /** A notification for every change of phase of the interval timer. */
 export async function scheduleIntervalAlerts(
@@ -137,6 +146,38 @@ export async function scheduleIntervalAlerts(
       ),
   );
   return ids.filter((id): id is string => id !== null);
+}
+
+const REMINDER = 'reminder';
+
+/**
+ * Puts the planned reminders on the phone in place of the ones there were. Never asks for
+ * permission: that happens when the user turns a reminder on (`allowReminders`).
+ */
+export async function replaceReminders(
+  reminders: readonly ({ at: Date } & Omit<AlertText, 'channel'>)[],
+  channelName: string,
+): Promise<void> {
+  if (!(await allowed())) return;
+  const scheduled = await Notifications.getAllScheduledNotificationsAsync().catch(() => []);
+  await Promise.all(
+    scheduled
+      .filter((request) => request.content.data?.kind === REMINDER)
+      .map((request) => Notifications.cancelScheduledNotificationAsync(request.identifier).catch(() => {})),
+  );
+  await prepare('reminders', channelName);
+  for (const { at, title, body } of reminders) {
+    if (at.getTime() <= Date.now()) continue;
+    await Notifications.scheduleNotificationAsync({
+      content: { title, body, sound: true, data: { kind: REMINDER } },
+      trigger: { type: Notifications.SchedulableTriggerInputTypes.DATE, date: at, channelId: 'reminders' },
+    }).catch(() => null);
+  }
+}
+
+/** Asks for permission to notify, when the user turns a reminder on. */
+export async function allowReminders(channelName: string): Promise<boolean> {
+  return native ? prepare('reminders', channelName) : false;
 }
 
 export function cancelAlert(id: string | null): void {

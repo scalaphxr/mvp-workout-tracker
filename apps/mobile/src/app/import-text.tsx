@@ -1,4 +1,3 @@
-import { defaultItemParams } from '@mvp/domain';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -14,6 +13,7 @@ import { useLocale } from '@/hooks/use-locale';
 import { useCatalog } from '@/lib/catalog';
 import { formatDuration, formatRange } from '@/lib/format';
 import { useImportDraft } from '@/lib/import-draft';
+import { itemDefaults } from '@/lib/item-defaults';
 import { mutate } from '@/lib/local';
 import { syncNow } from '@/lib/sync';
 
@@ -79,7 +79,7 @@ export default function ImportTextScreen() {
             const exercise = exerciseId ? exerciseById.get(exerciseId) : undefined;
             if (!exercise) return [];
             // What the text does not say (rest, RIR) takes the usual values for the exercise.
-            const usual = defaultItemParams(exercise, null);
+            const usual = itemDefaults(exercise, null);
             return {
               ...usual,
               exercise_id: exercise.id,

@@ -30,6 +30,7 @@ async function context(locale: 'ru' | 'en') {
     t: i18n.t as TFunction,
     locale,
     nameOf: (id: string) => NAMES[id] ?? id,
+    units: 'kg' as const,
     weights: [
       { date: '2026-09-29', weight_kg: 85.2 },
       { date: '2026-09-30', weight_kg: 85 },
@@ -207,6 +208,17 @@ describe('a report', () => {
     expect(lines).toContain('Жим лёжа 85 кг: 8 🏆 рекорд');
     expect(lines).toContain('Подтягивания: 8');
     expect(lines).toContain('Бег на дорожке: 30 мин, 5,1 км 🏆 рекорд');
+  });
+
+  it('writes weights in pounds for someone who trains in pounds, whole when made of pound steps', async () => {
+    const lb = 0.45359237;
+    const day = workout(16, 'Push', '2026-10-04', 45, 2000, [
+      { id: 'bench', next: 230 * lb, sets: [{ weight: 225 * lb, reps: 5 }, { weight: 225 * lb, reps: 5 }] },
+    ]);
+    const text = buildReport({ ...(await context('en')), units: 'lb' }, { kind: 'session', workout: day });
+    expect(text).toContain('225 lb: 5, 5 → next 230 lb');
+    // 84.9 kg, the average of the week, is 187.2 lb.
+    expect(text).toContain('Weight: 7-day average 187.2 lb');
   });
 
   it('is written in English too, with nothing left in Russian but the names', async () => {

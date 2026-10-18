@@ -15,7 +15,7 @@ import { ThemeOverride } from '@/hooks/use-theme';
 import { useCatalog } from '@/lib/catalog';
 import { useGym } from '@/lib/gym';
 import { mutate, useLocal } from '@/lib/local';
-import { formatKg } from '@/lib/workout';
+import { useUnits, useWeightFormat } from '@/lib/units';
 
 /**
  * "The machine is taken": other exercises for the same muscles that do not need the equipment
@@ -36,6 +36,8 @@ function Busy() {
   const router = useRouter();
   const { catalog, exerciseById } = useCatalog();
   const gym = useGym();
+  const units = useUnits();
+  const kg = useWeightFormat();
   const [permanent, setPermanent] = useState(false);
   const found = useLocal((ctx) => {
     const session = activeSession(ctx);
@@ -69,10 +71,10 @@ function Busy() {
       historyWeightKg: history.get(candidate.exercise.id) ?? null,
       currentWeightKg: entry.plan?.next_weight_kg ?? null,
       weightRatio: candidate.weightRatio,
-      stepKg: weightStepKg(candidate.exercise, catalog.equipment, gym.steps) ?? 0,
+      stepKg: weightStepKg(candidate.exercise, catalog.equipment, gym.steps, units) ?? 0,
     });
     if (candidate.exercise.tracking !== 'weight_reps') return undefined;
-    return weight.kind === 'find' ? t('busy.findWeight') : formatKg(t, locale, weight.weightKg);
+    return weight.kind === 'find' ? t('busy.findWeight') : kg(weight.weightKg);
   };
 
   return (

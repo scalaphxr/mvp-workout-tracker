@@ -25,6 +25,7 @@ import { useCatalog } from '@/lib/catalog';
 import { formatItemPlan } from '@/lib/format';
 import { useGym } from '@/lib/gym';
 import { mutate, useActiveProgram, useLocal } from '@/lib/local';
+import { usePreferences } from '@/lib/preferences';
 import { syncNow } from '@/lib/sync';
 
 const FREQUENCIES = [2, '2-3', 3, 4, 5, 6] as const;
@@ -180,6 +181,10 @@ export default function QuestionnaireScreen() {
       }),
     );
     void syncNow();
+    // The goal of a week of the series: a floating 2–3 counts as 2 (spec 6.13).
+    usePreferences.getState().set({
+      weeklyGoal: answers.frequency === '2-3' ? 2 : answers.frequency,
+    });
     if (activate) {
       setActive(program.id);
       router.dismissTo('/');

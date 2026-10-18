@@ -1,4 +1,11 @@
-import { DEFAULT_STEPS_KG, LOCATION_PRESETS, type StepGroup, stepGroup } from '@mvp/domain';
+import {
+  DEFAULT_STEPS_KG,
+  DEFAULT_STEPS_LB,
+  LB_KG,
+  LOCATION_PRESETS,
+  type StepGroup,
+  stepGroup,
+} from '@mvp/domain';
 import type { Catalog, GymProfileRow, LocationType } from '@mvp/schemas';
 
 import type { DataContext } from '@/data/context';
@@ -65,9 +72,20 @@ export function useGym(id?: string): GymView | null {
   });
 }
 
-/** The three weight steps of a gym, as the profile screen shows them. */
-export function stepsOf(catalog: Catalog, gym: GymView): Record<StepGroup, number> {
-  const steps = { ...DEFAULT_STEPS_KG };
+/** The default steps of the three groups, in kilograms, for someone training in `units`. */
+export function defaultSteps(units: 'kg' | 'lb'): Record<StepGroup, number> {
+  if (units === 'kg') return { ...DEFAULT_STEPS_KG };
+  const { dumbbells, plates, stack } = DEFAULT_STEPS_LB;
+  return { dumbbells: dumbbells * LB_KG, plates: plates * LB_KG, stack: stack * LB_KG };
+}
+
+/** The three weight steps of a gym, in kilograms, as the profile screen shows them. */
+export function stepsOf(
+  catalog: Catalog,
+  gym: GymView,
+  units: 'kg' | 'lb' = 'kg',
+): Record<StepGroup, number> {
+  const steps = defaultSteps(units);
   for (const item of catalog.equipment) {
     const group = stepGroup(item);
     const set = gym.steps.get(item.code);

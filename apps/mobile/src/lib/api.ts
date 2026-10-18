@@ -7,9 +7,11 @@ import {
   EmailStartResponseSchema,
   type Locale,
   MeResponseSchema,
+  type MeUpdate,
   ShareCodeListResponseSchema,
   ShareCodePreviewResponseSchema,
   ShareCodeSchema,
+  type SupportRequest,
   type SyncChange,
   SyncPullResponseSchema,
   SyncPushResponseSchema,
@@ -33,7 +35,7 @@ export class ApiRequestError extends Error {
 }
 
 interface RequestOptions<S extends z.ZodType | null> {
-  method?: 'GET' | 'POST' | 'DELETE';
+  method?: 'GET' | 'POST' | 'PATCH' | 'DELETE';
   body?: unknown;
   accessToken?: string;
   /** Schema of the response body, `null` for responses without a body. */
@@ -139,6 +141,16 @@ export const api = {
     }),
 
   me: () => authedRequest('/v1/me', { schema: MeResponseSchema }),
+
+  /** Settings of the account kept on the server too: units, the default rest. */
+  updateMe: (body: MeUpdate) =>
+    authedRequest('/v1/me', { method: 'PATCH', body, schema: MeResponseSchema }),
+
+  /** A message of the support form; a guest may send one too. */
+  support: (body: SupportRequest) =>
+    useAuthStore.getState().session
+      ? authedRequest('/v1/support', { method: 'POST', body, schema: null })
+      : request('/v1/support', { method: 'POST', body, schema: null }),
 
   /** Deletes the account and all its data on the server, for good. */
   deleteAccount: () => authedRequest('/v1/me', { method: 'DELETE', schema: null }),

@@ -13,6 +13,7 @@
   },
   "units": {
     "kg": "{{value}} kg",
+    "lb": "{{value}} lb",
     "sec": "{{value}} s",
     "min": "{{value}} min",
     "minSec": "{{min}} min {{sec}} s",
@@ -62,7 +63,8 @@
     "allDoneText": "You can add a set beyond the plan or finish the workout.",
     "replaced": "Replaced for this workout",
     "record": "Record",
-    "recordSet": "Personal record! {{records}}"
+    "recordSet": "Personal record! {{records}}",
+    "recordE1rm": "estimated max is up"
   },
   "busy": {
     "title": "Replace with",
@@ -284,6 +286,7 @@
     "stepDumbbells": "Dumbbell step",
     "stepPlates": "Barbell step",
     "stepPlatesHint": "Two of your lightest plates: a pair of 1.25 kg makes a 2.5 kg step.",
+    "stepPlatesHintLb": "Two of your lightest plates: a pair of 2.5 lb makes a 5 lb step.",
     "stepStack": "Machine stack step",
     "equipment": "Equipment",
     "category": {
@@ -337,7 +340,7 @@
     "title": "Weight today",
     "label": "Weight, kg",
     "placeholder": "Weight in kg, for example 84.6",
-    "invalid": "Enter a weight from {{min}} to {{max}} kg.",
+    "invalid": "Enter a weight from {{min}} to {{max}}.",
     "save": "Save the weight",
     "saved": "Today: {{weight}}",
     "change": "Change",
@@ -350,7 +353,9 @@
       "slow": "Less than 0.5% a week: the weight is going down slowly."
     },
     "empty": "Log your weight in the morning and a chart with the 7-day average will show up here.",
-    "chartLabel": "Weight chart: from {{from}} to {{to}}"
+    "chartLabel": "Weight chart: from {{from}} to {{to}}",
+    "labelLb": "Weight, lb",
+    "placeholderLb": "Weight in lb, e.g. 186.5"
   },
   "progress": {
     "weight": "Weight",
@@ -656,5 +661,87 @@
       "skating": "Skating",
       "rowing": "Rowing"
     }
+  },
+  "streak": {
+    "current_one": "Streak: {{count}} week on plan",
+    "current_other": "Streak: {{count}} weeks on plan",
+    "none": "The streak starts with the first week on plan",
+    "best_one": "Best streak – {{count}} week",
+    "best_other": "Best streak – {{count}} weeks",
+    "thisWeek": "This week: {{done}} of {{goal}}",
+    "weekDone": "The plan of the week is done – keep it up!",
+    "frozen": "A freeze saved last week – the streak goes on.",
+    "freezeLeft": "A freeze is left this month: one missed week will not end the streak.",
+    "freezeUsed": "This month's freeze is used.",
+    "goal": "Weekly goal",
+    "goalHint": "How many workouts a week count the week towards the streak.",
+    "goalAuto": "As in the program"
+  },
+  "reminders": {
+    "channel": "Reminders",
+    "workoutTitle": "A workout is on the plan today",
+    "workoutBody": "Start whenever it suits you – the program is waiting.",
+    "weightTitle": "Morning weight",
+    "weightBody": "Weigh in before breakfast – the weekly average gets more accurate.",
+    "inactiveTitle": "It has been a while",
+    "inactiveBody": "A hard week? Let's start with an easy workout.",
+    "title": "Reminders",
+    "workout": "Workouts",
+    "weight": "Morning weight",
+    "inactive": "It has been a while",
+    "inactiveHint": "After a week without workouts, at most once a week.",
+    "time": "Time",
+    "days": "Days",
+    "denied": "Notifications are off in the phone's settings – turn them on for reminders to arrive.",
+    "weekdays": {
+      "1": "Mon",
+      "2": "Tue",
+      "3": "Wed",
+      "4": "Thu",
+      "5": "Fri",
+      "6": "Sat",
+      "7": "Sun"
+    }
+  },
+  "settings": {
+    "defaultRest": "Default rest",
+    "restAuto": "by exercise",
+    "defaultRestHint": "The rest between sets new exercises are added with. “By exercise” follows the goal of the program: longer for compound lifts, shorter for isolation.",
+    "units": "Units of weight",
+    "kg": "Kilograms",
+    "lb": "Pounds"
+  },
+  "onboarding": {
+    "gymTitle": "A program for your gym",
+    "gymText": "Answer a few questions and the program is built from what your gym has. A machine is taken? The app offers a replacement.",
+    "progressTitle": "Progress without guesswork",
+    "progressText": "The weight of every set is already there. After a workout you see what changes next time and why.",
+    "offlineTitle": "No network, no sign-up",
+    "offlineText": "Everything lives on the phone and works in a gym basement. Sign in whenever you want your devices in sync.",
+    "next": "Next",
+    "skip": "Skip",
+    "step": "Step {{step}} of {{total}}",
+    "startTitle": "How shall we start?",
+    "startText": "The program can be changed at any time.",
+    "own": "Build my own",
+    "later": "I'll look around"
+  },
+  "support": {
+    "section": "Help",
+    "title": "Contact support",
+    "hint": "We answer by email within 48 hours",
+    "intro": "Tell us what went wrong or what is missing. We answer by email within 48 hours.",
+    "message": "Message",
+    "messagePlaceholder": "For example: the rest timer does not ring with the screen locked",
+    "email": "Email for the answer",
+    "attached": "Attached to the message:",
+    "details": "version {{version}}, {{device}}, last sync: {{sync}}",
+    "never": "never",
+    "send": "Send",
+    "failed": "Could not send – check the connection. The text is kept, try again.",
+    "limited": "Too many messages in an hour. Try again later.",
+    "sentTitle": "Message sent",
+    "sentText": "Thank you! We will answer by email within 48 hours.",
+    "close": "Close"
   }
 }

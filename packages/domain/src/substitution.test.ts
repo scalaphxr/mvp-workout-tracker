@@ -242,6 +242,11 @@ describe('weightStepKg', () => {
     expect(weightStepKg(benchFirst, equipment, new Map([['dumbbells', null]]))).toBe(2);
   });
 
+  it('steps by the pound for someone who trains in pounds, unless the gym says otherwise', () => {
+    expect(weightStepKg(benchFirst, equipment, new Map(), 'lb')).toBeCloseTo(5 * 0.45359237);
+    expect(weightStepKg(benchFirst, equipment, new Map([['dumbbells', 2.5]]), 'lb')).toBe(2.5);
+  });
+
   it('has no step for a body-weight exercise', () => {
     expect(weightStepKg(exercise('push-up'), equipment)).toBeNull();
     expect(weightStepKg(exercise('bench-dip', { equipment: ['bench'] }), equipment)).toBeNull();

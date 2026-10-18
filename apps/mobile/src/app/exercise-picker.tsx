@@ -1,9 +1,9 @@
-import { defaultItemParams } from '@mvp/domain';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 
 import { ExerciseBrowser } from '@/components/exercise-browser';
 import { addItem, getItem, getProgramTree, replaceExercise } from '@/data/programs';
 import { useImportDraft } from '@/lib/import-draft';
+import { itemDefaults } from '@/lib/item-defaults';
 import { mutate, useLocal } from '@/lib/local';
 
 /**
@@ -38,7 +38,7 @@ export default function ExercisePickerScreen() {
         mutate((ctx) => {
           const { dayId, itemId } = params;
           if (itemId && getItem(ctx, itemId)) replaceExercise(ctx, itemId, exercise.id);
-          else if (dayId) addItem(ctx, dayId, exercise.id, defaultItemParams(exercise, goal));
+          else if (dayId) addItem(ctx, dayId, exercise.id, itemDefaults(exercise, goal));
         });
         // A replacement was opened from the list of alternatives: go back past it.
         if (params.itemId) router.dismiss(2);

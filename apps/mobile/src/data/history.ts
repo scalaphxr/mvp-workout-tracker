@@ -166,3 +166,14 @@ export function exercisesOnTime(ctx: DataContext): string[] {
     .all();
   return rows.map((row) => row.id);
 }
+
+/** The start times of finished workouts, oldest first: what the weekly series is made of. */
+export function finishedWorkoutTimes(ctx: DataContext): string[] {
+  return ctx.db
+    .select({ started_at: sessions.started_at })
+    .from(sessions)
+    .where(finished)
+    .orderBy(asc(sessions.started_at))
+    .all()
+    .map((row) => row.started_at);
+}

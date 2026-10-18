@@ -17,7 +17,8 @@ import { useCatalog } from '@/lib/catalog';
 import { formatCardio, formatDistance, formatDuration, formatNumber } from '@/lib/format';
 import { mutate, useLocal } from '@/lib/local';
 import { syncNow } from '@/lib/sync';
-import { explainPlan, formatKg } from '@/lib/workout';
+import { useUnits, useWeightFormat } from '@/lib/units';
+import { explainPlan } from '@/lib/workout';
 
 const WELLBEING = [1, 2, 3, 4, 5] as const;
 
@@ -28,6 +29,8 @@ export default function WorkoutSummaryScreen() {
   const locale = useLocale();
   const router = useRouter();
   const { exerciseById } = useCatalog();
+  const units = useUnits();
+  const kg = useWeightFormat();
   const summary = useLocal((ctx) => sessionSummary(ctx, id));
   const [deloadAccepted, setDeloadAccepted] = useState(false);
 
@@ -37,7 +40,6 @@ export default function WorkoutSummaryScreen() {
   const { session } = summary;
   const name = (exerciseId: string) =>
     exerciseById.get(exerciseId)?.translations[locale].name ?? t('program.unknownExercise');
-  const kg = (value: number) => formatKg(t, locale, value);
   /** Answers of the user change rows that have to reach the server too. */
   const change = (write: Parameters<typeof mutate>[0]) => {
     mutate(write);
@@ -119,7 +121,7 @@ export default function WorkoutSummaryScreen() {
                     : t('summary.nextReps', { reps: plan.next_target_reps })}
                 </ThemedText>
                 <ThemedText type="small" themeColor="textSecondary">
-                  {explainPlan(t, locale, plan)}
+                  {explainPlan(t, locale, plan, units)}
                 </ThemedText>
                 {offer !== undefined && plan.next_weight_kg !== null && (
                   <View style={styles.choice}>
