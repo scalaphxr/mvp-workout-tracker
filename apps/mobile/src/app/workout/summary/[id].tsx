@@ -14,7 +14,7 @@ import { Spacing } from '@/constants/theme';
 import { resolveReduction, sessionSummary, setWellbeing, startDeload } from '@/data/sessions';
 import { useLocale } from '@/hooks/use-locale';
 import { useCatalog } from '@/lib/catalog';
-import { formatCardio, formatDuration, formatNumber } from '@/lib/format';
+import { formatCardio, formatDistance, formatDuration, formatNumber } from '@/lib/format';
 import { mutate, useLocal } from '@/lib/local';
 import { syncNow } from '@/lib/sync';
 import { explainPlan, formatKg } from '@/lib/workout';
@@ -44,8 +44,8 @@ export default function WorkoutSummaryScreen() {
     void syncNow();
   };
 
-  const records = summary.exercises.flatMap(({ exercise, records: found }) =>
-    found.map((record) => {
+  const records = summary.exercises.flatMap(({ exercise, records: found, cardioRecords }) => [
+    ...found.map((record) => {
       const params = { name: name(exercise.exercise_id), weight: kg(record.weight_kg), reps: record.reps };
       return record.kind === 'weight'
         ? t('summary.recordWeight', params)
@@ -53,7 +53,18 @@ export default function WorkoutSummaryScreen() {
           ? t('summary.recordReps', params)
           : t('summary.recordE1rm', params);
     }),
-  );
+    ...cardioRecords.map((record) =>
+      record.kind === 'distance'
+        ? t('summary.recordDistance', {
+            name: name(exercise.exercise_id),
+            distance: formatDistance(t, locale, record.value),
+          })
+        : t('summary.recordDuration', {
+            name: name(exercise.exercise_id),
+            duration: formatDuration(t, record.value),
+          }),
+    ),
+  ]);
   const planned = summary.exercises.filter((entry) => entry.plan !== null);
   // Cardio has no plan for next time: what was done is what there is to show.
   const cardio = summary.exercises.filter(

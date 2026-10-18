@@ -53,6 +53,10 @@ function done(ctx: ReportContext, { sets }: SummaryExercise, colon: boolean): st
     .join(', ');
 }
 
+/** The mark of an exercise that set a personal record in the workout. */
+const recordMark = (ctx: ReportContext, entry: SummaryExercise) =>
+  entry.records.length > 0 || entry.cardioRecords.length > 0 ? ctx.t('report.record') : '';
+
 function exerciseLine(ctx: ReportContext, entry: SummaryExercise): string {
   const text = done(ctx, entry, true);
   const separator = text.includes(':') || !/^\d/.test(text) ? ' ' : ': ';
@@ -62,6 +66,7 @@ function exerciseLine(ctx: ReportContext, entry: SummaryExercise): string {
     `${ctx.nameOf(entry.exercise.exercise_id)}${separator}${text}`,
     rir != null ? `(RIR ${rir})` : '',
     next != null ? ctx.t('report.next', { weight: kg(ctx, next) }) : '',
+    recordMark(ctx, entry),
   ]
     .filter(Boolean)
     .join(' ');
@@ -85,7 +90,11 @@ function exerciseLines(ctx: ReportContext, workout: WorkoutRecord): string[] {
     if (end - index > 1) {
       const items = entries
         .slice(index, end)
-        .map((member) => `${ctx.nameOf(member.exercise.exercise_id)} ${done(ctx, member, false)}`)
+        .map((member) =>
+          [ctx.nameOf(member.exercise.exercise_id), done(ctx, member, false), recordMark(ctx, member)]
+            .filter(Boolean)
+            .join(' '),
+        )
         .join(' + ');
       lines.push(ctx.t('report.superset', { items }));
     } else {

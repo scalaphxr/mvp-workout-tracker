@@ -61,7 +61,8 @@
     "allDone": "Все подходы сделаны",
     "allDoneText": "Можно добавить подход сверх плана или завершить тренировку.",
     "replaced": "Замена на эту тренировку",
-    "record": "Рекорд"
+    "record": "Рекорд",
+    "recordSet": "Рекорд! {{records}}"
   },
   "busy": {
     "title": "Чем заменить",
@@ -100,7 +101,9 @@
     "deloadAccepted": "Следующий круг будет лёгким.",
     "wellbeing": "Самочувствие",
     "close": "Закрыть",
-    "cardio": "Кардио"
+    "cardio": "Кардио",
+    "recordDistance": "{{name}}: рекорд дистанции – {{distance}}",
+    "recordDuration": "{{name}}: рекорд времени – {{duration}}"
   },
   "reason": {
     "increase_one": "+{{step}}: {{count}} подход по {{reps}} – верх диапазона",
@@ -414,7 +417,8 @@
     "activitiesTotal_few": "{{count}} активности · {{duration}}",
     "activitiesTotal_many": "{{count}} активностей · {{duration}}",
     "activitiesTotal_other": "{{count}} активности · {{duration}}",
-    "emptyWeek": "За эту неделю тренировок и активностей не было."
+    "emptyWeek": "За эту неделю тренировок и активностей не было.",
+    "record": "🏆 рекорд"
   },
   "questionnaire": {
     "title": "Подбор программы",

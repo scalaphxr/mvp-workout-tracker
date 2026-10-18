@@ -41,6 +41,7 @@ async function context(locale: 'ru' | 'en') {
 
 interface Done {
   id: string;
+  record?: boolean;
   sets: {
     weight?: number | null;
     reps?: number;
@@ -65,7 +66,7 @@ const workout = (number: number, day: string, date: string, minutes: number, vol
     volumeKg: volume,
     durationSec: minutes * 60,
     exercises: done.map(
-      ({ id, sets, next, superset }) =>
+      ({ id, sets, next, superset, record }) =>
         ({
           exercise: { exercise_id: id },
           item: { program_day_id: day, superset_group: superset ?? null },
@@ -81,7 +82,8 @@ const workout = (number: number, day: string, date: string, minutes: number, vol
             avg_hr: set.hr ?? null,
             calories: null,
           })),
-          records: [],
+          records: record && sets[0]?.reps ? [{ kind: 'weight', weight_kg: sets[0].weight, reps: sets[0].reps }] : [],
+          cardioRecords: record && !sets[0]?.reps ? [{ kind: 'distance', value: sets[0]?.meters ?? 0 }] : [],
           plan: next === undefined ? null : { next_weight_kg: next },
         }) as unknown as SummaryExercise,
     ),
@@ -193,6 +195,18 @@ describe('a report', () => {
 
     const only = plain(buildReport(ctx, { kind: 'week', workouts: [], activities, today: '2026-10-04' }));
     expect(only).not.toContain('не было');
+  });
+
+  it('marks the exercises that set a personal record, cardio included', async () => {
+    const day = workout(15, 'Смешанная', '2026-10-04', 50, 800, [
+      { id: 'bench', record: true, sets: [{ weight: 85, reps: 8 }] },
+      { id: 'pullup', sets: [{ reps: 8 }] },
+      { id: 'treadmill', record: true, sets: [{ sec: 30 * 60, meters: 5100 }] },
+    ]);
+    const lines = plain(buildReport(await context('ru'), { kind: 'session', workout: day })).split('\n');
+    expect(lines).toContain('Жим лёжа 85 кг: 8 🏆 рекорд');
+    expect(lines).toContain('Подтягивания: 8');
+    expect(lines).toContain('Бег на дорожке: 30 мин, 5,1 км 🏆 рекорд');
   });
 
   it('is written in English too, with nothing left in Russian but the names', async () => {

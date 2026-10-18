@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { cardioFields, formatClock, parseDuration, parseNumber } from './cardio';
+import { cardioFields, findCardioRecords, formatClock, parseDuration, parseNumber } from './cardio';
 
 describe('the fields of a cardio set', () => {
   it('follow the display of the machine', () => {
@@ -55,5 +55,43 @@ describe('a time typed by hand', () => {
     expect(formatClock(45)).toBe('0:45');
     expect(formatClock(65 * 60)).toBe('1:05:00');
     for (const seconds of [45, 1530, 3900]) expect(parseDuration(formatClock(seconds))).toBe(seconds);
+  });
+});
+
+describe('records of cardio', () => {
+  const run = (distance_m: number | null, minutes: number) => ({
+    reps: null,
+    duration_sec: minutes * 60,
+    distance_m,
+  });
+
+  it('are the longest distance and the longest time against everything before', () => {
+    const earlier = [run(4200, 25), run(5000, 30)];
+    expect(findCardioRecords([run(5100, 28)], earlier)).toEqual([{ kind: 'distance', value: 5100 }]);
+    expect(findCardioRecords([run(4000, 35)], earlier)).toEqual([{ kind: 'duration', value: 35 * 60 }]);
+    expect(findCardioRecords([run(6000, 40)], earlier)).toEqual([
+      { kind: 'distance', value: 6000 },
+      { kind: 'duration', value: 40 * 60 },
+    ]);
+  });
+
+  it('take the best set of a workout and need to beat, not to equal', () => {
+    const earlier = [run(5000, 30)];
+    expect(findCardioRecords([run(5000, 30)], earlier)).toEqual([]);
+    expect(findCardioRecords([run(2000, 10), run(5500, 20)], earlier)).toEqual([
+      { kind: 'distance', value: 5500 },
+    ]);
+  });
+
+  it('are not set the first time, nor for a distance never logged before', () => {
+    expect(findCardioRecords([run(5000, 30)], [])).toEqual([]);
+    expect(findCardioRecords([run(5000, 20)], [run(null, 25)])).toEqual([]);
+  });
+
+  it('count a hold on time too, and leave sets with reps alone', () => {
+    const plank = (seconds: number) => ({ reps: null, duration_sec: seconds, distance_m: null });
+    expect(findCardioRecords([plank(90)], [plank(60)])).toEqual([{ kind: 'duration', value: 90 }]);
+    const lifted = { reps: 10, duration_sec: 600, distance_m: null };
+    expect(findCardioRecords([lifted], [plank(60)])).toEqual([]);
   });
 });

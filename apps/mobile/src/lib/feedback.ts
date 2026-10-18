@@ -6,9 +6,18 @@ import { Platform } from 'react-native';
 // A browser has neither a vibration motor worth the name nor local notifications.
 const native = Platform.OS !== 'web';
 
-/** A short vibration: `tap` on every +/−, `done` on a logged set, `alarm` when rest is over. */
-export function haptic(kind: 'tap' | 'done' | 'alarm'): void {
+/**
+ * A short vibration: `tap` on every +/−, `done` on a logged set, `alarm` when rest is over,
+ * `record` – a strong double one for a personal record.
+ */
+export function haptic(kind: 'tap' | 'done' | 'alarm' | 'record'): void {
   if (!native) return;
+  if (kind === 'record') {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
+      .then(() => Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success))
+      .catch(() => {});
+    return;
+  }
   const done =
     kind === 'tap'
       ? Haptics.selectionAsync()

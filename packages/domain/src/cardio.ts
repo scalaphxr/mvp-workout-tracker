@@ -105,3 +105,42 @@ export type ActivityType = (typeof ACTIVITY_TYPES)[number];
 
 export const isKnownActivity = (type: string): type is ActivityType =>
   (ACTIVITY_TYPES as readonly string[]).includes(type);
+
+/** A record of a set on time: the longest distance (metres) or the longest time (seconds). */
+export type CardioRecordKind = 'distance' | 'duration';
+export interface CardioRecord {
+  kind: CardioRecordKind;
+  value: number;
+}
+
+interface TimedSet {
+  reps: number | null;
+  duration_sec: number | null;
+  distance_m: number | null;
+}
+
+/**
+ * The records sets on time (cardio, holds) set against everything done before (spec: "for
+ * cardio – distance and time"). Like the records of weights, the first time sets none: there
+ * is nothing to beat yet.
+ */
+export function findCardioRecords(
+  sets: readonly TimedSet[],
+  earlier: readonly TimedSet[],
+): CardioRecord[] {
+  const timed = (list: readonly TimedSet[]) => list.filter((set) => set.reps === null);
+  const top = (list: readonly TimedSet[], value: (set: TimedSet) => number | null) =>
+    Math.max(0, ...timed(list).map((set) => value(set) ?? 0));
+
+  const records: CardioRecord[] = [];
+  const fields = [
+    ['distance', (set: TimedSet) => set.distance_m],
+    ['duration', (set: TimedSet) => set.duration_sec],
+  ] as const;
+  for (const [kind, value] of fields) {
+    const before = top(earlier, value);
+    const now = top(sets, value);
+    if (before > 0 && now > before) records.push({ kind, value: now });
+  }
+  return records;
+}

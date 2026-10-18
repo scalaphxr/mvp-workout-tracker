@@ -61,7 +61,8 @@
     "allDone": "All sets are done",
     "allDoneText": "You can add a set beyond the plan or finish the workout.",
     "replaced": "Replaced for this workout",
-    "record": "Record"
+    "record": "Record",
+    "recordSet": "Personal record! {{records}}"
   },
   "busy": {
     "title": "Replace with",
@@ -100,7 +101,9 @@
     "deloadAccepted": "The next round will be light.",
     "wellbeing": "How you felt",
     "close": "Close",
-    "cardio": "Cardio"
+    "cardio": "Cardio",
+    "recordDistance": "{{name}}: longest distance – {{distance}}",
+    "recordDuration": "{{name}}: longest time – {{duration}}"
   },
   "reason": {
     "increase_one": "+{{step}}: {{count}} set of {{reps}}, the top of the range",
@@ -388,7 +391,8 @@
     "activities": "Activity:",
     "activitiesTotal_one": "{{count}} activity · {{duration}}",
     "activitiesTotal_other": "{{count}} activities · {{duration}}",
-    "emptyWeek": "No workouts or activities this week."
+    "emptyWeek": "No workouts or activities this week.",
+    "record": "🏆 PR"
   },
   "questionnaire": {
     "title": "Find a program",

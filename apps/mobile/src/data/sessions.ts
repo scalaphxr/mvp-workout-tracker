@@ -18,8 +18,10 @@ import {
 import {
   acceptReduction,
   advancePointer,
+  type CardioRecord,
   deloadSets,
   type ExerciseResult,
+  findCardioRecords,
   findRecords,
   planNext,
   type RecordKind,
@@ -383,6 +385,28 @@ function earlierSets(ctx: DataContext, exerciseId: string, exceptSessionId: stri
     .all();
 }
 
+/**
+ * The records a set on time is about to set, before it is saved: against every earlier workout
+ * and the sets already done in this one. What the screen celebrates right on the set.
+ */
+export function recordsOfSet(
+  ctx: DataContext,
+  sessionExerciseId: string,
+  values: Pick<SetLogRow, 'duration_sec' | 'distance_m'>,
+): CardioRecord[] {
+  const entry = ctx.db
+    .select()
+    .from(session_exercises)
+    .where(eq(session_exercises.id, sessionExerciseId))
+    .get();
+  if (!entry) return [];
+  const earlier = [
+    ...earlierSets(ctx, entry.exercise_id, entry.session_id).map((row) => row.set),
+    ...setsOf(ctx, [sessionExerciseId]),
+  ];
+  return findCardioRecords([{ reps: null, ...values }], earlier);
+}
+
 /** What was done in this exercise the last time: "last time: 80 × 12, 11, 10". */
 export function lastPerformance(
   ctx: DataContext,
@@ -535,6 +559,8 @@ export interface SummaryExercise {
   item: ProgramItemRow | null;
   sets: SetLogRow[];
   records: { kind: RecordKind; weight_kg: number; reps: number }[];
+  /** Records of distance and time, for cardio and holds. */
+  cardioRecords: CardioRecord[];
   /** The plan for the next workout; `null` – this exercise is not planned automatically. */
   plan: ProgressionStateRow | null;
 }
@@ -561,18 +587,19 @@ export function sessionSummary(ctx: DataContext, sessionId: string): SessionSumm
   if (!view) return null;
   const { session } = view;
 
-  const exercises = view.exercises.map(({ exercise, item, plan, sets }) => ({
-    exercise,
-    item,
-    sets,
-    records: findRecords(
+  const exercises = view.exercises.map(({ exercise, item, plan, sets }) => {
+    const before = earlierSets(ctx, exercise.exercise_id, sessionId)
+      .filter((row) => row.set.completed_at < session.started_at)
+      .map((row) => row.set);
+    return {
+      exercise,
+      item,
       sets,
-      earlierSets(ctx, exercise.exercise_id, sessionId)
-        .filter((row) => row.set.completed_at < session.started_at)
-        .map((row) => row.set),
-    ),
-    plan: item && exercise.exercise_id === item.exercise_id ? plan : null,
-  }));
+      records: findRecords(sets, before),
+      cardioRecords: findCardioRecords(sets, before),
+      plan: item && exercise.exercise_id === item.exercise_id ? plan : null,
+    };
+  });
 
   // The last workouts of the same day, this one included, oldest first.
   const sameDay = ctx.db

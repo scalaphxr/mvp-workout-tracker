@@ -48,6 +48,7 @@ import {
   lastPerformance,
   logSet,
   nextWorkout,
+  recordsOfSet,
   removeLastSet,
   resolveReduction,
   sessionSummary,
@@ -522,6 +523,50 @@ describe('cardio and free activity, with no network at all', () => {
     expect(exercisesWithProgress(ctx)).toEqual([]);
     expect(cardioProgress(ctx, TREADMILL)).toEqual([
       { date: session.started_at, distance_m: 4200, duration_sec: 1530 },
+    ]);
+  });
+
+  it('a longer run is a record right on the set and in the summary, the first one is not', () => {
+    const created = createProgram(ctx, { title: 'Cardio', firstDayTitle: 'Run' });
+    const [day] = getProgramTree(ctx, created.id)!.days;
+    addItem(ctx, day!.id, TREADMILL, { ...PARAMS, sets: 2, rep_min: 20, rep_max: 30, target_rir: null });
+    const run = (distance_m: number, minutes: number) => ({
+      duration_sec: minutes * 60,
+      distance_m,
+      speed_kmh: null,
+      incline_pct: null,
+      resistance_level: null,
+      avg_hr: null,
+      calories: null,
+    });
+    const workoutOf = (sets: ReturnType<typeof run>[]) => {
+      const session = startSession(ctx, created.id, day!.id);
+      const entryId = getSession(ctx, session.id)!.exercises[0]!.exercise.id;
+      const found = sets.map((set) => {
+        const records = recordsOfSet(ctx, entryId, set);
+        logSet(ctx, entryId, set);
+        return records;
+      });
+      finishSession(ctx, session.id, facts, { smart: false });
+      return { found, summary: sessionSummary(ctx, session.id)!.exercises[0]!.cardioRecords };
+    };
+
+    const first = workoutOf([run(4200, 25)]);
+    expect(first.found).toEqual([[]]);
+    expect(first.summary).toEqual([]);
+
+    // The second set beats the first one of the same workout too.
+    const second = workoutOf([run(4500, 25), run(5100, 30)]);
+    expect(second.found).toEqual([
+      [{ kind: 'distance', value: 4500 }],
+      [
+        { kind: 'distance', value: 5100 },
+        { kind: 'duration', value: 1800 },
+      ],
+    ]);
+    expect(second.summary).toEqual([
+      { kind: 'distance', value: 5100 },
+      { kind: 'duration', value: 1800 },
     ]);
   });
 

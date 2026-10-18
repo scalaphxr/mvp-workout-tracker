@@ -3,7 +3,7 @@ import { hasFeature, substitutedWeight } from '@mvp/domain';
 import type { Exercise } from '@mvp/schemas';
 import { useKeepAwake } from 'expo-keep-awake';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -12,6 +12,7 @@ import { Button } from '@/components/button';
 import { CardioSet } from '@/components/cardio-set';
 import { Chip } from '@/components/chip';
 import { EmptyState } from '@/components/empty-state';
+import { RecordBanner } from '@/components/record-banner';
 import { RestTimer } from '@/components/rest-timer';
 import { ThemedText } from '@/components/themed-text';
 import { ConfirmButton, Stepper } from '@/components/ui';
@@ -23,6 +24,7 @@ import {
   getSession,
   lastPerformance,
   logSet,
+  recordsOfSet,
   removeLastSet,
   type SessionExerciseView,
 } from '@/data/sessions';
@@ -30,7 +32,7 @@ import { useLocale } from '@/hooks/use-locale';
 import { ThemeOverride, useTheme } from '@/hooks/use-theme';
 import { useCatalog } from '@/lib/catalog';
 import { haptic } from '@/lib/feedback';
-import { formatCardio, formatRange } from '@/lib/format';
+import { formatCardio, formatDistance, formatDuration, formatRange } from '@/lib/format';
 import { mutate, useLocal } from '@/lib/local';
 import { useRestTimer } from '@/lib/rest-timer';
 import { syncNow } from '@/lib/sync';
@@ -62,6 +64,13 @@ function Workout() {
   const view = useLocal((ctx) => getSession(ctx, id));
   // What the user tapped in the list; otherwise the workout leads on by itself.
   const [chosenId, setChosenId] = useState<string | null>(null);
+  // A record just set: shown over the next set for a few seconds.
+  const [record, setRecord] = useState<{ text: string; at: number } | null>(null);
+  useEffect(() => {
+    if (!record) return;
+    const hide = setTimeout(() => setRecord(null), 4000);
+    return () => clearTimeout(hide);
+  }, [record]);
   useKeepAwake();
 
   if (!view || view.session.status !== 'active') {
@@ -182,6 +191,7 @@ function Workout() {
           styles.panel,
           { borderTopColor: theme.backgroundElement, paddingBottom: insets.bottom + Spacing.three },
         ]}>
+        {record && <RecordBanner text={record.text} />}
         <RestTimer />
         {current && (
           <SetEntry
@@ -192,6 +202,10 @@ function Workout() {
             exercise={exerciseById.get(current.exercise.exercise_id)}
             stepKg={current.item ? (current.item.increment_kg ?? facts(current.exercise.exercise_id, current.item)?.step_kg ?? null) : null}
             onLogged={() => onLogged(current)}
+            onRecord={(text) => {
+              haptic('record');
+              setRecord({ text, at: Date.now() });
+            }}
           />
         )}
       </View>
@@ -205,12 +219,15 @@ function SetEntry({
   exercise,
   stepKg,
   onLogged,
+  onRecord,
 }: {
   sessionId: string;
   entry: SessionExerciseView;
   exercise: Exercise | undefined;
   stepKg: number | null;
   onLogged: () => void;
+  /** A set beat everything before it: the text to celebrate it with. */
+  onRecord: (text: string) => void;
 }) {
   const { t } = useTranslation();
   const locale = useLocale();
@@ -326,14 +343,30 @@ function SetEntry({
           previous={previous}
           last={setIndex === 0 ? last : []}
           onSave={(values) => {
-            mutate((ctx) =>
+            const records = mutate((ctx) => {
+              // Checked before the set is saved, so it is not compared with itself.
+              const found = recordsOfSet(ctx, entry.exercise.id, values);
               logSet(ctx, entry.exercise.id, {
                 planned_rep_min: item?.rep_min ?? null,
                 planned_rep_max: item?.rep_max ?? null,
                 ...values,
-              }),
-            );
+              });
+              return found;
+            });
             onLogged();
+            if (records.length > 0) {
+              onRecord(
+                t('workout.recordSet', {
+                  records: records
+                    .map((found) =>
+                      found.kind === 'distance'
+                        ? formatDistance(t, locale, found.value)
+                        : formatDuration(t, found.value),
+                    )
+                    .join(', '),
+                }),
+              );
+            }
           }}
         />
       )}
