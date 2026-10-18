@@ -8,7 +8,19 @@ import type { DataContext } from '@/data/context';
 
 const DATABASE_NAME = 'mvp.db';
 
-let context: DataContext | null = null;
+interface DatabaseStore {
+  context: DataContext | null;
+  ready: Promise<DataContext> | null;
+}
+
+/**
+ * The open database lives on `globalThis`: Fast Refresh in development may evaluate this module
+ * again, and the screens must keep the database they have rather than open a second one.
+ */
+const store = ((globalThis as { __mvpDatabase?: DatabaseStore }).__mvpDatabase ??= {
+  context: null,
+  ready: null,
+});
 
 async function open(): Promise<DataContext> {
   // The development web build only: SQLite in a browser needs a cross-origin isolated page, and
@@ -22,19 +34,19 @@ async function open(): Promise<DataContext> {
   if (Platform.OS === 'web') await (await openDatabaseAsync(DATABASE_NAME)).closeAsync();
 
   const db = await openLocalDb(openDatabaseSync(DATABASE_NAME));
-  context = {
+  store.context = {
     db,
     now: () => new Date().toISOString(),
     newId: () => uuidv7(Date.now(), getRandomBytes(10)),
   };
-  return context;
+  return store.context;
 }
 
 /** Opens the phone database and applies pending migrations; resolves once it can be used. */
-export const dataReady: Promise<DataContext> = open();
+export const dataReady: Promise<DataContext> = (store.ready ??= open());
 
 /** The data context; screens are only rendered after `dataReady`, so it is always there. */
 export function data(): DataContext {
-  if (!context) throw new Error('The database is not open yet');
-  return context;
+  if (!store.context) throw new Error('The database is not open yet');
+  return store.context;
 }

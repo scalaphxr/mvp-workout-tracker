@@ -42,11 +42,14 @@ export function MuscleMap({
   primary,
   secondary,
   label,
+  scale = 0.55,
 }: {
   primary: readonly Muscle[];
   secondary: readonly Muscle[];
   /** What a screen reader says instead of the picture. */
   label: string;
+  /** The size of the figures; a small one fits next to a timer. */
+  scale?: number;
 }) {
   const theme = useTheme();
 
@@ -74,9 +77,13 @@ export function MuscleMap({
   };
 
   return (
-    <View accessible accessibilityRole="image" accessibilityLabel={label} style={styles.map}>
+    <View
+      accessible
+      accessibilityRole="image"
+      accessibilityLabel={label}
+      style={[styles.map, scale < 0.4 && styles.small]}>
       {(['front', 'back'] as const).map((side) => (
-        <Body key={side} side={side} data={parts(side)} scale={0.55} border="none" />
+        <Body key={side} side={side} data={parts(side)} scale={scale} border="none" />
       ))}
     </View>
   );
@@ -87,5 +94,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     gap: Spacing.three,
+  },
+  small: {
+    gap: 0,
   },
 });

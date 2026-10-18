@@ -1,4 +1,5 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { parseNumber } from '@mvp/domain';
 import { type ReactNode, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -12,7 +13,9 @@ import {
 } from 'react-native';
 
 import { MaxContentWidth, Spacing } from '@/constants/theme';
+import { useLocale } from '@/hooks/use-locale';
 import { useTheme } from '@/hooks/use-theme';
+import { formatNumber } from '@/lib/format';
 
 import { Button } from './button';
 import { ThemedText } from './themed-text';
@@ -145,6 +148,7 @@ export function Stepper({
   min,
   max,
   step = 1,
+  typed,
 }: {
   label: string;
   value: number;
@@ -154,8 +158,16 @@ export function Stepper({
   min: number;
   max: number;
   step?: number;
+  /**
+   * The value can also be typed in: a tap on it opens a field. `value` is the number as the
+   * user types it (in their units), `apply` takes a typed number back.
+   */
+  typed?: { value: number; apply: (typed: number) => void };
 }) {
   const { t } = useTranslation();
+  const locale = useLocale();
+  const theme = useTheme();
+  const [draft, setDraft] = useState<string | null>(null);
 
   const button = (delta: number, icon: 'remove' | 'add', hint: string) => {
     const next = value + delta;
@@ -174,9 +186,39 @@ export function Stepper({
       <ThemedText style={styles.shrink}>{label}</ThemedText>
       <View style={styles.stepControls}>
         {button(-step, 'remove', t('item.decrease'))}
-        <ThemedText style={styles.stepValue} accessibilityLabel={`${label}: ${text ?? value}`}>
-          {text ?? value}
-        </ThemedText>
+        {typed && draft !== null ? (
+          <TextInput
+            accessibilityLabel={label}
+            value={draft}
+            autoFocus
+            selectTextOnFocus
+            keyboardType="decimal-pad"
+            returnKeyType="done"
+            style={[styles.stepValue, styles.stepInput, { color: theme.text, borderColor: theme.accent }]}
+            onChangeText={(next) => {
+              setDraft(next);
+              // Applied as it is typed: "done" pressed right after the typing gets the new value.
+              const number = parseNumber(next);
+              if (number !== null) typed.apply(number);
+            }}
+            onBlur={() => setDraft(null)}
+            onSubmitEditing={() => setDraft(null)}
+          />
+        ) : typed ? (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={`${label}: ${text ?? value}`}
+            accessibilityHint={t('item.typeHint')}
+            onPress={() => setDraft(formatNumber(typed.value, locale))}>
+            <ThemedText style={[styles.stepValue, styles.stepTappable, { borderColor: theme.backgroundSelected }]}>
+              {text ?? value}
+            </ThemedText>
+          </Pressable>
+        ) : (
+          <ThemedText style={styles.stepValue} accessibilityLabel={`${label}: ${text ?? value}`}>
+            {text ?? value}
+          </ThemedText>
+        )}
         {button(step, 'add', t('item.increase'))}
       </View>
     </View>
@@ -272,6 +314,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 600,
+  },
+  /** A value that can be typed in looks like a field: underlined. */
+  stepTappable: {
+    paddingVertical: Spacing.one,
+    borderBottomWidth: 2,
+  },
+  stepInput: {
+    minWidth: 96,
+    minHeight: 48,
+    paddingHorizontal: Spacing.two,
+    borderWidth: 2,
+    borderRadius: Spacing.two,
   },
   confirm: {
     flexDirection: 'row',

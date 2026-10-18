@@ -194,7 +194,8 @@
     "openCard": "Technique and muscles",
     "delete": "Remove from the program",
     "decrease": "Less",
-    "increase": "More"
+    "increase": "More",
+    "typeHint": "Tap to type the number"
   },
   "replace": {
     "title": "Replace with",

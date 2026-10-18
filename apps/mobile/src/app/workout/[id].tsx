@@ -12,6 +12,7 @@ import { Button } from '@/components/button';
 import { CardioSet } from '@/components/cardio-set';
 import { Chip } from '@/components/chip';
 import { EmptyState } from '@/components/empty-state';
+import { MuscleMap } from '@/components/muscle-map';
 import { RecordBanner } from '@/components/record-banner';
 import { RestTimer } from '@/components/rest-timer';
 import { ThemedText } from '@/components/themed-text';
@@ -37,7 +38,7 @@ import { formatCardio, formatDistance, formatDuration, formatRange } from '@/lib
 import { mutate, useLocal } from '@/lib/local';
 import { useRestTimer } from '@/lib/rest-timer';
 import { syncNow } from '@/lib/sync';
-import { useUnits, useWeightFormat } from '@/lib/units';
+import { fromUnits, toUnits, useUnits, useWeightFormat } from '@/lib/units';
 import { explainPlan, useExerciseFacts } from '@/lib/workout';
 
 /** RIR is marked in one tap: 0, 1, 2, 3 or "4 and more". */
@@ -147,6 +148,7 @@ function Workout() {
                 isCurrent && { backgroundColor: theme.backgroundElement },
                 group !== null && { borderLeftWidth: 3, borderLeftColor: theme.accent },
               ]}>
+              <ExerciseNumber number={index + 1} current={isCurrent} />
               <View style={styles.rowText}>
                 {group !== null && group !== (exercises[index - 1] && groupOf(exercises[index - 1]!)) && (
                   <ThemedText type="smallBold" style={{ color: theme.accent }}>
@@ -195,13 +197,20 @@ function Workout() {
           { borderTopColor: theme.backgroundElement, paddingBottom: insets.bottom + Spacing.three },
         ]}>
         {record && <RecordBanner text={record.text} />}
-        <RestTimer />
+        <RestTimer
+          aside={
+            current && (
+              <ExerciseMuscles exercise={exerciseById.get(current.exercise.exercise_id)} />
+            )
+          }
+        />
         {current && (
           <SetEntry
             // A new set starts from its own defaults.
             key={`${current.exercise.id}:${current.exercise.exercise_id}:${current.sets.length}`}
             sessionId={view.session.id}
             entry={current}
+            number={exercises.indexOf(current) + 1}
             exercise={exerciseById.get(current.exercise.exercise_id)}
             stepKg={current.item ? (current.item.increment_kg ?? facts(current.exercise.exercise_id, current.item)?.step_kg ?? null) : null}
             onLogged={() => onLogged(current)}
@@ -216,9 +225,58 @@ function Workout() {
   );
 }
 
+/** The number of an exercise in the workout, in a circle: which one of the list this is. */
+function ExerciseNumber({
+  number,
+  current,
+  large,
+}: {
+  number: number;
+  current: boolean;
+  large?: boolean;
+}) {
+  const theme = useTheme();
+  return (
+    <View
+      style={[
+        styles.number,
+        large && styles.numberLarge,
+        { backgroundColor: current ? theme.accent : theme.backgroundSelected },
+      ]}>
+      <ThemedText
+        type={large ? 'default' : 'small'}
+        style={[styles.numberText, { color: current ? theme.onAccent : theme.text }]}>
+        {number}
+      </ThemedText>
+    </View>
+  );
+}
+
+/** A small body map of an exercise: shown next to the rest count-down, for the set to come. */
+function ExerciseMuscles({ exercise }: { exercise: Exercise | undefined }) {
+  const { t } = useTranslation();
+  const locale = useLocale();
+  const { muscleByCode } = useCatalog();
+  if (!exercise) return null;
+  const muscles = (codes: readonly string[]) =>
+    codes.flatMap((code) => muscleByCode.get(code) ?? []);
+  const primary = muscles(exercise.primary_muscles);
+  return (
+    <MuscleMap
+      primary={primary}
+      secondary={muscles(exercise.secondary_muscles)}
+      scale={0.25}
+      label={t('exercise.mapLabelPrimaryOnly', {
+        primary: primary.map((muscle) => muscle.name[locale]).join(', '),
+      })}
+    />
+  );
+}
+
 function SetEntry({
   sessionId,
   entry,
+  number,
   exercise,
   stepKg,
   onLogged,
@@ -226,6 +284,8 @@ function SetEntry({
 }: {
   sessionId: string;
   entry: SessionExerciseView;
+  /** Which exercise of the workout this is, from 1. */
+  number: number;
   exercise: Exercise | undefined;
   stepKg: number | null;
   onLogged: () => void;
@@ -324,40 +384,43 @@ function SetEntry({
 
   return (
     <View style={styles.entry}>
-      <View>
-        <ThemedText type="small" themeColor="textSecondary">
-          {beyond
-            ? t('workout.extraSet', { number: setIndex + 1 })
-            : t('workout.set', { number: setIndex + 1, total: entry.plannedSets })}
-          {replaced ? ` · ${t('workout.replaced')}` : ''}
-        </ThemedText>
-        <ThemedText style={styles.name} numberOfLines={2}>
-          {exercise?.translations[locale].name ?? t('program.unknownExercise')}
-        </ThemedText>
-        {(tracking === 'weight_reps' || tracking === 'reps') && (
-          <ThemedText style={styles.plan}>
-            {loaded && plannedWeight !== null
-              ? t('workout.plan', { weight: kg(plannedWeight), range })
-              : t('workout.planNoWeight', { range })}
-          </ThemedText>
-        )}
-        {loaded && plannedWeight === null && (
+      <View style={styles.header}>
+        <ExerciseNumber number={number} current large />
+        <View style={styles.headerText}>
           <ThemedText type="small" themeColor="textSecondary">
-            {t('workout.findWeight')}
+            {beyond
+              ? t('workout.extraSet', { number: setIndex + 1 })
+              : t('workout.set', { number: setIndex + 1, total: entry.plannedSets })}
+            {replaced ? ` · ${t('workout.replaced')}` : ''}
           </ThemedText>
-        )}
-        {last.length > 0 && tracking !== 'time' && tracking !== 'distance_time' && (
-          <ThemedText type="small" themeColor="textSecondary">
-            {t('workout.lastTime', {
-              sets: `${last[0]?.weight_kg ? `${kg(last[0].weight_kg)} × ` : ''}${last.map((set) => set.reps).join(', ')}`,
-            })}
+          <ThemedText style={styles.name} numberOfLines={2}>
+            {exercise?.translations[locale].name ?? t('program.unknownExercise')}
           </ThemedText>
-        )}
-        {plan && !replaced && setIndex === 0 && (
-          <ThemedText type="small" themeColor="textSecondary">
-            {explainPlan(t, locale, plan, units)}
-          </ThemedText>
-        )}
+          {(tracking === 'weight_reps' || tracking === 'reps') && (
+            <ThemedText style={styles.plan}>
+              {loaded && plannedWeight !== null
+                ? t('workout.plan', { weight: kg(plannedWeight), range })
+                : t('workout.planNoWeight', { range })}
+            </ThemedText>
+          )}
+          {loaded && plannedWeight === null && (
+            <ThemedText type="small" themeColor="textSecondary">
+              {t('workout.findWeight')}
+            </ThemedText>
+          )}
+          {last.length > 0 && tracking !== 'time' && tracking !== 'distance_time' && (
+            <ThemedText type="small" themeColor="textSecondary">
+              {t('workout.lastTime', {
+                sets: `${last[0]?.weight_kg ? `${kg(last[0].weight_kg)} × ` : ''}${last.map((set) => set.reps).join(', ')}`,
+              })}
+            </ThemedText>
+          )}
+          {plan && !replaced && setIndex === 0 && (
+            <ThemedText type="small" themeColor="textSecondary">
+              {explainPlan(t, locale, plan, units)}
+            </ThemedText>
+          )}
+        </View>
       </View>
 
       {tracking === 'time' && (
@@ -396,6 +459,10 @@ function SetEntry({
               max={1000}
               step={stepKg}
               onChange={tap(setWeight)}
+              typed={{
+                value: Math.round(toUnits(weight, units) * 100) / 100,
+                apply: (typed) => setWeight(Math.min(1000, Math.max(0, fromUnits(typed, units)))),
+              }}
             />
           )}
           <Stepper label={t('workout.reps')} value={reps} min={0} max={200} onChange={tap(setReps)} />
@@ -493,6 +560,31 @@ const styles = StyleSheet.create({
   },
   entry: {
     gap: Spacing.one,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: Spacing.two,
+  },
+  headerText: {
+    flex: 1,
+  },
+  number: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  numberLarge: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    marginTop: Spacing.three,
+  },
+  numberText: {
+    fontWeight: 700,
+    fontVariant: ['tabular-nums'],
   },
   name: {
     fontSize: 20,
