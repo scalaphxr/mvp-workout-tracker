@@ -1,0 +1,1201 @@
+[
+  {
+    "id": "01a1501b-4cde-758e-9b7f-f77da9ff3451",
+    "slug": "kneeling-hip-flexor-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads"],
+    "secondary_muscles": ["abs"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Растяжка сгибателей бедра на колене",
+        "aliases": ["растяжка подвздошно-поясничной", "выпад на колене с растяжкой"],
+        "description": "Растяжка передней поверхности бедра в выпаде на колене: снимает зажатость от долгого сидения.",
+        "technique_steps": [
+          "Встаньте в выпад на колено, заднее колено на коврике.",
+          "Подкрутите таз и сожмите ягодицу задней ноги.",
+          "Слегка сместите таз вперёд до растяжения спереди бедра.",
+          "Держите 30–60 секунд и смените ногу."
+        ],
+        "common_mistakes": [
+          "Прогиб в пояснице вместо подкручивания таза.",
+          "Колено передней ноги далеко за носком.",
+          "Задержка дыхания."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Kneeling hip flexor stretch",
+        "aliases": ["half kneeling hip flexor stretch", "lunge stretch"],
+        "description": "Stretching the front of the hip in a kneeling lunge: eases the tightness from sitting a lot.",
+        "technique_steps": [
+          "Kneel into a lunge with the back knee on a mat.",
+          "Tuck the pelvis and squeeze the glute of the back leg.",
+          "Shift the hips forward slightly until the front of the hip stretches.",
+          "Hold for 30–60 seconds and switch legs."
+        ],
+        "common_mistakes": [
+          "Arching the lower back instead of tucking the pelvis.",
+          "The front knee far past the toes.",
+          "Holding the breath."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "standing-quad-stretch", "weight_ratio": null, "priority": 10 },
+      { "slug": "worlds-greatest-stretch", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b7f-f8ce7dda0bf9",
+    "slug": "pigeon-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Поза голубя",
+        "aliases": ["голубь", "растяжка ягодиц голубь"],
+        "description": "Растяжка ягодичной мышцы с передней ногой согнутой перед собой: подвижность таза.",
+        "technique_steps": [
+          "Из упора лёжа выведите правое колено вперёд к правой руке, голень поперёк коврика.",
+          "Левую ногу вытяните назад, таз ровно.",
+          "Опуститесь корпусом вперёд на предплечья до растяжения в ягодице.",
+          "Держите 30–60 секунд и смените сторону."
+        ],
+        "common_mistakes": [
+          "Заваливание таза на бок.",
+          "Боль в колене – уменьшите угол голени.",
+          "Задержка дыхания."
+        ],
+        "warnings": ["При боли в колене выбирайте растяжку «четвёрка» лёжа."]
+      },
+      "en": {
+        "name": "Pigeon stretch",
+        "aliases": ["pigeon pose"],
+        "description": "Stretching the glute with the front leg bent in front of you: hip mobility.",
+        "technique_steps": [
+          "From a push-up position bring the right knee forward to the right hand, shin across the mat.",
+          "Stretch the left leg back with the hips square.",
+          "Lean forward onto the forearms until the glute stretches.",
+          "Hold for 30–60 seconds and switch sides."
+        ],
+        "common_mistakes": [
+          "Letting the hips tip to one side.",
+          "Knee pain – reduce the angle of the shin.",
+          "Holding the breath."
+        ],
+        "warnings": ["With knee pain choose the lying figure-four stretch."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "figure-four-stretch", "weight_ratio": null, "priority": 10 },
+      { "slug": "ninety-ninety-hip-stretch", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b7f-fd65e7673a1f",
+    "slug": "figure-four-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["lower_back"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Растяжка ягодиц лёжа «четвёрка»",
+        "aliases": ["четвёрка", "растяжка грушевидной мышцы"],
+        "description": "Растяжка ягодицы лёжа на спине с лодыжкой на колене другой ноги: мягкая альтернатива голубю.",
+        "technique_steps": [
+          "Лягте на спину, согните ноги, положите правую лодыжку на левое колено.",
+          "Обхватите левое бедро руками.",
+          "Подтяните левое бедро к груди до растяжения в правой ягодице.",
+          "Держите 30–60 секунд и смените сторону."
+        ],
+        "common_mistakes": [
+          "Отрыв головы и плеч от пола.",
+          "Тяга за колено с болью.",
+          "Задержка дыхания."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Figure-four stretch",
+        "aliases": ["supine figure four", "piriformis stretch"],
+        "description": "Stretching the glute lying on the back with one ankle on the other knee: a gentle alternative to the pigeon.",
+        "technique_steps": [
+          "Lie on your back with the knees bent and put the right ankle on the left knee.",
+          "Hold the left thigh with the hands.",
+          "Pull the left thigh to the chest until the right glute stretches.",
+          "Hold for 30–60 seconds and switch sides."
+        ],
+        "common_mistakes": [
+          "Lifting the head and shoulders.",
+          "Pulling into pain.",
+          "Holding the breath."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "pigeon-stretch", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-0018ff2ebf4d",
+    "slug": "ninety-ninety-hip-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes", "adductors"],
+    "secondary_muscles": [],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Поза 90/90",
+        "aliases": ["90-90", "растяжка 90 на 90"],
+        "description": "Сидя с обеими ногами согнутыми под 90°: внутренняя и внешняя ротация тазобедренных суставов.",
+        "technique_steps": [
+          "Сядьте, передняя нога согнута под 90° перед собой, задняя под 90° сбоку.",
+          "Выпрямите спину и наклонитесь к передней голени.",
+          "Задержитесь, затем переведите колени в другую сторону.",
+          "Держите по 30–60 секунд в каждую сторону."
+        ],
+        "common_mistakes": [
+          "Скругление спины.",
+          "Перенос веса на руки.",
+          "Резкий перевод коленей."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "90/90 hip stretch",
+        "aliases": ["90 90 stretch", "ninety ninety"],
+        "description": "Sitting with both legs bent at 90°: internal and external rotation of the hips.",
+        "technique_steps": [
+          "Sit with the front leg bent at 90° in front and the back leg at 90° to the side.",
+          "Straighten the back and lean towards the front shin.",
+          "Hold, then swing the knees to the other side.",
+          "Hold for 30–60 seconds on each side."
+        ],
+        "common_mistakes": [
+          "Rounding the back.",
+          "Leaning on the hands.",
+          "Swinging the knees fast."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "pigeon-stretch", "weight_ratio": null, "priority": 10 },
+      { "slug": "butterfly-stretch", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-0587425d10fa",
+    "slug": "seated-hamstring-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["hamstrings"],
+    "secondary_muscles": ["lower_back", "calves"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Наклон к ногам сидя",
+        "aliases": ["растяжка задней поверхности бедра сидя", "складка сидя"],
+        "description": "Наклон вперёд сидя с прямыми ногами: задняя поверхность бедра и икры.",
+        "technique_steps": [
+          "Сядьте, ноги прямые вместе, носки на себя.",
+          "Выпрямите спину.",
+          "Наклонитесь вперёд от тазобедренных суставов, тянитесь к стопам.",
+          "Держите 30–60 секунд, расслабляясь с каждым выдохом."
+        ],
+        "common_mistakes": [
+          "Скругление спины вместо наклона в тазу.",
+          "Сгибание коленей.",
+          "Пружинящие рывки."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Seated hamstring stretch",
+        "aliases": ["seated forward fold", "sit and reach"],
+        "description": "Folding forward seated with straight legs: the hamstrings and the calves.",
+        "technique_steps": [
+          "Sit with the legs straight together and the toes pulled back.",
+          "Straighten the back.",
+          "Fold forward from the hips, reaching for the feet.",
+          "Hold for 30–60 seconds, relaxing with each breath out."
+        ],
+        "common_mistakes": [
+          "Rounding the back instead of folding at the hips.",
+          "Bending the knees.",
+          "Bouncing."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "standing-hamstring-stretch", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-094b1bbc453c",
+    "slug": "standing-quad-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads"],
+    "secondary_muscles": [],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Растяжка квадрицепса стоя",
+        "aliases": ["растяжка передней поверхности бедра стоя"],
+        "description": "Подтягивание пятки к ягодице стоя: передняя поверхность бедра.",
+        "technique_steps": [
+          "Встаньте на одну ногу, держитесь за опору.",
+          "Согните другую ногу и возьмитесь за стопу.",
+          "Подтяните пятку к ягодице, колени рядом, таз подкручен.",
+          "Держите 30–60 секунд и смените ногу."
+        ],
+        "common_mistakes": [
+          "Колено уходит в сторону или вперёд.",
+          "Прогиб в пояснице.",
+          "Наклон корпуса вперёд."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Standing quad stretch",
+        "aliases": ["standing quadriceps stretch"],
+        "description": "Pulling the heel to the glute while standing: the front of the thigh.",
+        "technique_steps": [
+          "Stand on one leg holding a support.",
+          "Bend the other leg and hold the foot.",
+          "Pull the heel to the glute, knees together, pelvis tucked.",
+          "Hold for 30–60 seconds and switch legs."
+        ],
+        "common_mistakes": [
+          "The knee drifting out or forward.",
+          "Arching the lower back.",
+          "Leaning forward."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "kneeling-hip-flexor-stretch", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-0ec38a983014",
+    "slug": "wall-calf-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Растяжка икр у стены",
+        "aliases": ["растяжка икроножной у стены", "растяжка голени"],
+        "description": "Упор в стену с отставленной назад прямой ногой: икроножная мышца и подвижность голеностопа.",
+        "technique_steps": [
+          "Встаньте лицом к стене, упритесь руками.",
+          "Отставьте одну ногу назад, пятка на полу, колено прямое.",
+          "Подайте таз к стене до растяжения в икре.",
+          "Держите 30–60 секунд, затем слегка согните колено и смените ногу."
+        ],
+        "common_mistakes": ["Отрыв пятки.", "Стопа развёрнута наружу.", "Прогиб в пояснице."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Wall calf stretch",
+        "aliases": ["standing calf stretch"],
+        "description": "Leaning on a wall with one straight leg back: the calf and ankle mobility.",
+        "technique_steps": [
+          "Face a wall and lean on it with the hands.",
+          "Step one leg back with the heel down and the knee straight.",
+          "Move the hips to the wall until the calf stretches.",
+          "Hold for 30–60 seconds, then bend the knee slightly and switch."
+        ],
+        "common_mistakes": ["The heel lifting.", "The foot turned out.", "Arching the lower back."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "knee-to-wall-ankle-mobilisation", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-119f13e5fde8",
+    "slug": "knee-to-wall-ankle-mobilisation",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Подвижность голеностопа: колено к стене",
+        "aliases": ["колено к стене", "мобилизация голеностопа"],
+        "description": "Касание стены коленом без отрыва пятки: подвижность голеностопа для глубокого приседа.",
+        "technique_steps": [
+          "Встаньте лицом к стене, стопа в 5–10 см от неё.",
+          "Не отрывая пятку, подайте колено вперёд к стене.",
+          "Коснитесь стены и вернитесь; отодвигайте стопу по мере прогресса.",
+          "Сделайте 10–15 касаний на каждую ногу."
+        ],
+        "common_mistakes": ["Отрыв пятки.", "Колено уходит внутрь.", "Слишком быстрые движения."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Knee-to-wall ankle mobilisation",
+        "aliases": ["knee to wall", "ankle mobility drill"],
+        "description": "Touching a wall with the knee without lifting the heel: ankle mobility for a deep squat.",
+        "technique_steps": [
+          "Face a wall with the foot 5–10 cm from it.",
+          "Without lifting the heel, drive the knee forward to the wall.",
+          "Touch and come back; move the foot further away as you improve.",
+          "Do 10–15 touches per leg."
+        ],
+        "common_mistakes": ["The heel lifting.", "The knee caving in.", "Moving too fast."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "wall-calf-stretch", "weight_ratio": null, "priority": 10 },
+      { "slug": "deep-squat-hold", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-179645a6d469",
+    "slug": "butterfly-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["adductors"],
+    "secondary_muscles": ["glutes"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Растяжка «бабочка»",
+        "aliases": ["растяжка бабочка", "растяжка внутренней поверхности бедра"],
+        "description": "Сидя со стопами вместе и коленями в стороны: приводящие мышцы бедра.",
+        "technique_steps": [
+          "Сядьте, соедините стопы, колени разведены.",
+          "Возьмитесь за стопы, спина прямая.",
+          "Наклонитесь вперёд от таза, опуская колени к полу.",
+          "Держите 30–60 секунд."
+        ],
+        "common_mistakes": [
+          "Скругление спины.",
+          "Давление руками на колени с болью.",
+          "Пружинящие движения."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Butterfly stretch",
+        "aliases": ["seated butterfly", "groin stretch"],
+        "description": "Sitting with the soles together and the knees out: the adductors.",
+        "technique_steps": [
+          "Sit with the soles of the feet together and the knees out.",
+          "Hold the feet with a straight back.",
+          "Lean forward from the hips, letting the knees drop.",
+          "Hold for 30–60 seconds."
+        ],
+        "common_mistakes": ["Rounding the back.", "Pushing the knees down into pain.", "Bouncing."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "frog-stretch", "weight_ratio": null, "priority": 10 },
+      { "slug": "ninety-ninety-hip-stretch", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-19f0d829ebe2",
+    "slug": "frog-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["adductors"],
+    "secondary_muscles": ["glutes"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Лягушка",
+        "aliases": ["растяжка лягушка", "поза лягушки"],
+        "description": "Широко разведённые колени в упоре на предплечья: глубокая растяжка приводящих мышц.",
+        "technique_steps": [
+          "Встаньте на четвереньки и разведите колени как можно шире.",
+          "Голени параллельны, стопы развёрнуты наружу.",
+          "Опуститесь на предплечья и отведите таз назад.",
+          "Держите 30–60 секунд, дыхание ровное."
+        ],
+        "common_mistakes": [
+          "Прогиб в пояснице.",
+          "Слишком широко с болью в коленях.",
+          "Задержка дыхания."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Frog stretch",
+        "aliases": ["frog pose"],
+        "description": "Knees wide apart while resting on the forearms: a deep stretch for the adductors.",
+        "technique_steps": [
+          "Get on all fours and spread the knees as wide as you can.",
+          "Shins parallel, feet turned out.",
+          "Lower onto the forearms and push the hips back.",
+          "Hold for 30–60 seconds, breathing steadily."
+        ],
+        "common_mistakes": [
+          "Arching the lower back.",
+          "Going so wide the knees hurt.",
+          "Holding the breath."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "butterfly-stretch", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-1f7be6200b8d",
+    "slug": "deep-squat-hold",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["adductors", "glutes"],
+    "secondary_muscles": ["calves", "lower_back"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Удержание глубокого приседа",
+        "aliases": ["глубокий присед", "азиатский присед"],
+        "description": "Сидение в самом глубоком приседе с пятками на полу: подвижность таза, голеностопа и спины.",
+        "technique_steps": [
+          "Встаньте чуть шире плеч, носки слегка развёрнуты.",
+          "Опуститесь в самый низ приседа, пятки на полу.",
+          "Локти упираются в колени изнутри, грудь поднята.",
+          "Держите 30–90 секунд; для облегчения держитесь за опору."
+        ],
+        "common_mistakes": ["Отрыв пяток.", "Сильное скругление спины.", "Колени внутрь."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Deep squat hold",
+        "aliases": ["deep squat", "asian squat"],
+        "description": "Sitting in the deepest squat with the heels down: mobility for the hips, ankles and back.",
+        "technique_steps": [
+          "Stand slightly wider than the shoulders with the toes slightly out.",
+          "Sink to the bottom of the squat with the heels down.",
+          "Press the elbows against the inside of the knees, chest up.",
+          "Hold for 30–90 seconds; hold a support to make it easier."
+        ],
+        "common_mistakes": ["Heels lifting.", "A heavily rounded back.", "Knees caving in."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "butterfly-stretch", "weight_ratio": null, "priority": 10 },
+      { "slug": "knee-to-wall-ankle-mobilisation", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-20a92da60237",
+    "slug": "worlds-greatest-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes", "quads"],
+    "secondary_muscles": ["hamstrings", "upper_back", "obliques"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Лучшая растяжка в мире",
+        "aliases": ["выпад с ротацией", "world's greatest stretch"],
+        "description": "Глубокий выпад с локтем к стопе и поворотом корпуса: растяжка всего тела перед тренировкой.",
+        "technique_steps": [
+          "Сделайте глубокий выпад правой ногой, ладони на пол.",
+          "Опустите правый локоть к правой стопе.",
+          "Поверните корпус и поднимите правую руку к потолку.",
+          "Вернитесь, смените ногу; 3–5 повторений на сторону."
+        ],
+        "common_mistakes": ["Короткий выпад.", "Заднее колено согнуто.", "Спешка."],
+        "warnings": []
+      },
+      "en": {
+        "name": "World's greatest stretch",
+        "aliases": ["lunge with rotation"],
+        "description": "A deep lunge with the elbow to the foot and a twist: a whole-body stretch before training.",
+        "technique_steps": [
+          "Take a deep lunge with the right leg and the hands on the floor.",
+          "Drop the right elbow towards the right foot.",
+          "Turn the torso and raise the right arm to the ceiling.",
+          "Come back and switch legs; 3–5 reps per side."
+        ],
+        "common_mistakes": ["A short lunge.", "A bent back knee.", "Rushing."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "kneeling-hip-flexor-stretch", "weight_ratio": null, "priority": 10 },
+      { "slug": "open-book-stretch", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-244c3374b98c",
+    "slug": "open-book-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["upper_back"],
+    "secondary_muscles": ["obliques", "chest"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Раскрытие книги",
+        "aliases": ["открытая книга", "ротация грудного отдела лёжа"],
+        "description": "Поворот верхней руки назад лёжа на боку: подвижность грудного отдела позвоночника.",
+        "technique_steps": [
+          "Лягте на бок, колени согнуты под 90°, руки прямые перед собой.",
+          "Поднимите верхнюю руку и отведите её по дуге назад.",
+          "Поворачивайте грудную клетку, колени остаются на полу.",
+          "Задержитесь на 2–3 секунды; 8–10 повторений на сторону."
+        ],
+        "common_mistakes": ["Колени отрываются от пола.", "Поворот поясницей.", "Рывки."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Open book stretch",
+        "aliases": ["open book", "thoracic rotation"],
+        "description": "Rotating the top arm back while lying on the side: mobility for the upper spine.",
+        "technique_steps": [
+          "Lie on your side with the knees bent to 90° and the arms straight in front.",
+          "Lift the top arm and open it back along an arc.",
+          "Turn the rib cage while the knees stay on the floor.",
+          "Hold for 2–3 seconds; 8–10 reps per side."
+        ],
+        "common_mistakes": ["Knees lifting.", "Twisting at the lower back.", "Jerking."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "cat-cow", "weight_ratio": null, "priority": 10 },
+      { "slug": "lying-spinal-twist", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-286d3b6e2630",
+    "slug": "cat-cow",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lower_back", "upper_back"],
+    "secondary_muscles": ["abs"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Кошка-корова",
+        "aliases": ["кошка", "прогибы на четвереньках"],
+        "description": "Попеременное округление и прогиб спины на четвереньках: мобилизация позвоночника.",
+        "technique_steps": [
+          "Встаньте на четвереньки, ладони под плечами, колени под тазом.",
+          "На вдохе прогните спину, поднимите голову и таз.",
+          "На выдохе округлите спину, подбородок к груди.",
+          "Двигайтесь плавно 30–60 секунд."
+        ],
+        "common_mistakes": ["Резкие движения.", "Движение только шеей.", "Задержка дыхания."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Cat-cow",
+        "aliases": ["cat cow stretch"],
+        "description": "Rounding and arching the back in turn on all fours: spinal mobilisation.",
+        "technique_steps": [
+          "Get on all fours with the hands under the shoulders and the knees under the hips.",
+          "Breathing in, arch the back and lift the head and hips.",
+          "Breathing out, round the back with the chin to the chest.",
+          "Move smoothly for 30–60 seconds."
+        ],
+        "common_mistakes": ["Jerky movements.", "Moving only the neck.", "Holding the breath."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "childs-pose", "weight_ratio": null, "priority": 10 },
+      { "slug": "open-book-stretch", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-2e9f40f82544",
+    "slug": "childs-pose",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lats", "lower_back"],
+    "secondary_muscles": ["glutes"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Поза ребёнка",
+        "aliases": ["детская поза", "растяжка спины на коленях"],
+        "description": "Сидя на пятках с вытянутыми вперёд руками: широчайшие и поясница, расслабление после тренировки.",
+        "technique_steps": [
+          "Встаньте на колени, сядьте тазом на пятки.",
+          "Наклонитесь вперёд, вытяните руки по полу.",
+          "Опустите лоб на коврик, тянитесь кистями вперёд.",
+          "Держите 30–90 секунд, дышите животом."
+        ],
+        "common_mistakes": ["Таз отрывается от пяток.", "Напряжение плеч.", "Задержка дыхания."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Child's pose",
+        "aliases": ["childs pose"],
+        "description": "Sitting on the heels with the arms reaching forward: the lats and lower back, a way to relax after training.",
+        "technique_steps": [
+          "Kneel and sit the hips back on the heels.",
+          "Fold forward and reach the arms along the floor.",
+          "Rest the forehead on the mat and reach forward.",
+          "Hold for 30–90 seconds, breathing into the belly."
+        ],
+        "common_mistakes": [
+          "Hips lifting off the heels.",
+          "Tense shoulders.",
+          "Holding the breath."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "cat-cow", "weight_ratio": null, "priority": 10 },
+      { "slug": "dead-hang", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-333b35f605c1",
+    "slug": "cobra-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["lower_back"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Кобра",
+        "aliases": ["поза кобры", "прогиб лёжа на животе"],
+        "description": "Мягкий прогиб лёжа на животе с упором на ладони: растяжка пресса и мобилизация поясницы.",
+        "technique_steps": [
+          "Лягте на живот, ладони под плечами.",
+          "Мягко выпрямите руки, поднимая грудь, таз на полу.",
+          "Плечи опущены, шея длинная.",
+          "Держите 20–30 секунд или делайте плавные повторения."
+        ],
+        "common_mistakes": ["Резкий прогиб с болью.", "Плечи к ушам.", "Отрыв таза."],
+        "warnings": ["При боли в пояснице уменьшите прогиб или опирайтесь на предплечья."]
+      },
+      "en": {
+        "name": "Cobra stretch",
+        "aliases": ["cobra pose", "prone press-up"],
+        "description": "A gentle arch lying face down on the hands: stretches the abs and mobilises the lower back.",
+        "technique_steps": [
+          "Lie face down with the hands under the shoulders.",
+          "Straighten the arms gently, lifting the chest with the hips down.",
+          "Shoulders down, neck long.",
+          "Hold for 20–30 seconds or do smooth reps."
+        ],
+        "common_mistakes": [
+          "Arching hard into pain.",
+          "Shoulders to the ears.",
+          "Lifting the hips."
+        ],
+        "warnings": ["With lower back pain arch less or rest on the forearms."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "cat-cow", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-34903bc0909b",
+    "slug": "lying-spinal-twist",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["lower_back", "obliques"],
+    "secondary_muscles": ["glutes"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Скрутка лёжа",
+        "aliases": ["скручивание лёжа на спине", "твист лёжа"],
+        "description": "Перенос согнутых коленей в сторону лёжа на спине: поясница и косые мышцы.",
+        "technique_steps": [
+          "Лягте на спину, руки в стороны, колени согнуты.",
+          "Опустите колени в одну сторону, плечи на полу.",
+          "Поверните голову в противоположную сторону.",
+          "Держите 30–60 секунд и смените сторону."
+        ],
+        "common_mistakes": [
+          "Отрыв противоположного плеча.",
+          "Резкий перевод ног.",
+          "Задержка дыхания."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Lying spinal twist",
+        "aliases": ["supine twist"],
+        "description": "Dropping bent knees to one side while lying on the back: the lower back and the obliques.",
+        "technique_steps": [
+          "Lie on your back with the arms out and the knees bent.",
+          "Drop the knees to one side, shoulders on the floor.",
+          "Turn the head the other way.",
+          "Hold for 30–60 seconds and switch sides."
+        ],
+        "common_mistakes": [
+          "The opposite shoulder lifting.",
+          "Swinging the legs fast.",
+          "Holding the breath."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "open-book-stretch", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-3bc059ba949e",
+    "slug": "doorway-chest-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["front_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Растяжка грудных в дверном проёме",
+        "aliases": ["растяжка груди у стены", "растяжка грудных мышц"],
+        "description": "Упор предплечьем в дверной проём с шагом вперёд: грудные мышцы и передние дельты.",
+        "technique_steps": [
+          "Встаньте в дверной проём, предплечье на косяке, локоть на уровне плеча.",
+          "Сделайте шаг вперёд одноимённой ногой.",
+          "Мягко поверните корпус от руки до растяжения в груди.",
+          "Держите 30–60 секунд и смените руку."
+        ],
+        "common_mistakes": [
+          "Локоть выше плеча с болью в плече.",
+          "Прогиб в пояснице.",
+          "Слишком сильное растяжение."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Doorway chest stretch",
+        "aliases": ["doorway pec stretch", "wall chest stretch"],
+        "description": "Resting a forearm on a doorframe and stepping through: the chest and the front delts.",
+        "technique_steps": [
+          "Stand in a doorway with the forearm on the frame and the elbow at shoulder height.",
+          "Step forward with the leg on the same side.",
+          "Turn the body away gently until the chest stretches.",
+          "Hold for 30–60 seconds and switch arms."
+        ],
+        "common_mistakes": [
+          "The elbow above the shoulder with pain.",
+          "Arching the lower back.",
+          "Stretching too hard."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "cross-body-shoulder-stretch", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-3c7e5ac11253",
+    "slug": "cross-body-shoulder-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["rear_delts"],
+    "secondary_muscles": ["upper_back"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Растяжка плеча рукой через грудь",
+        "aliases": ["растяжка задней дельты", "рука к груди"],
+        "description": "Подтягивание прямой руки поперёк груди: задние дельты и мышцы между лопатками.",
+        "technique_steps": [
+          "Вытяните руку перед собой и переведите её поперёк груди.",
+          "Другой рукой прижмите её выше локтя.",
+          "Плечо опущено, корпус не поворачивается.",
+          "Держите 30–60 секунд и смените руку."
+        ],
+        "common_mistakes": ["Подъём плеча к уху.", "Давление на сам локоть.", "Поворот корпуса."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Cross-body shoulder stretch",
+        "aliases": ["cross body arm stretch", "rear delt stretch"],
+        "description": "Pulling a straight arm across the chest: the rear delts and the muscles between the shoulder blades.",
+        "technique_steps": [
+          "Reach one arm forward and bring it across the chest.",
+          "Press it in with the other hand above the elbow.",
+          "Keep the shoulder down and the body still.",
+          "Hold for 30–60 seconds and switch arms."
+        ],
+        "common_mistakes": [
+          "Shrugging the shoulder.",
+          "Pressing on the elbow joint.",
+          "Turning the body."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "sleeper-stretch", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-42393f76a068",
+    "slug": "sleeper-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["rear_delts"],
+    "secondary_muscles": [],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Растяжка «спящий»",
+        "aliases": ["слипер", "растяжка внутренней ротации плеча"],
+        "description": "Опускание предплечья к полу лёжа на боку: внутренняя ротация плеча, полезно тем, кто много жмёт.",
+        "technique_steps": [
+          "Лягте на бок, нижняя рука перед вами, локоть согнут под 90° на уровне плеча.",
+          "Другой рукой мягко опускайте предплечье к полу.",
+          "Остановитесь при лёгком растяжении в задней части плеча.",
+          "Держите 30 секунд и смените сторону."
+        ],
+        "common_mistakes": ["Давление до боли.", "Перекат на спину.", "Локоть ниже уровня плеча."],
+        "warnings": ["Движение только до лёгкого растяжения, без боли."]
+      },
+      "en": {
+        "name": "Sleeper stretch",
+        "aliases": ["shoulder internal rotation stretch"],
+        "description": "Lowering the forearm to the floor lying on the side: internal rotation of the shoulder, useful for those who press a lot.",
+        "technique_steps": [
+          "Lie on your side with the bottom arm in front, elbow bent to 90° at shoulder height.",
+          "Gently press the forearm towards the floor with the other hand.",
+          "Stop at a light stretch at the back of the shoulder.",
+          "Hold for 30 seconds and switch sides."
+        ],
+        "common_mistakes": [
+          "Pushing into pain.",
+          "Rolling onto the back.",
+          "The elbow below shoulder height."
+        ],
+        "warnings": ["Only to a light stretch, never into pain."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "cross-body-shoulder-stretch", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-459c33a08177",
+    "slug": "overhead-triceps-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": ["lats"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Растяжка трицепса за головой",
+        "aliases": ["растяжка трицепса", "рука за голову"],
+        "description": "Согнутая рука за головой с подтягиванием локтя: трицепс и широчайшие.",
+        "technique_steps": [
+          "Поднимите руку вверх и согните её, ладонь за лопатку.",
+          "Другой рукой возьмитесь за локоть.",
+          "Мягко потяните локоть за голову.",
+          "Держите 30–60 секунд и смените руку."
+        ],
+        "common_mistakes": ["Прогиб в пояснице.", "Наклон головы вперёд.", "Резкая тяга."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Overhead triceps stretch",
+        "aliases": ["triceps stretch"],
+        "description": "A bent arm behind the head with the elbow pulled in: the triceps and the lats.",
+        "technique_steps": [
+          "Raise one arm and bend it, hand behind the shoulder blade.",
+          "Hold the elbow with the other hand.",
+          "Pull the elbow gently behind the head.",
+          "Hold for 30–60 seconds and switch arms."
+        ],
+        "common_mistakes": [
+          "Arching the lower back.",
+          "Pushing the head forward.",
+          "Pulling hard."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "cross-body-shoulder-stretch", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-48002b7f2e65",
+    "slug": "wrist-flexor-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["forearms"],
+    "secondary_muscles": [],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Растяжка предплечий",
+        "aliases": ["растяжка запястий", "растяжка сгибателей кисти"],
+        "description": "Оттягивание пальцев прямой руки на себя: предплечья и запястья, полезно перед жимами и после турника.",
+        "technique_steps": [
+          "Вытяните руку вперёд ладонью вверх.",
+          "Другой рукой мягко оттяните пальцы вниз и на себя.",
+          "Держите 20–30 секунд, затем разверните ладонь вниз и повторите.",
+          "Смените руку."
+        ],
+        "common_mistakes": ["Согнутый локоть.", "Резкое давление.", "Задержка дыхания."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Wrist flexor stretch",
+        "aliases": ["forearm stretch", "wrist stretch"],
+        "description": "Pulling back the fingers of a straight arm: the forearms and wrists, useful before pressing and after hanging.",
+        "technique_steps": [
+          "Reach one arm forward with the palm up.",
+          "Pull the fingers down and back gently with the other hand.",
+          "Hold for 20–30 seconds, then turn the palm down and repeat.",
+          "Switch arms."
+        ],
+        "common_mistakes": ["A bent elbow.", "Pressing hard.", "Holding the breath."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dead-hang", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-4f9d4096725b",
+    "slug": "dead-hang",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lats", "forearms"],
+    "secondary_muscles": ["upper_back"],
+    "equipment": ["pull_up_bar"],
+    "translations": {
+      "ru": {
+        "name": "Вис на турнике",
+        "aliases": ["вис", "пассивный вис"],
+        "description": "Вис на прямых руках на турнике: вытяжение позвоночника, растяжка широчайших и сила хвата.",
+        "technique_steps": [
+          "Возьмитесь за турник хватом чуть шире плеч.",
+          "Повисните на прямых руках, ноги расслаблены или касаются пола.",
+          "Дышите ровно, плечи можно слегка опустить.",
+          "Держите 20–60 секунд."
+        ],
+        "common_mistakes": [
+          "Раскачивание.",
+          "Спрыгивание с высоты.",
+          "Слишком долгие подходы с болью в плечах."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Dead hang",
+        "aliases": ["bar hang", "passive hang"],
+        "description": "Hanging from a bar on straight arms: decompresses the spine, stretches the lats and builds grip.",
+        "technique_steps": [
+          "Grip the bar slightly wider than the shoulders.",
+          "Hang on straight arms with the legs relaxed or touching the floor.",
+          "Breathe steadily; the shoulders may drop slightly.",
+          "Hold for 20–60 seconds."
+        ],
+        "common_mistakes": [
+          "Swinging.",
+          "Jumping down from a height.",
+          "Holds so long the shoulders hurt."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "childs-pose", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cde-758e-9b80-50f941f93e13",
+    "slug": "band-pass-through",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts", "chest"],
+    "secondary_muscles": ["rear_delts", "upper_back"],
+    "equipment": ["resistance_band"],
+    "translations": {
+      "ru": {
+        "name": "Проводка резины за спину",
+        "aliases": ["выкруты с резиной", "проводка эспандера", "дислокейты"],
+        "description": "Перевод прямых рук с лентой вперёд-вверх-назад: подвижность плечевых суставов перед жимами.",
+        "technique_steps": [
+          "Возьмите ленту широким хватом перед бёдрами.",
+          "Прямыми руками поднимите ленту над головой и отведите за спину.",
+          "Верните тем же путём вперёд.",
+          "Сделайте 10–15 повторений, постепенно сужая хват."
+        ],
+        "common_mistakes": ["Сгибание локтей.", "Прогиб в пояснице.", "Слишком узкий хват сразу."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Band pass-through",
+        "aliases": ["band dislocates", "shoulder pass through"],
+        "description": "Taking straight arms with a band forward, overhead and back: shoulder mobility before pressing.",
+        "technique_steps": [
+          "Hold the band with a wide grip in front of the thighs.",
+          "With straight arms raise it overhead and take it behind the back.",
+          "Bring it forward the same way.",
+          "Do 10–15 reps, narrowing the grip over time."
+        ],
+        "common_mistakes": [
+          "Bending the elbows.",
+          "Arching the lower back.",
+          "A grip that is too narrow at first."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "doorway-chest-stretch", "weight_ratio": null, "priority": 5 },
+      { "slug": "dead-hang", "weight_ratio": null, "priority": 5 }
+    ]
+  }
+]

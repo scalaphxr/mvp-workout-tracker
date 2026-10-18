@@ -13,8 +13,13 @@
     "equipment": ["cable_crossover"],
     "translations": {
       "ru": {
-        "name": "Отведение руки в сторону на блоке",
-        "aliases": ["махи в сторону на блоке", "отведение руки в кроссовере", "махи на нижнем блоке"],
+        "name": "Отведение руки в сторону на нижнем блоке",
+        "aliases": [
+          "отведение руки в сторону на блоке",
+          "махи в сторону на блоке",
+          "отведение руки в кроссовере",
+          "махи на нижнем блоке"
+        ],
         "description": "Подъём руки через сторону с нижнего блока: средние дельты под нагрузкой на всей амплитуде. Выполняется по одной руке.",
         "technique_steps": [
           "Установите блок внизу, встаньте к нему боком и возьмите рукоять дальней рукой.",
@@ -31,7 +36,11 @@
       },
       "en": {
         "name": "Cable lateral raise",
-        "aliases": ["single arm cable lateral raise", "cable side raise", "low pulley lateral raise"],
+        "aliases": [
+          "single arm cable lateral raise",
+          "cable side raise",
+          "low pulley lateral raise"
+        ],
         "description": "Raising the arm out to the side from a low pulley: the side delts stay loaded through the whole range. Done one arm at a time.",
         "technique_steps": [
           "Set the pulley low, stand side-on to it and take the handle with the far hand.",
@@ -170,8 +179,13 @@
     "equipment": ["pec_deck"],
     "translations": {
       "ru": {
-        "name": "Обратные разведения в тренажёре",
-        "aliases": ["обратная бабочка", "обратные разведения в бабочке", "разведения на заднюю дельту в тренажёре"],
+        "name": "Обратные разведения в тренажёре «бабочка»",
+        "aliases": [
+          "обратные разведения в тренажёре",
+          "обратная бабочка",
+          "обратные разведения в бабочке",
+          "разведения на заднюю дельту в тренажёре"
+        ],
         "description": "Разведение рук назад в тренажёре «бабочка» лицом к спинке: задние дельты без нагрузки на поясницу.",
         "technique_steps": [
           "Сядьте лицом к спинке, рукояти на уровне плеч, грудь прижата к упору.",

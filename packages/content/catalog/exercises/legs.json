@@ -119,8 +119,13 @@
     "equipment": ["barbell"],
     "translations": {
       "ru": {
-        "name": "Становая тяга",
-        "aliases": ["классическая становая тяга", "становая", "тяга штанги с пола"],
+        "name": "Становая тяга (классическая)",
+        "aliases": [
+          "становая тяга",
+          "классическая становая тяга",
+          "становая",
+          "тяга штанги с пола"
+        ],
         "description": "Подъём штанги с пола до полного выпрямления: базовое упражнение для всей задней цепи.",
         "technique_steps": [
           "Встаньте так, чтобы гриф был над серединой стопы, стопы на ширине таза.",
@@ -633,6 +638,1688 @@
     "alternatives": [
       { "slug": "standing-calf-raise-machine", "weight_ratio": null, "priority": 15 },
       { "slug": "smith-machine-calf-raise", "weight_ratio": null, "priority": 15 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-abddba5d7365",
+    "slug": "front-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["abs", "upper_back", "adductors"],
+    "equipment": ["barbell", "rack"],
+    "translations": {
+      "ru": {
+        "name": "Фронтальные приседания",
+        "aliases": ["присед со штангой на груди", "фронтальный присед"],
+        "description": "Приседания со штангой на передних дельтах: корпус вертикальнее, больше работы квадрицепсов.",
+        "technique_steps": [
+          "Положите гриф на передние дельты у основания шеи, локти высоко вперёд.",
+          "Стопы на ширине плеч, носки слегка развёрнуты.",
+          "Опуститесь вниз, сохраняя корпус вертикальным и локти высоко.",
+          "Встаньте, толкая пол всей стопой."
+        ],
+        "common_mistakes": [
+          "Опускание локтей – штанга скатывается.",
+          "Округление верха спины.",
+          "Отрыв пяток."
+        ],
+        "warnings": ["Освойте с лёгким весом: требует подвижности запястий и плеч."]
+      },
+      "en": {
+        "name": "Front squat",
+        "aliases": ["barbell front squat"],
+        "description": "Squat with the bar on the front of the shoulders: a more upright torso and more quads.",
+        "technique_steps": [
+          "Rest the bar on the front delts at the base of the neck, elbows high and forward.",
+          "Feet shoulder-width apart, toes slightly out.",
+          "Sit down, keeping the torso upright and the elbows high.",
+          "Stand up, pushing through the whole foot."
+        ],
+        "common_mistakes": [
+          "Dropping the elbows so the bar rolls forward.",
+          "Rounding the upper back.",
+          "Heels coming up."
+        ],
+        "warnings": ["Learn it light: it needs wrist and shoulder mobility."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "barbell-back-squat", "weight_ratio": 1.25, "priority": 10 },
+      { "slug": "goblet-squat", "weight_ratio": null, "priority": 5 },
+      { "slug": "hack-squat", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-af78ed303691",
+    "slug": "goblet-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["adductors", "abs"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {
+        "name": "Гоблет-приседания",
+        "aliases": ["приседания с гантелью у груди", "кубковые приседания"],
+        "description": "Приседания с гантелью у груди: лучший способ освоить технику приседа и отличный вариант для дома.",
+        "technique_steps": [
+          "Держите гантель вертикально у груди двумя руками.",
+          "Стопы чуть шире плеч, носки слегка развёрнуты.",
+          "Опуститесь между бёдрами, локти идут внутри коленей.",
+          "Встаньте, сохраняя грудь поднятой."
+        ],
+        "common_mistakes": ["Заваливание колен внутрь.", "Наклон корпуса вперёд.", "Отрыв пяток."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Goblet squat",
+        "aliases": ["dumbbell goblet squat"],
+        "description": "Squat holding a dumbbell at the chest: the best way to learn to squat and a great option at home.",
+        "technique_steps": [
+          "Hold a dumbbell upright at the chest with both hands.",
+          "Feet slightly wider than the shoulders, toes slightly out.",
+          "Sit down between the thighs with the elbows inside the knees.",
+          "Stand up with the chest tall."
+        ],
+        "common_mistakes": ["Knees caving in.", "Leaning the torso forward.", "Heels coming up."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "barbell-back-squat", "weight_ratio": null, "priority": 10 },
+      { "slug": "leg-press", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-b1f90ab2c5f3",
+    "slug": "smith-machine-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["adductors"],
+    "equipment": ["smith_machine"],
+    "translations": {
+      "ru": {
+        "name": "Приседания в тренажёре Смита",
+        "aliases": ["присед в смите", "приседания в смите"],
+        "description": "Приседания по фиксированной траектории: можно поставить стопы вперёд и работать тяжело без страховки.",
+        "technique_steps": [
+          "Положите гриф на верх трапеций, стопы чуть впереди корпуса.",
+          "Снимите гриф поворотом, напрягите пресс.",
+          "Опуститесь до параллели бёдер с полом или ниже.",
+          "Встаньте, толкая пол всей стопой."
+        ],
+        "common_mistakes": [
+          "Стопы прямо под грифом – колени перегружены.",
+          "Округление поясницы внизу.",
+          "Неполная глубина."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Smith machine squat",
+        "aliases": ["smith squat"],
+        "description": "Squat on a fixed path: you can set the feet forward and go heavy without a spotter.",
+        "technique_steps": [
+          "Rest the bar on the upper traps with the feet slightly in front of the body.",
+          "Unrack with a twist and brace the abs.",
+          "Sit down to parallel or below.",
+          "Stand up, pushing through the whole foot."
+        ],
+        "common_mistakes": [
+          "Feet right under the bar, which overloads the knees.",
+          "Rounding the lower back at the bottom.",
+          "Not going deep enough."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "barbell-back-squat", "weight_ratio": 1.0, "priority": 10 },
+      { "slug": "leg-press", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-b61a72001ee6",
+    "slug": "hack-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads"],
+    "secondary_muscles": ["glutes", "adductors"],
+    "equipment": ["hack_squat_machine"],
+    "translations": {
+      "ru": {
+        "name": "Гакк-приседания в тренажёре",
+        "aliases": ["гакк-присед", "гак присед"],
+        "description": "Приседания в гакк-машине спиной к платформе: максимальная нагрузка на квадрицепсы без нагрузки на спину.",
+        "technique_steps": [
+          "Встаньте в тренажёр, плечи под валиками, спина прижата.",
+          "Стопы на ширине плеч в середине платформы.",
+          "Опуститесь как можно глубже, колени идут по направлению носков.",
+          "Выпрямите ноги, не блокируя колени полностью."
+        ],
+        "common_mistakes": ["Отрыв пяток.", "Колени внутрь.", "Неполная амплитуда."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Hack squat",
+        "aliases": ["machine hack squat"],
+        "description": "Squat in a hack squat machine with the back on the pad: heavy quad work without loading the spine.",
+        "technique_steps": [
+          "Step in with the shoulders under the pads and the back against the pad.",
+          "Feet shoulder-width apart in the middle of the platform.",
+          "Go down as deep as you can with the knees tracking the toes.",
+          "Straighten the legs without locking the knees hard."
+        ],
+        "common_mistakes": ["Heels coming up.", "Knees caving in.", "Partial reps."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "leg-press", "weight_ratio": null, "priority": 10 },
+      { "slug": "barbell-back-squat", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-b9c0832d0fbf",
+    "slug": "bulgarian-split-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["adductors", "hamstrings"],
+    "equipment": ["dumbbells", "flat_bench"],
+    "translations": {
+      "ru": {
+        "name": "Болгарские выпады",
+        "aliases": ["болгарские сплит-приседания", "сплит-присед с ногой на скамье"],
+        "description": "Выпады с задней ногой на скамье: одно из лучших упражнений для ног и ягодиц без большого веса.",
+        "technique_steps": [
+          "Встаньте спиной к скамье, положите на неё носок задней ноги.",
+          "Передняя стопа далеко вперёд, гантели в руках.",
+          "Опуститесь вниз, пока бедро передней ноги не станет параллельно полу.",
+          "Поднимитесь, толкая пол передней пяткой; сделайте все повторения и смените ногу."
+        ],
+        "common_mistakes": [
+          "Слишком короткий шаг – колено далеко за носком.",
+          "Заваливание колена внутрь.",
+          "Толчок задней ногой."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Bulgarian split squat",
+        "aliases": ["rear foot elevated split squat"],
+        "description": "Split squat with the rear foot on a bench: one of the best leg and glute exercises without a heavy weight.",
+        "technique_steps": [
+          "Stand with the back to a bench and put the top of the rear foot on it.",
+          "Front foot well forward, dumbbells in the hands.",
+          "Lower until the front thigh is parallel to the floor.",
+          "Rise by driving through the front heel; do all reps, then switch legs."
+        ],
+        "common_mistakes": [
+          "A stance so short the knee goes far past the toes.",
+          "The knee caving in.",
+          "Pushing off with the rear leg."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "walking-lunge", "weight_ratio": null, "priority": 10 },
+      { "slug": "dumbbell-lunge", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-bd85f841e612",
+    "slug": "walking-lunge",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["hamstrings", "adductors"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {
+        "name": "Выпады в ходьбе с гантелями",
+        "aliases": ["шагающие выпады", "выпады в движении"],
+        "description": "Выпады с продвижением вперёд: ноги, ягодицы и баланс.",
+        "technique_steps": [
+          "Возьмите гантели, встаньте прямо.",
+          "Сделайте широкий шаг вперёд и опуститесь до касания коленом почти пола.",
+          "Оттолкнитесь передней ногой и шагните следующей ногой вперёд.",
+          "Продолжайте, чередуя ноги; повторения считаются на каждую ногу."
+        ],
+        "common_mistakes": [
+          "Узкий шаг по одной линии – теряется равновесие.",
+          "Удар коленом о пол.",
+          "Наклон корпуса вперёд."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Walking lunge",
+        "aliases": ["dumbbell walking lunge"],
+        "description": "Lunges travelling forward: the legs, glutes and balance.",
+        "technique_steps": [
+          "Hold the dumbbells and stand tall.",
+          "Take a long step forward and lower until the rear knee almost touches the floor.",
+          "Push off the front leg and step forward with the other one.",
+          "Keep alternating; count reps per leg."
+        ],
+        "common_mistakes": [
+          "A narrow stance on one line that ruins the balance.",
+          "Banging the knee into the floor.",
+          "Leaning forward."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dumbbell-lunge", "weight_ratio": null, "priority": 10 },
+      { "slug": "bulgarian-split-squat", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-c216a98afeaf",
+    "slug": "reverse-lunge",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Обратные выпады",
+        "aliases": ["выпады назад", "выпады назад без веса"],
+        "description": "Шаг назад с опусканием в выпад: щадит колени, подходит для дома и начинающих.",
+        "technique_steps": [
+          "Встаньте прямо, руки на поясе.",
+          "Сделайте шаг назад и опуститесь, пока заднее колено почти не коснётся пола.",
+          "Вес на передней пятке, корпус прямой.",
+          "Вернитесь в стойку, толкая пол передней ногой; чередуйте ноги."
+        ],
+        "common_mistakes": [
+          "Слишком короткий шаг.",
+          "Колено передней ноги уходит внутрь.",
+          "Наклон корпуса."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Reverse lunge",
+        "aliases": ["backward lunge", "bodyweight reverse lunge"],
+        "description": "Stepping back into a lunge: easy on the knees, good at home and for beginners.",
+        "technique_steps": [
+          "Stand tall with the hands on the hips.",
+          "Step back and lower until the rear knee nearly touches the floor.",
+          "Keep the weight on the front heel and the torso upright.",
+          "Return by pushing through the front leg; alternate legs."
+        ],
+        "common_mistakes": [
+          "A step that is too short.",
+          "The front knee caving in.",
+          "Leaning the torso."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "bodyweight-split-squat", "weight_ratio": null, "priority": 10 },
+      { "slug": "dumbbell-lunge", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-c406aa275380",
+    "slug": "bodyweight-split-squat",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Сплит-приседания без веса",
+        "aliases": ["разножка", "статические выпады"],
+        "description": "Приседание в разножке без шагов: простое упражнение на ноги и ягодицы для начинающих и дома.",
+        "technique_steps": [
+          "Встаньте в широкую разножку, задняя пятка поднята.",
+          "Корпус прямой, руки на поясе.",
+          "Опуститесь вертикально вниз до прямого угла в обоих коленях.",
+          "Поднимитесь; сделайте все повторения и смените ногу."
+        ],
+        "common_mistakes": ["Узкая стойка.", "Наклон корпуса вперёд.", "Колено внутрь."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Bodyweight split squat",
+        "aliases": ["static lunge", "split squat"],
+        "description": "A squat in a split stance without stepping: a simple leg and glute exercise for beginners and at home.",
+        "technique_steps": [
+          "Take a long split stance with the rear heel up.",
+          "Torso upright, hands on the hips.",
+          "Lower straight down until both knees are at right angles.",
+          "Rise; do all reps, then switch legs."
+        ],
+        "common_mistakes": ["A narrow stance.", "Leaning forward.", "The knee caving in."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "reverse-lunge", "weight_ratio": null, "priority": 10 },
+      { "slug": "bulgarian-split-squat", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-c86917f48d90",
+    "slug": "smith-machine-split-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["hamstrings"],
+    "equipment": ["smith_machine"],
+    "translations": {
+      "ru": {
+        "name": "Сплит-приседания в тренажёре Смита",
+        "aliases": ["выпады в смите", "разножка в смите"],
+        "description": "Приседание в разножке с грифом Смита на плечах: тяжёлые выпады без потери равновесия.",
+        "technique_steps": [
+          "Положите гриф на верх трапеций, встаньте в разножку.",
+          "Снимите гриф поворотом, корпус прямой.",
+          "Опуститесь вниз до прямого угла в коленях.",
+          "Поднимитесь передней ногой; затем смените ногу."
+        ],
+        "common_mistakes": [
+          "Слишком короткая разножка.",
+          "Толчок задней ногой.",
+          "Отрыв передней пятки."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Smith machine split squat",
+        "aliases": ["smith split squat", "smith lunge"],
+        "description": "Split squat with the Smith bar on the shoulders: heavy lunges without losing balance.",
+        "technique_steps": [
+          "Rest the bar on the upper traps and take a split stance.",
+          "Unrack with a twist, torso upright.",
+          "Lower until the knees are at right angles.",
+          "Rise with the front leg; then switch legs."
+        ],
+        "common_mistakes": [
+          "A split stance that is too short.",
+          "Pushing off the rear leg.",
+          "The front heel lifting."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "bulgarian-split-squat", "weight_ratio": null, "priority": 10 },
+      { "slug": "dumbbell-lunge", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-cde953a16f7e",
+    "slug": "step-up",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["hamstrings", "calves"],
+    "equipment": ["dumbbells", "flat_bench"],
+    "translations": {
+      "ru": {
+        "name": "Зашагивания на скамью с гантелями",
+        "aliases": ["зашагивания на тумбу", "степ-ап"],
+        "description": "Подъём на скамью одной ногой с гантелями: ноги и ягодицы, перенос на бег и лестницы.",
+        "technique_steps": [
+          "Встаньте перед скамьёй высотой примерно до колена, гантели в руках.",
+          "Поставьте одну стопу на скамью целиком.",
+          "Поднимитесь, выпрямляя опорную ногу, не отталкиваясь нижней.",
+          "Медленно опуститесь той же ногой; сделайте все повторения и смените ногу."
+        ],
+        "common_mistakes": [
+          "Толчок от пола нижней ногой.",
+          "Слишком высокая опора.",
+          "Наклон корпуса вперёд."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Step-up",
+        "aliases": ["dumbbell step-up", "box step-up"],
+        "description": "Stepping up onto a bench on one leg with dumbbells: the legs and glutes, carries over to running and stairs.",
+        "technique_steps": [
+          "Stand in front of a knee-high bench holding the dumbbells.",
+          "Put one whole foot on the bench.",
+          "Step up by straightening that leg without pushing off the floor.",
+          "Step down slowly with the same leg; do all reps, then switch."
+        ],
+        "common_mistakes": [
+          "Pushing off the floor with the bottom leg.",
+          "A box that is too high.",
+          "Leaning forward."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "bulgarian-split-squat", "weight_ratio": null, "priority": 10 },
+      { "slug": "dumbbell-lunge", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-d2962c8a72f8",
+    "slug": "lateral-lunge",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["adductors", "quads", "glutes"],
+    "secondary_muscles": ["hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Боковые выпады",
+        "aliases": ["выпады в сторону", "приставные выпады"],
+        "description": "Шаг в сторону с приседанием на одну ногу: внутренняя поверхность бедра и ягодицы.",
+        "technique_steps": [
+          "Встаньте прямо, стопы вместе.",
+          "Сделайте широкий шаг в сторону и отведите таз назад, сгибая шагающую ногу.",
+          "Вторая нога прямая, стопы смотрят вперёд.",
+          "Оттолкнитесь и вернитесь в стойку; чередуйте стороны."
+        ],
+        "common_mistakes": ["Колено уходит внутрь.", "Округление спины.", "Отрыв пятки."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Lateral lunge",
+        "aliases": ["side lunge"],
+        "description": "Stepping to the side and sitting into one leg: the inner thighs and the glutes.",
+        "technique_steps": [
+          "Stand tall with the feet together.",
+          "Take a wide step to the side and push the hips back, bending that leg.",
+          "Keep the other leg straight and both feet pointing forward.",
+          "Push back to standing; alternate sides."
+        ],
+        "common_mistakes": ["The knee caving in.", "Rounding the back.", "The heel lifting."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dumbbell-sumo-squat", "weight_ratio": null, "priority": 10 },
+      { "slug": "reverse-lunge", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-d741e9b10ecb",
+    "slug": "dumbbell-sumo-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads", "adductors", "glutes"],
+    "secondary_muscles": [],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {
+        "name": "Приседания сумо с гантелью",
+        "aliases": ["плие с гантелью", "сумо-присед"],
+        "description": "Приседания в широкой стойке с гантелью в опущенных руках: внутренняя поверхность бедра и ягодицы.",
+        "technique_steps": [
+          "Встаньте широко, носки развёрнуты наружу, гантель вертикально в руках.",
+          "Спина прямая, грудь поднята.",
+          "Опуститесь, разводя колени по направлению носков.",
+          "Встаньте, сжимая ягодицы."
+        ],
+        "common_mistakes": ["Колени внутрь.", "Наклон корпуса.", "Неполная глубина."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Dumbbell sumo squat",
+        "aliases": ["plie squat", "sumo goblet squat"],
+        "description": "Wide-stance squat holding a dumbbell down: the inner thighs and the glutes.",
+        "technique_steps": [
+          "Take a wide stance with the toes turned out and the dumbbell held upright.",
+          "Back straight, chest up.",
+          "Sit down, pushing the knees out in line with the toes.",
+          "Stand up, squeezing the glutes."
+        ],
+        "common_mistakes": ["Knees caving in.", "Leaning forward.", "Not going deep enough."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "goblet-squat", "weight_ratio": null, "priority": 10 },
+      { "slug": "hip-adduction-machine", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-d97e62456009",
+    "slug": "dumbbell-romanian-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["hamstrings", "glutes"],
+    "secondary_muscles": ["lower_back"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {
+        "name": "Румынская тяга с гантелями",
+        "aliases": ["румынская тяга гантелей", "мёртвая тяга с гантелями"],
+        "description": "Наклон с гантелями на почти прямых ногах: задняя поверхность бедра и ягодицы.",
+        "technique_steps": [
+          "Встаньте прямо, гантели перед бёдрами, колени слегка согнуты.",
+          "Отведите таз назад, гантели скользят вдоль ног.",
+          "Опуститесь до растяжения в задней поверхности бедра, спина прямая.",
+          "Вернитесь, толкая таз вперёд."
+        ],
+        "common_mistakes": [
+          "Округление спины.",
+          "Приседание вместо наклона.",
+          "Гантели далеко от ног."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Dumbbell Romanian deadlift",
+        "aliases": ["dumbbell rdl", "dumbbell stiff leg deadlift"],
+        "description": "Hinging with dumbbells on nearly straight legs: the hamstrings and glutes.",
+        "technique_steps": [
+          "Stand tall with the dumbbells in front of the thighs and the knees soft.",
+          "Push the hips back, sliding the dumbbells down the legs.",
+          "Lower until the hamstrings stretch, back flat.",
+          "Come back up by driving the hips forward."
+        ],
+        "common_mistakes": [
+          "Rounding the back.",
+          "Squatting instead of hinging.",
+          "Dumbbells drifting away from the legs."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "romanian-deadlift", "weight_ratio": 2.5, "priority": 10 },
+      { "slug": "single-leg-romanian-deadlift", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-dd1dfef55e86",
+    "slug": "single-leg-romanian-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["hamstrings", "glutes"],
+    "secondary_muscles": ["lower_back", "adductors"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {
+        "name": "Румынская тяга на одной ноге",
+        "aliases": ["тяга на одной ноге", "наклоны на одной ноге с гантелью"],
+        "description": "Наклон на одной ноге с гантелью: задняя поверхность бедра, ягодицы и равновесие.",
+        "technique_steps": [
+          "Встаньте на одну ногу, гантель в противоположной руке.",
+          "Наклонитесь вперёд, отводя свободную ногу назад, таз ровный.",
+          "Опуститесь до растяжения в опорной ноге, спина прямая.",
+          "Вернитесь в стойку; сделайте все повторения и смените ногу."
+        ],
+        "common_mistakes": [
+          "Разворот таза наружу.",
+          "Округление спины.",
+          "Сильное сгибание опорного колена."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Single-leg Romanian deadlift",
+        "aliases": ["single leg rdl", "one-leg deadlift"],
+        "description": "Hinging on one leg with a dumbbell: the hamstrings, glutes and balance.",
+        "technique_steps": [
+          "Stand on one leg holding a dumbbell in the opposite hand.",
+          "Hinge forward, reaching the free leg back with the hips square.",
+          "Lower until the standing leg stretches, back flat.",
+          "Return to standing; do all reps, then switch."
+        ],
+        "common_mistakes": [
+          "The hips opening out.",
+          "Rounding the back.",
+          "Bending the standing knee a lot."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dumbbell-romanian-deadlift", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-e3cb04ab5258",
+    "slug": "sumo-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes", "quads", "adductors"],
+    "secondary_muscles": ["hamstrings", "lower_back", "traps"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {
+        "name": "Становая тяга сумо",
+        "aliases": ["сумо", "тяга сумо"],
+        "description": "Становая тяга в широкой стойке с хватом между ног: меньше наклон корпуса, больше работы ног и приводящих.",
+        "technique_steps": [
+          "Встаньте широко, носки развёрнуты, гриф над серединой стопы.",
+          "Присядьте и возьмите гриф хватом на ширине плеч между ног.",
+          "Разведите колени, поднимите грудь, спина прямая.",
+          "Встаньте, толкая пол ногами и выводя таз вперёд."
+        ],
+        "common_mistakes": [
+          "Колени уходят внутрь.",
+          "Таз поднимается раньше плеч.",
+          "Округление спины."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Sumo deadlift",
+        "aliases": ["sumo"],
+        "description": "Deadlift in a wide stance with the hands inside the legs: a more upright torso and more legs and adductors.",
+        "technique_steps": [
+          "Take a wide stance with the toes out and the bar over the middle of the feet.",
+          "Squat down and grip the bar shoulder-width apart between the legs.",
+          "Push the knees out, lift the chest, flat back.",
+          "Stand up by pushing the floor away and bringing the hips forward."
+        ],
+        "common_mistakes": [
+          "Knees caving in.",
+          "Hips rising before the shoulders.",
+          "Rounding the back."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "conventional-deadlift", "weight_ratio": 1.0, "priority": 10 },
+      { "slug": "trap-bar-deadlift", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-e5c72b7c3a2e",
+    "slug": "trap-bar-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["hamstrings", "lower_back", "traps"],
+    "equipment": ["trap_bar"],
+    "translations": {
+      "ru": {
+        "name": "Становая тяга с трэп-грифом",
+        "aliases": ["тяга шестигранного грифа", "тяга с трэп-грифом"],
+        "description": "Становая тяга с шестигранным грифом: вес по центру тела, проще для спины, отличный вариант для начинающих.",
+        "technique_steps": [
+          "Встаньте в центр грифа, стопы на ширине таза.",
+          "Присядьте, возьмитесь за рукояти, спина прямая.",
+          "Встаньте, толкая пол ногами.",
+          "Опустите гриф тем же путём, отводя таз назад."
+        ],
+        "common_mistakes": [
+          "Округление спины.",
+          "Рывок руками.",
+          "Опускание с расслабленной спиной."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Trap bar deadlift",
+        "aliases": ["hex bar deadlift"],
+        "description": "Deadlift with a hexagonal bar: the weight is in line with the body, easier on the back, a great option for beginners.",
+        "technique_steps": [
+          "Step into the middle of the bar, feet hip-width apart.",
+          "Squat down and grab the handles with a flat back.",
+          "Stand up by pushing the floor away.",
+          "Lower the bar the same way, pushing the hips back."
+        ],
+        "common_mistakes": [
+          "Rounding the back.",
+          "Yanking with the arms.",
+          "Lowering with a relaxed back."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "conventional-deadlift", "weight_ratio": 1.0, "priority": 10 },
+      { "slug": "leg-press", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-e82ede96de1d",
+    "slug": "seated-leg-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "knee_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["hamstrings"],
+    "secondary_muscles": ["calves"],
+    "equipment": ["leg_curl_machine"],
+    "translations": {
+      "ru": {
+        "name": "Сгибание ног сидя в тренажёре",
+        "aliases": ["сгибания ног сидя", "сгибание голени сидя"],
+        "description": "Сгибание ног сидя: задняя поверхность бедра в растянутом положении, исследования показывают больший рост, чем лёжа.",
+        "technique_steps": [
+          "Сядьте, валик под голенями над пятками, бёдра зафиксированы верхним валиком.",
+          "Возьмитесь за рукояти, спина прижата.",
+          "Согните ноги, подтягивая валик под сиденье.",
+          "Медленно верните ноги вперёд."
+        ],
+        "common_mistakes": ["Отрыв таза от сиденья.", "Броски веса.", "Неполная амплитуда."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Seated leg curl",
+        "aliases": ["seated hamstring curl"],
+        "description": "Seated leg curl: the hamstrings worked in a stretched position, which studies link to more growth than lying curls.",
+        "technique_steps": [
+          "Sit with the pad above the heels and the thighs locked under the upper pad.",
+          "Hold the handles with the back against the pad.",
+          "Curl the legs, pulling the pad under the seat.",
+          "Let the legs forward slowly."
+        ],
+        "common_mistakes": [
+          "Lifting the hips off the seat.",
+          "Throwing the weight.",
+          "Partial reps."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "lying-leg-curl", "weight_ratio": null, "priority": 10 },
+      { "slug": "nordic-hamstring-curl", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-eee0d2f929f2",
+    "slug": "nordic-hamstring-curl",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "knee_flexion",
+    "mechanics": "isolation",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["hamstrings"],
+    "secondary_muscles": ["glutes", "calves"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Нордические сгибания",
+        "aliases": ["нордик", "скандинавские сгибания"],
+        "description": "Медленное опускание корпуса вперёд с зафиксированными пятками: мощная эксцентрика для бицепса бедра и профилактика травм.",
+        "technique_steps": [
+          "Встаньте на колени на коврик, зафиксируйте пятки под опорой или попросите партнёра.",
+          "Тело прямое от коленей до головы, руки перед грудью.",
+          "Медленно опускайтесь вперёд, сопротивляясь бицепсом бедра.",
+          "Поймайте себя руками и оттолкнитесь обратно; со временем поднимайтесь силой ног."
+        ],
+        "common_mistakes": [
+          "Сгибание в тазобедренном суставе.",
+          "Быстрое падение без контроля.",
+          "Слишком много повторений сразу."
+        ],
+        "warnings": ["Начинайте с малого объёма: сильная крепатура."]
+      },
+      "en": {
+        "name": "Nordic hamstring curl",
+        "aliases": ["nordic curl", "nordics"],
+        "description": "Lowering the body forward slowly with the heels anchored: heavy eccentric work for the hamstrings and injury prevention.",
+        "technique_steps": [
+          "Kneel on a mat with the heels anchored under a support or held by a partner.",
+          "Keep the body straight from the knees to the head, hands in front of the chest.",
+          "Lower forward slowly, resisting with the hamstrings.",
+          "Catch yourself with the hands and push back; over time pull back with the legs."
+        ],
+        "common_mistakes": [
+          "Bending at the hips.",
+          "Falling fast without control.",
+          "Too many reps at first."
+        ],
+        "warnings": ["Start with low volume: the soreness is strong."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "seated-leg-curl", "weight_ratio": null, "priority": 10 },
+      { "slug": "lying-leg-curl", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-f3ba8fd8c1fc",
+    "slug": "single-leg-glute-bridge",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Ягодичный мостик на одной ноге",
+        "aliases": ["мостик на одной ноге", "односторонний ягодичный мост"],
+        "description": "Подъём таза с опорой на одну ногу: ягодицы с вдвое большей нагрузкой, чем обычный мостик.",
+        "technique_steps": [
+          "Лягте на спину, одна стопа на полу у таза, вторая нога вытянута вверх.",
+          "Упритесь пяткой опорной ноги.",
+          "Поднимите таз до прямой линии от плеча до колена, сожмите ягодицу.",
+          "Опустите таз, не касаясь пола; затем смените ногу."
+        ],
+        "common_mistakes": [
+          "Прогиб в пояснице вместо работы ягодиц.",
+          "Перекос таза.",
+          "Опора на носок."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Single-leg glute bridge",
+        "aliases": ["one-leg glute bridge"],
+        "description": "Lifting the hips on one leg: twice the load on the glutes of a regular bridge.",
+        "technique_steps": [
+          "Lie on the back with one foot on the floor near the hips and the other leg straight up.",
+          "Press through the heel of the working leg.",
+          "Lift the hips into a straight line from the shoulder to the knee and squeeze the glute.",
+          "Lower without touching the floor; then switch legs."
+        ],
+        "common_mistakes": [
+          "Arching the lower back instead of using the glutes.",
+          "Tilting the hips.",
+          "Pushing through the toes."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "glute-bridge", "weight_ratio": null, "priority": 10 },
+      { "slug": "barbell-hip-thrust", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-f7ebcca9ccb6",
+    "slug": "smith-machine-hip-thrust",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings", "quads"],
+    "equipment": ["smith_machine", "flat_bench"],
+    "translations": {
+      "ru": {
+        "name": "Ягодичный мост в тренажёре Смита",
+        "aliases": ["хип-траст в смите", "мост в смите"],
+        "description": "Подъём таза со штангой Смита: та же работа ягодиц, что в хип-трасте, но без балансировки грифа.",
+        "technique_steps": [
+          "Сядьте спиной к скамье, гриф Смита над тазом, подложите мягкую накладку.",
+          "Лопатки на краю скамьи, стопы на ширине плеч.",
+          "Поднимите таз до прямой линии корпуса, подбородок прижат.",
+          "Опустите таз под контролем."
+        ],
+        "common_mistakes": [
+          "Прогиб в пояснице вверху.",
+          "Стопы слишком далеко.",
+          "Толчок носками."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Smith machine hip thrust",
+        "aliases": ["smith hip thrust"],
+        "description": "Hip thrust with a Smith bar: the same glute work as a barbell hip thrust without balancing the bar.",
+        "technique_steps": [
+          "Sit with the back to a bench and the Smith bar over the hips on a pad.",
+          "Shoulder blades on the edge of the bench, feet shoulder-width apart.",
+          "Drive the hips up into a straight line, chin tucked.",
+          "Lower the hips under control."
+        ],
+        "common_mistakes": [
+          "Arching the lower back at the top.",
+          "Feet too far away.",
+          "Pushing through the toes."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "barbell-hip-thrust", "weight_ratio": 1.0, "priority": 10 },
+      { "slug": "glute-bridge", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-fb72fd109aa8",
+    "slug": "cable-pull-through",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes", "hamstrings"],
+    "secondary_muscles": ["lower_back"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {
+        "name": "Протяжка с нижнего блока между ног",
+        "aliases": ["пул-тру", "тяга каната между ног"],
+        "description": "Разгибание в тазобедренных суставах с канатом от нижнего блока: ягодицы и задняя поверхность бедра, обучение наклону.",
+        "technique_steps": [
+          "Встаньте спиной к нижнему блоку, возьмите канат между ног.",
+          "Отойдите на два шага, стопы чуть шире плеч.",
+          "Отведите таз назад, канат уходит между ног, спина прямая.",
+          "Выпрямитесь, толкая таз вперёд и сжимая ягодицы."
+        ],
+        "common_mistakes": [
+          "Приседание вместо наклона.",
+          "Тяга руками.",
+          "Прогиб назад в верхней точке."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Cable pull-through",
+        "aliases": ["pull through"],
+        "description": "Hip extension with a rope from a low pulley: the glutes and hamstrings, and a good way to learn the hinge.",
+        "technique_steps": [
+          "Stand with the back to a low pulley and hold the rope between the legs.",
+          "Walk two steps out, feet slightly wider than the shoulders.",
+          "Push the hips back, letting the rope go between the legs, back flat.",
+          "Stand up by driving the hips forward and squeezing the glutes."
+        ],
+        "common_mistakes": [
+          "Squatting instead of hinging.",
+          "Pulling with the arms.",
+          "Leaning back at the top."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "romanian-deadlift", "weight_ratio": null, "priority": 10 },
+      { "slug": "barbell-hip-thrust", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90b9-fddfbddd249f",
+    "slug": "cable-glute-kickback",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {
+        "name": "Отведение ноги назад на нижнем блоке",
+        "aliases": ["махи ногой назад на блоке", "кикбэк на блоке"],
+        "description": "Отведение прямой ноги назад с манжетой на нижнем блоке: изолированная работа большой ягодичной.",
+        "technique_steps": [
+          "Наденьте манжету на лодыжку, встаньте лицом к блоку, держитесь за раму.",
+          "Слегка наклонитесь вперёд, опорная нога чуть согнута.",
+          "Отведите рабочую ногу назад, сжимая ягодицу.",
+          "Верните ногу под контролем; затем смените сторону."
+        ],
+        "common_mistakes": [
+          "Прогиб поясницы вместо работы ягодицы.",
+          "Мах с инерцией.",
+          "Разворот таза."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Cable glute kickback",
+        "aliases": ["cable kickback"],
+        "description": "Kicking a straight leg back with an ankle cuff on a low pulley: isolation for the gluteus maximus.",
+        "technique_steps": [
+          "Put a cuff on the ankle, face the pulley and hold the frame.",
+          "Lean forward slightly with the standing knee soft.",
+          "Kick the working leg back, squeezing the glute.",
+          "Bring the leg back under control; then switch sides."
+        ],
+        "common_mistakes": [
+          "Arching the lower back instead of using the glute.",
+          "Swinging with momentum.",
+          "Rotating the hips."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "single-leg-glute-bridge", "weight_ratio": null, "priority": 10 },
+      { "slug": "barbell-hip-thrust", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90ba-00e515f9a282",
+    "slug": "hip-abduction-machine",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hip_abduction",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": [],
+    "equipment": ["hip_abduction_machine"],
+    "translations": {
+      "ru": {
+        "name": "Разведение ног в тренажёре",
+        "aliases": ["отведение бедра в тренажёре", "разведения ног сидя"],
+        "description": "Разведение ног сидя в тренажёре: средняя ягодичная мышца, стабильность таза и коленей.",
+        "technique_steps": [
+          "Сядьте, валики с внешней стороны колен, спина прижата.",
+          "Разведите ноги в стороны как можно шире.",
+          "Задержитесь на мгновение.",
+          "Медленно сведите ноги, не бросая вес."
+        ],
+        "common_mistakes": [
+          "Броски веса.",
+          "Наклон корпуса вперёд-назад для помощи.",
+          "Короткая амплитуда."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Hip abduction machine",
+        "aliases": ["machine hip abduction", "seated abduction"],
+        "description": "Pushing the legs apart in a seated machine: the gluteus medius, hip and knee stability.",
+        "technique_steps": [
+          "Sit with the pads on the outside of the knees and the back against the pad.",
+          "Push the legs out as wide as you can.",
+          "Pause for a moment.",
+          "Bring the legs back slowly without dropping the weight."
+        ],
+        "common_mistakes": [
+          "Letting the weight crash.",
+          "Rocking the body to help.",
+          "A short range."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "lateral-band-walk", "weight_ratio": null, "priority": 10 },
+      { "slug": "cable-glute-kickback", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90ba-06ac936cc725",
+    "slug": "lateral-band-walk",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hip_abduction",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["quads"],
+    "equipment": ["resistance_band"],
+    "translations": {
+      "ru": {
+        "name": "Боковые шаги с резинкой",
+        "aliases": ["ходьба с резинкой в сторону", "шаги в полуприседе с лентой"],
+        "description": "Приставные шаги в полуприседе с лентой на ногах: средняя ягодичная, отличная разминка перед ногами.",
+        "technique_steps": [
+          "Наденьте короткую ленту выше колен или на лодыжки.",
+          "Встаньте в полуприсед, стопы на ширине таза.",
+          "Шагните в сторону, удерживая натяжение ленты, вторую ногу приставьте не до конца.",
+          "Сделайте нужное число шагов и вернитесь в другую сторону."
+        ],
+        "common_mistakes": [
+          "Выпрямление ног.",
+          "Раскачивание корпусом.",
+          "Ослабление ленты между шагами."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Lateral band walk",
+        "aliases": ["banded side walk", "monster walk"],
+        "description": "Side steps in a half squat with a band round the legs: the gluteus medius, a great warm-up for leg day.",
+        "technique_steps": [
+          "Put a short band above the knees or round the ankles.",
+          "Get into a half squat with the feet hip-width apart.",
+          "Step to the side keeping tension on the band, do not fully close the other foot.",
+          "Take the steps and come back the other way."
+        ],
+        "common_mistakes": [
+          "Standing up straight.",
+          "Swaying the body.",
+          "Letting the band go slack between steps."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "hip-abduction-machine", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90ba-09ba0ccef955",
+    "slug": "hip-adduction-machine",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hip_adduction",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["adductors"],
+    "secondary_muscles": [],
+    "equipment": ["hip_adduction_machine"],
+    "translations": {
+      "ru": {
+        "name": "Сведение ног в тренажёре",
+        "aliases": ["приведение бедра в тренажёре", "сведения ног сидя"],
+        "description": "Сведение ног сидя в тренажёре: приводящие мышцы бедра, профилактика травм паха.",
+        "technique_steps": [
+          "Сядьте, валики с внутренней стороны колен, ноги разведены.",
+          "Сведите ноги до касания валиков.",
+          "Задержитесь на мгновение.",
+          "Медленно разведите ноги до растяжения."
+        ],
+        "common_mistakes": [
+          "Броски веса.",
+          "Слишком широкое стартовое положение с большим весом.",
+          "Рывки корпусом."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Hip adduction machine",
+        "aliases": ["machine hip adduction", "seated adduction"],
+        "description": "Squeezing the legs together in a seated machine: the adductors and fewer groin injuries.",
+        "technique_steps": [
+          "Sit with the pads on the inside of the knees, legs apart.",
+          "Bring the legs together until the pads touch.",
+          "Pause for a moment.",
+          "Open the legs slowly until a stretch."
+        ],
+        "common_mistakes": [
+          "Letting the weight crash.",
+          "Starting too wide with a heavy weight.",
+          "Jerking the body."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "copenhagen-plank", "weight_ratio": null, "priority": 10 },
+      { "slug": "dumbbell-sumo-squat", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90ba-0eac619ec670",
+    "slug": "seated-calf-raise",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "calf_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": ["seated_calf_raise_machine"],
+    "translations": {
+      "ru": {
+        "name": "Подъёмы на носки сидя в тренажёре",
+        "aliases": ["икры сидя", "подъём на носки сидя"],
+        "description": "Подъёмы на носки сидя: камбаловидная мышца, которую плохо нагружают подъёмы стоя.",
+        "technique_steps": [
+          "Сядьте, валик на бёдрах у коленей, носки на краю платформы.",
+          "Опустите пятки как можно ниже.",
+          "Поднимитесь на носки максимально высоко.",
+          "Задержитесь вверху и медленно опуститесь."
+        ],
+        "common_mistakes": [
+          "Пружинистые короткие повторения.",
+          "Неполное опускание пяток.",
+          "Слишком быстрый темп."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Seated calf raise",
+        "aliases": ["seated calf machine"],
+        "description": "Calf raise while seated: the soleus, which standing raises barely load.",
+        "technique_steps": [
+          "Sit with the pad on the thighs near the knees and the balls of the feet on the edge.",
+          "Lower the heels as far as you can.",
+          "Rise onto the toes as high as possible.",
+          "Hold at the top and lower slowly."
+        ],
+        "common_mistakes": [
+          "Short bouncy reps.",
+          "Not lowering the heels fully.",
+          "A tempo that is too fast."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "standing-calf-raise-machine", "weight_ratio": null, "priority": 10 },
+      { "slug": "leg-press-calf-raise", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90ba-1212ef857204",
+    "slug": "bodyweight-calf-raise",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "calf_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Подъёмы на носки без веса",
+        "aliases": ["подъём на носки стоя", "икры без веса"],
+        "description": "Подъёмы на носки на ступеньке: икры дома и в зале без тренажёров.",
+        "technique_steps": [
+          "Встаньте носками на край ступеньки, держитесь за опору.",
+          "Опустите пятки ниже уровня ступеньки.",
+          "Поднимитесь на носки как можно выше.",
+          "Задержитесь на секунду и опуститесь медленно."
+        ],
+        "common_mistakes": [
+          "Короткая амплитуда.",
+          "Пружинистый темп.",
+          "Перенос веса на внешний край стопы."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Bodyweight calf raise",
+        "aliases": ["step calf raise", "calf raise on a step"],
+        "description": "Calf raise on a step: the calves at home or in the gym without machines.",
+        "technique_steps": [
+          "Stand with the balls of the feet on the edge of a step, holding a support.",
+          "Lower the heels below the step.",
+          "Rise onto the toes as high as you can.",
+          "Hold for a second and lower slowly."
+        ],
+        "common_mistakes": [
+          "A short range.",
+          "A bouncy tempo.",
+          "Rolling onto the outer edge of the foot."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "single-leg-dumbbell-calf-raise", "weight_ratio": null, "priority": 10 },
+      { "slug": "standing-calf-raise-machine", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90ba-15501bad3099",
+    "slug": "jump-squat",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["calves", "hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Приседания с выпрыгиванием",
+        "aliases": ["прыжки из приседа", "джамп-сквот"],
+        "description": "Присед с мощным выпрыгиванием вверх: взрывная сила ног и кондиция.",
+        "technique_steps": [
+          "Встаньте, стопы на ширине плеч.",
+          "Присядьте до параллели, руки отведены назад.",
+          "Мощно выпрыгните вверх, помогая руками.",
+          "Приземлитесь мягко на переднюю часть стопы и сразу уходите в присед."
+        ],
+        "common_mistakes": [
+          "Жёсткое приземление на прямые ноги.",
+          "Колени внутрь при приземлении.",
+          "Слишком много повторений до отказа."
+        ],
+        "warnings": ["Осторожно при болях в коленях."]
+      },
+      "en": {
+        "name": "Jump squat",
+        "aliases": ["squat jump"],
+        "description": "A squat with an explosive jump: leg power and conditioning.",
+        "technique_steps": [
+          "Stand with the feet shoulder-width apart.",
+          "Squat to parallel with the arms back.",
+          "Jump up explosively, swinging the arms.",
+          "Land softly on the balls of the feet and go straight into the next squat."
+        ],
+        "common_mistakes": [
+          "Landing hard on straight legs.",
+          "Knees caving in on landing.",
+          "Going to failure on many reps."
+        ],
+        "warnings": ["Be careful with knee pain."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "box-jump", "weight_ratio": null, "priority": 10 },
+      { "slug": "bodyweight-squat", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90ba-18bd36575e5d",
+    "slug": "box-jump",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["calves", "hamstrings"],
+    "equipment": ["plyo_box"],
+    "translations": {
+      "ru": {
+        "name": "Запрыгивания на тумбу",
+        "aliases": ["прыжки на тумбу", "бокс-джамп"],
+        "description": "Прыжок на тумбу с двух ног: взрывная сила при мягкой нагрузке на суставы при приземлении.",
+        "technique_steps": [
+          "Встаньте перед тумбой на расстоянии полушага.",
+          "Присядьте на четверть и отведите руки назад.",
+          "Выпрыгните на тумбу, приземлитесь мягко в полуприсед всей стопой.",
+          "Выпрямитесь и сойдите вниз шагом, не спрыгивая."
+        ],
+        "common_mistakes": [
+          "Слишком высокая тумба.",
+          "Приземление на носки на край.",
+          "Спрыгивание назад."
+        ],
+        "warnings": ["Начинайте с низкой тумбы."]
+      },
+      "en": {
+        "name": "Box jump",
+        "aliases": ["plyo box jump"],
+        "description": "Jumping onto a box from both feet: explosive power with a soft landing for the joints.",
+        "technique_steps": [
+          "Stand half a step from the box.",
+          "Dip into a quarter squat with the arms back.",
+          "Jump onto the box and land softly in a half squat on the whole foot.",
+          "Stand up and step down, do not jump off."
+        ],
+        "common_mistakes": [
+          "A box that is too high.",
+          "Landing on the toes on the edge.",
+          "Jumping back down."
+        ],
+        "warnings": ["Start with a low box."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "jump-squat", "weight_ratio": null, "priority": 10 },
+      { "slug": "broad-jump", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90ba-1db36fda36ef",
+    "slug": "broad-jump",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes", "quads"],
+    "secondary_muscles": ["hamstrings", "calves"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Прыжок в длину с места",
+        "aliases": ["прыжки в длину", "прыжок с места"],
+        "description": "Прыжок вперёд с двух ног: взрывная сила ягодиц и ног.",
+        "technique_steps": [
+          "Встаньте, стопы на ширине таза.",
+          "Отведите таз и руки назад.",
+          "Мощно прыгните вперёд, выбрасывая руки.",
+          "Приземлитесь мягко в полуприсед, восстановитесь и повторите."
+        ],
+        "common_mistakes": [
+          "Приземление на прямые ноги.",
+          "Колени внутрь.",
+          "Отсутствие паузы между прыжками."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Broad jump",
+        "aliases": ["standing long jump"],
+        "description": "Jumping forward from both feet: explosive power from the glutes and legs.",
+        "technique_steps": [
+          "Stand with the feet hip-width apart.",
+          "Push the hips and arms back.",
+          "Jump forward explosively, throwing the arms.",
+          "Land softly in a half squat, reset and repeat."
+        ],
+        "common_mistakes": [
+          "Landing on straight legs.",
+          "Knees caving in.",
+          "No reset between jumps."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "box-jump", "weight_ratio": null, "priority": 10 },
+      { "slug": "jump-squat", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90ba-233738275d4b",
+    "slug": "pistol-squat",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": true,
+    "primary_muscles": ["quads", "glutes"],
+    "secondary_muscles": ["adductors", "calves", "abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Пистолетик",
+        "aliases": ["приседания на одной ноге", "пистолет"],
+        "description": "Приседание на одной ноге до конца, вторая нога вытянута вперёд: сила, подвижность и баланс.",
+        "technique_steps": [
+          "Встаньте на одну ногу, вторую вытяните вперёд, руки перед собой.",
+          "Медленно опуститесь как можно ниже, пятка на полу.",
+          "Держите корпус над опорной стопой.",
+          "Встаньте без рывка; для облегчения держитесь за опору или садитесь на скамью."
+        ],
+        "common_mistakes": [
+          "Отрыв пятки.",
+          "Заваливание колена внутрь.",
+          "Падение в нижней точке."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Pistol squat",
+        "aliases": ["single-leg squat", "pistol"],
+        "description": "A full squat on one leg with the other straight in front: strength, mobility and balance.",
+        "technique_steps": [
+          "Stand on one leg with the other straight in front and the arms forward.",
+          "Lower slowly as deep as you can with the heel down.",
+          "Keep the body over the standing foot.",
+          "Stand up without jerking; hold a support or sit to a bench to make it easier."
+        ],
+        "common_mistakes": [
+          "The heel lifting.",
+          "The knee caving in.",
+          "Collapsing at the bottom."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "bulgarian-split-squat", "weight_ratio": null, "priority": 10 },
+      { "slug": "bodyweight-split-squat", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdd-722a-90ba-24d9d49fe9b0",
+    "slug": "wall-sit",
+    "kind": "timed",
+    "tracking": "time",
+    "movement_pattern": "squat",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads"],
+    "secondary_muscles": ["glutes"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Стульчик у стены",
+        "aliases": ["стульчик", "статический присед у стены"],
+        "description": "Удержание приседа спиной к стене: статическая выносливость квадрицепсов без нагрузки на спину.",
+        "technique_steps": [
+          "Прижмитесь спиной к стене и опуститесь до прямого угла в коленях.",
+          "Колени над стопами, бёдра параллельны полу.",
+          "Держите позицию, дыхание ровное.",
+          "Поднимитесь, скользя спиной по стене."
+        ],
+        "common_mistakes": [
+          "Колени уходят за носки.",
+          "Руки упираются в бёдра.",
+          "Задержка дыхания."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Wall sit",
+        "aliases": ["wall squat hold"],
+        "description": "Holding a squat with the back on a wall: quad endurance without loading the back.",
+        "technique_steps": [
+          "Press the back to a wall and slide down until the knees are at right angles.",
+          "Knees over the feet, thighs parallel to the floor.",
+          "Hold the position, breathing steadily.",
+          "Stand up by sliding the back up the wall."
+        ],
+        "common_mistakes": [
+          "Knees going past the toes.",
+          "Pushing on the thighs with the hands.",
+          "Holding the breath."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "bodyweight-squat", "weight_ratio": null, "priority": 10 }
     ]
   }
 ]

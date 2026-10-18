@@ -65,7 +65,7 @@
     "translations": {
       "ru": {
         "name": "Подъём ног в висе",
-        "aliases": ["подъёмы ног в висе", "подъём ног на турнике", "подъем коленей в висе"],
+        "aliases": ["подъёмы ног в висе", "подъём ног на турнике"],
         "description": "Подъём ног в висе на перекладине: упражнение для пресса с собственным весом. Облегчённый вариант – подъём согнутых коленей.",
         "technique_steps": [
           "Повисните на перекладине прямым хватом, плечи опущены от ушей.",
@@ -82,7 +82,7 @@
       },
       "en": {
         "name": "Hanging leg raise",
-        "aliases": ["hanging leg raises", "hanging knee raise", "leg raise on bar"],
+        "aliases": ["hanging leg raises", "leg raise on bar"],
         "description": "Raising the legs while hanging from a bar: a body-weight exercise for the abs. The easier variant is raising bent knees.",
         "technique_steps": [
           "Hang from the bar with an overhand grip, shoulders down away from the ears.",
@@ -325,8 +325,8 @@
     "equipment": ["elliptical"],
     "translations": {
       "ru": {
-        "name": "Эллипс",
-        "aliases": ["эллиптический тренажёр", "орбитрек", "эллипсоид"],
+        "name": "Эллиптический тренажёр",
+        "aliases": ["эллипс", "орбитрек", "эллипсоид"],
         "description": "Ходьба на эллиптическом тренажёре без ударной нагрузки. Записываются время, дистанция, сопротивление и пульс.",
         "technique_steps": [
           "Встаньте на педали всей стопой, возьмитесь за подвижные рукояти.",
@@ -342,8 +342,8 @@
         "warnings": []
       },
       "en": {
-        "name": "Elliptical",
-        "aliases": ["elliptical trainer", "cross trainer", "elliptical machine"],
+        "name": "Elliptical trainer",
+        "aliases": ["elliptical", "cross trainer", "elliptical machine"],
         "description": "Low-impact striding on an elliptical trainer. Time, distance, resistance and heart rate are logged.",
         "technique_steps": [
           "Stand on the pedals with the whole foot and hold the moving handles.",
@@ -525,6 +525,1453 @@
     "alternatives": [
       { "slug": "treadmill-run", "weight_ratio": null, "priority": 10 },
       { "slug": "jump-rope", "weight_ratio": null, "priority": 20 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-bc139264783b",
+    "slug": "side-plank",
+    "kind": "timed",
+    "tracking": "time",
+    "movement_pattern": "core_stability",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["obliques"],
+    "secondary_muscles": ["abs", "glutes"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Боковая планка",
+        "aliases": ["планка на боку"],
+        "description": "Удержание тела на боку на предплечье: косые мышцы живота и стабилизаторы таза.",
+        "technique_steps": [
+          "Лягте на бок, локоть под плечом, ноги вытянуты одна на другой.",
+          "Поднимите таз, тело – прямая линия от головы до стоп.",
+          "Держите позицию, не давая тазу провиснуть.",
+          "Сделайте подход и смените сторону."
+        ],
+        "common_mistakes": ["Провис таза.", "Таз уходит назад.", "Плечо уходит к уху."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Side plank",
+        "aliases": ["side bridge"],
+        "description": "Holding the body on its side on one forearm: the obliques and the hip stabilisers.",
+        "technique_steps": [
+          "Lie on your side with the elbow under the shoulder and the legs stacked.",
+          "Lift the hips into a straight line from head to feet.",
+          "Hold without letting the hips sag.",
+          "Do the set, then switch sides."
+        ],
+        "common_mistakes": [
+          "Sagging hips.",
+          "Hips drifting back.",
+          "The shoulder creeping to the ear."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "plank", "weight_ratio": null, "priority": 10 },
+      { "slug": "copenhagen-plank", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-c34c765c0956",
+    "slug": "copenhagen-plank",
+    "kind": "timed",
+    "tracking": "time",
+    "movement_pattern": "core_stability",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["adductors", "obliques"],
+    "secondary_muscles": ["abs"],
+    "equipment": ["flat_bench"],
+    "translations": {
+      "ru": {
+        "name": "Копенгагенская планка",
+        "aliases": ["копенгагенская боковая планка", "планка с опорой на скамью"],
+        "description": "Боковая планка с верхней ногой на скамье: приводящие мышцы бедра и косые, профилактика травм паха.",
+        "technique_steps": [
+          "Лягте на бок у скамьи, положите на неё верхнюю ногу (колено или голень).",
+          "Опора на предплечье, нижняя нога под скамьёй.",
+          "Поднимите таз, тело прямое, держите за счёт верхней ноги.",
+          "Удерживайте время и смените сторону; для облегчения опирайтесь коленом."
+        ],
+        "common_mistakes": [
+          "Провис таза.",
+          "Слишком долгие подходы сразу.",
+          "Поворот корпуса вперёд."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Copenhagen plank",
+        "aliases": ["copenhagen side plank", "copenhagen adductor plank"],
+        "description": "Side plank with the top leg on a bench: the adductors and the obliques, fewer groin injuries.",
+        "technique_steps": [
+          "Lie on your side next to a bench and put the top leg on it (knee or shin).",
+          "Rest on the forearm with the bottom leg under the bench.",
+          "Lift the hips so the body is straight, holding with the top leg.",
+          "Hold for the time and switch sides; rest on the knee to make it easier."
+        ],
+        "common_mistakes": [
+          "Sagging hips.",
+          "Holds that are too long at first.",
+          "Rolling the body forward."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "side-plank", "weight_ratio": null, "priority": 10 },
+      { "slug": "hip-adduction-machine", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-c50df950cc59",
+    "slug": "hollow-body-hold",
+    "kind": "timed",
+    "tracking": "time",
+    "movement_pattern": "core_stability",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Лодочка на спине",
+        "aliases": ["холлоу", "лодочка"],
+        "description": "Удержание корпуса и ног над полом лёжа на спине: прямая мышца живота, база гимнастики.",
+        "technique_steps": [
+          "Лягте на спину, прижмите поясницу к полу.",
+          "Поднимите плечи и прямые ноги над полом, руки вытяните за голову.",
+          "Держите поясницу прижатой, тело в форме лодочки.",
+          "Для облегчения согните колени или держите руки вдоль тела."
+        ],
+        "common_mistakes": [
+          "Поясница отрывается от пола.",
+          "Задержка дыхания.",
+          "Ноги слишком высоко."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Hollow body hold",
+        "aliases": ["hollow hold"],
+        "description": "Holding the shoulders and legs off the floor while lying on the back: the abs, a gymnastics basic.",
+        "technique_steps": [
+          "Lie on your back and press the lower back into the floor.",
+          "Lift the shoulders and the straight legs off the floor, arms overhead.",
+          "Keep the lower back down in a boat shape.",
+          "Bend the knees or keep the arms at the sides to make it easier."
+        ],
+        "common_mistakes": ["The lower back lifting.", "Holding the breath.", "Legs too high."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "plank", "weight_ratio": null, "priority": 10 },
+      { "slug": "dead-bug", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-ca6f5e8a93b4",
+    "slug": "l-sit",
+    "kind": "timed",
+    "tracking": "time",
+    "movement_pattern": "core_stability",
+    "mechanics": "isolation",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["triceps", "quads"],
+    "equipment": ["dip_bars"],
+    "translations": {
+      "ru": {
+        "name": "Уголок на брусьях",
+        "aliases": ["уголок", "л-сит"],
+        "description": "Удержание прямых ног перед собой в упоре на брусьях: пресс, сгибатели бедра и сила рук.",
+        "technique_steps": [
+          "Выйдите в упор на брусьях на прямых руках, плечи опущены.",
+          "Поднимите прямые ноги до параллели с полом.",
+          "Держите позицию, носки натянуты.",
+          "Для облегчения согните колени к груди."
+        ],
+        "common_mistakes": [
+          "Плечи поднимаются к ушам.",
+          "Ноги опускаются ниже параллели.",
+          "Согнутые локти."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "L-sit",
+        "aliases": ["parallel bar l-sit"],
+        "description": "Holding straight legs out in front while supported on dip bars: the abs, the hip flexors and arm strength.",
+        "technique_steps": [
+          "Support yourself on the dip bars with straight arms and the shoulders down.",
+          "Raise the straight legs to parallel with the floor.",
+          "Hold with the toes pointed.",
+          "Tuck the knees to the chest to make it easier."
+        ],
+        "common_mistakes": [
+          "Shoulders creeping up.",
+          "Legs dropping below parallel.",
+          "Bent elbows."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "hanging-knee-raise", "weight_ratio": null, "priority": 10 },
+      { "slug": "hollow-body-hold", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-ce8c2f219510",
+    "slug": "dead-bug",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_stability",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Мёртвый жук",
+        "aliases": ["дед баг", "жук"],
+        "description": "Поочерёдное выпрямление руки и противоположной ноги лёжа на спине: пресс без нагрузки на поясницу.",
+        "technique_steps": [
+          "Лягте на спину, руки вверх, ноги согнуты под 90° над тазом.",
+          "Прижмите поясницу к полу.",
+          "Медленно опустите правую руку за голову и левую ногу к полу.",
+          "Вернитесь и повторите другой парой; поясница не отрывается."
+        ],
+        "common_mistakes": ["Поясница отрывается от пола.", "Быстрый темп.", "Задержка дыхания."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Dead bug",
+        "aliases": ["deadbug"],
+        "description": "Extending one arm and the opposite leg in turn while lying on the back: the abs without straining the lower back.",
+        "technique_steps": [
+          "Lie on your back with the arms up and the legs bent to 90° above the hips.",
+          "Press the lower back into the floor.",
+          "Slowly lower the right arm overhead and the left leg towards the floor.",
+          "Return and repeat with the other pair; the lower back stays down."
+        ],
+        "common_mistakes": ["The lower back lifting.", "A fast tempo.", "Holding the breath."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "bird-dog", "weight_ratio": null, "priority": 10 },
+      { "slug": "plank", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-d3255cc180f9",
+    "slug": "bird-dog",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_stability",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lower_back", "abs"],
+    "secondary_muscles": ["glutes"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Птица-собака",
+        "aliases": ["берд-дог", "вытяжение на четвереньках"],
+        "description": "Вытягивание противоположных руки и ноги стоя на четвереньках: стабильность корпуса и здоровая поясница.",
+        "technique_steps": [
+          "Встаньте на четвереньки, ладони под плечами, колени под тазом.",
+          "Вытяните правую руку вперёд и левую ногу назад до линии корпуса.",
+          "Задержитесь на 2 секунды, таз ровный.",
+          "Вернитесь и смените пару."
+        ],
+        "common_mistakes": ["Прогиб поясницы.", "Разворот таза.", "Спешка."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Bird dog",
+        "aliases": ["quadruped arm and leg raise"],
+        "description": "Reaching out the opposite arm and leg on all fours: core stability and a healthy lower back.",
+        "technique_steps": [
+          "Get on all fours with the hands under the shoulders and the knees under the hips.",
+          "Reach the right arm forward and the left leg back to the line of the body.",
+          "Hold for 2 seconds with the hips level.",
+          "Return and switch pairs."
+        ],
+        "common_mistakes": ["Arching the lower back.", "Rotating the hips.", "Rushing."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dead-bug", "weight_ratio": null, "priority": 10 },
+      { "slug": "superman", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-d6369a702ce3",
+    "slug": "ab-wheel-rollout",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["lats", "obliques"],
+    "equipment": ["ab_wheel"],
+    "translations": {
+      "ru": {
+        "name": "Выкатывание ролика для пресса",
+        "aliases": ["ролик для пресса", "раскатка ролика"],
+        "description": "Выкатывание ролика вперёд с колен с прямой спиной: одно из самых сильных упражнений на пресс.",
+        "technique_steps": [
+          "Встаньте на колени, ролик под плечами.",
+          "Напрягите пресс и ягодицы, подкрутите таз.",
+          "Выкатите ролик вперёд, насколько можете удержать прямую спину.",
+          "Вернитесь, подтягивая ролик силой пресса."
+        ],
+        "common_mistakes": [
+          "Прогиб в пояснице.",
+          "Слишком далёкое выкатывание сразу.",
+          "Подъём таза вверх при возврате."
+        ],
+        "warnings": ["При болях в пояснице начните с короткой амплитуды."]
+      },
+      "en": {
+        "name": "Ab wheel rollout",
+        "aliases": ["ab roller", "kneeling rollout"],
+        "description": "Rolling the wheel out from the knees with a flat back: one of the hardest ab exercises.",
+        "technique_steps": [
+          "Kneel with the wheel under the shoulders.",
+          "Brace the abs and the glutes and tuck the pelvis.",
+          "Roll forward as far as you can keep the back flat.",
+          "Come back by pulling the wheel in with the abs."
+        ],
+        "common_mistakes": [
+          "Arching the lower back.",
+          "Rolling too far too soon.",
+          "Raising the hips first on the way back."
+        ],
+        "warnings": ["With lower back pain start with a short range."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "plank", "weight_ratio": null, "priority": 10 },
+      { "slug": "hollow-body-hold", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-d82bbbd2cff4",
+    "slug": "pallof-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "core_rotation",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["obliques", "abs"],
+    "secondary_muscles": [],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {
+        "name": "Жим Паллофа",
+        "aliases": ["паллоф", "антиротационный жим"],
+        "description": "Выжимание рукояти блока от груди стоя боком к нему: корпус сопротивляется скручиванию.",
+        "technique_steps": [
+          "Установите блок на уровне груди, встаньте к нему боком.",
+          "Держите рукоять двумя руками у груди, стопы на ширине плеч.",
+          "Выпрямите руки вперёд, не давая корпусу повернуться к блоку.",
+          "Задержитесь на 2 секунды и верните руки; затем смените сторону."
+        ],
+        "common_mistakes": ["Поворот корпуса.", "Слишком тяжёлый вес.", "Прогиб в пояснице."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Pallof press",
+        "aliases": ["anti-rotation press"],
+        "description": "Pressing a cable handle out from the chest while side-on to the pulley: the core resists twisting.",
+        "technique_steps": [
+          "Set the pulley at chest height and stand side-on to it.",
+          "Hold the handle at the chest with both hands, feet shoulder-width apart.",
+          "Press the arms straight out without letting the body turn to the pulley.",
+          "Hold for 2 seconds and bring the hands back; then switch sides."
+        ],
+        "common_mistakes": [
+          "Turning the body.",
+          "A weight that is too heavy.",
+          "Arching the lower back."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "cable-woodchop", "weight_ratio": null, "priority": 10 },
+      { "slug": "side-plank", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-de550d073668",
+    "slug": "cable-woodchop",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "core_rotation",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["obliques"],
+    "secondary_muscles": ["abs", "front_delts"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {
+        "name": "Дровосек на блоке",
+        "aliases": ["рубка дров на блоке", "вудчоп"],
+        "description": "Диагональная тяга рукояти блока сверху вниз через корпус: косые мышцы и вращательная сила.",
+        "technique_steps": [
+          "Установите блок сверху, встаньте боком, возьмите рукоять двумя руками.",
+          "Руки прямые, ноги чуть шире плеч.",
+          "Потяните рукоять по диагонали вниз к противоположному бедру, поворачивая корпус.",
+          "Верните под контролем; затем смените сторону."
+        ],
+        "common_mistakes": ["Тяга руками без поворота корпуса.", "Скругление спины.", "Рывки."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Cable woodchop",
+        "aliases": ["woodchopper", "cable wood chop"],
+        "description": "Pulling a cable handle diagonally down across the body: the obliques and rotational strength.",
+        "technique_steps": [
+          "Set the pulley high, stand side-on and hold the handle with both hands.",
+          "Arms straight, feet slightly wider than the shoulders.",
+          "Pull the handle diagonally down to the opposite thigh, turning the torso.",
+          "Return under control; then switch sides."
+        ],
+        "common_mistakes": [
+          "Pulling with the arms without turning.",
+          "Rounding the back.",
+          "Jerking."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "pallof-press", "weight_ratio": null, "priority": 10 },
+      { "slug": "bicycle-crunch", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-e0ae59475112",
+    "slug": "cable-crunch",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {
+        "name": "Скручивания на блоке стоя на коленях",
+        "aliases": ["молитва", "скручивания с канатом"],
+        "description": "Скручивания с канатом верхнего блока стоя на коленях: пресс с отягощением и прогрессией веса.",
+        "technique_steps": [
+          "Прикрепите канат к верхнему блоку, встаньте на колени лицом к нему.",
+          "Держите канат у головы, таз неподвижен.",
+          "Скрутитесь вниз, приближая локти к бёдрам за счёт пресса.",
+          "Медленно вернитесь, не выпрямляясь полностью."
+        ],
+        "common_mistakes": [
+          "Работа руками и весом тела вместо пресса.",
+          "Движение тазом назад-вперёд.",
+          "Рывки."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Cable crunch",
+        "aliases": ["kneeling cable crunch", "rope crunch"],
+        "description": "Crunching with a rope from a high pulley while kneeling: loaded ab work that can progress in weight.",
+        "technique_steps": [
+          "Attach a rope to a high pulley and kneel facing it.",
+          "Hold the rope by the head with the hips still.",
+          "Crunch down, bringing the elbows towards the thighs with the abs.",
+          "Come back slowly without fully straightening."
+        ],
+        "common_mistakes": [
+          "Pulling with the arms and the body weight instead of the abs.",
+          "Rocking the hips.",
+          "Jerking."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "crunch", "weight_ratio": null, "priority": 10 },
+      { "slug": "reverse-crunch", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-e455fcd9e371",
+    "slug": "reverse-crunch",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques"],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Обратные скручивания",
+        "aliases": ["обратный кранч", "скручивания таза к груди"],
+        "description": "Подкручивание таза к груди лёжа на спине: нижняя часть прямой мышцы живота.",
+        "technique_steps": [
+          "Лягте на спину, руки вдоль тела, ноги согнуты и подняты.",
+          "Подкрутите таз, отрывая его от пола и приближая колени к груди.",
+          "Задержитесь на мгновение.",
+          "Медленно опустите таз."
+        ],
+        "common_mistakes": ["Мах ногами с инерцией.", "Помощь руками.", "Быстрое опускание."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Reverse crunch",
+        "aliases": ["lying reverse crunch"],
+        "description": "Curling the pelvis towards the chest while lying on the back: the lower part of the abs.",
+        "technique_steps": [
+          "Lie on your back with the arms at the sides and the legs bent and raised.",
+          "Curl the pelvis, lifting it off the floor and bringing the knees to the chest.",
+          "Pause for a moment.",
+          "Lower the pelvis slowly."
+        ],
+        "common_mistakes": [
+          "Swinging the legs with momentum.",
+          "Pushing with the arms.",
+          "Dropping fast."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "hanging-knee-raise", "weight_ratio": null, "priority": 10 },
+      { "slug": "crunch", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-eb41e08cdedd",
+    "slug": "lying-leg-raise",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": [],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Подъём ног лёжа",
+        "aliases": ["подъёмы ног на полу", "подъём прямых ног лёжа"],
+        "description": "Подъём прямых ног лёжа на спине: пресс и сгибатели бедра.",
+        "technique_steps": [
+          "Лягте на спину, ладони под тазом, ноги прямые.",
+          "Прижмите поясницу к полу.",
+          "Поднимите ноги до вертикали.",
+          "Медленно опустите, не касаясь пола и не отрывая поясницу."
+        ],
+        "common_mistakes": [
+          "Прогиб поясницы при опускании.",
+          "Броски ног.",
+          "Слишком быстрый темп."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Lying leg raise",
+        "aliases": ["floor leg raise"],
+        "description": "Raising straight legs while lying on the back: the abs and the hip flexors.",
+        "technique_steps": [
+          "Lie on your back with the hands under the hips and the legs straight.",
+          "Press the lower back into the floor.",
+          "Raise the legs to vertical.",
+          "Lower slowly without touching the floor or arching."
+        ],
+        "common_mistakes": [
+          "Arching the lower back on the way down.",
+          "Throwing the legs.",
+          "A tempo that is too fast."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "reverse-crunch", "weight_ratio": null, "priority": 10 },
+      { "slug": "hanging-leg-raise", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-ec24beda43de",
+    "slug": "hanging-knee-raise",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["pull_up_bar"],
+    "translations": {
+      "ru": {
+        "name": "Подъём коленей в висе",
+        "aliases": ["подтягивание коленей к груди в висе"],
+        "description": "Подтягивание согнутых коленей к груди в висе на турнике: облегчённый вариант подъёма ног.",
+        "technique_steps": [
+          "Повисните на турнике на прямых руках, плечи опущены.",
+          "Подтяните колени к груди, подкручивая таз.",
+          "Задержитесь вверху.",
+          "Опустите ноги медленно, без раскачивания."
+        ],
+        "common_mistakes": [
+          "Раскачивание корпусом.",
+          "Подъём коленей без подкручивания таза.",
+          "Рывки."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Hanging knee raise",
+        "aliases": ["hanging knee tuck"],
+        "description": "Bringing bent knees to the chest while hanging from a bar: an easier version of the hanging leg raise.",
+        "technique_steps": [
+          "Hang from the bar with straight arms and the shoulders down.",
+          "Bring the knees to the chest, curling the pelvis.",
+          "Pause at the top.",
+          "Lower the legs slowly without swinging."
+        ],
+        "common_mistakes": [
+          "Swinging the body.",
+          "Lifting the knees without curling the pelvis.",
+          "Jerking."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "hanging-leg-raise", "weight_ratio": null, "priority": 10 },
+      { "slug": "reverse-crunch", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-f2bf19e1823b",
+    "slug": "toes-to-bar",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "isolation",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["lats", "forearms"],
+    "equipment": ["pull_up_bar"],
+    "translations": {
+      "ru": {
+        "name": "Носки к перекладине",
+        "aliases": ["подъём ног к турнику", "тоус ту бар"],
+        "description": "Подъём прямых ног в висе до касания перекладины: пресс, хват и широчайшие.",
+        "technique_steps": [
+          "Повисните на турнике хватом на ширине плеч.",
+          "Слегка надавите на перекладину прямыми руками.",
+          "Поднимите прямые ноги и коснитесь носками перекладины.",
+          "Опустите ноги под контролем."
+        ],
+        "common_mistakes": ["Сильное раскачивание.", "Сгибание ног.", "Падение ног вниз."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Toes to bar",
+        "aliases": ["t2b", "hanging toes to bar"],
+        "description": "Raising straight legs while hanging until the toes touch the bar: the abs, the grip and the lats.",
+        "technique_steps": [
+          "Hang from the bar with a shoulder-width grip.",
+          "Press down on the bar slightly with straight arms.",
+          "Raise straight legs and touch the bar with the toes.",
+          "Lower the legs under control."
+        ],
+        "common_mistakes": ["Big swinging.", "Bending the legs.", "Dropping the legs."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "hanging-leg-raise", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-f461fb08ae9c",
+    "slug": "bicycle-crunch",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_rotation",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["obliques", "abs"],
+    "secondary_muscles": [],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Скручивания «велосипед»",
+        "aliases": ["скручивания велосипед", "перекрёстные скручивания"],
+        "description": "Скручивания с поочерёдным касанием локтем противоположного колена: косые и прямая мышца живота.",
+        "technique_steps": [
+          "Лягте на спину, руки у головы, ноги подняты и согнуты.",
+          "Поднимите плечи от пола.",
+          "Тяните правый локоть к левому колену, выпрямляя правую ногу.",
+          "Смените сторону; двигайтесь медленно и под контролем."
+        ],
+        "common_mistakes": ["Тяга головы руками.", "Слишком быстрые махи.", "Поясница отрывается."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Bicycle crunch",
+        "aliases": ["bicycle"],
+        "description": "Crunches bringing each elbow to the opposite knee in turn: the obliques and the abs.",
+        "technique_steps": [
+          "Lie on your back with the hands by the head and the legs raised and bent.",
+          "Lift the shoulders off the floor.",
+          "Bring the right elbow to the left knee, straightening the right leg.",
+          "Switch sides; move slowly and under control."
+        ],
+        "common_mistakes": [
+          "Pulling the head with the hands.",
+          "Pedalling too fast.",
+          "The lower back lifting."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "crunch", "weight_ratio": null, "priority": 10 },
+      { "slug": "cable-woodchop", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-f847885ca37d",
+    "slug": "v-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": [],
+    "equipment": ["mat"],
+    "translations": {
+      "ru": {
+        "name": "Складка",
+        "aliases": ["v-подъём", "уголок лёжа"],
+        "description": "Одновременный подъём корпуса и прямых ног с касанием стоп: прямая мышца живота.",
+        "technique_steps": [
+          "Лягте на спину, руки за головой, ноги прямые.",
+          "Одновременно поднимите корпус и ноги, тянитесь руками к стопам.",
+          "Сложитесь в букву V.",
+          "Опуститесь медленно, не падая на пол."
+        ],
+        "common_mistakes": ["Рывок корпусом.", "Сгибание ног.", "Удар спиной о пол."],
+        "warnings": []
+      },
+      "en": {
+        "name": "V-up",
+        "aliases": ["v up", "jackknife"],
+        "description": "Lifting the body and straight legs together to touch the feet: the abs.",
+        "technique_steps": [
+          "Lie on your back with the arms overhead and the legs straight.",
+          "Lift the body and the legs together, reaching for the feet.",
+          "Fold into a V.",
+          "Lower slowly without crashing down."
+        ],
+        "common_mistakes": [
+          "Jerking the body.",
+          "Bending the legs.",
+          "Slamming the back into the floor."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "crunch", "weight_ratio": null, "priority": 10 },
+      { "slug": "hollow-body-hold", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9517-fdb89f4c56e2",
+    "slug": "dragon-flag",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["lats", "obliques"],
+    "equipment": ["flat_bench"],
+    "translations": {
+      "ru": {
+        "name": "Флаг дракона",
+        "aliases": ["драгон флаг", "флажок брюса ли"],
+        "description": "Опускание прямого тела лёжа на скамье с опорой на плечи: одно из самых тяжёлых упражнений на пресс.",
+        "technique_steps": [
+          "Лягте на скамью, держитесь руками за её край за головой.",
+          "Поднимите тело вертикально, опора на верх спины и плечи.",
+          "Медленно опустите прямое тело, не сгибаясь в тазу.",
+          "Остановитесь над скамьёй и поднимитесь обратно."
+        ],
+        "common_mistakes": [
+          "Сгибание в тазобедренных суставах.",
+          "Опора на шею.",
+          "Падение вниз без контроля."
+        ],
+        "warnings": ["Только для подготовленных: большая нагрузка на поясницу."]
+      },
+      "en": {
+        "name": "Dragon flag",
+        "aliases": ["dragon flags"],
+        "description": "Lowering a straight body while lying on a bench and resting on the shoulders: one of the hardest ab exercises.",
+        "technique_steps": [
+          "Lie on a bench and hold its edge behind the head.",
+          "Lift the body to vertical, resting on the upper back and the shoulders.",
+          "Lower the straight body slowly without bending at the hips.",
+          "Stop above the bench and come back up."
+        ],
+        "common_mistakes": [
+          "Bending at the hips.",
+          "Resting on the neck.",
+          "Dropping without control."
+        ],
+        "warnings": ["Only for the trained: heavy on the lower back."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "ab-wheel-rollout", "weight_ratio": null, "priority": 10 },
+      { "slug": "hollow-body-hold", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9518-00df1a1794b0",
+    "slug": "incline-treadmill-walk",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes", "calves"],
+    "secondary_muscles": ["hamstrings", "quads"],
+    "equipment": ["treadmill"],
+    "translations": {
+      "ru": {
+        "name": "Ходьба в гору на дорожке",
+        "aliases": ["ходьба под наклоном", "ходьба с наклоном на дорожке"],
+        "description": "Быстрая ходьба на дорожке с наклоном 8–15%: кардио с низкой ударной нагрузкой, хорошо для снижения веса.",
+        "technique_steps": [
+          "Установите наклон 8–15% и скорость 4–6 км/ч.",
+          "Идите, не держась за поручни, корпус прямой.",
+          "Работайте руками, шаг естественный.",
+          "Снизьте наклон в последние минуты для заминки."
+        ],
+        "common_mistakes": [
+          "Держаться за поручни – нагрузка падает.",
+          "Наклон корпуса вперёд.",
+          "Слишком высокая скорость."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Incline treadmill walk",
+        "aliases": ["incline walking", "treadmill incline walk"],
+        "description": "Brisk walking on a treadmill at an 8–15% incline: low-impact cardio, good for losing weight.",
+        "technique_steps": [
+          "Set the incline to 8–15% and the speed to 4–6 km/h.",
+          "Walk without holding the rails, torso upright.",
+          "Swing the arms with a natural stride.",
+          "Lower the incline for the last minutes to cool down."
+        ],
+        "common_mistakes": [
+          "Holding the rails, which drops the load.",
+          "Leaning forward.",
+          "A speed that is too high."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "treadmill-run", "weight_ratio": null, "priority": 10 },
+      { "slug": "stair-climber", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9518-041bc44f4b3b",
+    "slug": "outdoor-walk",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["calves", "quads"],
+    "secondary_muscles": ["glutes", "hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Быстрая ходьба",
+        "aliases": ["ходьба", "прогулка быстрым шагом"],
+        "description": "Ходьба быстрым шагом на улице: самое доступное кардио для здоровья и активного восстановления.",
+        "technique_steps": [
+          "Идите в темпе, при котором можно говорить, но не петь.",
+          "Корпус прямой, руки согнуты и работают.",
+          "Шаг с перекатом с пятки на носок.",
+          "Начните и закончите несколькими минутами спокойного шага."
+        ],
+        "common_mistakes": [
+          "Слишком медленный темп.",
+          "Сутулость и взгляд под ноги.",
+          "Неудобная обувь."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Brisk walk",
+        "aliases": ["walking", "power walk"],
+        "description": "Walking briskly outdoors: the most accessible cardio for health and active recovery.",
+        "technique_steps": [
+          "Walk at a pace where you can talk but not sing.",
+          "Torso upright, arms bent and swinging.",
+          "Roll from heel to toe.",
+          "Start and finish with a few easy minutes."
+        ],
+        "common_mistakes": [
+          "A pace that is too slow.",
+          "Slouching and looking at the feet.",
+          "Uncomfortable shoes."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "incline-treadmill-walk", "weight_ratio": null, "priority": 10 },
+      { "slug": "outdoor-run", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9518-0a36be79a8c3",
+    "slug": "stair-climber",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes", "quads"],
+    "secondary_muscles": ["calves", "hamstrings"],
+    "equipment": ["stair_climber"],
+    "translations": {
+      "ru": {
+        "name": "Степпер",
+        "aliases": ["лестница", "тренажёр-лестница", "степпер-лестница"],
+        "description": "Подъём по бесконечной лестнице: интенсивное кардио с работой ягодиц и ног.",
+        "technique_steps": [
+          "Встаньте на ступени, держитесь за поручни только для равновесия.",
+          "Задайте темп, при котором можно идти 15–30 минут.",
+          "Ставьте стопу на ступень целиком, корпус прямой.",
+          "Снизьте темп в конце для заминки."
+        ],
+        "common_mistakes": [
+          "Опора на поручни всем весом.",
+          "Шаг только на носки.",
+          "Сильный наклон вперёд."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Stair climber",
+        "aliases": ["stairmaster", "stair machine"],
+        "description": "Climbing an endless staircase: intense cardio that works the glutes and legs.",
+        "technique_steps": [
+          "Step on and hold the rails only for balance.",
+          "Set a pace you can keep for 15–30 minutes.",
+          "Put the whole foot on the step, torso upright.",
+          "Slow down at the end to cool down."
+        ],
+        "common_mistakes": [
+          "Leaning the whole weight on the rails.",
+          "Stepping on the toes only.",
+          "Leaning far forward."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "incline-treadmill-walk", "weight_ratio": null, "priority": 10 },
+      { "slug": "elliptical", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9518-0d7eae164d9c",
+    "slug": "air-bike",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads", "front_delts"],
+    "secondary_muscles": ["glutes", "hamstrings", "chest", "upper_back"],
+    "equipment": ["air_bike"],
+    "translations": {
+      "ru": {
+        "name": "Эйр-байк",
+        "aliases": ["ассолт байк", "велотренажёр с вентилятором"],
+        "description": "Велотренажёр с вентилятором и подвижными рукоятями: работает всё тело, лучший выбор для интервалов.",
+        "technique_steps": [
+          "Отрегулируйте седло как на обычном велотренажёре.",
+          "Крутите педали и одновременно толкайте и тяните рукояти.",
+          "Чем быстрее движение, тем выше сопротивление.",
+          "Для интервалов чередуйте 20–30 секунд максимума и 1–2 минуты отдыха."
+        ],
+        "common_mistakes": [
+          "Работа только ногами.",
+          "Слишком длинные «спринты» без восстановления.",
+          "Низкое седло."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Air bike",
+        "aliases": ["assault bike", "fan bike"],
+        "description": "A fan bike with moving handles: the whole body works, the best choice for intervals.",
+        "technique_steps": [
+          "Set the saddle as on a regular bike.",
+          "Pedal and push and pull the handles at the same time.",
+          "The faster you go, the higher the resistance.",
+          "For intervals alternate 20–30 seconds all-out with 1–2 minutes easy."
+        ],
+        "common_mistakes": [
+          "Using only the legs.",
+          "Sprints that are too long without recovery.",
+          "A saddle set too low."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "stationary-bike", "weight_ratio": null, "priority": 10 },
+      { "slug": "rowing-machine", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9518-120249666428",
+    "slug": "ski-erg",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats", "triceps"],
+    "secondary_muscles": ["abs", "glutes", "upper_back"],
+    "equipment": ["ski_erg"],
+    "translations": {
+      "ru": {
+        "name": "Лыжный тренажёр",
+        "aliases": ["ски-эрг", "лыжи в зале"],
+        "description": "Тяга рукоятей вниз как при ходьбе на лыжах: кардио с акцентом на спину, руки и пресс.",
+        "technique_steps": [
+          "Встаньте перед тренажёром, возьмитесь за рукояти вверху.",
+          "Потяните рукояти вниз, сгибаясь в тазу и слегка в коленях.",
+          "Доведите руки до бёдер, затем выпрямитесь и поднимите руки.",
+          "Держите ровный ритм, тяга сильнее возврата."
+        ],
+        "common_mistakes": [
+          "Работа только руками.",
+          "Округление спины.",
+          "Глубокий присед вместо наклона."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Ski erg",
+        "aliases": ["skierg", "ski machine"],
+        "description": "Pulling the handles down as in cross-country skiing: cardio focused on the back, arms and abs.",
+        "technique_steps": [
+          "Stand in front of the machine holding the handles up high.",
+          "Pull the handles down, hinging at the hips and bending the knees slightly.",
+          "Bring the hands to the thighs, then stand up and raise the arms.",
+          "Keep a steady rhythm, the pull stronger than the return."
+        ],
+        "common_mistakes": [
+          "Using only the arms.",
+          "Rounding the back.",
+          "Squatting deep instead of hinging."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "rowing-machine", "weight_ratio": null, "priority": 10 },
+      { "slug": "air-bike", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9518-15791a17a762",
+    "slug": "outdoor-cycling",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads"],
+    "secondary_muscles": ["glutes", "hamstrings", "calves"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Езда на велосипеде",
+        "aliases": ["велопрогулка", "велозаезд"],
+        "description": "Езда на велосипеде на улице: выносливость и ноги с низкой нагрузкой на суставы.",
+        "technique_steps": [
+          "Отрегулируйте седло: нога почти прямая в нижней точке педали.",
+          "Держите ровный каденс 70–90 оборотов в минуту.",
+          "Переключайте передачи вместо продавливания педалей.",
+          "Надевайте шлем."
+        ],
+        "common_mistakes": ["Низкое седло.", "Тяжёлая передача на подъёмах.", "Езда без шлема."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Outdoor cycling",
+        "aliases": ["road cycling", "bike ride"],
+        "description": "Riding a bike outdoors: endurance and the legs with little strain on the joints.",
+        "technique_steps": [
+          "Set the saddle so the leg is nearly straight at the bottom of the stroke.",
+          "Keep a steady cadence of 70–90 rpm.",
+          "Shift gears instead of grinding the pedals.",
+          "Wear a helmet."
+        ],
+        "common_mistakes": [
+          "A saddle that is too low.",
+          "Too hard a gear on climbs.",
+          "Riding without a helmet."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "stationary-bike", "weight_ratio": null, "priority": 10 },
+      { "slug": "outdoor-run", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9518-1a893a5a50f5",
+    "slug": "swimming",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lats", "front_delts"],
+    "secondary_muscles": ["triceps", "chest", "abs", "quads"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Плавание",
+        "aliases": ["бассейн", "плавание кролем"],
+        "description": "Плавание в бассейне: кардио для всего тела без ударной нагрузки, подходит при болях в суставах.",
+        "technique_steps": [
+          "Разомнитесь 5 минут лёгким плаванием любым стилем.",
+          "Плывите в ровном темпе, дыхание ритмичное.",
+          "Чередуйте стили или делайте отрезки с отдыхом у бортика.",
+          "Закончите спокойным плаванием."
+        ],
+        "common_mistakes": [
+          "Задержка дыхания.",
+          "Голова слишком высоко над водой.",
+          "Без разминки сразу в высокий темп."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Swimming",
+        "aliases": ["pool swim", "freestyle swimming"],
+        "description": "Swimming in a pool: whole-body cardio with no impact, good when the joints hurt.",
+        "technique_steps": [
+          "Warm up for 5 minutes swimming easily in any stroke.",
+          "Swim at a steady pace with rhythmic breathing.",
+          "Mix strokes or swim lengths with rests at the wall.",
+          "Finish with easy swimming."
+        ],
+        "common_mistakes": [
+          "Holding the breath.",
+          "The head too high above the water.",
+          "Going hard with no warm-up."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "rowing-machine", "weight_ratio": null, "priority": 10 },
+      { "slug": "elliptical", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9518-1f10b9441a10",
+    "slug": "burpee",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads", "chest"],
+    "secondary_muscles": ["glutes", "triceps", "front_delts", "abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Бёрпи",
+        "aliases": ["берпи", "упор лёжа с выпрыгиванием"],
+        "description": "Упор лёжа, отжимание и выпрыгивание вверх: кондиция и работа всего тела без инвентаря.",
+        "technique_steps": [
+          "Из стойки присядьте и поставьте ладони на пол.",
+          "Прыжком отведите ноги в упор лёжа и сделайте отжимание.",
+          "Прыжком верните ноги к рукам.",
+          "Выпрыгните вверх с хлопком над головой."
+        ],
+        "common_mistakes": [
+          "Провис таза в упоре лёжа.",
+          "Жёсткое приземление.",
+          "Потеря техники из-за спешки."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Burpee",
+        "aliases": ["burpees"],
+        "description": "Drop to a push-up, jump back up and leap: conditioning and the whole body with no equipment.",
+        "technique_steps": [
+          "From standing, squat and put the hands on the floor.",
+          "Jump the feet back to a push-up position and do a push-up.",
+          "Jump the feet back to the hands.",
+          "Jump up with a clap overhead."
+        ],
+        "common_mistakes": [
+          "Sagging hips in the push-up position.",
+          "Landing hard.",
+          "Losing form by rushing."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "mountain-climber", "weight_ratio": null, "priority": 10 },
+      { "slug": "jump-squat", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9518-22a3a4bbaa36",
+    "slug": "mountain-climber",
+    "kind": "timed",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["quads", "front_delts", "obliques"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Скалолаз",
+        "aliases": ["альпинист", "бег в упоре лёжа"],
+        "description": "Быстрое поочерёдное подтягивание коленей к груди в упоре лёжа: кондиция и пресс.",
+        "technique_steps": [
+          "Встаньте в упор лёжа на прямых руках, плечи над кистями.",
+          "Подтяните одно колено к груди.",
+          "Быстро смените ноги, как в беге.",
+          "Держите таз на уровне плеч."
+        ],
+        "common_mistakes": [
+          "Таз высоко вверх.",
+          "Плечи уходят назад от кистей.",
+          "Касание стопой пола только носком без смены."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Mountain climber",
+        "aliases": ["mountain climbers"],
+        "description": "Driving the knees to the chest in turn from a push-up position: conditioning and the abs.",
+        "technique_steps": [
+          "Get into a push-up position with straight arms and the shoulders over the wrists.",
+          "Drive one knee to the chest.",
+          "Switch legs quickly as if running.",
+          "Keep the hips level with the shoulders."
+        ],
+        "common_mistakes": [
+          "Hips high up.",
+          "Shoulders drifting behind the wrists.",
+          "Only tapping the toes without switching."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "burpee", "weight_ratio": null, "priority": 10 },
+      { "slug": "plank", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9518-254dda78e459",
+    "slug": "jumping-jack",
+    "kind": "timed",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": ["side_delts", "quads", "glutes"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Прыжки «звёздочка»",
+        "aliases": ["джампинг джек", "прыжки ноги вместе ноги врозь"],
+        "description": "Прыжки с разведением рук и ног: разминка и лёгкая кондиция в любом месте.",
+        "technique_steps": [
+          "Встаньте прямо, руки вдоль тела.",
+          "Прыжком поставьте ноги шире плеч и поднимите руки через стороны над головой.",
+          "Прыжком вернитесь в исходное положение.",
+          "Держите ровный ритм, приземляйтесь мягко."
+        ],
+        "common_mistakes": ["Приземление на прямые ноги.", "Сутулость.", "Слишком широкий прыжок."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Jumping jack",
+        "aliases": ["jumping jacks", "star jumps"],
+        "description": "Jumping the arms and legs out and in: a warm-up and light conditioning anywhere.",
+        "technique_steps": [
+          "Stand tall with the arms at the sides.",
+          "Jump the feet wider than the shoulders and raise the arms overhead.",
+          "Jump back to the start.",
+          "Keep a steady rhythm and land softly."
+        ],
+        "common_mistakes": ["Landing on straight legs.", "Slouching.", "Jumping too wide."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "jump-rope", "weight_ratio": null, "priority": 10 },
+      { "slug": "mountain-climber", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdb-761a-9518-29998888e852",
+    "slug": "battle-rope-waves",
+    "kind": "timed",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts", "forearms"],
+    "secondary_muscles": ["abs", "upper_back", "quads"],
+    "equipment": ["battle_rope"],
+    "translations": {
+      "ru": {
+        "name": "Волны канатами",
+        "aliases": ["канаты", "батл-роуп"],
+        "description": "Быстрые волны тяжёлыми канатами: интервальная кондиция для плеч, рук и корпуса.",
+        "technique_steps": [
+          "Возьмите концы каната, встаньте в полуприсед, канат слегка провисает.",
+          "Поочерёдно резко поднимайте и опускайте руки, создавая волны.",
+          "Корпус напряжён, ноги в полуприседе.",
+          "Работайте 20–40 секунд, затем отдых."
+        ],
+        "common_mistakes": [
+          "Работа только кистями.",
+          "Выпрямленные ноги и прогиб спины.",
+          "Слишком близко к креплению."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Battle rope waves",
+        "aliases": ["battle ropes", "rope waves"],
+        "description": "Fast waves with heavy ropes: interval conditioning for the shoulders, arms and core.",
+        "technique_steps": [
+          "Hold the rope ends in a half squat with a little slack in the rope.",
+          "Raise and drop the arms hard in turn to make waves.",
+          "Keep the core braced and the legs bent.",
+          "Work for 20–40 seconds, then rest."
+        ],
+        "common_mistakes": [
+          "Moving only the wrists.",
+          "Straight legs and an arched back.",
+          "Standing too close to the anchor."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "burpee", "weight_ratio": null, "priority": 10 },
+      { "slug": "air-bike", "weight_ratio": null, "priority": 5 }
     ]
   }
 ]

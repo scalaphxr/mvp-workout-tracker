@@ -123,7 +123,7 @@ export const DEFAULT_STEPS_LB: Record<StepGroup, number> = { dumbbells: 5, plate
 
 // Machines loaded with plates rather than a weight stack. Lives here until the catalog itself
 // says how a piece of equipment is loaded.
-const PLATE_LOADED_MACHINES = new Set(['smith_machine']);
+const PLATE_LOADED_MACHINES = new Set(['smith_machine', 'hack_squat_machine', 'seated_calf_raise_machine']);
 
 /** Which of the three steps applies to a piece of equipment; `null` – it carries no load. */
 export function stepGroup(item: Equipment): StepGroup | null {

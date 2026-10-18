@@ -13,8 +13,12 @@
     "equipment": [],
     "translations": {
       "ru": {
-        "name": "Приседания без веса",
-        "aliases": ["приседания с собственным весом", "воздушные приседания", "приседания без отягощения"],
+        "name": "Приседания без отягощения",
+        "aliases": [
+          "приседания без веса",
+          "воздушные приседания",
+          "приседания с собственным весом"
+        ],
         "description": "Приседания с собственным весом: ноги и ягодицы без оборудования, дома или на улице.",
         "technique_steps": [
           "Встаньте прямо, стопы на ширине плеч, носки слегка развёрнуты.",
@@ -64,8 +68,8 @@
     "equipment": ["mat"],
     "translations": {
       "ru": {
-        "name": "Ягодичный мост без веса",
-        "aliases": ["ягодичный мостик", "подъём таза лёжа", "мостик на ягодицы"],
+        "name": "Ягодичный мостик",
+        "aliases": ["ягодичный мост без веса", "мостик на ягодицы", "подъём таза лёжа"],
         "description": "Подъём таза лёжа на спине: ягодицы и задняя поверхность бедра с собственным весом.",
         "technique_steps": [
           "Лягте на спину, колени согнуты, стопы на полу на ширине таза.",
@@ -81,8 +85,8 @@
         "warnings": []
       },
       "en": {
-        "name": "Bodyweight glute bridge",
-        "aliases": ["glute bridge", "hip bridge", "floor glute bridge"],
+        "name": "Glute bridge",
+        "aliases": ["bodyweight glute bridge", "hip bridge", "floor glute bridge"],
         "description": "Raising the hips while lying on the back: glutes and hamstrings with body weight.",
         "technique_steps": [
           "Lie on your back, knees bent, feet on the floor hip-width apart.",

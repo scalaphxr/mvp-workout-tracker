@@ -124,6 +124,20 @@ describe('rankAlternatives', () => {
     expect(slugs.map(([slug]) => slug)).toEqual(['cable-row', 'dumbbell-row', 't-bar-row', 'pull-up']);
   });
 
+  it('does not replace a lift with cardio or a stretch that shares its muscle, unless linked', () => {
+    const swim = exercise('swim', { kind: 'cardio', tracking: 'distance_time', movement_pattern: 'cardio', equipment: [] });
+    const stretch = exercise('lat-stretch', { kind: 'stretch', tracking: 'time', movement_pattern: 'mobility', equipment: [] });
+    const pullUp = all.find((candidate) => candidate.slug === 'pull-up')!;
+    const slugs = ranked(pullUp, [...all, { ...swim, primary_muscles: pullUp.primary_muscles }, { ...stretch, primary_muscles: pullUp.primary_muscles }], {
+      equipment: everything,
+    }).map(([slug]) => slug);
+    expect(slugs).not.toContain('swim');
+    expect(slugs).not.toContain('lat-stretch');
+
+    const linked = { ...pullUp, alternatives: [{ slug: 'swim', weight_ratio: null, priority: 1 }] };
+    expect(ranked(linked, [linked, swim], { equipment: everything }).map(([slug]) => slug)).toEqual(['swim']);
+  });
+
   it('keeps a hand-made link even when nothing else relates the exercises', () => {
     const plank = exercise('plank', {
       movement_pattern: 'core_stability',

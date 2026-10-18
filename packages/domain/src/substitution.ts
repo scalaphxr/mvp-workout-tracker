@@ -6,6 +6,19 @@ const SAME_PRIMARY_MUSCLE = 30;
 const SAME_MECHANICS = 10;
 const HAS_HISTORY = 5;
 
+/**
+ * What an exercise is for: training a muscle, cardio or stretching. A replacement stays within
+ * it – a pull-up is not replaced by swimming, nor a row by a stretch, though they share a
+ * muscle – unless the catalog links the two by hand.
+ */
+const PURPOSE: Record<Exercise['kind'], 'training' | 'cardio' | 'stretch'> = {
+  strength: 'training',
+  bodyweight: 'training',
+  timed: 'training',
+  cardio: 'cardio',
+  stretch: 'stretch',
+};
+
 /** The exercise can be done in a gym that has this equipment (codes): it needs all of its own. */
 export function isAvailable(exercise: Exercise, equipment: ReadonlySet<string>): boolean {
   return exercise.equipment.every((code) => equipment.has(code));
@@ -45,6 +58,7 @@ export function rankAlternatives(
     if (candidate.equipment.some((code) => options.busy?.has(code))) continue;
 
     const link = links.get(candidate.slug);
+    if (!link && PURPOSE[candidate.kind] !== PURPOSE[exercise.kind]) continue;
     const samePattern = candidate.movement_pattern === exercise.movement_pattern;
     const sameMuscle = candidate.primary_muscles.some((code) =>
       exercise.primary_muscles.includes(code),

@@ -327,8 +327,14 @@
     "equipment": ["cable_crossover"],
     "translations": {
       "ru": {
-        "name": "Разгибание рук на блоке с канатом",
-        "aliases": ["разгибания на канате", "разгибания на блоке", "трицепс на блоке", "разгибание рук в кроссовере"],
+        "name": "Разгибание рук на верхнем блоке с канатом",
+        "aliases": [
+          "разгибание рук на блоке с канатом",
+          "разгибания на канате",
+          "разгибания на блоке",
+          "трицепс на блоке",
+          "разгибание рук в кроссовере"
+        ],
         "description": "Разгибание рук вниз с канатной рукоятью на верхнем блоке: изолирующее упражнение для трицепса.",
         "technique_steps": [
           "Установите блок вверху, возьмите канат нейтральным хватом, локти прижаты к корпусу.",
@@ -344,8 +350,14 @@
         "warnings": []
       },
       "en": {
-        "name": "Cable rope pushdown",
-        "aliases": ["triceps pushdown", "rope pushdown", "tricep pushdown", "cable pushdown"],
+        "name": "Triceps rope pushdown",
+        "aliases": [
+          "cable rope pushdown",
+          "rope pushdown",
+          "triceps pushdown",
+          "tricep pushdown",
+          "cable pushdown"
+        ],
         "description": "A downward arm extension with a rope on a high pulley: an isolation exercise for the triceps.",
         "technique_steps": [
           "Set the pulley high, take the rope with a neutral grip, elbows at your sides.",
@@ -363,5 +375,1383 @@
     },
     "media": [],
     "alternatives": []
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-4bae8e9ce53f",
+    "slug": "standing-dumbbell-shoulder-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts", "side_delts"],
+    "secondary_muscles": ["triceps", "abs"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {
+        "name": "Жим гантелей стоя",
+        "aliases": ["жим гантелей над головой стоя", "армейский жим с гантелями"],
+        "description": "Жим гантелей над головой стоя: плечи, трицепс и стабилизация корпуса.",
+        "technique_steps": [
+          "Встаньте, стопы на ширине таза, гантели у плеч, ладони вперёд или друг к другу.",
+          "Напрягите пресс и ягодицы.",
+          "Выжмите гантели вверх до прямых рук над головой.",
+          "Опустите к плечам под контролем."
+        ],
+        "common_mistakes": ["Прогиб в пояснице.", "Толчок ногами.", "Гантели уходят вперёд."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Standing dumbbell shoulder press",
+        "aliases": ["standing dumbbell press", "dumbbell overhead press"],
+        "description": "Pressing dumbbells overhead while standing: the shoulders, the triceps and a stable core.",
+        "technique_steps": [
+          "Stand with the feet hip-width apart and the dumbbells at the shoulders.",
+          "Brace the abs and the glutes.",
+          "Press the dumbbells up to straight arms overhead.",
+          "Lower to the shoulders under control."
+        ],
+        "common_mistakes": [
+          "Arching the lower back.",
+          "Driving with the legs.",
+          "The dumbbells drifting forward."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "seated-dumbbell-shoulder-press", "weight_ratio": 1.0, "priority": 10 },
+      { "slug": "overhead-barbell-press", "weight_ratio": 2.5, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-4db4b82bd0ef",
+    "slug": "arnold-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts", "side_delts"],
+    "secondary_muscles": ["triceps"],
+    "equipment": ["dumbbells", "adjustable_bench"],
+    "translations": {
+      "ru": {
+        "name": "Жим Арнольда",
+        "aliases": ["арнольд", "жим с разворотом"],
+        "description": "Жим гантелей сидя с разворотом кистей: большая амплитуда для передних и средних дельт.",
+        "technique_steps": [
+          "Сядьте, спина прижата, гантели у подбородка, ладони к себе.",
+          "Поднимая гантели, разворачивайте кисти ладонями вперёд.",
+          "Выжмите до прямых рук над головой.",
+          "Опустите с обратным разворотом в исходное положение."
+        ],
+        "common_mistakes": [
+          "Слишком тяжёлый вес – разворот теряется.",
+          "Прогиб поясницы.",
+          "Рывки."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Arnold press",
+        "aliases": ["arnold dumbbell press"],
+        "description": "Seated dumbbell press with a rotation of the hands: a long range for the front and side delts.",
+        "technique_steps": [
+          "Sit with the back supported and the dumbbells at the chin, palms facing you.",
+          "As you press, rotate the palms to face forward.",
+          "Press up to straight arms overhead.",
+          "Lower with the reverse rotation to the start."
+        ],
+        "common_mistakes": [
+          "A weight so heavy the rotation is lost.",
+          "Arching the lower back.",
+          "Jerking."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "seated-dumbbell-shoulder-press", "weight_ratio": null, "priority": 10 },
+      { "slug": "shoulder-press-machine", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-504865ff65a4",
+    "slug": "shoulder-press-machine",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts", "side_delts"],
+    "secondary_muscles": ["triceps"],
+    "equipment": ["shoulder_press_machine"],
+    "translations": {
+      "ru": {
+        "name": "Жим от плеч в тренажёре",
+        "aliases": ["жим вверх в тренажёре", "жим сидя в тренажёре"],
+        "description": "Жим вверх сидя в тренажёре: безопасный способ тяжело нагрузить плечи.",
+        "technique_steps": [
+          "Отрегулируйте сиденье: рукояти на уровне плеч.",
+          "Прижмите спину к спинке, возьмитесь за рукояти.",
+          "Выжмите вверх до почти прямых рук.",
+          "Опустите под контролем до уровня плеч."
+        ],
+        "common_mistakes": [
+          "Отрыв спины от спинки.",
+          "Неполная амплитуда.",
+          "Удар весом в нижней точке."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Shoulder press machine",
+        "aliases": ["machine shoulder press"],
+        "description": "Pressing overhead in a seated machine: a safe way to load the shoulders heavy.",
+        "technique_steps": [
+          "Set the seat so the handles are at shoulder height.",
+          "Keep the back against the pad and hold the handles.",
+          "Press up to nearly straight arms.",
+          "Lower under control to shoulder height."
+        ],
+        "common_mistakes": [
+          "Leaving the backrest.",
+          "Partial reps.",
+          "Letting the stack slam at the bottom."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "seated-dumbbell-shoulder-press", "weight_ratio": null, "priority": 10 },
+      { "slug": "smith-machine-shoulder-press", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-56bf7d05a641",
+    "slug": "smith-machine-shoulder-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts", "side_delts"],
+    "secondary_muscles": ["triceps"],
+    "equipment": ["smith_machine", "adjustable_bench"],
+    "translations": {
+      "ru": {
+        "name": "Жим сидя в тренажёре Смита",
+        "aliases": ["жим над головой в смите", "армейский жим в смите"],
+        "description": "Жим грифа от груди вверх сидя в Смите: плечи с фиксированной траекторией.",
+        "technique_steps": [
+          "Поставьте скамью с вертикальной спинкой под гриф.",
+          "Возьмите гриф чуть шире плеч, снимите поворотом.",
+          "Опустите гриф к верху груди.",
+          "Выжмите до прямых рук."
+        ],
+        "common_mistakes": ["Опускание за голову.", "Прогиб поясницы.", "Отбив от груди."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Smith machine shoulder press",
+        "aliases": ["smith overhead press"],
+        "description": "Pressing the Smith bar from the chest while seated: the shoulders on a fixed path.",
+        "technique_steps": [
+          "Put an upright bench under the bar.",
+          "Grip slightly wider than the shoulders and unrack with a twist.",
+          "Lower the bar to the upper chest.",
+          "Press up to straight arms."
+        ],
+        "common_mistakes": [
+          "Lowering behind the head.",
+          "Arching the lower back.",
+          "Bouncing off the chest."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "overhead-barbell-press", "weight_ratio": 1.0, "priority": 10 },
+      { "slug": "shoulder-press-machine", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-5ab9a29190cb",
+    "slug": "push-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts", "triceps"],
+    "secondary_muscles": ["side_delts", "quads", "glutes"],
+    "equipment": ["barbell", "rack"],
+    "translations": {
+      "ru": {
+        "name": "Швунг жимовой",
+        "aliases": ["пуш-пресс", "жим с подседом"],
+        "description": "Жим штанги стоя с помощью ног: больше веса над головой, развивает мощность.",
+        "technique_steps": [
+          "Снимите штангу на грудь, хват чуть шире плеч, локти чуть впереди.",
+          "Сделайте короткий подсед, колени вперёд, корпус вертикален.",
+          "Резко выпрямите ноги и сразу выжмите штангу вверх.",
+          "Зафиксируйте штангу над головой и опустите на грудь, амортизируя ногами."
+        ],
+        "common_mistakes": [
+          "Глубокий присед вместо подседа.",
+          "Наклон корпуса вперёд.",
+          "Прогиб в пояснице."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Push press",
+        "aliases": ["barbell push press"],
+        "description": "Overhead press with help from the legs: more weight overhead and more power.",
+        "technique_steps": [
+          "Unrack the bar onto the chest with a grip slightly wider than the shoulders.",
+          "Dip a little with the knees forward and the torso upright.",
+          "Drive the legs straight and press the bar up straight away.",
+          "Lock it out overhead and lower to the chest, cushioning with the legs."
+        ],
+        "common_mistakes": [
+          "Squatting deep instead of a short dip.",
+          "Leaning forward.",
+          "Arching the lower back."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "overhead-barbell-press", "weight_ratio": 1.2, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-5f4eb9804ee6",
+    "slug": "pike-push-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["triceps", "side_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Отжимания в складке",
+        "aliases": ["пайк-отжимания", "отжимания уголком"],
+        "description": "Отжимания с тазом вверх: нагрузка на плечи, шаг к отжиманиям в стойке на руках.",
+        "technique_steps": [
+          "Встаньте в упор лёжа и поднимите таз вверх, тело в форме перевёрнутой V.",
+          "Руки на ширине плеч, голова между руками.",
+          "Опустите голову к полу перед ладонями, локти назад.",
+          "Выжмите себя обратно."
+        ],
+        "common_mistakes": [
+          "Опускание таза – получаются обычные отжимания.",
+          "Локти в стороны.",
+          "Неполная амплитуда."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Pike push-up",
+        "aliases": ["pike pushup"],
+        "description": "Push-up with the hips high: the shoulders take the load, a step towards handstand push-ups.",
+        "technique_steps": [
+          "Start in a push-up position and lift the hips into an upside-down V.",
+          "Hands shoulder-width apart, head between the arms.",
+          "Lower the head to the floor in front of the hands, elbows back.",
+          "Push back up."
+        ],
+        "common_mistakes": [
+          "Dropping the hips so it becomes a regular push-up.",
+          "Flaring the elbows.",
+          "Partial reps."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "wall-handstand-push-up", "weight_ratio": null, "priority": 10 },
+      { "slug": "decline-push-up", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-60af602c0c06",
+    "slug": "wall-handstand-push-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts", "triceps"],
+    "secondary_muscles": ["side_delts", "traps"],
+    "equipment": [],
+    "translations": {
+      "ru": {
+        "name": "Отжимания в стойке на руках у стены",
+        "aliases": ["отжимания вниз головой", "хандстенд отжимания"],
+        "description": "Отжимания вниз головой с опорой ногами на стену: тяжёлая нагрузка на плечи весом тела.",
+        "technique_steps": [
+          "Выйдите в стойку на руках лицом от стены, пятки на стене.",
+          "Руки чуть шире плеч, корпус напряжён.",
+          "Опуститесь головой к полу на подушку или коврик.",
+          "Выжмите себя вверх до прямых рук."
+        ],
+        "common_mistakes": [
+          "Сильный прогиб в спине.",
+          "Удар головой о пол.",
+          "Слишком широкие руки."
+        ],
+        "warnings": ["Сначала освойте отжимания в складке и стойку у стены."]
+      },
+      "en": {
+        "name": "Wall handstand push-up",
+        "aliases": ["handstand push-up", "hspu"],
+        "description": "Upside-down push-up with the feet against a wall: heavy shoulder work with the body weight.",
+        "technique_steps": [
+          "Kick up into a handstand facing away from the wall with the heels on it.",
+          "Hands slightly wider than the shoulders, body tight.",
+          "Lower the head to a cushion or a mat on the floor.",
+          "Press back up to straight arms."
+        ],
+        "common_mistakes": [
+          "A big arch in the back.",
+          "Hitting the head on the floor.",
+          "Hands too wide."
+        ],
+        "warnings": ["Learn pike push-ups and a wall handstand first."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "pike-push-up", "weight_ratio": null, "priority": 10 },
+      { "slug": "overhead-barbell-press", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-66325114a595",
+    "slug": "cable-reverse-fly",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "rear_delt",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["rear_delts"],
+    "secondary_muscles": ["upper_back"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {
+        "name": "Разведение рук на верхних блоках назад",
+        "aliases": ["обратные разведения в кроссовере", "разведения на заднюю дельту на блоках"],
+        "description": "Разведение рук назад от верхних блоков кроссовера: задние дельты под постоянной нагрузкой.",
+        "technique_steps": [
+          "Установите блоки на уровне плеч, возьмите правую рукоять левой рукой и наоборот.",
+          "Встаньте в центре, руки перекрещены перед грудью, локти слегка согнуты.",
+          "Разведите руки назад и в стороны до линии корпуса.",
+          "Верните руки под контролем."
+        ],
+        "common_mistakes": [
+          "Сведение лопаток вместо работы дельт.",
+          "Сгибание локтей.",
+          "Раскачивание корпусом."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Cable reverse fly",
+        "aliases": ["cable rear delt fly", "reverse cable crossover"],
+        "description": "Pulling the arms back from the high pulleys of a crossover: the rear delts under constant tension.",
+        "technique_steps": [
+          "Set the pulleys at shoulder height and take the right handle in the left hand and vice versa.",
+          "Stand in the middle with the arms crossed in front of the chest, elbows soft.",
+          "Open the arms back and out to the line of the body.",
+          "Bring them back under control."
+        ],
+        "common_mistakes": [
+          "Squeezing the shoulder blades instead of using the delts.",
+          "Bending the elbows.",
+          "Swinging."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "reverse-pec-deck-fly", "weight_ratio": null, "priority": 10 },
+      { "slug": "dumbbell-reverse-fly", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-6924f17a6bed",
+    "slug": "band-face-pull",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "rear_delt",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["rear_delts"],
+    "secondary_muscles": ["upper_back", "traps"],
+    "equipment": ["resistance_band"],
+    "translations": {
+      "ru": {
+        "name": "Тяга резины к лицу",
+        "aliases": ["фейс-пулл с резиной", "тяга эспандера к лицу"],
+        "description": "Тяга ленты к лицу с разведением локтей: задние дельты и вращатели плеча дома.",
+        "technique_steps": [
+          "Закрепите ленту на уровне лица, возьмитесь хватом сверху.",
+          "Отойдите до натяжения, руки прямые.",
+          "Потяните ленту к лицу, разводя локти высоко в стороны.",
+          "Задержитесь и плавно верните руки."
+        ],
+        "common_mistakes": ["Локти ниже плеч.", "Отклонение корпуса назад.", "Рывки."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Band face pull",
+        "aliases": ["resistance band face pull"],
+        "description": "Pulling a band to the face with the elbows wide: the rear delts and the rotator cuff at home.",
+        "technique_steps": [
+          "Anchor the band at face height and take an overhand grip.",
+          "Step back until there is tension, arms straight.",
+          "Pull the band to the face with the elbows high and wide.",
+          "Hold and let the arms back smoothly."
+        ],
+        "common_mistakes": ["Elbows below the shoulders.", "Leaning back.", "Jerking."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "cable-face-pull", "weight_ratio": null, "priority": 10 },
+      { "slug": "band-pull-apart", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-6fdcedaa95fd",
+    "slug": "band-lateral-raise",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "lateral_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["side_delts"],
+    "secondary_muscles": ["traps"],
+    "equipment": ["resistance_band"],
+    "translations": {
+      "ru": {
+        "name": "Разведение рук в стороны с резиной",
+        "aliases": ["махи в стороны с эспандером", "отведения с резинкой"],
+        "description": "Подъём рук через стороны с лентой под стопами: средние дельты дома.",
+        "technique_steps": [
+          "Встаньте на середину ленты, концы в руках.",
+          "Слегка согните локти.",
+          "Поднимите руки через стороны до уровня плеч.",
+          "Медленно опустите."
+        ],
+        "common_mistakes": ["Подъём плеч к ушам.", "Раскачивание корпусом.", "Кисти выше локтей."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Band lateral raise",
+        "aliases": ["resistance band lateral raise"],
+        "description": "Raising the arms out to the sides with a band under the feet: the side delts at home.",
+        "technique_steps": [
+          "Stand on the middle of the band holding the ends.",
+          "Bend the elbows slightly.",
+          "Raise the arms out to shoulder height.",
+          "Lower slowly."
+        ],
+        "common_mistakes": ["Shrugging up.", "Swinging the body.", "Hands higher than the elbows."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dumbbell-lateral-raise", "weight_ratio": null, "priority": 10 },
+      { "slug": "cable-lateral-raise", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-7093db9d9dda",
+    "slug": "incline-y-raise",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "rear_delt",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["traps", "rear_delts"],
+    "secondary_muscles": ["upper_back"],
+    "equipment": ["dumbbells", "adjustable_bench"],
+    "translations": {
+      "ru": {
+        "name": "Подъём гантелей буквой Y лёжа на наклонной",
+        "aliases": ["y-подъём", "y-raise"],
+        "description": "Подъём лёгких гантелей вперёд-вверх буквой Y лёжа грудью на наклонной скамье: нижние трапеции и здоровье плеч.",
+        "technique_steps": [
+          "Лягте грудью на скамью под 30–45°, лёгкие гантели в опущенных руках, большие пальцы вверх.",
+          "Сведите лопатки вниз.",
+          "Поднимите прямые руки вперёд-вверх под углом, образуя букву Y.",
+          "Задержитесь и медленно опустите."
+        ],
+        "common_mistakes": [
+          "Слишком тяжёлый вес.",
+          "Подъём плеч к ушам.",
+          "Отрыв груди от скамьи."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Incline Y raise",
+        "aliases": ["y raise", "prone y raise"],
+        "description": "Raising light dumbbells up and out into a Y lying chest down on an incline bench: the lower traps and healthy shoulders.",
+        "technique_steps": [
+          "Lie chest down on a bench at 30–45° with light dumbbells hanging, thumbs up.",
+          "Draw the shoulder blades down.",
+          "Raise straight arms up and out into a Y.",
+          "Hold and lower slowly."
+        ],
+        "common_mistakes": [
+          "A weight that is too heavy.",
+          "Shrugging up.",
+          "Lifting the chest off the bench."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "cable-face-pull", "weight_ratio": null, "priority": 10 },
+      { "slug": "dumbbell-reverse-fly", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-76ba796f645c",
+    "slug": "band-external-rotation",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "rear_delt",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["rear_delts"],
+    "secondary_muscles": ["upper_back"],
+    "equipment": ["resistance_band"],
+    "translations": {
+      "ru": {
+        "name": "Наружная ротация плеча с резиной",
+        "aliases": ["ротация плеча наружу", "внешняя ротация с эспандером"],
+        "description": "Поворот предплечья наружу с лентой, локоть прижат к корпусу: вращательная манжета плеча, профилактика травм.",
+        "technique_steps": [
+          "Закрепите ленту на уровне пояса, встаньте к ней боком.",
+          "Возьмите ленту дальней рукой, локоть согнут под 90° и прижат к боку.",
+          "Поверните предплечье наружу, не отрывая локоть.",
+          "Медленно верните; затем смените руку."
+        ],
+        "common_mistakes": [
+          "Отрыв локтя от корпуса.",
+          "Слишком тугая лента.",
+          "Скручивание корпусом."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Band external rotation",
+        "aliases": ["resistance band external rotation", "shoulder external rotation"],
+        "description": "Rotating the forearm outwards against a band with the elbow at the side: the rotator cuff and fewer injuries.",
+        "technique_steps": [
+          "Anchor the band at waist height and stand side-on to it.",
+          "Hold it with the far hand, elbow bent to 90° and pinned to the side.",
+          "Rotate the forearm outwards without moving the elbow.",
+          "Return slowly; then switch arms."
+        ],
+        "common_mistakes": [
+          "The elbow leaving the side.",
+          "A band that is too strong.",
+          "Twisting the body."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "cable-face-pull", "weight_ratio": null, "priority": 10 },
+      { "slug": "band-face-pull", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-7b5043899544",
+    "slug": "dumbbell-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {
+        "name": "Подъём гантелей на бицепс",
+        "aliases": ["сгибание рук с гантелями", "бицепс с гантелями"],
+        "description": "Сгибание рук с гантелями стоя с разворотом кисти: классика для бицепса.",
+        "technique_steps": [
+          "Встаньте прямо, гантели в опущенных руках, ладони к корпусу.",
+          "Согните руку, разворачивая ладонь вверх.",
+          "Поднимите гантель к плечу, локоть остаётся у корпуса.",
+          "Медленно опустите; поднимайте поочерёдно или вместе."
+        ],
+        "common_mistakes": [
+          "Раскачивание корпусом.",
+          "Локти уходят вперёд.",
+          "Неполное разгибание внизу."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Dumbbell curl",
+        "aliases": ["dumbbell biceps curl", "alternating dumbbell curl"],
+        "description": "Curling dumbbells while standing with a twist of the wrist: the classic biceps exercise.",
+        "technique_steps": [
+          "Stand tall with the dumbbells hanging, palms facing the body.",
+          "Curl, turning the palm up.",
+          "Bring the dumbbell to the shoulder with the elbow at the side.",
+          "Lower slowly; curl alternately or together."
+        ],
+        "common_mistakes": [
+          "Swinging the body.",
+          "Elbows moving forward.",
+          "Not straightening fully at the bottom."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "barbell-curl", "weight_ratio": 2.0, "priority": 10 },
+      { "slug": "cable-curl", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-7c008fb92d80",
+    "slug": "incline-dumbbell-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["dumbbells", "adjustable_bench"],
+    "translations": {
+      "ru": {
+        "name": "Сгибание рук с гантелями на наклонной скамье",
+        "aliases": ["бицепс на наклонной", "сгибания сидя на наклонной"],
+        "description": "Сгибание рук сидя на наклонной скамье: бицепс в растянутом положении, сильный стимул для роста.",
+        "technique_steps": [
+          "Установите спинку под 45–60°, сядьте, руки с гантелями свисают вниз.",
+          "Локти чуть позади корпуса.",
+          "Согните руки, не выводя локти вперёд.",
+          "Медленно опустите до полного растяжения."
+        ],
+        "common_mistakes": ["Локти уходят вперёд.", "Слишком тяжёлый вес.", "Неполное опускание."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Incline dumbbell curl",
+        "aliases": ["incline curl"],
+        "description": "Curling dumbbells seated on an incline bench: the biceps in a stretched position, a strong stimulus for growth.",
+        "technique_steps": [
+          "Set the backrest to 45–60°, sit down and let the arms hang.",
+          "Keep the elbows slightly behind the body.",
+          "Curl without moving the elbows forward.",
+          "Lower slowly to a full stretch."
+        ],
+        "common_mistakes": [
+          "Elbows moving forward.",
+          "A weight that is too heavy.",
+          "Not lowering fully."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dumbbell-curl", "weight_ratio": null, "priority": 10 },
+      { "slug": "cable-curl", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-80e020dba179",
+    "slug": "ez-bar-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["ez_bar"],
+    "translations": {
+      "ru": {
+        "name": "Подъём EZ-грифа на бицепс",
+        "aliases": ["сгибания с изогнутым грифом", "бицепс с ez-грифом"],
+        "description": "Сгибание рук с изогнутым грифом: меньше нагрузки на запястья, чем с прямой штангой.",
+        "technique_steps": [
+          "Возьмите EZ-гриф за изгибы хватом снизу.",
+          "Локти прижаты к корпусу, спина прямая.",
+          "Поднимите гриф к груди.",
+          "Опустите медленно до прямых рук."
+        ],
+        "common_mistakes": [
+          "Раскачивание корпусом.",
+          "Подъём локтей вперёд.",
+          "Неполная амплитуда."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "EZ-bar curl",
+        "aliases": ["ez curl", "ez bar biceps curl"],
+        "description": "Curling with a cambered bar: less strain on the wrists than a straight bar.",
+        "technique_steps": [
+          "Grip the EZ bar on the bends with an underhand grip.",
+          "Elbows at the sides, back straight.",
+          "Curl the bar to the chest.",
+          "Lower slowly to straight arms."
+        ],
+        "common_mistakes": ["Swinging the body.", "Elbows drifting forward.", "Partial reps."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "barbell-curl", "weight_ratio": 1.0, "priority": 10 },
+      { "slug": "dumbbell-curl", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-86e6a093fc8f",
+    "slug": "preacher-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["ez_bar", "preacher_bench"],
+    "translations": {
+      "ru": {
+        "name": "Сгибание рук на скамье Скотта",
+        "aliases": ["скотт", "бицепс на скамье скотта", "сгибания на парте"],
+        "description": "Сгибание рук с упором плеч в скамью Скотта: бицепс без читинга.",
+        "technique_steps": [
+          "Сядьте, плечи лежат на подушке скамьи, EZ-гриф в руках хватом снизу.",
+          "Начните с почти прямых рук.",
+          "Согните руки, поднимая гриф к плечам.",
+          "Опустите медленно, не разгибая руки рывком в конце."
+        ],
+        "common_mistakes": [
+          "Отрыв плеч от подушки.",
+          "Падение веса в нижней точке.",
+          "Слишком тяжёлый вес."
+        ],
+        "warnings": ["Не бросайте вес внизу: нагрузка на локти."]
+      },
+      "en": {
+        "name": "Preacher curl",
+        "aliases": ["scott curl", "ez bar preacher curl"],
+        "description": "Curling with the upper arms on a preacher bench: the biceps without cheating.",
+        "technique_steps": [
+          "Sit with the upper arms on the pad, holding an EZ bar underhand.",
+          "Start with the arms nearly straight.",
+          "Curl the bar towards the shoulders.",
+          "Lower slowly without snapping straight at the end."
+        ],
+        "common_mistakes": [
+          "Lifting the arms off the pad.",
+          "Dropping the weight at the bottom.",
+          "Going too heavy."
+        ],
+        "warnings": ["Do not drop the weight at the bottom: it strains the elbows."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "ez-bar-curl", "weight_ratio": null, "priority": 10 },
+      { "slug": "cable-curl", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-88c2beb388c2",
+    "slug": "concentration-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["dumbbells", "flat_bench"],
+    "translations": {
+      "ru": {
+        "name": "Концентрированный подъём на бицепс",
+        "aliases": ["концентрированные сгибания", "сгибание с упором в бедро"],
+        "description": "Сгибание одной руки сидя с упором локтя в бедро: изоляция бицепса.",
+        "technique_steps": [
+          "Сядьте на край скамьи, локоть рабочей руки упирается во внутреннюю часть бедра.",
+          "Рука с гантелью выпрямлена вниз.",
+          "Согните руку к плечу, локоть неподвижен.",
+          "Опустите медленно; сделайте все повторения и смените руку."
+        ],
+        "common_mistakes": ["Помощь корпусом.", "Локоть съезжает с бедра.", "Неполное разгибание."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Concentration curl",
+        "aliases": ["seated concentration curl"],
+        "description": "Curling one arm seated with the elbow against the thigh: biceps isolation.",
+        "technique_steps": [
+          "Sit on the edge of a bench with the working elbow on the inside of the thigh.",
+          "Let the arm with the dumbbell hang straight.",
+          "Curl to the shoulder, keeping the elbow still.",
+          "Lower slowly; do all reps, then switch arms."
+        ],
+        "common_mistakes": [
+          "Helping with the body.",
+          "The elbow sliding off the thigh.",
+          "Not straightening fully."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dumbbell-curl", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-8f8abec623cd",
+    "slug": "cable-hammer-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["biceps", "forearms"],
+    "secondary_muscles": [],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {
+        "name": "Молотковые сгибания с канатом на нижнем блоке",
+        "aliases": ["молотки на блоке", "сгибания с канатом"],
+        "description": "Сгибание рук с канатом нижнего блока хватом «молот»: плечевая мышца и предплечья.",
+        "technique_steps": [
+          "Прикрепите канат к нижнему блоку, возьмитесь нейтральным хватом.",
+          "Локти прижаты к корпусу.",
+          "Согните руки, поднимая канат к груди.",
+          "Медленно опустите."
+        ],
+        "common_mistakes": ["Раскачивание.", "Локти вперёд.", "Неполное разгибание."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Cable rope hammer curl",
+        "aliases": ["cable hammer curl", "rope hammer curl"],
+        "description": "Curling a rope on a low pulley with a hammer grip: the brachialis and the forearms.",
+        "technique_steps": [
+          "Attach a rope to a low pulley and hold it with a neutral grip.",
+          "Elbows at the sides.",
+          "Curl the rope to the chest.",
+          "Lower slowly."
+        ],
+        "common_mistakes": ["Swinging.", "Elbows forward.", "Not straightening fully."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dumbbell-hammer-curl", "weight_ratio": null, "priority": 10 },
+      { "slug": "cable-curl", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-91c829835642",
+    "slug": "reverse-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["forearms"],
+    "secondary_muscles": ["biceps"],
+    "equipment": ["ez_bar"],
+    "translations": {
+      "ru": {
+        "name": "Сгибание рук обратным хватом",
+        "aliases": ["бицепс обратным хватом", "обратные сгибания"],
+        "description": "Сгибание рук с EZ-грифом хватом сверху: плечелучевая мышца и предплечья.",
+        "technique_steps": [
+          "Возьмите EZ-гриф хватом сверху на ширине плеч.",
+          "Локти прижаты к корпусу, запястья прямые.",
+          "Поднимите гриф к груди.",
+          "Опустите медленно."
+        ],
+        "common_mistakes": [
+          "Провисание запястий.",
+          "Раскачивание корпусом.",
+          "Слишком тяжёлый вес."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Reverse curl",
+        "aliases": ["reverse grip curl", "ez bar reverse curl"],
+        "description": "Curling an EZ bar with an overhand grip: the brachioradialis and the forearms.",
+        "technique_steps": [
+          "Grip the EZ bar overhand at shoulder width.",
+          "Elbows at the sides, wrists straight.",
+          "Curl the bar to the chest.",
+          "Lower slowly."
+        ],
+        "common_mistakes": [
+          "Bending the wrists.",
+          "Swinging the body.",
+          "A weight that is too heavy."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dumbbell-hammer-curl", "weight_ratio": null, "priority": 10 },
+      { "slug": "cable-hammer-curl", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-94340db41c68",
+    "slug": "band-curl",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["resistance_band"],
+    "translations": {
+      "ru": {
+        "name": "Сгибание рук с резиной",
+        "aliases": ["бицепс с эспандером", "сгибания с резинкой"],
+        "description": "Сгибание рук с лентой под стопами: бицепс дома, нагрузка растёт к верхней точке.",
+        "technique_steps": [
+          "Встаньте на середину ленты, концы в руках хватом снизу.",
+          "Локти прижаты к корпусу.",
+          "Согните руки к плечам.",
+          "Медленно опустите."
+        ],
+        "common_mistakes": [
+          "Локти уходят вперёд.",
+          "Рывки.",
+          "Слишком слабая лента – слишком много повторений."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Band curl",
+        "aliases": ["resistance band curl", "banded biceps curl"],
+        "description": "Curling with a band under the feet: the biceps at home, with the load growing towards the top.",
+        "technique_steps": [
+          "Stand on the middle of the band, ends in the hands underhand.",
+          "Elbows at the sides.",
+          "Curl to the shoulders.",
+          "Lower slowly."
+        ],
+        "common_mistakes": [
+          "Elbows moving forward.",
+          "Jerking.",
+          "A band so light that the reps go on forever."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dumbbell-curl", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-9a453c09bb37",
+    "slug": "overhead-dumbbell-triceps-extension",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": [],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {
+        "name": "Французский жим гантели из-за головы",
+        "aliases": ["разгибание гантели из-за головы", "французский жим сидя с гантелью"],
+        "description": "Разгибание рук с одной гантелью над головой: длинная головка трицепса в растянутом положении.",
+        "technique_steps": [
+          "Сядьте или встаньте, держите одну гантель двумя руками над головой.",
+          "Локти смотрят вперёд и чуть в стороны.",
+          "Опустите гантель за голову, сгибая локти.",
+          "Разогните руки вверх, не разводя локти широко."
+        ],
+        "common_mistakes": ["Локти широко в стороны.", "Прогиб в пояснице.", "Короткая амплитуда."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Overhead dumbbell triceps extension",
+        "aliases": ["dumbbell overhead extension", "seated dumbbell triceps extension"],
+        "description": "Extending the arms overhead with one dumbbell: the long head of the triceps in a stretched position.",
+        "technique_steps": [
+          "Sit or stand holding one dumbbell with both hands overhead.",
+          "Elbows point forward and slightly out.",
+          "Lower the dumbbell behind the head by bending the elbows.",
+          "Extend the arms up without flaring the elbows wide."
+        ],
+        "common_mistakes": ["Elbows flaring wide.", "Arching the lower back.", "A short range."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "overhead-cable-triceps-extension", "weight_ratio": null, "priority": 10 },
+      { "slug": "ez-bar-skull-crusher", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-9ffe29f13de6",
+    "slug": "overhead-cable-triceps-extension",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": [],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {
+        "name": "Разгибание рук с канатом из-за головы",
+        "aliases": ["французский жим на блоке", "разгибание из-за головы на блоке"],
+        "description": "Разгибание рук с канатом спиной к блоку: длинная головка трицепса под постоянной нагрузкой.",
+        "technique_steps": [
+          "Прикрепите канат к блоку, встаньте спиной к нему в разножку.",
+          "Канат за головой, локти направлены вперёд.",
+          "Разогните руки вперёд-вверх до прямых.",
+          "Медленно верните канат за голову."
+        ],
+        "common_mistakes": [
+          "Локти опускаются и работают как в жиме.",
+          "Наклон корпуса для помощи.",
+          "Неполная амплитуда."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Overhead cable triceps extension",
+        "aliases": ["cable overhead extension", "rope overhead extension"],
+        "description": "Extending the arms with a rope facing away from the pulley: the long head of the triceps under constant tension.",
+        "technique_steps": [
+          "Attach a rope to the pulley and stand with the back to it in a split stance.",
+          "Rope behind the head, elbows pointing forward.",
+          "Extend the arms forward and up until straight.",
+          "Bring the rope back behind the head slowly."
+        ],
+        "common_mistakes": [
+          "Dropping the elbows so it turns into a press.",
+          "Leaning to help.",
+          "Partial reps."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "overhead-dumbbell-triceps-extension", "weight_ratio": null, "priority": 10 },
+      { "slug": "cable-rope-pushdown", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-a3d8d3224ced",
+    "slug": "cable-bar-pushdown",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": [],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {
+        "name": "Разгибание рук на верхнем блоке с прямой рукоятью",
+        "aliases": ["разгибание на блоке", "жим вниз на блоке"],
+        "description": "Разгибание рук вниз с прямой рукоятью: позволяет брать больше веса, чем с канатом.",
+        "technique_steps": [
+          "Прикрепите прямую рукоять к верхнему блоку, хват сверху на ширине плеч.",
+          "Локти прижаты к корпусу.",
+          "Разогните руки вниз до полного выпрямления.",
+          "Медленно верните рукоять до уровня груди."
+        ],
+        "common_mistakes": [
+          "Локти ходят вперёд-назад.",
+          "Наклон корпуса и навал весом.",
+          "Неполное разгибание."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Cable bar pushdown",
+        "aliases": ["straight bar pushdown", "bar pushdown"],
+        "description": "Pushing a straight bar down on a high pulley: more weight than with a rope.",
+        "technique_steps": [
+          "Attach a straight bar to a high pulley and grip it overhand at shoulder width.",
+          "Elbows at the sides.",
+          "Push down until the arms are fully straight.",
+          "Let the bar back up to chest height slowly."
+        ],
+        "common_mistakes": [
+          "Elbows moving back and forth.",
+          "Leaning over the bar.",
+          "Not straightening fully."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "cable-rope-pushdown", "weight_ratio": null, "priority": 10 },
+      { "slug": "bench-dip", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-a545b90b2e13",
+    "slug": "dumbbell-skull-crusher",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": [],
+    "equipment": ["dumbbells", "flat_bench"],
+    "translations": {
+      "ru": {
+        "name": "Французский жим с гантелями лёжа",
+        "aliases": ["разгибание гантелей лёжа", "французский жим гантелей"],
+        "description": "Разгибание рук с гантелями лёжа: трицепс с нейтральным хватом, мягче для локтей.",
+        "technique_steps": [
+          "Лягте на скамью, гантели над плечами, ладони друг к другу.",
+          "Не меняя положения плеч, опустите гантели к вискам.",
+          "Разогните руки вверх.",
+          "Держите локти направленными в потолок."
+        ],
+        "common_mistakes": [
+          "Плечи ходят вперёд-назад.",
+          "Локти разъезжаются.",
+          "Слишком тяжёлый вес."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Dumbbell skull crusher",
+        "aliases": ["dumbbell lying triceps extension"],
+        "description": "Lying triceps extension with dumbbells: a neutral grip that is kinder to the elbows.",
+        "technique_steps": [
+          "Lie on the bench with the dumbbells above the shoulders, palms facing.",
+          "Without moving the upper arms, lower the dumbbells to the temples.",
+          "Extend the arms back up.",
+          "Keep the elbows pointing at the ceiling."
+        ],
+        "common_mistakes": ["The upper arms moving.", "Elbows flaring.", "Going too heavy."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "ez-bar-skull-crusher", "weight_ratio": null, "priority": 10 },
+      { "slug": "overhead-dumbbell-triceps-extension", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-aa7691e2a5b3",
+    "slug": "ez-bar-overhead-triceps-extension",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_extension",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": [],
+    "equipment": ["ez_bar", "adjustable_bench"],
+    "translations": {
+      "ru": {
+        "name": "Французский жим EZ-грифа сидя",
+        "aliases": ["французский жим сидя", "разгибание ez-грифа из-за головы"],
+        "description": "Разгибание рук с EZ-грифом из-за головы сидя: длинная головка трицепса с большим весом.",
+        "technique_steps": [
+          "Сядьте на скамью с вертикальной спинкой, гриф над головой узким хватом.",
+          "Локти направлены вперёд.",
+          "Опустите гриф за голову.",
+          "Разогните руки вверх."
+        ],
+        "common_mistakes": ["Локти широко в стороны.", "Прогиб поясницы.", "Опускание с рывком."],
+        "warnings": []
+      },
+      "en": {
+        "name": "EZ-bar overhead triceps extension",
+        "aliases": ["seated ez bar extension", "ez bar french press"],
+        "description": "Seated overhead extension with an EZ bar: the long head of the triceps with a heavier weight.",
+        "technique_steps": [
+          "Sit on an upright bench holding the bar overhead with a close grip.",
+          "Elbows point forward.",
+          "Lower the bar behind the head.",
+          "Extend the arms back up."
+        ],
+        "common_mistakes": ["Elbows flaring wide.", "Arching the lower back.", "Dropping fast."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "overhead-dumbbell-triceps-extension", "weight_ratio": null, "priority": 10 },
+      { "slug": "overhead-cable-triceps-extension", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-ad38286bfd05",
+    "slug": "bench-dip",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "elbow_extension",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": ["chest", "front_delts"],
+    "equipment": ["flat_bench"],
+    "translations": {
+      "ru": {
+        "name": "Обратные отжимания от скамьи",
+        "aliases": ["отжимания от скамьи сзади", "обратные отжимания"],
+        "description": "Отжимания спиной к скамье: трицепс с весом тела, подходит для дома.",
+        "technique_steps": [
+          "Сядьте на край скамьи, ладони рядом с тазом, пальцы вперёд.",
+          "Сместите таз вперёд со скамьи, ноги согнуты или прямые.",
+          "Опуститесь, сгибая локти до прямого угла.",
+          "Выжмите себя вверх."
+        ],
+        "common_mistakes": [
+          "Слишком глубокое опускание.",
+          "Локти разводятся в стороны.",
+          "Таз далеко от скамьи."
+        ],
+        "warnings": ["При болях в передней части плеча ограничьте глубину."]
+      },
+      "en": {
+        "name": "Bench dip",
+        "aliases": ["triceps bench dip"],
+        "description": "Dips with the back to a bench: the triceps with the body weight, good at home.",
+        "technique_steps": [
+          "Sit on the edge of a bench with the hands next to the hips, fingers forward.",
+          "Slide the hips off the bench with the legs bent or straight.",
+          "Lower yourself until the elbows are at right angles.",
+          "Push back up."
+        ],
+        "common_mistakes": ["Going too deep.", "Elbows flaring.", "Hips far from the bench."],
+        "warnings": ["With pain at the front of the shoulder keep it shallow."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "parallel-bar-dip", "weight_ratio": null, "priority": 10 },
+      { "slug": "diamond-push-up", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cdf-7533-8252-b230a5aeaa05",
+    "slug": "band-overhead-triceps-extension",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "elbow_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": [],
+    "equipment": ["resistance_band"],
+    "translations": {
+      "ru": {
+        "name": "Разгибание рук с резиной из-за головы",
+        "aliases": ["трицепс с эспандером", "французский жим с резинкой"],
+        "description": "Разгибание рук вверх с лентой, закреплённой под стопой: трицепс дома.",
+        "technique_steps": [
+          "Наступите на конец ленты задней ногой, второй конец держите за головой.",
+          "Локти направлены вверх.",
+          "Разогните руки над головой.",
+          "Медленно верните за голову."
+        ],
+        "common_mistakes": ["Локти широко в стороны.", "Прогиб в спине.", "Рывки."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Band overhead triceps extension",
+        "aliases": ["resistance band triceps extension"],
+        "description": "Extending the arms overhead with a band anchored under a foot: the triceps at home.",
+        "technique_steps": [
+          "Stand on one end of the band with the rear foot and hold the other end behind the head.",
+          "Elbows point up.",
+          "Extend the arms overhead.",
+          "Return slowly behind the head."
+        ],
+        "common_mistakes": ["Elbows flaring wide.", "Arching the back.", "Jerking."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "overhead-dumbbell-triceps-extension", "weight_ratio": null, "priority": 10 }
+    ]
   }
 ]

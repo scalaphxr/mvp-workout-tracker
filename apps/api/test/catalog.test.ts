@@ -158,7 +158,9 @@ describe('catalog import', () => {
     await importSeed(seed());
 
     const without = seed();
-    const removed = without.exercises.find((e) => e.slug === 'plank')!;
+    // One that no other exercise names as its alternative: the seed stays consistent without it.
+    const linked = new Set(without.exercises.flatMap((e) => e.alternatives.map((a) => a.slug)));
+    const removed = without.exercises.find((e) => !linked.has(e.slug))!;
     without.exercises = without.exercises.filter((e) => e !== removed);
     await importSeed(without);
 
@@ -239,7 +241,8 @@ describe('exercise search', () => {
   it('finds exercises by text in either language', async () => {
     const ru = await get<List>(`/v1/exercises?locale=ru&q=${encodeURIComponent('жим лежа')}`);
     const found = slugs(ru.body);
-    expect(found.slice(0, 2)).toEqual(['dumbbell-bench-press', 'barbell-bench-press']);
+    // The plain lifts come before their variants (one arm, on the floor, in a Smith machine).
+    expect(found.slice(0, 2).sort()).toEqual(['barbell-bench-press', 'dumbbell-bench-press']);
     // The leg press only has the alias «жим ногами лёжа», so it comes after every name match.
     expect(found.at(-1)).toBe('leg-press');
 

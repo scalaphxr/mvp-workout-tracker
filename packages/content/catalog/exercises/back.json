@@ -429,5 +429,927 @@
     },
     "media": [],
     "alternatives": []
+  },
+  {
+    "id": "01a1501b-4cd8-7276-9ba5-a314253d170b",
+    "slug": "chin-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats", "biceps"],
+    "secondary_muscles": ["upper_back", "forearms"],
+    "equipment": ["pull_up_bar"],
+    "translations": {
+      "ru": {
+        "name": "Подтягивания обратным хватом",
+        "aliases": ["подтягивания на бицепс", "подтягивания ладонями к себе"],
+        "description": "Подтягивания хватом ладонями к себе на ширине плеч: широчайшие и сильная работа бицепса.",
+        "technique_steps": [
+          "Возьмитесь за турник хватом снизу на ширине плеч, повисните на прямых руках.",
+          "Опустите плечи от ушей и напрягите пресс.",
+          "Подтянитесь, пока подбородок не окажется над перекладиной.",
+          "Опуститесь под контролем до прямых рук."
+        ],
+        "common_mistakes": [
+          "Раскачивание и рывки ногами.",
+          "Неполное опускание.",
+          "Подъём плеч к ушам."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Chin-up",
+        "aliases": ["underhand pull-up", "supinated pull-up"],
+        "description": "Pull-up with the palms facing you, shoulder-width apart: the lats and a lot of biceps work.",
+        "technique_steps": [
+          "Grip the bar underhand at shoulder width and hang with straight arms.",
+          "Pull the shoulders down away from the ears and brace the abs.",
+          "Pull up until the chin is over the bar.",
+          "Lower under control to straight arms."
+        ],
+        "common_mistakes": [
+          "Swinging and kicking.",
+          "Not lowering all the way.",
+          "Shrugging up to the ears."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "pull-up", "weight_ratio": null, "priority": 10 },
+      { "slug": "underhand-lat-pulldown", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-27a9d38cf20e",
+    "slug": "neutral-grip-pull-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats"],
+    "secondary_muscles": ["biceps", "upper_back", "forearms"],
+    "equipment": ["pull_up_bar"],
+    "translations": {
+      "ru": {
+        "name": "Подтягивания параллельным хватом",
+        "aliases": ["подтягивания нейтральным хватом", "подтягивания на параллельных рукоятях"],
+        "description": "Подтягивания с ладонями друг к другу: удобно для плеч и запястий, сильная нагрузка на широчайшие.",
+        "technique_steps": [
+          "Возьмитесь за параллельные рукояти турника, повисните на прямых руках.",
+          "Опустите плечи и слегка отведите грудь вперёд.",
+          "Подтянитесь до уровня рукоятей у верха груди.",
+          "Медленно опуститесь до прямых рук."
+        ],
+        "common_mistakes": ["Рывки корпусом.", "Неполная амплитуда.", "Шея тянется вперёд."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Neutral-grip pull-up",
+        "aliases": ["parallel grip pull-up", "hammer grip pull-up"],
+        "description": "Pull-up with the palms facing each other: kind to the shoulders and wrists, heavy work for the lats.",
+        "technique_steps": [
+          "Grip the parallel handles of the bar and hang with straight arms.",
+          "Pull the shoulders down and lift the chest slightly.",
+          "Pull up until the handles are at the top of the chest.",
+          "Lower slowly to straight arms."
+        ],
+        "common_mistakes": ["Jerking the body.", "Partial reps.", "Craning the neck."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "pull-up", "weight_ratio": null, "priority": 10 },
+      { "slug": "close-grip-lat-pulldown", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-2aba36528ec9",
+    "slug": "band-assisted-pull-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lats"],
+    "secondary_muscles": ["biceps", "upper_back"],
+    "equipment": ["pull_up_bar", "resistance_band"],
+    "translations": {
+      "ru": {
+        "name": "Подтягивания с резиной",
+        "aliases": ["подтягивания с помощью резинки", "подтягивания с эспандером"],
+        "description": "Подтягивания с упором колена или стопы в резиновую ленту: путь к первым подтягиваниям.",
+        "technique_steps": [
+          "Закрепите ленту на турнике и поставьте в петлю колено или стопу.",
+          "Возьмитесь за турник хватом чуть шире плеч.",
+          "Подтянитесь до подбородка над перекладиной.",
+          "Опуститесь медленно; со временем берите ленту слабее."
+        ],
+        "common_mistakes": [
+          "Отскок от резины внизу.",
+          "Неполная амплитуда.",
+          "Слишком сильная лента надолго."
+        ],
+        "warnings": ["Следите, чтобы лента не соскользнула со стопы."]
+      },
+      "en": {
+        "name": "Band-assisted pull-up",
+        "aliases": ["assisted pull-up with band", "banded pull-up"],
+        "description": "Pull-up with a knee or foot in a resistance band: the road to your first pull-ups.",
+        "technique_steps": [
+          "Loop the band over the bar and put a knee or a foot in it.",
+          "Grip the bar slightly wider than the shoulders.",
+          "Pull up until the chin is over the bar.",
+          "Lower slowly; over time use a lighter band."
+        ],
+        "common_mistakes": [
+          "Bouncing off the band at the bottom.",
+          "Partial reps.",
+          "Staying on a strong band for too long."
+        ],
+        "warnings": ["Make sure the band cannot slip off the foot."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "lat-pulldown", "weight_ratio": null, "priority": 10 },
+      { "slug": "pull-up", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-2c23ff322d36",
+    "slug": "close-grip-lat-pulldown",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lats"],
+    "secondary_muscles": ["biceps", "upper_back"],
+    "equipment": ["lat_pulldown_machine"],
+    "translations": {
+      "ru": {
+        "name": "Тяга верхнего блока узким хватом",
+        "aliases": ["тяга верхнего блока с v-рукоятью", "узкая тяга верхнего блока"],
+        "description": "Тяга верхнего блока параллельной рукоятью: большая амплитуда для широчайших.",
+        "technique_steps": [
+          "Прикрепите V-образную рукоять, сядьте и зафиксируйте бёдра под валиками.",
+          "Возьмитесь за рукоять, руки прямые, грудь слегка вперёд.",
+          "Потяните рукоять к верху груди, ведя локти вниз и назад.",
+          "Плавно верните рукоять вверх до полного вытяжения рук."
+        ],
+        "common_mistakes": [
+          "Отклонение корпуса далеко назад.",
+          "Тяга руками без участия спины.",
+          "Рывок в начале."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Close-grip lat pulldown",
+        "aliases": ["v-bar pulldown", "neutral grip pulldown"],
+        "description": "Lat pulldown with a close parallel handle: a long range of motion for the lats.",
+        "technique_steps": [
+          "Attach a V-handle, sit down and lock the thighs under the pads.",
+          "Hold the handle with straight arms and the chest slightly forward.",
+          "Pull the handle to the upper chest, driving the elbows down and back.",
+          "Let the handle go up smoothly until the arms are fully stretched."
+        ],
+        "common_mistakes": [
+          "Leaning far back.",
+          "Pulling with the arms instead of the back.",
+          "Jerking at the start."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "lat-pulldown", "weight_ratio": null, "priority": 10 },
+      { "slug": "neutral-grip-pull-up", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-30e3feecf212",
+    "slug": "underhand-lat-pulldown",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lats", "biceps"],
+    "secondary_muscles": ["upper_back"],
+    "equipment": ["lat_pulldown_machine"],
+    "translations": {
+      "ru": {
+        "name": "Тяга верхнего блока обратным хватом",
+        "aliases": ["тяга верхнего блока хватом снизу", "обратная тяга верхнего блока"],
+        "description": "Тяга верхнего блока хватом ладонями к себе на ширине плеч: широчайшие и бицепс, аналог подтягиваний обратным хватом.",
+        "technique_steps": [
+          "Возьмите гриф хватом снизу на ширине плеч, бёдра под валиками.",
+          "Слегка отклонитесь назад, грудь вперёд.",
+          "Потяните гриф к верху груди, локти идут вниз вдоль корпуса.",
+          "Верните гриф вверх под контролем."
+        ],
+        "common_mistakes": [
+          "Слишком широкий хват.",
+          "Раскачивание.",
+          "Неполное выпрямление рук вверху."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Underhand lat pulldown",
+        "aliases": ["reverse grip lat pulldown", "supinated pulldown"],
+        "description": "Lat pulldown with the palms facing you at shoulder width: lats and biceps, like a chin-up on a machine.",
+        "technique_steps": [
+          "Grip the bar underhand at shoulder width with the thighs under the pads.",
+          "Lean back slightly with the chest up.",
+          "Pull the bar to the upper chest with the elbows down along the body.",
+          "Let the bar back up under control."
+        ],
+        "common_mistakes": [
+          "A grip that is too wide.",
+          "Swinging.",
+          "Not straightening the arms at the top."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "chin-up", "weight_ratio": null, "priority": 10 },
+      { "slug": "lat-pulldown", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-37d8c36a759e",
+    "slug": "straight-arm-pulldown",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats"],
+    "secondary_muscles": ["triceps", "rear_delts"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {
+        "name": "Пуловер на верхнем блоке прямыми руками",
+        "aliases": ["тяга прямыми руками на блоке", "пуловер на блоке стоя"],
+        "description": "Опускание рукояти от верхнего блока к бёдрам прямыми руками: изоляция широчайших без бицепса.",
+        "technique_steps": [
+          "Прикрепите прямую рукоять или канат к верхнему блоку, отступите на шаг.",
+          "Наклонитесь вперёд на 20–30°, руки почти прямые.",
+          "Опустите рукоять по дуге к бёдрам за счёт спины.",
+          "Плавно верните руки вверх до растяжения широчайших."
+        ],
+        "common_mistakes": [
+          "Сгибание локтей – превращается в разгибание на трицепс.",
+          "Раскачивание корпусом.",
+          "Подъём плеч к ушам."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Straight-arm pulldown",
+        "aliases": ["straight arm lat pulldown", "cable pullover"],
+        "description": "Bringing the handle down from a high pulley to the thighs with straight arms: lat isolation without the biceps.",
+        "technique_steps": [
+          "Attach a straight bar or a rope to a high pulley and step back.",
+          "Lean forward 20–30° with the arms almost straight.",
+          "Bring the handle down along an arc to the thighs with the back.",
+          "Let the arms up smoothly until the lats stretch."
+        ],
+        "common_mistakes": [
+          "Bending the elbows so it becomes a triceps pushdown.",
+          "Swinging the body.",
+          "Shrugging the shoulders."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dumbbell-pullover", "weight_ratio": null, "priority": 10 },
+      { "slug": "lat-pulldown", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-3984cca18f16",
+    "slug": "dumbbell-pullover",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats", "chest"],
+    "secondary_muscles": ["triceps"],
+    "equipment": ["dumbbells", "flat_bench"],
+    "translations": {
+      "ru": {
+        "name": "Пуловер с гантелью лёжа",
+        "aliases": ["пуловер", "пуловер с гантелью"],
+        "description": "Опускание гантели за голову прямыми руками лёжа: широчайшие и грудь в растянутом положении.",
+        "technique_steps": [
+          "Лягте на скамью, держите одну гантель двумя руками над грудью.",
+          "Слегка согните локти и зафиксируйте угол.",
+          "Опустите гантель по дуге за голову до растяжения.",
+          "Верните гантель над грудью тем же путём."
+        ],
+        "common_mistakes": [
+          "Сгибание и разгибание локтей.",
+          "Прогиб в пояснице.",
+          "Слишком тяжёлая гантель."
+        ],
+        "warnings": ["При проблемах с плечами работайте в комфортной амплитуде."]
+      },
+      "en": {
+        "name": "Dumbbell pullover",
+        "aliases": ["pullover"],
+        "description": "Lowering a dumbbell behind the head with straight arms while lying: the lats and chest in a stretched position.",
+        "technique_steps": [
+          "Lie on the bench holding one dumbbell with both hands above the chest.",
+          "Bend the elbows slightly and keep the angle.",
+          "Lower the dumbbell along an arc behind the head until a stretch.",
+          "Bring it back above the chest the same way."
+        ],
+        "common_mistakes": [
+          "Bending and straightening the elbows.",
+          "Arching the lower back.",
+          "A dumbbell that is too heavy."
+        ],
+        "warnings": ["With shoulder trouble keep to a comfortable range."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "straight-arm-pulldown", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-3d9c71910769",
+    "slug": "chest-supported-dumbbell-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["upper_back", "lats"],
+    "secondary_muscles": ["rear_delts", "biceps"],
+    "equipment": ["dumbbells", "adjustable_bench"],
+    "translations": {
+      "ru": {
+        "name": "Тяга гантелей лёжа на наклонной скамье",
+        "aliases": ["тяга гантелей с упором грудью", "тяга лёжа на скамье"],
+        "description": "Тяга гантелей лёжа грудью на наклонной скамье: спина без нагрузки на поясницу и без читинга.",
+        "technique_steps": [
+          "Установите скамью под 30–45°, лягте на неё грудью, гантели в опущенных руках.",
+          "Сведите лопатки, шея нейтральна.",
+          "Подтяните гантели к поясу, ведя локти назад.",
+          "Опустите гантели до полного выпрямления рук."
+        ],
+        "common_mistakes": ["Отрыв груди от скамьи.", "Тяга только руками.", "Подъём плеч к ушам."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Chest-supported dumbbell row",
+        "aliases": ["incline dumbbell row", "chest supported row"],
+        "description": "Dumbbell row lying chest down on an incline bench: the back works without loading the lower back and without cheating.",
+        "technique_steps": [
+          "Set the bench to 30–45°, lie chest down with the dumbbells hanging.",
+          "Set the shoulder blades and keep the neck neutral.",
+          "Row the dumbbells to the waist, driving the elbows back.",
+          "Lower until the arms are straight."
+        ],
+        "common_mistakes": [
+          "Lifting the chest off the bench.",
+          "Pulling only with the arms.",
+          "Shrugging up."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "one-arm-dumbbell-row", "weight_ratio": null, "priority": 10 },
+      { "slug": "seated-cable-row", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-43b3514f509a",
+    "slug": "inverted-row",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["upper_back", "lats"],
+    "secondary_muscles": ["biceps", "rear_delts"],
+    "equipment": ["barbell", "rack"],
+    "translations": {
+      "ru": {
+        "name": "Горизонтальные подтягивания",
+        "aliases": ["австралийские подтягивания", "подтягивания в висе лёжа"],
+        "description": "Подтягивание к перекладине, установленной на уровне пояса: тяга с собственным весом для любого уровня.",
+        "technique_steps": [
+          "Установите гриф в раме или тренажёре Смита на высоте пояса.",
+          "Повисните под ним на прямых руках, тело прямое, пятки на полу.",
+          "Подтяните грудь к перекладине, сводя лопатки.",
+          "Опуститесь до прямых рук; чтобы облегчить, согните колени."
+        ],
+        "common_mistakes": ["Провис таза.", "Тяга подбородком вперёд.", "Неполная амплитуда."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Inverted row",
+        "aliases": ["australian pull-up", "bodyweight row"],
+        "description": "Pulling yourself up to a bar set at waist height: a bodyweight row for any level.",
+        "technique_steps": [
+          "Set a bar in a rack or a Smith machine at waist height.",
+          "Hang under it with straight arms, body straight, heels on the floor.",
+          "Pull the chest to the bar, squeezing the shoulder blades.",
+          "Lower to straight arms; bend the knees to make it easier."
+        ],
+        "common_mistakes": ["Sagging hips.", "Leading with the chin.", "Partial reps."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "seated-cable-row", "weight_ratio": null, "priority": 10 },
+      { "slug": "one-arm-dumbbell-row", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-47c0650908c9",
+    "slug": "single-arm-cable-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["lats", "upper_back"],
+    "secondary_muscles": ["biceps", "rear_delts"],
+    "equipment": ["seated_row_machine"],
+    "translations": {
+      "ru": {
+        "name": "Тяга нижнего блока одной рукой",
+        "aliases": ["односторонняя тяга нижнего блока", "тяга блока одной рукой сидя"],
+        "description": "Тяга нижнего блока одной рукой: большая амплитуда и равномерное развитие сторон спины.",
+        "technique_steps": [
+          "Прикрепите одиночную рукоять, сядьте и упритесь стопами.",
+          "Возьмите рукоять одной рукой, спина прямая.",
+          "Потяните рукоять к поясу, локоть идёт назад вдоль корпуса.",
+          "Плавно верните руку вперёд, позволяя лопатке выйти вперёд."
+        ],
+        "common_mistakes": [
+          "Скручивание корпуса для рывка.",
+          "Округление спины.",
+          "Тяга к груди вместо пояса."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Single-arm cable row",
+        "aliases": ["one arm seated cable row", "single arm low row"],
+        "description": "Seated cable row with one arm: a long range and even development of both sides of the back.",
+        "technique_steps": [
+          "Attach a single handle, sit down and brace the feet.",
+          "Hold the handle with one hand and keep the back straight.",
+          "Row the handle to the waist with the elbow going back along the body.",
+          "Let the arm forward smoothly, allowing the shoulder blade to move."
+        ],
+        "common_mistakes": [
+          "Twisting the body to jerk the weight.",
+          "Rounding the back.",
+          "Rowing to the chest instead of the waist."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "seated-cable-row", "weight_ratio": null, "priority": 10 },
+      { "slug": "one-arm-dumbbell-row", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-4a7423af01b4",
+    "slug": "wide-grip-cable-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["upper_back", "rear_delts"],
+    "secondary_muscles": ["lats", "biceps"],
+    "equipment": ["seated_row_machine"],
+    "translations": {
+      "ru": {
+        "name": "Тяга нижнего блока широким хватом",
+        "aliases": ["тяга нижнего блока к груди широким хватом", "широкая тяга блока сидя"],
+        "description": "Тяга нижнего блока прямой рукоятью широким хватом к низу груди: акцент на верх спины и задние дельты.",
+        "technique_steps": [
+          "Прикрепите длинную прямую рукоять, возьмитесь широким хватом.",
+          "Сядьте прямо, стопы упираются, колени слегка согнуты.",
+          "Потяните рукоять к низу груди, локти разведены в стороны.",
+          "Верните руки вперёд под контролем."
+        ],
+        "common_mistakes": [
+          "Отклонение корпуса назад для рывка.",
+          "Подъём плеч к ушам.",
+          "Округление спины."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Wide-grip cable row",
+        "aliases": ["wide grip seated row"],
+        "description": "Seated cable row with a long bar and a wide grip to the lower chest: the upper back and rear delts.",
+        "technique_steps": [
+          "Attach a long straight bar and take a wide grip.",
+          "Sit tall with the feet braced and the knees slightly bent.",
+          "Row the bar to the lower chest with the elbows out to the sides.",
+          "Let the arms forward under control."
+        ],
+        "common_mistakes": [
+          "Leaning back to jerk the weight.",
+          "Shrugging up.",
+          "Rounding the back."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "seated-cable-row", "weight_ratio": null, "priority": 10 },
+      { "slug": "reverse-pec-deck-fly", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-4d47079d63d3",
+    "slug": "pendlay-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["upper_back", "lats"],
+    "secondary_muscles": ["rear_delts", "biceps", "lower_back"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {
+        "name": "Тяга Пендлея",
+        "aliases": ["тяга штанги с пола в наклоне", "пендлей"],
+        "description": "Тяга штанги в наклоне с пола, корпус параллелен полу: каждое повторение начинается из мёртвой точки.",
+        "technique_steps": [
+          "Встаньте над штангой, наклонитесь до параллели корпуса с полом, спина прямая.",
+          "Возьмите гриф чуть шире плеч.",
+          "Резко подтяните штангу к низу груди, не поднимая корпус.",
+          "Опустите штангу на пол и начните следующее повторение с паузы."
+        ],
+        "common_mistakes": [
+          "Подъём корпуса во время тяги.",
+          "Округлённая спина.",
+          "Отбив штанги от пола."
+        ],
+        "warnings": ["При болях в пояснице выбирайте тягу с упором грудью."]
+      },
+      "en": {
+        "name": "Pendlay row",
+        "aliases": ["dead stop barbell row"],
+        "description": "Bent-over barbell row from the floor with the torso parallel to it: every rep starts from a dead stop.",
+        "technique_steps": [
+          "Stand over the bar and hinge until the torso is parallel to the floor, back flat.",
+          "Grip the bar slightly wider than the shoulders.",
+          "Pull the bar explosively to the lower chest without raising the torso.",
+          "Put the bar down on the floor and start the next rep from a pause."
+        ],
+        "common_mistakes": [
+          "Raising the torso as you pull.",
+          "A rounded back.",
+          "Bouncing the bar off the floor."
+        ],
+        "warnings": ["With lower back pain choose a chest-supported row."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "barbell-bent-over-row", "weight_ratio": 1.0, "priority": 10 },
+      { "slug": "t-bar-row", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-51c3ee9529d9",
+    "slug": "smith-machine-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["upper_back", "lats"],
+    "secondary_muscles": ["biceps", "rear_delts"],
+    "equipment": ["smith_machine"],
+    "translations": {
+      "ru": {
+        "name": "Тяга в наклоне в тренажёре Смита",
+        "aliases": ["тяга в смите", "тяга смита в наклоне"],
+        "description": "Тяга грифа к поясу в наклоне в тренажёре Смита: траектория зафиксирована, проще держать технику.",
+        "technique_steps": [
+          "Установите гриф на уровне колен, встаньте вплотную.",
+          "Наклонитесь до 45°, спина прямая, возьмитесь чуть шире плеч.",
+          "Снимите гриф и подтяните его к поясу, сводя лопатки.",
+          "Опустите до прямых рук, сохраняя наклон."
+        ],
+        "common_mistakes": ["Округление спины.", "Подъём корпуса.", "Рывки весом."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Smith machine row",
+        "aliases": ["smith bent-over row"],
+        "description": "Bent-over row to the waist in a Smith machine: a fixed path makes the technique easier to keep.",
+        "technique_steps": [
+          "Set the bar at knee height and stand close to it.",
+          "Hinge to 45° with a flat back and grip slightly wider than the shoulders.",
+          "Unrack and row the bar to the waist, squeezing the shoulder blades.",
+          "Lower to straight arms, keeping the hinge."
+        ],
+        "common_mistakes": ["Rounding the back.", "Raising the torso.", "Jerking the weight."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "barbell-bent-over-row", "weight_ratio": 1.0, "priority": 10 },
+      { "slug": "seated-cable-row", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-5467a44f818a",
+    "slug": "rack-pull",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["upper_back", "lower_back"],
+    "secondary_muscles": ["glutes", "hamstrings", "traps", "forearms"],
+    "equipment": ["barbell", "rack"],
+    "translations": {
+      "ru": {
+        "name": "Тяга с плинтов",
+        "aliases": ["тяга из рамы", "частичная становая тяга", "рэк-пулл"],
+        "description": "Становая тяга с упоров на уровне колен: тяжёлая нагрузка на верх спины и трапеции при короткой амплитуде.",
+        "technique_steps": [
+          "Установите гриф на упоры рамы чуть ниже колен.",
+          "Встаньте вплотную, возьмитесь хватом на ширине плеч, спина прямая.",
+          "Выпрямитесь, толкая таз вперёд, плечи отведены назад.",
+          "Опустите штангу на упоры под контролем."
+        ],
+        "common_mistakes": [
+          "Округление спины.",
+          "Отклонение назад в верхней точке.",
+          "Рывок руками."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Rack pull",
+        "aliases": ["rack deadlift", "block pull"],
+        "description": "Deadlift from pins at knee height: heavy work for the upper back and traps in a short range.",
+        "technique_steps": [
+          "Set the bar on the rack pins just below the knees.",
+          "Stand close, grip at shoulder width with a flat back.",
+          "Stand up by driving the hips forward with the shoulders back.",
+          "Lower the bar to the pins under control."
+        ],
+        "common_mistakes": [
+          "Rounding the back.",
+          "Leaning back at the top.",
+          "Yanking with the arms."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "conventional-deadlift", "weight_ratio": null, "priority": 10 },
+      { "slug": "barbell-shrug", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-59de64e3062b",
+    "slug": "good-morning",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["hamstrings", "lower_back"],
+    "secondary_muscles": ["glutes"],
+    "equipment": ["barbell", "rack"],
+    "translations": {
+      "ru": {
+        "name": "Наклоны со штангой на плечах",
+        "aliases": ["гуд морнинг", "доброе утро"],
+        "description": "Наклон корпуса вперёд со штангой на плечах: задняя поверхность бедра и разгибатели спины.",
+        "technique_steps": [
+          "Положите штангу на верх трапеций, как для приседа.",
+          "Слегка согните колени, спина прямая.",
+          "Отведите таз назад и наклонитесь почти до параллели корпуса с полом.",
+          "Вернитесь в стойку, толкая таз вперёд."
+        ],
+        "common_mistakes": [
+          "Округление спины.",
+          "Сгибание коленей в присед.",
+          "Слишком тяжёлый вес сразу."
+        ],
+        "warnings": ["Начинайте с пустого грифа: упражнение сильно нагружает поясницу."]
+      },
+      "en": {
+        "name": "Good morning",
+        "aliases": ["barbell good morning"],
+        "description": "Hinging forward with a bar on the shoulders: the hamstrings and the spinal erectors.",
+        "technique_steps": [
+          "Put the bar on the upper traps as for a squat.",
+          "Bend the knees slightly with a flat back.",
+          "Push the hips back and hinge until the torso is nearly parallel to the floor.",
+          "Return to standing by driving the hips forward."
+        ],
+        "common_mistakes": [
+          "Rounding the back.",
+          "Bending the knees into a squat.",
+          "Going heavy too soon."
+        ],
+        "warnings": ["Start with an empty bar: it loads the lower back a lot."]
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "romanian-deadlift", "weight_ratio": null, "priority": 10 },
+      { "slug": "back-extension", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-5da8478762bc",
+    "slug": "barbell-shrug",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "shrug",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["traps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {
+        "name": "Шраги со штангой",
+        "aliases": ["шраги", "подъём плеч со штангой"],
+        "description": "Подъём плеч вверх со штангой в опущенных руках: прямая нагрузка на трапеции.",
+        "technique_steps": [
+          "Возьмите штангу хватом на ширине плеч, встаньте прямо.",
+          "Руки прямые, шея нейтральна.",
+          "Поднимите плечи как можно выше к ушам.",
+          "Задержитесь на секунду и медленно опустите."
+        ],
+        "common_mistakes": ["Вращение плечами.", "Сгибание рук.", "Наклон головы вперёд."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Barbell shrug",
+        "aliases": ["shrug", "barbell shoulder shrug"],
+        "description": "Lifting the shoulders up with a bar in the hands: direct work for the traps.",
+        "technique_steps": [
+          "Hold the bar at shoulder width and stand tall.",
+          "Keep the arms straight and the neck neutral.",
+          "Raise the shoulders as high towards the ears as you can.",
+          "Hold for a second and lower slowly."
+        ],
+        "common_mistakes": [
+          "Rolling the shoulders.",
+          "Bending the arms.",
+          "Pushing the head forward."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "dumbbell-shrug", "weight_ratio": null, "priority": 10 },
+      { "slug": "rack-pull", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-626ed3aa658f",
+    "slug": "dumbbell-shrug",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "shrug",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["traps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {
+        "name": "Шраги с гантелями",
+        "aliases": ["подъём плеч с гантелями"],
+        "description": "Подъём плеч с гантелями в опущенных руках: трапеции со свободной траекторией.",
+        "technique_steps": [
+          "Встаньте прямо, гантели по бокам, ладони к корпусу.",
+          "Поднимите плечи вертикально вверх.",
+          "Задержитесь на секунду в верхней точке.",
+          "Медленно опустите."
+        ],
+        "common_mistakes": ["Вращение плечами.", "Рывки корпусом.", "Неполная амплитуда."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Dumbbell shrug",
+        "aliases": ["dumbbell shoulder shrug"],
+        "description": "Lifting the shoulders with dumbbells in the hands: the traps with a free path.",
+        "technique_steps": [
+          "Stand tall with the dumbbells at the sides, palms in.",
+          "Raise the shoulders straight up.",
+          "Hold for a second at the top.",
+          "Lower slowly."
+        ],
+        "common_mistakes": ["Rolling the shoulders.", "Jerking with the body.", "Partial reps."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "barbell-shrug", "weight_ratio": null, "priority": 10 }
+    ]
+  },
+  {
+    "id": "01a1501b-4cd9-745a-843a-6728a54de0a5",
+    "slug": "band-pull-apart",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "rear_delt",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["rear_delts", "upper_back"],
+    "secondary_muscles": ["traps"],
+    "equipment": ["resistance_band"],
+    "translations": {
+      "ru": {
+        "name": "Разведение резины перед собой",
+        "aliases": ["растягивание эспандера", "пул-апарт с резиной"],
+        "description": "Растягивание ленты прямыми руками перед грудью: задние дельты и мышцы между лопатками, здоровье плеч.",
+        "technique_steps": [
+          "Возьмите ленту хватом на ширине плеч, руки прямые перед собой на уровне груди.",
+          "Разведите руки в стороны до касания лентой груди.",
+          "Сведите лопатки в конечной точке.",
+          "Плавно верните руки."
+        ],
+        "common_mistakes": ["Сгибание локтей.", "Прогиб в пояснице.", "Подъём плеч к ушам."],
+        "warnings": []
+      },
+      "en": {
+        "name": "Band pull-apart",
+        "aliases": ["resistance band pull apart"],
+        "description": "Pulling a band apart with straight arms in front of the chest: the rear delts and the muscles between the shoulder blades, good for the shoulders.",
+        "technique_steps": [
+          "Hold the band at shoulder width with straight arms in front of the chest.",
+          "Pull the arms apart until the band touches the chest.",
+          "Squeeze the shoulder blades at the end.",
+          "Bring the arms back smoothly."
+        ],
+        "common_mistakes": ["Bending the elbows.", "Arching the lower back.", "Shrugging."],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "cable-face-pull", "weight_ratio": null, "priority": 10 },
+      { "slug": "dumbbell-reverse-fly", "weight_ratio": null, "priority": 10 }
+    ]
   }
 ]

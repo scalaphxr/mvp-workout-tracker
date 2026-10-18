@@ -76,9 +76,10 @@ describe('searchExercises', () => {
   });
 
   it('matches word prefixes in any order, ignoring case and «ё»', () => {
+    // Both names match; the shorter one, «Жим штанги лёжа», comes first.
     expect(slugs(searchExercises(all, { query: 'лежа ЖИМ' }, 'ru'))).toEqual([
-      'dumbbell-bench-press',
       'barbell-bench-press',
+      'dumbbell-bench-press',
     ]);
     expect(slugs(searchExercises(all, { query: 'жим шт' }, 'ru'))).toEqual(['barbell-bench-press']);
   });

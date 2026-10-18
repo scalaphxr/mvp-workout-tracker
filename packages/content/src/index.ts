@@ -7,6 +7,7 @@ import chest from '../catalog/exercises/chest.json';
 import coreCardio from '../catalog/exercises/core-cardio.json';
 import isolation from '../catalog/exercises/isolation.json';
 import legs from '../catalog/exercises/legs.json';
+import mobility from '../catalog/exercises/mobility.json';
 import shouldersArms from '../catalog/exercises/shoulders-arms.json';
 import muscles from '../catalog/muscles.json';
 
@@ -26,6 +27,7 @@ export const catalogSeed = {
     ...legs,
     ...bodyweight,
     ...coreCardio,
+    ...mobility,
   ],
 } as CatalogSeed;
 

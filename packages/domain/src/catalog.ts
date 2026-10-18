@@ -97,7 +97,8 @@ function matchRank(exercise: Exercise, queryWords: readonly string[], locale: Lo
 
 /**
  * The library search, the same on the phone and on the server. Results are ordered by how well
- * the name matches, then alphabetically in the user's language.
+ * the name matches; for a query the shorter name comes first – the plain exercise before its
+ * variants («Жим штанги лёжа» before «Жим штанги лёжа узким хватом») – then alphabetically.
  */
 export function searchExercises(
   exercises: readonly Exercise[],
@@ -131,6 +132,10 @@ export function searchExercises(
     .sort(
       (a, b) =>
         a.rank - b.rank ||
+        // Without a query the library is simply alphabetical.
+        (queryWords.length > 0
+          ? a.exercise.translations[locale].name.length - b.exercise.translations[locale].name.length
+          : 0) ||
         a.exercise.translations[locale].name.localeCompare(
           b.exercise.translations[locale].name,
           locale,

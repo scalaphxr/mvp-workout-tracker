@@ -16,6 +16,9 @@ const FIELDS_BY_EQUIPMENT: Record<string, readonly CardioField[]> = {
   elliptical: ['distance_m', 'resistance_level', 'avg_hr', 'calories'],
   rowing_machine: ['distance_m', 'resistance_level', 'avg_hr', 'calories'],
   jump_rope: ['avg_hr', 'calories'],
+  stair_climber: ['resistance_level', 'avg_hr', 'calories'],
+  ski_erg: ['distance_m', 'resistance_level', 'avg_hr', 'calories'],
+  air_bike: ['distance_m', 'avg_hr', 'calories'],
 };
 const DEFAULT_FIELDS: readonly CardioField[] = ['distance_m', 'avg_hr', 'calories'];
 
