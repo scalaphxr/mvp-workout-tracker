@@ -7,7 +7,7 @@ import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, TextInput } fro
 
 import { Button } from '@/components/button';
 import { ThemedText } from '@/components/themed-text';
-import { MaxContentWidth, Spacing } from '@/constants/theme';
+import { MaxContentWidth, Radius, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 import { currentLanguage } from '@/i18n';
 import { api, ApiRequestError } from '@/lib/api';
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
   input: {
     minHeight: 56,
     paddingHorizontal: Spacing.three,
-    borderRadius: Spacing.three,
+    borderRadius: Radius.card,
     fontSize: 18,
   },
   codeInput: {

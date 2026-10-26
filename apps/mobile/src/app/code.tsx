@@ -11,7 +11,7 @@ import { Chip } from '@/components/chip';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Group, Screen, TextField } from '@/components/ui';
-import { Spacing } from '@/constants/theme';
+import { Radius, Spacing } from '@/constants/theme';
 import { listGymProfiles } from '@/data/gym';
 import { applyPulled } from '@/data/sync';
 import { useLocale } from '@/hooks/use-locale';
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
     fontWeight: 700,
   },
   day: {
-    borderRadius: Spacing.three,
+    borderRadius: Radius.card,
     padding: Spacing.three,
     gap: Spacing.two,
   },

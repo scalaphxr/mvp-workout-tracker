@@ -8,7 +8,7 @@ import { Button } from '@/components/button';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Card, Group, LinkRow, Screen } from '@/components/ui';
-import { Spacing } from '@/constants/theme';
+import { Radius, Spacing } from '@/constants/theme';
 import { listIntervalPresets } from '@/data/intervals';
 import { useTheme } from '@/hooks/use-theme';
 import { planSummary, useIntervalTimer } from '@/lib/interval-timer';
@@ -99,7 +99,7 @@ export default function IntervalPresetsScreen() {
 const styles = StyleSheet.create({
   card: {
     padding: Spacing.three,
-    borderRadius: Spacing.three,
+    borderRadius: Radius.card,
     gap: Spacing.two,
   },
   row: {

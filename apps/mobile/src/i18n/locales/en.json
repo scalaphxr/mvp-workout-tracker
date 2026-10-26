@@ -35,7 +35,10 @@
     "resume": "Continue",
     "last": "Last workout",
     "volume": "Volume {{volume}}",
-    "duration": "Time {{duration}}"
+    "duration": "Time {{duration}}",
+    "quickLog": "Quick log",
+    "metrics": "Your numbers",
+    "volumesLabel": "Volume of the last workouts: {{list}}"
   },
   "workout": {
     "notFoundTitle": "No such workout",
@@ -676,7 +679,20 @@
     "freezeUsed": "This month's freeze is used.",
     "goal": "Weekly goal",
     "goalHint": "How many workouts a week count the week towards the streak.",
-    "goalAuto": "As in the program"
+    "goalAuto": "As in the program",
+    "title": "Week on plan",
+    "unit": "of {{goal}} this week",
+    "barsLabel": "Workouts per week: {{list}}"
+  },
+  "highlights": {
+    "title": "Highlights",
+    "all": "All progress",
+    "volumeTitle": "Training volume",
+    "volumeMore": "Over the last 7 days you lifted more than in the 7 days before.",
+    "volumeLess": "Over the last 7 days you lifted less than in the 7 days before.",
+    "volumeSame": "Over the last 7 days you lifted as much as in the 7 days before.",
+    "last7": "Last 7 days",
+    "previous7": "7 days before"
   },
   "reminders": {
     "channel": "Reminders",

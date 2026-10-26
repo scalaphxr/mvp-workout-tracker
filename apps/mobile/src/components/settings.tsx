@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Platform, StyleSheet, Switch, View } from 'react-native';
 
-import { Spacing } from '@/constants/theme';
+import { Radius, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 import { api } from '@/lib/api';
 import { useAuthStore } from '@/lib/auth-store';
@@ -220,7 +220,7 @@ export function ReminderSettings() {
 const styles = StyleSheet.create({
   card: {
     padding: Spacing.three,
-    borderRadius: Spacing.three,
+    borderRadius: Radius.card,
     gap: Spacing.two,
   },
   toggle: {

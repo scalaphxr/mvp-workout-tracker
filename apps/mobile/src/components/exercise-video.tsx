@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import YoutubePlayer from 'react-native-youtube-iframe';
 
-import { Spacing } from '@/constants/theme';
+import { Radius } from '@/constants/theme';
 
 /** A YouTube video of the exercise, embedded and started from the right moment. */
 export function ExerciseVideo({ media }: { media: ExerciseMedia }) {
@@ -28,7 +28,7 @@ export function ExerciseVideo({ media }: { media: ExerciseMedia }) {
 const styles = StyleSheet.create({
   frame: {
     aspectRatio: 16 / 9,
-    borderRadius: Spacing.three,
+    borderRadius: Radius.card,
     overflow: 'hidden',
     backgroundColor: '#000000',
   },

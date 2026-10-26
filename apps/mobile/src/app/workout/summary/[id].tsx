@@ -10,7 +10,7 @@ import { EmptyState } from '@/components/empty-state';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Group, Screen } from '@/components/ui';
-import { Spacing } from '@/constants/theme';
+import { Radius, Spacing } from '@/constants/theme';
 import { resolveReduction, sessionSummary, setWellbeing, startDeload } from '@/data/sessions';
 import { useLocale } from '@/hooks/use-locale';
 import { useCatalog } from '@/lib/catalog';
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
   total: {
     flex: 1,
     padding: Spacing.three,
-    borderRadius: Spacing.three,
+    borderRadius: Radius.card,
   },
   totalValue: {
     fontSize: 24,
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
   },
   card: {
     padding: Spacing.three,
-    borderRadius: Spacing.three,
+    borderRadius: Radius.card,
     gap: Spacing.one,
   },
   next: {

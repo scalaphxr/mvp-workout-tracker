@@ -1,7 +1,7 @@
 import type { ExerciseMedia } from '@mvp/schemas';
 import { StyleSheet, View } from 'react-native';
 
-import { Spacing } from '@/constants/theme';
+import { Radius } from '@/constants/theme';
 
 // The web build exists only for development: a plain iframe instead of the native player.
 export function ExerciseVideo({ media }: { media: ExerciseMedia }) {
@@ -20,7 +20,7 @@ export function ExerciseVideo({ media }: { media: ExerciseMedia }) {
 const styles = StyleSheet.create({
   frame: {
     aspectRatio: 16 / 9,
-    borderRadius: Spacing.three,
+    borderRadius: Radius.card,
     overflow: 'hidden',
     backgroundColor: '#000000',
   },

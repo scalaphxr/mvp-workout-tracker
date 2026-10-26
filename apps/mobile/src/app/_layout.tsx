@@ -24,6 +24,32 @@ function CatalogSync() {
   return null;
 }
 
+/** The headers and backgrounds of the navigation take the app's colours: a header melts into its screen. */
+const navigationThemes = {
+  light: {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      primary: Colors.light.accent,
+      background: Colors.light.background,
+      card: Colors.light.background,
+      text: Colors.light.text,
+      border: Colors.light.separator,
+    },
+  },
+  dark: {
+    ...DarkTheme,
+    colors: {
+      ...DarkTheme.colors,
+      primary: Colors.dark.accent,
+      background: Colors.dark.background,
+      card: Colors.dark.background,
+      text: Colors.dark.text,
+      border: Colors.dark.separator,
+    },
+  },
+};
+
 const darkHeader = {
   headerStyle: { backgroundColor: Colors.dark.background },
   headerTintColor: Colors.dark.text,
@@ -94,9 +120,9 @@ export default function RootLayout() {
       <CatalogSync />
       <SyncDriver />
       <ReminderDriver />
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <ThemeProvider value={colorScheme === 'dark' ? navigationThemes.dark : navigationThemes.light}>
         {/* Without the minimal mode a back button is labelled with the route name, "(tabs)". */}
-        <Stack screenOptions={{ headerBackButtonDisplayMode: 'minimal' }}>
+        <Stack screenOptions={{ headerBackButtonDisplayMode: 'minimal', headerShadowVisible: false }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="onboarding" options={{ headerShown: false, gestureEnabled: false }} />
           <Stack.Screen

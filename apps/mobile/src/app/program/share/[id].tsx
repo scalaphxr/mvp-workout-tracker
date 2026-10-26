@@ -15,7 +15,7 @@ import { EmptyState } from '@/components/empty-state';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { ConfirmButton, Group, Screen } from '@/components/ui';
-import { Spacing } from '@/constants/theme';
+import { Radius, Spacing } from '@/constants/theme';
 import { getProgramTree, updateProgram } from '@/data/programs';
 import { useLocale } from '@/hooks/use-locale';
 import { api, ApiRequestError } from '@/lib/api';
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     gap: Spacing.two,
   },
   card: {
-    borderRadius: Spacing.three,
+    borderRadius: Radius.card,
     padding: Spacing.three,
     gap: Spacing.three,
   },

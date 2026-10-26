@@ -11,7 +11,7 @@ import { type ReactNode, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 
-import { Spacing } from '@/constants/theme';
+import { Radius, Spacing } from '@/constants/theme';
 import { useLocale } from '@/hooks/use-locale';
 import { useTheme } from '@/hooks/use-theme';
 import { haptic } from '@/lib/feedback';
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     gap: Spacing.two,
     padding: Spacing.two,
     paddingLeft: Spacing.three,
-    borderRadius: Spacing.three,
+    borderRadius: Radius.card,
   },
   clock: {
     fontSize: 36,

@@ -3,13 +3,13 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 
-import { Button } from '@/components/button';
 import { Chip } from '@/components/chip';
 import { LineChart } from '@/components/line-chart';
 import { ThemedText } from '@/components/themed-text';
+import { ThemedView } from '@/components/themed-view';
 import { WeightCard } from '@/components/weight-card';
-import { Card, LinkRow, Screen } from '@/components/ui';
-import { Spacing } from '@/constants/theme';
+import { Card, CardLabel, LinkRow, Screen, Segmented } from '@/components/ui';
+import { Radius, Spacing } from '@/constants/theme';
 import { listActivities } from '@/data/activities';
 import { listWeights } from '@/data/body';
 import {
@@ -33,12 +33,15 @@ export default function ProgressScreen() {
   const [tab, setTab] = useState<(typeof TABS)[number]>('weight');
 
   return (
-    <Screen>
-      <View style={styles.chips}>
-        {TABS.map((key) => (
-          <Chip key={key} label={t(`progress.${key}`)} selected={tab === key} onPress={() => setTab(key)} />
-        ))}
-      </View>
+    <Screen title={t('tabs.progress')}>
+      <Segmented
+        options={TABS.map((key) => ({
+          value: key,
+          label: t(`progress.${key}`),
+        }))}
+        value={tab}
+        onChange={setTab}
+      />
       {tab === 'weight' && <Weight />}
       {tab === 'exercises' && <Exercises />}
       {tab === 'history' && <History />}
@@ -59,14 +62,22 @@ function Weight() {
     <>
       <WeightCard />
       {recent.length >= 2 ? (
-        <LineChart
-          series={[{ values: recent.map((entry) => entry.weight_kg), color: theme.accent }]}
-          format={kg}
-          label={t('weight.chartLabel', {
-            from: kg(recent[0]?.weight_kg ?? 0),
-            to: kg(recent.at(-1)?.weight_kg ?? 0),
-          })}
-        />
+        <ThemedView type="backgroundElement" style={styles.chartCard}>
+          <CardLabel icon="trending-up" title={t('progress.weight')} />
+          <LineChart
+            series={[
+              {
+                values: recent.map((entry) => entry.weight_kg),
+                color: theme.highlight,
+              },
+            ]}
+            format={kg}
+            label={t('weight.chartLabel', {
+              from: kg(recent[0]?.weight_kg ?? 0),
+              to: kg(recent.at(-1)?.weight_kg ?? 0),
+            })}
+          />
+        </ThemedView>
       ) : (
         <ThemedText themeColor="textSecondary">{t('weight.empty')}</ThemedText>
       )}
@@ -100,30 +111,33 @@ function Exercises() {
           <Chip key={id} label={name(id)} selected={id === exerciseId} onPress={() => setChosen(id)} />
         ))}
       </View>
-      {cardio ? (
-        <CardioChart exerciseId={exerciseId} name={name(exerciseId)} />
-      ) : (
-        <LineChart
-          series={[
-            {
-              values: points.map((point) => point.e1rm),
-              color: theme.textSecondary,
-              title: t('progress.e1rm'),
-            },
-            {
-              values: points.map((point) => point.weight_kg),
-              color: theme.accent,
-              title: t('progress.topWeight'),
-            },
-          ]}
-          format={kg}
-          label={t('progress.chartLabel', {
-            name: name(exerciseId),
-            from: kg(points[0]?.weight_kg ?? 0),
-            to: kg(points.at(-1)?.weight_kg ?? 0),
-          })}
-        />
-      )}
+      <ThemedView type="backgroundElement" style={styles.chartCard}>
+        <CardLabel icon="barbell" title={name(exerciseId)} />
+        {cardio ? (
+          <CardioChart exerciseId={exerciseId} name={name(exerciseId)} />
+        ) : (
+          <LineChart
+            series={[
+              {
+                values: points.map((point) => point.e1rm),
+                color: theme.textSecondary,
+                title: t('progress.e1rm'),
+              },
+              {
+                values: points.map((point) => point.weight_kg),
+                color: theme.highlight,
+                title: t('progress.topWeight'),
+              },
+            ]}
+            format={kg}
+            label={t('progress.chartLabel', {
+              name: name(exerciseId),
+              from: kg(points[0]?.weight_kg ?? 0),
+              to: kg(points.at(-1)?.weight_kg ?? 0),
+            })}
+          />
+        )}
+      </ThemedView>
     </>
   );
 }
@@ -144,7 +158,7 @@ function CardioChart({ exerciseId, name }: { exerciseId: string; name: string })
       series={[
         {
           values,
-          color: theme.accent,
+          color: theme.highlight,
           title: byDistance ? t('progress.distance') : t('progress.time'),
         },
       ]}
@@ -180,7 +194,10 @@ function History() {
           ? `${date(workout.session.started_at)}, ${weight(Math.round(workout.volumeKg))}`
           : `${date(workout.session.started_at)}, ${formatDuration(t, Math.max(60, Math.round(workout.durationSec / 60) * 60))}`,
       open: () =>
-        router.push({ pathname: '/workout/summary/[id]', params: { id: workout.session.id } }),
+        router.push({
+          pathname: '/workout/summary/[id]',
+          params: { id: workout.session.id },
+        }),
     })),
     ...activities.map((activity) => ({
       key: activity.id,
@@ -196,15 +213,15 @@ function History() {
   }
   return (
     <>
-      <View style={styles.actions}>
-        <Button
-          variant="secondary"
+      <Card>
+        <LinkRow
+          icon="calendar"
           title={t('progress.weekReport')}
           onPress={() => router.push({ pathname: '/report', params: { kind: 'week' } })}
         />
         {latest && (
-          <Button
-            variant="secondary"
+          <LinkRow
+            icon="repeat"
             title={t('progress.cycleReport')}
             onPress={() =>
               router.push({
@@ -218,7 +235,7 @@ function History() {
             }
           />
         )}
-      </View>
+      </Card>
       <Card>
         {entries.map((entry) => (
           <LinkRow key={entry.key} title={entry.title} subtitle={entry.subtitle} onPress={entry.open} />
@@ -234,7 +251,9 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     gap: Spacing.two,
   },
-  actions: {
-    gap: Spacing.two,
+  chartCard: {
+    padding: Spacing.three,
+    borderRadius: Radius.card,
+    gap: Spacing.three,
   },
 });

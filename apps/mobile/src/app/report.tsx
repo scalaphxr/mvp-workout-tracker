@@ -10,7 +10,7 @@ import { captureRef } from 'react-native-view-shot';
 import { Button } from '@/components/button';
 import { ThemedText } from '@/components/themed-text';
 import { Screen } from '@/components/ui';
-import { Colors, Spacing } from '@/constants/theme';
+import { Colors, Radius, Spacing } from '@/constants/theme';
 import { activitiesSince } from '@/data/activities';
 import { listWeights } from '@/data/body';
 import { getWorkout, workoutsOfCycle, workoutsSince } from '@/data/history';
@@ -123,7 +123,7 @@ export default function ReportScreen() {
 const styles = StyleSheet.create({
   card: {
     padding: Spacing.four,
-    borderRadius: Spacing.three,
+    borderRadius: Radius.card,
     backgroundColor: Colors.light.background,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: Colors.light.backgroundSelected,

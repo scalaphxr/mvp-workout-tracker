@@ -2,14 +2,14 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
 
 import { Button } from '@/components/button';
 import { ReminderSettings, TrainingSettings } from '@/components/settings';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Card, ConfirmButton, LinkRow } from '@/components/ui';
-import { MaxContentWidth, Spacing } from '@/constants/theme';
+import { Card, ConfirmButton, Group, LinkRow, Screen } from '@/components/ui';
+import { Radius, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 import { getLanguagePreference, type LanguagePreference, setLanguagePreference } from '@/i18n';
 import { api, ApiRequestError } from '@/lib/api';
@@ -27,54 +27,46 @@ const LANGUAGES = [
 
 export default function ProfileScreen() {
   const { t } = useTranslation();
-  const theme = useTheme();
   const router = useRouter();
 
   return (
-    <ScrollView
-      style={{ backgroundColor: theme.background }}
-      contentContainerStyle={styles.content}>
-      <ThemedText type="smallBold" themeColor="textSecondary">
-        {t('profile.account')}
-      </ThemedText>
-      <Account />
+    <Screen title={t('tabs.profile')}>
+      <Group title={t('profile.account')}>
+        <Account />
+      </Group>
 
-      <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
-        {t('profile.training')}
-      </ThemedText>
-      <Card>
-        <LinkRow title={t('gym.title')} onPress={() => router.push('/gym')} />
-      </Card>
-      <TrainingSettings />
+      <Group title={t('profile.training')}>
+        <Card>
+          <LinkRow icon="business" title={t('gym.title')} onPress={() => router.push('/gym')} />
+        </Card>
+        <TrainingSettings />
+      </Group>
 
-      <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
-        {t('reminders.title')}
-      </ThemedText>
-      <ReminderSettings />
+      <Group title={t('reminders.title')}>
+        <ReminderSettings />
+      </Group>
 
-      <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
-        {t('sync.title')}
-      </ThemedText>
-      <SyncInfo />
+      <Group title={t('sync.title')}>
+        <SyncInfo />
+      </Group>
 
-      <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
-        {t('profile.language')}
-      </ThemedText>
-      <LanguagePicker />
+      <Group title={t('profile.language')}>
+        <LanguagePicker />
+      </Group>
 
-      <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
-        {t('support.section')}
-      </ThemedText>
-      <Card>
-        <LinkRow
-          title={t('support.title')}
-          subtitle={t('support.hint')}
-          onPress={() => router.push('/support')}
-        />
-      </Card>
+      <Group title={t('support.section')}>
+        <Card>
+          <LinkRow
+            icon="help-buoy"
+            title={t('support.title')}
+            subtitle={t('support.hint')}
+            onPress={() => router.push('/support')}
+          />
+        </Card>
+      </Group>
 
       <DeleteAccount />
-    </ScrollView>
+    </Screen>
   );
 }
 
@@ -204,10 +196,7 @@ function DeleteAccount() {
   };
 
   return (
-    <>
-      <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
-        {t('profile.deleteTitle')}
-      </ThemedText>
+    <Group title={t('profile.deleteTitle')}>
       <ThemedView type="backgroundElement" style={styles.card}>
         <ThemedText type="small" themeColor="textSecondary">
           {t('profile.deleteText')}
@@ -223,7 +212,7 @@ function DeleteAccount() {
           <ConfirmButton title={t('profile.delete')} onConfirm={() => void remove()} />
         )}
       </ThemedView>
-    </>
+    </Group>
   );
 }
 
@@ -259,25 +248,15 @@ function LanguagePicker() {
 }
 
 const styles = StyleSheet.create({
-  content: {
-    padding: Spacing.three,
-    gap: Spacing.two,
-    width: '100%',
-    maxWidth: MaxContentWidth,
-    alignSelf: 'center',
-  },
-  sectionTitle: {
-    marginTop: Spacing.three,
-  },
   card: {
     padding: Spacing.three,
-    borderRadius: Spacing.three,
+    borderRadius: Radius.card,
     gap: Spacing.three,
   },
   segments: {
     flexDirection: 'row',
     padding: Spacing.one,
-    borderRadius: Spacing.three,
+    borderRadius: Radius.card,
     gap: Spacing.one,
   },
   segment: {

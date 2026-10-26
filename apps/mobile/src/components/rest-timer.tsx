@@ -2,7 +2,7 @@ import { type ReactNode, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 
-import { Spacing } from '@/constants/theme';
+import { Radius, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 import { haptic } from '@/lib/feedback';
 import { useRestTimer } from '@/lib/rest-timer';
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: Spacing.one,
     padding: Spacing.three,
-    borderRadius: Spacing.three,
+    borderRadius: Radius.card,
   },
   top: {
     flexDirection: 'row',

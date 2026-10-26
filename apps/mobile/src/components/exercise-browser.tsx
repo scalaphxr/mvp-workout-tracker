@@ -3,8 +3,9 @@ import type { Exercise } from '@mvp/schemas';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Pressable, StyleSheet, TextInput, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { MaxContentWidth, Spacing } from '@/constants/theme';
+import { FloatingTabBarSpace, MaxContentWidth, Radius, Spacing } from '@/constants/theme';
 import { useLocale } from '@/hooks/use-locale';
 import { useTheme } from '@/hooks/use-theme';
 import { useCatalog } from '@/lib/catalog';
@@ -13,10 +14,20 @@ import { activeFilterCount, useFoundExercises, useLibraryFilters } from '@/lib/l
 import { Button } from './button';
 import { ThemedText } from './themed-text';
 
-/** The exercise library: search, filters and the list. `onSelect` decides what a tap does. */
-export function ExerciseBrowser({ onSelect }: { onSelect: (exercise: Exercise) => void }) {
+/**
+ * The exercise library: search, filters and the list. `onSelect` decides what a tap does.
+ * With a `title` it is a tab screen: a large title under the status bar, room for the tab bar.
+ */
+export function ExerciseBrowser({
+  onSelect,
+  title,
+}: {
+  onSelect: (exercise: Exercise) => void;
+  title?: string;
+}) {
   const { t } = useTranslation();
   const theme = useTheme();
+  const insets = useSafeAreaInsets();
   const locale = useLocale();
   const router = useRouter();
   const { muscleByCode } = useCatalog();
@@ -41,6 +52,14 @@ export function ExerciseBrowser({ onSelect }: { onSelect: (exercise: Exercise) =
 
   return (
     <View style={[styles.screen, { backgroundColor: theme.background }]}>
+      {title !== undefined && (
+        <ThemedText
+          type="largeTitle"
+          accessibilityRole="header"
+          style={[styles.title, { paddingTop: insets.top + Spacing.three }]}>
+          {title}
+        </ThemedText>
+      )}
       <View style={styles.header}>
         <View style={[styles.search, { backgroundColor: theme.backgroundElement }]}>
           <Ionicons name="search" size={20} color={theme.textSecondary} />
@@ -83,7 +102,10 @@ export function ExerciseBrowser({ onSelect }: { onSelect: (exercise: Exercise) =
         keyExtractor={(exercise) => exercise.id}
         renderItem={renderExercise}
         keyboardShouldPersistTaps="handled"
-        contentContainerStyle={styles.list}
+        contentContainerStyle={[
+          styles.list,
+          title !== undefined && { paddingBottom: insets.bottom + FloatingTabBarSpace },
+        ]}
         ItemSeparatorComponent={() => (
           <View style={[styles.separator, { backgroundColor: theme.backgroundElement }]} />
         )}
@@ -117,6 +139,9 @@ const styles = StyleSheet.create({
     maxWidth: MaxContentWidth,
     alignSelf: 'center',
   },
+  title: {
+    paddingHorizontal: Spacing.three,
+  },
   header: {
     flexDirection: 'row',
     gap: Spacing.two,
@@ -130,7 +155,7 @@ const styles = StyleSheet.create({
     gap: Spacing.two,
     minHeight: 48,
     paddingHorizontal: Spacing.three,
-    borderRadius: Spacing.three,
+    borderRadius: Radius.pill,
   },
   searchInput: {
     flex: 1,
@@ -143,7 +168,7 @@ const styles = StyleSheet.create({
     gap: Spacing.two,
     minHeight: 48,
     paddingHorizontal: Spacing.three,
-    borderRadius: Spacing.three,
+    borderRadius: Radius.pill,
   },
   pressed: {
     opacity: 0.7,

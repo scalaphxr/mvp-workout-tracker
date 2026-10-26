@@ -8,9 +8,11 @@ import { Chip } from '@/components/chip';
 import { StreakCard } from '@/components/streak-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Group, LinkRow, Screen } from '@/components/ui';
+import { Avatar, CardLabel, MetricCard, Screen, Section, Tile, TileGrid } from '@/components/ui';
+import { VolumeHighlight } from '@/components/volume-highlight';
 import { WeightCard } from '@/components/weight-card';
-import { Spacing } from '@/constants/theme';
+import { Radius, Spacing } from '@/constants/theme';
+import { listWorkouts } from '@/data/history';
 import { getProgramTree, listPrograms } from '@/data/programs';
 import {
   activeSession,
@@ -20,16 +22,21 @@ import {
   startSession,
 } from '@/data/sessions';
 import { useLocale } from '@/hooks/use-locale';
-import { formatDuration } from '@/lib/format';
+import { useTheme } from '@/hooks/use-theme';
+import { formatDuration, formatNumber } from '@/lib/format';
 import { mutate, useActiveProgram, useLocal } from '@/lib/local';
 import { usePreferences } from '@/lib/preferences';
-import { useWeightFormat } from '@/lib/units';
+import { toUnits, useUnits } from '@/lib/units';
+
+/** How many workouts the bars of the last workout card show, the last one included. */
+const RECENT_WORKOUTS = 7;
 
 export default function TodayScreen() {
   const { t } = useTranslation();
   const locale = useLocale();
   const router = useRouter();
-  const weight = useWeightFormat();
+  const theme = useTheme();
+  const units = useUnits();
   const programId = useActiveProgram((state) => state.id);
   const [pickedDayId, setPickedDayId] = useState<string | null>(null);
   const [choosing, setChoosing] = useState(false);
@@ -44,31 +51,37 @@ export default function TodayScreen() {
       tree: programId ? getProgramTree(ctx, programId) : null,
       next: programId ? nextWorkout(ctx, programId) : null,
       last: last ? sessionSummary(ctx, last.id) : null,
+      // Oldest first: the last bar is the last workout.
+      volumes: listWorkouts(ctx, RECENT_WORKOUTS)
+        .map((workout) => workout.volumeKg)
+        .reverse(),
     };
   });
 
-  const open = (sessionId: string) =>
-    router.push({ pathname: '/workout/[id]', params: { id: sessionId } });
+  const open = (sessionId: string) => router.push({ pathname: '/workout/[id]', params: { id: sessionId } });
 
-  const { running, tree, next, last } = today;
+  const { running, tree, next, last, volumes } = today;
   const day = next?.days.find((candidate) => candidate.id === pickedDayId) ?? next?.day;
   const exercises = tree && day ? tree.items.filter((item) => item.program_day_id === day.id) : [];
+  const weightUnit = t(units === 'lb' ? 'units.lb' : 'units.kg', { value: '' }).trim();
+  const lifted = (kg: number) => formatNumber(Math.round(toUnits(kg, units)), locale);
 
   if (!onboarded && fresh) return <Redirect href="/onboarding" />;
 
   return (
-    <Screen>
+    <Screen
+      title={t('tabs.today')}
+      hero
+      headerRight={<Avatar label={t('tabs.profile')} onPress={() => router.push('/profile')} />}>
       {running ? (
         <ThemedView type="backgroundElement" style={styles.card}>
-          <ThemedText style={styles.title}>{t('today.running')}</ThemedText>
+          <CardLabel icon="pulse" title={t('today.running')} color={theme.accent} />
           <Button title={t('today.resume')} onPress={() => open(running.id)} />
         </ThemedView>
       ) : tree && next && day ? (
         <ThemedView type="backgroundElement" style={styles.card}>
-          <View>
-            <ThemedText type="small" themeColor="textSecondary">
-              {t('today.next')}
-            </ThemedText>
+          <CardLabel icon="barbell" title={t('today.next')} color={theme.accent} />
+          <View style={styles.dayText}>
             <ThemedText style={styles.title}>{day.title}</ThemedText>
             <ThemedText themeColor="textSecondary">
               {tree.program.title}, {t('today.cycle', { cycle: next.cycle })},{' '}
@@ -89,6 +102,7 @@ export default function TodayScreen() {
                     key={option.id}
                     label={option.title}
                     selected={option.id === day.id}
+                    onCard
                     onPress={() => setPickedDayId(option.id)}
                   />
                 ))}
@@ -98,55 +112,64 @@ export default function TodayScreen() {
             ))}
         </ThemedView>
       ) : (
-        <View style={styles.empty}>
-          <ThemedText style={styles.title}>{t('today.emptyTitle')}</ThemedText>
+        <ThemedView type="backgroundElement" style={[styles.card, styles.empty]}>
+          <ThemedText style={[styles.title, styles.centered]}>{t('today.emptyTitle')}</ThemedText>
           <ThemedText themeColor="textSecondary" style={styles.centered}>
             {tree ? t('today.noDaysText') : t('today.emptyText')}
           </ThemedText>
           <Button title={t('today.toPrograms')} onPress={() => router.push('/programs')} />
-        </View>
+        </ThemedView>
       )}
 
-      <StreakCard />
+      <Section title={t('today.quickLog')}>
+        <TileGrid>
+          <Tile
+            icon="walk"
+            color={theme.highlight}
+            title={t('activity.record')}
+            onPress={() => router.push('/activity')}
+          />
+          <Tile
+            icon="timer"
+            color={theme.accent}
+            title={t('interval.title')}
+            onPress={() => router.push('/interval')}
+          />
+        </TileGrid>
+      </Section>
 
-      <WeightCard />
+      <Section title={t('today.metrics')}>
+        <StreakCard />
+        <WeightCard />
+        {last && (
+          <MetricCard
+            icon="stats-chart"
+            title={t('today.last')}
+            meta={new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short' }).format(
+              new Date(last.session.started_at),
+            )}
+            // Cardio alone lifts nothing: its card shows the time instead of "0 kg".
+            value={
+              last.volumeKg > 0
+                ? lifted(last.volumeKg)
+                : formatDuration(t, Math.max(60, Math.round(last.durationSec / 60) * 60))
+            }
+            unit={last.volumeKg > 0 ? weightUnit : undefined}
+            note={
+              last.volumeKg > 0
+                ? t('today.duration', { duration: formatDuration(t, last.durationSec) })
+                : undefined
+            }
+            bars={volumes}
+            barsLabel={t('today.volumesLabel', { list: volumes.map(lifted).join(', ') })}
+            onPress={() =>
+              router.push({ pathname: '/workout/summary/[id]', params: { id: last.session.id } })
+            }
+          />
+        )}
+      </Section>
 
-      <ThemedView type="backgroundElement" style={styles.row}>
-        <LinkRow
-          title={t('activity.record')}
-          subtitle={t('activity.todayHint')}
-          onPress={() => router.push('/activity')}
-        />
-        <LinkRow
-          title={t('interval.title')}
-          subtitle={t('interval.todayHint')}
-          onPress={() => router.push('/interval')}
-        />
-      </ThemedView>
-
-      {last && (
-        <Group title={t('today.last')}>
-          <ThemedView type="backgroundElement" style={styles.row}>
-            <LinkRow
-              title={new Intl.DateTimeFormat(locale, { dateStyle: 'long' }).format(
-                new Date(last.session.started_at),
-              )}
-              subtitle={[
-                // Cardio alone lifts nothing: no "volume 0 kg".
-                last.volumeKg > 0
-                  ? t('today.volume', { volume: weight(Math.round(last.volumeKg)) })
-                  : null,
-                t('today.duration', { duration: formatDuration(t, last.durationSec) }),
-              ]
-                .filter(Boolean)
-                .join(', ')}
-              onPress={() =>
-                router.push({ pathname: '/workout/summary/[id]', params: { id: last.session.id } })
-              }
-            />
-          </ThemedView>
-        </Group>
-      )}
+      <VolumeHighlight onShowAll={() => router.push('/progress')} />
     </Screen>
   );
 }
@@ -154,12 +177,15 @@ export default function TodayScreen() {
 const styles = StyleSheet.create({
   card: {
     padding: Spacing.three,
-    borderRadius: Spacing.three,
+    borderRadius: Radius.card,
     gap: Spacing.three,
   },
+  dayText: {
+    gap: Spacing.half,
+  },
   title: {
-    fontSize: 24,
-    lineHeight: 30,
+    fontSize: 28,
+    lineHeight: 34,
     fontWeight: 700,
   },
   chips: {
@@ -169,14 +195,9 @@ const styles = StyleSheet.create({
   },
   empty: {
     alignItems: 'center',
-    gap: Spacing.three,
-    paddingVertical: Spacing.five,
+    paddingVertical: Spacing.four,
   },
   centered: {
     textAlign: 'center',
-  },
-  row: {
-    borderRadius: Spacing.three,
-    paddingHorizontal: Spacing.three,
   },
 });

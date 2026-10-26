@@ -5,7 +5,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { Button } from '@/components/button';
 import { ThemedText } from '@/components/themed-text';
-import { Card, Group, LinkRow, Screen } from '@/components/ui';
+import { Card, LinkRow, Screen, Section } from '@/components/ui';
 import { Spacing } from '@/constants/theme';
 import { createProgram, getProgramTree, listPrograms } from '@/data/programs';
 import { mutate, useActiveProgram, useLocal } from '@/lib/local';
@@ -43,6 +43,7 @@ export default function ProgramsScreen() {
   const row = ({ program, days, exercises }: (typeof programs)[number]) => (
     <LinkRow
       key={program.id}
+      icon="list"
       title={program.title}
       subtitle={`${t('programs.days', { count: days })}, ${t('programs.exercises', { count: exercises })}`}
       onPress={() => open(program.id)}
@@ -53,7 +54,7 @@ export default function ProgramsScreen() {
   const others = programs.filter((entry) => entry !== active);
 
   return (
-    <Screen>
+    <Screen title={t('tabs.programs')}>
       {programs.length === 0 && (
         <View style={styles.empty}>
           <ThemedText style={styles.emptyTitle}>{t('programs.emptyTitle')}</ThemedText>
@@ -64,30 +65,30 @@ export default function ProgramsScreen() {
       )}
 
       {active && (
-        <Group title={t('programs.active')}>
+        <Section title={t('programs.active')}>
           <Card>{row(active)}</Card>
-        </Group>
+        </Section>
       )}
       {others.length > 0 && (
-        <Group title={active ? t('programs.others') : undefined}>
+        <Section title={active ? t('programs.others') : t('tabs.programs')}>
           <Card>{others.map(row)}</Card>
-        </Group>
+        </Section>
       )}
 
-      <View style={styles.actions}>
-        <Button title={t('programs.create')} onPress={create} />
-        <Button
-          variant="secondary"
+      <Button title={t('programs.create')} onPress={create} />
+      <Card>
+        <LinkRow
+          icon="sparkles"
           title={t('questionnaire.open')}
           onPress={() => router.push('/questionnaire')}
         />
-        <Button
-          variant="secondary"
+        <LinkRow
+          icon="document-text"
           title={t('importText.open')}
           onPress={() => router.push('/import-text')}
         />
-        <Button variant="secondary" title={t('programs.enterCode')} onPress={() => router.push('/code')} />
-      </View>
+        <LinkRow icon="qr-code" title={t('programs.enterCode')} onPress={() => router.push('/code')} />
+      </Card>
     </Screen>
   );
 }
@@ -105,8 +106,5 @@ const styles = StyleSheet.create({
   },
   emptyText: {
     textAlign: 'center',
-  },
-  actions: {
-    gap: Spacing.two,
   },
 });

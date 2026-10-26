@@ -11,7 +11,7 @@ import { ExerciseVideo } from '@/components/exercise-video';
 import { MuscleMap } from '@/components/muscle-map';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { MaxContentWidth, Spacing } from '@/constants/theme';
+import { MaxContentWidth, Radius, Spacing } from '@/constants/theme';
 import { useLocale } from '@/hooks/use-locale';
 import { useTheme } from '@/hooks/use-theme';
 import { useCatalog } from '@/lib/catalog';
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   alternatives: {
-    borderRadius: Spacing.three,
+    borderRadius: Radius.card,
     paddingHorizontal: Spacing.three,
   },
   alternative: {

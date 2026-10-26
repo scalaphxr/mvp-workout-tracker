@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 
-import { Spacing } from '@/constants/theme';
+import { Radius, Spacing } from '@/constants/theme';
 import { listWeights, setWeight } from '@/data/body';
 import { getProgramTree } from '@/data/programs';
 import { useLocale } from '@/hooks/use-locale';
@@ -16,7 +16,7 @@ import { fromUnits, toUnits, useUnits, useWeightFormat } from '@/lib/units';
 import { Button } from './button';
 import { ThemedText } from './themed-text';
 import { ThemedView } from './themed-view';
-import { StepButton, TextField } from './ui';
+import { CardLabel, Metric, StepButton, TextField } from './ui';
 
 /** The limits of `BodyLogRowSchema`. */
 const MIN_KG = 20;
@@ -69,13 +69,14 @@ export function WeightCard() {
 
   return (
     <ThemedView type="backgroundElement" style={styles.card}>
-      <ThemedText type="small" themeColor="textSecondary">
-        {t('weight.title')}
-      </ThemedText>
+      <CardLabel icon="body" title={t('weight.title')} />
 
       {stats.today !== null && !editing ? (
         <View style={styles.row}>
-          <ThemedText style={styles.value}>{kg(stats.today)}</ThemedText>
+          <Metric
+            value={formatNumber(shown(stats.today), locale)}
+            unit={t(units === 'lb' ? 'units.lb' : 'units.kg', { value: '' }).trim()}
+          />
           <Button variant="secondary" title={t('weight.change')} onPress={() => setEditing(true)} />
         </View>
       ) : (
@@ -143,8 +144,8 @@ export function WeightCard() {
 const styles = StyleSheet.create({
   card: {
     padding: Spacing.three,
-    borderRadius: Spacing.three,
-    gap: Spacing.two,
+    borderRadius: Radius.card,
+    gap: Spacing.three,
   },
   row: {
     flexDirection: 'row',
@@ -158,10 +159,5 @@ const styles = StyleSheet.create({
     minWidth: 0,
     fontSize: 20,
     textAlign: 'center',
-  },
-  value: {
-    fontSize: 28,
-    lineHeight: 34,
-    fontWeight: 700,
   },
 });
