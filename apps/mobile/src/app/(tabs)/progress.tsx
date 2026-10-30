@@ -188,7 +188,7 @@ function History() {
     ...workouts.map((workout) => ({
       key: workout.session.id,
       at: workout.session.started_at,
-      title: `${t('progress.workout', { number: workout.number })}, ${workout.dayTitle}`,
+      title: `${t('progress.workout', { number: workout.number })}, ${workout.dayTitle || t('workout.freeTitle')}`,
       subtitle:
         workout.volumeKg > 0
           ? `${date(workout.session.started_at)}, ${weight(Math.round(workout.volumeKg))}`

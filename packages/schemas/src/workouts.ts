@@ -16,9 +16,10 @@ export type SessionStatus = (typeof SESSION_STATUSES)[number];
 
 export const SessionRowSchema = z.object({
   ...syncFields,
-  program_id: z.uuid(),
-  program_day_id: z.uuid(),
-  /** Which pass through the program this workout belongs to. */
+  /** Both are `null` for a workout without a program: the user picks exercises as they go. */
+  program_id: z.uuid().nullable(),
+  program_day_id: z.uuid().nullable(),
+  /** Which pass through the program this workout belongs to; 1 without a program. */
   cycle_number: z.number().int().min(1),
   status: z.enum(SESSION_STATUSES),
   started_at: z.iso.datetime(),
@@ -38,6 +39,8 @@ export const SessionExerciseRowSchema = z.object({
   exercise_id: z.uuid(),
   /** Set when the planned exercise was replaced for this workout. */
   substituted_from_id: z.uuid().nullable(),
+  /** The sets the user means to do, in a workout without a program. Older apps do not send it. */
+  planned_sets: z.number().int().min(1).nullable().default(null),
 });
 export type SessionExerciseRow = z.infer<typeof SessionExerciseRowSchema>;
 

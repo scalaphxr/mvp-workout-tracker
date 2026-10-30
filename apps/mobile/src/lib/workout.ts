@@ -1,12 +1,38 @@
 import { weightStepKg } from '@mvp/domain';
 import type { ProgressionStateRow } from '@mvp/schemas';
 import type { TFunction } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
-import type { ExerciseFacts } from '@/data/sessions';
+import type { ExerciseFacts, SetRecords } from '@/data/sessions';
+import { useLocale } from '@/hooks/use-locale';
 
 import { useCatalog } from './catalog';
+import { formatDistance, formatDuration } from './format';
 import { useGym } from './gym';
-import { formatWeight, type Units, useUnits } from './units';
+import { formatWeight, type Units, useUnits, useWeightFormat } from './units';
+
+/** "Record! 85 kg × 8", "Record! 5,1 km, 30 min" – one line however many records it is. */
+export function useRecordText(): (records: SetRecords) => string | null {
+  const { t } = useTranslation();
+  const locale = useLocale();
+  const kg = useWeightFormat();
+
+  return ({ weight, cardio }) => {
+    // A new top weight says more than a new estimated maximum with it.
+    const lifted = weight.find((record) => record.kind !== 'e1rm') ?? weight[0];
+    const parts = [
+      lifted
+        ? lifted.kind === 'e1rm'
+          ? t('workout.recordE1rm')
+          : `${kg(lifted.weight_kg)} × ${lifted.reps}`
+        : null,
+      ...cardio.map((found) =>
+        found.kind === 'distance' ? formatDistance(t, locale, found.value) : formatDuration(t, found.value),
+      ),
+    ].filter(Boolean);
+    return parts.length > 0 ? t('workout.recordSet', { records: parts.join(', ') }) : null;
+  };
+}
 
 /** What progression needs to know about an exercise: taken from the catalog and the main gym. */
 export function useExerciseFacts(): ExerciseFacts {

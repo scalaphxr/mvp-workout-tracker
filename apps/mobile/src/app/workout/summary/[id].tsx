@@ -9,13 +9,20 @@ import { Chip } from '@/components/chip';
 import { EmptyState } from '@/components/empty-state';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Group, Screen } from '@/components/ui';
+import { Group, Screen, TextField } from '@/components/ui';
 import { Radius, Spacing } from '@/constants/theme';
-import { resolveReduction, sessionSummary, setWellbeing, startDeload } from '@/data/sessions';
+import {
+  resolveReduction,
+  saveSessionAsProgram,
+  sessionSummary,
+  setWellbeing,
+  startDeload,
+} from '@/data/sessions';
 import { useLocale } from '@/hooks/use-locale';
 import { useCatalog } from '@/lib/catalog';
 import { formatCardio, formatDistance, formatDuration, formatNumber } from '@/lib/format';
-import { mutate, useLocal } from '@/lib/local';
+import { itemDefaults } from '@/lib/item-defaults';
+import { mutate, useActiveProgram, useLocal } from '@/lib/local';
 import { syncNow } from '@/lib/sync';
 import { useUnits, useWeightFormat } from '@/lib/units';
 import { explainPlan } from '@/lib/workout';
@@ -38,6 +45,7 @@ export default function WorkoutSummaryScreen() {
     return <EmptyState title={t('workout.notFoundTitle')} text={t('workout.notFoundText')} />;
   }
   const { session } = summary;
+  const { program_id: programId } = session;
   const name = (exerciseId: string) =>
     exerciseById.get(exerciseId)?.translations[locale].name ?? t('program.unknownExercise');
   /** Answers of the user change rows that have to reach the server too. */
@@ -142,20 +150,24 @@ export default function WorkoutSummaryScreen() {
         </Group>
       )}
 
-      {summary.offerDeload && hasFeature(null, 'deload') && (
+      {summary.offerDeload && programId !== null && hasFeature(null, 'deload') && (
         <Group title={t('summary.deloadTitle')}>
           <ThemedText>{t('summary.deloadText')}</ThemedText>
           <Button
             variant="secondary"
             title={t('summary.deloadYes')}
             onPress={() => {
-              change((ctx) => startDeload(ctx, session.program_id));
+              change((ctx) => startDeload(ctx, programId));
               setDeloadAccepted(true);
             }}
           />
         </Group>
       )}
       {deloadAccepted && <ThemedText themeColor="textSecondary">{t('summary.deloadAccepted')}</ThemedText>}
+
+      {programId === null && summary.exercises.some((entry) => entry.sets.length > 0) && (
+        <SaveAsProgram sessionId={session.id} startedAt={session.started_at} />
+      )}
 
       <Group title={t('summary.wellbeing')}>
         <View style={styles.chips}>
@@ -181,6 +193,58 @@ export default function WorkoutSummaryScreen() {
         <Button title={t('summary.close')} onPress={() => router.dismissTo('/')} />
       </View>
     </Screen>
+  );
+}
+
+/** The offer to turn a workout without a program into a program of one day. */
+function SaveAsProgram({ sessionId, startedAt }: { sessionId: string; startedAt: string }) {
+  const { t } = useTranslation();
+  const locale = useLocale();
+  const router = useRouter();
+  const { exerciseById } = useCatalog();
+  const [title, setTitle] = useState(() =>
+    t('summary.saveDefaultName', {
+      date: new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'long' }).format(
+        new Date(startedAt),
+      ),
+    }),
+  );
+  const [savedId, setSavedId] = useState<string | null>(null);
+
+  const save = () => {
+    const program = mutate((ctx) =>
+      saveSessionAsProgram(ctx, sessionId, {
+        title: title.trim(),
+        dayTitle: t('programs.dayTitle', { number: 1 }),
+        params: (exerciseId) => {
+          const exercise = exerciseById.get(exerciseId);
+          return exercise ? itemDefaults(exercise, null) : null;
+        },
+      }),
+    );
+    if (!program) return;
+    const active = useActiveProgram.getState();
+    if (active.id === null) active.set(program.id);
+    setSavedId(program.id);
+    void syncNow();
+  };
+
+  if (savedId) {
+    return (
+      <Group title={t('summary.saved')}>
+        <Button
+          variant="secondary"
+          title={t('summary.openProgram')}
+          onPress={() => router.push({ pathname: '/program/[id]', params: { id: savedId } })}
+        />
+      </Group>
+    );
+  }
+  return (
+    <Group title={t('summary.saveTitle')}>
+      <TextField label={t('summary.saveName')} value={title} maxLength={120} onChangeText={setTitle} />
+      <Button title={t('summary.save')} disabled={title.trim() === ''} onPress={save} />
+    </Group>
   );
 }
 

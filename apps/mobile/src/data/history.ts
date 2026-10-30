@@ -36,8 +36,13 @@ function record(ctx: DataContext, session: SessionRow): WorkoutRecord | null {
     .from(sessions)
     .where(and(finished, lt(sessions.started_at, session.started_at)))
     .all().length;
-  const day = ctx.db.select().from(program_days).where(eq(program_days.id, session.program_day_id)).get();
-  const program = ctx.db.select().from(programs).where(eq(programs.id, session.program_id)).get();
+  // A workout without a program has neither.
+  const day = session.program_day_id
+    ? ctx.db.select().from(program_days).where(eq(program_days.id, session.program_day_id)).get()
+    : undefined;
+  const program = session.program_id
+    ? ctx.db.select().from(programs).where(eq(programs.id, session.program_id)).get()
+    : undefined;
   return {
     ...summary,
     number: earlier + 1,

@@ -147,7 +147,7 @@ function workoutBlock(ctx: ReportContext, workout: WorkoutRecord): string[] {
   return [
     ctx.t('report.workoutHeader', {
       number: workout.number,
-      day: workout.dayTitle,
+      day: workout.dayTitle || ctx.t('workout.freeTitle'),
       date: shortDate(ctx.locale, workout.session.started_at),
     }),
     ...exerciseLines(ctx, workout),

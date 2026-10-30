@@ -28,6 +28,19 @@ export default function ExerciseFiltersScreen() {
   return (
     <View style={[styles.screen, { backgroundColor: theme.background }]}>
       <ScrollView contentContainerStyle={styles.content}>
+        <Section title={t('filters.sort')}>
+          <Chip
+            label={t('filters.sortPopularity')}
+            selected={filters.sort === 'popularity'}
+            onPress={() => filters.setSort('popularity')}
+          />
+          <Chip
+            label={t('filters.sortAlphabet')}
+            selected={filters.sort === 'alphabet'}
+            onPress={() => filters.setSort('alphabet')}
+          />
+        </Section>
+
         <Section title={t('filters.availability')}>
           <Chip
             label={t('filters.onlyMyGym')}

@@ -23,6 +23,7 @@ import {
   type ExerciseResult,
   findCardioRecords,
   findRecords,
+  type ItemParams,
   planNext,
   type RecordKind,
   shouldOfferDeload,
@@ -32,9 +33,11 @@ import {
   type ProgramDayRow,
   type ProgramItemRow,
   type ProgramStateRow,
+  type ProgramRow,
   type ProgressionStateRow,
   ProgressionStateRowSchema,
   type SessionExerciseRow,
+  SessionExerciseRowSchema,
   type SessionRow,
   SessionRowSchema,
   type SetLogRow,
@@ -42,7 +45,7 @@ import {
 } from '@mvp/schemas';
 
 import { type DataContext, fresh } from './context';
-import { replaceExercise } from './programs';
+import { addItem, createProgram, getProgramTree, replaceExercise } from './programs';
 
 // --- Where the user is in a program ---
 
@@ -183,6 +186,116 @@ export function startSession(ctx: DataContext, programId: string, dayId: string)
   });
 }
 
+// --- A workout without a program ---
+
+/** How many sets an exercise never done before starts with. */
+export const DEFAULT_FREE_SETS = 3;
+
+/** Starts an empty workout; if one is already in progress, that one is returned instead. */
+export function startFreeSession(ctx: DataContext): SessionRow {
+  const running = activeSession(ctx);
+  if (running) return running;
+
+  const session = SessionRowSchema.parse({
+    ...fresh(ctx),
+    program_id: null,
+    program_day_id: null,
+    cycle_number: 1,
+    status: 'active',
+    started_at: ctx.now(),
+    finished_at: null,
+    wellbeing: null,
+    notes: '',
+  });
+  ctx.db.insert(sessions).values(session).run();
+  return session;
+}
+
+const exercisesOf = (ctx: DataContext, sessionId: string) =>
+  ctx.db
+    .select()
+    .from(session_exercises)
+    .where(and(eq(session_exercises.session_id, sessionId), isNull(session_exercises.deleted_at)))
+    .orderBy(asc(session_exercises.position))
+    .all();
+
+/**
+ * Adds an exercise at the end of the workout, with as many sets as the last time. An exercise
+ * already in the workout is not added twice: its sets go on in the same place.
+ */
+export function addFreeExercise(
+  ctx: DataContext,
+  sessionId: string,
+  exerciseId: string,
+): SessionExerciseRow {
+  const entries = exercisesOf(ctx, sessionId);
+  const added = entries.find((entry) => entry.exercise_id === exerciseId);
+  if (added) return added;
+
+  const row = SessionExerciseRowSchema.parse({
+    ...fresh(ctx),
+    session_id: sessionId,
+    position: (entries.at(-1)?.position ?? -1) + 1,
+    program_item_id: null,
+    exercise_id: exerciseId,
+    substituted_from_id: null,
+    planned_sets: lastPerformance(ctx, exerciseId, sessionId).length || DEFAULT_FREE_SETS,
+  });
+  ctx.db.insert(session_exercises).values(row).run();
+  return row;
+}
+
+/** Takes an exercise out of the workout (a mistap in the search); not once it has sets. */
+export function removeFreeExercise(ctx: DataContext, sessionExerciseId: string): void {
+  if (setsOf(ctx, [sessionExerciseId]).length > 0) return;
+  ctx.db
+    .update(session_exercises)
+    .set({ deleted_at: ctx.now(), updated_at: ctx.now() })
+    .where(eq(session_exercises.id, sessionExerciseId))
+    .run();
+}
+
+/** Changes how many sets are meant: at least one, and never fewer than were done. */
+export function setPlannedSets(ctx: DataContext, sessionExerciseId: string, count: number): void {
+  const done = setsOf(ctx, [sessionExerciseId]).length;
+  ctx.db
+    .update(session_exercises)
+    .set({ planned_sets: Math.max(1, done, count), updated_at: ctx.now() })
+    .where(eq(session_exercises.id, sessionExerciseId))
+    .run();
+}
+
+/**
+ * Makes a program of one day out of a workout without a program: the exercises that were
+ * done, with as many sets. `params` gives the rest of an item; `null` leaves the exercise out.
+ * The workout stays as it is. Its weights reach the program through the history.
+ */
+export function saveSessionAsProgram(
+  ctx: DataContext,
+  sessionId: string,
+  input: {
+    title: string;
+    dayTitle: string;
+    params: (exerciseId: string) => ItemParams | null;
+  },
+): ProgramRow | null {
+  const view = getSession(ctx, sessionId);
+  if (!view || view.session.program_id !== null) return null;
+  const items = view.exercises.flatMap(({ exercise, sets }) => {
+    const params = sets.length > 0 ? input.params(exercise.exercise_id) : null;
+    return params ? [{ exerciseId: exercise.exercise_id, params: { ...params, sets: sets.length } }] : [];
+  });
+  if (items.length === 0) return null;
+
+  return ctx.db.transaction((tx) => {
+    const inTx = { ...ctx, db: tx };
+    const program = createProgram(inTx, { title: input.title, firstDayTitle: input.dayTitle });
+    const [day] = getProgramTree(inTx, program.id)?.days ?? [];
+    if (day) for (const item of items) addItem(inTx, day.id, item.exerciseId, item.params);
+    return program;
+  });
+}
+
 export interface SessionExerciseView {
   exercise: SessionExerciseRow;
   /** The item of the program the exercise was planned by, if it still exists. */
@@ -222,12 +335,7 @@ export function getSession(ctx: DataContext, sessionId: string): SessionView | n
     .get();
   if (!session) return null;
 
-  const exercises = ctx.db
-    .select()
-    .from(session_exercises)
-    .where(and(eq(session_exercises.session_id, sessionId), isNull(session_exercises.deleted_at)))
-    .orderBy(asc(session_exercises.position))
-    .all();
+  const exercises = exercisesOf(ctx, sessionId);
   const itemIds = exercises.flatMap((exercise) => exercise.program_item_id ?? []);
   const items =
     itemIds.length === 0
@@ -250,7 +358,9 @@ export function getSession(ctx: DataContext, sessionId: string): SessionView | n
     ctx,
     exercises.map((exercise) => exercise.id),
   );
-  const deload = getProgramState(ctx, session.program_id).deload_cycle === session.cycle_number;
+  const deload =
+    session.program_id !== null &&
+    getProgramState(ctx, session.program_id).deload_cycle === session.cycle_number;
 
   return {
     session,
@@ -262,7 +372,7 @@ export function getSession(ctx: DataContext, sessionId: string): SessionView | n
         item,
         plan: plans.find((plan) => plan.program_item_id === exercise.program_item_id) ?? null,
         sets: sets.filter((set) => set.session_exercise_id === exercise.id),
-        plannedSets: item ? (deload ? deloadSets(item.sets) : item.sets) : 0,
+        plannedSets: exercise.planned_sets ?? (item ? (deload ? deloadSets(item.sets) : item.sets) : 0),
       };
     }),
   };
@@ -312,6 +422,19 @@ export function logSet(ctx: DataContext, sessionExerciseId: string, values: SetV
   });
   ctx.db.insert(set_logs).values(row).run();
   return row;
+}
+
+/** Corrects a set that is already done: a weight left out, a number mistyped. */
+export function updateSet(
+  ctx: DataContext,
+  setId: string,
+  values: Pick<SetValues, 'weight_kg' | 'reps' | 'duration_sec'>,
+): void {
+  ctx.db
+    .update(set_logs)
+    .set({ ...values, updated_at: ctx.now() })
+    .where(eq(set_logs.id, setId))
+    .run();
 }
 
 /** Takes back the last set of an exercise (a mistap). */
@@ -476,6 +599,7 @@ export function finishSession(
       if (next) savePlan(inTx, item.id, next, plan);
     }
 
+    if (session.program_id === null) return;
     const days = regularDays(inTx, session.program_id);
     const position = days.findIndex((day) => day.id === session.program_day_id);
     const state = getProgramState(inTx, session.program_id);
@@ -612,6 +736,22 @@ export function sessionSummary(ctx: DataContext, sessionId: string): SessionSumm
     };
   });
 
+  return {
+    session,
+    volumeKg: volumeKg(exercises.flatMap((entry) => entry.sets)),
+    durationSec: session.finished_at
+      ? Math.round((Date.parse(session.finished_at) - Date.parse(session.started_at)) / 1000)
+      : 0,
+    exercises,
+    offerDeload: offersDeload(ctx, view),
+  };
+}
+
+/** Half of the exercises of the day have not grown for 3 workouts; never without a program. */
+function offersDeload(ctx: DataContext, view: SessionView): boolean {
+  const { session } = view;
+  if (session.program_id === null || session.program_day_id === null) return false;
+
   // The last workouts of the same day, this one included, oldest first.
   const sameDay = ctx.db
     .select({ id: sessions.id })
@@ -638,18 +778,11 @@ export function sessionSummary(ctx: DataContext, sessionId: string): SessionSumm
     );
   const state = getProgramState(ctx, session.program_id);
 
-  return {
-    session,
-    volumeKg: volumeKg(exercises.flatMap((entry) => entry.sets)),
-    durationSec: session.finished_at
-      ? Math.round((Date.parse(session.finished_at) - Date.parse(session.started_at)) / 1000)
-      : 0,
-    exercises,
-    offerDeload:
-      !view.deload &&
-      (state.deload_cycle ?? 0) < state.cycle_number &&
-      shouldOfferDeload(histories),
-  };
+  return (
+    !view.deload &&
+    (state.deload_cycle ?? 0) < state.cycle_number &&
+    shouldOfferDeload(histories)
+  );
 }
 
 /** The most recent finished workout. */

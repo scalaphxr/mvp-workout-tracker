@@ -6,6 +6,7 @@ export * from './generation';
 export * from './ids';
 export * from './import-text';
 export * from './interval';
+export * from './popularity';
 export * from './program';
 export * from './progression';
 export * from './share-code';

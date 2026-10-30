@@ -19,6 +19,7 @@ import {
   lastFinishedSession,
   nextWorkout,
   sessionSummary,
+  startFreeSession,
   startSession,
 } from '@/data/sessions';
 import { useLocale } from '@/hooks/use-locale';
@@ -59,6 +60,7 @@ export default function TodayScreen() {
   });
 
   const open = (sessionId: string) => router.push({ pathname: '/workout/[id]', params: { id: sessionId } });
+  const startFree = () => open(mutate(startFreeSession).id);
 
   const { running, tree, next, last, volumes } = today;
   const day = next?.days.find((candidate) => candidate.id === pickedDayId) ?? next?.day;
@@ -94,6 +96,7 @@ export default function TodayScreen() {
             disabled={exercises.length === 0}
             onPress={() => open(mutate((ctx) => startSession(ctx, tree.program.id, day.id)).id)}
           />
+          <Button variant="secondary" title={t('today.startFree')} onPress={startFree} />
           {next.days.length > 1 &&
             (choosing ? (
               <View style={styles.chips}>
@@ -118,6 +121,7 @@ export default function TodayScreen() {
             {tree ? t('today.noDaysText') : t('today.emptyText')}
           </ThemedText>
           <Button title={t('today.toPrograms')} onPress={() => router.push('/programs')} />
+          <Button variant="secondary" title={t('today.startFree')} onPress={startFree} />
         </ThemedView>
       )}
 

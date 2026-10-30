@@ -1,4 +1,4 @@
-import { body_logs, outbox, program_state, set_logs } from '@mvp/db/sqlite';
+import { body_logs, outbox, program_state, progression_state, set_logs } from '@mvp/db/sqlite';
 import { createTestDb } from '@mvp/db/sqlite/testing';
 import { type ItemParams, uuidv7 } from '@mvp/domain';
 import type { ProgramItemRow } from '@mvp/schemas';
@@ -40,6 +40,8 @@ import {
 import {
   abandonSession,
   activeSession,
+  addFreeExercise,
+  DEFAULT_FREE_SETS,
   type ExerciseFacts,
   finishSession,
   getProgramState,
@@ -49,10 +51,15 @@ import {
   logSet,
   nextWorkout,
   recordsOfSet,
+  removeFreeExercise,
   removeLastSet,
+  updateSet,
   resolveReduction,
+  saveSessionAsProgram,
   sessionSummary,
+  setPlannedSets,
   startDeload,
+  startFreeSession,
   startSession,
   substituteExercise,
 } from './sessions';
@@ -188,6 +195,21 @@ describe('a workout', () => {
 
     const [raw] = ctx.db.select().from(set_logs).all();
     expect([raw!.planned_rep_min, raw!.planned_rep_max]).toEqual([8, 9]);
+  });
+
+  it('corrects a set that is already done and marks it for sync', () => {
+    const { id: programId, day1 } = program();
+    const session = startSession(ctx, programId, day1.id);
+    const [bench] = getSession(ctx, session.id)!.exercises;
+    const first = logSet(ctx, bench!.exercise.id, { weight_kg: null, reps: 10, rir: 2 });
+    const second = logSet(ctx, bench!.exercise.id, { weight_kg: 80, reps: 9 });
+
+    updateSet(ctx, first.id, { weight_kg: 82.5 });
+
+    const [fixed, untouched] = getSession(ctx, session.id)!.exercises[0]!.sets;
+    expect(fixed).toMatchObject({ set_number: 1, weight_kg: 82.5, reps: 10, rir: 2 });
+    expect(fixed!.updated_at).not.toBe(first.updated_at);
+    expect(untouched).toEqual(second);
   });
 
   it('takes back the last set', () => {
@@ -771,5 +793,179 @@ describe('stage 4 data', () => {
       [82.5, 105],
     ]);
     expect(exercisesWithProgress(ctx)).toEqual([BENCH]);
+  });
+});
+
+describe('a workout without a program', () => {
+  /** Finishes a workout of its own with the given reps of one exercise at 80 kg. */
+  function freeWorkout(exerciseId: string, reps: number[]) {
+    const session = startFreeSession(ctx);
+    const entry = addFreeExercise(ctx, session.id, exerciseId);
+    for (const count of reps) logSet(ctx, entry.id, { weight_kg: 80, reps: count });
+    finishSession(ctx, session.id, facts, { smart: false });
+    return session.id;
+  }
+
+  it('starts empty, and starting again returns the same workout', () => {
+    const session = startFreeSession(ctx);
+
+    expect(session).toMatchObject({ program_id: null, program_day_id: null, status: 'active' });
+    expect(getSession(ctx, session.id)!.exercises).toEqual([]);
+    expect(startFreeSession(ctx).id).toBe(session.id);
+    expect(activeSession(ctx)?.id).toBe(session.id);
+  });
+
+  it('plans three sets of a new exercise', () => {
+    const session = startFreeSession(ctx);
+    addFreeExercise(ctx, session.id, BENCH);
+
+    expect(getSession(ctx, session.id)!.exercises.map((entry) => entry.plannedSets)).toEqual([
+      DEFAULT_FREE_SETS,
+    ]);
+  });
+
+  it('plans as many sets as the last time', () => {
+    freeWorkout(BENCH, [10, 10, 9, 8]);
+    const session = startFreeSession(ctx);
+    addFreeExercise(ctx, session.id, BENCH);
+
+    expect(getSession(ctx, session.id)!.exercises[0]!.plannedSets).toBe(4);
+  });
+
+  it('adds an exercise once', () => {
+    const session = startFreeSession(ctx);
+    const first = addFreeExercise(ctx, session.id, BENCH);
+
+    expect(addFreeExercise(ctx, session.id, BENCH).id).toBe(first.id);
+    expect(getSession(ctx, session.id)!.exercises).toHaveLength(1);
+  });
+
+  it('adds an exercise again after it was removed', () => {
+    const session = startFreeSession(ctx);
+    const first = addFreeExercise(ctx, session.id, BENCH);
+    addFreeExercise(ctx, session.id, CURL);
+    removeFreeExercise(ctx, first.id);
+    const again = addFreeExercise(ctx, session.id, BENCH);
+
+    expect(again.id).not.toBe(first.id);
+    expect(getSession(ctx, session.id)!.exercises.map((entry) => entry.exercise.exercise_id)).toEqual([
+      CURL,
+      BENCH,
+    ]);
+  });
+
+  it('keeps an exercise that has sets', () => {
+    const session = startFreeSession(ctx);
+    const entry = addFreeExercise(ctx, session.id, BENCH);
+    logSet(ctx, entry.id, { weight_kg: 80, reps: 10 });
+    removeFreeExercise(ctx, entry.id);
+
+    expect(getSession(ctx, session.id)!.exercises).toHaveLength(1);
+  });
+
+  it('does not plan fewer sets than were done, nor fewer than one', () => {
+    const session = startFreeSession(ctx);
+    const entry = addFreeExercise(ctx, session.id, BENCH);
+    const planned = () => getSession(ctx, session.id)!.exercises[0]!.plannedSets;
+
+    setPlannedSets(ctx, entry.id, 5);
+    expect(planned()).toBe(5);
+    setPlannedSets(ctx, entry.id, 0);
+    expect(planned()).toBe(1);
+
+    logSet(ctx, entry.id, { weight_kg: 80, reps: 10 });
+    logSet(ctx, entry.id, { weight_kg: 80, reps: 10 });
+    setPlannedSets(ctx, entry.id, 1);
+    expect(planned()).toBe(2);
+  });
+
+  it('leaves programs as they were when finished', () => {
+    const { id: programId, day1 } = program();
+    const before = nextWorkout(ctx, programId);
+    const sessionId = freeWorkout(BENCH, [12, 12, 12]);
+
+    expect(nextWorkout(ctx, programId)).toEqual(before);
+    expect(nextWorkout(ctx, programId)?.day.id).toBe(day1.id);
+    expect(ctx.db.select().from(progression_state).all()).toEqual([]);
+    expect(sessionSummary(ctx, sessionId)).toMatchObject({
+      offerDeload: false,
+      volumeKg: 2880,
+      exercises: [{ plan: null }],
+    });
+  });
+
+  it('counts in the history, and a program workout sees its weights', () => {
+    const { id: programId, day1 } = program();
+    const free = freeWorkout(BENCH, [10, 9]);
+    const session = startSession(ctx, programId, day1.id);
+
+    expect(listWorkouts(ctx)[0]).toMatchObject({
+      session: { id: free },
+      dayTitle: '',
+      programTitle: '',
+    });
+    expect(lastPerformance(ctx, BENCH, session.id).map((set) => set.reps)).toEqual([10, 9]);
+  });
+
+  it('saves the exercises that were done, in order, as a program of one day', () => {
+    const session = startFreeSession(ctx);
+    const curl = addFreeExercise(ctx, session.id, CURL);
+    addFreeExercise(ctx, session.id, PLANK);
+    const bench = addFreeExercise(ctx, session.id, BENCH);
+    logSet(ctx, curl.id, { weight_kg: 20, reps: 12 });
+    logSet(ctx, bench.id, { weight_kg: 80, reps: 10 });
+    logSet(ctx, bench.id, { weight_kg: 80, reps: 9 });
+    finishSession(ctx, session.id, facts, { smart: false });
+
+    const saved = saveSessionAsProgram(ctx, session.id, {
+      title: 'Push',
+      dayTitle: 'Day 1',
+      params: () => PARAMS,
+    })!;
+
+    const tree = getProgramTree(ctx, saved.id)!;
+    expect(tree.program.title).toBe('Push');
+    expect(tree.days.map((day) => day.title)).toEqual(['Day 1']);
+    expect(tree.items.map((item) => [item.exercise_id, item.sets, item.rep_min])).toEqual([
+      [CURL, 1, PARAMS.rep_min],
+      [BENCH, 2, PARAMS.rep_min],
+    ]);
+  });
+
+  it('leaves out an exercise the catalog does not know', () => {
+    const session = startFreeSession(ctx);
+    logSet(ctx, addFreeExercise(ctx, session.id, CURL).id, { reps: 12 });
+    logSet(ctx, addFreeExercise(ctx, session.id, BENCH).id, { reps: 10 });
+
+    const saved = saveSessionAsProgram(ctx, session.id, {
+      title: 'Push',
+      dayTitle: 'Day 1',
+      params: (exerciseId) => (exerciseId === CURL ? null : PARAMS),
+    })!;
+
+    expect(getProgramTree(ctx, saved.id)!.items.map((item) => item.exercise_id)).toEqual([BENCH]);
+  });
+
+  it('stays a workout without a program after it was saved', () => {
+    const session = startFreeSession(ctx);
+    logSet(ctx, addFreeExercise(ctx, session.id, BENCH).id, { reps: 10 });
+    finishSession(ctx, session.id, facts, { smart: false });
+    saveSessionAsProgram(ctx, session.id, { title: 'Push', dayTitle: 'Day 1', params: () => PARAMS });
+
+    const view = getSession(ctx, session.id)!;
+    expect(view.session.program_id).toBeNull();
+    expect(view.exercises[0]!.exercise.program_item_id).toBeNull();
+  });
+
+  it('saves nothing from a workout without sets or with a program', () => {
+    const { id: programId, day1 } = program();
+    const input = { title: 'Push', dayTitle: 'Day 1', params: () => PARAMS };
+    const planned = workout(programId, day1.id, { [BENCH]: [80, [10]] });
+    const empty = startFreeSession(ctx);
+    addFreeExercise(ctx, empty.id, BENCH);
+
+    expect(saveSessionAsProgram(ctx, empty.id, input)).toBeNull();
+    expect(saveSessionAsProgram(ctx, planned, input)).toBeNull();
+    expect(listPrograms(ctx)).toHaveLength(1);
   });
 });

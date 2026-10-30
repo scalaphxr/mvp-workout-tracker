@@ -1,4 +1,4 @@
-import { isAvailable, searchExercises } from '@mvp/domain';
+import { type ExerciseSort, isAvailable, searchExercises } from '@mvp/domain';
 import type { Exercise, Level } from '@mvp/schemas';
 import { create } from 'zustand';
 
@@ -16,11 +16,13 @@ interface LibraryFilters {
   level: Level | null;
   /** Hide exercises the main gym has no equipment for. */
   onlyMyGym: boolean;
+  sort: ExerciseSort;
   setQuery(query: string): void;
   toggleMuscle(code: string): void;
   toggleEquipment(code: string): void;
   setLevel(level: Level | null): void;
   toggleOnlyMyGym(): void;
+  setSort(sort: ExerciseSort): void;
   reset(): void;
 }
 
@@ -34,15 +36,17 @@ export const useLibraryFilters = create<LibraryFilters>((set) => ({
   equipment: [],
   level: null,
   onlyMyGym: true,
+  sort: 'popularity',
   setQuery: (query) => set({ query }),
   toggleMuscle: (code) => set((state) => ({ muscles: toggle(state.muscles, code) })),
   toggleEquipment: (code) => set((state) => ({ equipment: toggle(state.equipment, code) })),
   setLevel: (level) => set({ level }),
   toggleOnlyMyGym: () => set((state) => ({ onlyMyGym: !state.onlyMyGym })),
+  setSort: (sort) => set({ sort }),
   reset: () => set({ muscles: [], equipment: [], level: null }),
 }));
 
-/** How many filters are on. The search text and the "my gym" switch are not counted. */
+/** How many filters are on. The search text, the "my gym" switch and the order are not counted. */
 export const activeFilterCount = (filters: Pick<LibraryFilters, 'muscles' | 'equipment' | 'level'>) =>
   filters.muscles.length + filters.equipment.length + (filters.level ? 1 : 0);
 
