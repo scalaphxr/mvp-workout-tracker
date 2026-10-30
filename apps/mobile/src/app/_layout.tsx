@@ -121,8 +121,17 @@ export default function RootLayout() {
       <SyncDriver />
       <ReminderDriver />
       <ThemeProvider value={colorScheme === 'dark' ? navigationThemes.dark : navigationThemes.light}>
-        {/* Without the minimal mode a back button is labelled with the route name, "(tabs)". */}
-        <Stack screenOptions={{ headerBackButtonDisplayMode: 'minimal', headerShadowVisible: false }}>
+        {/*
+          Without the minimal mode a back button is labelled with the route name, "(tabs)".
+          On iOS 26 headers are see-through glass with the content running under them; ours keep
+          the screen's colour instead, so no screen has to make room for the header itself.
+        */}
+        <Stack
+          screenOptions={{
+            headerBackButtonDisplayMode: 'minimal',
+            headerShadowVisible: false,
+            headerTransparent: false,
+          }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="onboarding" options={{ headerShown: false, gestureEnabled: false }} />
           <Stack.Screen

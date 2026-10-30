@@ -8,6 +8,7 @@ import {
   generateProgram,
   isAvailable,
   planSubstitutions,
+  POPULAR_EXERCISES,
   rankAlternatives,
   stepGroup,
 } from '@mvp/domain';
@@ -40,6 +41,12 @@ describe('catalog seed', () => {
       .sort();
 
     expect(catalogSeed.exercises.map((exercise) => exercise.slug).sort()).toEqual(inFiles);
+  });
+
+  it('ranks every exercise by popularity, once', () => {
+    expect([...POPULAR_EXERCISES].sort()).toEqual(
+      catalogSeed.exercises.map((exercise) => exercise.slug).sort(),
+    );
   });
 
   it('covers every kind of exercise', () => {

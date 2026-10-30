@@ -75,6 +75,35 @@ describe('searchExercises', () => {
     expect(slugs(searchExercises(all, {}, 'en'))[0]).toBe('barbell-back-squat');
   });
 
+  it('puts the most popular exercises first when asked to', () => {
+    expect(slugs(searchExercises(all, { sort: 'popularity' }, 'ru'))).toEqual([
+      'barbell-bench-press',
+      'barbell-back-squat',
+      'pull-up',
+      'dumbbell-bench-press',
+      'push-up',
+    ]);
+  });
+
+  it('keeps the order by popularity within a query, after how well the name matches', () => {
+    const benchPress = { ...bench, slug: 'close-grip-bench-press' };
+    expect(slugs(searchExercises([benchPress, dumbbellBench, bench], { query: 'жим', sort: 'popularity' }, 'ru'))).toEqual([
+      'barbell-bench-press',
+      'dumbbell-bench-press',
+      'close-grip-bench-press',
+    ]);
+  });
+
+  it('sends an exercise that is not ranked to the end, alphabetically', () => {
+    const rare = exercise('rare-b', 'Бэ', 'B');
+    const rarer = exercise('rare-a', 'Аа', 'A');
+    expect(slugs(searchExercises([rare, rarer, pushUp], { sort: 'popularity' }, 'ru'))).toEqual([
+      'push-up',
+      'rare-a',
+      'rare-b',
+    ]);
+  });
+
   it('matches word prefixes in any order, ignoring case and «ё»', () => {
     // Both names match; the shorter one, «Жим штанги лёжа», comes first.
     expect(slugs(searchExercises(all, { query: 'лежа ЖИМ' }, 'ru'))).toEqual([

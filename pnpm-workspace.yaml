@@ -7,6 +7,4 @@ allowBuilds:
   unrs-resolver: true
 overrides:
   # Optional peer of react-native's CLI plugin: pnpm resolves it to the latest release instead of the installed RN version.
-  '@react-native/metro-config': 0.86.3
-patchedDependencies:
-  expo-sqlite@57.0.3: patches/expo-sqlite@57.0.3.patch
+  '@react-native/metro-config': 0.88.0

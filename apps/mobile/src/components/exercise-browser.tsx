@@ -114,7 +114,7 @@ export function ExerciseBrowser({
             <ThemedText type="small" themeColor="textSecondary" style={styles.count}>
               {t('exercises.found', { count: found.length })}
             </ThemedText>
-          ) : null
+          ) : undefined
         }
         ListEmptyComponent={
           <View style={styles.empty}>

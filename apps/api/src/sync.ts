@@ -53,8 +53,8 @@ type DbRow = Record<string, unknown>;
 /** How one table takes part in sync: its columns and what its rows hang on. */
 interface Handler<T extends SyncTable> {
   table: SyncedTable;
-  /** The row this one belongs to. Top-level rows belong to whoever pushes them. */
-  parent?: { table: SyncTable; id: (row: SyncRows[T]) => string };
+  /** The row this one belongs to. Top-level rows belong to whoever pushes them; so do rows with no parent id. */
+  parent?: { table: SyncTable; id: (row: SyncRows[T]) => string | null };
   /** Rows of the catalog and other tables that must exist for this one. */
   references?: (row: SyncRows[T]) => Reference[];
   toDb(row: SyncRows[T]): DbRow;
@@ -237,6 +237,7 @@ const HANDLERS: { [T in SyncTable]: Handler<T> } = {
       programItemId: row.program_item_id,
       exerciseId: row.exercise_id,
       substitutedFromId: row.substituted_from_id,
+      plannedSets: row.planned_sets,
     }),
     fromDb: (row) => ({
       session_id: as(row.sessionId),
@@ -244,6 +245,7 @@ const HANDLERS: { [T in SyncTable]: Handler<T> } = {
       program_item_id: as(row.programItemId),
       exercise_id: as(row.exerciseId),
       substituted_from_id: as(row.substitutedFromId),
+      planned_sets: as(row.plannedSets),
     }),
   },
   set_logs: {
@@ -393,9 +395,11 @@ async function upsert<T extends SyncTable>(
 
   const existing = await find(db, handler.table, row.id);
   // A row may be moved to another parent, so the parent is checked even for a known row.
-  const parent = handler.parent
-    ? await find(db, HANDLERS[handler.parent.table].table, handler.parent.id(row))
-    : { ownerId: userId };
+  const parentId = handler.parent ? handler.parent.id(row) : null;
+  const parent =
+    handler.parent && parentId !== null
+      ? await find(db, HANDLERS[handler.parent.table].table, parentId)
+      : { ownerId: userId };
   if (!parent) return 'missing_parent';
   for (const ownerId of new Set([parent.ownerId, existing?.ownerId ?? parent.ownerId])) {
     if (!(await canAccess(db, userId, ownerId))) return 'forbidden';

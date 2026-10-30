@@ -1,6 +1,7 @@
 import { createAudioPlayer, setAudioModeAsync, type AudioPlayer } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import * as Notifications from 'expo-notifications';
+import { AndroidImportance } from 'expo-notifications';
 import { Platform } from 'react-native';
 
 // A browser has neither a vibration motor worth the name nor local notifications.
@@ -85,7 +86,7 @@ function prepare(channel: AlertChannel, channelName: string): Promise<boolean> {
       channel,
       Notifications.setNotificationChannelAsync(channel, {
         name: channelName,
-        importance: Notifications.AndroidImportance.HIGH,
+        importance: AndroidImportance.HIGH,
         vibrationPattern: [0, 400, 200, 400],
       }).catch(() => {}),
     );

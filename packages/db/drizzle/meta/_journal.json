@@ -57,6 +57,13 @@
       "when": 1792299589629,
       "tag": "0007_support_messages",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1793381649200,
+      "tag": "0008_free_workouts",
+      "breakpoints": true
     }
   ]
 }

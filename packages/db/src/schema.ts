@@ -366,12 +366,9 @@ export const sessions = pgTable(
   'sessions',
   {
     ...synced('user_id'),
-    programId: uuid('program_id')
-      .notNull()
-      .references(() => programs.id, { onDelete: 'cascade' }),
-    programDayId: uuid('program_day_id')
-      .notNull()
-      .references(() => programDays.id, { onDelete: 'cascade' }),
+    // Both are null for a workout without a program.
+    programId: uuid('program_id').references(() => programs.id, { onDelete: 'cascade' }),
+    programDayId: uuid('program_day_id').references(() => programDays.id, { onDelete: 'cascade' }),
     cycleNumber: integer('cycle_number').notNull(),
     status: text('status', { enum: ['active', 'finished', 'abandoned'] }).notNull(),
     startedAt: timestamptz('started_at').notNull(),
@@ -397,6 +394,7 @@ export const sessionExercises = pgTable(
       .notNull()
       .references(() => exercises.id),
     substitutedFromId: uuid('substituted_from_id').references(() => exercises.id),
+    plannedSets: integer('planned_sets'),
   },
   (t) => [index('session_exercises_sync_idx').on(t.ownerId, t.syncSeq)],
 );

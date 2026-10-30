@@ -1,5 +1,7 @@
 import type { CatalogSeed, Exercise, ExerciseMedia, Level, Locale } from '@mvp/schemas';
 
+import { popularityPlace } from './popularity';
+
 const LOCALES: readonly Locale[] = ['ru', 'en'];
 
 /** Lower case, «ё» as «е», punctuation as spaces: how names are compared in search and import. */
@@ -78,7 +80,11 @@ export interface ExerciseFilters {
   /** Equipment codes: the exercise uses any of them. */
   equipment?: readonly string[];
   level?: Level | null;
+  /** The order of the list; alphabetical unless it says otherwise. */
+  sort?: ExerciseSort;
 }
+
+export type ExerciseSort = 'popularity' | 'alphabet';
 
 /** Every query word starts some word of the text: «жим лёж» finds «Жим штанги лёжа». */
 function matches(text: string, queryWords: readonly string[]): boolean {
@@ -99,6 +105,7 @@ function matchRank(exercise: Exercise, queryWords: readonly string[], locale: Lo
  * The library search, the same on the phone and on the server. Results are ordered by how well
  * the name matches; for a query the shorter name comes first – the plain exercise before its
  * variants («Жим штанги лёжа» before «Жим штанги лёжа узким хватом») – then alphabetically.
+ * Sorted by popularity, the place in `POPULAR_EXERCISES` comes right after the match.
  */
 export function searchExercises(
   exercises: readonly Exercise[],
@@ -132,6 +139,9 @@ export function searchExercises(
     .sort(
       (a, b) =>
         a.rank - b.rank ||
+        (filters.sort === 'popularity'
+          ? popularityPlace(a.exercise.slug) - popularityPlace(b.exercise.slug)
+          : 0) ||
         // Without a query the library is simply alphabetical.
         (queryWords.length > 0
           ? a.exercise.translations[locale].name.length - b.exercise.translations[locale].name.length

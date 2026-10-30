@@ -1,5 +1,4 @@
 import { intervalAt, intervalTotalSec } from '@mvp/domain';
-import { useKeepAwake } from 'expo-keep-awake';
 import { useRouter } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -20,6 +19,7 @@ import {
   phaseTitle,
   useIntervalTimer,
 } from '@/lib/interval-timer';
+import { useScreenAwake } from '@/lib/keep-awake';
 
 const clock = (seconds: number) =>
   `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
@@ -44,7 +44,7 @@ function IntervalRun() {
   const { run, start, pause, resume, stop, refreshAlerts } = useIntervalTimer();
   const [now, setNow] = useState(() => Date.now());
   const shown = useRef<{ index: number; second: number } | null>(null);
-  useKeepAwake();
+  useScreenAwake();
 
   const paused = run?.pausedAt != null;
   useEffect(() => {

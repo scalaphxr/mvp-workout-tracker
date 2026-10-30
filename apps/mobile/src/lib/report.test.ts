@@ -101,6 +101,19 @@ const chest = workout(12, 'Грудь', '2026-10-02', 58, 6840, [
 const plain = (text: string) => text.replace(/[  ]/g, ' ');
 
 describe('a report', () => {
+  it('names a workout without a program and lists its exercises', async () => {
+    const free = {
+      ...chest,
+      dayTitle: '',
+      programTitle: '',
+      exercises: chest.exercises.map((entry) => ({ ...entry, item: null, plan: null })),
+    };
+    const lines = plain(buildReport(await context('ru'), { kind: 'session', workout: free })).split('\n');
+
+    expect(lines.join('\n')).toContain('Свободная тренировка');
+    expect(lines.join('\n')).toContain(NAMES[chest.exercises[0]!.exercise.exercise_id]);
+  });
+
   it('for a workout reads as the example of the spec', async () => {
     const text = buildReport(await context('ru'), { kind: 'session', workout: chest });
 

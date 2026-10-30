@@ -10,7 +10,8 @@ type IconName = ComponentProps<typeof Ionicons>['name'];
 
 function icon(name: IconName, focusedName: IconName) {
   return function TabIcon({ color, focused }: { color: ColorValue; focused: boolean }) {
-    return <Ionicons name={focused ? focusedName : name} color={color} size={24} />;
+    // The tab bar passes one of the theme's colours, always a string.
+    return <Ionicons name={focused ? focusedName : name} color={String(color)} size={24} />;
   };
 }
 

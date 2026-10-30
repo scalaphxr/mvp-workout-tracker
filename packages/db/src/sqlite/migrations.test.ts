@@ -1,10 +1,22 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
+import Database from 'better-sqlite3';
+import { drizzle } from 'drizzle-orm/better-sqlite3';
+import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
 import { describe, expect, it } from 'vitest';
 
 import { bundleMigrations } from '../../scripts/bundle-sqlite-migrations';
-import { gym_equipment, gym_profiles, program_days, program_items, programs } from './schema';
+import { localMigrations, schema } from './index';
+import {
+  gym_equipment,
+  gym_profiles,
+  outbox,
+  program_days,
+  program_items,
+  programs,
+  sessions,
+} from './schema';
 import { createTestDb } from './testing';
 
 const stamps = {
@@ -83,5 +95,57 @@ describe('phone database', () => {
     expect(db.select().from(program_days).all()).toEqual([day]);
     // The range of reps is two numbers.
     expect(db.select().from(program_items).all()).toEqual([item]);
+  });
+
+  const session = {
+    id: 'session-1',
+    ...stamps,
+    cycle_number: 1,
+    status: 'active' as const,
+    started_at: stamps.created_at,
+    finished_at: null,
+    wellbeing: null,
+    notes: '',
+  };
+
+  it('keeps queuing workouts for the server after the table of workouts was rebuilt', async () => {
+    const db = await createTestDb();
+
+    db.insert(sessions)
+      .values({ ...session, program_id: null, program_day_id: null })
+      .run();
+    db.update(sessions).set({ notes: 'heavy' }).run();
+
+    expect(db.select().from(outbox).all()).toMatchObject([
+      { table_name: 'sessions', row_id: session.id },
+    ]);
+  });
+
+  it('keeps the rows of a phone updated in the middle of a workout', async () => {
+    const sqlite = new Database(':memory:');
+    const db = drizzle(sqlite, { schema });
+    const older = localMigrations.journal.entries.filter((entry) => entry.idx <= 5);
+    await migrate(db as never, {
+      journal: { entries: older },
+      migrations: localMigrations.migrations,
+    });
+    sqlite
+      .prepare(
+        `insert into sessions (id, created_at, updated_at, deleted_at, program_id, program_day_id,
+           cycle_number, status, started_at, finished_at, wellbeing, notes)
+         values (?, ?, ?, null, 'program-1', 'day-1', 2, 'active', ?, null, null, 'tired')`,
+      )
+      .run(session.id, stamps.created_at, stamps.updated_at, session.started_at);
+    const queued = db.select().from(outbox).all();
+
+    await migrate(db as never, localMigrations);
+
+    expect(db.select().from(sessions).all()).toMatchObject([
+      { id: session.id, program_id: 'program-1', program_day_id: 'day-1', notes: 'tired' },
+    ]);
+    expect(db.select().from(outbox).all()).toEqual(queued);
+    expect(
+      sqlite.prepare("select name from sqlite_master where name = 'sessions_status_idx'").all(),
+    ).toHaveLength(1);
   });
 });
