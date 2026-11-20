@@ -1,3 +1,4 @@
+import type { Answers } from '@mvp/domain';
 import { create } from 'zustand';
 
 import { settingsStorage } from './storage';
@@ -18,10 +19,14 @@ export interface Preferences {
   weeklyGoal: number | null;
   /** Units of weight; `null` – by the region of the phone. */
   units: 'kg' | 'lb' | null;
+  /** Light or dark; `system` – as the phone is set. */
+  theme: 'system' | 'light' | 'dark';
   /** Rest between sets of a new exercise; `null` – by the goal and the kind of exercise. */
   defaultRestSec: number | null;
   /** Off by default (spec 6.11): with it off there is not a single AI button. */
   aiEnabled: boolean;
+  /** The last answers to the questionnaire: the next one starts from them. */
+  lastAnswers: Answers | null;
   reminders: {
     /** Days of the week, 1 – Monday … 7 – Sunday. */
     workout: TimedReminder & { days: number[] };
@@ -35,8 +40,10 @@ export const DEFAULT_PREFERENCES: Preferences = {
   onboarded: false,
   weeklyGoal: null,
   units: null,
+  theme: 'system',
   defaultRestSec: null,
   aiEnabled: false,
+  lastAnswers: null,
   reminders: {
     workout: { enabled: false, time: '18:00', days: [1, 3, 5] },
     weight: { enabled: false, time: '08:00' },

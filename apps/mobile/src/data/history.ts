@@ -4,6 +4,7 @@ import {
   desc,
   eq,
   gt,
+  inArray,
   isNull,
   lt,
   program_days,
@@ -16,7 +17,7 @@ import { epley } from '@mvp/domain';
 import type { SessionRow } from '@mvp/schemas';
 
 import type { DataContext } from './context';
-import { type SessionSummary, sessionSummary } from './sessions';
+import { type SessionSummary, type SessionTotals, sessionSummary, sessionTotals } from './sessions';
 
 const finished = and(eq(sessions.status, 'finished'), isNull(sessions.deleted_at));
 
@@ -53,6 +54,78 @@ function record(ctx: DataContext, session: SessionRow): WorkoutRecord | null {
 
 const records = (ctx: DataContext, rows: SessionRow[]) =>
   rows.flatMap((session) => record(ctx, session) ?? []);
+
+/** A finished workout in a list: its totals, without records and plans. */
+export interface WorkoutTotals extends SessionTotals {
+  /** Which workout of the user this is, counting from 1. */
+  number: number;
+  dayTitle: string;
+  programTitle: string;
+}
+
+/** The totals of workouts with their numbers and titles, a few queries for all of them. */
+function totalsWithTitles(ctx: DataContext, rows: SessionRow[]): WorkoutTotals[] {
+  if (rows.length === 0) return [];
+  // The number of a workout is its place among all finished ones, oldest first.
+  const order = new Map(
+    ctx.db
+      .select({ id: sessions.id })
+      .from(sessions)
+      .where(finished)
+      .orderBy(asc(sessions.started_at))
+      .all()
+      .map(({ id }, index) => [id, index + 1]),
+  );
+  const dayIds = rows.flatMap((row) => row.program_day_id ?? []);
+  const programIds = rows.flatMap((row) => row.program_id ?? []);
+  const days = new Map(
+    dayIds.length === 0
+      ? []
+      : ctx.db
+          .select({ id: program_days.id, title: program_days.title })
+          .from(program_days)
+          .where(inArray(program_days.id, dayIds))
+          .all()
+          .map((day) => [day.id, day.title]),
+  );
+  const titles = new Map(
+    programIds.length === 0
+      ? []
+      : ctx.db
+          .select({ id: programs.id, title: programs.title })
+          .from(programs)
+          .where(inArray(programs.id, programIds))
+          .all()
+          .map((program) => [program.id, program.title]),
+  );
+  return sessionTotals(ctx, rows).map((totals) => ({
+    ...totals,
+    number: order.get(totals.session.id) ?? 0,
+    dayTitle: (totals.session.program_day_id && days.get(totals.session.program_day_id)) || '',
+    programTitle: (totals.session.program_id && titles.get(totals.session.program_id)) || '',
+  }));
+}
+
+/** Finished workouts with their totals, newest first: for the history and the cards. */
+export function listWorkoutTotals(ctx: DataContext, limit = 50): WorkoutTotals[] {
+  return totalsWithTitles(
+    ctx,
+    ctx.db.select().from(sessions).where(finished).orderBy(desc(sessions.started_at)).limit(limit).all(),
+  );
+}
+
+/** The totals of the workouts started after a moment (an ISO time), oldest first. */
+export function workoutTotalsSince(ctx: DataContext, since: string): WorkoutTotals[] {
+  return totalsWithTitles(
+    ctx,
+    ctx.db
+      .select()
+      .from(sessions)
+      .where(and(finished, gt(sessions.started_at, since)))
+      .orderBy(asc(sessions.started_at))
+      .all(),
+  );
+}
 
 /** Finished workouts, newest first. */
 export function listWorkouts(ctx: DataContext, limit = 50): WorkoutRecord[] {

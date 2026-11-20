@@ -33,7 +33,7 @@ export default function ProgramScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { t } = useTranslation();
   const router = useRouter();
-  const tree = useLocal((ctx) => getProgramTree(ctx, id));
+  const tree = useLocal((ctx) => getProgramTree(ctx, id), [id]);
   const activeId = useActiveProgram((state) => state.id);
   const setActive = useActiveProgram((state) => state.set);
   // Saved as it is typed; an empty title is not saved and the last good one stays.

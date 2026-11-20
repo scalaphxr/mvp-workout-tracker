@@ -1,3 +1,4 @@
+import { MUSCLE_CATEGORIES, MUSCLE_CATEGORY_KEYS } from '@mvp/domain';
 import { LEVELS } from '@mvp/schemas';
 import { useRouter } from 'expo-router';
 import type { ReactNode } from 'react';
@@ -20,7 +21,7 @@ export default function ExerciseFiltersScreen() {
   const locale = useLocale();
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const { catalog } = useCatalog();
+  const { catalog, muscleByCode } = useCatalog();
   const filters = useLibraryFilters();
 
   const found = useFoundExercises().length;
@@ -60,16 +61,18 @@ export default function ExerciseFiltersScreen() {
           ))}
         </Section>
 
-        <Section title={t('filters.muscles')}>
-          {catalog.muscles.map((muscle) => (
-            <Chip
-              key={muscle.code}
-              label={muscle.name[locale]}
-              selected={filters.muscles.includes(muscle.code)}
-              onPress={() => filters.toggleMuscle(muscle.code)}
-            />
-          ))}
-        </Section>
+        {MUSCLE_CATEGORY_KEYS.map((category) => (
+          <Section key={category} title={t(`muscleCategories.${category}`)}>
+            {MUSCLE_CATEGORIES[category].map((code) => (
+              <Chip
+                key={code}
+                label={muscleByCode.get(code)?.name[locale] ?? code}
+                selected={filters.muscles.includes(code)}
+                onPress={() => filters.toggleMuscle(code)}
+              />
+            ))}
+          </Section>
+        ))}
 
         <Section title={t('filters.equipment')}>
           {catalog.equipment.map((item) => (

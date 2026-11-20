@@ -53,7 +53,7 @@ function Busy() {
       }),
     );
     return { entry, history };
-  });
+  }, [id, catalog]);
 
   const exercise = found && exerciseById.get(found.entry.exercise.exercise_id);
   if (!found || !exercise || !gym) {

@@ -206,8 +206,8 @@ describe('a workout done without a network', () => {
     expect(lastFinishedSession(second)!.id).toBe(sessionId);
     expect(nextWorkout(second, programId)).toMatchObject({ cycle: 2 });
     expect(sessionSummary(second, sessionId)!.exercises[0]!.plan).toMatchObject({
-      next_weight_kg: 82.5,
-      reason_code: 'increase',
+      next_weight_kg: 80,
+      reason_code: 'top_once',
     });
     // What came from the server is not sent back to it.
     expect(pendingCount(second)).toBe(0);
@@ -227,14 +227,14 @@ describe('a workout done without a network', () => {
     updateProgram(second, programId, { title: 'Bench, renamed' });
     const session = startSession(second, programId, dayId);
     const [bench] = getSession(second, session.id)!.exercises;
-    expect(bench!.plan?.next_weight_kg).toBe(82.5);
-    logSet(second, bench!.exercise.id, { weight_kg: 82.5, reps: 10, rir: 1 });
+    expect(bench!.plan?.next_weight_kg).toBe(80);
+    logSet(second, bench!.exercise.id, { weight_kg: 80, reps: 10, rir: 1 });
     finishSession(second, session.id, facts, { smart: false });
     await runSync(second, network);
 
     await runSync(first, network);
     expect(getProgramTree(first, programId)!.program.title).toBe('Bench, renamed');
-    expect(getSession(first, session.id)!.exercises[0]!.sets.map((set) => set.weight_kg)).toEqual([82.5]);
+    expect(getSession(first, session.id)!.exercises[0]!.sets.map((set) => set.weight_kg)).toEqual([80]);
     expect(pendingCount(first)).toBe(0);
     expect(await serverCounts()).toEqual({ programs: 1, sessions: 2, exercises: 2, sets: 4 });
   });

@@ -76,8 +76,26 @@ export function TrainingSettings() {
   const rest = usePreferences((state) => state.defaultRestSec);
   const set = usePreferences((state) => state.set);
 
+  const theme = usePreferences((state) => state.theme);
+
   return (
     <ThemedView type="backgroundElement" style={styles.card}>
+      {/* Three choices do not fit beside their label on a phone: they go under it. */}
+      <View style={styles.stack}>
+        <ThemedText>{t('settings.theme')}</ThemedText>
+        <View style={styles.chips}>
+          {(['system', 'light', 'dark'] as const).map((value) => (
+            <Chip
+              key={value}
+              label={t(`settings.themes.${value}`)}
+              selected={theme === value}
+              onCard
+              onPress={() => set({ theme: value })}
+            />
+          ))}
+        </View>
+      </View>
+
       <View style={styles.toggle}>
         <ThemedText style={styles.grow}>{t('settings.units')}</ThemedText>
         <View style={styles.chips}>
@@ -231,6 +249,10 @@ const styles = StyleSheet.create({
   },
   grow: {
     flex: 1,
+  },
+  stack: {
+    gap: Spacing.two,
+    paddingVertical: Spacing.one,
   },
   chips: {
     flexDirection: 'row',

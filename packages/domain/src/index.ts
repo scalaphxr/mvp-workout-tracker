@@ -2,6 +2,7 @@
 export * from './cardio';
 export * from './catalog';
 export * from './features';
+export * from './focus';
 export * from './generation';
 export * from './ids';
 export * from './import-text';
@@ -12,3 +13,4 @@ export * from './progression';
 export * from './share-code';
 export * from './streak';
 export * from './substitution';
+export * from './workout-stats';

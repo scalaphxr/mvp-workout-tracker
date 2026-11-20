@@ -131,6 +131,25 @@ describe('a report', () => {
     );
   });
 
+  it('adds the calories and the sets per muscle group when it knows them', async () => {
+    const MUSCLES: Record<string, string[]> = {
+      bench: ['chest'],
+      incline: ['chest'],
+      hammer: ['biceps'],
+      pushdown: ['triceps'],
+    };
+    const ctx = {
+      ...(await context('ru')),
+      exerciseOf: (id: string) =>
+        MUSCLES[id] ? { kind: 'strength' as const, primary_muscles: MUSCLES[id] } : undefined,
+    };
+    const lines = plain(buildReport(ctx, { kind: 'session', workout: { ...chest, kcal: 350 } })).split('\n');
+
+    expect(lines).toContain('Объём: 6 840 кг · Время: 58 мин · ≈ 350 ккал');
+    // Bench 3 + incline 3 for the chest; hammers 2 + pushdowns 2 for the arms.
+    expect(lines).toContain('Подходы по мышцам: Грудь 6, Руки 4');
+  });
+
   it('writes sets without a weight, with different weights and on time', async () => {
     const back = workout(13, 'Спина', '2026-10-04', 40, 1000, [
       { id: 'pullup', sets: [{ reps: 8 }, { weight: 0, reps: 7 }] },

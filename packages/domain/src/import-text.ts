@@ -39,7 +39,9 @@ const REPS_WORD_SETS =
   /(\d{1,3})(?:\s*-\s*(\d{1,3}))?\s*(?:повтор[а-я]*|раз[а]?|reps?)\s*[,x]?\s*(\d{1,2})\s*(?:подход[а-я]*|сет[а-я]*|sets?)/;
 // A row of a spreadsheet: name, sets, reps, and maybe the rest in the next cell.
 const TABLE_ROW = /,\s*(\d{1,2})\s*,\s*(\d{1,3})(?:\s*-\s*(\d{1,3}))?(?:\s*,\s*(\d{1,4}))?/;
-const REST = /(?:отдых[а-я]*|пауз[а-я]*|rest)\D{0,12}?(\d+(?:[.,]\d+)?)\s*(мин[а-я]*|min[a-z]*|м|m|сек[а-я]*|sec[a-z]*|с|s)?/i;
+// "отдых 2 мин", "rest 90s", and a range – "отдых 2-3 мин" – taken as its middle.
+const REST =
+  /(?:отдых[а-я]*|пауз[а-я]*|rest)\D{0,12}?(\d+(?:[.,]\d+)?)(?:\s*-\s*(\d+(?:[.,]\d+)?))?\s*(мин[а-я]*|min[a-z]*|м|m|сек[а-я]*|sec[a-z]*|с|s)?/i;
 const SECONDS = /^\s*(?:сек[а-я]*|sec[a-z]*|с|s)(?![a-zа-я])/;
 const MINUTES = /^\s*(?:мин[а-я]*|min[a-z]*)(?![a-zа-я])/;
 const SUPERSET = /^\s*(?:суперсет|superset)\s*[:\-]?\s*/;
@@ -66,8 +68,10 @@ function tidy(line: string): string {
 function parseRest(text: string): number | null {
   const match = REST.exec(text);
   if (!match?.[1]) return null;
-  const value = Number(match[1].replace(',', '.'));
-  const unit = match[2] ?? '';
+  const low = Number(match[1].replace(',', '.'));
+  const high = match[2] ? Number(match[2].replace(',', '.')) : low;
+  const value = high > low ? (low + high) / 2 : low;
+  const unit = match[3] ?? '';
   // Without a unit, a small number is minutes and a large one seconds.
   const minutes = unit ? /^(мин|min|м$|m$)/.test(unit) : value <= 10;
   return Math.round(minutes ? value * 60 : value);

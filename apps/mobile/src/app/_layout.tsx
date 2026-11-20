@@ -1,4 +1,11 @@
+import {
+  Onest_400Regular,
+  Onest_500Medium,
+  Onest_600SemiBold,
+  Onest_700Bold,
+} from '@expo-google-fonts/onest';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
+import { useFonts } from 'expo-font';
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
@@ -6,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { AppState } from 'react-native';
 
 import { EmptyState } from '@/components/empty-state';
-import { Colors } from '@/constants/theme';
+import { Colors, Typeface } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import i18n from '@/i18n';
 import { useAuthStore } from '@/lib/auth-store';
@@ -24,10 +31,19 @@ function CatalogSync() {
   return null;
 }
 
+/** The faces of the navigation: header titles and back labels in the body face. */
+const navigationFonts = {
+  regular: { fontFamily: Typeface.regular, fontWeight: 'normal' as const },
+  medium: { fontFamily: Typeface.medium, fontWeight: 'normal' as const },
+  bold: { fontFamily: Typeface.semibold, fontWeight: 'normal' as const },
+  heavy: { fontFamily: Typeface.bold, fontWeight: 'normal' as const },
+};
+
 /** The headers and backgrounds of the navigation take the app's colours: a header melts into its screen. */
 const navigationThemes = {
   light: {
     ...DefaultTheme,
+    fonts: navigationFonts,
     colors: {
       ...DefaultTheme.colors,
       primary: Colors.light.accent,
@@ -39,6 +55,7 @@ const navigationThemes = {
   },
   dark: {
     ...DarkTheme,
+    fonts: navigationFonts,
     colors: {
       ...DarkTheme.colors,
       primary: Colors.dark.accent,
@@ -109,8 +126,17 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   const { t } = useTranslation();
   const database = useDatabase();
+  // A face that failed to load falls back to the system one: the app still opens.
+  const [fontsLoaded, fontsFailed] = useFonts({
+    Onest_400Regular,
+    Onest_500Medium,
+    Onest_600SemiBold,
+    Onest_700Bold,
+    OswaldSoft_600SemiBold: require('@/assets/fonts/OswaldSoft-SemiBold.ttf'),
+    OswaldSoft_700Bold: require('@/assets/fonts/OswaldSoft-Bold.ttf'),
+  });
 
-  if (database === 'opening') return null;
+  if (database === 'opening' || (!fontsLoaded && !fontsFailed)) return null;
   if (database === 'failed') {
     return <EmptyState title={t('errors.databaseTitle')} text={t('errors.databaseText')} />;
   }
@@ -161,6 +187,8 @@ export default function RootLayout() {
           <Stack.Screen name="workout/summary/[id]" options={{ title: '' }} />
           <Stack.Screen name="report" options={{ title: t('report.title') }} />
           <Stack.Screen name="questionnaire" options={{ title: t('questionnaire.title') }} />
+          <Stack.Screen name="focus/index" options={{ title: t('focus.title') }} />
+          <Stack.Screen name="focus/workout" options={{ title: t('focus.workoutTitle') }} />
           <Stack.Screen name="import-text" options={{ title: t('importText.title') }} />
           <Stack.Screen name="activity" options={{ title: '' }} />
           <Stack.Screen name="support" options={{ title: t('support.title') }} />
@@ -168,7 +196,7 @@ export default function RootLayout() {
           <Stack.Screen name="interval/preset" options={{ title: '' }} />
           <Stack.Screen name="interval/run" options={{ title: t('interval.title'), ...darkHeader }} />
         </Stack>
-        <StatusBar style="auto" />
+        <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
       </ThemeProvider>
     </QueryClientProvider>
   );

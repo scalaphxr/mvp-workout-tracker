@@ -16,9 +16,11 @@ import {
   set_logs,
 } from '@mvp/db/sqlite';
 import {
+  acceptIncrease,
   acceptReduction,
   advancePointer,
   type CardioRecord,
+  declineIncrease,
   deloadSets,
   type ExerciseResult,
   findCardioRecords,
@@ -27,7 +29,9 @@ import {
   planNext,
   type RecordKind,
   shouldOfferDeload,
+  topWeightOf,
   volumeKg,
+  workoutKcal,
 } from '@mvp/domain';
 import {
   type ProgramDayRow,
@@ -44,6 +48,7 @@ import {
   SetLogRowSchema,
 } from '@mvp/schemas';
 
+import { listWeights, localDate, weightAmong, weightOn } from './body';
 import { type DataContext, fresh } from './context';
 import { addItem, createProgram, getProgramTree, replaceExercise } from './programs';
 
@@ -227,6 +232,7 @@ export function addFreeExercise(
   ctx: DataContext,
   sessionId: string,
   exerciseId: string,
+  plannedSets?: number,
 ): SessionExerciseRow {
   const entries = exercisesOf(ctx, sessionId);
   const added = entries.find((entry) => entry.exercise_id === exerciseId);
@@ -239,10 +245,47 @@ export function addFreeExercise(
     program_item_id: null,
     exercise_id: exerciseId,
     substituted_from_id: null,
-    planned_sets: lastPerformance(ctx, exerciseId, sessionId).length || DEFAULT_FREE_SETS,
+    planned_sets:
+      plannedSets ?? (lastPerformance(ctx, exerciseId, sessionId).length || DEFAULT_FREE_SETS),
   });
   ctx.db.insert(session_exercises).values(row).run();
   return row;
+}
+
+/**
+ * A workout without a program, made of exercises picked for chosen muscles. A workout that is
+ * already running is returned as it is: nothing is added to it.
+ */
+export function startFocusSession(
+  ctx: DataContext,
+  items: readonly { exercise_id: string; sets: number }[],
+): SessionRow {
+  const running = activeSession(ctx);
+  if (running) return running;
+
+  return ctx.db.transaction((tx) => {
+    const inTx = { ...ctx, db: tx };
+    const session = startFreeSession(inTx);
+    for (const item of items) addFreeExercise(inTx, session.id, item.exercise_id, item.sets);
+    return session;
+  });
+}
+
+/** Ids of the exercises of finished workouts. */
+export function knownExercises(ctx: DataContext): Set<string> {
+  const rows = ctx.db
+    .select({ id: session_exercises.exercise_id })
+    .from(session_exercises)
+    .innerJoin(sessions, eq(session_exercises.session_id, sessions.id))
+    .where(
+      and(
+        eq(sessions.status, 'finished'),
+        isNull(sessions.deleted_at),
+        isNull(session_exercises.deleted_at),
+      ),
+    )
+    .all();
+  return new Set(rows.map((row) => row.id));
 }
 
 /** Takes an exercise out of the workout (a mistap in the search); not once it has sets. */
@@ -594,6 +637,7 @@ export function finishSession(
         step_kg: item.increment_kg ?? known.step_kg,
         work_sets: sets.filter((set) => !set.is_warmup),
         fail_streak: plan?.fail_streak ?? 0,
+        top_weight_kg: topWeightOf(plan),
         smart: options.smart,
       });
       if (next) savePlan(inTx, item.id, next, plan);
@@ -679,6 +723,33 @@ export function resolveReduction(ctx: DataContext, programItemId: string, accept
   );
 }
 
+/**
+ * The user's answer to an offer to add weight after two workouts in a row at the top of the
+ * range: the weight goes up only on "yes"; on "no" it stays and the offer comes back the next
+ * time the top is reached.
+ */
+export function resolveIncrease(ctx: DataContext, programItemId: string, accept: boolean): void {
+  const plan = ctx.db
+    .select()
+    .from(progression_state)
+    .where(eq(progression_state.program_item_id, programItemId))
+    .get();
+  if (!plan || plan.reason_code !== 'increase_offer') return;
+  const answered = accept ? acceptIncrease(plan) : declineIncrease(plan);
+  savePlan(
+    ctx,
+    programItemId,
+    {
+      next_weight_kg: answered.next_weight_kg,
+      next_target_reps: answered.next_target_reps,
+      fail_streak: answered.fail_streak,
+      reason_code: answered.reason_code,
+      reason_params: answered.reason_params,
+    },
+    plan,
+  );
+}
+
 /** Makes the coming cycle of a program a deload: half the sets, the same weights. */
 export function startDeload(ctx: DataContext, programId: string): void {
   const state = getProgramState(ctx, programId);
@@ -700,10 +771,16 @@ export interface SummaryExercise {
   plan: ProgressionStateRow | null;
 }
 
-export interface SessionSummary {
+/** What a workout came to in numbers, without its records and plans: cheap enough for lists. */
+export interface SessionTotals {
   session: SessionRow;
   volumeKg: number;
   durationSec: number;
+  /** Calories burned, an estimate (`workoutKcal`); `null` – no body weight to go by. */
+  kcal: number | null;
+}
+
+export interface SessionSummary extends SessionTotals {
   exercises: SummaryExercise[];
   /** Half of the exercises of the day have not grown for 3 workouts: time for a lighter week. */
   offerDeload: boolean;
@@ -736,15 +813,61 @@ export function sessionSummary(ctx: DataContext, sessionId: string): SessionSumm
     };
   });
 
+  const sets = exercises.flatMap((entry) => entry.sets);
   return {
-    session,
-    volumeKg: volumeKg(exercises.flatMap((entry) => entry.sets)),
-    durationSec: session.finished_at
-      ? Math.round((Date.parse(session.finished_at) - Date.parse(session.started_at)) / 1000)
-      : 0,
+    ...totalsOf(session, sets, weightOn(ctx, localDate(session.started_at))),
     exercises,
     offerDeload: offersDeload(ctx, view),
   };
+}
+
+function totalsOf(
+  session: SessionRow,
+  sets: readonly SetLogRow[],
+  bodyWeightKg: number | null,
+): SessionTotals {
+  const durationSec = session.finished_at
+    ? Math.round((Date.parse(session.finished_at) - Date.parse(session.started_at)) / 1000)
+    : 0;
+  return {
+    session,
+    volumeKg: volumeKg(sets),
+    durationSec,
+    kcal: workoutKcal({ durationSec, bodyWeightKg, logged: sets.filter((set) => !set.is_warmup) }),
+  };
+}
+
+/**
+ * The totals of several workouts, in their order: the same numbers as `sessionSummary`, read
+ * with two queries for all of them instead of a summary each. For lists and cards.
+ */
+export function sessionTotals(ctx: DataContext, rows: readonly SessionRow[]): SessionTotals[] {
+  if (rows.length === 0) return [];
+  const sets = ctx.db
+    .select({ set: set_logs, sessionId: session_exercises.session_id })
+    .from(set_logs)
+    .innerJoin(session_exercises, eq(session_exercises.id, set_logs.session_exercise_id))
+    .where(
+      and(
+        inArray(
+          session_exercises.session_id,
+          rows.map((row) => row.id),
+        ),
+        isNull(session_exercises.deleted_at),
+        isNull(set_logs.deleted_at),
+      ),
+    )
+    .all();
+  const bySession = new Map<string, SetLogRow[]>();
+  for (const { set, sessionId } of sets) {
+    const list = bySession.get(sessionId) ?? [];
+    list.push(set);
+    bySession.set(sessionId, list);
+  }
+  const weights = listWeights(ctx);
+  return rows.map((session) =>
+    totalsOf(session, bySession.get(session.id) ?? [], weightAmong(weights, localDate(session.started_at))),
+  );
 }
 
 /** Half of the exercises of the day have not grown for 3 workouts; never without a program. */

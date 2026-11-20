@@ -19,5 +19,5 @@ export function weeklyGoalOf(ctx: DataContext, goal: number | null, programId: s
 export function useWeeklyGoal(): number | null {
   const goal = usePreferences((state) => state.weeklyGoal);
   const programId = useActiveProgram((state) => state.id);
-  return useLocal((ctx) => weeklyGoalOf(ctx, goal, programId));
+  return useLocal((ctx) => weeklyGoalOf(ctx, goal, programId), [goal, programId]);
 }

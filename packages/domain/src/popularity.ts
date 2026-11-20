@@ -72,6 +72,8 @@ export const POPULAR_EXERCISES: readonly string[] = [
   'close-grip-lat-pulldown',
   'straight-arm-pulldown',
   'cable-crunch',
+  'machine-crunch',
+  'decline-crunch',
   'lying-leg-raise',
   'hanging-knee-raise',
   'glute-bridge',

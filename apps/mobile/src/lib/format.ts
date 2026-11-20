@@ -13,6 +13,18 @@ export function formatDuration(t: TFunction, seconds: number): string {
   return sec === 0 ? t('units.min', { value: min }) : t('units.minSec', { min, sec });
 }
 
+/**
+ * A total of time, to the minute: "45 мин", "3 ч 48 мин", "2 ч". For sums over many workouts,
+ * where "228 мин" would have to be counted out in the head.
+ */
+export function formatTotalTime(t: TFunction, seconds: number): string {
+  const minutes = Math.max(1, Math.round(seconds / 60));
+  if (minutes < 60) return t('units.min', { value: minutes });
+  const hours = Math.floor(minutes / 60);
+  const min = minutes % 60;
+  return min === 0 ? t('units.hour', { hours }) : t('units.hourMin', { hours, min });
+}
+
 /** Numbers print in the user's language: `1,25` in Russian, `1.25` in English. */
 export const formatNumber = (value: number, locale: string) =>
   new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(value);

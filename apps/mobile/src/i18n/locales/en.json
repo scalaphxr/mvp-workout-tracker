@@ -17,9 +17,15 @@
     "sec": "{{value}} s",
     "min": "{{value}} min",
     "minSec": "{{min}} min {{sec}} s",
+    "hour": "{{hours}} h",
+    "hourMin": "{{hours}} h {{min}} min",
     "km": "{{value}} km",
     "kmh": "{{value}} km/h",
     "kcal": "{{value}} kcal"
+  },
+  "week": {
+    "title": "My week",
+    "trained": "trained"
   },
   "today": {
     "emptyTitle": "No workout yet",
@@ -100,7 +106,15 @@
     "title": "Workout finished",
     "volume": "Volume",
     "duration": "Time",
+    "kcal": "Calories",
+    "kcalValue": "≈ {{kcal}} kcal",
+    "kcalNoWeight": "Enter your body weight to count them",
+    "muscles": "Sets per muscle group",
+    "sets_one": "{{count}} set",
+    "sets_other": "{{count}} sets",
     "records": "Records",
+    "recordsCount_one": "{{count}} new record",
+    "recordsCount_other": "{{count}} new records",
     "recordWeight": "{{name}}: a new working weight, {{weight}}",
     "recordReps": "{{name}}: {{reps}} reps with {{weight}}",
     "recordE1rm": "{{name}}: the estimated maximum went up",
@@ -108,6 +122,7 @@
     "nextWeight": "{{weight}} × {{reps}}",
     "nextReps": "{{reps}} reps",
     "reduceYes": "Drop to {{weight}}",
+    "increaseYes": "Go up to {{weight}}",
     "reduceNo": "Keep {{weight}}",
     "deloadTitle": "Time for a lighter week",
     "deloadText": "Half of the exercises of this day have not grown for three workouts in a row. Make the next round light: half the sets, the same weights?",
@@ -129,6 +144,11 @@
     "increase_one": "+{{step}}: {{count}} set of {{reps}}, the top of the range",
     "increase_other": "+{{step}}: all {{count}} sets of {{reps}}, the top of the range",
     "increase_fast": "+{{step}}: all sets of {{reps}} with 3 or more reps to spare",
+    "top_once_one": "The same weight: {{count}} set of {{reps}}, the top of the range. Do it once more to be offered +{{step}}",
+    "top_once_other": "The same weight: all {{count}} sets of {{reps}}, the top of the range. Do it once more to be offered +{{step}}",
+    "top_kept": "Weight kept. All sets of {{reps}} again and +{{step}} is offered once more",
+    "increase_offer_one": "The second workout in a row with {{count}} set of {{reps}}, the top of the range. Add {{step}}?",
+    "increase_offer_other": "The second workout in a row with all {{count}} sets of {{reps}}, the top of the range. Add {{step}}?",
     "same": "The same weight: get to {{target}} in set {{set}}",
     "retry_one": "The same weight: set {{set}} had {{count}} rep, below {{min}}. Try this weight again",
     "retry_other": "The same weight: set {{set}} had {{count}} reps, below {{min}}. Try this weight again",
@@ -163,7 +183,9 @@
     "days_one": "{{count}} day",
     "days_other": "{{count}} days",
     "exercises_one": "{{count}} exercise",
-    "exercises_other": "{{count}} exercises"
+    "exercises_other": "{{count}} exercises",
+    "open": "Open",
+    "ways": "Other ways"
   },
   "program": {
     "notFoundTitle": "No such program",
@@ -237,7 +259,6 @@
   },
   "filters": {
     "title": "Filters",
-    "muscles": "Muscles",
     "equipment": "Equipment",
     "level": "Level",
     "sort": "Sort",
@@ -407,6 +428,7 @@
     "next": "→ next {{weight}}",
     "superset": "Superset: {{items}}",
     "totals": "Volume: {{volume}} · Time: {{duration}}",
+    "muscles": "Sets per muscle group: {{list}}",
     "totalsTime": "Time: {{duration}}",
     "workouts_one": "{{count}} workout",
     "workouts_other": "{{count}} workouts",
@@ -496,7 +518,12 @@
     },
     "programTitle": "{{goal}}, {{count}} a week",
     "start": "Start",
-    "edit": "Edit in the constructor"
+    "edit": "Edit in the constructor",
+    "focusTitle": "Focus: {{muscles}}",
+    "focusOn": "Focus on: {{muscles}}. The whole body stays in the program; these muscles get more sets and come first.",
+    "focusBeginner": "At the start, an even load does more for you. A program with a focus is better once you have settled in.",
+    "focusShort": "This gym has few exercises, so the focus will be weaker: {{muscles}}.",
+    "focusDropped": "This gym has no exercises for: {{muscles}}. Go back and pick another place."
   },
   "importText": {
     "title": "A program from text",
@@ -710,7 +737,9 @@
     "volumeLess": "Over the last 7 days you lifted less than in the 7 days before.",
     "volumeSame": "Over the last 7 days you lifted as much as in the 7 days before.",
     "last7": "Last 7 days",
-    "previous7": "7 days before"
+    "previous7": "7 days before",
+    "workouts_one": "{{count}} workout",
+    "workouts_other": "{{count}} workouts"
   },
   "reminders": {
     "channel": "Reminders",
@@ -742,6 +771,12 @@
     "defaultRest": "Default rest",
     "restAuto": "by exercise",
     "defaultRestHint": "The rest between sets new exercises are added with. “By exercise” follows the goal of the program: longer for compound lifts, shorter for isolation.",
+    "theme": "Theme",
+    "themes": {
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark"
+    },
     "units": "Units of weight",
     "kg": "Kilograms",
     "lb": "Pounds"
@@ -778,5 +813,35 @@
     "sentTitle": "Message sent",
     "sentText": "Thank you! We will answer by email within 48 hours.",
     "close": "Close"
+  },
+  "muscleCategories": {
+    "chest": "Chest",
+    "back": "Back",
+    "shoulders": "Shoulders",
+    "arms": "Arms",
+    "legs": "Legs",
+    "core": "Core"
+  },
+  "focus": {
+    "open": "Work on muscles",
+    "title": "Work on muscles",
+    "workoutTitle": "Workout for muscles",
+    "intro": "Pick the muscles you want to bring up.",
+    "noExercises": "Faded muscles are unavailable: your gym has no suitable exercises for them.",
+    "workoutNow": "Workout now",
+    "program": "Program",
+    "running": "Finish the workout that is running first.",
+    "tooMany_one": "Pick no more than {{count}} muscle for a program.",
+    "tooMany_other": "Pick no more than {{count}} muscles for a program.",
+    "duration": "How much time do you have?",
+    "exercises": "Exercises",
+    "dropped": "Did not fit, or no exercises in the gym: {{muscles}}.",
+    "short": "Your gym has few exercises for these muscles, so the workout is shorter.",
+    "itemPlan_one": "{{muscle}} · {{count}} set",
+    "itemPlan_other": "{{muscle}} · {{count}} sets",
+    "replace": "Replace",
+    "remove": "Remove",
+    "empty": "No exercises. Pick other muscles or another length.",
+    "start": "Start"
   }
 }

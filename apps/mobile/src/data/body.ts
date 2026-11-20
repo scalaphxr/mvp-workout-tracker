@@ -19,6 +19,30 @@ export function listWeights(ctx: DataContext): WeightEntry[] {
   return [...byDate.values()].map((row) => ({ date: row.date, weight_kg: row.weight_kg }));
 }
 
+/** A calendar day (YYYY-MM-DD) of a moment, in the phone's time zone. */
+export const localDate = (iso: string) => {
+  const at = new Date(iso);
+  const pad = (n: number) => String(n).padStart(2, '0');
+  return `${at.getFullYear()}-${pad(at.getMonth() + 1)}-${pad(at.getDate())}`;
+};
+
+/**
+ * The body weight on a day: the last one entered on it or before, else the first one entered
+ * after it; `null` – no weight was ever entered.
+ */
+export function weightOn(ctx: DataContext, date: string): number | null {
+  return weightAmong(listWeights(ctx), date);
+}
+
+/** `weightOn` over weights already read, oldest first: for many days at once. */
+export function weightAmong(
+  weights: readonly { date: string; weight_kg: number }[],
+  date: string,
+): number | null {
+  const before = weights.filter((entry) => entry.date <= date).at(-1);
+  return (before ?? weights[0])?.weight_kg ?? null;
+}
+
 /** Saves the weight of a day; entering it again replaces what was there. */
 export function setWeight(ctx: DataContext, date: string, weightKg: number): void {
   const now = ctx.now();

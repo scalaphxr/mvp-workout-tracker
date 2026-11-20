@@ -1,14 +1,23 @@
-import { StyleSheet } from 'react-native';
+import { Image, type ImageSourcePropType, StyleSheet } from 'react-native';
 
 import { MaxContentWidth, Spacing } from '@/constants/theme';
 
 import { ThemedText } from './themed-text';
 import { ThemedView } from './themed-view';
 
-/** A screen that has nothing to show yet. */
-export function EmptyState({ title, text }: { title: string; text: string }) {
+/** A screen that has nothing to show yet, with a three-dimensional picture above the words. */
+export function EmptyState({
+  title,
+  text,
+  picture,
+}: {
+  title: string;
+  text: string;
+  picture?: ImageSourcePropType;
+}) {
   return (
     <ThemedView style={styles.container}>
+      {picture && <Image source={picture} style={styles.picture} accessibilityIgnoresInvertColors />}
       <ThemedText style={styles.title}>{title}</ThemedText>
       <ThemedText themeColor="textSecondary" style={styles.text}>
         {text}
@@ -24,6 +33,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: Spacing.four,
     gap: Spacing.two,
+  },
+  picture: {
+    width: 128,
+    height: 128,
+    marginBottom: Spacing.two,
   },
   title: {
     fontSize: 20,

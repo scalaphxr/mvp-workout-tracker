@@ -71,7 +71,7 @@ function Workout() {
   const startRest = useRestTimer((state) => state.start);
   const stopRest = useRestTimer((state) => state.stop);
   const resting = useRestTimer((state) => state.endsAt !== null);
-  const view = useLocal((ctx) => getSession(ctx, id));
+  const view = useLocal((ctx) => getSession(ctx, id), [id]);
   const scroll = useRef<ScrollViewInstance>(null);
   const positions = useRef(new Map<string, number>());
   // A workout picked up again opens on the exercise it stopped at, once.
@@ -289,7 +289,10 @@ function ExerciseCard({
   const router = useRouter();
   const { exerciseById } = useCatalog();
   const { item, plan, sets } = entry;
-  const last = useLocal((ctx) => lastPerformance(ctx, entry.exercise.exercise_id, sessionId));
+  const last = useLocal((ctx) => lastPerformance(ctx, entry.exercise.exercise_id, sessionId), [
+    entry.exercise.exercise_id,
+    sessionId,
+  ]);
   const units = useUnits();
   const kg = useWeightFormat();
   const recordText = useRecordText();

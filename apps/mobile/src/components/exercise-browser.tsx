@@ -2,9 +2,10 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import type { Exercise } from '@mvp/schemas';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { FlatList, Pressable, StyleSheet, TextInput, View } from 'react-native';
+import { FlatList, Image, Pressable, StyleSheet, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { Pictures } from '@/constants/pictures';
 import { FloatingTabBarSpace, MaxContentWidth, Radius, Spacing } from '@/constants/theme';
 import { useLocale } from '@/hooks/use-locale';
 import { useTheme } from '@/hooks/use-theme';
@@ -12,6 +13,7 @@ import { useCatalog } from '@/lib/catalog';
 import { activeFilterCount, useFoundExercises, useLibraryFilters } from '@/lib/library-filters';
 
 import { Button } from './button';
+import { CategoryFilter } from './category-filter';
 import { ThemedText } from './themed-text';
 
 /**
@@ -96,6 +98,7 @@ export function ExerciseBrowser({
           </ThemedText>
         </Pressable>
       </View>
+      <CategoryFilter />
 
       <FlatList
         data={found}
@@ -118,6 +121,7 @@ export function ExerciseBrowser({
         }
         ListEmptyComponent={
           <View style={styles.empty}>
+            <Image source={Pictures.dumbbell} style={styles.emptyPicture} accessibilityIgnoresInvertColors />
             <ThemedText style={styles.emptyTitle}>{t('exercises.nothingTitle')}</ThemedText>
             <ThemedText themeColor="textSecondary" style={styles.emptyText}>
               {t('exercises.nothingText')}
@@ -200,6 +204,10 @@ const styles = StyleSheet.create({
     gap: Spacing.two,
     padding: Spacing.four,
     paddingTop: Spacing.six,
+  },
+  emptyPicture: {
+    width: 104,
+    height: 104,
   },
   emptyTitle: {
     fontSize: 20,

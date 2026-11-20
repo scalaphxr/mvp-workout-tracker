@@ -31,7 +31,7 @@ export function WeightCard() {
   const today = toLocalDate(new Date());
   const weights = useLocal(listWeights);
   const programId = useActiveProgram((state) => state.id);
-  const goal = useLocal((ctx) => (programId ? getProgramTree(ctx, programId)?.program.goal : null));
+  const goal = useLocal((ctx) => (programId ? getProgramTree(ctx, programId)?.program.goal : null), [programId]);
   const stats = weightStats(weights, today);
   const units = useUnits();
   const weight = useWeightFormat();

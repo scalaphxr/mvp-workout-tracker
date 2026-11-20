@@ -70,6 +70,12 @@ export function explainPlan(
       return t('reason.increase', { step, count: p.sets ?? 0, reps: p.reps });
     case 'increase_fast':
       return t('reason.increase_fast', { step, reps: p.reps });
+    case 'top_once':
+      return p.declined
+        ? t('reason.top_kept', { step, reps: p.reps })
+        : t('reason.top_once', { step, count: p.sets ?? 0, reps: p.reps });
+    case 'increase_offer':
+      return t('reason.increase_offer', { step, count: p.sets ?? 0, reps: p.reps });
     case 'same':
       return t('reason.same', { target: p.target_reps, set: p.set_number });
     case 'retry':

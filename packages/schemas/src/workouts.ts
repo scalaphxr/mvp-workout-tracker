@@ -73,10 +73,14 @@ export type SetLogRow = z.infer<typeof SetLogRowSchema>;
  * is put together on the phone in the user's language.
  */
 export const REASON_CODES = [
-  /** Every set reached the top of the range: the weight goes up a step. */
+  /** The weight went up a step: the user took the offer to add weight. */
   'increase',
-  /** The same, with reps to spare in every set: two steps (smart progression). */
+  /** Two steps at once (smart progression). Kept for plans made before the offer. */
   'increase_fast',
+  /** Every set reached the top of the range, the first time with this weight: the same weight. */
+  'top_once',
+  /** The second workout in a row at the top with this weight: the app offers to add a step. */
+  'increase_offer',
   /** Some set is short of the top: the same weight, one more rep in the weakest set. */
   'same',
   /** Half of the sets or more fell below the range, the first time: try the weight again. */

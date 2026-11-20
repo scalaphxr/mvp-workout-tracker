@@ -35,7 +35,7 @@ export default function ActivityScreen() {
   const { t } = useTranslation();
   const locale = useLocale();
   const router = useRouter();
-  const existing = useLocal((ctx) => (id ? getActivity(ctx, id) : null));
+  const existing = useLocal((ctx) => (id ? getActivity(ctx, id) : null), [id]);
 
   const [type, setType] = useState(existing?.activity_type ?? '');
   const [ownType, setOwnType] = useState(
@@ -50,7 +50,11 @@ export default function ActivityScreen() {
   const [hr, setHr] = useState(typed(existing?.avg_hr ?? null));
   const [calories, setCalories] = useState(typed(existing?.calories ?? null));
   const [notes, setNotes] = useState(existing?.notes ?? '');
-  const [error, setError] = useState<string | null>(null);
+  // A message is about what was filled in: once any of it changes, the message no longer applies.
+  const filled = JSON.stringify([type, ownType, own, duration, distance, hr, calories]);
+  const [failure, setFailure] = useState<{ text: string; filled: string } | null>(null);
+  const error = failure?.filled === filled ? failure.text : null;
+  const setError = (text: string) => setFailure({ text, filled });
   // The days the chips stand for, fixed when the screen opens.
   const [openedAt] = useState(() => Date.now());
 

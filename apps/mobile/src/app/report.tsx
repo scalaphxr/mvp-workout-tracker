@@ -56,7 +56,7 @@ export default function ReportScreen() {
       activities: activitiesSince(ctx, since),
       today,
     };
-  });
+  }, [params.kind, params.id, params.program, params.cycle, today]);
   const weights = useLocal(listWeights);
   const units = useUnits();
 
@@ -68,6 +68,7 @@ export default function ReportScreen() {
       weights,
       units,
       nameOf: (id) => exerciseById.get(id)?.translations[locale].name ?? t('program.unknownExercise'),
+      exerciseOf: (id) => exerciseById.get(id),
     },
     report,
   );

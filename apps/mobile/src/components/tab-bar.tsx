@@ -1,161 +1,107 @@
 import type { BottomTabBarProps } from 'expo-router/tabs';
-import { useEffect, useState } from 'react';
-import { Animated, Platform, Pressable, StyleSheet, View } from 'react-native';
+import { Platform, Pressable, StyleSheet, View } from 'react-native';
 
-import { Radius, Spacing } from '@/constants/theme';
+import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 import { ThemedText } from './themed-text';
 
 /**
- * The tab bar floats over the content as a pill; the chosen tab sits in a pill of its own, which
- * slides from tab to tab. Each tab lights up as the pill passes over it.
+ * The tab bar along the bottom edge: an icon over a label, the chosen tab in the accent with a
+ * filled icon, the others in grey. It sits over the content, which scrolls out from under it.
  */
 export function FloatingTabBar({ state, descriptors, emitter, navigateToTab, insets }: BottomTabBarProps) {
   const theme = useTheme();
-  // Measured in tabs, not in points, so the bar can be any width.
-  const [position] = useState(() => new Animated.Value(state.index));
-  const [trackWidth, setTrackWidth] = useState(0);
-  const tabWidth = trackWidth / state.routes.length;
-
-  useEffect(() => {
-    // Clamped, so the pill does not spring past the ends of the bar.
-    Animated.spring(position, {
-      toValue: state.index,
-      friction: 10,
-      tension: 80,
-      overshootClamping: true,
-      useNativeDriver: true,
-    }).start();
-  }, [position, state.index]);
 
   return (
-    <View style={[styles.wrap, { paddingBottom: Math.max(insets.bottom, Spacing.three) }]}>
-      <View
-        accessibilityRole="tablist"
-        style={[styles.bar, { backgroundColor: theme.tabBar, borderColor: theme.separator }]}>
-        <View
-          style={styles.track}
-          onLayout={(event) => setTrackWidth(event.nativeEvent.layout.width)}>
-          <Animated.View
-            style={[
-              styles.pill,
-              {
-                width: tabWidth,
-                backgroundColor: theme.backgroundSelected,
-                transform: [{ translateX: Animated.multiply(position, tabWidth) }],
-              },
-            ]}
-          />
-          {state.routes.map((route, index) => {
-            const { options } = descriptors[route.key]!;
-            const focused = state.index === index;
-            const title = options.title ?? route.name;
-            const lit = position.interpolate({
-              inputRange: [index - 1, index, index + 1],
-              outputRange: [0, 1, 0],
-              extrapolate: 'clamp',
-            });
+    <View
+      style={[
+        styles.bar,
+        {
+          backgroundColor: theme.tabBar,
+          borderTopColor: theme.separator,
+          paddingBottom: Math.max(insets.bottom, Spacing.two),
+        },
+      ]}>
+      <View accessibilityRole="tablist" style={styles.track}>
+        {state.routes.map((route, index) => {
+          const { options } = descriptors[route.key]!;
+          const focused = state.index === index;
+          const title = options.title ?? route.name;
+          const color = focused ? theme.accent : theme.textSecondary;
 
-            const press = () => {
-              const event = emitter.emit({
-                type: 'tabPress',
-                target: route.key,
-                canPreventDefault: true,
-              });
-              if (!focused && !event.defaultPrevented) navigateToTab(route.key);
-            };
+          const press = () => {
+            const event = emitter.emit({ type: 'tabPress', target: route.key, canPreventDefault: true });
+            if (!focused && !event.defaultPrevented) navigateToTab(route.key);
+          };
 
-            const content = (color: string, chosen: boolean) => (
-              <>
-                {options.tabBarIcon?.({ focused: chosen, color, size: 24 })}
-                <ThemedText
-                  style={[styles.label, { color }]}
-                  numberOfLines={1}
-                  adjustsFontSizeToFit
-                  minimumFontScale={0.8}>
-                  {title}
-                </ThemedText>
-              </>
-            );
-
-            return (
-              <Pressable
-                key={route.key}
-                accessibilityRole="tab"
-                accessibilityState={{ selected: focused }}
-                accessibilityLabel={title}
-                onPress={press}
-                onLongPress={() => emitter.emit({ type: 'tabLongPress', target: route.key })}
-                style={styles.item}>
-                <Animated.View style={[styles.face, { opacity: Animated.subtract(1, lit) }]}>
-                  {content(theme.text, false)}
-                </Animated.View>
-                <Animated.View style={[styles.face, StyleSheet.absoluteFill, { opacity: lit }]}>
-                  {content(theme.accent, true)}
-                </Animated.View>
-              </Pressable>
-            );
-          })}
-        </View>
+          return (
+            <Pressable
+              key={route.key}
+              accessibilityRole="tab"
+              accessibilityState={{ selected: focused }}
+              accessibilityLabel={title}
+              onPress={press}
+              onLongPress={() => emitter.emit({ type: 'tabLongPress', target: route.key })}
+              style={({ pressed }) => [styles.item, pressed && styles.pressed]}>
+              {options.tabBarIcon?.({ focused, color, size: 26 })}
+              <ThemedText
+                style={[styles.label, { color }, focused && styles.chosen]}
+                numberOfLines={1}
+                adjustsFontSizeToFit
+                minimumFontScale={0.8}>
+                {title}
+              </ThemedText>
+            </Pressable>
+          );
+        })}
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  wrap: {
+  bar: {
     position: 'absolute',
-    pointerEvents: 'box-none',
     left: 0,
     right: 0,
     bottom: 0,
-    alignItems: 'center',
-    paddingHorizontal: Spacing.two + Spacing.one,
-  },
-  bar: {
-    width: '100%',
-    maxWidth: 480,
-    padding: Spacing.one,
-    borderRadius: Radius.pill,
-    borderWidth: StyleSheet.hairlineWidth,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    paddingTop: Spacing.two,
     ...Platform.select({
-      web: { boxShadow: '0 8px 24px rgba(0, 0, 0, 0.25)' },
+      web: { boxShadow: '0 -6px 24px rgba(13, 35, 40, 0.06)' },
       default: {
-        shadowColor: '#000000',
-        shadowOpacity: 0.25,
+        shadowColor: '#0B1410',
+        shadowOpacity: 0.06,
         shadowRadius: 16,
-        shadowOffset: { width: 0, height: 8 },
-        elevation: 12,
+        shadowOffset: { width: 0, height: -6 },
+        elevation: 8,
       },
     }),
   },
   track: {
     flexDirection: 'row',
-  },
-  pill: {
-    position: 'absolute',
-    pointerEvents: 'none',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    borderRadius: Radius.pill,
+    width: '100%',
+    maxWidth: MaxContentWidth,
+    alignSelf: 'center',
   },
   item: {
     flex: 1,
-    justifyContent: 'center',
-    minHeight: 56,
-  },
-  face: {
     alignItems: 'center',
     justifyContent: 'center',
     gap: Spacing.half,
+    minHeight: 52,
     paddingHorizontal: Spacing.half,
   },
   label: {
-    fontSize: 10,
-    lineHeight: 13,
-    fontWeight: 600,
-    letterSpacing: -0.2,
+    fontSize: 12,
+    lineHeight: 16,
+    fontWeight: 500,
+  },
+  chosen: {
+    fontWeight: 700,
+  },
+  pressed: {
+    opacity: 0.6,
   },
 });

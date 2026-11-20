@@ -164,7 +164,7 @@ function ExerciseCard({
   const recordText = useRecordText();
   const { exercise: row, sets } = entry;
   const exercise = exerciseById.get(row.exercise_id);
-  const last = useLocal((ctx) => lastPerformance(ctx, row.exercise_id, sessionId));
+  const last = useLocal((ctx) => lastPerformance(ctx, row.exercise_id, sessionId), [row.exercise_id, sessionId]);
 
   /** The set is in the database before the screen moves on, and checked for records first. */
   const save = (values: SetValues) => {

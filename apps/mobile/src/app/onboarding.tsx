@@ -1,12 +1,12 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { type Href, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/button';
 import { ThemedText } from '@/components/themed-text';
+import { Pictures } from '@/constants/pictures';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { createProgram } from '@/data/programs';
 import { useTheme } from '@/hooks/use-theme';
@@ -14,9 +14,9 @@ import { mutate, useActiveProgram } from '@/lib/local';
 import { usePreferences } from '@/lib/preferences';
 
 const SLIDES = [
-  { key: 'gym', icon: 'barbell' },
-  { key: 'progress', icon: 'trending-up' },
-  { key: 'offline', icon: 'cloud-offline' },
+  { key: 'gym', picture: Pictures.dumbbell },
+  { key: 'progress', picture: Pictures.trophy },
+  { key: 'offline', picture: Pictures.clipboard },
 ] as const;
 
 /**
@@ -59,7 +59,7 @@ export default function OnboardingScreen() {
       {current ? (
         <>
           <View style={styles.slide}>
-            <Ionicons name={current.icon} size={72} color={theme.accent} />
+            <Image source={current.picture} style={styles.picture} accessibilityIgnoresInvertColors />
             <ThemedText style={styles.title}>{t(`onboarding.${current.key}Title`)}</ThemedText>
             <ThemedText themeColor="textSecondary" style={styles.text}>
               {t(`onboarding.${current.key}Text`)}
@@ -84,6 +84,7 @@ export default function OnboardingScreen() {
       ) : (
         <>
           <View style={styles.slide}>
+            <Image source={Pictures.flame} style={styles.pictureSmall} accessibilityIgnoresInvertColors />
             <ThemedText style={styles.title}>{t('onboarding.startTitle')}</ThemedText>
             <ThemedText themeColor="textSecondary" style={styles.text}>
               {t('onboarding.startText')}
@@ -116,6 +117,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: Spacing.three,
+  },
+  picture: {
+    width: 200,
+    height: 200,
+    marginBottom: Spacing.two,
+  },
+  // The last step holds five buttons: its picture is smaller to leave them room.
+  pictureSmall: {
+    width: 128,
+    height: 128,
   },
   title: {
     fontSize: 28,

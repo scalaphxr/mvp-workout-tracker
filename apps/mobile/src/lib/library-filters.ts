@@ -1,4 +1,4 @@
-import { type ExerciseSort, isAvailable, searchExercises } from '@mvp/domain';
+import { countMuscleFilters, type ExerciseSort, isAvailable, searchExercises } from '@mvp/domain';
 import type { Exercise, Level } from '@mvp/schemas';
 import { create } from 'zustand';
 
@@ -18,6 +18,7 @@ interface LibraryFilters {
   onlyMyGym: boolean;
   sort: ExerciseSort;
   setQuery(query: string): void;
+  setMuscles(codes: string[]): void;
   toggleMuscle(code: string): void;
   toggleEquipment(code: string): void;
   setLevel(level: Level | null): void;
@@ -38,6 +39,7 @@ export const useLibraryFilters = create<LibraryFilters>((set) => ({
   onlyMyGym: true,
   sort: 'popularity',
   setQuery: (query) => set({ query }),
+  setMuscles: (muscles) => set({ muscles }),
   toggleMuscle: (code) => set((state) => ({ muscles: toggle(state.muscles, code) })),
   toggleEquipment: (code) => set((state) => ({ equipment: toggle(state.equipment, code) })),
   setLevel: (level) => set({ level }),
@@ -48,7 +50,7 @@ export const useLibraryFilters = create<LibraryFilters>((set) => ({
 
 /** How many filters are on. The search text, the "my gym" switch and the order are not counted. */
 export const activeFilterCount = (filters: Pick<LibraryFilters, 'muscles' | 'equipment' | 'level'>) =>
-  filters.muscles.length + filters.equipment.length + (filters.level ? 1 : 0);
+  countMuscleFilters(filters.muscles) + filters.equipment.length + (filters.level ? 1 : 0);
 
 /** The exercises the library shows for the current search and filters. */
 export function useFoundExercises(): Exercise[] {

@@ -8,17 +8,19 @@ import { Chip } from '@/components/chip';
 import { StreakCard } from '@/components/streak-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Avatar, CardLabel, MetricCard, Screen, Section, Tile, TileGrid } from '@/components/ui';
+import { Avatar, CardLabel, MetricCard, PictureNote, Screen, Section, Tile, TileGrid } from '@/components/ui';
 import { VolumeHighlight } from '@/components/volume-highlight';
 import { WeightCard } from '@/components/weight-card';
+import { WeekStrip } from '@/components/week-strip';
+import { Pictures } from '@/constants/pictures';
 import { Radius, Spacing } from '@/constants/theme';
-import { listWorkouts } from '@/data/history';
+import { listWorkoutTotals } from '@/data/history';
 import { getProgramTree, listPrograms } from '@/data/programs';
 import {
   activeSession,
   lastFinishedSession,
   nextWorkout,
-  sessionSummary,
+  sessionTotals,
   startFreeSession,
   startSession,
 } from '@/data/sessions';
@@ -51,13 +53,13 @@ export default function TodayScreen() {
       running: activeSession(ctx),
       tree: programId ? getProgramTree(ctx, programId) : null,
       next: programId ? nextWorkout(ctx, programId) : null,
-      last: last ? sessionSummary(ctx, last.id) : null,
+      last: last ? (sessionTotals(ctx, [last])[0] ?? null) : null,
       // Oldest first: the last bar is the last workout.
-      volumes: listWorkouts(ctx, RECENT_WORKOUTS)
+      volumes: listWorkoutTotals(ctx, RECENT_WORKOUTS)
         .map((workout) => workout.volumeKg)
         .reverse(),
     };
-  });
+  }, [programId]);
 
   const open = (sessionId: string) => router.push({ pathname: '/workout/[id]', params: { id: sessionId } });
   const startFree = () => open(mutate(startFreeSession).id);
@@ -96,7 +98,6 @@ export default function TodayScreen() {
             disabled={exercises.length === 0}
             onPress={() => open(mutate((ctx) => startSession(ctx, tree.program.id, day.id)).id)}
           />
-          <Button variant="secondary" title={t('today.startFree')} onPress={startFree} />
           {next.days.length > 1 &&
             (choosing ? (
               <View style={styles.chips}>
@@ -115,27 +116,51 @@ export default function TodayScreen() {
             ))}
         </ThemedView>
       ) : (
-        <ThemedView type="backgroundElement" style={[styles.card, styles.empty]}>
-          <ThemedText style={[styles.title, styles.centered]}>{t('today.emptyTitle')}</ThemedText>
-          <ThemedText themeColor="textSecondary" style={styles.centered}>
-            {tree ? t('today.noDaysText') : t('today.emptyText')}
-          </ThemedText>
+        <PictureNote
+          picture={Pictures.calendar}
+          title={t('today.emptyTitle')}
+          text={tree ? t('today.noDaysText') : t('today.emptyText')}>
           <Button title={t('today.toPrograms')} onPress={() => router.push('/programs')} />
-          <Button variant="secondary" title={t('today.startFree')} onPress={startFree} />
-        </ThemedView>
+        </PictureNote>
       )}
+
+      {/* Other ways to train today, each with its own picture. */}
+      {!running && (
+        <TileGrid>
+          <Tile
+            icon="barbell"
+            color={theme.accent}
+            picture={Pictures.dumbbell}
+            title={t('today.startFree')}
+            onPress={startFree}
+          />
+          <Tile
+            icon="body"
+            color={theme.accent}
+            picture={Pictures.arm}
+            title={t('focus.open')}
+            onPress={() => router.push('/focus')}
+          />
+        </TileGrid>
+      )}
+
+      <Section title={t('week.title')}>
+        <WeekStrip />
+      </Section>
 
       <Section title={t('today.quickLog')}>
         <TileGrid>
           <Tile
             icon="walk"
             color={theme.highlight}
+            picture={Pictures.sneaker}
             title={t('activity.record')}
             onPress={() => router.push('/activity')}
           />
           <Tile
             icon="timer"
             color={theme.accent}
+            picture={Pictures.stopwatch}
             title={t('interval.title')}
             onPress={() => router.push('/interval')}
           />
@@ -160,9 +185,12 @@ export default function TodayScreen() {
             }
             unit={last.volumeKg > 0 ? weightUnit : undefined}
             note={
-              last.volumeKg > 0
-                ? t('today.duration', { duration: formatDuration(t, last.durationSec) })
-                : undefined
+              [
+                last.volumeKg > 0 ? t('today.duration', { duration: formatDuration(t, last.durationSec) }) : null,
+                last.kcal !== null ? t('summary.kcalValue', { kcal: formatNumber(last.kcal, locale) }) : null,
+              ]
+                .filter(Boolean)
+                .join(' · ') || undefined
             }
             bars={volumes}
             barsLabel={t('today.volumesLabel', { list: volumes.map(lifted).join(', ') })}
@@ -188,20 +216,13 @@ const styles = StyleSheet.create({
     gap: Spacing.half,
   },
   title: {
-    fontSize: 28,
-    lineHeight: 34,
+    fontSize: 26,
+    lineHeight: 32,
     fontWeight: 700,
   },
   chips: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: Spacing.two,
-  },
-  empty: {
-    alignItems: 'center',
-    paddingVertical: Spacing.four,
-  },
-  centered: {
-    textAlign: 'center',
   },
 });

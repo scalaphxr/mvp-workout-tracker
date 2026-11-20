@@ -109,6 +109,8 @@ export const progression_state = sqliteTable('progression_state', {
     enum: [
       'increase',
       'increase_fast',
+      'top_once',
+      'increase_offer',
       'same',
       'retry',
       'reduce_offer',

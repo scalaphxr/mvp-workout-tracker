@@ -11,7 +11,7 @@ import {
   listActivities,
   saveActivity,
 } from './activities';
-import { deleteWeight, listWeights, setWeight } from './body';
+import { deleteWeight, listWeights, setWeight, weightOn } from './body';
 import type { DataContext } from './context';
 import {
   deleteIntervalPreset,
@@ -46,6 +46,7 @@ import {
   finishSession,
   getProgramState,
   getSession,
+  knownExercises,
   lastFinishedSession,
   lastPerformance,
   logSet,
@@ -54,11 +55,13 @@ import {
   removeFreeExercise,
   removeLastSet,
   updateSet,
+  resolveIncrease,
   resolveReduction,
   saveSessionAsProgram,
   sessionSummary,
   setPlannedSets,
   startDeload,
+  startFocusSession,
   startFreeSession,
   startSession,
   substituteExercise,
@@ -239,16 +242,61 @@ describe('a workout', () => {
 });
 
 describe('the plan for the next workout', () => {
-  it('adds a step when every set reached the top of the range', () => {
+  it('keeps the weight the first time every set reached the top of the range', () => {
     const { id: programId, day1, bench } = program();
     const sessionId = workout(programId, day1.id, { [BENCH]: [80, [12, 12, 12]] });
 
     expect(planOf(sessionId, bench)).toMatchObject({
+      next_weight_kg: 80,
+      next_target_reps: 12,
+      reason_code: 'top_once',
+      reason_params: { step_kg: 2.5, sets: 3, reps: 12 },
+    });
+  });
+
+  it('offers a step after two workouts in a row at the top, and adds it only when accepted', () => {
+    const { id: programId, day1, day2, bench } = program();
+    const top = { [BENCH]: [80, [12, 12, 12]] as [number, number[]] };
+    workout(programId, day1.id, top);
+    // A workout of another day in between does not break the row: it is the bench that counts.
+    workout(programId, day2.id, {});
+    const second = workout(programId, day1.id, top);
+    expect(planOf(second, bench)).toMatchObject({
+      next_weight_kg: 80,
+      reason_code: 'increase_offer',
+      reason_params: { increased_weight_kg: 82.5 },
+    });
+
+    resolveIncrease(ctx, bench.id, true);
+    expect(planOf(second, bench)).toMatchObject({
       next_weight_kg: 82.5,
       next_target_reps: 10,
       reason_code: 'increase',
-      reason_params: { step_kg: 2.5, sets: 3, reps: 12 },
     });
+  });
+
+  it('keeps the weight when the offer to add one is declined, and offers again next time', () => {
+    const { id: programId, day1, bench } = program();
+    const top = { [BENCH]: [80, [12, 12, 12]] as [number, number[]] };
+    workout(programId, day1.id, top);
+    const second = workout(programId, day1.id, top);
+
+    resolveIncrease(ctx, bench.id, false);
+    expect(planOf(second, bench)).toMatchObject({
+      next_weight_kg: 80,
+      reason_code: 'top_once',
+      reason_params: { declined: 1 },
+    });
+    const third = workout(programId, day1.id, top);
+    expect(planOf(third, bench)).toMatchObject({ reason_code: 'increase_offer', next_weight_kg: 80 });
+  });
+
+  it('starts over when a workout in between falls short of the top', () => {
+    const { id: programId, day1, bench } = program();
+    workout(programId, day1.id, { [BENCH]: [80, [12, 12, 12]] });
+    workout(programId, day1.id, { [BENCH]: [80, [12, 12, 11]] });
+    const third = workout(programId, day1.id, { [BENCH]: [80, [12, 12, 12]] });
+    expect(planOf(third, bench)?.reason_code).toBe('top_once');
   });
 
   it('shows that plan when the same day comes round again', () => {
@@ -258,15 +306,16 @@ describe('the plan for the next workout', () => {
 
     const session = startSession(ctx, programId, day1.id);
     const [bench, curl] = getSession(ctx, session.id)!.exercises;
-    expect(bench!.plan).toMatchObject({ next_weight_kg: 82.5, reason_code: 'increase' });
+    expect(bench!.plan).toMatchObject({ next_weight_kg: 80, reason_code: 'top_once' });
     expect(curl!.plan).toMatchObject({ next_weight_kg: 14, reason_code: 'same' });
   });
 
   it('uses the step set for the item over the step of the gym', () => {
     const { id: programId, day1, bench } = program();
     updateItem(ctx, bench.id, { increment_kg: 1.25 });
+    workout(programId, day1.id, { [BENCH]: [80, [12, 12, 12]] });
     const sessionId = workout(programId, day1.id, { [BENCH]: [80, [12, 12, 12]] });
-    expect(planOf(sessionId, bench)?.next_weight_kg).toBe(81.25);
+    expect(planOf(sessionId, bench)?.reason_params.increased_weight_kg).toBe(81.25);
   });
 
   it('offers 10% off after two failed workouts and drops the weight only when accepted', () => {
@@ -304,7 +353,7 @@ describe('the plan for the next workout', () => {
     const { id: programId, day1, bench } = program();
     workout(programId, day1.id, { [BENCH]: [80, [12, 12, 12]] });
     const skipped = workout(programId, day1.id, {});
-    expect(planOf(skipped, bench)).toMatchObject({ next_weight_kg: 82.5, reason_code: 'increase' });
+    expect(planOf(skipped, bench)).toMatchObject({ next_weight_kg: 80, reason_code: 'top_once' });
   });
 
   it('plans nothing for an exercise held for time', () => {
@@ -337,7 +386,10 @@ describe('replacing an exercise during a workout', () => {
     expect(getProgramTree(ctx, programId)!.items.find((i) => i.id === bench.id)!.exercise_id).toBe(BENCH);
     // The bench plan was not touched by a workout done with dumbbells.
     const next = startSession(ctx, programId, day1.id);
-    expect(getSession(ctx, next.id)!.exercises[0]!.plan).toMatchObject({ next_weight_kg: 82.5 });
+    expect(getSession(ctx, next.id)!.exercises[0]!.plan).toMatchObject({
+      next_weight_kg: 80,
+      reason_code: 'top_once',
+    });
   });
 
   it('for good: the program changes and the plan of the old exercise is dropped', () => {
@@ -358,6 +410,29 @@ describe('replacing an exercise during a workout', () => {
 });
 
 describe('summary', () => {
+  it('estimates the calories from the morning weight and the time, and none without a weight', () => {
+    const { id: programId, day1 } = program();
+    const before = workout(programId, day1.id, { [BENCH]: [80, [10, 10, 9]] });
+    expect(sessionSummary(ctx, before)!.kcal).toBeNull();
+
+    setWeight(ctx, '2026-10-01', 80);
+    clock += 3600_000;
+    const after = sessionSummary(ctx, workout(programId, day1.id, { [BENCH]: [80, [10, 10, 9]] }))!;
+    expect(after.kcal).toBe(Math.round((3.5 * 80 * after.durationSec) / 3600));
+    // The weight entered later counts for the earlier workout too: it is the nearest one.
+    expect(sessionSummary(ctx, before)!.kcal).not.toBeNull();
+  });
+
+  it('takes the last weight on or before the day of the workout', () => {
+    setWeight(ctx, '2026-09-01', 90);
+    setWeight(ctx, '2026-10-03', 80);
+    setWeight(ctx, '2026-10-20', 70);
+    expect(weightOn(ctx, '2026-10-04')).toBe(80);
+    expect(weightOn(ctx, '2026-10-03')).toBe(80);
+    expect(weightOn(ctx, '2026-08-01')).toBe(90);
+    expect(weightOn(ctx, '2026-12-01')).toBe(70);
+  });
+
   it('adds up the volume and the time and finds records against earlier workouts', () => {
     const { id: programId, day1 } = program();
     const first = workout(programId, day1.id, { [BENCH]: [80, [10, 10, 9]] });
@@ -944,6 +1019,36 @@ describe('a workout without a program', () => {
     })!;
 
     expect(getProgramTree(ctx, saved.id)!.items.map((item) => item.exercise_id)).toEqual([BENCH]);
+  });
+
+  it('starts a workout of picked exercises with the sets given, in order', () => {
+    const session = startFocusSession(ctx, [
+      { exercise_id: CURL, sets: 4 },
+      { exercise_id: BENCH, sets: 2 },
+    ]);
+
+    expect(session.program_id).toBeNull();
+    const view = getSession(ctx, session.id)!;
+    expect(view.exercises.map((entry) => entry.exercise.exercise_id)).toEqual([CURL, BENCH]);
+    expect(view.exercises.map((entry) => entry.plannedSets)).toEqual([4, 2]);
+  });
+
+  it('adds nothing to a workout that is already running', () => {
+    const running = startFreeSession(ctx);
+    addFreeExercise(ctx, running.id, BENCH);
+
+    const session = startFocusSession(ctx, [{ exercise_id: CURL, sets: 4 }]);
+
+    expect(session.id).toBe(running.id);
+    const view = getSession(ctx, running.id)!;
+    expect(view.exercises.map((entry) => entry.exercise.exercise_id)).toEqual([BENCH]);
+  });
+
+  it('knows only the exercises of finished workouts', () => {
+    freeWorkout(BENCH, [10]);
+    addFreeExercise(ctx, startFreeSession(ctx).id, CURL);
+
+    expect(knownExercises(ctx)).toEqual(new Set([BENCH]));
   });
 
   it('stays a workout without a program after it was saved', () => {

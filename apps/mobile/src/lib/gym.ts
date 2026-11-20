@@ -69,7 +69,7 @@ export function useGym(id?: string): GymView | null {
       ? listGymProfiles(ctx).find((candidate) => candidate.id === id)
       : defaultGym(ctx);
     return profile ? viewOf(ctx, catalog, profile) : null;
-  });
+  }, [id, catalog]);
 }
 
 /** The default steps of the three groups, in kilograms, for someone training in `units`. */

@@ -1,13 +1,18 @@
 import { programTemplates } from '@mvp/content';
 import {
   type Answers,
+  applyFocus,
+  FOCUS_MIN_DURATION,
+  focusAnswers,
   generateProgram,
   hasFeature,
   MUSCLE_GROUPS,
+  MUSCLE_TO_GROUP,
+  startingAnswers,
   WEEKLY_SETS,
 } from '@mvp/domain';
 import { GOALS, LEVELS } from '@mvp/schemas';
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { type ReactNode, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
@@ -19,7 +24,8 @@ import { ThemedView } from '@/components/themed-view';
 import { Group, Screen } from '@/components/ui';
 import { Radius, Spacing } from '@/constants/theme';
 import { listGymProfiles } from '@/data/gym';
-import { createProgramFromDraft } from '@/data/programs';
+import { createProgramFromDraft, getProgramTree } from '@/data/programs';
+import { knownExercises } from '@/data/sessions';
 import { useLocale } from '@/hooks/use-locale';
 import { useCatalog } from '@/lib/catalog';
 import { formatItemPlan } from '@/lib/format';
@@ -37,16 +43,24 @@ export default function QuestionnaireScreen() {
   const { t } = useTranslation();
   const locale = useLocale();
   const router = useRouter();
-  const { catalog, exerciseById } = useCatalog();
+  const params = useLocalSearchParams<{ focus?: string }>();
+  const { catalog, exerciseById, muscleByCode } = useCatalog();
   const profiles = useLocal(listGymProfiles);
+  const activeId = useActiveProgram((state) => state.id);
   const setActive = useActiveProgram((state) => state.set);
+  const lastAnswers = usePreferences((state) => state.lastAnswers);
+  const activeProgram = useLocal(
+    (ctx) => (activeId ? (getProgramTree(ctx, activeId)?.program ?? null) : null),
+    [activeId],
+  );
+  const known = useLocal(knownExercises);
+  // The muscles of a program with a focus; empty for the ordinary questionnaire.
+  const focus = params.focus ? params.focus.split(',') : [];
+  const focused = focus.length > 0;
 
-  const [answers, setAnswers] = useState<Answers>({
-    goal: 'mass',
-    level: 'beginner',
-    frequency: 3,
-    duration_min: 60,
-    split: 'auto',
+  const [answers, setAnswers] = useState<Answers>(() => {
+    const starting = startingAnswers(lastAnswers, activeProgram);
+    return focused ? focusAnswers(starting) : starting;
   });
   const [gymId, setGymId] = useState(profiles[0]?.id);
   const gym = useGym(gymId);
@@ -91,7 +105,7 @@ export default function QuestionnaireScreen() {
     },
     {
       title: t('questionnaire.duration'),
-      body: DURATIONS.map((duration_min) => (
+      body: DURATIONS.filter((value) => !focused || value >= FOCUS_MIN_DURATION).map((duration_min) => (
         <Chip
           key={duration_min}
           label={t('units.min', { value: duration_min })}
@@ -161,16 +175,35 @@ export default function QuestionnaireScreen() {
   }
 
   // The draft is made on the phone, from the catalog it carries: no network needed.
-  const draft = generateProgram(answers, programTemplates, catalog.exercises, gym?.equipment ?? new Set());
+  const equipment = gym?.equipment ?? new Set<string>();
+  const base = generateProgram(answers, programTemplates, catalog.exercises, equipment);
+  const emphasis = focused
+    ? applyFocus(base, focus, answers, {
+        exercises: catalog.exercises,
+        equipment,
+        level: answers.level,
+        known,
+      })
+    : null;
+  const draft = emphasis ?? base;
   const target = WEEKLY_SETS[answers.level];
+  const nameOf = (code: string) => muscleByCode.get(code)?.name[locale] ?? code;
+  const focusNames = focus.map(nameOf).join(', ');
+  // The picked muscles have lines of their own in the reasons.
+  const focusGroups = new Set(focus.map((muscle) => MUSCLE_TO_GROUP[muscle]));
+
+  // A program named after a muscle it does not train is not saved.
+  const blocked = (emphasis?.dropped.length ?? 0) > 0;
 
   const save = (activate: boolean) => {
     const program = mutate((ctx) =>
       createProgramFromDraft(ctx, {
-        title: t('questionnaire.programTitle', {
-          goal: t(`questionnaire.goals.${answers.goal}`),
-          count: draft.days_per_week,
-        }),
+        title: focused
+          ? t('questionnaire.focusTitle', { muscles: focusNames.toLocaleLowerCase(locale) })
+          : t('questionnaire.programTitle', {
+              goal: t(`questionnaire.goals.${answers.goal}`),
+              count: draft.days_per_week,
+            }),
         goal: answers.goal,
         level: answers.level,
         days_per_week: draft.days_per_week,
@@ -184,6 +217,7 @@ export default function QuestionnaireScreen() {
     // The goal of a week of the series: a floating 2–3 counts as 2 (spec 6.13).
     usePreferences.getState().set({
       weeklyGoal: answers.frequency === '2-3' ? 2 : answers.frequency,
+      lastAnswers: answers,
     });
     if (activate) {
       setActive(program.id);
@@ -196,6 +230,26 @@ export default function QuestionnaireScreen() {
   return (
     <Screen>
       <ThemedText style={styles.title}>{t('questionnaire.draft')}</ThemedText>
+      {focused && (
+        <ThemedText themeColor="textSecondary">
+          {t('questionnaire.focusOn', { muscles: focusNames })}
+        </ThemedText>
+      )}
+      {focused && answers.level === 'beginner' && (
+        <ThemedText type="small" themeColor="textSecondary">
+          {t('questionnaire.focusBeginner')}
+        </ThemedText>
+      )}
+      {emphasis && emphasis.short.length > 0 && (
+        <ThemedText type="small" themeColor="textSecondary">
+          {t('questionnaire.focusShort', { muscles: emphasis.short.map(nameOf).join(', ') })}
+        </ThemedText>
+      )}
+      {emphasis && emphasis.dropped.length > 0 && (
+        <ThemedText type="small" themeColor="textSecondary">
+          {t('questionnaire.focusDropped', { muscles: emphasis.dropped.map(nameOf).join(', ') })}
+        </ThemedText>
+      )}
 
       {draft.days.map((day) => (
         <ThemedView key={day.key} type="backgroundElement" style={styles.day}>
@@ -221,9 +275,22 @@ export default function QuestionnaireScreen() {
         <ThemedText>
           {t('questionnaire.whyVolume', { minutes: answers.duration_min, cap: draft.set_cap })}
         </ThemedText>
-        <ThemedText>{t('questionnaire.whyTarget', { min: target.min, max: target.max })}</ThemedText>
+        {emphasis ? (
+          <ThemedText>
+            {focus
+              .map((muscle) =>
+                t('questionnaire.weekly', {
+                  group: nameOf(muscle),
+                  sets: emphasis.focus_weekly_sets[muscle] ?? 0,
+                }),
+              )
+              .join('\n')}
+          </ThemedText>
+        ) : (
+          <ThemedText>{t('questionnaire.whyTarget', { min: target.min, max: target.max })}</ThemedText>
+        )}
         <ThemedText type="small" themeColor="textSecondary">
-          {MUSCLE_GROUPS.filter((group) => draft.weekly_sets[group])
+          {MUSCLE_GROUPS.filter((group) => draft.weekly_sets[group] && !focusGroups.has(group))
             .map((group) =>
               t('questionnaire.weekly', {
                 group: t(`questionnaire.groups.${group}`),
@@ -232,7 +299,7 @@ export default function QuestionnaireScreen() {
             )
             .join('\n')}
         </ThemedText>
-        {MUSCLE_GROUPS.some((group) => (draft.weekly_sets[group] ?? target.min) < target.min) && (
+        {!focused && MUSCLE_GROUPS.some((group) => (draft.weekly_sets[group] ?? target.min) < target.min) && (
           <ThemedText type="small" themeColor="textSecondary">
             {t('questionnaire.whyShort')}
           </ThemedText>
@@ -243,10 +310,15 @@ export default function QuestionnaireScreen() {
         {/* Making a program from the questionnaire is a Pro feature, open during the beta. */}
         <Button
           title={t('questionnaire.start')}
-          disabled={!hasFeature(null, 'program_generation') || draft.days.every((day) => day.items.length === 0)}
+          disabled={!hasFeature(null, 'program_generation') || draft.days.every((day) => day.items.length === 0) || blocked}
           onPress={() => save(true)}
         />
-        <Button variant="secondary" title={t('questionnaire.edit')} onPress={() => save(false)} />
+        <Button
+          variant="secondary"
+          title={t('questionnaire.edit')}
+          disabled={blocked}
+          onPress={() => save(false)}
+        />
         <Button variant="secondary" title={t('questionnaire.back')} onPress={() => setStep(steps.length - 1)} />
       </View>
     </Screen>

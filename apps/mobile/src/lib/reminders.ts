@@ -8,7 +8,7 @@ import i18n from '@/i18n';
 import { data } from './db';
 import { replaceReminders } from './feedback';
 import { toLocalDate } from './format';
-import { useActiveProgram, useLocal } from './local';
+import { useActiveProgram, useLocalAlways } from './local';
 import { usePreferences } from './preferences';
 import { planReminders, type ReminderKind } from './reminder-plan';
 import { weeklyGoalOf } from './weekly-goal';
@@ -49,7 +49,7 @@ export function useReminderDriver(): void {
   const goal = usePreferences((state) => state.weeklyGoal);
   const programId = useActiveProgram((state) => state.id);
   // What the plan depends on, as one value that changes when any of it does.
-  const key = useLocal((ctx) => {
+  const key = useLocalAlways((ctx) => {
     const times = finishedWorkoutTimes(ctx);
     const weights = listWeights(ctx);
     return `${times.length}:${times.at(-1)}:${weights.length}:${weights.at(-1)?.date}`;

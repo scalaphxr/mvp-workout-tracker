@@ -20,6 +20,8 @@ export function Button({ title, variant = 'primary', loading, disabled, ...rest 
   return (
     <Pressable
       accessibilityRole="button"
+      // The title is the name; a screen may still give a longer one through `rest`.
+      accessibilityLabel={title}
       aria-disabled={!!inactive}
       disabled={inactive}
       style={({ pressed }) => [
@@ -48,6 +50,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
+    fontSize: 17,
+    lineHeight: 24,
     fontWeight: 600,
     textAlign: 'center',
   },

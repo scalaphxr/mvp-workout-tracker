@@ -5,10 +5,10 @@ import { StyleSheet, View } from 'react-native';
 
 import { Chip } from '@/components/chip';
 import { LineChart } from '@/components/line-chart';
-import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { WeightCard } from '@/components/weight-card';
-import { Card, CardLabel, LinkRow, Screen, Segmented } from '@/components/ui';
+import { Card, CardLabel, LinkRow, PictureNote, Screen, Segmented } from '@/components/ui';
+import { Pictures } from '@/constants/pictures';
 import { Radius, Spacing } from '@/constants/theme';
 import { listActivities } from '@/data/activities';
 import { listWeights } from '@/data/body';
@@ -17,14 +17,14 @@ import {
   exerciseProgress,
   exercisesOnTime,
   exercisesWithProgress,
-  listWorkouts,
+  listWorkoutTotals,
 } from '@/data/history';
 import { useLocale } from '@/hooks/use-locale';
 import { useTheme } from '@/hooks/use-theme';
 import { useCatalog } from '@/lib/catalog';
 import { useLocal } from '@/lib/local';
 import { useWeightFormat } from '@/lib/units';
-import { activityName, formatActivity, formatDistance, formatDuration } from '@/lib/format';
+import { activityName, formatActivity, formatDistance, formatDuration, formatNumber } from '@/lib/format';
 
 const TABS = ['weight', 'exercises', 'history'] as const;
 
@@ -79,7 +79,7 @@ function Weight() {
           />
         </ThemedView>
       ) : (
-        <ThemedText themeColor="textSecondary">{t('weight.empty')}</ThemedText>
+        <PictureNote picture={Pictures.stopwatch} text={t('weight.empty')} />
       )}
     </>
   );
@@ -91,19 +91,25 @@ function Exercises() {
   const theme = useTheme();
   const { exerciseById } = useCatalog();
   // Cardio gets a chart too, without any progression behind it.
-  const ids = useLocal((ctx) => [
-    ...exercisesWithProgress(ctx),
-    ...exercisesOnTime(ctx).filter((id) => exerciseById.get(id)?.tracking === 'distance_time'),
-  ]);
+  const ids = useLocal(
+    (ctx) => [
+      ...exercisesWithProgress(ctx),
+      ...exercisesOnTime(ctx).filter((id) => exerciseById.get(id)?.tracking === 'distance_time'),
+    ],
+    [exerciseById],
+  );
   const [chosen, setChosen] = useState<string | null>(null);
   const exerciseId = chosen ?? ids[0] ?? null;
   const cardio = exerciseId !== null && exerciseById.get(exerciseId)?.tracking === 'distance_time';
-  const points = useLocal((ctx) => (exerciseId && !cardio ? exerciseProgress(ctx, exerciseId) : []));
+  const points = useLocal((ctx) => (exerciseId && !cardio ? exerciseProgress(ctx, exerciseId) : []), [
+    exerciseId,
+    cardio,
+  ]);
   const name = (id: string) => exerciseById.get(id)?.translations[locale].name ?? id;
   const weight = useWeightFormat();
   const kg = (value: number) => weight(Math.round(value * 10) / 10);
 
-  if (!exerciseId) return <ThemedText themeColor="textSecondary">{t('progress.noExercises')}</ThemedText>;
+  if (!exerciseId) return <PictureNote picture={Pictures.dumbbell} text={t('progress.noExercises')} />;
   return (
     <>
       <View style={styles.chips}>
@@ -147,7 +153,7 @@ function CardioChart({ exerciseId, name }: { exerciseId: string; name: string })
   const { t } = useTranslation();
   const locale = useLocale();
   const theme = useTheme();
-  const points = useLocal((ctx) => cardioProgress(ctx, exerciseId));
+  const points = useLocal((ctx) => cardioProgress(ctx, exerciseId), [exerciseId]);
   const byDistance = points.some((point) => point.distance_m > 0);
   const values = points.map((point) => (byDistance ? point.distance_m : point.duration_sec));
   const format = (value: number) =>
@@ -177,7 +183,7 @@ function History() {
   const { t } = useTranslation();
   const locale = useLocale();
   const router = useRouter();
-  const workouts = useLocal(listWorkouts);
+  const workouts = useLocal(listWorkoutTotals);
   const weight = useWeightFormat();
   const activities = useLocal(listActivities);
   const [latest] = workouts;
@@ -189,10 +195,15 @@ function History() {
       key: workout.session.id,
       at: workout.session.started_at,
       title: `${t('progress.workout', { number: workout.number })}, ${workout.dayTitle || t('workout.freeTitle')}`,
-      subtitle:
-        workout.volumeKg > 0
-          ? `${date(workout.session.started_at)}, ${weight(Math.round(workout.volumeKg))}`
-          : `${date(workout.session.started_at)}, ${formatDuration(t, Math.max(60, Math.round(workout.durationSec / 60) * 60))}`,
+      // The date, then what the workout took and gave: time, calories, weight lifted.
+      subtitle: [
+        date(workout.session.started_at),
+        formatDuration(t, Math.max(60, Math.round(workout.durationSec / 60) * 60)),
+        workout.kcal !== null ? t('summary.kcalValue', { kcal: formatNumber(workout.kcal, locale) }) : null,
+        workout.volumeKg > 0 ? weight(Math.round(workout.volumeKg)) : null,
+      ]
+        .filter(Boolean)
+        .join(' · '),
       open: () =>
         router.push({
           pathname: '/workout/summary/[id]',
@@ -209,7 +220,7 @@ function History() {
   ].sort((a, b) => b.at.localeCompare(a.at));
 
   if (entries.length === 0) {
-    return <ThemedText themeColor="textSecondary">{t('progress.noHistory')}</ThemedText>;
+    return <PictureNote picture={Pictures.calendar} text={t('progress.noHistory')} />;
   }
   return (
     <>

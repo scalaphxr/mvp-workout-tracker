@@ -226,6 +226,9 @@ describe('parseProgramText', () => {
     ['3x12 Молотки', 'Молотки', 3, 12, 12, null],
     ['Жим в хаммере 3х10, отдых 1,5 мин', 'Жим в хаммере', 3, 10, 10, 90],
     ['Жим лёжа\t3\t8-9\t120', 'Жим лёжа', 3, 8, 9, 120],
+    // A range of rest is its middle: 2–3 minutes are 2.5.
+    ['Жим гантелей на наклонной 30° 3×6-10, отдых 2-3 мин', 'Жим гантелей на наклонной 30°', 3, 6, 10, 150],
+    ['Тяга 3x10, отдых 60–90 сек', 'Тяга', 3, 10, 10, 75],
   ])('reads "%s"', (line, name, sets, rep_min, rep_max, rest_sec) => {
     expect(items(line)).toEqual([{ name, sets, rep_min, rep_max, unit: 'reps', rest_sec, superset: false }]);
   });

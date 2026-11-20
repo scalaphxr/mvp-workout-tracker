@@ -39,5 +39,6 @@
   { "id": "01a14fa8-2080-7365-be20-db4dc98678e6", "code": "stair_climber", "category": "cardio", "name": { "ru": "Степпер (лестница)", "en": "Stair climber" }, "default_increment_kg": null, "default_increment_lb": null },
   { "id": "01a14fa8-2080-7365-be20-df1b3a8f2fcd", "code": "air_bike", "category": "cardio", "name": { "ru": "Эйр-байк", "en": "Air bike" }, "default_increment_kg": null, "default_increment_lb": null },
   { "id": "01a14fa8-2080-7365-be20-e1d3c1270b75", "code": "ski_erg", "category": "cardio", "name": { "ru": "Лыжный тренажёр", "en": "Ski erg" }, "default_increment_kg": null, "default_increment_lb": null },
-  { "id": "01a14fa8-2080-7365-be20-e6487b9fc851", "code": "battle_rope", "category": "cardio", "name": { "ru": "Канаты (battle rope)", "en": "Battle rope" }, "default_increment_kg": null, "default_increment_lb": null }
+  { "id": "01a14fa8-2080-7365-be20-e6487b9fc851", "code": "battle_rope", "category": "cardio", "name": { "ru": "Канаты (battle rope)", "en": "Battle rope" }, "default_increment_kg": null, "default_increment_lb": null },
+  { "id": "01a1cbb5-11a3-73b5-905c-b7821b6ac11d", "code": "ab_crunch_machine", "category": "machines", "name": { "ru": "Тренажёр для пресса", "en": "Ab crunch machine" }, "default_increment_kg": 5, "default_increment_lb": 10 }
 ]
