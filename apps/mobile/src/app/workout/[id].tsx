@@ -37,7 +37,7 @@ import {
   type SetValues,
 } from '@/data/sessions';
 import { useLocale } from '@/hooks/use-locale';
-import { ThemeOverride, useTheme } from '@/hooks/use-theme';
+import { useTheme } from '@/hooks/use-theme';
 import { useCatalog } from '@/lib/catalog';
 import { haptic } from '@/lib/feedback';
 import { formatRange } from '@/lib/format';
@@ -52,15 +52,6 @@ import { explainPlan, useExerciseFacts, useRecordText } from '@/lib/workout';
 const RIR_OPTIONS = [0, 1, 2, 3, 4] as const;
 
 export default function WorkoutScreen() {
-  // The workout screen is dark whatever the system theme is.
-  return (
-    <ThemeOverride.Provider value="dark">
-      <Workout />
-    </ThemeOverride.Provider>
-  );
-}
-
-function Workout() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { t } = useTranslation();
   const theme = useTheme();

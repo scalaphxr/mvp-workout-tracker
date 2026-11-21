@@ -20,7 +20,10 @@ export default function TabsLayout() {
 
   return (
     // Every tab draws its own large title, the way the system apps do.
-    <Tabs tabBar={(props) => <FloatingTabBar {...props} />} screenOptions={{ headerShown: false }}>
+    <Tabs
+      backBehavior="history"
+      tabBar={(props) => <FloatingTabBar {...props} />}
+      screenOptions={{ headerShown: false }}>
       <Tabs.Screen
         name="index"
         options={{ title: t('tabs.today'), tabBarIcon: icon('today-outline', 'today') }}

@@ -94,7 +94,7 @@ export function VolumeHighlight({ onShowAll }: { onShowAll: () => void }) {
                 {
                   // A week with nothing lifted still gets a bar wide enough for its label.
                   width: `${Math.max(55, (row.kg / high) * 100)}%`,
-                  backgroundColor: row.current ? theme.highlight : theme.backgroundSelected,
+                  backgroundColor: row.current ? theme.hot : theme.backgroundSelected,
                 },
               ]}>
               <ThemedText

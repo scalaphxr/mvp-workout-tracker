@@ -153,14 +153,14 @@ export default function TodayScreen() {
           <Tile
             icon="walk"
             color={theme.highlight}
-            picture={Pictures.sneaker}
+            picture={Pictures.activityLog}
             title={t('activity.record')}
             onPress={() => router.push('/activity')}
           />
           <Tile
             icon="timer"
             color={theme.accent}
-            picture={Pictures.stopwatch}
+            picture={Pictures.intervalTimer}
             title={t('interval.title')}
             onPress={() => router.push('/interval')}
           />

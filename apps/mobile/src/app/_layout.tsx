@@ -25,6 +25,8 @@ import { loadSyncInfo, syncNow } from '@/lib/sync';
 
 const queryClient = new QueryClient();
 
+export const unstable_settings = { anchor: '(tabs)' };
+
 /** Once per launch: picks up a newer exercise catalog when the server is reachable. */
 function CatalogSync() {
   useQuery({ queryKey: ['catalog-sync'], queryFn: syncCatalog, staleTime: Infinity, retry: false });
@@ -178,11 +180,10 @@ export default function RootLayout() {
           <Stack.Screen name="program/replace/[id]" options={{ title: t('replace.title') }} />
           <Stack.Screen name="program/share/[id]" options={{ title: t('share.title') }} />
           <Stack.Screen name="code" options={{ title: t('code.title') }} />
-          {/* The workout is dark whatever the system theme is, header included. */}
-          <Stack.Screen name="workout/[id]" options={{ title: '', ...darkHeader }} />
+          <Stack.Screen name="workout/[id]" options={{ title: '' }} />
           <Stack.Screen
             name="workout/replace/[id]"
-            options={{ title: t('busy.title'), ...darkHeader }}
+            options={{ title: t('busy.title') }}
           />
           <Stack.Screen name="workout/summary/[id]" options={{ title: '' }} />
           <Stack.Screen name="report" options={{ title: t('report.title') }} />
@@ -191,6 +192,7 @@ export default function RootLayout() {
           <Stack.Screen name="focus/workout" options={{ title: t('focus.workoutTitle') }} />
           <Stack.Screen name="import-text" options={{ title: t('importText.title') }} />
           <Stack.Screen name="activity" options={{ title: '' }} />
+          <Stack.Screen name="week/[date]" options={{ title: t('week.title') }} />
           <Stack.Screen name="support" options={{ title: t('support.title') }} />
           <Stack.Screen name="interval/index" options={{ title: t('interval.title') }} />
           <Stack.Screen name="interval/preset" options={{ title: '' }} />

@@ -1,8 +1,8 @@
-import { eq, sessions } from '@mvp/db/sqlite';
+import { and, eq, isNull, sessions } from '@mvp/db/sqlite';
 import type { ItemParams } from '@mvp/domain';
 import type { Exercise, ProgramRow } from '@mvp/schemas';
 
-import { setWeight } from './body';
+import { listWeights, localDate, setWeight } from './body';
 import type { DataContext } from './context';
 import {
   createProgramFromDraft,
@@ -12,6 +12,7 @@ import {
   updateProgram,
 } from './programs';
 import {
+  activeSession,
   addFreeExercise,
   type ExerciseFacts,
   finishSession,
@@ -84,6 +85,7 @@ export const at = (weight_kg: number | null, ...reps: number[]): LoggedSet[] =>
 export interface WorkoutLogImport {
   program: ProgramRow;
   workouts: number;
+  skippedWorkouts: number;
   sets: number;
   weights: number;
 }
@@ -93,11 +95,22 @@ const START_HOUR = 18;
 /** Time a set itself takes, on top of the rest after it. */
 const SET_SEC = 45;
 
+function workoutSignature(exercises: { id: string; sets: LoggedSet[] }[]): string {
+  const byExercise = new Map<string, [number, number][]>();
+  for (const { id, sets } of exercises) {
+    if (!sets.length) continue;
+    const group = byExercise.get(id) ?? [];
+    group.push(...sets.map(({ weight_kg, reps }): [number, number] => [weight_kg ?? 0, reps]));
+    byExercise.set(id, group);
+  }
+  return JSON.stringify([...byExercise].sort(([a], [b]) => a.localeCompare(b)));
+}
+
 /**
  * Writes a log into the app the way it would have got there had the workouts been logged on
  * the phone: each workout is started, its sets logged and the workout finished on its own
  * date, so plans for the next workout, the pointer of the program, records and history are
- * worked out by the app itself. A log whose program is already there is refused.
+ * worked out by the app itself. Existing sessions with the same date and work sets are skipped.
  */
 export function importWorkoutLog(
   ctx: DataContext,
@@ -105,9 +118,6 @@ export function importWorkoutLog(
   exercises: readonly Exercise[],
   facts: ExerciseFacts,
 ): WorkoutLogImport {
-  if (listPrograms(ctx).some((program) => program.title === log.program.title)) {
-    throw new Error(`The program "${log.program.title}" is already in the app`);
-  }
   const bySlug = new Map(exercises.map((exercise) => [exercise.slug, exercise.id]));
   const idOf = (slug: string) => {
     const id = bySlug.get(slug);
@@ -125,10 +135,48 @@ export function importWorkoutLog(
 
   return ctx.db.transaction((tx) => {
     const inTx = { ...logged, db: tx };
+    const existingProgram = listPrograms(inTx).find((program) => program.title === log.program.title);
+    const finished = tx.select().from(sessions)
+      .where(and(eq(sessions.status, 'finished'), isNull(sessions.deleted_at))).all();
+    const existingDates = new Set(log.workouts.map((workout) => workout.date));
+    const known = new Set<string>();
+    const active = activeSession(inTx);
+    let latestProgramDate = active && active.program_id === existingProgram?.id
+      ? localDate(active.started_at)
+      : '';
+    for (const session of finished) {
+      const date = localDate(session.started_at);
+      if (session.program_id === existingProgram?.id && date > latestProgramDate) latestProgramDate = date;
+      if (!existingDates.has(date)) continue;
+      const view = getSession(inTx, session.id);
+      if (!view) continue;
+      const signature = workoutSignature(view.exercises.map(({ exercise, sets }) => ({
+        id: exercise.exercise_id,
+        sets: sets.flatMap(({ is_warmup, reps, weight_kg }) =>
+          is_warmup || reps === null ? [] : [{ reps, weight_kg }],
+        ),
+      })));
+      known.add(date + signature);
+    }
+    const pending: LoggedWorkout[] = [];
+    for (const workout of log.workouts) {
+      const signature = workoutSignature(workout.exercises.map((done) => {
+        const planned = workout.day === undefined || done.item === undefined
+          ? undefined
+          : log.program.days[workout.day]?.items[done.item];
+        const slug = done.slug ?? planned?.slug;
+        if (!slug) throw new Error(`No exercise on ${workout.date}`);
+        return { id: idOf(slug), sets: done.sets };
+      }));
+      const key = workout.date + signature;
+      if (known.has(key)) continue;
+      known.add(key);
+      pending.push(workout);
+    }
     const first = log.workouts[0]?.date ?? log.weights[0]?.date;
     if (first) clock = startOf(first, START_HOUR) - 24 * 3600_000;
 
-    const program = createProgramFromDraft(inTx, {
+    const program = existingProgram ?? createProgramFromDraft(inTx, {
       title: log.program.title,
       goal: log.program.goal,
       level: log.program.level,
@@ -144,35 +192,52 @@ export function importWorkoutLog(
     const tree = getProgramTree(inTx, program.id);
     if (!tree) throw new Error('The program was not saved');
     const days = tree.days.map((day) => tree.items.filter((item) => item.program_day_id === day.id));
-    log.program.days.forEach((day, d) =>
-      day.items.forEach((item, i) => {
-        const row = days[d]?.[i];
-        if (row) updateItem(inTx, row.id, { increment_kg: item.increment_kg, notes: item.notes });
-      }),
-    );
-    if (log.program.description) {
-      updateProgram(inTx, program.id, { description: log.program.description });
+    if (!existingProgram) {
+      log.program.days.forEach((day, d) =>
+        day.items.forEach((item, i) => {
+          const row = days[d]?.[i];
+          if (row) updateItem(inTx, row.id, { increment_kg: item.increment_kg, notes: item.notes });
+        }),
+      );
+      if (log.program.description) {
+        updateProgram(inTx, program.id, { description: log.program.description });
+      }
     }
 
     // Weights and workouts on one timeline, so every row is written on its own date.
+    const weighed = new Set(listWeights(inTx).map((entry) => entry.date));
     const events = [
       ...log.weights.map((entry) => ({ date: entry.date, hour: 8, weight: entry })),
-      ...log.workouts.map((workout) => ({ date: workout.date, hour: START_HOUR, workout })),
+      ...pending.map((workout) => ({ date: workout.date, hour: START_HOUR, workout })),
     ].sort((a, b) => a.date.localeCompare(b.date) || a.hour - b.hour);
 
     let sets = 0;
+    let weights = 0;
     for (const event of events) {
       clock = startOf(event.date, event.hour);
       if ('weight' in event && event.weight) {
-        setWeight(inTx, event.weight.date, event.weight.weight_kg);
+        if (!weighed.has(event.date)) {
+          setWeight(inTx, event.date, event.weight.weight_kg);
+          weighed.add(event.date);
+          weights++;
+        }
         continue;
       }
       const workout = 'workout' in event ? event.workout : undefined;
       if (!workout) continue;
 
-      const dayId = workout.day === undefined ? null : tree.days[workout.day]?.id;
-      if (dayId === undefined) throw new Error(`No day ${workout.day} in the program`);
-      const session = dayId ? startSession(inTx, program.id, dayId) : startFreeSession(inTx);
+      const definition = workout.day === undefined ? undefined : log.program.days[workout.day];
+      if (workout.day !== undefined && !definition) throw new Error(`No day ${workout.day} in the program`);
+      const dayIndex = tree.days.findIndex((day) => day.title === definition?.title);
+      const dayItems = days[dayIndex];
+      const dayId = definition && dayItems?.length === definition.items.length &&
+        definition.items.every((item, i) => dayItems[i]?.exercise_id === idOf(item.slug))
+        ? tree.days[dayIndex]?.id
+        : null;
+      // These sessions are created and finished inside this transaction.
+      const session = dayId
+        ? startSession(inTx, program.id, dayId, { historical: true })
+        : startFreeSession(inTx, { historical: true });
       const entries = getSession(inTx, session.id)?.exercises ?? [];
 
       for (const done of workout.exercises) {
@@ -186,8 +251,9 @@ export function importWorkoutLog(
           rest = entry.item?.rest_sec ?? rest;
           if (done.slug) substituteExercise(inTx, entryId, idOf(done.slug), false);
         } else {
-          if (!done.slug) throw new Error(`An exercise without a slug on ${workout.date}`);
-          entryId = addFreeExercise(inTx, session.id, idOf(done.slug), done.sets.length).id;
+          const slug = done.slug ?? (done.item === undefined ? undefined : definition?.items[done.item]?.slug);
+          if (!slug) throw new Error(`An exercise without a slug on ${workout.date}`);
+          entryId = addFreeExercise(inTx, session.id, idOf(slug), done.sets.length).id;
         }
         for (const set of done.sets) {
           clock += SET_SEC * 1000;
@@ -204,14 +270,18 @@ export function importWorkoutLog(
           .run();
       }
       clock += 120_000;
-      finishSession(inTx, session.id, dayId ? facts : () => null, { smart: false });
+      finishSession(inTx, session.id, dayId ? facts : () => null, {
+        smart: false,
+        updateProgram: workout.date > latestProgramDate,
+      });
     }
 
     return {
       program: getProgramTree(inTx, program.id)?.program ?? program,
-      workouts: log.workouts.length,
+      workouts: pending.length,
+      skippedWorkouts: log.workouts.length - pending.length,
       sets,
-      weights: log.weights.length,
+      weights,
     };
   });
 }

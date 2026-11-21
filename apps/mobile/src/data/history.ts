@@ -3,6 +3,7 @@ import {
   asc,
   desc,
   eq,
+  gte,
   gt,
   inArray,
   isNull,
@@ -140,6 +141,20 @@ export function getWorkout(ctx: DataContext, sessionId: string): WorkoutRecord |
   return session ? record(ctx, session) : null;
 }
 
+/** Finished workouts in a local day's ISO timestamp bounds, earliest first. */
+export function workoutsBetween(ctx: DataContext, from: string, until: string): WorkoutRecord[] {
+  return records(ctx, ctx.db.select().from(sessions)
+    .where(and(finished, gte(sessions.started_at, from), lt(sessions.started_at, until)))
+    .orderBy(asc(sessions.started_at)).all());
+}
+
+/** Most recently used programs first, each listed once. */
+export function recentProgramIds(ctx: DataContext): string[] {
+  const rows = ctx.db.select({ id: sessions.program_id }).from(sessions)
+    .where(finished).orderBy(desc(sessions.started_at)).all();
+  return [...new Set(rows.flatMap(({ id }) => id ?? []))];
+}
+
 /** The workouts of one pass through a program, oldest first. */
 export function workoutsOfCycle(ctx: DataContext, programId: string, cycle: number): WorkoutRecord[] {
   return records(
@@ -176,7 +191,10 @@ export function exerciseProgress(
     .from(set_logs)
     .innerJoin(session_exercises, eq(session_exercises.id, set_logs.session_exercise_id))
     .innerJoin(sessions, eq(sessions.id, session_exercises.session_id))
-    .where(and(finished, eq(session_exercises.exercise_id, exerciseId), isNull(set_logs.deleted_at)))
+    .where(and(
+      finished, eq(session_exercises.exercise_id, exerciseId), isNull(session_exercises.deleted_at),
+      isNull(set_logs.deleted_at), eq(set_logs.is_warmup, false),
+    ))
     .orderBy(asc(sessions.started_at))
     .all();
 
@@ -203,6 +221,36 @@ export function exercisesWithProgress(ctx: DataContext): string[] {
   return rows.map((row) => row.id);
 }
 
+/** Only exercises with a saved set in a finished workout appear in progress. */
+export function performedExerciseIds(ctx: DataContext): string[] {
+  const rows = ctx.db
+    .selectDistinct({ id: session_exercises.exercise_id })
+    .from(set_logs)
+    .innerJoin(session_exercises, eq(session_exercises.id, set_logs.session_exercise_id))
+    .innerJoin(sessions, eq(sessions.id, session_exercises.session_id))
+    .where(and(finished, isNull(session_exercises.deleted_at), isNull(set_logs.deleted_at)))
+    .all();
+  return rows.map(({ id }) => id);
+}
+
+/** The repetitions of a bodyweight exercise, summed across working sets per workout. */
+export function repetitionProgress(ctx: DataContext, exerciseId: string) {
+  const rows = ctx.db
+    .select({ date: sessions.started_at, reps: set_logs.reps })
+    .from(set_logs)
+    .innerJoin(session_exercises, eq(session_exercises.id, set_logs.session_exercise_id))
+    .innerJoin(sessions, eq(sessions.id, session_exercises.session_id))
+    .where(and(
+      finished, eq(session_exercises.exercise_id, exerciseId), isNull(session_exercises.deleted_at),
+      isNull(set_logs.deleted_at), eq(set_logs.is_warmup, false), gt(set_logs.reps, 0),
+    ))
+    .orderBy(asc(sessions.started_at))
+    .all();
+  const totals = new Map<string, number>();
+  for (const { date, reps } of rows) totals.set(date, (totals.get(date) ?? 0) + (reps ?? 0));
+  return [...totals].map(([date, reps]) => ({ date, reps }));
+}
+
 /** How a cardio exercise went over time: per workout, the distance and the time of its sets. */
 export function cardioProgress(
   ctx: DataContext,
@@ -217,7 +265,10 @@ export function cardioProgress(
     .from(set_logs)
     .innerJoin(session_exercises, eq(session_exercises.id, set_logs.session_exercise_id))
     .innerJoin(sessions, eq(sessions.id, session_exercises.session_id))
-    .where(and(finished, eq(session_exercises.exercise_id, exerciseId), isNull(set_logs.deleted_at)))
+    .where(and(
+      finished, eq(session_exercises.exercise_id, exerciseId), isNull(session_exercises.deleted_at),
+      isNull(set_logs.deleted_at), eq(set_logs.is_warmup, false),
+    ))
     .orderBy(asc(sessions.started_at))
     .all();
 
@@ -228,7 +279,7 @@ export function cardioProgress(
     point.duration_sec += row.duration_sec ?? 0;
     byWorkout.set(row.started_at, point);
   }
-  return [...byWorkout.values()].filter((point) => point.duration_sec > 0);
+  return [...byWorkout.values()].filter((point) => point.duration_sec > 0 || point.distance_m > 0);
 }
 
 /** Ids of exercises with a set on time and no reps in a finished workout: cardio and holds. */

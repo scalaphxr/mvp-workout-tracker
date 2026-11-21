@@ -22,7 +22,7 @@ export const Colors = {
     accent: '#047857',
     onAccent: '#FFFFFF',
     // Gold: what was measured – metric labels, numbers.
-    highlight: '#A16207',
+    highlight: '#AA640A',
     onHighlight: '#FFFFFF',
     // A bright emerald for marks: the line under a chosen heading, a day trained.
     bright: '#10B981',
@@ -31,7 +31,7 @@ export const Colors = {
     // Bars of a chart other than the latest one.
     chart: '#A7DFC3',
     // Amber: a record, a badge, something new.
-    hot: '#D97706',
+    hot: '#F4A64C',
     // The glow behind the large title of the first screen, fading into the background.
     hero: '#C9EBDB',
     separator: '#D3DCD7',

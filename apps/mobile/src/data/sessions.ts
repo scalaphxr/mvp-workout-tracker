@@ -143,8 +143,13 @@ export function activeSession(ctx: DataContext): SessionRow | null {
  * Starts a workout of a day: its exercises, then the "every workout" block of the program.
  * If a workout is already in progress, that one is returned instead.
  */
-export function startSession(ctx: DataContext, programId: string, dayId: string): SessionRow {
-  const running = activeSession(ctx);
+export function startSession(
+  ctx: DataContext,
+  programId: string,
+  dayId: string,
+  options?: { historical?: boolean },
+): SessionRow {
+  const running = options?.historical ? null : activeSession(ctx);
   if (running) return running;
 
   return ctx.db.transaction((tx) => {
@@ -197,8 +202,8 @@ export function startSession(ctx: DataContext, programId: string, dayId: string)
 export const DEFAULT_FREE_SETS = 3;
 
 /** Starts an empty workout; if one is already in progress, that one is returned instead. */
-export function startFreeSession(ctx: DataContext): SessionRow {
-  const running = activeSession(ctx);
+export function startFreeSession(ctx: DataContext, options?: { historical?: boolean }): SessionRow {
+  const running = options?.historical ? null : activeSession(ctx);
   if (running) return running;
 
   const session = SessionRowSchema.parse({
@@ -610,7 +615,7 @@ export function finishSession(
   ctx: DataContext,
   sessionId: string,
   facts: ExerciseFacts,
-  options: { smart: boolean },
+  options: { smart: boolean; updateProgram?: boolean },
 ): void {
   const view = getSession(ctx, sessionId);
   if (!view || view.session.status !== 'active') return;
@@ -623,6 +628,8 @@ export function finishSession(
       .set({ status: 'finished', finished_at: now, updated_at: now })
       .where(eq(sessions.id, sessionId))
       .run();
+
+    if (options.updateProgram === false) return;
 
     for (const { exercise, item, plan, sets } of view.exercises) {
       // A deload week changes no plans; neither does an exercise replaced for one workout.

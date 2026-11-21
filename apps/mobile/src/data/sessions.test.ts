@@ -26,6 +26,8 @@ import {
   exercisesWithProgress,
   getWorkout,
   listWorkouts,
+  performedExerciseIds,
+  repetitionProgress,
   workoutsOfCycle,
 } from './history';
 import {
@@ -868,6 +870,18 @@ describe('stage 4 data', () => {
       [82.5, 105],
     ]);
     expect(exercisesWithProgress(ctx)).toEqual([BENCH]);
+  });
+
+  it('lists only exercises with finished sets and charts bodyweight repetitions', () => {
+    const { id: programId, day1 } = program();
+    workout(programId, day1.id, { [BENCH]: [75, [10]], [CURL]: [0, [12, 11]] });
+
+    const active = startFreeSession(ctx);
+    const pending = addFreeExercise(ctx, active.id, PLANK);
+    logSet(ctx, pending.id, { duration_sec: 30 });
+
+    expect(performedExerciseIds(ctx).sort()).toEqual([BENCH, CURL].sort());
+    expect(repetitionProgress(ctx, CURL).map((point) => point.reps)).toEqual([23]);
   });
 });
 

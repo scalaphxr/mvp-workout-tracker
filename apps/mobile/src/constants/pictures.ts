@@ -5,11 +5,13 @@ import type { ImageSourcePropType } from 'react-native';
  * Each has a transparent background and sits on either theme.
  */
 export const Pictures = {
+  activityLog: require('@/assets/images/3d/activity-log.png'),
   arm: require('@/assets/images/3d/arm.png'),
   calendar: require('@/assets/images/3d/calendar.png'),
   clipboard: require('@/assets/images/3d/clipboard.png'),
   dumbbell: require('@/assets/images/3d/dumbbell.png'),
   flame: require('@/assets/images/3d/flame.png'),
+  intervalTimer: require('@/assets/images/3d/interval-timer.png'),
   sneaker: require('@/assets/images/3d/sneaker.png'),
   stopwatch: require('@/assets/images/3d/stopwatch.png'),
   trophy: require('@/assets/images/3d/trophy.png'),

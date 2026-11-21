@@ -7,7 +7,7 @@ export { schema };
 export * from './schema';
 
 // Query helpers for the phone database: see the note in `../index.ts`.
-export { and, asc, desc, eq, gt, inArray, isNull, lt, max, ne, or, sql } from 'drizzle-orm';
+export { and, asc, desc, eq, gt, gte, inArray, isNull, lt, max, ne, or, sql } from 'drizzle-orm';
 
 /**
  * The database on the phone, whatever driver is behind it: expo-sqlite in the app

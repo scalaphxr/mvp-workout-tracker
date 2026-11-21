@@ -121,10 +121,37 @@ describe('importing a training log', () => {
     expect(listWeights(ctx)).toEqual([{ date: '2026-10-02', weight_kg: 80.4 }]);
   });
 
-  it('refuses a log whose program is already in the app', () => {
-    importWorkoutLog(ctx, tiny, exercises, facts);
-    expect(() => importWorkoutLog(ctx, tiny, exercises, facts)).toThrow(/already/);
+  it('skips workouts already in the app even if the exercises are listed in another order', () => {
+    const twoExercises = {
+      ...tiny,
+      workouts: tiny.workouts.map((workout, index) => index === 0 ? {
+        ...workout,
+        exercises: [...workout.exercises, { slug: 'dumbbell-hammer-curl', sets: at(10, 12, 12) }],
+      } : workout),
+    };
+    const first = importWorkoutLog(ctx, twoExercises, exercises, facts);
+    const reordered = {
+      ...twoExercises,
+      workouts: twoExercises.workouts.map((workout) => ({
+        ...workout,
+        exercises: [...workout.exercises].reverse(),
+      })),
+    };
+    expect(importWorkoutLog(ctx, reordered, exercises, facts)).toMatchObject({
+      program: { id: first.program.id }, workouts: 0, skippedWorkouts: 3, sets: 0, weights: 0,
+    });
     expect(listPrograms(ctx)).toHaveLength(1);
+    expect(listWorkouts(ctx)).toHaveLength(3);
+  });
+
+  it('preserves distinct workouts on the same date', () => {
+    importWorkoutLog(ctx, tiny, exercises, facts);
+    const other = {
+      ...tiny,
+      workouts: [{ ...tiny.workouts[0]!, exercises: [{ slug: 'barbell-bench-press', sets: at(70, 10, 10, 10) }] }],
+    };
+    expect(importWorkoutLog(ctx, other, exercises, facts)).toMatchObject({ workouts: 1, skippedWorkouts: 0 });
+    expect(listWorkouts(ctx)).toHaveLength(4);
   });
 
   it('writes nothing when an exercise is not in the catalog', () => {

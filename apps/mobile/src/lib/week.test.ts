@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { toLocalDate } from './format';
-import { weekOf } from './week';
+import { parseWeekDate, plannedWorkoutTime, weekOf } from './week';
 
 const dates = (at: Date) => weekOf(at).map(toLocalDate);
 
@@ -36,5 +36,18 @@ describe('weekOf', () => {
       '2027-01-02',
       '2027-01-03',
     ]);
+  });
+});
+
+describe('workout planning dates', () => {
+  it('keeps the selected calendar date and time in the local time zone', () => {
+    const date = plannedWorkoutTime('2026-11-20', '7:30');
+    expect(date).toEqual(new Date(2026, 10, 20, 7, 30));
+  });
+
+  it('rejects overflow dates and invalid times', () => {
+    expect(parseWeekDate('2026-02-30')).toBeNull();
+    expect(plannedWorkoutTime('2026-11-20', '24:00')).toBeNull();
+    expect(plannedWorkoutTime('2026-11-20', '18:70')).toBeNull();
   });
 });
