@@ -1744,7 +1744,7 @@
       },
       "en": {
         "name": "Swimming",
-        "aliases": ["pool swim", "freestyle swimming"],
+        "aliases": ["pool swim"],
         "description": "Swimming in a pool: whole-body cardio with no impact, good when the joints hurt.",
         "technique_steps": [
           "Warm up for 5 minutes swimming easily in any stroke.",

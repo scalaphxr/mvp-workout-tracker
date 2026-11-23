@@ -96,7 +96,7 @@ export function FreeWorkout({ view }: { view: SessionView }) {
   };
 
   return (
-    <View style={[styles.screen, { backgroundColor: theme.background }]}>
+    <View style={styles.screen}>
       {/* Only the list makes way for the keyboard: the panel under it stays where it is. */}
       <KeyboardAvoidingView
         style={styles.keyboard}
@@ -105,7 +105,7 @@ export function FreeWorkout({ view }: { view: SessionView }) {
           ref={scroll}
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={[styles.list, { paddingBottom: insets.bottom + Spacing.four }]}>
-          <ThemedText style={styles.title}>{t('workout.freeTitle')}</ThemedText>
+          <ThemedText type="heading" style={styles.title}>{t('workout.freeTitle')}</ThemedText>
           {exercises.length === 0 && (
             <ThemedText themeColor="textSecondary" style={styles.empty}>
               {t('workout.freeEmpty')}

@@ -17,6 +17,8 @@ import {
 import { epley } from '@mvp/domain';
 import type { SessionRow } from '@mvp/schemas';
 
+import { toLocalDate } from '../lib/format';
+import { activityStartTimes } from './activities';
 import type { DataContext } from './context';
 import { type SessionSummary, type SessionTotals, sessionSummary, sessionTotals } from './sessions';
 
@@ -305,4 +307,14 @@ export function finishedWorkoutTimes(ctx: DataContext): string[] {
     .orderBy(asc(sessions.started_at))
     .all()
     .map((row) => row.started_at);
+}
+
+export function workoutCalendarDays(ctx: DataContext) {
+  const workouts = new Set(finishedWorkoutTimes(ctx).map((time) => toLocalDate(new Date(time))));
+  const activities = activityStartTimes(ctx).map((time) => toLocalDate(new Date(time)));
+  return { workouts, recorded: new Set([...workouts, ...activities]) };
+}
+
+export function recordedWorkoutDays(ctx: DataContext): Set<string> {
+  return workoutCalendarDays(ctx).recorded;
 }

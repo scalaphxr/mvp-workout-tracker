@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { toLocalDate } from './format';
-import { parseWeekDate, plannedWorkoutTime, weekOf } from './week';
+import { calendarDayIndex, dateFromCalendarDay, monthWeeks, parseWeekDate, plannedWorkoutTime, weekOf } from './week';
 
 const dates = (at: Date) => weekOf(at).map(toLocalDate);
 
@@ -49,5 +49,20 @@ describe('workout planning dates', () => {
     expect(parseWeekDate('2026-02-30')).toBeNull();
     expect(plannedWorkoutTime('2026-11-20', '24:00')).toBeNull();
     expect(plannedWorkoutTime('2026-11-20', '18:70')).toBeNull();
+  });
+});
+
+describe('calendar dates', () => {
+  it('steps across the year boundary using local calendar days', () => {
+    const index = calendarDayIndex(new Date(2026, 11, 31, 23, 59));
+    expect(toLocalDate(dateFromCalendarDay(index))).toBe('2026-12-31');
+    expect(toLocalDate(dateFromCalendarDay(index + 1))).toBe('2027-01-01');
+  });
+
+  it('includes the last day even when the month spans six calendar rows', () => {
+    const weeks = monthWeeks(new Date(2026, 7, 31));
+    expect(weeks).toHaveLength(6);
+    expect(weeks[0]!.map(toLocalDate)[0]).toBe('2026-07-27');
+    expect(weeks[5]!.map(toLocalDate)[0]).toBe('2026-08-31');
   });
 });

@@ -2,6 +2,9 @@ Oswald Soft is Oswald (https://github.com/googlefonts/OswaldFont) with the corne
 glyphs rounded for this app (radius 40 units in Bold, 36 in SemiBold); hinting removed.
 Modified under the SIL Open Font License 1.1 below, under another name as it requires.
 
+MVP Marker is derived from Oswald Soft, with slanted outlines and angled strokes.
+The same SIL Open Font License applies. Source recipe: scripts/build-marker-font.py.
+
 Copyright 2016 The Oswald Project Authors (https://github.com/googlefonts/OswaldFont)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.

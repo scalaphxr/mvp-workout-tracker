@@ -15,7 +15,6 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 
 import { FloatingTabBarSpace, MaxContentWidth, Radius, Spacing, Typeface } from '@/constants/theme';
 import { useLocale } from '@/hooks/use-locale';
@@ -23,6 +22,7 @@ import { useTheme } from '@/hooks/use-theme';
 import { formatNumber } from '@/lib/format';
 
 import { Button } from './button';
+import { ScreenGlow } from './gradients';
 import { ThemedText } from './themed-text';
 import { ThemedView } from './themed-view';
 
@@ -36,28 +36,29 @@ const TITLE_SCROLL = 48;
  *
  * With a `title` it is a tab screen: it draws its own large title under the status bar, which
  * gives way to a compact one as the content scrolls, and leaves room for the floating tab bar.
- * `hero` lights the top of the screen with the accent.
  */
 export function Screen({
   children,
   title,
   headerRight,
-  hero,
   ...rest
-}: ScrollViewProps & { title?: string; headerRight?: ReactNode; hero?: boolean }) {
+}: ScrollViewProps & { title?: string; headerRight?: ReactNode }) {
   const theme = useTheme();
   const insets = useSafeAreaInsets();
   const [scrollY] = useState(() => new Animated.Value(0));
 
   if (title === undefined) {
     return (
-      <ScrollView
-        style={{ backgroundColor: theme.background }}
-        contentContainerStyle={styles.screen}
-        keyboardShouldPersistTaps="handled"
-        {...rest}>
-        {children}
-      </ScrollView>
+      <View style={[styles.fill, { backgroundColor: theme.background }]}>
+        <ScreenGlow />
+        <ScrollView
+          style={styles.fill}
+          contentContainerStyle={styles.screen}
+          keyboardShouldPersistTaps="handled"
+          {...rest}>
+          {children}
+        </ScrollView>
+      </View>
     );
   }
 
@@ -69,6 +70,7 @@ export function Screen({
 
   return (
     <View style={[styles.fill, { backgroundColor: theme.background }]}>
+      <ScreenGlow />
       <Animated.ScrollView
         style={styles.fill}
         contentContainerStyle={[
@@ -81,8 +83,6 @@ export function Screen({
           useNativeDriver: true,
         })}
         {...rest}>
-        {/* Inside the scroll, so the glow leaves with the title. */}
-        {hero && <Hero color={theme.hero} background={theme.background} />}
         <View style={styles.largeTitle}>
           <ThemedText type="largeTitle" accessibilityRole="header" style={styles.shrink}>
             {title}
@@ -110,23 +110,6 @@ export function Screen({
   );
 }
 
-/** The accent glow at the top of a screen, fading into the background. */
-function Hero({ color, background }: { color: string; background: string }) {
-  return (
-    <View style={styles.hero}>
-      <Svg width="100%" height="100%">
-        <Defs>
-          <LinearGradient id="hero" x1="0" y1="0" x2="0" y2="1">
-            <Stop offset="0" stopColor={color} />
-            <Stop offset="1" stopColor={background} />
-          </LinearGradient>
-        </Defs>
-        <Rect width="100%" height="100%" fill="url(#hero)" />
-      </Svg>
-    </View>
-  );
-}
-
 /** A round button with a person in it, the way to the profile. */
 export function Avatar({ label, onPress }: { label: string; onPress: () => void }) {
   const theme = useTheme();
@@ -137,10 +120,10 @@ export function Avatar({ label, onPress }: { label: string; onPress: () => void 
       onPress={onPress}
       style={({ pressed }) => [
         styles.avatar,
-        { backgroundColor: theme.accent, borderColor: theme.backgroundSelected },
+        { backgroundColor: theme.accentSoft, borderColor: theme.backgroundSelected },
         pressed && styles.pressed,
       ]}>
-      <Ionicons name="person" size={22} color={theme.onAccent} />
+      <Ionicons name="person" size={22} color={theme.accent} />
     </Pressable>
   );
 }
@@ -334,7 +317,7 @@ export function Tile({
   icon: IconName;
   color: string;
   title: string;
-  /** A picture in place of the icon: a three-dimensional one. */
+  /** An illustration in place of the icon. */
   picture?: ImageSourcePropType;
   onPress: () => void;
 }) {
@@ -381,7 +364,7 @@ export function TileGrid({ children }: { children: ReactNode }) {
 }
 
 /**
- * A card for what is not there yet: a three-dimensional picture, a title and a line on what to do.
+ * An empty-state card with an illustration, a title and a line on what to do.
  * An action, if any, goes under the text.
  */
 export function PictureNote({
@@ -498,7 +481,7 @@ export function LinkRow({
       {icon && <IconPlate icon={icon} color={iconColor} size={40} />}
       <View style={styles.rowText}>
         <View style={styles.rowTitle}>
-          <ThemedText style={styles.shrink}>{title}</ThemedText>
+          <ThemedText style={[styles.shrink, styles.linkRowTitle]}>{title}</ThemedText>
           {badge !== undefined && (
             <View style={[styles.badge, { backgroundColor: theme.backgroundSelected }]}>
               <ThemedText type="small">{badge}</ThemedText>
@@ -699,18 +682,11 @@ const styles = StyleSheet.create({
     fontSize: 17,
     paddingHorizontal: Spacing.five,
   },
-  hero: {
-    position: 'absolute',
-    pointerEvents: 'none',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: 360,
-  },
   avatar: {
     width: 48,
     height: 48,
     borderRadius: 24,
+    overflow: 'hidden',
     borderWidth: 2,
     alignItems: 'center',
     justifyContent: 'center',
@@ -794,7 +770,7 @@ const styles = StyleSheet.create({
   tileTitle: {
     fontSize: 17,
     lineHeight: 22,
-    fontWeight: 600,
+    fontFamily: Typeface.displayMedium,
   },
   tilePicture: {
     width: 56,
@@ -818,7 +794,7 @@ const styles = StyleSheet.create({
   noteTitle: {
     fontSize: 20,
     lineHeight: 26,
-    fontWeight: 700,
+    fontFamily: Typeface.display,
     textAlign: 'center',
   },
   centered: {
@@ -871,6 +847,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing.two,
+  },
+  linkRowTitle: {
+    fontFamily: Typeface.displayMedium,
   },
   shrink: {
     flexShrink: 1,

@@ -10,6 +10,31 @@ export function weekOf(at: Date): Date[] {
   });
 }
 
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+/** A local calendar date represented as a day number, independent of time zone offsets. */
+export function calendarDayIndex(date: Date): number {
+  return Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / DAY_MS;
+}
+
+export function dateFromCalendarDay(index: number): Date {
+  const utc = new Date(index * DAY_MS);
+  return new Date(utc.getUTCFullYear(), utc.getUTCMonth(), utc.getUTCDate());
+}
+
+/** Complete Monday-first weeks needed to display one month. */
+export function monthWeeks(month: Date): Date[][] {
+  const year = month.getFullYear();
+  const monthIndex = month.getMonth();
+  const firstMonday = weekOf(new Date(year, monthIndex, 1))[0]!;
+  const last = new Date(year, monthIndex + 1, 0);
+  const weeks = [];
+  for (const day = firstMonday; day <= last; day.setDate(day.getDate() + 7)) {
+    weeks.push(weekOf(day));
+  }
+  return weeks;
+}
+
 /** Parses a calendar date at local midnight without treating it as UTC. */
 export function parseWeekDate(date: string): Date | null {
   const parts = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);

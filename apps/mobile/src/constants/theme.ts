@@ -21,8 +21,16 @@ export const Colors = {
     // Emerald: what can be pressed – buttons, links, the chosen tab and day.
     accent: '#047857',
     onAccent: '#FFFFFF',
+    action: '#11666D',
+    actionEnd: '#087653',
+    onAction: '#FFFFFF',
     // Gold: what was measured – metric labels, numbers.
     highlight: '#AA640A',
+    highlightSoft: '#F4E4CD',
+    activityInk: '#525D9D',
+    activitySoft: '#E7E9F7',
+    nutritionInk: '#A34D52',
+    nutritionSoft: '#F6E2E1',
     onHighlight: '#FFFFFF',
     // A bright emerald for marks: the line under a chosen heading, a day trained.
     bright: '#10B981',
@@ -33,7 +41,7 @@ export const Colors = {
     // Amber: a record, a badge, something new.
     hot: '#F4A64C',
     // The glow behind the large title of the first screen, fading into the background.
-    hero: '#C9EBDB',
+    hero: '#D5EAE0',
     separator: '#D3DCD7',
     tabBar: '#FFFFFF',
     danger: '#B3261E',
@@ -50,15 +58,23 @@ export const Colors = {
     textSecondary: '#93A39B',
     accent: '#10B981',
     onAccent: '#03140D',
+    action: '#135F65',
+    actionEnd: '#157659',
+    onAction: '#FFFFFF',
     highlight: '#FACC15',
+    highlightSoft: '#483A12',
+    activityInk: '#AEB9FC',
+    activitySoft: '#2E3553',
+    nutritionInk: '#F3A69F',
+    nutritionSoft: '#442B2E',
     onHighlight: '#1A1400',
     bright: '#34D399',
     accentSoft: '#0F3326',
     chart: '#1E4D3A',
     hot: '#FBBF24',
-    hero: '#0C3E2D',
+    hero: '#112A21',
     separator: '#2A3530',
-    tabBar: '#111916',
+    tabBar: '#161E1B',
     danger: '#FF8A80',
     musclePrimary: '#FF4D5E',
     muscleSecondary: '#8A3A44',
@@ -73,7 +89,6 @@ export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
  * and a geometric sans for everything else. Both have Cyrillic. Loaded in the root layout.
  */
 export const Typeface = {
-  // Oswald with its corners rounded for the app: assets/fonts/OFL-OswaldSoft.txt.
   display: 'OswaldSoft_700Bold',
   displayMedium: 'OswaldSoft_600SemiBold',
   regular: 'Onest_400Regular',

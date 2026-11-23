@@ -1,0 +1,686 @@
+[
+  {
+    "id": "dc53665a-24bf-44e3-ae66-2c0c283f0047",
+    "slug": "side-lying-quad-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads"],
+    "secondary_muscles": [],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Растяжка передней поверхности бедра лёжа на боку","aliases":[],"description":"Лягте на бок и подтяните верхнюю пятку к тазу. Удерживайте колени рядом.","technique_steps":["Двигайтесь до лёгкого натяжения или сопротивления. Дышите ровно и плавно выйдите из положения."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Side-lying quad stretch","aliases":[],"description":"Lie on one side and draw the upper heel toward your hips. Keep both knees aligned.","technique_steps":["Move until you feel a mild stretch or resistance. Breathe evenly and ease out slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "6b2005c5-19fe-4f55-b153-e5930b842645",
+    "slug": "couch-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads"],
+    "secondary_muscles": [],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Растяжка квадрицепса с голенью у стены","aliases":[],"description":"Опуститесь на подушку одним коленом, расположив голень у стены и поставив другую стопу впереди. Выпрямитесь в удобной амплитуде.","technique_steps":["Двигайтесь до лёгкого натяжения или сопротивления. Дышите ровно и плавно выйдите из положения."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Couch stretch","aliases":[],"description":"Kneel on a cushion with one shin near a wall and the other foot in front. Bring your torso upright as far as comfortable.","technique_steps":["Move until you feel a mild stretch or resistance. Breathe evenly and ease out slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "1843d4fe-1306-4c16-976e-6789e14fa4c8",
+    "slug": "adductor-rock-back",
+    "kind": "stretch",
+    "tracking": "reps",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["adductors"],
+    "secondary_muscles": ["glutes","hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Отведение таза назад с прямой ногой в сторону","aliases":[],"description":"Встаньте на четвереньки и выпрямите одну ногу в сторону. Отводите таз назад, сохраняя опору вытянутой стопы.","technique_steps":["Двигайтесь до лёгкого натяжения или сопротивления. Дышите ровно и плавно выйдите из положения."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Adductor rock-back","aliases":[],"description":"Begin on hands and knees and extend one leg sideways. Rock your hips back while the extended foot stays down.","technique_steps":["Move until you feel a mild stretch or resistance. Breathe evenly and ease out slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "084686c0-fa79-4847-93c4-bb01a05e1129",
+    "slug": "seated-straddle-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["adductors"],
+    "secondary_muscles": ["glutes","hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Наклон вперёд сидя с широко разведёнными ногами","aliases":[],"description":"Сядьте, удобно разведите ноги и наклонитесь вперёд от тазобедренных суставов.","technique_steps":["Двигайтесь до лёгкого натяжения или сопротивления. Дышите ровно и плавно выйдите из положения."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Seated straddle stretch","aliases":[],"description":"Sit with your legs comfortably wide and hinge forward from the hips.","technique_steps":["Move until you feel a mild stretch or resistance. Breathe evenly and ease out slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "621847cd-00b3-4383-a892-90d3541aa022",
+    "slug": "standing-side-lunge-groin-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["adductors"],
+    "secondary_muscles": ["glutes","hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Растяжка приводящих мышц в боковом выпаде","aliases":[],"description":"Широко поставьте ноги и согните одно колено. Сохраняйте вторую ногу прямой с опорой на стопу.","technique_steps":["Двигайтесь до лёгкого натяжения или сопротивления. Дышите ровно и плавно выйдите из положения."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Standing side lunge groin stretch","aliases":[],"description":"Take a wide stance and bend one knee. Keep the opposite foot planted with its leg long.","technique_steps":["Move until you feel a mild stretch or resistance. Breathe evenly and ease out slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "c7f71712-479b-4918-9263-cd80989c5aaa",
+    "slug": "knee-to-chest-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Подтягивание одного колена к груди лёжа","aliases":[],"description":"Лягте на спину и подтяните одно колено к груди двумя руками. Вторую ногу оставьте расслабленной.","technique_steps":["Двигайтесь до лёгкого натяжения или сопротивления. Дышите ровно и плавно выйдите из положения."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Knee-to-chest stretch","aliases":[],"description":"Lie on your back and draw one knee toward your chest with both hands. Keep the other leg relaxed.","technique_steps":["Move until you feel a mild stretch or resistance. Breathe evenly and ease out slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "a9a8446f-ddf7-49f5-a24f-0183907e9a4a",
+    "slug": "ninety-ninety-hip-switch",
+    "kind": "stretch",
+    "tracking": "reps",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Смена сторон в посадке 90/90","aliases":[],"description":"Сядьте, согните оба колена и расставьте стопы. Переводите оба колена вместе из стороны в сторону.","technique_steps":["Двигайтесь до лёгкого натяжения или сопротивления. Дышите ровно и плавно выйдите из положения."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Ninety-ninety hip switch","aliases":[],"description":"Sit with both knees bent and feet wide. Rotate both knees together from one side to the other.","technique_steps":["Move until you feel a mild stretch or resistance. Breathe evenly and ease out slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "19ea2588-aa48-48c9-8ccc-8b6645dc7f97",
+    "slug": "standing-hip-circles",
+    "kind": "stretch",
+    "tracking": "reps",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Круги тазом стоя","aliases":[],"description":"Поставьте стопы под тазом и выполните небольшие круги тазом в обе стороны.","technique_steps":["Двигайтесь до лёгкого натяжения или сопротивления. Дышите ровно и плавно выйдите из положения."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Standing hip circles","aliases":[],"description":"Stand with feet under your hips and trace a small circle with your pelvis in each direction.","technique_steps":["Move until you feel a mild stretch or resistance. Breathe evenly and ease out slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "64d31c8b-95a3-4a17-8d52-39721a7d26b6",
+    "slug": "hip-controlled-articular-rotation",
+    "kind": "stretch",
+    "tracking": "reps",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Контролируемые круги бедром стоя","aliases":[],"description":"Держитесь за стену, поднимите колено и опишите бедром небольшой круг, оставляя таз неподвижным.","technique_steps":["Двигайтесь до лёгкого натяжения или сопротивления. Дышите ровно и плавно выйдите из положения."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Hip controlled articular rotation","aliases":[],"description":"Hold a wall, lift one knee and trace a small circle with the thigh while keeping your pelvis still.","technique_steps":["Move until you feel a mild stretch or resistance. Breathe evenly and ease out slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "b38fb3e4-80ad-4eb0-8c55-9192ce7c88f5",
+    "slug": "supine-hamstring-stretch-with-strap",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["hamstrings"],
+    "secondary_muscles": [],
+    "equipment": ["stretch_strap"],
+    "translations": {
+      "ru": {"name":"Растяжка задней поверхности бедра лёжа с ремнём","aliases":[],"description":"Лягте на спину, наденьте ремень на одну стопу и поднимите ногу. Разогните колено до удобной амплитуды.","technique_steps":["Остановитесь при лёгком натяжении и продолжайте дышать. Вернитесь без пружинящих движений."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Supine hamstring stretch with strap","aliases":[],"description":"Lie on your back and loop a strap around one foot. Raise the leg and straighten the knee only as far as comfortable.","technique_steps":["Stop at a gentle stretch and keep breathing. Return without bouncing."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "70ae76fe-4ba4-45e7-9094-7af8d994cf59",
+    "slug": "elevated-hamstring-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["hamstrings"],
+    "secondary_muscles": [],
+    "equipment": ["aerobic_step"],
+    "translations": {
+      "ru": {"name":"Растяжка задней поверхности бедра с пяткой на опоре","aliases":[],"description":"Поставьте одну пятку на низкую ступень и наклонитесь вперёд, не разворачивая таз.","technique_steps":["Остановитесь при лёгком натяжении и продолжайте дышать. Вернитесь без пружинящих движений."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Elevated hamstring stretch","aliases":[],"description":"Place one heel on a low step and hinge forward with hips square.","technique_steps":["Stop at a gentle stretch and keep breathing. Return without bouncing."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "6f5c1e54-84ab-4f72-8f92-64f5f26b73fd",
+    "slug": "bent-knee-wall-calf-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Растяжка камбаловидной мышцы у стены","aliases":[],"description":"Поставьте одну ногу назад, оставьте её пятку на полу и немного согните колено.","technique_steps":["Остановитесь при лёгком натяжении и продолжайте дышать. Вернитесь без пружинящих движений."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Bent-knee wall calf stretch","aliases":[],"description":"Place one leg behind you, keep the back heel down and bend that knee slightly.","technique_steps":["Stop at a gentle stretch and keep breathing. Return without bouncing."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "943b26bd-c5c5-4777-8cbf-e92327715752",
+    "slug": "seated-calf-stretch-with-strap",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": ["stretch_strap"],
+    "translations": {
+      "ru": {"name":"Растяжка икры сидя с ремнём","aliases":[],"description":"Сядьте, выпрямите одну ногу и накиньте ремень на переднюю часть стопы. Мягко потяните носок к себе.","technique_steps":["Остановитесь при лёгком натяжении и продолжайте дышать. Вернитесь без пружинящих движений."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Seated calf stretch with strap","aliases":[],"description":"Sit with one leg straight, loop the strap across the ball of the foot, and draw the toes toward you gently.","technique_steps":["Stop at a gentle stretch and keep breathing. Return without bouncing."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "9a57adf8-a9e4-4412-8569-eaa28b796ae3",
+    "slug": "ankle-circles",
+    "kind": "stretch",
+    "tracking": "reps",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Круговые движения стопой","aliases":[],"description":"Сядьте или встаньте с одной стопой чуть над полом. Описывайте круги носком.","technique_steps":["Двигайтесь плавно и с небольшой амплитудой. Меняйте направление, оставляя голень неподвижной."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Ankle circles","aliases":[],"description":"Sit or stand with one foot slightly off the ground. Trace circles with your toes.","technique_steps":["Keep the movement small and smooth. Reverse direction while keeping your lower leg steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "1b33cf65-4629-4845-8e0d-d7a9b4b7a281",
+    "slug": "chin-tuck",
+    "kind": "stretch",
+    "tracking": "reps",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["traps","upper_back"],
+    "secondary_muscles": ["rear_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Втягивание подбородка","aliases":[],"description":"Смотрите прямо и смещайте голову назад без наклона вверх или вниз.","technique_steps":["Двигайтесь медленно и в удобной амплитуде. Сделайте вдох перед возвращением в нейтральное положение."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Chin tuck","aliases":[],"description":"Look straight ahead and slide your head straight back without tipping it up or down.","technique_steps":["Keep the movement slow and comfortable. Take a breath before returning to neutral."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "bc049859-b8c5-455d-bb63-e9a9cec47a96",
+    "slug": "side-neck-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["traps","upper_back"],
+    "secondary_muscles": ["rear_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Боковой наклон головы для растяжки шеи","aliases":[],"description":"Сядьте прямо и направьте ухо к одноимённому плечу, не поднимая плечо.","technique_steps":["Двигайтесь медленно и в удобной амплитуде. Сделайте вдох перед возвращением в нейтральное положение."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Side neck stretch","aliases":[],"description":"Sit tall and bring one ear toward the same-side shoulder without lifting the shoulder.","technique_steps":["Keep the movement slow and comfortable. Take a breath before returning to neutral."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "00ed38fc-b0e1-463e-b91b-965f341bd680",
+    "slug": "scapular-squeeze",
+    "kind": "stretch",
+    "tracking": "reps",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["traps","upper_back"],
+    "secondary_muscles": ["rear_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Сведение лопаток без отягощения","aliases":[],"description":"Опустите руки по бокам и мягко сведите лопатки.","technique_steps":["Двигайтесь медленно и в удобной амплитуде. Сделайте вдох перед возвращением в нейтральное положение."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Scapular squeeze","aliases":[],"description":"Let your arms hang at your sides and gently draw the shoulder blades toward each other.","technique_steps":["Keep the movement slow and comfortable. Take a breath before returning to neutral."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "19da9cd2-e62d-4c9b-a66f-8dd13d7b3272",
+    "slug": "shoulder-blade-circles",
+    "kind": "stretch",
+    "tracking": "reps",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["traps","upper_back"],
+    "secondary_muscles": ["rear_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Круги плечами","aliases":[],"description":"Опустите руки и проведите плечами вверх, назад, вниз и вперёд. Смените направление.","technique_steps":["Двигайтесь медленно и в удобной амплитуде. Сделайте вдох перед возвращением в нейтральное положение."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Shoulder blade circles","aliases":[],"description":"Let your hands hang and move the shoulders up, back, down, and forward. Change direction.","technique_steps":["Keep the movement slow and comfortable. Take a breath before returning to neutral."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "1038d944-e46a-47d1-9540-f2b2db974a60",
+    "slug": "upper-back-stretch-with-reach",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["traps","upper_back"],
+    "secondary_muscles": ["rear_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Растяжка верха спины с вытягиванием рук","aliases":[],"description":"Сцепите руки перед грудью и потянитесь вперёд, разводя лопатки.","technique_steps":["Двигайтесь медленно и в удобной амплитуде. Сделайте вдох перед возвращением в нейтральное положение."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Upper back stretch with reach","aliases":[],"description":"Interlace your hands in front of the chest and reach forward, allowing the shoulder blades to spread.","technique_steps":["Keep the movement slow and comfortable. Take a breath before returning to neutral."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "b076f3c5-99d4-4824-baac-8183c106faba",
+    "slug": "thread-the-needle",
+    "kind": "stretch",
+    "tracking": "reps",
+    "movement_pattern": "mobility",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["rear_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Поворот грудного отдела «нить в иголку»","aliases":[],"description":"Встаньте на четвереньки. Проведите одну руку ладонью вверх под другой и поверните грудь к полу.","technique_steps":["Выдыхайте при вытяжении, оставаясь в комфортной амплитуде. Возвращайтесь плавно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Thread the needle","aliases":[],"description":"Start on hands and knees. Slide one arm palm-up beneath the other and rotate the chest toward the floor.","technique_steps":["Breathe out as you reach and keep the motion away from painful ranges. Return gently."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "56e9307c-30d0-447f-bf9e-79653a6344bc",
+    "slug": "bench-lat-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["rear_delts"],
+    "equipment": ["flat_bench"],
+    "translations": {
+      "ru": {"name":"Растяжка широчайших с локтями на скамье","aliases":[],"description":"Встаньте на колени перед скамьёй, поставьте локти на неё и мягко опустите грудь между руками.","technique_steps":["Выдыхайте при вытяжении, оставаясь в комфортной амплитуде. Возвращайтесь плавно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Bench lat stretch","aliases":[],"description":"Kneel in front of a bench, set both elbows on it, and sink your chest gently between your arms.","technique_steps":["Breathe out as you reach and keep the motion away from painful ranges. Return gently."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "c7d33a99-7d70-43ee-bef5-9045b3745d62",
+    "slug": "standing-side-reach",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["rear_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Наклон корпуса в сторону с вытянутой рукой","aliases":[],"description":"Расставьте стопы, вытяните одну руку над головой и наклонитесь в противоположную сторону.","technique_steps":["Выдыхайте при вытяжении, оставаясь в комфортной амплитуде. Возвращайтесь плавно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Standing side reach","aliases":[],"description":"Stand with feet apart and reach one arm overhead as you bend to the opposite side.","technique_steps":["Breathe out as you reach and keep the motion away from painful ranges. Return gently."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "986b99e5-7541-4778-bcc7-9a9bacf4b362",
+    "slug": "seated-thoracic-rotation",
+    "kind": "stretch",
+    "tracking": "reps",
+    "movement_pattern": "mobility",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["rear_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Повороты грудного отдела сидя","aliases":[],"description":"Сядьте прямо, скрестите руки на груди и поверните рёбра, удерживая колени направленными вперёд.","technique_steps":["Выдыхайте при вытяжении, оставаясь в комфортной амплитуде. Возвращайтесь плавно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Seated thoracic rotation","aliases":[],"description":"Sit tall, cross your arms over your chest, and rotate the ribs while keeping your knees forward.","technique_steps":["Breathe out as you reach and keep the motion away from painful ranges. Return gently."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "61fc5d63-aa95-4985-8dd2-0a3829990caf",
+    "slug": "downward-facing-dog",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["rear_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Собака мордой вниз","aliases":[],"description":"Упритесь ладонями в пол и направьте таз вверх и назад. Слегка согните колени, если так легче вытянуть спину.","technique_steps":["Выдыхайте при вытяжении, оставаясь в комфортной амплитуде. Возвращайтесь плавно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Downward-facing dog","aliases":[],"description":"Press both palms down and send your hips up and back. Keep your knees soft if it helps lengthen your back.","technique_steps":["Breathe out as you reach and keep the motion away from painful ranges. Return gently."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "064fa233-4418-4d26-9c6e-2c9ff0835acb",
+    "slug": "arm-circles",
+    "kind": "stretch",
+    "tracking": "reps",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["chest","front_delts"],
+    "secondary_muscles": ["upper_back"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Круги прямыми руками","aliases":[],"description":"Встаньте и разведите руки в стороны. Начните с маленьких кругов и постепенно увеличивайте их. Смените направление.","technique_steps":["Расслабьте плечи и двигайтесь только в удобной для них амплитуде. Возвращайтесь медленно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Arm circles","aliases":[],"description":"Stand with arms out to the sides and make small circles, gradually enlarging them. Change direction.","technique_steps":["Keep your shoulders relaxed and move only as far as they feel comfortable. Return slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "9c6795a1-219a-4878-bff7-7ab9e9df1f54",
+    "slug": "dynamic-chest-opener",
+    "kind": "stretch",
+    "tracking": "reps",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["chest","front_delts"],
+    "secondary_muscles": ["upper_back"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Динамическое раскрытие грудной клетки","aliases":[],"description":"Поднимите руки на высоту груди, скрестите их перед собой, затем разведите в стороны.","technique_steps":["Расслабьте плечи и двигайтесь только в удобной для них амплитуде. Возвращайтесь медленно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dynamic chest opener","aliases":[],"description":"Raise both arms to chest height, cross them in front of you, then open them out to the sides.","technique_steps":["Keep your shoulders relaxed and move only as far as they feel comfortable. Return slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "785d9aa7-f509-4948-985a-32870335934d",
+    "slug": "wall-slide",
+    "kind": "stretch",
+    "tracking": "reps",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["chest","front_delts"],
+    "secondary_muscles": ["upper_back"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Скольжение руками вверх по стене","aliases":[],"description":"Встаньте спиной к стене и согните локти. Скользите руками вверх, не выпячивая рёбра.","technique_steps":["Расслабьте плечи и двигайтесь только в удобной для них амплитуде. Возвращайтесь медленно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Wall slide","aliases":[],"description":"Stand with your back to the wall and elbows bent. Slide the arms upward without lifting your ribs.","technique_steps":["Keep your shoulders relaxed and move only as far as they feel comfortable. Return slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "14e6d50f-352b-4d70-98fe-2220b1ceadaf",
+    "slug": "hands-clasped-chest-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["chest","front_delts"],
+    "secondary_muscles": ["upper_back"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Растяжка груди с руками в замке за спиной","aliases":[],"description":"Соедините руки за спиной и слегка отведите их назад, приподняв грудь.","technique_steps":["Расслабьте плечи и двигайтесь только в удобной для них амплитуде. Возвращайтесь медленно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Hands-clasped chest stretch","aliases":[],"description":"Clasp your hands behind your back and move them slightly away as you lift your chest.","technique_steps":["Keep your shoulders relaxed and move only as far as they feel comfortable. Return slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "01579a05-c7f6-44d1-9c48-f1b5fe68e418",
+    "slug": "wrist-extensor-stretch",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["forearms"],
+    "secondary_muscles": [],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Растяжка разгибателей запястья","aliases":[],"description":"Вытяните одну руку ладонью вниз. Второй рукой мягко согните кисть, направляя пальцы вниз.","technique_steps":["Сохраняйте лёгкое усилие и плавно отпускайте. При одностороннем движении повторите на другую сторону."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Wrist extensor stretch","aliases":[],"description":"Reach one arm forward palm down. With the other hand, gently bend the wrist so the fingers point down.","technique_steps":["Keep pressure light and release gradually. Repeat on the other side if applicable."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "1768da09-9b14-475a-b09d-f92f43008910",
+    "slug": "wrist-circles",
+    "kind": "stretch",
+    "tracking": "reps",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["forearms"],
+    "secondary_muscles": [],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Круговые движения кистями","aliases":[],"description":"Согните локти и выполняйте небольшие круги обеими кистями в каждом направлении.","technique_steps":["Сохраняйте лёгкое усилие и плавно отпускайте. При одностороннем движении повторите на другую сторону."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Wrist circles","aliases":[],"description":"Keep the elbows bent and trace small circles with both hands in each direction.","technique_steps":["Keep pressure light and release gradually. Repeat on the other side if applicable."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "8021760f-65ae-4321-a72e-081f2931c261",
+    "slug": "quadriceps-foam-roll",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads"],
+    "secondary_muscles": ["glutes"],
+    "equipment": ["foam_roller"],
+    "translations": {
+      "ru": {"name":"Прокатка передней поверхности бедра на ролике","aliases":[],"description":"Обопритесь на предплечья и положите ролик под переднюю поверхность бедра. Двигайтесь от участка выше колена к тазу.","technique_steps":["Медленно прокатывайте мышцы, избегая прямого давления на суставы. Остановитесь при неприятных ощущениях."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Quadriceps foam roll","aliases":[],"description":"Support yourself on your forearms with the roller under the front of one thigh. Move from above the knee toward the hip.","technique_steps":["Roll slowly over the muscle, avoiding direct pressure on the joints. Stop when the pressure becomes uncomfortable."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "4a38ab9c-ceae-4192-aa0e-5ecb412e61e8",
+    "slug": "hamstring-foam-roll",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["hamstrings"],
+    "secondary_muscles": [],
+    "equipment": ["foam_roller"],
+    "translations": {
+      "ru": {"name":"Прокатка задней поверхности бедра на ролике","aliases":[],"description":"Сядьте с роликом под одним бедром и слегка приподнимитесь на руках. Прокатывайте участок между тазом и подколенной областью.","technique_steps":["Медленно прокатывайте мышцы, избегая прямого давления на суставы. При необходимости уменьшайте давление опорой на руки."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Hamstring foam roll","aliases":[],"description":"Sit with the roller under one thigh and use your arms to lift enough to roll between your hip and the back of your knee.","technique_steps":["Roll slowly over the muscle, avoiding direct pressure on the joints. Use your arms to reduce pressure if needed."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "c00be553-0277-45a9-b3b8-8be4d0d76204",
+    "slug": "calf-foam-roll",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": ["foam_roller"],
+    "translations": {
+      "ru": {"name":"Прокатка икроножной мышцы на ролике","aliases":[],"description":"Сядьте с роликом под одной икрой и поставьте ладони сзади. Прокатывайте от участка выше лодыжки в сторону колена.","technique_steps":["Медленно прокатывайте мышцы, избегая прямого давления на суставы. При необходимости уменьшайте давление опорой на руки."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Calf foam roll","aliases":[],"description":"Sit with the roller under one calf and your hands behind you. Move from above the ankle toward the knee.","technique_steps":["Roll slowly over the muscle, avoiding direct pressure on the joints. Use your arms to reduce pressure if needed."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "7eb1fd76-53c0-4197-9afe-661778aa1691",
+    "slug": "sphinx-pose",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lower_back","abs"],
+    "secondary_muscles": ["glutes"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Поза сфинкса","aliases":[],"description":"Лягте на живот и поставьте локти под плечи. Упритесь предплечьями и приподнимите грудь, оставляя таз на полу.","technique_steps":["Оставайтесь в амплитуде, в которой получается дышать свободно. Выходите из положения плавно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Sphinx pose","aliases":[],"description":"Lie face down with elbows under your shoulders. Press your forearms down to lift the chest while the hips stay on the floor.","technique_steps":["Keep the movement within a range where you can breathe normally. Come out slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "9a7c02f1-e6f0-4387-a4c6-ac28a7835f72",
+    "slug": "camel-pose",
+    "kind": "stretch",
+    "tracking": "time",
+    "movement_pattern": "mobility",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lower_back","abs"],
+    "secondary_muscles": ["glutes"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Поза верблюда","aliases":[],"description":"Встаньте на колени и поддержите поясницу обеими руками. Приподнимите грудь по небольшой дуге назад.","technique_steps":["Оставайтесь в амплитуде, в которой получается дышать свободно. Выходите из положения плавно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Camel pose","aliases":[],"description":"Kneel upright and support your lower back with both hands. Lift the chest into a short backward arc.","technique_steps":["Keep the movement within a range where you can breathe normally. Come out slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "4d771aaa-d582-44b7-b231-0ead5138d83c",
+    "slug": "supine-pelvic-tilt",
+    "kind": "stretch",
+    "tracking": "reps",
+    "movement_pattern": "mobility",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lower_back","abs"],
+    "secondary_muscles": ["glutes"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Подкручивание таза лёжа","aliases":[],"description":"Лягте на спину, согнув колени. Слегка подкрутите таз, приблизив поясницу к полу, затем расслабьтесь.","technique_steps":["Оставайтесь в амплитуде, в которой получается дышать свободно. Выходите из положения плавно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Supine pelvic tilt","aliases":[],"description":"Lie on your back with both knees bent. Tilt the pelvis just enough to bring your lower back toward the floor, then release.","technique_steps":["Keep the movement within a range where you can breathe normally. Come out slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  }
+]

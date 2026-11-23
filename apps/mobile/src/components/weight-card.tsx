@@ -1,4 +1,5 @@
 import { cutPace, weightStats } from '@mvp/domain';
+import { BODY_WEIGHT_LIMITS } from '@mvp/schemas';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
@@ -18,9 +19,7 @@ import { ThemedText } from './themed-text';
 import { ThemedView } from './themed-view';
 import { CardLabel, Metric, StepButton, TextField } from './ui';
 
-/** The limits of `BodyLogRowSchema`. */
-const MIN_KG = 20;
-const MAX_KG = 400;
+const { min: MIN_KG, max: MAX_KG } = BODY_WEIGHT_LIMITS;
 /** The step of the − and + buttons, in the user's units. */
 const STEP = 0.1;
 

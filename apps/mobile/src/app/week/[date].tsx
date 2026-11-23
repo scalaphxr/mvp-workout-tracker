@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 
+import { AppleHealthDay } from '@/components/apple-health';
 import { Button } from '@/components/button';
 import { Chip } from '@/components/chip';
 import { ThemedText } from '@/components/themed-text';
@@ -15,6 +16,7 @@ import { getProgramTree, listPrograms } from '@/data/programs';
 import { activeSession, nextWorkout, startSession } from '@/data/sessions';
 import { useLocale } from '@/hooks/use-locale';
 import { useTheme } from '@/hooks/use-theme';
+import { useAppleHealthDay } from '@/lib/apple-health';
 import { useCatalog } from '@/lib/catalog';
 import { activityName, formatActivity, formatCardio, formatDuration, toLocalDate } from '@/lib/format';
 import { mutate, useActiveProgram, useLocal } from '@/lib/local';
@@ -40,6 +42,7 @@ function DayScreen({ date, day }: { date: string; day: Date }) {
   end.setDate(day.getDate() + 1);
   const from = day.toISOString();
   const until = end.toISOString();
+  const health = useAppleHealthDay(date);
   const history = useLocal((ctx) => ({
     workouts: workoutsBetween(ctx, from, until),
     activities: activitiesSince(ctx, new Date(day.getTime() - 1).toISOString())
@@ -70,7 +73,8 @@ function DayScreen({ date, day }: { date: string; day: Date }) {
           </Card>
         </Section>
       )}
-      {date < today && history.workouts.length === 0 && history.activities.length === 0 && (
+      <AppleHealthDay health={health} />
+      {date < today && !health.enabled && history.workouts.length === 0 && history.activities.length === 0 && (
         <Card><ThemedText themeColor="textSecondary">{t('week.emptyDay')}</ThemedText></Card>
       )}
     </Screen>

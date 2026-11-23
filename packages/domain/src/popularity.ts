@@ -1,7 +1,7 @@
 /**
  * Exercises by how often they are done in a gym, the most popular first. A judgement, not
  * statistics: free weights and the usual machines, then their variants, then what few do,
- * stretching last. `catalog.test.ts` of `@mvp/content` holds every exercise to a place here.
+ * stretching last. Unranked additions are sorted alphabetically after the ranked exercises.
  */
 export const POPULAR_EXERCISES: readonly string[] = [
   // What nearly everyone does.

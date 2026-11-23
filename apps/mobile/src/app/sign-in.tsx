@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, TextInput } from 'react-native';
 
+import { ScreenGlow } from '@/components/gradients';
 import { Button } from '@/components/button';
 import { ThemedText } from '@/components/themed-text';
 import { MaxContentWidth, Radius, Spacing } from '@/constants/theme';
@@ -99,10 +100,11 @@ export default function SignInScreen() {
     <KeyboardAvoidingView
       style={[styles.screen, { backgroundColor: theme.background }]}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+      <ScreenGlow />
       <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
         {sentTo === null ? (
           <>
-            <ThemedText style={styles.title}>{t('signIn.emailTitle')}</ThemedText>
+            <ThemedText type="heading" style={styles.title}>{t('signIn.emailTitle')}</ThemedText>
             <ThemedText themeColor="textSecondary">{t('signIn.emailHint')}</ThemedText>
             <TextInput
               style={inputStyle}
@@ -127,7 +129,7 @@ export default function SignInScreen() {
           </>
         ) : (
           <>
-            <ThemedText style={styles.title}>{t('signIn.codeTitle')}</ThemedText>
+            <ThemedText type="heading" style={styles.title}>{t('signIn.codeTitle')}</ThemedText>
             <ThemedText themeColor="textSecondary">
               {t('signIn.codeHint', { email: sentTo })}
             </ThemedText>

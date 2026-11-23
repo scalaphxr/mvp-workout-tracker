@@ -121,12 +121,14 @@ export const ProgramStateRowSchema = z.object({
 });
 export type ProgramStateRow = z.infer<typeof ProgramStateRowSchema>;
 
+export const BODY_WEIGHT_LIMITS = { min: 20, max: 400 } as const;
+
 /** A morning weight. The phone keeps one per calendar day: entering it again replaces it. */
 export const BodyLogRowSchema = z.object({
   ...syncFields,
   /** The calendar day in the user's own time zone, YYYY-MM-DD. */
   date: z.iso.date(),
-  weight_kg: z.number().min(20).max(400),
+  weight_kg: z.number().min(BODY_WEIGHT_LIMITS.min).max(BODY_WEIGHT_LIMITS.max),
   measured_at: z.iso.datetime(),
 });
 export type BodyLogRow = z.infer<typeof BodyLogRowSchema>;

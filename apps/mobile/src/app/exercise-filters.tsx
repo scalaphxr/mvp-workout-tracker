@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { ScreenGlow } from '@/components/gradients';
 import { Button } from '@/components/button';
 import { Chip } from '@/components/chip';
 import { ThemedText } from '@/components/themed-text';
@@ -28,6 +29,7 @@ export default function ExerciseFiltersScreen() {
 
   return (
     <View style={[styles.screen, { backgroundColor: theme.background }]}>
+      <ScreenGlow />
       <ScrollView contentContainerStyle={styles.content}>
         <Section title={t('filters.sort')}>
           <Chip
@@ -89,7 +91,7 @@ export default function ExerciseFiltersScreen() {
       <View
         style={[
           styles.footer,
-          { borderTopColor: theme.backgroundElement, paddingBottom: insets.bottom + Spacing.three },
+          { borderTopColor: theme.separator, paddingBottom: insets.bottom + Spacing.three },
         ]}>
         <Button
           variant="secondary"

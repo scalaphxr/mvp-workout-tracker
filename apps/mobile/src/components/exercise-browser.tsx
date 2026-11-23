@@ -14,6 +14,7 @@ import { activeFilterCount, useFoundExercises, useLibraryFilters } from '@/lib/l
 
 import { Button } from './button';
 import { CategoryFilter } from './category-filter';
+import { ScreenGlow } from './gradients';
 import { ThemedText } from './themed-text';
 
 /**
@@ -53,90 +54,94 @@ export function ExerciseBrowser({
   );
 
   return (
-    <View style={[styles.screen, { backgroundColor: theme.background }]}>
-      {title !== undefined && (
-        <ThemedText
-          type="largeTitle"
-          accessibilityRole="header"
-          style={[styles.title, { paddingTop: insets.top + Spacing.three }]}>
-          {title}
-        </ThemedText>
-      )}
-      <View style={styles.header}>
-        <View style={[styles.search, { backgroundColor: theme.backgroundElement }]}>
-          <Ionicons name="search" size={20} color={theme.textSecondary} />
-          <TextInput
-            style={[styles.searchInput, { color: theme.text }]}
-            value={filters.query}
-            onChangeText={filters.setQuery}
-            placeholder={t('exercises.searchPlaceholder')}
-            placeholderTextColor={theme.textSecondary}
-            accessibilityLabel={t('exercises.searchPlaceholder')}
-            autoCapitalize="none"
-            autoCorrect={false}
-            clearButtonMode="while-editing"
-            returnKeyType="search"
-          />
-        </View>
-        <Pressable
-          accessibilityRole="button"
-          onPress={() => router.push('/exercise-filters')}
-          style={({ pressed }) => [
-            styles.filterButton,
-            { backgroundColor: filterCount > 0 ? theme.accent : theme.backgroundElement },
-            pressed && styles.pressed,
-          ]}>
-          <Ionicons
-            name="options-outline"
-            size={20}
-            color={filterCount > 0 ? theme.onAccent : theme.text}
-          />
-          <ThemedText type="small" style={{ color: filterCount > 0 ? theme.onAccent : theme.text }}>
-            {filterCount > 0
-              ? t('exercises.filtersActive', { count: filterCount })
-              : t('exercises.filters')}
+    <View style={[styles.fill, { backgroundColor: theme.background }]}>
+      <ScreenGlow />
+      <View style={styles.screen}>
+        {title !== undefined && (
+          <ThemedText
+            type="largeTitle"
+            accessibilityRole="header"
+            style={[styles.title, { paddingTop: insets.top + Spacing.three }]}>
+            {title}
           </ThemedText>
-        </Pressable>
-      </View>
-      <CategoryFilter />
-
-      <FlatList
-        data={found}
-        keyExtractor={(exercise) => exercise.id}
-        renderItem={renderExercise}
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={[
-          styles.list,
-          title !== undefined && { paddingBottom: insets.bottom + FloatingTabBarSpace },
-        ]}
-        ItemSeparatorComponent={() => (
-          <View style={[styles.separator, { backgroundColor: theme.backgroundElement }]} />
         )}
-        ListHeaderComponent={
-          found.length > 0 ? (
-            <ThemedText type="small" themeColor="textSecondary" style={styles.count}>
-              {t('exercises.found', { count: found.length })}
-            </ThemedText>
-          ) : undefined
-        }
-        ListEmptyComponent={
-          <View style={styles.empty}>
-            <Image source={Pictures.dumbbell} style={styles.emptyPicture} accessibilityIgnoresInvertColors />
-            <ThemedText style={styles.emptyTitle}>{t('exercises.nothingTitle')}</ThemedText>
-            <ThemedText themeColor="textSecondary" style={styles.emptyText}>
-              {t('exercises.nothingText')}
-            </ThemedText>
-            {filterCount > 0 && (
-              <Button variant="secondary" title={t('exercises.resetFilters')} onPress={filters.reset} />
-            )}
+        <View style={styles.header}>
+          <View style={[styles.search, { backgroundColor: theme.backgroundElement }]}>
+            <Ionicons name="search" size={20} color={theme.textSecondary} />
+            <TextInput
+              style={[styles.searchInput, { color: theme.text }]}
+              value={filters.query}
+              onChangeText={filters.setQuery}
+              placeholder={t('exercises.searchPlaceholder')}
+              placeholderTextColor={theme.textSecondary}
+              accessibilityLabel={t('exercises.searchPlaceholder')}
+              autoCapitalize="none"
+              autoCorrect={false}
+              clearButtonMode="while-editing"
+              returnKeyType="search"
+            />
           </View>
-        }
-      />
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => router.push('/exercise-filters')}
+            style={({ pressed }) => [
+              styles.filterButton,
+              { backgroundColor: filterCount > 0 ? theme.accentSoft : theme.backgroundElement },
+              pressed && styles.pressed,
+            ]}>
+            <Ionicons
+              name="options-outline"
+              size={20}
+              color={filterCount > 0 ? theme.accent : theme.text}
+            />
+            <ThemedText type="small" themeColor={filterCount > 0 ? 'accent' : 'text'}>
+              {filterCount > 0
+                ? t('exercises.filtersActive', { count: filterCount })
+                : t('exercises.filters')}
+            </ThemedText>
+          </Pressable>
+        </View>
+        <CategoryFilter />
+
+        <FlatList
+          data={found}
+          keyExtractor={(exercise) => exercise.id}
+          renderItem={renderExercise}
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={[
+            styles.list,
+            title !== undefined && { paddingBottom: insets.bottom + FloatingTabBarSpace },
+          ]}
+          ItemSeparatorComponent={() => (
+            <View style={[styles.separator, { backgroundColor: theme.separator }]} />
+          )}
+          ListHeaderComponent={
+            found.length > 0 ? (
+              <ThemedText type="small" themeColor="textSecondary" style={styles.count}>
+                {t('exercises.found', { count: found.length })}
+              </ThemedText>
+            ) : undefined
+          }
+          ListEmptyComponent={
+            <View style={styles.empty}>
+              <Image source={Pictures.dumbbell} style={styles.emptyPicture} accessibilityIgnoresInvertColors />
+              <ThemedText style={styles.emptyTitle}>{t('exercises.nothingTitle')}</ThemedText>
+              <ThemedText themeColor="textSecondary" style={styles.emptyText}>
+                {t('exercises.nothingText')}
+              </ThemedText>
+              {filterCount > 0 && (
+                <Button variant="secondary" title={t('exercises.resetFilters')} onPress={filters.reset} />
+              )}
+            </View>
+          }
+        />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  fill: { flex: 1 },
   screen: {
     flex: 1,
     width: '100%',
@@ -154,6 +159,7 @@ const styles = StyleSheet.create({
   },
   search: {
     flex: 1,
+    minWidth: 0,
     flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing.two,
@@ -163,10 +169,12 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
+    minWidth: 0,
     minHeight: 48,
     fontSize: 16,
   },
   filterButton: {
+    overflow: 'hidden',
     flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing.two,

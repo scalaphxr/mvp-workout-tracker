@@ -1,20 +1,20 @@
 import type { ImageSourcePropType } from 'react-native';
 
 /**
- * Three-dimensional pictures drawn for the app in its palette: tiles, empty screens, onboarding.
+ * Marker-style illustrations for tiles, empty screens, and onboarding.
  * Each has a transparent background and sits on either theme.
  */
 export const Pictures = {
-  activityLog: require('@/assets/images/3d/activity-log.png'),
-  arm: require('@/assets/images/3d/arm.png'),
-  calendar: require('@/assets/images/3d/calendar.png'),
-  clipboard: require('@/assets/images/3d/clipboard.png'),
-  dumbbell: require('@/assets/images/3d/dumbbell.png'),
-  flame: require('@/assets/images/3d/flame.png'),
-  intervalTimer: require('@/assets/images/3d/interval-timer.png'),
-  sneaker: require('@/assets/images/3d/sneaker.png'),
-  stopwatch: require('@/assets/images/3d/stopwatch.png'),
-  trophy: require('@/assets/images/3d/trophy.png'),
+  activityLog: require('@/assets/images/illustrations/activity-log.png'),
+  arm: require('@/assets/images/illustrations/arm.png'),
+  calendar: require('@/assets/images/illustrations/calendar.png'),
+  clipboard: require('@/assets/images/illustrations/clipboard.png'),
+  dumbbell: require('@/assets/images/illustrations/dumbbell.png'),
+  flame: require('@/assets/images/illustrations/flame.png'),
+  intervalTimer: require('@/assets/images/illustrations/interval-timer.png'),
+  sneaker: require('@/assets/images/illustrations/sneaker.png'),
+  stopwatch: require('@/assets/images/illustrations/stopwatch.png'),
+  trophy: require('@/assets/images/illustrations/trophy.png'),
 } satisfies Record<string, ImageSourcePropType>;
 
 export type PictureName = keyof typeof Pictures;

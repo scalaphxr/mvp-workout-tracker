@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
 
+import { AppleHealthSettings } from '@/components/apple-health';
 import { Button } from '@/components/button';
 import { ReminderSettings, TrainingSettings } from '@/components/settings';
 import { ThemedText } from '@/components/themed-text';
@@ -41,6 +42,8 @@ export default function ProfileScreen() {
         </Card>
         <TrainingSettings />
       </Group>
+
+      <AppleHealthSettings />
 
       <Group title={t('reminders.title')}>
         <ReminderSettings />

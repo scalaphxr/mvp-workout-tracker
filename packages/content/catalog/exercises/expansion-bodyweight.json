@@ -1,0 +1,1959 @@
+[
+  {
+    "id": "2596c8f7-aecf-4bb9-8551-ccf2566cfa3e",
+    "slug": "standing-resistance-band-chest-press",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["resistance_band","band_anchor"],
+    "translations": {
+      "ru": {"name":"Жим от груди стоя с резинкой","aliases":[],"description":"Закрепите резинку позади на высоте груди и шагните вперёд до лёгкого натяжения.","technique_steps":["Выжмите от груди, удерживая кисти на линии предплечий. Опустите под контролем, пока сохраняется устойчивое положение плеч."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Standing resistance band chest press","aliases":[],"description":"Secure the band behind you at chest height and step forward into light tension.","technique_steps":["Press away from the chest with your wrists stacked over your forearms. Lower slowly until you can still keep your shoulders steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "02155165-738c-4c05-8bc7-911fbc8c5477",
+    "slug": "kneeling-push-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Отжимания с колен","aliases":[],"description":"Поставьте ладони под плечи. Выстройте прямую линию от коленей до головы.","technique_steps":["Согните локти и опустите грудь между кистями. Оттолкнитесь от опоры, поднимая плечи и таз одновременно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Kneeling push-up","aliases":[],"description":"Set your hands under your shoulders and make a straight line from your knees to your head.","technique_steps":["Lower your chest between your hands by bending your elbows. Press the support away while your shoulders and hips rise together."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "e5daef93-8e8b-4b3e-a930-7e0d46063c6e",
+    "slug": "wall-push-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Отжимания от стены","aliases":[],"description":"Встаньте примерно на расстоянии вытянутых рук от стены. Ладони поставьте на высоте плеч.","technique_steps":["Согните локти и опустите грудь между кистями. Оттолкнитесь от опоры, поднимая плечи и таз одновременно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Wall push-up","aliases":[],"description":"Stand about an arm's length from a wall, with palms at shoulder height.","technique_steps":["Lower your chest between your hands by bending your elbows. Press the support away while your shoulders and hips rise together."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "6534adde-8d3a-40a6-92b6-e1410a3cc031",
+    "slug": "wide-push-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Отжимания с широкой постановкой рук","aliases":[],"description":"Поставьте ладони чуть шире плеч и направляйте локти по диагонали назад.","technique_steps":["Согните локти и опустите грудь между кистями. Оттолкнитесь от опоры, поднимая плечи и таз одновременно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Wide push-up","aliases":[],"description":"Place your hands slightly wider than shoulder width and angle your elbows back as you lower.","technique_steps":["Lower your chest between your hands by bending your elbows. Press the support away while your shoulders and hips rise together."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "aea7871f-3195-4e5f-8ed7-4463e2762af8",
+    "slug": "tempo-push-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Отжимания с медленным опусканием","aliases":[],"description":"Встаньте в высокий упор и опускайтесь примерно три секунды в каждом повторе.","technique_steps":["Согните локти и опустите грудь между кистями. Оттолкнитесь от опоры, поднимая плечи и таз одновременно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Tempo push-up","aliases":[],"description":"Set up in a high plank and take about three seconds to descend on each rep.","technique_steps":["Lower your chest between your hands by bending your elbows. Press the support away while your shoulders and hips rise together."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "e3b66933-6dba-49ad-8f95-3ceb4a1269ec",
+    "slug": "paused-push-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Отжимания с паузой внизу","aliases":[],"description":"Встаньте в высокий упор и задерживайтесь чуть над полом, не ложась на него.","technique_steps":["Согните локти и опустите грудь между кистями. Оттолкнитесь от опоры, поднимая плечи и таз одновременно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Paused push-up","aliases":[],"description":"Set up in a high plank and pause just above the floor without resting on it.","technique_steps":["Lower your chest between your hands by bending your elbows. Press the support away while your shoulders and hips rise together."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "c6c24795-e9dc-469c-b531-0419bea00740",
+    "slug": "resistance-band-push-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts","abs"],
+    "equipment": ["resistance_band"],
+    "translations": {
+      "ru": {"name":"Отжимания с резинкой","aliases":[],"description":"Проведите резинку по верху спины и надёжно зажмите её концы под ладонями.","technique_steps":["Согните локти и опустите грудь между кистями. Оттолкнитесь от опоры, поднимая плечи и таз одновременно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Resistance band push-up","aliases":[],"description":"Pass the band across your upper back and pin the ends securely under your palms.","technique_steps":["Lower your chest between your hands by bending your elbows. Press the support away while your shoulders and hips rise together."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "ac0ae09a-76a4-4055-9994-b25d0a18b12f",
+    "slug": "suspension-push-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts","abs"],
+    "equipment": ["suspension_trainer"],
+    "translations": {
+      "ru": {"name":"Отжимания в подвесных петлях","aliases":[],"description":"Встаньте спиной к креплению и удерживайте рукоятки перед грудью. Шагните назад, чтобы увеличить наклон.","technique_steps":["Согните локти и опустите грудь между кистями. Оттолкнитесь от опоры, поднимая плечи и таз одновременно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Suspension push-up","aliases":[],"description":"Face away from the anchor and hold the handles in front of your chest. Walk back to increase the lean.","technique_steps":["Lower your chest between your hands by bending your elbows. Press the support away while your shoulders and hips rise together."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "7e8723fb-881c-4bdf-8e1d-c24bbab39c67",
+    "slug": "ring-push-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts","abs"],
+    "equipment": ["gym_rings"],
+    "translations": {
+      "ru": {"name":"Отжимания на кольцах","aliases":[],"description":"Установите кольца на одинаковую небольшую высоту. Начните, расположив кольца прямо под плечами.","technique_steps":["Согните локти и опустите грудь между кистями. Оттолкнитесь от опоры, поднимая плечи и таз одновременно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Ring push-up","aliases":[],"description":"Set both rings at the same low height. Start with the rings directly under your shoulders.","technique_steps":["Lower your chest between your hands by bending your elbows. Press the support away while your shoulders and hips rise together."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "ad6fbc2d-1466-431b-8901-debab2eccd20",
+    "slug": "spiderman-push-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Отжимания с подтягиванием колена к локтю","aliases":[],"description":"При опускании подведите колено к одноимённому локтю. Верните стопу при подъёме и смените сторону.","technique_steps":["Согните локти и опустите грудь между кистями. Оттолкнитесь от опоры, поднимая плечи и таз одновременно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Spiderman push-up","aliases":[],"description":"As you lower, bring a knee toward the elbow on that side. Return the foot as you press and switch sides.","technique_steps":["Lower your chest between your hands by bending your elbows. Press the support away while your shoulders and hips rise together."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "62dea74e-a2dd-4dae-895c-e2cdad74f4fb",
+    "slug": "staggered-push-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Отжимания с руками вразнобой","aliases":[],"description":"Поставьте одну ладонь чуть впереди другой. В следующем подходе поменяйте руки.","technique_steps":["Согните локти и опустите грудь между кистями. Оттолкнитесь от опоры, поднимая плечи и таз одновременно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Staggered push-up","aliases":[],"description":"Place one hand a little ahead of the other. Swap positions for the next set.","technique_steps":["Lower your chest between your hands by bending your elbows. Press the support away while your shoulders and hips rise together."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "2dfeda06-ba33-4bf5-b5dc-761ba95bed6d",
+    "slug": "resistance-band-chest-fly",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "chest_fly",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["front_delts"],
+    "equipment": ["resistance_band","band_anchor"],
+    "translations": {
+      "ru": {"name":"Сведение рук перед грудью с резинкой","aliases":[],"description":"Закрепите резинку позади на высоте груди, шагните вперёд и разведите руки.","technique_steps":["Слегка согните локти и сведите руки по широкой дуге. Вернитесь до лёгкого растяжения в груди."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Resistance band chest fly","aliases":[],"description":"Anchor the band behind you at chest height, step forward, and open your arms.","technique_steps":["Keep a small bend in your elbows as you bring your arms together in a wide arc. Return until you feel a mild stretch across the chest."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "5960c5ab-a668-463c-a8da-3672326afb8f",
+    "slug": "resistance-band-overhead-press",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["triceps","side_delts","abs"],
+    "equipment": ["resistance_band"],
+    "translations": {
+      "ru": {"name":"Жим вверх стоя с резинкой","aliases":[],"description":"Встаньте на середину резинки и поднимите её концы к плечам.","technique_steps":["Выжмите вверх, не выпячивая рёбра. Плавно опустите вес, оставляя кисти на линии предплечий."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Resistance band overhead press","aliases":[],"description":"Stand on the middle of the band and bring its ends to shoulder height.","technique_steps":["Press up without flaring your ribs. Lower the load smoothly while keeping your wrists over your forearms."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "84c93a0d-a44e-47fa-96aa-7cdcb56084fd",
+    "slug": "standing-resistance-band-row",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["resistance_band","band_anchor"],
+    "translations": {
+      "ru": {"name":"Тяга резинки к поясу стоя","aliases":[],"description":"Закрепите резинку на уровне пояса и отойдите до лёгкого натяжения при вытянутых руках.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Standing resistance band row","aliases":[],"description":"Fix the band at waist height and step back until it has light tension with arms long.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "f047f6f9-2e27-454a-8e26-08b8d44f14ba",
+    "slug": "seated-resistance-band-row",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["resistance_band","band_anchor"],
+    "translations": {
+      "ru": {"name":"Тяга резинки к поясу сидя","aliases":[],"description":"Сядьте лицом к низкому креплению, слегка согните колени и тяните концы резинки к поясу.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Seated resistance band row","aliases":[],"description":"Sit facing a low anchor with knees slightly bent. Pull the ends toward your waist.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "1c62228a-0084-4529-9ada-f907b8b8080c",
+    "slug": "suspension-row",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["suspension_trainer"],
+    "translations": {
+      "ru": {"name":"Тяга в подвесных петлях","aliases":[],"description":"Встаньте лицом к креплению и отклонитесь назад на прямых руках. Настройте сложность положением стоп.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Suspension row","aliases":[],"description":"Face the anchor and lean back with both arms long. Move your feet to set the difficulty.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "40229a83-ef84-4e28-86fc-17733959e923",
+    "slug": "ring-row",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["gym_rings"],
+    "translations": {
+      "ru": {"name":"Горизонтальная тяга на кольцах","aliases":[],"description":"Установите кольца на одинаковой высоте. Отклонитесь назад с прямым корпусом и подтяните кольца к рёбрам.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Ring row","aliases":[],"description":"Set the rings evenly. Hang back with straight hips and pull the rings to your ribs.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "22f96777-4887-4a0d-a99a-ede3ec6f512e",
+    "slug": "feet-elevated-inverted-row",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["pull_up_bar","plyo_box"],
+    "translations": {
+      "ru": {"name":"Горизонтальное подтягивание с ногами на опоре","aliases":[],"description":"Используйте надёжно закреплённую низкую перекладину. Поставьте пятки на устойчивую тумбу.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Feet-elevated inverted row","aliases":[],"description":"Use a securely fixed low bar and put your heels on a stable box.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "602600ab-43ca-4c92-9725-91988bf9d406",
+    "slug": "close-grip-overhand-pull-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats"],
+    "secondary_muscles": ["biceps","upper_back","forearms"],
+    "equipment": ["pull_up_bar"],
+    "translations": {
+      "ru": {"name":"Подтягивания узким прямым хватом","aliases":[],"description":"Возьмитесь чуть уже ширины плеч ладонями от себя.","technique_steps":["Опустите локти к бокам без рывка. Под контролем вернитесь к положению с вытянутыми руками."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Close-grip overhand pull-up","aliases":[],"description":"Place your hands just inside shoulder width with palms away from you.","technique_steps":["Bring your elbows down toward your sides without jerking. Return to a long-arm position with your shoulders under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "23074cde-54d3-4e8a-a0da-16ab3f537362",
+    "slug": "mixed-grip-pull-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["lats"],
+    "secondary_muscles": ["biceps","upper_back","forearms"],
+    "equipment": ["pull_up_bar"],
+    "translations": {
+      "ru": {"name":"Подтягивания разнохватом","aliases":[],"description":"Разверните одну ладонь к себе, другую от себя. Меняйте хват между подходами.","technique_steps":["Опустите локти к бокам без рывка. Под контролем вернитесь к положению с вытянутыми руками."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Mixed-grip pull-up","aliases":[],"description":"Face one palm toward you and one away. Swap grips between sets.","technique_steps":["Bring your elbows down toward your sides without jerking. Return to a long-arm position with your shoulders under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "416d22b0-49e5-4bad-9d83-cc29346c4684",
+    "slug": "archer-pull-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": true,
+    "primary_muscles": ["lats"],
+    "secondary_muscles": ["biceps","upper_back","forearms"],
+    "equipment": ["pull_up_bar"],
+    "translations": {
+      "ru": {"name":"Подтягивания лучника","aliases":[],"description":"Возьмитесь широко и подтягивайтесь к одной руке, распрямляя другую в сторону.","technique_steps":["Опустите локти к бокам без рывка. Под контролем вернитесь к положению с вытянутыми руками."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Archer pull-up","aliases":[],"description":"Use a wide grip and rise toward one hand while the other arm lengthens out to the side.","technique_steps":["Bring your elbows down toward your sides without jerking. Return to a long-arm position with your shoulders under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "1d41fca2-9613-42a2-8f63-ae9c91ac5c82",
+    "slug": "negative-pull-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats"],
+    "secondary_muscles": ["biceps","upper_back","forearms"],
+    "equipment": ["pull_up_bar","plyo_box"],
+    "translations": {
+      "ru": {"name":"Негативные подтягивания","aliases":[],"description":"Поднимитесь с тумбы до положения подбородка над перекладиной и медленно опуститесь.","technique_steps":["Опустите локти к бокам без рывка. Под контролем вернитесь к положению с вытянутыми руками."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Negative pull-up","aliases":[],"description":"Step up until your chin is above the bar, then lower slowly before returning to the box.","technique_steps":["Bring your elbows down toward your sides without jerking. Return to a long-arm position with your shoulders under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "c54dc30f-763f-4d9e-9893-28467be45022",
+    "slug": "machine-assisted-pull-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lats"],
+    "secondary_muscles": ["biceps","upper_back","forearms"],
+    "equipment": ["assisted_dip_pullup_machine"],
+    "translations": {
+      "ru": {"name":"Подтягивания в гравитроне","aliases":[],"description":"Выберите противовес и поставьте колени или стопы на подвижную платформу перед тягой.","technique_steps":["Опустите локти к бокам без рывка. Под контролем вернитесь к положению с вытянутыми руками."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Machine-assisted pull-up","aliases":[],"description":"Choose counterweight assistance and place your knees or feet on the moving platform before pulling.","technique_steps":["Bring your elbows down toward your sides without jerking. Return to a long-arm position with your shoulders under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "df47533c-69fe-47e0-b55a-74be5e98e39d",
+    "slug": "resistance-band-lat-pulldown",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["lats"],
+    "secondary_muscles": ["biceps","upper_back","forearms"],
+    "equipment": ["resistance_band","band_anchor"],
+    "translations": {
+      "ru": {"name":"Тяга резинки сверху к груди","aliases":[],"description":"Закрепите резинку высоко и расположитесь лицом к креплению сидя или на коленях.","technique_steps":["Опустите локти к бокам без рывка. Под контролем вернитесь к положению с вытянутыми руками."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Resistance band lat pulldown","aliases":[],"description":"Secure the band overhead and kneel or sit facing the anchor.","technique_steps":["Bring your elbows down toward your sides without jerking. Return to a long-arm position with your shoulders under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "d6b190e2-100e-4855-879a-87dbcbb1f269",
+    "slug": "ring-chin-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats"],
+    "secondary_muscles": ["biceps","upper_back","forearms"],
+    "equipment": ["gym_rings"],
+    "translations": {
+      "ru": {"name":"Подтягивания на кольцах","aliases":[],"description":"Установите кольца на одинаковой высоте. Разворачивайте ладони к себе по мере подъёма.","technique_steps":["Опустите локти к бокам без рывка. Под контролем вернитесь к положению с вытянутыми руками."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Ring chin-up","aliases":[],"description":"Set the rings at equal height. Let your palms rotate toward you as you pull.","technique_steps":["Bring your elbows down toward your sides without jerking. Return to a long-arm position with your shoulders under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "e72415ea-b345-43a7-a78e-d1ac8d9bc5f5",
+    "slug": "resistance-band-squat",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["resistance_band"],
+    "translations": {
+      "ru": {"name":"Приседания с резинкой под стопами","aliases":[],"description":"Встаньте на середину резинки и удерживайте концы у плеч, следя, чтобы лента не соскальзывала.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Resistance band squat","aliases":[],"description":"Stand on the middle of the band and hold its ends at shoulder level without letting them slip.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "fe456ba7-025f-47e6-9a1e-a1aac735fe42",
+    "slug": "suspension-assisted-squat",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["suspension_trainer"],
+    "translations": {
+      "ru": {"name":"Приседания с опорой на подвесные петли","aliases":[],"description":"Встаньте лицом к креплению и возьмите рукоятки. Используйте их как лёгкую опору для равновесия.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Suspension-assisted squat","aliases":[],"description":"Face the anchor with the handles at your sides. Use them just enough to steady your balance.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "da447ea4-365a-4835-abb1-dfcfa28fef02",
+    "slug": "sit-to-stand",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Вставание со стула","aliases":[],"description":"Сядьте у края устойчивого стула, поставьте стопы на пол и наклоните корпус над стопами.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Sit-to-stand","aliases":[],"description":"Sit near the front of a sturdy chair with feet flat, then shift your chest over your feet.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "4a2a98b6-872e-41bd-aa84-9c1dd8c0ca5a",
+    "slug": "tempo-bodyweight-squat",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Приседания без веса с медленным опусканием","aliases":[],"description":"Вытяните руки вперёд и опускайтесь около трёх секунд.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Tempo bodyweight squat","aliases":[],"description":"Keep your arms comfortably forward and take about three seconds to lower.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "cfb97bfc-d77e-48a7-86bd-7f29ad2481f2",
+    "slug": "heel-elevated-bodyweight-squat",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["squat_wedge"],
+    "translations": {
+      "ru": {"name":"Приседания без веса с приподнятыми пятками","aliases":[],"description":"Поставьте пятки на устойчивую подставку. Не отрывайте переднюю часть стоп от пола.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Heel-elevated bodyweight squat","aliases":[],"description":"Place your heels on a stable wedge and keep the balls of both feet in contact with the floor.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "f0bccb7b-565d-4926-bc21-64ee621e6403",
+    "slug": "box-assisted-pistol-squat",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["plyo_box"],
+    "translations": {
+      "ru": {"name":"Приседание на одной ноге до тумбы","aliases":[],"description":"Встаньте перед тумбой на одну ногу, вытяните свободную вперёд и мягко коснитесь опоры тазом.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Box-assisted pistol squat","aliases":[],"description":"Stand on one leg in front of a box, reach the free leg forward, and touch down without collapsing onto the box.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "362cdd86-2845-42f5-929c-d048628fe9de",
+    "slug": "skater-squat",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Приседание на одной ноге с касанием коленом пола","aliases":[],"description":"Согните свободную ногу позади и опустите колено к мягкой опоре, не перенося на него вес.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Skater squat","aliases":[],"description":"Bend the free knee behind you and lower it toward a soft target without supporting your weight on it.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "bd36c3bb-3747-4e96-b537-b4349d679325",
+    "slug": "single-leg-bodyweight-romanian-deadlift",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["hamstrings","glutes"],
+    "secondary_muscles": ["lower_back","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Наклон на одной ноге без веса","aliases":[],"description":"Встаньте на одну ногу, мягко согните колено и отведите свободную ногу назад при наклоне.","technique_steps":["Отведите таз назад, слегка согнув колени, и ведите вес близко к ногам. Выпрямитесь за счёт ягодиц без отклонения назад."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-leg bodyweight Romanian deadlift","aliases":[],"description":"Balance on one leg with the knee soft and reach the other leg back as you hinge.","technique_steps":["Push your hips back with a small knee bend and keep the load close. Squeeze your glutes to stand tall without leaning back."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "702998a4-aa68-4dc1-8c7c-a75fc2bda59f",
+    "slug": "resistance-band-romanian-deadlift",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["hamstrings","glutes"],
+    "secondary_muscles": ["lower_back","abs"],
+    "equipment": ["resistance_band"],
+    "translations": {
+      "ru": {"name":"Румынская тяга с резинкой","aliases":[],"description":"Встаньте на середину резинки и держите концы по бокам бёдер.","technique_steps":["Отведите таз назад, слегка согнув колени, и ведите вес близко к ногам. Выпрямитесь за счёт ягодиц без отклонения назад."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Resistance band Romanian deadlift","aliases":[],"description":"Stand on the middle of the band and hold the ends just outside your thighs.","technique_steps":["Push your hips back with a small knee bend and keep the load close. Squeeze your glutes to stand tall without leaning back."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "93b5fcd4-7550-437f-9c02-a5d411dc170b",
+    "slug": "resistance-band-good-morning",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["hamstrings","glutes"],
+    "secondary_muscles": ["lower_back","abs"],
+    "equipment": ["resistance_band"],
+    "translations": {
+      "ru": {"name":"Наклоны «доброе утро» с резинкой","aliases":[],"description":"Встаньте на резинку и проведите её по верхней части спины ниже шеи.","technique_steps":["Отведите таз назад, слегка согнув колени, и ведите вес близко к ногам. Выпрямитесь за счёт ягодиц без отклонения назад."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Resistance band good morning","aliases":[],"description":"Stand on the band and loop it over the upper back, below the neck.","technique_steps":["Push your hips back with a small knee bend and keep the load close. Squeeze your glutes to stand tall without leaning back."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "e327eb3b-ab0a-4c91-8b67-4f20b17f0005",
+    "slug": "bodyweight-forward-lunge",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","hamstrings","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Выпады вперёд без веса","aliases":[],"description":"Шагните вперёд, мягко примите вес на всю стопу и опустите заднее колено к полу перед возвратом.","technique_steps":["Согните оба колена, опираясь на рабочую стопу. Для подъёма оттолкнитесь этой стопой, направляя колено по линии носков."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Bodyweight forward lunge","aliases":[],"description":"Step forward, land softly on the whole foot and lower the back knee toward the floor before stepping back.","technique_steps":["Bend both knees with your weight centered over the working foot. Push through that foot to rise with your knee tracking your toes."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "e9d57c84-ca93-4dab-9b13-78617033386f",
+    "slug": "bodyweight-bulgarian-split-squat",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","hamstrings","abs"],
+    "equipment": ["flat_bench"],
+    "translations": {
+      "ru": {"name":"Болгарские сплит-приседы без веса","aliases":[],"description":"Положите подъём задней стопы на низкую скамью и оставьте основной вес на передней ноге.","technique_steps":["Согните оба колена, опираясь на рабочую стопу. Для подъёма оттолкнитесь этой стопой, направляя колено по линии носков."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Bodyweight Bulgarian split squat","aliases":[],"description":"Rest the top of the rear foot on a low bench and keep most of your weight on the front foot.","technique_steps":["Bend both knees with your weight centered over the working foot. Push through that foot to rise with your knee tracking your toes."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "16ed588c-c13c-486c-b736-8e51a8081c8e",
+    "slug": "suspension-reverse-lunge",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","hamstrings","abs"],
+    "equipment": ["suspension_trainer"],
+    "translations": {
+      "ru": {"name":"Выпады назад с опорой на подвесные петли","aliases":[],"description":"Встаньте лицом к креплению и слегка опирайтесь на рукоятки при шаге назад.","technique_steps":["Согните оба колена, опираясь на рабочую стопу. Для подъёма оттолкнитесь этой стопой, направляя колено по линии носков."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Suspension reverse lunge","aliases":[],"description":"Face the anchor and hold the handles lightly as one foot steps back.","technique_steps":["Bend both knees with your weight centered over the working foot. Push through that foot to rise with your knee tracking your toes."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "deb8f6e9-04cc-4912-ad55-9b1141170d59",
+    "slug": "lateral-step-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["hamstrings","calves"],
+    "equipment": ["plyo_box"],
+    "translations": {
+      "ru": {"name":"Боковые зашагивания на тумбу","aliases":[],"description":"Встаньте сбоку от низкой тумбы и поставьте ближнюю стопу сверху, не разворачивая таз.","technique_steps":["Оттолкнитесь стопой на тумбе и выпрямитесь, затем опуститесь под контролем. Направляйте рабочее колено по линии носков."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Lateral step-up","aliases":[],"description":"Stand beside a low box and place the nearer foot on top without twisting your hips.","technique_steps":["Drive through the foot on the box to stand up, then lower with control. Keep the working knee pointed along the toes."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "fdb26b77-4ef9-4f68-a737-b7504bcd2579",
+    "slug": "lateral-step-down",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["hamstrings","calves"],
+    "equipment": ["aerobic_step"],
+    "translations": {
+      "ru": {"name":"Боковое опускание с платформы","aliases":[],"description":"Встаньте на одну ногу у края низкой платформы и легко коснитесь пола пяткой свободной ноги.","technique_steps":["Оттолкнитесь стопой на тумбе и выпрямитесь, затем опуститесь под контролем. Направляйте рабочее колено по линии носков."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Lateral step-down","aliases":[],"description":"Stand on one foot at the edge of a low step and reach the free heel down to touch the floor lightly.","technique_steps":["Drive through the foot on the box to stand up, then lower with control. Keep the working knee pointed along the toes."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "2fd178b0-2b3a-476b-9779-df0fa057b0e2",
+    "slug": "bodyweight-hip-thrust",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings","abs"],
+    "equipment": ["flat_bench"],
+    "translations": {
+      "ru": {"name":"Подъём таза с опорой на скамью без веса","aliases":[],"description":"Упритесь лопатками в устойчивую скамью и поставьте стопы на пол.","technique_steps":["Оттолкнитесь опорной стопой или обеими стопами, чтобы разогнуть тазобедренные суставы. Опуститесь, сохраняя поясницу без прогиба вверху."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Bodyweight hip thrust","aliases":[],"description":"Support your shoulder blades on a steady bench with your feet flat on the floor.","technique_steps":["Drive through the planted foot or feet to extend the hips. Lower without arching your lower back at the top."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "5b8d13b0-5d48-49c4-ba3e-ac627d0c1b83",
+    "slug": "single-leg-hip-thrust",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings","abs"],
+    "equipment": ["flat_bench"],
+    "translations": {
+      "ru": {"name":"Подъём таза на одной ноге с опорой на скамью","aliases":[],"description":"Упритесь верхом спины в скамью и поднимите одну стопу, не перекашивая таз.","technique_steps":["Оттолкнитесь опорной стопой или обеими стопами, чтобы разогнуть тазобедренные суставы. Опуститесь, сохраняя поясницу без прогиба вверху."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-leg hip thrust","aliases":[],"description":"Keep your upper back against the bench and lift one foot while keeping your pelvis level.","technique_steps":["Drive through the planted foot or feet to extend the hips. Lower without arching your lower back at the top."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "a3eff8e9-ab77-4241-beb5-8ca4a5283778",
+    "slug": "mini-band-glute-bridge",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings","abs"],
+    "equipment": ["mini_band"],
+    "translations": {
+      "ru": {"name":"Ягодичный мост с мини-лентой","aliases":[],"description":"Наденьте петлю выше колен и при подъёме слегка разводите колени, натягивая ленту.","technique_steps":["Оттолкнитесь опорной стопой или обеими стопами, чтобы разогнуть тазобедренные суставы. Опуститесь, сохраняя поясницу без прогиба вверху."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Mini-band glute bridge","aliases":[],"description":"Put the loop above your knees and keep gentle outward tension while lifting.","technique_steps":["Drive through the planted foot or feet to extend the hips. Lower without arching your lower back at the top."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "5db63e87-e4c8-4525-9fb4-35229f63a967",
+    "slug": "frog-pump",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Ягодичный мост «лягушка»","aliases":[],"description":"Лягте на спину, соедините подошвы и разведите колени. При подъёме давите наружными краями стоп в пол.","technique_steps":["Оттолкнитесь опорной стопой или обеими стопами, чтобы разогнуть тазобедренные суставы. Опуститесь, сохраняя поясницу без прогиба вверху."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Frog pump","aliases":[],"description":"Lie on your back with soles together and knees open. Lift by pressing the outer edges of your feet down.","technique_steps":["Drive through the planted foot or feet to extend the hips. Lower without arching your lower back at the top."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "a04f9603-c614-415f-9769-b78580790c10",
+    "slug": "quadruped-bent-knee-kickback",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Отведение согнутой ноги назад в упоре","aliases":[],"description":"Встаньте на четвереньки и оставляйте рабочее колено согнутым, направляя пятку вверх.","technique_steps":["Отведите бедро назад до разгибания тазобедренного сустава, не наклоняя таз. Медленно вернитесь перед следующим повтором."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Quadruped bent-knee kickback","aliases":[],"description":"Start on hands and knees and keep the working knee bent as you raise the heel.","technique_steps":["Move your thigh back until the hip is extended without tilting the pelvis. Return slowly before the next rep."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "e540d4b0-a95c-4973-ab9b-9c30759603fa",
+    "slug": "quadruped-straight-leg-kickback",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Отведение прямой ноги назад в упоре","aliases":[],"description":"Встаньте на четвереньки и вытяните рабочую ногу назад, направив носок вниз.","technique_steps":["Отведите бедро назад до разгибания тазобедренного сустава, не наклоняя таз. Медленно вернитесь перед следующим повтором."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Quadruped straight-leg kickback","aliases":[],"description":"Start on hands and knees, then extend the working leg behind you with the toes facing down.","technique_steps":["Move your thigh back until the hip is extended without tilting the pelvis. Return slowly before the next rep."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "c7beeaee-ecec-4339-90b8-1075c487dbc5",
+    "slug": "standing-band-glute-kickback",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings","abs"],
+    "equipment": ["resistance_band","band_anchor"],
+    "translations": {
+      "ru": {"name":"Отведение ноги назад с резинкой стоя","aliases":[],"description":"Закрепите резинку низко перед собой и на рабочей лодыжке. Держитесь за устойчивую опору.","technique_steps":["Отведите бедро назад до разгибания тазобедренного сустава, не наклоняя таз. Медленно вернитесь перед следующим повтором."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Standing band glute kickback","aliases":[],"description":"Anchor the band low in front of you, secure it at the working ankle and hold a stable support.","technique_steps":["Move your thigh back until the hip is extended without tilting the pelvis. Return slowly before the next rep."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "9bb5c900-fbd0-41ae-a556-a23cabb6cb9f",
+    "slug": "prone-resistance-band-leg-curl",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "knee_flexion",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["hamstrings"],
+    "secondary_muscles": ["calves"],
+    "equipment": ["resistance_band","band_anchor"],
+    "translations": {
+      "ru": {"name":"Сгибание одной ноги лёжа с резинкой","aliases":[],"description":"Закрепите один конец резинки низко за стопами, другой на рабочей лодыжке. Лягте на живот.","technique_steps":["Согните рабочее колено, удерживая бедро и таз неподвижно. Медленно разогните ногу обратно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Prone resistance band leg curl","aliases":[],"description":"Anchor the band low behind your feet and attach it securely to the working ankle as you lie face down.","technique_steps":["Bend the working knee while keeping the thigh and hips steady. Slowly lengthen the leg back to the start."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "e349d07d-58a8-4d96-9cd8-866a5107e3ec",
+    "slug": "stability-ball-hamstring-curl",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "knee_flexion",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["hamstrings"],
+    "secondary_muscles": ["calves"],
+    "equipment": ["stability_ball"],
+    "translations": {
+      "ru": {"name":"Сгибание ног на фитболе","aliases":[],"description":"Лягте на спину, поставьте пятки на мяч и немного поднимите таз. Подкатите мяч к себе.","technique_steps":["Согните рабочее колено, удерживая бедро и таз неподвижно. Медленно разогните ногу обратно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Stability ball hamstring curl","aliases":[],"description":"Lie on your back, place both heels on the ball and lift your hips slightly. Draw the ball toward you.","technique_steps":["Bend the working knee while keeping the thigh and hips steady. Slowly lengthen the leg back to the start."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "93d9e452-821f-4afc-b51f-60ee6ffbbe2e",
+    "slug": "slider-hamstring-curl",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "knee_flexion",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["hamstrings"],
+    "secondary_muscles": ["calves"],
+    "equipment": ["sliders"],
+    "translations": {
+      "ru": {"name":"Сгибание ног на скользящих дисках","aliases":[],"description":"Лягте на спину, поставьте пятки на диски и удерживайте таз приподнятым при скольжении пяток.","technique_steps":["Согните рабочее колено, удерживая бедро и таз неподвижно. Медленно разогните ногу обратно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Slider hamstring curl","aliases":[],"description":"Lie on your back with both heels on sliders and keep your hips lifted as your heels travel.","technique_steps":["Bend the working knee while keeping the thigh and hips steady. Slowly lengthen the leg back to the start."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "5ccf29aa-d7e5-4b4b-875d-8b74df44fb0c",
+    "slug": "seated-resistance-band-knee-extension",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "knee_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads"],
+    "secondary_muscles": [],
+    "equipment": ["resistance_band","band_anchor"],
+    "translations": {
+      "ru": {"name":"Разгибание ноги сидя с резинкой","aliases":[],"description":"Закрепите резинку низко за устойчивым стулом, сядьте и надёжно зафиксируйте её на одной лодыжке.","technique_steps":["Разогните рабочее колено в контролируемой амплитуде и медленно опустите голень без раскачивания бедра."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Seated resistance band knee extension","aliases":[],"description":"Secure the band low behind a stable chair, then sit and attach it to one ankle.","technique_steps":["Straighten the working knee through a controlled range, then lower slowly without swinging your thigh."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "d36b7243-fcde-4cda-953f-e65ea82036c7",
+    "slug": "terminal-knee-extension-with-band",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "knee_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads"],
+    "secondary_muscles": [],
+    "equipment": ["resistance_band","band_anchor"],
+    "translations": {
+      "ru": {"name":"Разгибание колена в короткой амплитуде с резинкой","aliases":[],"description":"Встаньте лицом к креплению на высоте колена, проведите резинку под коленом и начните с небольшого сгибания.","technique_steps":["Разогните рабочее колено в контролируемой амплитуде и медленно опустите голень без раскачивания бедра."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Terminal knee extension with band","aliases":[],"description":"Anchor a band at knee height behind the working knee from the front, and begin with that knee slightly bent.","technique_steps":["Straighten the working knee through a controlled range, then lower slowly without swinging your thigh."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "5eda35a4-15a9-415f-b36c-4e6a6c40ae8f",
+    "slug": "single-leg-standing-calf-raise",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "calf_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Подъём на носок на одной ноге без веса","aliases":[],"description":"Встаньте на одну ногу и слегка держитесь за стену или другую устойчивую опору.","technique_steps":["Поднимите пятку, надавив передней частью стопы на опору. Задержитесь вверху и опуститесь без пружинящего движения."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-leg standing calf raise","aliases":[],"description":"Stand on one foot and use a wall or another stable support for balance.","technique_steps":["Lift your heel by pressing the ball of your foot into the support. Pause at the top and lower without bouncing."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "8d96f8b9-c084-421e-8c4b-794a61aef37e",
+    "slug": "resistance-band-hammer-curl",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["resistance_band"],
+    "translations": {
+      "ru": {"name":"Сгибания «молот» с резинкой","aliases":[],"description":"Встаньте на резинку и держите её концы ладонями друг к другу.","technique_steps":["Согните локоть, не выводя плечо вперёд. Медленно опустите вес до выпрямления руки."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Resistance band hammer curl","aliases":[],"description":"Stand on the band and hold the ends with your palms facing each other.","technique_steps":["Flex the elbow without bringing the shoulder forward. Lower slowly until the arm lengthens."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "fa121f9f-1f87-4307-bd93-59e19ecf8758",
+    "slug": "resistance-band-pushdown",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "elbow_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": [],
+    "equipment": ["resistance_band","band_anchor"],
+    "translations": {
+      "ru": {"name":"Разгибание рук вниз с резинкой","aliases":[],"description":"Закрепите резинку сверху и приблизьте оба локтя к корпусу.","technique_steps":["Разогните локоть без раскачивания плеча. Медленно согните его, возвращаясь назад."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Resistance band pushdown","aliases":[],"description":"Anchor the band overhead and bring both elbows close to the torso.","technique_steps":["Straighten your elbow without letting the upper arm swing. Bend it slowly to return."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "05fb59ce-d45f-4901-8978-4c6d28242605",
+    "slug": "prone-t-raise",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "rear_delt",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["rear_delts","upper_back"],
+    "secondary_muscles": ["traps"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Подъём рук в стороны лёжа на животе","aliases":[],"description":"Лягте на живот, разведите руки в стороны и направьте большие пальцы вверх.","technique_steps":["Разведите руки или одну руку в сторону, слегка согнув локти. Вернитесь плавно, не поднимая плечи."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Prone T raise","aliases":[],"description":"Lie face down and extend your arms to the sides with thumbs pointing up.","technique_steps":["Open your arm or arms to the sides with elbows slightly bent. Return slowly without hunching your shoulders."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "3a52d50f-dba2-4a6a-b4b4-5951bf326341",
+    "slug": "prone-w-raise",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "rear_delt",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["rear_delts","upper_back"],
+    "secondary_muscles": ["traps"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Подъём рук буквой W лёжа на животе","aliases":[],"description":"Лягте на живот, согните локти и направьте их немного ниже линии плеч.","technique_steps":["Разведите руки или одну руку в сторону, слегка согнув локти. Вернитесь плавно, не поднимая плечи."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Prone W raise","aliases":[],"description":"Lie face down with your elbows bent and angled down slightly from your shoulders.","technique_steps":["Open your arm or arms to the sides with elbows slightly bent. Return slowly without hunching your shoulders."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "c71c731d-b5db-4be9-8c41-c4db2737cb70",
+    "slug": "prone-i-y-t-raise",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "rear_delt",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["rear_delts","upper_back"],
+    "secondary_muscles": ["traps"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Подъёмы рук I–Y–T лёжа на животе","aliases":[],"description":"Лягте на живот и последовательно поднимайте руки прямо над головой, по диагонали и в стороны.","technique_steps":["Разведите руки или одну руку в сторону, слегка согнув локти. Вернитесь плавно, не поднимая плечи."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Prone I-Y-T raise","aliases":[],"description":"Lie face down and cycle through arms overhead, on a diagonal, and out to the sides.","technique_steps":["Open your arm or arms to the sides with elbows slightly bent. Return slowly without hunching your shoulders."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "7222dfce-d3df-4d4e-ba26-383b058456f4",
+    "slug": "side-lying-hip-abduction",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hip_abduction",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Отведение ноги лёжа на боку","aliases":[],"description":"Расположите таз без разворота и держите верхнюю ногу прямой, направив носок вперёд.","technique_steps":["Отведите рабочее колено или ногу в сторону без разворота таза. Медленно верните обратно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Side-lying hip abduction","aliases":[],"description":"Stack your hips and keep the top leg straight with toes facing forward.","technique_steps":["Move the working knee or leg away from the midline without rolling the pelvis. Bring it back slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "089a2c4f-aed0-4265-977b-326ce0b50695",
+    "slug": "clamshell",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hip_abduction",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Разведение коленей лёжа на боку","aliases":[],"description":"Согните оба колена, не разворачивайте таз и оставляйте стопы вместе при подъёме верхнего колена.","technique_steps":["Отведите рабочее колено или ногу в сторону без разворота таза. Медленно верните обратно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Clamshell","aliases":[],"description":"Bend both knees, stack your hips, and keep the feet together as you lift the upper knee.","technique_steps":["Move the working knee or leg away from the midline without rolling the pelvis. Bring it back slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "7beddf9c-66d8-4de3-9ce0-7d07b71e7195",
+    "slug": "mini-band-clamshell",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hip_abduction",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["abs"],
+    "equipment": ["mini_band"],
+    "translations": {
+      "ru": {"name":"Разведение коленей лёжа на боку с мини-лентой","aliases":[],"description":"Наденьте петлю выше колен, лягте на бок и удерживайте пятки вместе.","technique_steps":["Отведите рабочее колено или ногу в сторону без разворота таза. Медленно верните обратно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Mini-band clamshell","aliases":[],"description":"Place the loop above your knees, lie on one side, and keep the heels together.","technique_steps":["Move the working knee or leg away from the midline without rolling the pelvis. Bring it back slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "89777ec1-1556-4e44-8b87-5ccf870fd7aa",
+    "slug": "fire-hydrant",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hip_abduction",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Отведение согнутой ноги в сторону на четвереньках","aliases":[],"description":"Встаньте на четвереньки и держите таз параллельно полу. Рабочее колено оставляйте согнутым.","technique_steps":["Отведите рабочее колено или ногу в сторону без разворота таза. Медленно верните обратно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Fire hydrant","aliases":[],"description":"Start on hands and knees with hips square to the floor. Keep the working knee bent.","technique_steps":["Move the working knee or leg away from the midline without rolling the pelvis. Bring it back slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "2c28659e-ee9c-49d1-8740-8149f687ad33",
+    "slug": "standing-mini-band-hip-abduction",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hip_abduction",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["abs"],
+    "equipment": ["mini_band"],
+    "translations": {
+      "ru": {"name":"Отведение ноги в сторону стоя с мини-лентой","aliases":[],"description":"Наденьте петлю выше лодыжек и держитесь одной рукой за устойчивую опору.","technique_steps":["Отведите рабочее колено или ногу в сторону без разворота таза. Медленно верните обратно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Standing mini-band hip abduction","aliases":[],"description":"Loop the band above your ankles and use a steady support with one hand.","technique_steps":["Move the working knee or leg away from the midline without rolling the pelvis. Bring it back slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "5425cafd-fdf7-4919-8a6d-8f8877158b29",
+    "slug": "side-lying-hip-adduction",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "hip_adduction",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["adductors"],
+    "secondary_muscles": ["abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Приведение ноги лёжа на боку","aliases":[],"description":"Поставьте верхнюю стопу перед собой для опоры. Выпрямите нижнюю ногу и поднимите её над полом.","technique_steps":["Приведите рабочую ногу к центру, удерживая таз неподвижно. Верните ногу под контролем."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Side-lying hip adduction","aliases":[],"description":"Cross your top foot in front for support. Keep the lower leg straight and lift it off the floor.","technique_steps":["Draw your working leg toward the midline keeping your hips steady. Let the leg return under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "bdc17ee0-f3b4-4fa9-bce2-033a07f3583b",
+    "slug": "sit-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Подъём корпуса лёжа","aliases":[],"description":"Лягте, согнув колени и поставив стопы на пол. После скручивания приподнимитесь до положения сидя, если амплитуда удобна.","technique_steps":["Выдохните и приблизьте рёбра к тазу, округляя корпус. Медленно вернитесь без давления руками на голову."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Sit-up","aliases":[],"description":"Lie with knees bent and feet on the floor. After the curl, continue upward to a seated position if comfortable.","technique_steps":["Exhale and curl your rib cage toward your pelvis. Uncurl slowly without pulling on your head."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "d42fbbaa-41df-4abf-adba-6e00047cb1f7",
+    "slug": "butterfly-sit-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Подъём корпуса с соединёнными стопами","aliases":[],"description":"Соедините подошвы и разведите колени. Потянитесь руками вперёд при переходе в положение сидя.","technique_steps":["Выдохните и приблизьте рёбра к тазу, округляя корпус. Медленно вернитесь без давления руками на голову."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Butterfly sit-up","aliases":[],"description":"Put your soles together with knees open. Reach forward as you roll into a seated position.","technique_steps":["Exhale and curl your rib cage toward your pelvis. Uncurl slowly without pulling on your head."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "6b3ed4eb-3e2d-4e53-b20e-4e88c34d0319",
+    "slug": "stability-ball-crunch",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques"],
+    "equipment": ["stability_ball"],
+    "translations": {
+      "ru": {"name":"Скручивания на фитболе","aliases":[],"description":"Упритесь поясницей в фитбол и расставьте стопы достаточно широко для устойчивости.","technique_steps":["Выдохните и приблизьте рёбра к тазу, округляя корпус. Медленно вернитесь без давления руками на голову."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Stability ball crunch","aliases":[],"description":"Rest your lower back on the ball and plant your feet wide enough to keep it steady.","technique_steps":["Exhale and curl your rib cage toward your pelvis. Uncurl slowly without pulling on your head."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "38773308-aa46-47a8-9f4b-4a28c4b5d9fd",
+    "slug": "vertical-leg-crunch",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Скручивания с вертикально поднятыми ногами","aliases":[],"description":"Лягте на спину и вытяните ноги вверх настолько, насколько позволяет удерживать таз неподвижно.","technique_steps":["Выдохните и приблизьте рёбра к тазу, округляя корпус. Медленно вернитесь без давления руками на голову."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Vertical leg crunch","aliases":[],"description":"Lie on your back and extend your legs upward as far as you can keep the pelvis steady.","technique_steps":["Exhale and curl your rib cage toward your pelvis. Uncurl slowly without pulling on your head."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "076f14b9-dd57-41f2-9057-357eac0ba0f0",
+    "slug": "cross-body-crunch",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Диагональные скручивания","aliases":[],"description":"Оставьте стопы на полу и направляйте одно плечо к противоположному колену при скручивании.","technique_steps":["Выдохните и приблизьте рёбра к тазу, округляя корпус. Медленно вернитесь без давления руками на голову."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Cross-body crunch","aliases":[],"description":"Keep your feet planted and guide one shoulder toward the opposite knee as you curl.","technique_steps":["Exhale and curl your rib cage toward your pelvis. Uncurl slowly without pulling on your head."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "e72a39bc-0c64-4abc-8ec0-b399f429032e",
+    "slug": "high-plank",
+    "kind": "timed",
+    "tracking": "time",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["abs","obliques"],
+    "secondary_muscles": ["glutes","front_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Планка на прямых руках","aliases":[],"description":"Поставьте ладони под плечи и вытяните обе ноги назад.","technique_steps":["Удерживайте рёбра над тазом и дышите ровно. Завершите подход, когда таз начинает терять устойчивость."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"High plank","aliases":[],"description":"Plant your palms under your shoulders and extend both legs behind you.","technique_steps":["Keep your ribs over your pelvis and breathe steadily. End the set when you can no longer keep your hips stable."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "8ed6c62f-a336-494c-80ba-282c09f7f361",
+    "slug": "kneeling-forearm-plank",
+    "kind": "timed",
+    "tracking": "time",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["abs","obliques"],
+    "secondary_muscles": ["glutes","front_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Планка на предплечьях с колен","aliases":[],"description":"Поставьте локти под плечи и выстройте прямую линию от коленей до головы.","technique_steps":["Удерживайте рёбра над тазом и дышите ровно. Завершите подход, когда таз начинает терять устойчивость."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Kneeling forearm plank","aliases":[],"description":"Set the elbows beneath the shoulders and straighten the line from your knees to your head.","technique_steps":["Keep your ribs over your pelvis and breathe steadily. End the set when you can no longer keep your hips stable."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "6b4225d5-c54d-490e-bab7-95fdbced0dc0",
+    "slug": "weighted-forearm-plank",
+    "kind": "timed",
+    "tracking": "time",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["abs","obliques"],
+    "secondary_muscles": ["glutes","front_delts"],
+    "equipment": ["weight_plate"],
+    "translations": {
+      "ru": {"name":"Планка на предплечьях с отягощением","aliases":[],"description":"Встаньте в планку на предплечьях и попросите партнёра устойчиво разместить лёгкий диск на верхней части спины.","technique_steps":["Удерживайте рёбра над тазом и дышите ровно. Завершите подход, когда таз начинает терять устойчивость."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Weighted forearm plank","aliases":[],"description":"Set up in a forearm plank and have a partner place a light plate across your upper back securely.","technique_steps":["Keep your ribs over your pelvis and breathe steadily. End the set when you can no longer keep your hips stable."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "fffc6e93-effb-4bad-af31-5bdb9dbb12ba",
+    "slug": "short-lever-side-plank",
+    "kind": "timed",
+    "tracking": "time",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["abs","obliques"],
+    "secondary_muscles": ["glutes","front_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Боковая планка с колен","aliases":[],"description":"Обопритесь на одно предплечье и нижнее колено. Выстройте прямую линию от колена до плеча.","technique_steps":["Удерживайте рёбра над тазом и дышите ровно. Завершите подход, когда таз начинает терять устойчивость."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Short-lever side plank","aliases":[],"description":"Support yourself on one forearm and the lower knee. Straighten the line from your knee to your shoulder.","technique_steps":["Keep your ribs over your pelvis and breathe steadily. End the set when you can no longer keep your hips stable."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "58c6d5fd-9abd-4ca3-bdbc-ae07c27aebc3",
+    "slug": "side-plank-with-leg-lift",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": true,
+    "primary_muscles": ["abs","obliques"],
+    "secondary_muscles": ["glutes","front_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Боковая планка с подъёмом верхней ноги","aliases":[],"description":"Удерживайте опору на предплечье и нижней стопе, затем поднимите верхнюю ногу без разворота таза.","technique_steps":["Удерживайте рёбра над тазом и дышите ровно. Завершите подход, когда таз начинает терять устойчивость."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Side plank with leg lift","aliases":[],"description":"Balance on your forearm and lower foot, then lift the top leg while keeping your pelvis stacked.","technique_steps":["Keep your ribs over your pelvis and breathe steadily. End the set when you can no longer keep your hips stable."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "43d8c18a-c6b9-44da-abcb-ba43f03347e7",
+    "slug": "plank-shoulder-tap",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["abs","obliques"],
+    "secondary_muscles": ["glutes","front_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Касания плеч в упоре лёжа","aliases":[],"description":"Начните в высоком упоре с широко поставленными стопами. Коснитесь ладонью противоположного плеча и смените руку.","technique_steps":["Удерживайте рёбра над тазом и дышите ровно. Завершите подход, когда таз начинает терять устойчивость."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Plank shoulder tap","aliases":[],"description":"Start in a high plank with feet wide. Lift one palm to touch the opposite shoulder, then switch.","technique_steps":["Keep your ribs over your pelvis and breathe steadily. End the set when you can no longer keep your hips stable."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "98da3f5f-48a8-4998-bba7-3a8fa1a08989",
+    "slug": "plank-up-down",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["abs","obliques"],
+    "secondary_muscles": ["glutes","front_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Переходы из планки на предплечьях в высокую","aliases":[],"description":"Начните на предплечьях. Поставьте по очереди обе ладони, поднимитесь и вернитесь вниз. Чередуйте ведущую руку.","technique_steps":["Удерживайте рёбра над тазом и дышите ровно. Завершите подход, когда таз начинает терять устойчивость."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Plank up-down","aliases":[],"description":"Start on both forearms. Place one palm and then the other on the floor to rise, then lower back. Alternate your lead arm.","technique_steps":["Keep your ribs over your pelvis and breathe steadily. End the set when you can no longer keep your hips stable."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "4d5b9cc7-fc7c-4ace-bbb3-90b9ca9c9e30",
+    "slug": "bear-plank",
+    "kind": "timed",
+    "tracking": "time",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["abs","obliques"],
+    "secondary_muscles": ["glutes","front_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Медвежья планка","aliases":[],"description":"Поставьте ладони под плечи, колени под таз. Поднимите оба колена чуть над полом.","technique_steps":["Удерживайте рёбра над тазом и дышите ровно. Завершите подход, когда таз начинает терять устойчивость."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Bear plank","aliases":[],"description":"Set hands beneath shoulders and knees beneath hips. Lift both knees slightly off the floor.","technique_steps":["Keep your ribs over your pelvis and breathe steadily. End the set when you can no longer keep your hips stable."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "bfba0352-cfe4-40a4-8d25-6b341a2e8091",
+    "slug": "bear-crawl",
+    "kind": "bodyweight",
+    "tracking": "distance_time",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["abs","obliques"],
+    "secondary_muscles": ["glutes","front_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Медвежья ходьба","aliases":[],"description":"Поднимите колени над полом и двигайте вместе ладонь и противоположную стопу. Делайте короткие шаги.","technique_steps":["Удерживайте рёбра над тазом и дышите ровно. Завершите подход, когда таз начинает терять устойчивость."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Bear crawl","aliases":[],"description":"Hover both knees and move one hand and the opposite foot together. Keep your steps short.","technique_steps":["Keep your ribs over your pelvis and breathe steadily. End the set when you can no longer keep your hips stable."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "3bfd5524-92b2-4ecc-a3fa-82c2a980eda3",
+    "slug": "dead-bug-heel-taps",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["abs","obliques"],
+    "secondary_muscles": ["glutes","front_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Поочерёдные касания пятками пола лёжа","aliases":[],"description":"Лягте на спину, согните ноги в тазобедренных суставах и коленях под прямым углом. Поочерёдно касайтесь пола пятками.","technique_steps":["Удерживайте рёбра над тазом и дышите ровно. Завершите подход, когда таз начинает терять устойчивость."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dead bug heel taps","aliases":[],"description":"Lie on your back with hips and knees bent at right angles. Lower one heel at a time to tap the floor.","technique_steps":["Keep your ribs over your pelvis and breathe steadily. End the set when you can no longer keep your hips stable."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "4c7aa86c-c6e5-4b85-a34d-ee52dc6ed885",
+    "slug": "resistance-band-pallof-press",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["abs","obliques"],
+    "secondary_muscles": ["glutes","front_delts"],
+    "equipment": ["resistance_band","band_anchor"],
+    "translations": {
+      "ru": {"name":"Жим Палоффа с резинкой","aliases":[],"description":"Закрепите резинку на высоте груди, встаньте боком и выжмите руки от груди без поворота корпуса.","technique_steps":["Удерживайте рёбра над тазом и дышите ровно. Завершите подход, когда таз начинает терять устойчивость."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Resistance band Pallof press","aliases":[],"description":"Anchor the band at chest height, stand side-on, and press away from the chest without turning.","technique_steps":["Keep your ribs over your pelvis and breathe steadily. End the set when you can no longer keep your hips stable."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "187a2462-cf5e-478d-a028-e2d85698f77b",
+    "slug": "stability-ball-stir-the-pot",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["abs","obliques"],
+    "secondary_muscles": ["glutes","front_delts"],
+    "equipment": ["stability_ball"],
+    "translations": {
+      "ru": {"name":"Круги предплечьями на фитболе","aliases":[],"description":"Обопритесь предплечьями на фитбол и широко поставьте стопы. Делайте локтями небольшие круги в обе стороны.","technique_steps":["Удерживайте рёбра над тазом и дышите ровно. Завершите подход, когда таз начинает терять устойчивость."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Stability ball stir-the-pot","aliases":[],"description":"Balance with both forearms on the ball and feet wide. Make small circles with your elbows in both directions.","technique_steps":["Keep your ribs over your pelvis and breathe steadily. End the set when you can no longer keep your hips stable."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "196eb9b4-ca7d-4648-8374-2b2de550bb37",
+    "slug": "bodyweight-russian-twist",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_rotation",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["obliques","abs"],
+    "secondary_muscles": [],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Русские скручивания без веса","aliases":[],"description":"Сядьте, поставьте пятки на пол и немного отклонитесь. Переводите обе руки из стороны в сторону.","technique_steps":["Поверните верх корпуса в контролируемой амплитуде. Держите нагрузку достаточно близко для плавного движения и мягко вернитесь."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Bodyweight Russian twist","aliases":[],"description":"Sit with your heels on the floor and lean back a little. Bring both hands from side to side.","technique_steps":["Rotate through the upper trunk in a controlled range, keeping the load close enough to move smoothly. Return gently."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "1ad134b2-872a-4601-9263-27c946c6c8e1",
+    "slug": "medicine-ball-russian-twist",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_rotation",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["obliques","abs"],
+    "secondary_muscles": [],
+    "equipment": ["medicine_ball"],
+    "translations": {
+      "ru": {"name":"Русские скручивания с медболом","aliases":[],"description":"Держите мяч близко к груди, сидя и поворачивая корпус из стороны в сторону.","technique_steps":["Поверните верх корпуса в контролируемой амплитуде. Держите нагрузку достаточно близко для плавного движения и мягко вернитесь."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Medicine ball Russian twist","aliases":[],"description":"Hold the ball close to your chest as you rotate from side to side while seated.","technique_steps":["Rotate through the upper trunk in a controlled range, keeping the load close enough to move smoothly. Return gently."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "993f57d6-a39e-44bc-9090-a17b5d43d194",
+    "slug": "stability-ball-back-extension",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "spinal_extension",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lower_back"],
+    "secondary_muscles": ["glutes","hamstrings"],
+    "equipment": ["stability_ball"],
+    "translations": {
+      "ru": {"name":"Разгибание спины на фитболе","aliases":[],"description":"Расположите таз на фитболе и упритесь стопами в устойчивую поверхность.","technique_steps":["Поднимайтесь до удобного нейтрального положения позвоночника. Опускайтесь плавно, без попытки увеличить амплитуду."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Stability ball back extension","aliases":[],"description":"Lie with your hips supported by the ball and brace your feet against a firm surface.","technique_steps":["Lift only until your spine reaches a comfortable neutral position. Lower gently and avoid pushing the range."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "557d0f19-0864-407e-9128-311856bd1df3",
+    "slug": "prone-alternating-arm-and-leg-lift",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "spinal_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["lower_back"],
+    "secondary_muscles": ["glutes","hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Поочерёдные подъёмы противоположных руки и ноги лёжа","aliases":[],"description":"Лягте на живот, немного поднимите одну руку и противоположную ногу, затем смените сторону.","technique_steps":["Поднимайтесь до удобного нейтрального положения позвоночника. Опускайтесь плавно, без попытки увеличить амплитуду."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Prone alternating arm and leg lift","aliases":[],"description":"Lie on your stomach and lift one arm and the opposite leg a little off the floor, then switch.","technique_steps":["Lift only until your spine reaches a comfortable neutral position. Lower gently and avoid pushing the range."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "82e002ea-f89a-4295-a1bc-68f442df927f",
+    "slug": "tuck-jump",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Прыжки с подтягиванием коленей","aliases":[],"description":"Оттолкнитесь двумя ногами и ненадолго подтяните колени вверх. Выпрямите ноги до приземления.","technique_steps":["Приземляйтесь мягко, сгибая тазобедренные суставы и колени. Восстановите равновесие перед следующим прыжком."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Tuck jump","aliases":[],"description":"Take off from both feet and draw your knees upward briefly. Extend your legs before landing.","technique_steps":["Land softly with hips and knees bending together. Reset your balance before the next effort."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "d919c4f5-285a-44f6-bb8c-d0b2d21d6550",
+    "slug": "star-jump",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Прыжки «звезда»","aliases":[],"description":"Слегка присядьте, выпрыгните и разведите руки и ноги, затем сведите их для приземления.","technique_steps":["Приземляйтесь мягко, сгибая тазобедренные суставы и колени. Восстановите равновесие перед следующим прыжком."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Star jump","aliases":[],"description":"Dip into a small squat, spring up, and spread your arms and legs before bringing them back for landing.","technique_steps":["Land softly with hips and knees bending together. Reset your balance before the next effort."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "d2923016-ae1f-488d-a8c7-32e7df7fa3ef",
+    "slug": "lateral-box-jump",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","hamstrings"],
+    "equipment": ["plyo_box"],
+    "translations": {
+      "ru": {"name":"Боковые прыжки на тумбу","aliases":[],"description":"Встаньте сбоку от низкой устойчивой тумбы. Запрыгните боком на обе ноги и после стабилизации спуститесь шагом.","technique_steps":["Приземляйтесь мягко, сгибая тазобедренные суставы и колени. Восстановите равновесие перед следующим прыжком."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Lateral box jump","aliases":[],"description":"Stand beside a low stable box and jump sideways onto it with both feet. Step down after stabilizing.","technique_steps":["Land softly with hips and knees bending together. Reset your balance before the next effort."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "e6e23614-c9e0-485c-b39e-247ad6cd203c",
+    "slug": "lateral-bound",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Боковые прыжки с ноги на ногу","aliases":[],"description":"Оттолкнитесь в сторону одной ногой и приземлитесь на другую. Начните с расстояния, которое контролируете.","technique_steps":["Приземляйтесь мягко, сгибая тазобедренные суставы и колени. Восстановите равновесие перед следующим прыжком."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Lateral bound","aliases":[],"description":"Push sideways from one leg and land on the other. Begin with a distance you can control.","technique_steps":["Land softly with hips and knees bending together. Reset your balance before the next effort."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "b976eb5c-7a00-4842-bb2e-d3ebf742513d",
+    "slug": "low-hurdle-hops",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","hamstrings"],
+    "equipment": ["mini_hurdles"],
+    "translations": {
+      "ru": {"name":"Прыжки через низкие барьеры","aliases":[],"description":"Расставьте низкие барьеры с промежутками и перепрыгивайте через них вперёд, отталкиваясь обеими ногами.","technique_steps":["Приземляйтесь мягко, сгибая тазобедренные суставы и колени. Восстановите равновесие перед следующим прыжком."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Low hurdle hops","aliases":[],"description":"Place low hurdles with space between them and jump forward over each with both feet together.","technique_steps":["Land softly with hips and knees bending together. Reset your balance before the next effort."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "e6ef8249-f370-4d54-a5d7-cab2631ffa11",
+    "slug": "drop-landing",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","hamstrings"],
+    "equipment": ["plyo_box"],
+    "translations": {
+      "ru": {"name":"Приземление после схода с тумбы","aliases":[],"description":"Сойдите с низкой тумбы без выпрыгивания вверх и примите приземление на обе стопы.","technique_steps":["Приземляйтесь мягко, сгибая тазобедренные суставы и колени. Восстановите равновесие перед следующим прыжком."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Drop landing","aliases":[],"description":"Step off a low box without jumping up and catch the landing with both feet.","technique_steps":["Land softly with hips and knees bending together. Reset your balance before the next effort."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "035b6401-6b38-4a0c-bf5c-d9e76fdf12b2",
+    "slug": "split-jump",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Выпады со сменой ног в прыжке","aliases":[],"description":"Начните в разножке, невысоко подпрыгните и поменяйте ноги в воздухе, снова приземлившись в разножку.","technique_steps":["Приземляйтесь с передним коленом по линии носков и смягчайте удар обеими ногами. Сделайте паузу при потере равновесия."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Split jump","aliases":[],"description":"Begin in a split stance, jump low and switch feet in the air before returning to a split stance.","technique_steps":["Land with your front knee following your toes and absorb the impact through both legs. Pause if your balance is unsteady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "97e5e4b4-0da2-406d-bbc6-e83b9bbd5755",
+    "slug": "plyometric-push-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Отжимания с отрывом ладоней","aliases":[],"description":"Опуститесь в отжимании, оттолкнитесь до короткого отрыва ладоней от пола и приземлитесь на слегка согнутые руки.","technique_steps":["Быстро оттолкнитесь, удерживая корпус устойчивым. Восстановите исходное положение перед следующим повтором."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Plyometric push-up","aliases":[],"description":"Lower into a push-up, press hard enough for your hands to leave the floor briefly, and catch with soft elbows.","technique_steps":["Use a quick push with a stable trunk. Reset your stance and grip before repeating."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "7996e0ba-38ac-48dc-8bf3-ad1265b944c3",
+    "slug": "sandbag-bear-hug-carry",
+    "kind": "bodyweight",
+    "tracking": "distance_time",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["forearms","traps"],
+    "secondary_muscles": ["abs","glutes"],
+    "equipment": ["sandbag"],
+    "translations": {
+      "ru": {"name":"Перенос мешка с обхватом спереди","aliases":[],"description":"Прижмите мешок к груди и начинайте движение, когда видите свободный проход.","technique_steps":["Идите короткими ровными шагами, не наклоняя корпус. Опустите вес под контролем."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Sandbag bear hug carry","aliases":[],"description":"Hug the sandbag against your chest and start walking once you have a clear view of the lane.","technique_steps":["Walk with short steady steps and keep your torso tall without leaning. Set the load down under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "bf263bc6-34ee-425d-aeb2-b43f1e112e73",
+    "slug": "stability-ball-knee-tuck",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques"],
+    "equipment": ["stability_ball"],
+    "translations": {
+      "ru": {"name":"Подтягивание коленей в упоре на фитболе","aliases":[],"description":"Начните в высоком упоре с голенями на мяче. Подкатите мяч вперёд, сгибая колени.","technique_steps":["Выдохните, подтягивая колени к груди. Медленно вернитесь без прогиба в пояснице."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Stability ball knee tuck","aliases":[],"description":"Start in a high plank with your shins on the ball. Roll the ball forward as your knees bend.","technique_steps":["Exhale as you draw your knees toward your chest. Return slowly without letting your lower back arch."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "3049031e-741c-4a28-92b7-d994a778c92c",
+    "slug": "slider-knee-tuck",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques"],
+    "equipment": ["sliders"],
+    "translations": {
+      "ru": {"name":"Подтягивание коленей в упоре со скользящими дисками","aliases":[],"description":"Начните в высоком упоре, поставив носки на диски, а ладони под плечи.","technique_steps":["Выдохните, подтягивая колени к груди. Медленно вернитесь без прогиба в пояснице."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Slider knee tuck","aliases":[],"description":"Start in a high plank with your toes on the sliders and both hands below your shoulders.","technique_steps":["Exhale as you draw your knees toward your chest. Return slowly without letting your lower back arch."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "0f40b320-e499-4991-a1f1-e25cf03cbce4",
+    "slug": "single-leg-balance",
+    "kind": "timed",
+    "tracking": "time",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes","abs"],
+    "secondary_muscles": ["quads","calves"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Стойка на одной ноге","aliases":[],"description":"Встаньте прямо, перенесите вес на одну стопу и приподнимите вторую над полом.","technique_steps":["Слегка согните опорное колено и дышите ровно. При потере равновесия сделайте паузу или придержитесь за устойчивую опору."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-leg balance","aliases":[],"description":"Stand tall, shift your weight onto one foot and lift the other just off the floor.","technique_steps":["Keep your standing knee soft and breathe steadily. Pause or use a stable hand support if you lose balance."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "8a24c295-c5c6-4c51-bcdf-be058300940c",
+    "slug": "tree-pose",
+    "kind": "timed",
+    "tracking": "time",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes","abs"],
+    "secondary_muscles": ["quads","calves"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Поза дерева","aliases":[],"description":"Поставьте поднятую стопу у лодыжки или на внутреннюю часть бедра опорной ноги, обходя колено.","technique_steps":["Слегка согните опорное колено и дышите ровно. При потере равновесия сделайте паузу или придержитесь за устойчивую опору."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Tree pose","aliases":[],"description":"Press the lifted foot into the inner ankle or thigh of the standing leg, clear of the knee.","technique_steps":["Keep your standing knee soft and breathe steadily. Pause or use a stable hand support if you lose balance."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "d1a0825e-0c91-4dce-bcc9-61e83abaf728",
+    "slug": "single-leg-balance-reach",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes","abs"],
+    "secondary_muscles": ["quads","calves"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Баланс на одной ноге с касаниями в стороны","aliases":[],"description":"Встаньте на одну ногу и легко коснитесь свободной стопой пола впереди, сбоку и сзади.","technique_steps":["Слегка согните опорное колено и дышите ровно. При потере равновесия сделайте паузу или придержитесь за устойчивую опору."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-leg balance reach","aliases":[],"description":"Stand on one leg and lightly tap the free foot forward, sideways and back.","technique_steps":["Keep your standing knee soft and breathe steadily. Pause or use a stable hand support if you lose balance."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "3c63067b-e199-4a22-98ca-e40f7dd03f2b",
+    "slug": "machine-assisted-dip",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["triceps","chest"],
+    "secondary_muscles": ["front_delts"],
+    "equipment": ["assisted_dip_pullup_machine"],
+    "translations": {
+      "ru": {"name":"Отжимания на брусьях в гравитроне","aliases":[],"description":"Выберите противовес и поставьте колени или стопы на платформу. Уверенно возьмитесь за рукоятки.","technique_steps":["Согните локти до удобной глубины, затем отожмитесь вверх, не поднимая плечи."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Machine-assisted dip","aliases":[],"description":"Select assistance and place your knees or feet on the platform. Take a firm grip on the bars.","technique_steps":["Bend your elbows until you reach a comfortable depth, then press back up without shrugging."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "c381e657-cd5f-432f-b6a8-0e52173bf9fd",
+    "slug": "ring-dip",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["triceps","chest"],
+    "secondary_muscles": ["front_delts"],
+    "equipment": ["gym_rings"],
+    "translations": {
+      "ru": {"name":"Отжимания на гимнастических кольцах","aliases":[],"description":"Установите кольца на одной высоте и держите их близко к бокам. Стабилизируйте упор перед опусканием.","technique_steps":["Согните локти до удобной глубины, затем отожмитесь вверх, не поднимая плечи."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Ring dip","aliases":[],"description":"Set both rings level and hold them close to your sides. Stabilize the support before lowering.","technique_steps":["Bend your elbows until you reach a comfortable depth, then press back up without shrugging."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "5120058a-b632-4c25-88dd-77c2d4b09c79",
+    "slug": "bodyweight-walking-lunge",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","hamstrings","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Ходьба выпадами без веса","aliases":[],"description":"Освободите проход и после подъёма сделайте следующий шаг в выпад.","technique_steps":["Согните оба колена, опираясь на рабочую стопу. Для подъёма оттолкнитесь этой стопой, направляя колено по линии носков."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Bodyweight walking lunge","aliases":[],"description":"Leave a clear path and step directly into the next lunge after standing up.","technique_steps":["Bend both knees with your weight centered over the working foot. Push through that foot to rise with your knee tracking your toes."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "6ced80d3-9d30-42ce-b6f0-5534523f942d",
+    "slug": "bodyweight-box-step-up",
+    "kind": "bodyweight",
+    "tracking": "reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["hamstrings","calves"],
+    "equipment": ["plyo_box"],
+    "translations": {
+      "ru": {"name":"Зашагивания на тумбу без веса","aliases":[],"description":"Встаньте перед низкой устойчивой тумбой и полностью поставьте рабочую стопу на её поверхность.","technique_steps":["Оттолкнитесь стопой на тумбе и выпрямитесь, затем опуститесь под контролем. Направляйте рабочее колено по линии носков."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Bodyweight box step-up","aliases":[],"description":"Stand in front of a low, stable box and place your entire working foot on top.","technique_steps":["Drive through the foot on the box to stand up, then lower with control. Keep the working knee pointed along the toes."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  }
+]

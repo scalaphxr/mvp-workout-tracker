@@ -160,7 +160,7 @@ export default function QuestionnaireScreen() {
         <ThemedText type="small" themeColor="textSecondary">
           {t('questionnaire.step', { step: step + 1, total: steps.length })}
         </ThemedText>
-        <ThemedText style={styles.title}>{current.title}</ThemedText>
+        <ThemedText type="heading" style={styles.title}>{current.title}</ThemedText>
         <View style={styles.chips}>{current.body}</View>
         <View style={styles.nav}>
           {step > 0 && (
@@ -229,7 +229,7 @@ export default function QuestionnaireScreen() {
 
   return (
     <Screen>
-      <ThemedText style={styles.title}>{t('questionnaire.draft')}</ThemedText>
+      <ThemedText type="heading" style={styles.title}>{t('questionnaire.draft')}</ThemedText>
       {focused && (
         <ThemedText themeColor="textSecondary">
           {t('questionnaire.focusOn', { muscles: focusNames })}

@@ -7,6 +7,7 @@ export type ThemedTextProps = TextProps & {
   type?:
     | 'default'
     | 'title'
+    | 'heading'
     | 'largeTitle'
     | 'section'
     | 'metric'
@@ -19,8 +20,9 @@ export type ThemedTextProps = TextProps & {
   themeColor?: ThemeColor;
 };
 
-/** Types set in the display face: headings and big numbers. */
-const DISPLAY = new Set<ThemedTextProps['type']>(['title', 'largeTitle', 'section', 'metric', 'subtitle']);
+const DISPLAY = new Set<ThemedTextProps['type']>([
+  'title', 'heading', 'largeTitle', 'section', 'metric', 'subtitle', 'smallBold',
+]);
 
 export function ThemedText({ style, type = 'default', themeColor, ...rest }: ThemedTextProps) {
   const theme = useTheme();
@@ -36,6 +38,7 @@ export function ThemedText({ style, type = 'default', themeColor, ...rest }: The
         { color: theme[themeColor ?? 'text'] },
         type === 'default' && styles.default,
         type === 'title' && styles.title,
+        type === 'heading' && styles.heading,
         type === 'largeTitle' && styles.largeTitle,
         type === 'section' && styles.section,
         type === 'metric' && styles.metric,
@@ -59,7 +62,6 @@ export function ThemedText({ style, type = 'default', themeColor, ...rest }: The
 const WEIGHTS: Partial<Record<NonNullable<ThemedTextProps['type']>, number>> = {
   default: 500,
   small: 500,
-  smallBold: 700,
   link: 500,
   linkPrimary: 600,
 };
@@ -84,6 +86,10 @@ const styles = StyleSheet.create({
     fontSize: 48,
     lineHeight: 54,
     textTransform: 'uppercase',
+  },
+  heading: {
+    fontSize: 24,
+    lineHeight: 30,
   },
   /** The name of a tab screen, above everything on it: a poster heading in capitals. */
   largeTitle: {

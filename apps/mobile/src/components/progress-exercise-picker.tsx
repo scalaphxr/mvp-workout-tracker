@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { FlatList, Modal, Pressable, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { ScreenGlow } from '@/components/gradients';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { useLocale } from '@/hooks/use-locale';
 import { useTheme } from '@/hooks/use-theme';
@@ -32,6 +33,7 @@ export function ProgressExercisePicker({
   return (
     <Modal visible animationType="slide" presentationStyle="pageSheet" allowSwipeDismissal onRequestClose={onClose}>
       <SafeAreaView style={[styles.fill, { backgroundColor: theme.background }]}>
+        <ScreenGlow />
         <View style={styles.content}>
           <View style={styles.header}>
             <ThemedText type="section" style={styles.fill} accessibilityRole="header">

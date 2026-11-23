@@ -5,7 +5,7 @@ import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { ThemedText } from './themed-text';
 import { ThemedView } from './themed-view';
 
-/** A screen that has nothing to show yet, with a three-dimensional picture above the words. */
+/** A screen that has nothing to show yet, with an optional illustration. */
 export function EmptyState({
   title,
   text,

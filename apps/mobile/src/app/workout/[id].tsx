@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { ScreenGlow } from '@/components/gradients';
 import { Button } from '@/components/button';
 import { Chip } from '@/components/chip';
 import { EmptyState } from '@/components/empty-state';
@@ -52,6 +53,16 @@ import { explainPlan, useExerciseFacts, useRecordText } from '@/lib/workout';
 const RIR_OPTIONS = [0, 1, 2, 3, 4] as const;
 
 export default function WorkoutScreen() {
+  const theme = useTheme();
+  return (
+    <View style={[styles.fill, { backgroundColor: theme.background }]}>
+      <ScreenGlow />
+      <Workout />
+    </View>
+  );
+}
+
+function Workout() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { t } = useTranslation();
   const theme = useTheme();
@@ -134,7 +145,7 @@ export default function WorkoutScreen() {
   };
 
   return (
-    <View style={[styles.screen, { backgroundColor: theme.background }]}>
+    <View style={styles.screen}>
       {/* The fields of a set are typed in: the keyboard must not cover them. Only the list makes
           way for it: the panel under it stays where it is. */}
       <KeyboardAvoidingView
@@ -430,6 +441,7 @@ function ExerciseCard({
 }
 
 const styles = StyleSheet.create({
+  fill: { flex: 1 },
   screen: {
     flex: 1,
     width: '100%',

@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet } from 'react-native';
 
-import { Spacing } from '@/constants/theme';
+import { Spacing, Typeface } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 import { ThemedText } from './themed-text';
@@ -32,9 +32,8 @@ export function Chip({
       onPress={onPress}
       style={({ pressed }) => [
         styles.chip,
-        // An outlined pill; the chosen one is filled with the accent.
         selected
-          ? { backgroundColor: theme.accent, borderColor: theme.accent }
+          ? { backgroundColor: theme.accentSoft, borderColor: theme.accent }
           : {
               backgroundColor: onCard ? theme.backgroundSelected : theme.backgroundElement,
               borderColor: onCard ? theme.backgroundSelected : theme.separator,
@@ -44,7 +43,8 @@ export function Chip({
       ]}>
       <ThemedText
         type={selected ? 'smallBold' : 'small'}
-        style={{ color: selected ? theme.onAccent : theme.text }}>
+        style={!selected && styles.label}
+        themeColor={selected ? 'accent' : 'text'}>
         {label}
       </ThemedText>
     </Pressable>
@@ -52,11 +52,13 @@ export function Chip({
 }
 
 const styles = StyleSheet.create({
+  label: { fontFamily: Typeface.displayMedium },
   chip: {
     minHeight: 44,
     paddingHorizontal: Spacing.three + Spacing.one,
     borderRadius: 22,
-    borderWidth: 1.5,
+    overflow: 'hidden',
+    borderWidth: 1,
     justifyContent: 'center',
   },
   pressed: {

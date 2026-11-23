@@ -1,0 +1,2776 @@
+[
+  {
+    "id": "8ba40060-b04a-4afa-923c-0990eea910ee",
+    "slug": "barbell-floor-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["barbell","rack"],
+    "translations": {
+      "ru": {"name":"Жим штанги лёжа на полу","aliases":[],"description":"Лягте на пол под штангу на низких стойках. Внизу мягко коснитесь пола плечевой частью рук.","technique_steps":["Выжмите от груди, удерживая кисти на линии предплечий. Опустите под контролем, пока сохраняется устойчивое положение плеч."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Barbell floor press","aliases":[],"description":"Lie on the floor under a bar set low in the rack. Let your upper arms touch the floor gently.","technique_steps":["Press away from the chest with your wrists stacked over your forearms. Lower slowly until you can still keep your shoulders steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "a2515284-8623-4272-8f68-53ef4e5ffe92",
+    "slug": "paused-barbell-bench-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["barbell","flat_bench","rack"],
+    "translations": {
+      "ru": {"name":"Жим штанги лёжа с паузой","aliases":[],"description":"Поставьте стопы на пол и остановите штангу у груди, сохраняя напряжение.","technique_steps":["Выжмите от груди, удерживая кисти на линии предплечий. Опустите под контролем, пока сохраняется устойчивое положение плеч."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Paused barbell bench press","aliases":[],"description":"Keep your feet planted and pause the bar on the chest without relaxing.","technique_steps":["Press away from the chest with your wrists stacked over your forearms. Lower slowly until you can still keep your shoulders steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "1565f682-d261-4d75-8a4c-fd415263da53",
+    "slug": "wide-grip-barbell-bench-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["barbell","flat_bench","rack"],
+    "translations": {
+      "ru": {"name":"Жим штанги лёжа широким хватом","aliases":[],"description":"Возьмитесь чуть шире привычного хвата. Установите страховочные упоры.","technique_steps":["Выжмите от груди, удерживая кисти на линии предплечий. Опустите под контролем, пока сохраняется устойчивое положение плеч."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Wide-grip barbell bench press","aliases":[],"description":"Take a grip slightly wider than your usual bench grip. Use rack safeties.","technique_steps":["Press away from the chest with your wrists stacked over your forearms. Lower slowly until you can still keep your shoulders steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "143aac5b-81c8-4f1f-880e-d326c9b6adbf",
+    "slug": "swiss-bar-bench-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["swiss_bar","flat_bench","rack"],
+    "translations": {
+      "ru": {"name":"Жим лёжа с нейтральным мультигрифом","aliases":[],"description":"Возьмитесь за параллельные рукоятки грифа и лягте на горизонтальную скамью.","technique_steps":["Выжмите от груди, удерживая кисти на линии предплечий. Опустите под контролем, пока сохраняется устойчивое положение плеч."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Swiss bar bench press","aliases":[],"description":"Grip the parallel handles of the bar and lie flat on the bench.","technique_steps":["Press away from the chest with your wrists stacked over your forearms. Lower slowly until you can still keep your shoulders steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "eaa00136-1485-455b-810b-20240316f846",
+    "slug": "decline-dumbbell-bench-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["dumbbells","decline_bench"],
+    "translations": {
+      "ru": {"name":"Жим гантелей на скамье с обратным наклоном","aliases":[],"description":"Зафиксируйте ноги на скамье с обратным наклоном. Начните с гантелями по бокам нижней части груди.","technique_steps":["Выжмите от груди, удерживая кисти на линии предплечий. Опустите под контролем, пока сохраняется устойчивое положение плеч."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Decline dumbbell bench press","aliases":[],"description":"Anchor your feet on the decline bench and start with dumbbells beside your lower chest.","technique_steps":["Press away from the chest with your wrists stacked over your forearms. Lower slowly until you can still keep your shoulders steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "50c94e8d-694f-4e05-b9d2-ea0eb4035078",
+    "slug": "neutral-grip-dumbbell-bench-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["dumbbells","flat_bench"],
+    "translations": {
+      "ru": {"name":"Жим гантелей лёжа нейтральным хватом","aliases":[],"description":"Поверните ладони друг к другу и держите локти ближе к рёбрам.","technique_steps":["Выжмите от груди, удерживая кисти на линии предплечий. Опустите под контролем, пока сохраняется устойчивое положение плеч."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Neutral-grip dumbbell bench press","aliases":[],"description":"Turn your palms toward each other and keep your elbows closer to your ribs.","technique_steps":["Press away from the chest with your wrists stacked over your forearms. Lower slowly until you can still keep your shoulders steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "0e49afc6-bbb8-4dbb-8efb-ae4fbb33260f",
+    "slug": "alternating-dumbbell-bench-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["dumbbells","flat_bench"],
+    "translations": {
+      "ru": {"name":"Попеременный жим гантелей лёжа","aliases":[],"description":"Удерживайте одну гантель над плечом, пока выполняете повтор другой рукой.","technique_steps":["Выжмите от груди, удерживая кисти на линии предплечий. Опустите под контролем, пока сохраняется устойчивое положение плеч."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Alternating dumbbell bench press","aliases":[],"description":"Hold one dumbbell above the shoulder while you lower and press the other.","technique_steps":["Press away from the chest with your wrists stacked over your forearms. Lower slowly until you can still keep your shoulders steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "694bbd2c-57b9-4d0a-86dd-0024c6d85c39",
+    "slug": "dumbbell-squeeze-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["dumbbells","flat_bench"],
+    "translations": {
+      "ru": {"name":"Жим гантелей лёжа со сведением","aliases":[],"description":"Сведите гантели над грудью и сохраняйте лёгкий контакт между ними на протяжении повтора.","technique_steps":["Выжмите от груди, удерживая кисти на линии предплечий. Опустите под контролем, пока сохраняется устойчивое положение плеч."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dumbbell squeeze press","aliases":[],"description":"Hold the dumbbells together over your chest. Keep them in light contact throughout.","technique_steps":["Press away from the chest with your wrists stacked over your forearms. Lower slowly until you can still keep your shoulders steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "0b9a23bc-2a8e-45b6-94f3-c2bc1daa591d",
+    "slug": "single-arm-dumbbell-floor-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Жим одной гантели лёжа на полу","aliases":[],"description":"Лягте на спину и согните колени. Не отрывайте плечи от пола, а внизу мягко касайтесь пола верхней частью рабочей руки.","technique_steps":["Выжмите от груди, удерживая кисти на линии предплечий. Опустите под контролем, пока сохраняется устойчивое положение плеч."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm dumbbell floor press","aliases":[],"description":"Lie on your back with knees bent. Keep both shoulders on the floor and touch down gently with the working upper arm.","technique_steps":["Press away from the chest with your wrists stacked over your forearms. Lower slowly until you can still keep your shoulders steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "1fd4f524-16cd-4729-9304-e039041d6250",
+    "slug": "smith-machine-decline-bench-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["smith_machine","decline_bench"],
+    "translations": {
+      "ru": {"name":"Жим в Смите на скамье с обратным наклоном","aliases":[],"description":"Зафиксируйте ноги и сдвиньте скамью так, чтобы гриф опускался к нижней части груди.","technique_steps":["Выжмите от груди, удерживая кисти на линии предплечий. Опустите под контролем, пока сохраняется устойчивое положение плеч."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Smith machine decline bench press","aliases":[],"description":"Secure your feet and position the bench so the bar lines up with your lower chest.","technique_steps":["Press away from the chest with your wrists stacked over your forearms. Lower slowly until you can still keep your shoulders steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "b4d97103-1a84-4e86-8b45-b9f1b6579a6c",
+    "slug": "single-arm-lever-chest-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["iso_chest_press_machine"],
+    "translations": {
+      "ru": {"name":"Жим от груди одной рукой в рычажном тренажёре","aliases":[],"description":"Отрегулируйте сиденье до уровня середины груди относительно рукоятки. Обе лопатки держите на спинке.","technique_steps":["Выжмите от груди, удерживая кисти на линии предплечий. Опустите под контролем, пока сохраняется устойчивое положение плеч."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm lever chest press","aliases":[],"description":"Set the seat so the handle aligns with mid-chest and keep both shoulder blades on the pad.","technique_steps":["Press away from the chest with your wrists stacked over your forearms. Lower slowly until you can still keep your shoulders steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "52060c53-20c9-4c4d-b2d4-8e9ac3e41f19",
+    "slug": "incline-lever-chest-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["incline_chest_press_machine"],
+    "translations": {
+      "ru": {"name":"Жим от груди вверх в рычажном тренажёре","aliases":[],"description":"Расположите рукоятки у верхней части груди и сохраняйте контакт со спинкой.","technique_steps":["Выжмите от груди, удерживая кисти на линии предплечий. Опустите под контролем, пока сохраняется устойчивое положение плеч."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Incline lever chest press","aliases":[],"description":"Set the handles near the upper chest and keep your back against the pad throughout.","technique_steps":["Press away from the chest with your wrists stacked over your forearms. Lower slowly until you can still keep your shoulders steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "bf899675-18fb-449e-89ee-69e72f7bb546",
+    "slug": "decline-lever-chest-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["decline_chest_press_machine"],
+    "translations": {
+      "ru": {"name":"Жим от груди вниз в рычажном тренажёре","aliases":[],"description":"Настройте сиденье так, чтобы рукоятки в начале находились у нижней части груди.","technique_steps":["Выжмите от груди, удерживая кисти на линии предплечий. Опустите под контролем, пока сохраняется устойчивое положение плеч."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Decline lever chest press","aliases":[],"description":"Adjust the seat so the handles begin near your lower chest.","technique_steps":["Press away from the chest with your wrists stacked over your forearms. Lower slowly until you can still keep your shoulders steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "fdab3675-0f79-4692-a816-bcb8c8bf55ba",
+    "slug": "standing-cable-chest-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {"name":"Жим от груди стоя на блоках","aliases":[],"description":"Установите блоки на высоту груди, встаньте к ним спиной и выставьте одну ногу вперёд.","technique_steps":["Выжмите от груди, удерживая кисти на линии предплечий. Опустите под контролем, пока сохраняется устойчивое положение плеч."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Standing cable chest press","aliases":[],"description":"Set the pulleys around chest height and face away from them in a split stance.","technique_steps":["Press away from the chest with your wrists stacked over your forearms. Lower slowly until you can still keep your shoulders steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "bc1e8ef2-108d-4d13-a11f-e4bbf162ecb4",
+    "slug": "single-arm-standing-cable-chest-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {"name":"Жим от груди одной рукой стоя на блоке","aliases":[],"description":"Встаньте спиной к блоку на уровне груди, выставив одну ногу вперёд. Не разворачивайте корпус.","technique_steps":["Выжмите от груди, удерживая кисти на линии предплечий. Опустите под контролем, пока сохраняется устойчивое положение плеч."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm standing cable chest press","aliases":[],"description":"Stand facing away from a chest-height pulley with one foot forward. Keep your ribs facing ahead.","technique_steps":["Press away from the chest with your wrists stacked over your forearms. Lower slowly until you can still keep your shoulders steady."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "43a3f5a1-d8de-4320-a856-76a892d8be96",
+    "slug": "decline-dumbbell-fly",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "chest_fly",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["front_delts"],
+    "equipment": ["dumbbells","decline_bench"],
+    "translations": {
+      "ru": {"name":"Разводка гантелей на скамье с обратным наклоном","aliases":[],"description":"Зафиксируйте ноги и удерживайте гантели над нижней частью груди.","technique_steps":["Слегка согните локти и сведите руки по широкой дуге. Вернитесь до лёгкого растяжения в груди."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Decline dumbbell fly","aliases":[],"description":"Anchor your feet on the bench and hold the dumbbells over the lower chest.","technique_steps":["Keep a small bend in your elbows as you bring your arms together in a wide arc. Return until you feel a mild stretch across the chest."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "9b79f5eb-3042-46d2-b57d-fd4499a7a450",
+    "slug": "dumbbell-floor-fly",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "chest_fly",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["front_delts"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Разводка гантелей лёжа на полу","aliases":[],"description":"Лягте на спину и поставьте стопы на пол. Ограничьте глубину касанием пола.","technique_steps":["Слегка согните локти и сведите руки по широкой дуге. Вернитесь до лёгкого растяжения в груди."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dumbbell floor fly","aliases":[],"description":"Lie on your back with your feet planted. Let the floor limit the depth of the movement.","technique_steps":["Keep a small bend in your elbows as you bring your arms together in a wide arc. Return until you feel a mild stretch across the chest."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "c3f4c8f2-e4ec-4d47-a879-2dfd88ad7661",
+    "slug": "single-arm-cable-fly",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "chest_fly",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["front_delts"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {"name":"Сведение одной руки на блоке","aliases":[],"description":"Встаньте боком к блоку на уровне груди и удерживайте корпус неподвижно.","technique_steps":["Слегка согните локти и сведите руки по широкой дуге. Вернитесь до лёгкого растяжения в груди."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm cable fly","aliases":[],"description":"Stand side-on to a chest-height pulley and brace so your torso stays still.","technique_steps":["Keep a small bend in your elbows as you bring your arms together in a wide arc. Return until you feel a mild stretch across the chest."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "36a3f077-610b-4d0d-85ee-504dc8c7c7e4",
+    "slug": "high-to-low-cable-fly",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "chest_fly",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["front_delts"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {"name":"Сведение рук на блоках сверху вниз","aliases":[],"description":"Установите блоки высоко. Сводите кисти перед нижними рёбрами.","technique_steps":["Слегка согните локти и сведите руки по широкой дуге. Вернитесь до лёгкого растяжения в груди."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"High-to-low cable fly","aliases":[],"description":"Set both pulleys high. Bring your hands together in front of your lower ribs.","technique_steps":["Keep a small bend in your elbows as you bring your arms together in a wide arc. Return until you feel a mild stretch across the chest."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "9fa621f6-f9d4-4e7c-8ece-b942badc6237",
+    "slug": "flat-bench-cable-fly",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "chest_fly",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["front_delts"],
+    "equipment": ["cable_crossover","flat_bench"],
+    "translations": {
+      "ru": {"name":"Сведение рук на нижних блоках лёжа","aliases":[],"description":"Поставьте горизонтальную скамью между нижними блоками и возьмите по рукоятке в каждую руку.","technique_steps":["Слегка согните локти и сведите руки по широкой дуге. Вернитесь до лёгкого растяжения в груди."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Flat bench cable fly","aliases":[],"description":"Center a flat bench between two low pulleys and hold a handle in each hand.","technique_steps":["Keep a small bend in your elbows as you bring your arms together in a wide arc. Return until you feel a mild stretch across the chest."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "2e691d3f-b011-4fc3-9a4f-c8e5f5bacbac",
+    "slug": "seated-barbell-overhead-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["triceps","side_delts","abs"],
+    "equipment": ["barbell","adjustable_bench","rack"],
+    "translations": {
+      "ru": {"name":"Жим штанги вверх сидя","aliases":[],"description":"Установите спинку почти вертикально и разместите штангу на высоте верхней части груди.","technique_steps":["Выжмите вверх, не выпячивая рёбра. Плавно опустите вес, оставляя кисти на линии предплечий."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Seated barbell overhead press","aliases":[],"description":"Set the backrest nearly upright and position the bar at upper chest height.","technique_steps":["Press up without flaring your ribs. Lower the load smoothly while keeping your wrists over your forearms."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "934ee8e2-eb75-4763-9084-55b481e80d7e",
+    "slug": "single-arm-standing-dumbbell-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["triceps","side_delts","abs"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Жим одной гантели вверх стоя","aliases":[],"description":"Держите гантель у плеча и сохраняйте плечи на одном уровне при подъёме.","technique_steps":["Выжмите вверх, не выпячивая рёбра. Плавно опустите вес, оставляя кисти на линии предплечий."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm standing dumbbell press","aliases":[],"description":"Hold a dumbbell at shoulder height and keep your shoulders level as it rises.","technique_steps":["Press up without flaring your ribs. Lower the load smoothly while keeping your wrists over your forearms."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "4ef40fa5-a203-45d2-8ce3-ae9b76daf7b5",
+    "slug": "alternating-seated-dumbbell-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["triceps","side_delts","abs"],
+    "equipment": ["dumbbells","adjustable_bench"],
+    "translations": {
+      "ru": {"name":"Попеременный жим гантелей вверх сидя","aliases":[],"description":"Сядьте с опорой на почти вертикальную спинку. Пока одна рука жмёт, держите вторую гантель у плеча.","technique_steps":["Выжмите вверх, не выпячивая рёбра. Плавно опустите вес, оставляя кисти на линии предплечий."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Alternating seated dumbbell press","aliases":[],"description":"Sit against a nearly upright backrest. Keep the idle dumbbell at shoulder height while you press the other.","technique_steps":["Press up without flaring your ribs. Lower the load smoothly while keeping your wrists over your forearms."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "bb7f3d44-6ca0-46f5-8e02-8970a4c44c54",
+    "slug": "neutral-grip-dumbbell-shoulder-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["triceps","side_delts","abs"],
+    "equipment": ["dumbbells","adjustable_bench"],
+    "translations": {
+      "ru": {"name":"Жим гантелей вверх нейтральным хватом","aliases":[],"description":"Сядьте прямо, разверните ладони друг к другу, а большие пальцы к плечам.","technique_steps":["Выжмите вверх, не выпячивая рёбра. Плавно опустите вес, оставляя кисти на линии предплечий."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Neutral-grip dumbbell shoulder press","aliases":[],"description":"Sit upright with thumbs toward your shoulders and palms facing each other.","technique_steps":["Press up without flaring your ribs. Lower the load smoothly while keeping your wrists over your forearms."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "466ee805-cc3e-4521-821b-740e797e97ec",
+    "slug": "seated-z-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["triceps","side_delts","abs"],
+    "equipment": ["barbell","rack"],
+    "translations": {
+      "ru": {"name":"Жим штанги сидя на полу","aliases":[],"description":"Сядьте на пол с вытянутыми вперёд ногами. Установите штангу на низкие страховочные упоры.","technique_steps":["Выжмите вверх, не выпячивая рёбра. Плавно опустите вес, оставляя кисти на линии предплечий."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Seated Z press","aliases":[],"description":"Sit tall on the floor with legs forward and the bar on low rack safeties.","technique_steps":["Press up without flaring your ribs. Lower the load smoothly while keeping your wrists over your forearms."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "465bb7bd-af08-471a-9d3d-d0614a17bd24",
+    "slug": "single-arm-kettlebell-strict-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["triceps","side_delts","abs"],
+    "equipment": ["kettlebell"],
+    "translations": {
+      "ru": {"name":"Строгий жим гири одной рукой","aliases":[],"description":"Удерживайте гирю у плеча с опорой на предплечье. Не подталкивайте вес ногами.","technique_steps":["Выжмите вверх, не выпячивая рёбра. Плавно опустите вес, оставляя кисти на линии предплечий."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm kettlebell strict press","aliases":[],"description":"Hold a kettlebell in the rack position. Keep your legs still and let your forearm support the bell.","technique_steps":["Press up without flaring your ribs. Lower the load smoothly while keeping your wrists over your forearms."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "8aba5950-b4ca-42e8-98ab-f744facfcb90",
+    "slug": "double-kettlebell-strict-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["triceps","side_delts","abs"],
+    "equipment": ["kettlebell"],
+    "translations": {
+      "ru": {"name":"Строгий жим двух гирь","aliases":[],"description":"Удерживайте обе гири у плеч с опорой на предплечья. Плотно поставьте стопы на пол.","technique_steps":["Выжмите вверх, не выпячивая рёбра. Плавно опустите вес, оставляя кисти на линии предплечий."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Double kettlebell strict press","aliases":[],"description":"Hold both bells against your forearms at shoulder height with your feet firmly planted.","technique_steps":["Press up without flaring your ribs. Lower the load smoothly while keeping your wrists over your forearms."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "25fcbe8a-138c-41e2-964e-e0d70a23f91c",
+    "slug": "half-kneeling-single-arm-kettlebell-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["triceps","side_delts","abs"],
+    "equipment": ["kettlebell"],
+    "translations": {
+      "ru": {"name":"Жим гири одной рукой с колена","aliases":[],"description":"Опуститесь на колено со стороны рабочей руки. Удерживайте таз развёрнутым вперёд.","technique_steps":["Выжмите вверх, не выпячивая рёбра. Плавно опустите вес, оставляя кисти на линии предплечий."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Half-kneeling single-arm kettlebell press","aliases":[],"description":"Kneel on the same side as the working arm. Keep your hips facing forward.","technique_steps":["Press up without flaring your ribs. Lower the load smoothly while keeping your wrists over your forearms."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "fc088265-97b9-48a2-8483-fa467fb35a37",
+    "slug": "single-arm-landmine-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["triceps","side_delts","abs"],
+    "equipment": ["barbell","landmine"],
+    "translations": {
+      "ru": {"name":"Жим штанги в лэндмайне одной рукой","aliases":[],"description":"Встаньте лицом к креплению и удерживайте свободный конец грифа у плеча. Выжимайте по диагонали вверх.","technique_steps":["Выжмите вверх, не выпячивая рёбра. Плавно опустите вес, оставляя кисти на линии предплечий."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm landmine press","aliases":[],"description":"Stand facing the anchor and hold the free end at one shoulder. Follow the bar's upward diagonal.","technique_steps":["Press up without flaring your ribs. Lower the load smoothly while keeping your wrists over your forearms."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "bced64bb-1add-4c94-8873-e91cd7354b17",
+    "slug": "half-kneeling-landmine-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["triceps","side_delts","abs"],
+    "equipment": ["barbell","landmine"],
+    "translations": {
+      "ru": {"name":"Жим штанги в лэндмайне с колена","aliases":[],"description":"Опуститесь на колено со стороны рабочей руки. Выжимайте гриф от плеча вперёд и вверх.","technique_steps":["Выжмите вверх, не выпячивая рёбра. Плавно опустите вес, оставляя кисти на линии предплечий."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Half-kneeling landmine press","aliases":[],"description":"Kneel on the working-arm side and hold the bar at shoulder height, pressing toward the anchor and up.","technique_steps":["Press up without flaring your ribs. Lower the load smoothly while keeping your wrists over your forearms."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "f3c43f1d-580d-458f-82a8-78dba6343c8d",
+    "slug": "single-arm-cable-shoulder-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["triceps","side_delts","abs"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {"name":"Жим вверх одной рукой на нижнем блоке","aliases":[],"description":"Встаньте спиной к нижнему блоку и подведите рукоятку к плечу без наклона корпуса.","technique_steps":["Выжмите вверх, не выпячивая рёбра. Плавно опустите вес, оставляя кисти на линии предплечий."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm cable shoulder press","aliases":[],"description":"Face away from a low pulley and bring the handle to your shoulder without leaning.","technique_steps":["Press up without flaring your ribs. Lower the load smoothly while keeping your wrists over your forearms."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "5ff12f53-537c-45f6-90c7-e9dd33bebe3a",
+    "slug": "single-arm-machine-shoulder-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["triceps","side_delts","abs"],
+    "equipment": ["iso_shoulder_press_machine"],
+    "translations": {
+      "ru": {"name":"Жим вверх одной рукой в тренажёре","aliases":[],"description":"Настройте рукоятку по высоте плеча и прижмитесь к спинке перед жимом.","technique_steps":["Выжмите вверх, не выпячивая рёбра. Плавно опустите вес, оставляя кисти на линии предплечий."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm machine shoulder press","aliases":[],"description":"Align the handle with your shoulder and brace against the backrest before pressing.","technique_steps":["Press up without flaring your ribs. Lower the load smoothly while keeping your wrists over your forearms."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "96cceac5-d1c8-4084-abae-c7512e789074",
+    "slug": "underhand-barbell-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {"name":"Тяга штанги в наклоне обратным хватом","aliases":[],"description":"Наклонитесь от таза, возьмите штангу обратным хватом и тяните её к поясу.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Underhand barbell row","aliases":[],"description":"Hinge forward with an underhand grip and bring the bar toward your waist.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "ed856399-5677-44b2-b6e0-28b9ee505b18",
+    "slug": "wide-grip-barbell-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {"name":"Тяга штанги в наклоне широким хватом","aliases":[],"description":"Наклонитесь от таза, возьмитесь шире плеч и тяните гриф к нижним рёбрам.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Wide-grip barbell row","aliases":[],"description":"Hinge forward with a grip wider than your shoulders and pull toward the lower ribs.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "7f9a1d12-1359-4a36-bf13-2bb7858e2674",
+    "slug": "two-arm-dumbbell-bent-over-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Тяга двух гантелей в наклоне","aliases":[],"description":"Наклонитесь от таза и опустите обе гантели под плечи.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Two-arm dumbbell bent-over row","aliases":[],"description":"Hinge at the hips with both dumbbells hanging below your shoulders.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "9a9f3e72-fa12-4208-878b-b565181f0854",
+    "slug": "dumbbell-seal-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["dumbbells","seal_row_bench"],
+    "translations": {
+      "ru": {"name":"Тяга гантелей лёжа на высокой скамье","aliases":[],"description":"Лягте лицом вниз на высокую скамью так, чтобы гантели свободно свисали под ней.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dumbbell seal row","aliases":[],"description":"Lie face down high enough for the dumbbells to hang freely beneath the bench.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "444f1ca8-3ea6-4557-8499-7572d101d2e7",
+    "slug": "barbell-seal-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["barbell","seal_row_bench"],
+    "translations": {
+      "ru": {"name":"Тяга штанги лёжа на высокой скамье","aliases":[],"description":"Лягте лицом вниз и подтягивайте штангу к нижней стороне скамьи, не отрывая грудь.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Barbell seal row","aliases":[],"description":"Lie face down and pull the bar toward the underside of the bench without raising your chest.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "2001e657-fd3e-4922-9636-16697ed1c0db",
+    "slug": "single-arm-landmine-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["barbell","landmine"],
+    "translations": {
+      "ru": {"name":"Тяга штанги в лэндмайне одной рукой","aliases":[],"description":"Встаньте рядом с нагруженным концом, наклонитесь и возьмитесь за гриф ближайшей рукой.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm landmine row","aliases":[],"description":"Stand beside the loaded end, hinge, and hold the sleeve with the hand closest to it.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "ecc4b21b-297d-4889-9043-92644d6cac63",
+    "slug": "meadows-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["barbell","landmine"],
+    "translations": {
+      "ru": {"name":"Тяга Медоуза","aliases":[],"description":"Встаньте поперёк грифа в разножке и возьмитесь за втулку сверху. Тяните к рёбрам сбоку.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Meadows row","aliases":[],"description":"Stand across the bar in a staggered stance and grasp the sleeve overhand. Row toward the side of your ribs.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "5004aae3-dfce-4ee5-9d7d-824751abf988",
+    "slug": "kettlebell-gorilla-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["kettlebell"],
+    "translations": {
+      "ru": {"name":"Попеременная тяга гирь в широком наклоне","aliases":[],"description":"Широко поставьте стопы, оставив гири между ними. Тяните одну гирю, пока вторая стоит на полу.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Kettlebell gorilla row","aliases":[],"description":"Use a wide stance with the bells between your feet. Row one while the other rests on the floor.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "3454cab7-9617-49a0-9100-02d8ed1f5a80",
+    "slug": "single-arm-kettlebell-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["kettlebell","flat_bench"],
+    "translations": {
+      "ru": {"name":"Тяга гири одной рукой в наклоне","aliases":[],"description":"Упритесь свободной рукой в скамью и опустите гирю под рабочее плечо.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm kettlebell row","aliases":[],"description":"Support the free hand on the bench and let the bell hang beneath the working shoulder.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "f5b92eeb-c1c8-4c51-917d-f8d86477a383",
+    "slug": "renegade-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": true,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Тяга гантели в упоре лёжа","aliases":[],"description":"Используйте устойчивые шестигранные гантели. В высоком упоре широко поставьте стопы и почти не переносите вес при тяге.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Renegade row","aliases":[],"description":"Use stable hex dumbbells and set your feet wide in a high plank. Shift as little as possible as you row.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "235c8e04-4fa2-45ac-ab6b-14ca33aca4fb",
+    "slug": "chest-supported-t-bar-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["chest_supported_t_bar"],
+    "translations": {
+      "ru": {"name":"Тяга Т-грифа с упором грудью","aliases":[],"description":"Настройте подушку под грудину и возьмитесь за рукоятки без округления спины.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Chest-supported T-bar row","aliases":[],"description":"Adjust the pad to support your sternum and let your arms reach the handles without rounding your back.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "729da856-3f2b-40a5-8fe3-0b094f2930eb",
+    "slug": "single-arm-lever-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["iso_row_machine"],
+    "translations": {
+      "ru": {"name":"Тяга одной рукой в рычажном тренажёре","aliases":[],"description":"Настройте сиденье, чтобы доставать до рукоятки, сохраняя контакт груди с подушкой.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm lever row","aliases":[],"description":"Set the seat so you can reach the handle without leaning away from the chest pad.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "7ca16acb-1c95-4425-9bba-691218d8f47a",
+    "slug": "plate-loaded-high-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["high_row_machine"],
+    "translations": {
+      "ru": {"name":"Рычажная тяга сверху к корпусу","aliases":[],"description":"Прижмитесь грудью к упору и тяните высокие рукоятки вниз к нижним рёбрам.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Plate-loaded high row","aliases":[],"description":"Set your chest against the support and pull the raised handles down toward your lower ribs.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "8798fddf-7476-4d15-be9a-6d43f3209766",
+    "slug": "plate-loaded-low-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["low_row_machine"],
+    "translations": {
+      "ru": {"name":"Рычажная тяга снизу к поясу","aliases":[],"description":"Прижмитесь грудью к упору и тяните низкие рукоятки назад к поясу.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Plate-loaded low row","aliases":[],"description":"Set your chest against the support and pull the low handles back toward your waist.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "ba75c2f7-d38e-43f4-a14e-954aeeaa13bc",
+    "slug": "underhand-seated-cable-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["seated_row_machine"],
+    "translations": {
+      "ru": {"name":"Горизонтальная тяга блока обратным хватом","aliases":[],"description":"Возьмите рукоятку ладонями вверх и слегка согните колени.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Underhand seated cable row","aliases":[],"description":"Use an underhand grip with the palms up and a slight bend at the knees.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "67f568ae-66e9-4690-bb9a-b9aa3e63bc8d",
+    "slug": "standing-cable-row",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","upper_back"],
+    "secondary_muscles": ["biceps","rear_delts","forearms"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {"name":"Горизонтальная тяга блока стоя","aliases":[],"description":"Встаньте лицом к блоку на уровне пояса, отойдите до лёгкого натяжения и немного согните колени.","technique_steps":["Отведите локоть назад и сведите лопатку к позвоночнику. Плавно верните вес без разворота корпуса."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Standing cable row","aliases":[],"description":"Face a waist-height pulley, step back into light cable tension, and soften your knees.","technique_steps":["Draw your elbow back and let your shoulder blade move toward your spine. Return the load smoothly without twisting your torso."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "cf32a2fc-d76c-4aff-bd36-8fb513977ae6",
+    "slug": "weighted-pull-up",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["lats"],
+    "secondary_muscles": ["biceps","upper_back","forearms"],
+    "equipment": ["pull_up_bar","weight_plate","dip_belt"],
+    "translations": {
+      "ru": {"name":"Подтягивания с отягощением","aliases":[],"description":"Закрепите посильный диск на поясе и остановите раскачивание перед каждым повтором.","technique_steps":["Опустите локти к бокам без рывка. Под контролем вернитесь к положению с вытянутыми руками."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Weighted pull-up","aliases":[],"description":"Secure a manageable plate to your belt and settle into a still hang before each rep.","technique_steps":["Bring your elbows down toward your sides without jerking. Return to a long-arm position with your shoulders under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "d6c6c4fd-fcaa-4312-96cf-08c919470642",
+    "slug": "weighted-chin-up",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["lats"],
+    "secondary_muscles": ["biceps","upper_back","forearms"],
+    "equipment": ["pull_up_bar","weight_plate","dip_belt"],
+    "translations": {
+      "ru": {"name":"Подтягивания обратным хватом с отягощением","aliases":[],"description":"Возьмитесь обратным хватом и закрепите диск на поясе, прежде чем убрать ноги с опоры.","technique_steps":["Опустите локти к бокам без рывка. Под контролем вернитесь к положению с вытянутыми руками."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Weighted chin-up","aliases":[],"description":"Use an underhand grip and secure the plate to the belt before stepping off the support.","technique_steps":["Bring your elbows down toward your sides without jerking. Return to a long-arm position with your shoulders under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "f29545a7-3e02-4180-8c9a-126e6f3b1c79",
+    "slug": "single-arm-lat-pulldown",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["lats"],
+    "secondary_muscles": ["biceps","upper_back","forearms"],
+    "equipment": ["lat_pulldown_machine"],
+    "translations": {
+      "ru": {"name":"Тяга верхнего блока одной рукой","aliases":[],"description":"Сядьте под блоком, возьмитесь за одиночную рукоятку и не разворачивайте плечи.","technique_steps":["Опустите локти к бокам без рывка. Под контролем вернитесь к положению с вытянутыми руками."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm lat pulldown","aliases":[],"description":"Sit under the pulley, grasp a single handle, and keep both shoulders facing forward.","technique_steps":["Bring your elbows down toward your sides without jerking. Return to a long-arm position with your shoulders under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "24106d5c-3ce2-47e6-9950-bcccbb00fb65",
+    "slug": "kneeling-cable-lat-pulldown",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_pull",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats"],
+    "secondary_muscles": ["biceps","upper_back","forearms"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {"name":"Тяга верхнего блока с колен","aliases":[],"description":"Встаньте на колени лицом к верхнему блоку и тяните рукоятку к верху груди без отклонения назад.","technique_steps":["Опустите локти к бокам без рывка. Под контролем вернитесь к положению с вытянутыми руками."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Kneeling cable lat pulldown","aliases":[],"description":"Kneel facing a high pulley and pull the handle toward your upper chest without leaning back.","technique_steps":["Bring your elbows down toward your sides without jerking. Return to a long-arm position with your shoulders under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "22d7750c-2723-4827-8571-78f06a91293c",
+    "slug": "paused-back-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["barbell","rack"],
+    "translations": {
+      "ru": {"name":"Приседания со штангой с паузой","aliases":[],"description":"Ненадолго остановитесь внизу, сохраняя напряжение корпуса и давление стоп в пол.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Paused back squat","aliases":[],"description":"Hold the bottom position briefly while staying braced and keeping pressure through your feet.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "2dc69197-1143-49c8-a470-bef01b8e33bd",
+    "slug": "box-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["barbell","rack","plyo_box"],
+    "translations": {
+      "ru": {"name":"Приседания со штангой на тумбу","aliases":[],"description":"Поставьте устойчивую тумбу сзади. Мягко коснитесь её, не отклоняясь назад.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Box squat","aliases":[],"description":"Place a stable box behind you. Touch down gently without rocking back.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "4d81a415-08a2-42a0-8fca-e15f0979ded4",
+    "slug": "safety-bar-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["safety_bar","rack"],
+    "translations": {
+      "ru": {"name":"Приседания с грифом Safety Bar","aliases":[],"description":"Расположите мягкую часть грифа на верхней части спины и держите передние рукоятки без лишнего усилия.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Safety bar squat","aliases":[],"description":"Rest the padded yoke on your upper back and hold the forward handles lightly.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "b91a0889-f7ca-4422-aef9-5a7df7f4f313",
+    "slug": "zercher-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["barbell","rack"],
+    "translations": {
+      "ru": {"name":"Приседания Зерхера","aliases":[],"description":"Удерживайте гриф перед собой в локтевых сгибах. Снимайте его со стоек на высоте пояса.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Zercher squat","aliases":[],"description":"Rest the bar in the crooks of your elbows in front of the body. Start from waist-height rack supports.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "7eb12a53-5488-4839-aa54-a9d67045f39f",
+    "slug": "overhead-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["barbell","rack"],
+    "translations": {
+      "ru": {"name":"Приседания со штангой над головой","aliases":[],"description":"Возьмите посильный вес широким хватом над головой. При опускании удерживайте гриф над серединой стоп.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Overhead squat","aliases":[],"description":"Use a manageable load and a wide overhead grip. Keep the bar over the center of your feet as you descend.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "36047daf-4e8d-47cd-b1e3-d5b9309a8381",
+    "slug": "dumbbell-front-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Приседания с гантелями у плеч","aliases":[],"description":"Удерживайте по гантели у плеч, слегка выведя локти вперёд.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dumbbell front squat","aliases":[],"description":"Hold a dumbbell at each shoulder with your elbows slightly ahead of your ribs.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "c41e395c-9a72-4aa2-b211-fe08749c16eb",
+    "slug": "dumbbell-suitcase-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Приседания с гантелями по бокам","aliases":[],"description":"Держите гантели по бокам и опускайте их рядом с ногами.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dumbbell suitcase squat","aliases":[],"description":"Hold the dumbbells at your sides and keep them beside your legs as you squat.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "2395b85c-6b74-4a66-9983-a9f183b7b83e",
+    "slug": "double-kettlebell-front-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["kettlebell"],
+    "translations": {
+      "ru": {"name":"Фронтальные приседания с двумя гирями","aliases":[],"description":"Удерживайте обе гири у плеч с опорой на предплечья и сохраняйте грудь приподнятой.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Double kettlebell front squat","aliases":[],"description":"Rest both bells against your forearms at shoulder height and keep your chest up.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "880aafc8-5f9c-4877-83ba-d07c08c4baa5",
+    "slug": "kettlebell-goblet-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["kettlebell"],
+    "translations": {
+      "ru": {"name":"Кубковые приседания с гирей","aliases":[],"description":"Прижмите гирю ближе к груди, держась за боковые части рукоятки.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Kettlebell goblet squat","aliases":[],"description":"Hold the bell close to your chest by the sides of the handle.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "fa7df42b-bc0b-4fe1-a70d-ad4712987ac6",
+    "slug": "landmine-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["barbell","landmine"],
+    "translations": {
+      "ru": {"name":"Приседания со штангой в лэндмайне","aliases":[],"description":"Удерживайте свободный конец грифа у груди двумя руками, стоя лицом к креплению.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Landmine squat","aliases":[],"description":"Hold the free end in both hands against your chest and stand facing the anchor.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "df70d92f-ade4-41c6-bb79-de1aa1bd1ee0",
+    "slug": "belt-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["belt_squat_machine"],
+    "translations": {
+      "ru": {"name":"Приседания в тренажёре с поясом","aliases":[],"description":"Закрепите пояс вокруг таза и встаньте по центру над точкой приложения нагрузки.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Belt squat","aliases":[],"description":"Fasten the belt around your hips and stand centered above the loading point.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "a85d3f7d-65d3-4ffb-a455-6de7d2455fa2",
+    "slug": "pendulum-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["pendulum_squat_machine"],
+    "translations": {
+      "ru": {"name":"Маятниковые приседания","aliases":[],"description":"Настройте исходное положение и страховочный ограничитель, затем упритесь плечами в подушки.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Pendulum squat","aliases":[],"description":"Set the start position and safety stop, then brace both shoulders against the pads.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "43e663eb-b81e-4d1a-9ac8-240e4c481166",
+    "slug": "v-squat-machine",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","abs"],
+    "equipment": ["v_squat_machine"],
+    "translations": {
+      "ru": {"name":"Приседания в V-образном тренажёре","aliases":[],"description":"Подведите плечи под подушки и устойчиво поставьте стопы перед снятием стопора.","technique_steps":["Сгибайте тазобедренные суставы и колени, направляя колени по линии носков. Вставайте с опорой на всю стопу."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"V-squat machine","aliases":[],"description":"Set both shoulders beneath the pads and find stable footing before releasing the stop.","technique_steps":["Bend at the hips and knees with the feet planted and knees tracking with your toes. Stand up through your whole foot."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "d97bdb94-2060-435c-b1fb-1f35abcc82ca",
+    "slug": "horizontal-leg-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors"],
+    "equipment": ["horizontal_leg_press_machine"],
+    "translations": {
+      "ru": {"name":"Горизонтальный жим ногами","aliases":[],"description":"Настройте сиденье так, чтобы удобно поставить обе стопы на платформу.","technique_steps":["Опускайте платформу, сгибая колени и тазобедренные суставы, сохраняя опору для таза. Отожмите платформу без резкого выпрямления коленей."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Horizontal leg press","aliases":[],"description":"Adjust the seat so you can reach the platform comfortably with both feet.","technique_steps":["Lower by bending your knees and hips with your pelvis supported. Push the platform away evenly and return without snapping your knees straight."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "bca1bb20-7965-49cc-9005-65a44fbd4245",
+    "slug": "vertical-leg-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors"],
+    "equipment": ["vertical_leg_press_machine"],
+    "translations": {
+      "ru": {"name":"Вертикальный жим ногами","aliases":[],"description":"Установите страховочные ограничители и удерживайте таз на подушке под платформой.","technique_steps":["Опускайте платформу, сгибая колени и тазобедренные суставы, сохраняя опору для таза. Отожмите платформу без резкого выпрямления коленей."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Vertical leg press","aliases":[],"description":"Set the safety stops and keep your pelvis on the pad with the platform directly above you.","technique_steps":["Lower by bending your knees and hips with your pelvis supported. Push the platform away evenly and return without snapping your knees straight."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "8a13b163-4c9e-4ff0-aedf-6c7f8f70865a",
+    "slug": "single-leg-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors"],
+    "equipment": ["leg_press_machine"],
+    "translations": {
+      "ru": {"name":"Жим одной ногой на наклонной платформе","aliases":[],"description":"Поставьте рабочую стопу ближе к центру и не перекашивайте таз на спинке.","technique_steps":["Опускайте платформу, сгибая колени и тазобедренные суставы, сохраняя опору для таза. Отожмите платформу без резкого выпрямления коленей."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-leg press","aliases":[],"description":"Center the working foot and keep your hips level against the pad.","technique_steps":["Lower by bending your knees and hips with your pelvis supported. Push the platform away evenly and return without snapping your knees straight."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "fb5522f2-95a2-498c-a66a-c295288bcb34",
+    "slug": "high-foot-leg-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "squat",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors"],
+    "equipment": ["leg_press_machine"],
+    "translations": {
+      "ru": {"name":"Жим ногами с высокой постановкой стоп","aliases":[],"description":"Разместите стопы выше на платформе и проверьте, что они полностью опираются на неё.","technique_steps":["Опускайте платформу, сгибая колени и тазобедренные суставы, сохраняя опору для таза. Отожмите платформу без резкого выпрямления коленей."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"High-foot leg press","aliases":[],"description":"Place both feet higher on the platform and check that your entire foot stays supported.","technique_steps":["Lower by bending your knees and hips with your pelvis supported. Push the platform away evenly and return without snapping your knees straight."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "eb7e8030-0a9a-4108-97b8-ef51af26aa5e",
+    "slug": "paused-romanian-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["hamstrings","glutes"],
+    "secondary_muscles": ["lower_back","abs"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {"name":"Румынская тяга с паузой","aliases":[],"description":"Остановите штангу чуть ниже колен или выше, если так проще удерживать спину.","technique_steps":["Отведите таз назад, слегка согнув колени, и ведите вес близко к ногам. Выпрямитесь за счёт ягодиц без отклонения назад."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Paused Romanian deadlift","aliases":[],"description":"Pause the bar just below knee height or higher if needed to keep your back steady.","technique_steps":["Push your hips back with a small knee bend and keep the load close. Squeeze your glutes to stand tall without leaning back."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "744523ca-bc65-4dec-a44a-d671e4b5906a",
+    "slug": "kickstand-dumbbell-romanian-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["hamstrings","glutes"],
+    "secondary_muscles": ["lower_back","abs"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Румынская тяга с гантелями и опорной ногой","aliases":[],"description":"Поставьте одну стопу чуть назад на носок. Основной вес оставьте на передней ноге.","technique_steps":["Отведите таз назад, слегка согнув колени, и ведите вес близко к ногам. Выпрямитесь за счёт ягодиц без отклонения назад."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Kickstand dumbbell Romanian deadlift","aliases":[],"description":"Set one foot slightly back on its toes. Keep most of your weight over the front foot.","technique_steps":["Push your hips back with a small knee bend and keep the load close. Squeeze your glutes to stand tall without leaning back."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "dcb65c08-87ea-4f36-a322-5fee91ea51b6",
+    "slug": "single-leg-kettlebell-romanian-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["hamstrings","glutes"],
+    "secondary_muscles": ["lower_back","abs"],
+    "equipment": ["kettlebell"],
+    "translations": {
+      "ru": {"name":"Румынская тяга на одной ноге с гирей","aliases":[],"description":"Держите гирю в руке напротив опорной ноги и отводите свободную ногу назад без разворота таза.","technique_steps":["Отведите таз назад, слегка согнув колени, и ведите вес близко к ногам. Выпрямитесь за счёт ягодиц без отклонения назад."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-leg kettlebell Romanian deadlift","aliases":[],"description":"Hold the bell opposite your standing leg and reach the other leg back without opening your hips.","technique_steps":["Push your hips back with a small knee bend and keep the load close. Squeeze your glutes to stand tall without leaning back."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "0da4cabf-c75a-457c-b742-9a2ff85e9692",
+    "slug": "smith-machine-romanian-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["hamstrings","glutes"],
+    "secondary_muscles": ["lower_back","abs"],
+    "equipment": ["smith_machine"],
+    "translations": {
+      "ru": {"name":"Румынская тяга в Смите","aliases":[],"description":"Встаньте близко к грифу, чтобы он шёл рядом с ногами. Установите ограничители в пределах контролируемой амплитуды.","technique_steps":["Отведите таз назад, слегка согнув колени, и ведите вес близко к ногам. Выпрямитесь за счёт ягодиц без отклонения назад."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Smith machine Romanian deadlift","aliases":[],"description":"Stand close enough to the bar to keep it near your legs. Set stops within your controlled range.","technique_steps":["Push your hips back with a small knee bend and keep the load close. Squeeze your glutes to stand tall without leaning back."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "3054a3b8-2467-42f9-ba63-d69b85dd8f3c",
+    "slug": "kettlebell-romanian-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["hamstrings","glutes"],
+    "secondary_muscles": ["lower_back","abs"],
+    "equipment": ["kettlebell"],
+    "translations": {
+      "ru": {"name":"Румынская тяга с гирей","aliases":[],"description":"Возьмите гирю двумя руками перед бёдрами и держите руки прямыми.","technique_steps":["Отведите таз назад, слегка согнув колени, и ведите вес близко к ногам. Выпрямитесь за счёт ягодиц без отклонения назад."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Kettlebell Romanian deadlift","aliases":[],"description":"Hold a bell with both hands in front of your thighs and keep your arms long.","technique_steps":["Push your hips back with a small knee bend and keep the load close. Squeeze your glutes to stand tall without leaning back."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "beb8c8dc-99da-4cfd-b7b9-463b8d928fb4",
+    "slug": "seated-barbell-good-morning",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["hamstrings","glutes"],
+    "secondary_muscles": ["lower_back","abs"],
+    "equipment": ["barbell","flat_bench","rack"],
+    "translations": {
+      "ru": {"name":"Наклоны со штангой сидя","aliases":[],"description":"Сядьте верхом на устойчивую скамью со штангой на верхе спины и плотно поставьте стопы.","technique_steps":["Отведите таз назад, слегка согнув колени, и ведите вес близко к ногам. Выпрямитесь за счёт ягодиц без отклонения назад."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Seated barbell good morning","aliases":[],"description":"Sit astride a stable bench with the bar on your upper back and your feet planted.","technique_steps":["Push your hips back with a small knee bend and keep the load close. Squeeze your glutes to stand tall without leaning back."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "cb76f557-2f3f-45e6-9513-e4feb191c1ea",
+    "slug": "kettlebell-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes","hamstrings"],
+    "secondary_muscles": ["quads","lower_back","forearms"],
+    "equipment": ["kettlebell"],
+    "translations": {
+      "ru": {"name":"Становая тяга с гирей","aliases":[],"description":"Поставьте гирю между стопами и возьмитесь двумя руками, оставив плечи над рукояткой.","technique_steps":["Напрягите корпус и оттолкнитесь от пола, разгибая колени и таз одновременно. Опустите вес под контролем перед следующим повтором."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Kettlebell deadlift","aliases":[],"description":"Place the bell between your feet and grip it with both hands, shoulders above the handle.","technique_steps":["Brace your trunk, then push the floor away to extend your knees and hips together. Set the load down under control before the next rep."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "bd922485-ba72-4a35-9ada-9fe498b9455e",
+    "slug": "double-kettlebell-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes","hamstrings"],
+    "secondary_muscles": ["quads","lower_back","forearms"],
+    "equipment": ["kettlebell"],
+    "translations": {
+      "ru": {"name":"Становая тяга с двумя гирями","aliases":[],"description":"Поставьте гири снаружи стоп и наклонитесь к ним, не перекашивая корпус.","technique_steps":["Напрягите корпус и оттолкнитесь от пола, разгибая колени и таз одновременно. Опустите вес под контролем перед следующим повтором."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Double kettlebell deadlift","aliases":[],"description":"Place both bells outside your feet and reach down symmetrically.","technique_steps":["Brace your trunk, then push the floor away to extend your knees and hips together. Set the load down under control before the next rep."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "ea391c71-622f-490b-9f91-0b252e4c06a2",
+    "slug": "dumbbell-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes","hamstrings"],
+    "secondary_muscles": ["quads","lower_back","forearms"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Становая тяга с гантелями","aliases":[],"description":"Поставьте гантели по бокам стоп и начинайте каждый повтор из устойчивого положения.","technique_steps":["Напрягите корпус и оттолкнитесь от пола, разгибая колени и таз одновременно. Опустите вес под контролем перед следующим повтором."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dumbbell deadlift","aliases":[],"description":"Place the dumbbells beside your feet and start each rep from a stable position.","technique_steps":["Brace your trunk, then push the floor away to extend your knees and hips together. Set the load down under control before the next rep."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "0c0b6cdd-df56-4763-9387-5a09fa41fa18",
+    "slug": "deficit-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes","hamstrings"],
+    "secondary_muscles": ["quads","lower_back","forearms"],
+    "equipment": ["barbell","lifting_platform_step"],
+    "translations": {
+      "ru": {"name":"Становая тяга с возвышения","aliases":[],"description":"Встаньте на низкую ровную устойчивую платформу. Используйте только ту дополнительную глубину, которую контролируете.","technique_steps":["Напрягите корпус и оттолкнитесь от пола, разгибая колени и таз одновременно. Опустите вес под контролем перед следующим повтором."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Deficit deadlift","aliases":[],"description":"Stand on a low, flat and stable lifting platform and use only the extra depth you can control.","technique_steps":["Brace your trunk, then push the floor away to extend your knees and hips together. Set the load down under control before the next rep."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "1420126b-7d4e-4c04-a93a-ee0c171a49c9",
+    "slug": "snatch-grip-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes","hamstrings"],
+    "secondary_muscles": ["quads","lower_back","forearms"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {"name":"Становая тяга рывковым хватом","aliases":[],"description":"Возьмите гриф широким симметричным хватом, удерживая его у голеней и напрягая верх спины.","technique_steps":["Напрягите корпус и оттолкнитесь от пола, разгибая колени и таз одновременно. Опустите вес под контролем перед следующим повтором."],"common_mistakes":[],"warnings":["Отработайте движение с лёгким учебным грифом и убедитесь, что вокруг есть достаточно места для безопасного сброса штанги."]},
+      "en": {"name":"Snatch-grip deadlift","aliases":[],"description":"Use a wide, even grip with the bar close to your shins and your upper back braced.","technique_steps":["Brace your trunk, then push the floor away to extend your knees and hips together. Set the load down under control before the next rep."],"common_mistakes":[],"warnings":["Practice with a light training bar and keep enough space around you to drop it safely."]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "8440b9ae-1f48-4be5-a0ce-2b912143662c",
+    "slug": "paused-deadlift",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes","hamstrings"],
+    "secondary_muscles": ["quads","lower_back","forearms"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {"name":"Становая тяга с паузой","aliases":[],"description":"Остановите штангу сразу после отрыва от пола, не отпуская её вперёд, и завершите подъём.","technique_steps":["Напрягите корпус и оттолкнитесь от пола, разгибая колени и таз одновременно. Опустите вес под контролем перед следующим повтором."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Paused deadlift","aliases":[],"description":"Pause just off the floor without letting the bar drift forward, then finish the lift.","technique_steps":["Brace your trunk, then push the floor away to extend your knees and hips together. Set the load down under control before the next rep."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "16577063-0734-4238-878a-5e2bcf1d2c65",
+    "slug": "dumbbell-reverse-lunge",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","hamstrings","abs"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Выпады назад с гантелями","aliases":[],"description":"Держите гантели по бокам и шагните назад на расстояние, при котором передняя пятка остаётся на полу.","technique_steps":["Согните оба колена, опираясь на рабочую стопу. Для подъёма оттолкнитесь этой стопой, направляя колено по линии носков."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dumbbell reverse lunge","aliases":[],"description":"Keep the dumbbells by your sides and step one foot back far enough to keep your front heel down.","technique_steps":["Bend both knees with your weight centered over the working foot. Push through that foot to rise with your knee tracking your toes."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "6a906c39-0e65-4cb7-9e23-c7df5b97195b",
+    "slug": "barbell-reverse-lunge",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","hamstrings","abs"],
+    "equipment": ["barbell","rack"],
+    "translations": {
+      "ru": {"name":"Выпады назад со штангой","aliases":[],"description":"Снимите штангу со стоек на верх спины и удерживайте корпус устойчивым при шаге назад.","technique_steps":["Согните оба колена, опираясь на рабочую стопу. Для подъёма оттолкнитесь этой стопой, направляя колено по линии носков."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Barbell reverse lunge","aliases":[],"description":"Take the bar from a rack onto your upper back and maintain a steady torso as you step back.","technique_steps":["Bend both knees with your weight centered over the working foot. Push through that foot to rise with your knee tracking your toes."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "d59b5512-b439-45a4-868d-0d8d7b5527c0",
+    "slug": "kettlebell-front-rack-reverse-lunge",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","hamstrings","abs"],
+    "equipment": ["kettlebell"],
+    "translations": {
+      "ru": {"name":"Выпады назад с гирей у плеча","aliases":[],"description":"Удерживайте гирю у плеча с опорой на предплечье и шагайте назад по прямой.","technique_steps":["Согните оба колена, опираясь на рабочую стопу. Для подъёма оттолкнитесь этой стопой, направляя колено по линии носков."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Kettlebell front-rack reverse lunge","aliases":[],"description":"Hold one bell against your forearm at shoulder height and step straight back.","technique_steps":["Bend both knees with your weight centered over the working foot. Push through that foot to rise with your knee tracking your toes."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "bc31060b-ca5b-4cdb-b2bf-53dcf64e9cc2",
+    "slug": "dumbbell-lateral-lunge",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","hamstrings","abs"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Боковые выпады с гантелями","aliases":[],"description":"Шагните в сторону и отведите таз над рабочей ногой, оставляя вторую ногу прямой.","technique_steps":["Согните оба колена, опираясь на рабочую стопу. Для подъёма оттолкнитесь этой стопой, направляя колено по линии носков."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dumbbell lateral lunge","aliases":[],"description":"Step to the side and sink your hips over the stepping leg while the other leg stays long.","technique_steps":["Bend both knees with your weight centered over the working foot. Push through that foot to rise with your knee tracking your toes."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "d6584d05-de28-45a4-bf8a-979c44eff6cb",
+    "slug": "barbell-split-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","hamstrings","abs"],
+    "equipment": ["barbell","rack"],
+    "translations": {
+      "ru": {"name":"Сплит-присед со штангой","aliases":[],"description":"Поставьте ноги в разножку и сохраняйте их положение весь подход.","technique_steps":["Согните оба колена, опираясь на рабочую стопу. Для подъёма оттолкнитесь этой стопой, направляя колено по линии носков."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Barbell split squat","aliases":[],"description":"Keep both feet in place in a staggered stance throughout the set.","technique_steps":["Bend both knees with your weight centered over the working foot. Push through that foot to rise with your knee tracking your toes."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "6c5dcb72-9f98-4368-90ef-f32d0836b1d6",
+    "slug": "dumbbell-split-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","hamstrings","abs"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Сплит-присед с гантелями","aliases":[],"description":"Держите гантели по бокам. Поставьте ноги в разножку, подняв заднюю пятку.","technique_steps":["Согните оба колена, опираясь на рабочую стопу. Для подъёма оттолкнитесь этой стопой, направляя колено по линии носков."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dumbbell split squat","aliases":[],"description":"Hold a dumbbell by each side and take a split stance with the back heel raised.","technique_steps":["Bend both knees with your weight centered over the working foot. Push through that foot to rise with your knee tracking your toes."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "22825317-1cab-49e8-a1eb-55926ff0a1b8",
+    "slug": "barbell-bulgarian-split-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","hamstrings","abs"],
+    "equipment": ["barbell","rack","flat_bench"],
+    "translations": {
+      "ru": {"name":"Болгарские сплит-приседы со штангой","aliases":[],"description":"Возьмите штангу на верх спины и поставьте заднюю стопу на устойчивую скамью перед опусканием.","technique_steps":["Согните оба колена, опираясь на рабочую стопу. Для подъёма оттолкнитесь этой стопой, направляя колено по линии носков."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Barbell Bulgarian split squat","aliases":[],"description":"Take the bar across your upper back and place the rear foot on a stable bench before lowering.","technique_steps":["Bend both knees with your weight centered over the working foot. Push through that foot to rise with your knee tracking your toes."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "8b55f698-5d72-4ad4-a6e3-31c401dad81b",
+    "slug": "front-foot-elevated-split-squat",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lunge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["adductors","hamstrings","abs"],
+    "equipment": ["dumbbells","aerobic_step"],
+    "translations": {
+      "ru": {"name":"Сплит-присед с передней ногой на платформе","aliases":[],"description":"Полностью поставьте переднюю стопу на устойчивую низкую платформу и примите положение разножки.","technique_steps":["Согните оба колена, опираясь на рабочую стопу. Для подъёма оттолкнитесь этой стопой, направляя колено по линии носков."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Front-foot-elevated split squat","aliases":[],"description":"Place your front foot fully on a stable low step and take a split stance.","technique_steps":["Bend both knees with your weight centered over the working foot. Push through that foot to rise with your knee tracking your toes."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "941be449-ea6a-4b4a-a64b-54162ecbf17c",
+    "slug": "dumbbell-hip-thrust",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings","abs"],
+    "equipment": ["dumbbells","flat_bench"],
+    "translations": {
+      "ru": {"name":"Подъём таза с гантелью и опорой на скамью","aliases":[],"description":"Упритесь лопатками в край скамьи и удерживайте гантель на тазу через мягкую прокладку.","technique_steps":["Оттолкнитесь опорной стопой или обеими стопами, чтобы разогнуть тазобедренные суставы. Опуститесь, сохраняя поясницу без прогиба вверху."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dumbbell hip thrust","aliases":[],"description":"Support your shoulder blades on the edge of the bench and hold one padded dumbbell over your hips.","technique_steps":["Drive through the planted foot or feet to extend the hips. Lower without arching your lower back at the top."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "5861847e-8c5e-49e0-9a48-a45f869f789a",
+    "slug": "dumbbell-glute-bridge",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings","abs"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Ягодичный мост на полу с гантелью","aliases":[],"description":"Лягте на спину, согните колени и придерживайте гантель на тазу через мягкую прокладку.","technique_steps":["Оттолкнитесь опорной стопой или обеими стопами, чтобы разогнуть тазобедренные суставы. Опуститесь, сохраняя поясницу без прогиба вверху."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dumbbell glute bridge","aliases":[],"description":"Lie on your back with knees bent and secure a cushioned dumbbell over your hips.","technique_steps":["Drive through the planted foot or feet to extend the hips. Lower without arching your lower back at the top."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "84d7c456-3d64-4eab-9f34-df568359b1a3",
+    "slug": "barbell-glute-bridge",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings","abs"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {"name":"Ягодичный мост на полу со штангой","aliases":[],"description":"Лягте спиной на пол и расположите штангу с накладкой в сгибе таза.","technique_steps":["Оттолкнитесь опорной стопой или обеими стопами, чтобы разогнуть тазобедренные суставы. Опуститесь, сохраняя поясницу без прогиба вверху."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Barbell glute bridge","aliases":[],"description":"Lie flat on the floor and position the padded bar in your hip crease.","technique_steps":["Drive through the planted foot or feet to extend the hips. Lower without arching your lower back at the top."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "f7968e2d-8ef7-4e73-b841-0681ba84dc8b",
+    "slug": "machine-hip-thrust",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings","abs"],
+    "equipment": ["hip_thrust_machine"],
+    "translations": {
+      "ru": {"name":"Подъём таза в тренажёре","aliases":[],"description":"Закрепите пояс на тазу или опустите мягкий рычаг. Плотно поставьте обе стопы на платформу.","technique_steps":["Оттолкнитесь опорной стопой или обеими стопами, чтобы разогнуть тазобедренные суставы. Опуститесь, сохраняя поясницу без прогиба вверху."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Machine hip thrust","aliases":[],"description":"Fasten the hip belt or lower the padded lever and place both feet firmly on the footplate.","technique_steps":["Drive through the planted foot or feet to extend the hips. Lower without arching your lower back at the top."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "edede20f-0c39-4894-a9e9-a40d2f96d191",
+    "slug": "standing-machine-glute-kickback",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hip_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["hamstrings","abs"],
+    "equipment": ["glute_kickback_machine"],
+    "translations": {
+      "ru": {"name":"Отведение ноги назад в тренажёре","aliases":[],"description":"Уприте рабочую стопу в подушку или платформу и устойчиво возьмитесь за рукоятки.","technique_steps":["Отведите бедро назад до разгибания тазобедренного сустава, не наклоняя таз. Медленно вернитесь перед следующим повтором."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Standing machine glute kickback","aliases":[],"description":"Align your working foot with the pad or platform and take firm support with your hands.","technique_steps":["Move your thigh back until the hip is extended without tilting the pelvis. Return slowly before the next rep."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "27d85768-4b5e-4dbe-83c7-295aee94b21a",
+    "slug": "standing-single-leg-machine-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "knee_flexion",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["hamstrings"],
+    "secondary_muscles": ["calves"],
+    "equipment": ["standing_leg_curl_machine"],
+    "translations": {
+      "ru": {"name":"Сгибание одной ноги стоя в тренажёре","aliases":[],"description":"Совместите колено с осью тренажёра и разместите валик выше пятки.","technique_steps":["Согните рабочее колено, удерживая бедро и таз неподвижно. Медленно разогните ногу обратно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Standing single-leg machine curl","aliases":[],"description":"Align your knee with the machine pivot and place the roller above your heel.","technique_steps":["Bend the working knee while keeping the thigh and hips steady. Slowly lengthen the leg back to the start."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "89f03de3-fd37-42ca-979e-61645c92296a",
+    "slug": "single-leg-lying-leg-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "knee_flexion",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["hamstrings"],
+    "secondary_muscles": ["calves"],
+    "equipment": ["leg_curl_machine"],
+    "translations": {
+      "ru": {"name":"Сгибание одной ноги лёжа в тренажёре","aliases":[],"description":"Лягте, прижав таз к подушке, и заведите одну лодыжку под валик.","technique_steps":["Согните рабочее колено, удерживая бедро и таз неподвижно. Медленно разогните ногу обратно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-leg lying leg curl","aliases":[],"description":"Lie with the front of your hips on the pad and hook one ankle under the roller.","technique_steps":["Bend the working knee while keeping the thigh and hips steady. Slowly lengthen the leg back to the start."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "62e61273-3801-4495-9069-dcefdf4542cc",
+    "slug": "standing-cable-leg-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "knee_flexion",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["hamstrings"],
+    "secondary_muscles": ["calves"],
+    "equipment": ["cable_crossover","ankle_cuff"],
+    "translations": {
+      "ru": {"name":"Сгибание ноги стоя на нижнем блоке","aliases":[],"description":"Встаньте лицом к нижнему блоку, закрепите манжету на рабочей лодыжке и держитесь за опору.","technique_steps":["Согните рабочее колено, удерживая бедро и таз неподвижно. Медленно разогните ногу обратно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Standing cable leg curl","aliases":[],"description":"Face a low pulley with a cuff on the working ankle and hold a stable support.","technique_steps":["Bend the working knee while keeping the thigh and hips steady. Slowly lengthen the leg back to the start."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "6a8a0665-9f83-42ca-b080-74107bd8343e",
+    "slug": "single-leg-leg-extension",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "knee_extension",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["quads"],
+    "secondary_muscles": [],
+    "equipment": ["leg_extension_machine"],
+    "translations": {
+      "ru": {"name":"Разгибание одной ноги в тренажёре","aliases":[],"description":"Совместите колено с осью вращения и упритесь одной голенью в валик чуть выше лодыжки.","technique_steps":["Разогните рабочее колено в контролируемой амплитуде и медленно опустите голень без раскачивания бедра."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-leg leg extension","aliases":[],"description":"Align your knee with the pivot and put one shin against the pad above your ankle.","technique_steps":["Straighten the working knee through a controlled range, then lower slowly without swinging your thigh."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "355fa54e-c42f-4af6-a817-6ce2be967bc0",
+    "slug": "standing-dumbbell-calf-raise",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "calf_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Подъёмы на носки стоя с гантелями","aliases":[],"description":"Держите гантели по бокам, оставляя колени почти прямыми.","technique_steps":["Поднимите пятку, надавив передней частью стопы на опору. Задержитесь вверху и опуститесь без пружинящего движения."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Standing dumbbell calf raise","aliases":[],"description":"Hold a dumbbell at each side and keep your knees softly extended.","technique_steps":["Lift your heel by pressing the ball of your foot into the support. Pause at the top and lower without bouncing."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "60d7377a-a253-4449-8de2-681b03729224",
+    "slug": "seated-dumbbell-calf-raise",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "calf_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": ["dumbbells","flat_bench"],
+    "translations": {
+      "ru": {"name":"Подъёмы на носки сидя с гантелями","aliases":[],"description":"Сядьте, согнув колени, и положите гантели на бёдра ближе к коленям. Придерживайте их руками.","technique_steps":["Поднимите пятку, надавив передней частью стопы на опору. Задержитесь вверху и опуститесь без пружинящего движения."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Seated dumbbell calf raise","aliases":[],"description":"Sit with knees bent and rest the dumbbells on your thighs near the knees. Support the weights with your hands.","technique_steps":["Lift your heel by pressing the ball of your foot into the support. Pause at the top and lower without bouncing."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "3e82975e-8321-4f90-ab88-9fbc2a5cc358",
+    "slug": "donkey-calf-raise",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "calf_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": ["donkey_calf_machine"],
+    "translations": {
+      "ru": {"name":"Подъёмы на носки в наклоне в тренажёре","aliases":[],"description":"Установите подушку на таз, наклонитесь вперёд и держите колени почти прямыми.","technique_steps":["Поднимите пятку, надавив передней частью стопы на опору. Задержитесь вверху и опуститесь без пружинящего движения."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Donkey calf raise","aliases":[],"description":"Set the pad on your hips, fold forward and keep your knees nearly straight.","technique_steps":["Lift your heel by pressing the ball of your foot into the support. Pause at the top and lower without bouncing."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "9209430d-93e7-4591-9309-d60e751b59b3",
+    "slug": "single-leg-calf-press-on-leg-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "calf_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["calves"],
+    "secondary_muscles": [],
+    "equipment": ["leg_press_machine"],
+    "translations": {
+      "ru": {"name":"Жим платформы носком одной ноги","aliases":[],"description":"Установите страховочные упоры и надёжно поставьте переднюю часть одной стопы на платформу. Двигайте только голеностопом.","technique_steps":["Поднимите пятку, надавив передней частью стопы на опору. Задержитесь вверху и опуститесь без пружинящего движения."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-leg calf press on leg press","aliases":[],"description":"Set the safeties and keep the ball of one foot fully supported on the platform. Move through the ankle only.","technique_steps":["Lift your heel by pressing the ball of your foot into the support. Pause at the top and lower without bouncing."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "04f437e1-ce40-4b79-9594-a0bfefbbcc32",
+    "slug": "seated-dumbbell-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["dumbbells","flat_bench"],
+    "translations": {
+      "ru": {"name":"Сгибания рук с гантелями сидя","aliases":[],"description":"Сядьте прямо и опустите руки по бокам скамьи.","technique_steps":["Согните локоть, не выводя плечо вперёд. Медленно опустите вес до выпрямления руки."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Seated dumbbell curl","aliases":[],"description":"Sit upright and let both arms hang freely beside the bench.","technique_steps":["Flex the elbow without bringing the shoulder forward. Lower slowly until the arm lengthens."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "a38dde4c-6188-4a31-b35f-fdec8fabaa6e",
+    "slug": "cross-body-hammer-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Сгибания «молот» поперёк корпуса","aliases":[],"description":"Сохраняйте нейтральный хват и подводите рабочую гантель к противоположному плечу.","technique_steps":["Согните локоть, не выводя плечо вперёд. Медленно опустите вес до выпрямления руки."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Cross-body hammer curl","aliases":[],"description":"Keep a neutral grip and bring the working dumbbell toward the opposite shoulder.","technique_steps":["Flex the elbow without bringing the shoulder forward. Lower slowly until the arm lengthens."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "340d611e-e3d1-44d4-9529-60ad0894381f",
+    "slug": "incline-dumbbell-hammer-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["dumbbells","adjustable_bench"],
+    "translations": {
+      "ru": {"name":"Сгибания «молот» на наклонной скамье","aliases":[],"description":"Обопритесь на умеренно наклонённую спинку и держите ладони друг к другу.","technique_steps":["Согните локоть, не выводя плечо вперёд. Медленно опустите вес до выпрямления руки."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Incline dumbbell hammer curl","aliases":[],"description":"Lie back on a moderately inclined bench and keep both palms facing inward.","technique_steps":["Flex the elbow without bringing the shoulder forward. Lower slowly until the arm lengthens."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "2291da83-358f-4421-aec3-0df001a873ad",
+    "slug": "single-arm-dumbbell-preacher-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["dumbbells","preacher_bench"],
+    "translations": {
+      "ru": {"name":"Сгибание одной руки с гантелью на скамье Скотта","aliases":[],"description":"Уложите верхнюю часть руки на подушку и сохраняйте контакт при сгибании локтя.","technique_steps":["Согните локоть, не выводя плечо вперёд. Медленно опустите вес до выпрямления руки."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm dumbbell preacher curl","aliases":[],"description":"Set the upper arm against the pad and keep it there as the elbow moves.","technique_steps":["Flex the elbow without bringing the shoulder forward. Lower slowly until the arm lengthens."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "f4c90848-0ac5-4823-bef9-771a4aaccb0a",
+    "slug": "dumbbell-spider-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["dumbbells","adjustable_bench"],
+    "translations": {
+      "ru": {"name":"Сгибания рук с гантелями с упором грудью","aliases":[],"description":"Лягте грудью на наклонную скамью и опустите руки перед плечами.","technique_steps":["Согните локоть, не выводя плечо вперёд. Медленно опустите вес до выпрямления руки."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dumbbell spider curl","aliases":[],"description":"Lie chest down on an incline bench and let your arms hang in front of your shoulders.","technique_steps":["Flex the elbow without bringing the shoulder forward. Lower slowly until the arm lengthens."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "65841f0d-a17a-456b-9003-6fed1b8f411e",
+    "slug": "bayesian-cable-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {"name":"Сгибание руки на нижнем блоке с тягой из-за корпуса","aliases":[],"description":"Встаньте спиной к нижнему блоку и немного шагните вперёд, чтобы рабочая рука начинала чуть за корпусом.","technique_steps":["Согните локоть, не выводя плечо вперёд. Медленно опустите вес до выпрямления руки."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Bayesian cable curl","aliases":[],"description":"Face away from a low pulley and take a small step forward so your working arm begins slightly behind you.","technique_steps":["Flex the elbow without bringing the shoulder forward. Lower slowly until the arm lengthens."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "e16b1598-2a98-497d-8c6c-f9f3f53a2e10",
+    "slug": "high-cable-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {"name":"Сгибания рук на высоких блоках","aliases":[],"description":"Установите обе рукоятки на высоте плеч и встаньте между блоками, отведя руки в стороны.","technique_steps":["Согните локоть, не выводя плечо вперёд. Медленно опустите вес до выпрямления руки."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"High cable curl","aliases":[],"description":"Set both handles at shoulder height and stand between the pulleys with upper arms out to your sides.","technique_steps":["Flex the elbow without bringing the shoulder forward. Lower slowly until the arm lengthens."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "e6fdd752-6695-4790-8b3f-8f400673437c",
+    "slug": "machine-biceps-curl",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["biceps"],
+    "secondary_muscles": ["forearms"],
+    "equipment": ["biceps_curl_machine"],
+    "translations": {
+      "ru": {"name":"Сгибания рук на бицепс в тренажёре","aliases":[],"description":"Совместите локти с осью тренажёра и уложите верхние части рук на подушку.","technique_steps":["Согните локоть, не выводя плечо вперёд. Медленно опустите вес до выпрямления руки."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Machine biceps curl","aliases":[],"description":"Align your elbows with the machine axis and rest your upper arms on the pad.","technique_steps":["Flex the elbow without bringing the shoulder forward. Lower slowly until the arm lengthens."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "023724cd-f65f-4568-92d2-aec24e4404cf",
+    "slug": "dumbbell-triceps-kickback",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_extension",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": [],
+    "equipment": ["dumbbells","flat_bench"],
+    "translations": {
+      "ru": {"name":"Разгибание руки с гантелью в наклоне","aliases":[],"description":"Упритесь свободной рукой в скамью, наклонитесь и расположите плечевую часть рабочей руки вдоль корпуса.","technique_steps":["Разогните локоть без раскачивания плеча. Медленно согните его, возвращаясь назад."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dumbbell triceps kickback","aliases":[],"description":"Support the free hand on the bench, hinge forward, and bring the working upper arm beside your torso.","technique_steps":["Straighten your elbow without letting the upper arm swing. Bend it slowly to return."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "3e73449a-e0af-49bf-89d1-1dab473ac2ab",
+    "slug": "cable-triceps-kickback",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_extension",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": [],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {"name":"Разгибание руки назад на нижнем блоке","aliases":[],"description":"Наклонитесь лицом к нижнему блоку и оставьте рабочий локоть у рёбер.","technique_steps":["Разогните локоть без раскачивания плеча. Медленно согните его, возвращаясь назад."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Cable triceps kickback","aliases":[],"description":"Face a low pulley in a hinge and keep the working elbow beside your ribs.","technique_steps":["Straighten your elbow without letting the upper arm swing. Bend it slowly to return."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "8c362b2b-b25a-4f4c-8b17-01021dab6e8a",
+    "slug": "single-arm-cable-pushdown",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_extension",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": [],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {"name":"Разгибание одной руки на верхнем блоке","aliases":[],"description":"Возьмитесь за одиночную рукоятку и прижмите локоть к боку.","technique_steps":["Разогните локоть без раскачивания плеча. Медленно согните его, возвращаясь назад."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm cable pushdown","aliases":[],"description":"Hold a single handle with the elbow tucked beside your ribs.","technique_steps":["Straighten your elbow without letting the upper arm swing. Bend it slowly to return."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "f6f65d8b-f4e8-494f-ab2f-4676f38108e0",
+    "slug": "reverse-grip-cable-pushdown",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_extension",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": [],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {"name":"Разгибание рук на верхнем блоке обратным хватом","aliases":[],"description":"Возьмите короткую рукоятку ладонями вверх и удерживайте запястья прямо.","technique_steps":["Разогните локоть без раскачивания плеча. Медленно согните его, возвращаясь назад."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Reverse-grip cable pushdown","aliases":[],"description":"Take an underhand grip on the short bar and keep your wrists straight.","technique_steps":["Straighten your elbow without letting the upper arm swing. Bend it slowly to return."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "db199611-307b-4553-98dc-070484b60764",
+    "slug": "single-arm-overhead-dumbbell-triceps-extension",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_extension",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": [],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Разгибание одной руки с гантелью из-за головы","aliases":[],"description":"Поднимите рабочий локоть рядом с головой и опустите гантель за неё.","technique_steps":["Разогните локоть без раскачивания плеча. Медленно согните его, возвращаясь назад."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm overhead dumbbell triceps extension","aliases":[],"description":"Raise the working elbow beside your head and lower the dumbbell behind it.","technique_steps":["Straighten your elbow without letting the upper arm swing. Bend it slowly to return."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "81bf7778-9db6-4b98-a53d-f1f1dc104123",
+    "slug": "machine-triceps-extension",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "elbow_extension",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["triceps"],
+    "secondary_muscles": [],
+    "equipment": ["triceps_extension_machine"],
+    "translations": {
+      "ru": {"name":"Разгибание рук на трицепс в тренажёре","aliases":[],"description":"Настройте сиденье, чтобы локти совпадали с осью тренажёра, и уложите плечевые части рук на упор.","technique_steps":["Разогните локоть без раскачивания плеча. Медленно согните его, возвращаясь назад."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Machine triceps extension","aliases":[],"description":"Set the seat to line up the elbows with the machine pivot and support your upper arms.","technique_steps":["Straighten your elbow without letting the upper arm swing. Bend it slowly to return."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "3411fd74-a6fc-4dd4-b273-a4d4443973c9",
+    "slug": "seated-dumbbell-lateral-raise",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lateral_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["side_delts"],
+    "secondary_muscles": ["traps"],
+    "equipment": ["dumbbells","flat_bench"],
+    "translations": {
+      "ru": {"name":"Подъёмы гантелей в стороны сидя","aliases":[],"description":"Сядьте прямо и опустите гантели по бокам так, чтобы они не задевали скамью.","technique_steps":["Поднимите руку в сторону до удобной высоты, слегка согнув локоть. Опустите медленно, не поднимая плечо к уху."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Seated dumbbell lateral raise","aliases":[],"description":"Sit tall and let both dumbbells hang clear of the bench.","technique_steps":["Lift the arm out to the side to a comfortable height with a soft elbow. Lower slowly and keep the shoulder away from the ear."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "32b4fb20-ef4b-4a95-9a02-c090d6e71110",
+    "slug": "single-arm-dumbbell-lateral-raise",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lateral_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["side_delts"],
+    "secondary_muscles": ["traps"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Подъём одной гантели в сторону","aliases":[],"description":"Держитесь свободной рукой за устойчивую опору и не раскачивайте корпус.","technique_steps":["Поднимите руку в сторону до удобной высоты, слегка согнув локоть. Опустите медленно, не поднимая плечо к уху."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm dumbbell lateral raise","aliases":[],"description":"Hold a stable support with the free hand and keep the torso still.","technique_steps":["Lift the arm out to the side to a comfortable height with a soft elbow. Lower slowly and keep the shoulder away from the ear."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "5ef68793-dc25-41db-8395-368983f350e1",
+    "slug": "behind-body-cable-lateral-raise",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lateral_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["side_delts"],
+    "secondary_muscles": ["traps"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {"name":"Подъём руки в сторону на блоке из-за спины","aliases":[],"description":"Встаньте боком к нижнему блоку так, чтобы трос проходил за спиной.","technique_steps":["Поднимите руку в сторону до удобной высоты, слегка согнув локоть. Опустите медленно, не поднимая плечо к уху."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Behind-body cable lateral raise","aliases":[],"description":"Stand side-on to a low pulley with the cable passing behind you.","technique_steps":["Lift the arm out to the side to a comfortable height with a soft elbow. Lower slowly and keep the shoulder away from the ear."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "c0c48b25-567f-42b1-bf99-9c6cb00f80f5",
+    "slug": "machine-lateral-raise",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "lateral_raise",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["side_delts"],
+    "secondary_muscles": ["traps"],
+    "equipment": ["lateral_raise_machine"],
+    "translations": {
+      "ru": {"name":"Подъёмы рук в стороны в тренажёре","aliases":[],"description":"Настройте сиденье так, чтобы оси тренажёра совпадали с плечами. Положите руки на подушки.","technique_steps":["Поднимите руку в сторону до удобной высоты, слегка согнув локоть. Опустите медленно, не поднимая плечо к уху."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Machine lateral raise","aliases":[],"description":"Adjust the seat so the machine pivots line up with the shoulders. Rest your arms on the pads.","technique_steps":["Lift the arm out to the side to a comfortable height with a soft elbow. Lower slowly and keep the shoulder away from the ear."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "8459e8b5-0612-4ebe-b882-d972f0fd8b14",
+    "slug": "chest-supported-dumbbell-reverse-fly",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "rear_delt",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["rear_delts","upper_back"],
+    "secondary_muscles": ["traps"],
+    "equipment": ["dumbbells","adjustable_bench"],
+    "translations": {
+      "ru": {"name":"Обратная разводка гантелей с опорой грудью","aliases":[],"description":"Лягте грудью на наклонную скамью и опустите гантели под плечи.","technique_steps":["Разведите руки или одну руку в сторону, слегка согнув локти. Вернитесь плавно, не поднимая плечи."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Chest-supported dumbbell reverse fly","aliases":[],"description":"Lie chest-down on an incline bench and let the dumbbells hang beneath your shoulders.","technique_steps":["Open your arm or arms to the sides with elbows slightly bent. Return slowly without hunching your shoulders."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "88b77639-e88b-4cd1-92f1-1761c23590d0",
+    "slug": "single-arm-cable-reverse-fly",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "rear_delt",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["rear_delts","upper_back"],
+    "secondary_muscles": ["traps"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {"name":"Обратное разведение одной руки на блоке","aliases":[],"description":"Установите блок на высоту плеча и возьмите рукоятку противоположной рукой.","technique_steps":["Разведите руки или одну руку в сторону, слегка согнув локти. Вернитесь плавно, не поднимая плечи."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm cable reverse fly","aliases":[],"description":"Set a pulley at shoulder height and take the handle across your body.","technique_steps":["Open your arm or arms to the sides with elbows slightly bent. Return slowly without hunching your shoulders."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "3bde06ed-987b-4a07-bc0d-18efea2aef2c",
+    "slug": "standing-cable-hip-abduction",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hip_abduction",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes"],
+    "secondary_muscles": ["abs"],
+    "equipment": ["cable_crossover","ankle_cuff"],
+    "translations": {
+      "ru": {"name":"Отведение ноги в сторону на нижнем блоке","aliases":[],"description":"Встаньте боком к нижнему блоку, закрепите манжету на дальней лодыжке и держитесь за раму.","technique_steps":["Отведите рабочее колено или ногу в сторону без разворота таза. Медленно верните обратно."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Standing cable hip abduction","aliases":[],"description":"Stand side-on to a low pulley with a cuff on the farther ankle and hold the frame for balance.","technique_steps":["Move the working knee or leg away from the midline without rolling the pelvis. Bring it back slowly."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "e304dbca-fd65-4523-8dfe-ae2d0b199ec1",
+    "slug": "standing-cable-hip-adduction",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hip_adduction",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": true,
+    "primary_muscles": ["adductors"],
+    "secondary_muscles": ["abs"],
+    "equipment": ["cable_crossover","ankle_cuff"],
+    "translations": {
+      "ru": {"name":"Приведение ноги на нижнем блоке","aliases":[],"description":"Встаньте рабочей ногой ближе к нижнему блоку и закрепите манжету на лодыжке.","technique_steps":["Приведите рабочую ногу к центру, удерживая таз неподвижно. Верните ногу под контролем."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Standing cable hip adduction","aliases":[],"description":"Stand with the working leg nearer the low pulley and attach a cuff at the ankle.","technique_steps":["Draw your working leg toward the midline keeping your hips steady. Let the leg return under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "7aef7664-2d91-4fc6-b7b6-98bb2b0ddd06",
+    "slug": "weighted-floor-crunch",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques"],
+    "equipment": ["weight_plate"],
+    "translations": {
+      "ru": {"name":"Скручивания на полу с диском","aliases":[],"description":"Прижмите диск к груди и удерживайте пятки на полу в течение повтора.","technique_steps":["Выдохните и приблизьте рёбра к тазу, округляя корпус. Медленно вернитесь без давления руками на голову."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Weighted floor crunch","aliases":[],"description":"Hold the plate against your chest and keep the heels planted throughout.","technique_steps":["Exhale and curl your rib cage toward your pelvis. Uncurl slowly without pulling on your head."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "d64ee175-bbe5-4e76-ac5b-08b51f3b44f4",
+    "slug": "half-kneeling-pallof-press",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["abs","obliques"],
+    "secondary_muscles": ["glutes","front_delts"],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {"name":"Жим Палоффа с одного колена","aliases":[],"description":"Встаньте на одно колено боком к блоку на уровне груди. Выжмите рукоятку вперёд и верните, не разворачиваясь.","technique_steps":["Удерживайте рёбра над тазом и дышите ровно. Завершите подход, когда таз начинает терять устойчивость."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Half-kneeling Pallof press","aliases":[],"description":"Kneel side-on to a chest-height pulley. Push the handle straight ahead and draw it back without turning.","technique_steps":["Keep your ribs over your pelvis and breathe steadily. End the set when you can no longer keep your hips stable."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "3db632f3-68ad-45db-af44-0e4c69679835",
+    "slug": "low-to-high-cable-woodchop",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "core_rotation",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["obliques","abs"],
+    "secondary_muscles": [],
+    "equipment": ["cable_crossover"],
+    "translations": {
+      "ru": {"name":"Диагональная тяга блока снизу вверх","aliases":[],"description":"Встаньте боком к нижнему блоку и возьмите рукоятку двумя руками у таза. Ведите её по диагонали вверх.","technique_steps":["Поверните верх корпуса в контролируемой амплитуде. Держите нагрузку достаточно близко для плавного движения и мягко вернитесь."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Low-to-high cable woodchop","aliases":[],"description":"Stand side-on to a low pulley and take the handle with both hands near the hip. Guide it across and upward.","technique_steps":["Rotate through the upper trunk in a controlled range, keeping the load close enough to move smoothly. Return gently."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "b7bcbff5-28bd-450d-8341-e30d0ec3240f",
+    "slug": "rotary-torso-machine",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "core_rotation",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["obliques","abs"],
+    "secondary_muscles": [],
+    "equipment": ["rotary_torso_machine"],
+    "translations": {
+      "ru": {"name":"Повороты корпуса в тренажёре","aliases":[],"description":"Совместите корпус с осью тренажёра, настройте упоры и начните с небольшой удобной амплитуды.","technique_steps":["Поверните верх корпуса в контролируемой амплитуде. Держите нагрузку достаточно близко для плавного движения и мягко вернитесь."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Rotary torso machine","aliases":[],"description":"Align yourself with the machine's pivot, secure the pads, and choose a short comfortable starting range.","technique_steps":["Rotate through the upper trunk in a controlled range, keeping the load close enough to move smoothly. Return gently."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "f714129e-d070-4c59-b3b4-6a63abacfa62",
+    "slug": "seated-machine-back-extension",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "spinal_extension",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lower_back"],
+    "secondary_muscles": ["glutes","hamstrings"],
+    "equipment": ["back_extension_machine"],
+    "translations": {
+      "ru": {"name":"Разгибание спины сидя в тренажёре","aliases":[],"description":"Настройте заднюю подушку и зафиксируйте стопы. Отводите подушку назад без рывка.","technique_steps":["Поднимайтесь до удобного нейтрального положения позвоночника. Опускайтесь плавно, без попытки увеличить амплитуду."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Seated machine back extension","aliases":[],"description":"Fit the back pad and secure your feet. Move the pad back without jerking.","technique_steps":["Lift only until your spine reaches a comfortable neutral position. Lower gently and avoid pushing the range."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "5f295391-9701-458b-b3a3-eaf1f42f895c",
+    "slug": "medicine-ball-chest-pass",
+    "kind": "strength",
+    "tracking": "reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["chest"],
+    "secondary_muscles": ["triceps","front_delts"],
+    "equipment": ["medicine_ball"],
+    "translations": {
+      "ru": {"name":"Бросок медбола от груди","aliases":[],"description":"Держите подходящий для бросков мяч на уровне груди и бросайте двумя руками партнёру или в предназначенную для этого стену.","technique_steps":["Быстро оттолкнитесь, удерживая корпус устойчивым. Восстановите исходное положение перед следующим повтором."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Medicine ball chest pass","aliases":[],"description":"Hold a rebound-safe ball at chest height and pass it to a partner or a suitable wall with both hands.","technique_steps":["Use a quick push with a stable trunk. Reset your stance and grip before repeating."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "f46e70eb-2c75-4b65-bda9-b5e3c35439e5",
+    "slug": "two-hand-kettlebell-swing",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["glutes","hamstrings"],
+    "secondary_muscles": ["lower_back","forearms","abs"],
+    "equipment": ["kettlebell"],
+    "translations": {
+      "ru": {"name":"Махи гирей двумя руками","aliases":[],"description":"Поставьте гирю чуть перед собой. Проведите её назад между ног и выведите махом примерно до уровня груди.","technique_steps":["Быстро разогните тазобедренные суставы, направляя вес руками. Снова отведите таз назад, когда снаряд возвращается."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Two-hand kettlebell swing","aliases":[],"description":"Start with the bell slightly in front of you. Swing it back between your legs, then bring it to about chest height.","technique_steps":["Drive the movement with a quick hip extension and let the arms guide the weight. Hinge again as the weight comes back."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "f9ea1bbd-810e-4667-81a2-7472ec0e5ee0",
+    "slug": "single-arm-kettlebell-swing",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": true,
+    "primary_muscles": ["glutes","hamstrings"],
+    "secondary_muscles": ["lower_back","forearms","abs"],
+    "equipment": ["kettlebell"],
+    "translations": {
+      "ru": {"name":"Махи гирей одной рукой","aliases":[],"description":"Возьмите гирю одной рукой и не разворачивайте плечи, пока она движется по дуге.","technique_steps":["Быстро разогните тазобедренные суставы, направляя вес руками. Снова отведите таз назад, когда снаряд возвращается."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm kettlebell swing","aliases":[],"description":"Grip the bell with one hand and keep your shoulders square while it travels through the same arc.","technique_steps":["Drive the movement with a quick hip extension and let the arms guide the weight. Hinge again as the weight comes back."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "c2876dc7-291f-4d75-a77d-cba228ba72d5",
+    "slug": "barbell-power-clean",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["traps","hamstrings","abs"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {"name":"Взятие штанги на грудь в стойку","aliases":[],"description":"Начните с пола. Быстро выведите локти под гриф и примите штангу на плечи в неглубоком подседе.","technique_steps":["Ведите гриф близко к телу, разгибая ноги и таз. Принимайте штангу устойчиво и заново выставляйте исходное положение перед повтором."],"common_mistakes":[],"warnings":["Отработайте движение с лёгким учебным грифом и убедитесь, что вокруг есть достаточно места для безопасного сброса штанги."]},
+      "en": {"name":"Barbell power clean","aliases":[],"description":"Start from the floor. Turn the elbows around the bar quickly and catch it on the shoulders with a shallow knee bend.","technique_steps":["Keep the bar close as you extend the legs and hips. Receive it in a balanced position and reset each rep."],"common_mistakes":[],"warnings":["Practice with a light training bar and keep enough space around you to drop it safely."]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "a1bbdc79-9989-45d2-94a3-ec9bcea97653",
+    "slug": "hang-power-clean",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["traps","hamstrings","abs"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {"name":"Взятие штанги на грудь в стойку с виса","aliases":[],"description":"Начните с грифа выше колен и небольшого наклона от таза. Примите штангу на переднюю часть плеч в неглубоком подседе.","technique_steps":["Ведите гриф близко к телу, разгибая ноги и таз. Принимайте штангу устойчиво и заново выставляйте исходное положение перед повтором."],"common_mistakes":[],"warnings":["Отработайте движение с лёгким учебным грифом и убедитесь, что вокруг есть достаточно места для безопасного сброса штанги."]},
+      "en": {"name":"Hang power clean","aliases":[],"description":"Begin with the bar above your knees and a slight hip hinge. Catch on the front of your shoulders with knees soft.","technique_steps":["Keep the bar close as you extend the legs and hips. Receive it in a balanced position and reset each rep."],"common_mistakes":[],"warnings":["Practice with a light training bar and keep enough space around you to drop it safely."]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "a6f35f12-cc4d-47fb-8435-7322e8c49348",
+    "slug": "barbell-squat-clean",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["traps","hamstrings","abs"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {"name":"Взятие штанги на грудь с уходом в сед","aliases":[],"description":"Начните с пола. Примите штангу на плечи во фронтальный присед и встаньте.","technique_steps":["Ведите гриф близко к телу, разгибая ноги и таз. Принимайте штангу устойчиво и заново выставляйте исходное положение перед повтором."],"common_mistakes":[],"warnings":["Отработайте движение с лёгким учебным грифом и убедитесь, что вокруг есть достаточно места для безопасного сброса штанги."]},
+      "en": {"name":"Barbell squat clean","aliases":[],"description":"Start from the floor. Receive the bar across the shoulders in a front squat, then stand up.","technique_steps":["Keep the bar close as you extend the legs and hips. Receive it in a balanced position and reset each rep."],"common_mistakes":[],"warnings":["Practice with a light training bar and keep enough space around you to drop it safely."]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "da915fce-bba6-4460-8e58-979dbf85a1ef",
+    "slug": "barbell-power-snatch",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["traps","hamstrings","abs"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {"name":"Рывок штанги в стойку","aliases":[],"description":"Возьмитесь широким хватом. Примите штангу над головой в неглубоком подседе и выпрямитесь.","technique_steps":["Ведите гриф близко к телу, разгибая ноги и таз. Принимайте штангу устойчиво и заново выставляйте исходное положение перед повтором."],"common_mistakes":[],"warnings":["Отработайте движение с лёгким учебным грифом и убедитесь, что вокруг есть достаточно места для безопасного сброса штанги."]},
+      "en": {"name":"Barbell power snatch","aliases":[],"description":"Use a wide grip. Receive the bar overhead with a shallow knee bend and finish standing tall.","technique_steps":["Keep the bar close as you extend the legs and hips. Receive it in a balanced position and reset each rep."],"common_mistakes":[],"warnings":["Practice with a light training bar and keep enough space around you to drop it safely."]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "e78fd303-a693-49fe-8d71-2142e24a72a0",
+    "slug": "hang-power-snatch",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "hinge",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["traps","hamstrings","abs"],
+    "equipment": ["barbell"],
+    "translations": {
+      "ru": {"name":"Рывок штанги в стойку с виса","aliases":[],"description":"Возьмитесь широко и начните над коленями. Примите штангу над головой в неглубоком подседе и встаньте.","technique_steps":["Ведите гриф близко к телу, разгибая ноги и таз. Принимайте штангу устойчиво и заново выставляйте исходное положение перед повтором."],"common_mistakes":[],"warnings":["Отработайте движение с лёгким учебным грифом и убедитесь, что вокруг есть достаточно места для безопасного сброса штанги."]},
+      "en": {"name":"Hang power snatch","aliases":[],"description":"Use a wide grip with the bar above your knees. Finish with the bar overhead in a shallow catch before standing.","technique_steps":["Keep the bar close as you extend the legs and hips. Receive it in a balanced position and reset each rep."],"common_mistakes":[],"warnings":["Practice with a light training bar and keep enough space around you to drop it safely."]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "64ca035a-06bf-4abb-ac30-b8fb13570ae1",
+    "slug": "split-jerk",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts","quads"],
+    "secondary_muscles": ["glutes","triceps","abs"],
+    "equipment": ["barbell","rack"],
+    "translations": {
+      "ru": {"name":"Толчок штанги в ножницы","aliases":[],"description":"Начните со штангой на передней части плеч. Примите её, выставив одну ногу вперёд, а другую назад.","technique_steps":["Сделайте подсед с вертикальным корпусом и вытолкните вес ногами. Стабилизируйте его над головой перед восстановлением стойки."],"common_mistakes":[],"warnings":["Отработайте движение с лёгким учебным грифом и убедитесь, что вокруг есть достаточно места для безопасного сброса штанги."]},
+      "en": {"name":"Split jerk","aliases":[],"description":"Start with the bar on the front of your shoulders. Receive it with one foot forward and the other back.","technique_steps":["Dip with your torso upright, then drive through your legs. Stabilize the load overhead before recovering your stance."],"common_mistakes":[],"warnings":["Practice with a light training bar and keep enough space around you to drop it safely."]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "f8cde359-8506-461d-bf75-d1b9c9ffa587",
+    "slug": "push-jerk",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts","quads"],
+    "secondary_muscles": ["glutes","triceps","abs"],
+    "equipment": ["barbell","rack"],
+    "translations": {
+      "ru": {"name":"Толчок штанги в полуподсед","aliases":[],"description":"Начните со штангой на плечах спереди. Для приёма грифа над головой одновременно снова согните колени.","technique_steps":["Сделайте подсед с вертикальным корпусом и вытолкните вес ногами. Стабилизируйте его над головой перед восстановлением стойки."],"common_mistakes":[],"warnings":["Отработайте движение с лёгким учебным грифом и убедитесь, что вокруг есть достаточно места для безопасного сброса штанги."]},
+      "en": {"name":"Push jerk","aliases":[],"description":"Start from the front rack. Re-bend both knees together as you meet the bar overhead.","technique_steps":["Dip with your torso upright, then drive through your legs. Stabilize the load overhead before recovering your stance."],"common_mistakes":[],"warnings":["Practice with a light training bar and keep enough space around you to drop it safely."]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "d7dc6242-0255-4208-abdc-8f516c5f189e",
+    "slug": "dumbbell-farmer-carry",
+    "kind": "strength",
+    "tracking": "distance_time",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["forearms","traps"],
+    "secondary_muscles": ["abs","glutes"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Прогулка фермера с гантелями","aliases":[],"description":"Поднимите две одинаковые гантели и держите их по бокам. Выберите свободный проход.","technique_steps":["Идите короткими ровными шагами, не наклоняя корпус. Опустите вес под контролем."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dumbbell farmer carry","aliases":[],"description":"Pick up two dumbbells of equal weight and let them hang at your sides. Use a clear lane.","technique_steps":["Walk with short steady steps and keep your torso tall without leaning. Set the load down under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "ea8ed950-db75-41f6-8e51-7e29b8e4884c",
+    "slug": "kettlebell-farmer-carry",
+    "kind": "strength",
+    "tracking": "distance_time",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["forearms","traps"],
+    "secondary_muscles": ["abs","glutes"],
+    "equipment": ["kettlebell"],
+    "translations": {
+      "ru": {"name":"Прогулка фермера с двумя гирями","aliases":[],"description":"Держите по гире с каждой стороны и начинайте идти, когда они перестанут раскачиваться.","technique_steps":["Идите короткими ровными шагами, не наклоняя корпус. Опустите вес под контролем."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Kettlebell farmer carry","aliases":[],"description":"Hold one kettlebell by each side and start walking after you stabilize both bells.","technique_steps":["Walk with short steady steps and keep your torso tall without leaning. Set the load down under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "0a4ca7f7-cd79-4495-8dad-09493a900eac",
+    "slug": "single-arm-suitcase-carry",
+    "kind": "strength",
+    "tracking": "distance_time",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": true,
+    "primary_muscles": ["forearms","traps"],
+    "secondary_muscles": ["abs","glutes"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Перенос гантели в одной руке","aliases":[],"description":"Держите одну гантель сбоку и сохраняйте плечи на одном уровне. Повторите другой рукой.","technique_steps":["Идите короткими ровными шагами, не наклоняя корпус. Опустите вес под контролем."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Single-arm suitcase carry","aliases":[],"description":"Hold one dumbbell beside your hip and keep your shoulders level. Repeat with the other hand.","technique_steps":["Walk with short steady steps and keep your torso tall without leaning. Set the load down under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "9a1423e1-d49f-4abd-afeb-99f4255cb191",
+    "slug": "double-kettlebell-front-rack-carry",
+    "kind": "strength",
+    "tracking": "distance_time",
+    "movement_pattern": "core_stability",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["forearms","traps"],
+    "secondary_muscles": ["abs","glutes"],
+    "equipment": ["kettlebell"],
+    "translations": {
+      "ru": {"name":"Перенос двух гирь у плеч","aliases":[],"description":"Держите обе гири близко к плечам с опорой на предплечья, направляя локти вниз.","technique_steps":["Идите короткими ровными шагами, не наклоняя корпус. Опустите вес под контролем."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Double kettlebell front rack carry","aliases":[],"description":"Keep both bells close to your shoulders, supported by your forearms, with elbows angled down.","technique_steps":["Walk with short steady steps and keep your torso tall without leaning. Set the load down under control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "cc34b0d8-3b7c-4c11-bf28-6a017b1a9e2d",
+    "slug": "dumbbell-thruster",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","front_delts"],
+    "secondary_muscles": ["glutes","triceps","abs"],
+    "equipment": ["dumbbells"],
+    "translations": {
+      "ru": {"name":"Трастер с гантелями","aliases":[],"description":"Держите две гантели у плеч и присядьте с полной опорой на стопы.","technique_steps":["Встаньте из приседа и продолжите движение жимом вверх. Верните вес к плечам перед следующим приседом."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Dumbbell thruster","aliases":[],"description":"Hold two dumbbells at shoulder height and squat with your feet planted.","technique_steps":["Stand from the squat and continue the motion into the overhead press. Lower the load to the shoulders before descending again."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "ae344698-1827-4e85-bc3c-a5d4818020f1",
+    "slug": "barbell-thruster",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "vertical_push",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","front_delts"],
+    "secondary_muscles": ["glutes","triceps","abs"],
+    "equipment": ["barbell","rack"],
+    "translations": {
+      "ru": {"name":"Трастер со штангой","aliases":[],"description":"Расположите гриф на передней части плеч и опуститесь во фронтальный присед.","technique_steps":["Встаньте из приседа и продолжите движение жимом вверх. Верните вес к плечам перед следующим приседом."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Barbell thruster","aliases":[],"description":"Rest the bar across the front of your shoulders and descend into a front squat.","technique_steps":["Stand from the squat and continue the motion into the overhead press. Lower the load to the shoulders before descending again."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "0abea3de-089c-4971-b7dd-2b5543fd9214",
+    "slug": "weighted-dip",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "horizontal_push",
+    "mechanics": "compound",
+    "level": "advanced",
+    "is_unilateral": false,
+    "primary_muscles": ["triceps","chest"],
+    "secondary_muscles": ["front_delts"],
+    "equipment": ["dip_bars","weight_plate","dip_belt"],
+    "translations": {
+      "ru": {"name":"Отжимания на брусьях с отягощением","aliases":[],"description":"Закрепите отягощение на поясе и начните из устойчивого упора между брусьями.","technique_steps":["Согните локти до удобной глубины, затем отожмитесь вверх, не поднимая плечи."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Weighted dip","aliases":[],"description":"Secure a weight to the belt and start from a steady support between the bars.","technique_steps":["Bend your elbows until you reach a comfortable depth, then press back up without shrugging."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  }
+]

@@ -1,4 +1,4 @@
-import { asc, body_logs, eq, isNull } from '@mvp/db/sqlite';
+import { and, asc, body_logs, desc, eq, isNull } from '@mvp/db/sqlite';
 import type { WeightEntry } from '@mvp/domain';
 import { BodyLogRowSchema } from '@mvp/schemas';
 
@@ -13,7 +13,7 @@ export function listWeights(ctx: DataContext): WeightEntry[] {
     .select()
     .from(body_logs)
     .where(isNull(body_logs.deleted_at))
-    .orderBy(asc(body_logs.date), asc(body_logs.updated_at))
+    .orderBy(asc(body_logs.date), asc(body_logs.updated_at), asc(body_logs.id))
     .all();
   const byDate = new Map(rows.map((row) => [row.date, row]));
   return [...byDate.values()].map((row) => ({ date: row.date, weight_kg: row.weight_kg }));
@@ -43,17 +43,24 @@ export function weightAmong(
   return (before ?? weights[0])?.weight_kg ?? null;
 }
 
+function latestWeightEntry(ctx: DataContext, date: string) {
+  return ctx.db
+    .select()
+    .from(body_logs)
+    .where(and(eq(body_logs.date, date), isNull(body_logs.deleted_at)))
+    .orderBy(desc(body_logs.updated_at), desc(body_logs.id))
+    .get();
+}
+
+/** The weight logged on this exact day. */
+export function loggedWeightOn(ctx: DataContext, date: string): number | null {
+  return latestWeightEntry(ctx, date)?.weight_kg ?? null;
+}
+
 /** Saves the weight of a day; entering it again replaces what was there. */
 export function setWeight(ctx: DataContext, date: string, weightKg: number): void {
   const now = ctx.now();
-  const existing = ctx.db
-    .select()
-    .from(body_logs)
-    .where(eq(body_logs.date, date))
-    .all()
-    .filter((row) => row.deleted_at === null)
-    .at(-1);
-
+  const existing = latestWeightEntry(ctx, date);
   const row = BodyLogRowSchema.parse(
     existing
       ? { ...existing, weight_kg: weightKg, measured_at: now, updated_at: now }

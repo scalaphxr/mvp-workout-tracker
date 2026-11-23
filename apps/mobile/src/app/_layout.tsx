@@ -159,6 +159,7 @@ export default function RootLayout() {
             headerBackButtonDisplayMode: 'minimal',
             headerShadowVisible: false,
             headerTransparent: false,
+            headerTitleStyle: { fontFamily: Typeface.displayMedium, fontWeight: 'normal' },
           }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="onboarding" options={{ headerShown: false, gestureEnabled: false }} />
@@ -192,6 +193,8 @@ export default function RootLayout() {
           <Stack.Screen name="focus/workout" options={{ title: t('focus.workoutTitle') }} />
           <Stack.Screen name="import-text" options={{ title: t('importText.title') }} />
           <Stack.Screen name="activity" options={{ title: '' }} />
+          <Stack.Screen name="calendar" options={{ presentation: 'modal', headerShown: false }} />
+          <Stack.Screen name="food" options={{ title: t('food.title') }} />
           <Stack.Screen name="week/[date]" options={{ title: t('week.title') }} />
           <Stack.Screen name="support" options={{ title: t('support.title') }} />
           <Stack.Screen name="interval/index" options={{ title: t('interval.title') }} />

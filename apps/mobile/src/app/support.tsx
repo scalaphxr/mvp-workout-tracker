@@ -50,7 +50,7 @@ export default function SupportScreen() {
   if (state === 'sent') {
     return (
       <Screen>
-        <ThemedText style={styles.title}>{t('support.sentTitle')}</ThemedText>
+        <ThemedText type="heading" style={styles.title}>{t('support.sentTitle')}</ThemedText>
         <ThemedText themeColor="textSecondary">{t('support.sentText')}</ThemedText>
         <Button title={t('support.close')} onPress={() => router.back()} />
       </Screen>

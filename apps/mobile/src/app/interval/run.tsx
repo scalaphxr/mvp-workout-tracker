@@ -5,11 +5,12 @@ import { useTranslation } from 'react-i18next';
 import { AppState, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { ScreenGlow } from '@/components/gradients';
 import { Button } from '@/components/button';
 import { EmptyState } from '@/components/empty-state';
 import { ThemedText } from '@/components/themed-text';
 import { ConfirmButton } from '@/components/ui';
-import { MaxContentWidth, Spacing } from '@/constants/theme';
+import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import { ThemeOverride, useTheme } from '@/hooks/use-theme';
 import { beep, haptic } from '@/lib/feedback';
 import { formatDuration } from '@/lib/format';
@@ -31,7 +32,10 @@ export default function IntervalRunScreen() {
   // Dark like the workout: a bright screen is the last thing wanted mid-round.
   return (
     <ThemeOverride.Provider value="dark">
-      <IntervalRun />
+      <View style={[styles.fill, { backgroundColor: Colors.dark.background }]}>
+        <ScreenGlow />
+        <IntervalRun />
+      </View>
     </ThemeOverride.Provider>
   );
 }
@@ -93,8 +97,8 @@ function IntervalRun() {
 
   if (!position) {
     return (
-      <View style={[styles.screen, styles.done, { backgroundColor: theme.background }]}>
-        <ThemedText style={styles.doneTitle}>{t('interval.doneTitle')}</ThemedText>
+      <View style={[styles.screen, styles.done]}>
+        <ThemedText type="heading" style={styles.doneTitle}>{t('interval.doneTitle')}</ThemedText>
         <ThemedText themeColor="textSecondary">{t('interval.doneText')}</ThemedText>
         <ThemedText themeColor="textSecondary">
           {run.title}, {formatDuration(t, intervalTotalSec(run.phases))}
@@ -130,17 +134,17 @@ function IntervalRun() {
     <View
       style={[
         styles.screen,
-        { backgroundColor: theme.background, paddingBottom: insets.bottom + Spacing.three },
+        { paddingBottom: insets.bottom + Spacing.three },
       ]}>
       <View
         style={[styles.phase, { backgroundColor: background }]}
         accessibilityRole="timer"
         accessibilityLiveRegion="polite"
         accessibilityLabel={t('interval.left', { phase: title, time: formatDuration(t, second) })}>
-        <ThemedText style={[styles.phaseTitle, { color: foreground }]}>
+        <ThemedText type="heading" style={[styles.phaseTitle, { color: foreground }]}>
           {paused ? t('interval.paused') : title}
         </ThemedText>
-        <ThemedText style={[styles.time, { color: foreground }]}>{clock(second)}</ThemedText>
+        <ThemedText type="metric" style={[styles.time, { color: foreground }]}>{clock(second)}</ThemedText>
         {phase.kind !== 'prepare' && (
           <ThemedText style={[styles.progress, { color: foreground }]}>
             {phaseProgress(phase, run.plan)}
@@ -168,6 +172,7 @@ function IntervalRun() {
 }
 
 const styles = StyleSheet.create({
+  fill: { flex: 1 },
   screen: {
     flex: 1,
     padding: Spacing.three,

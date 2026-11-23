@@ -1,17 +1,13 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
-import type { ComponentProps } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ColorValue } from 'react-native';
 
+import { GraffitiIcon, type GraffitiIconName } from '@/components/graffiti-icon';
 import { FloatingTabBar } from '@/components/tab-bar';
 
-type IconName = ComponentProps<typeof Ionicons>['name'];
-
-function icon(name: IconName, focusedName: IconName) {
-  return function TabIcon({ color, focused }: { color: ColorValue; focused: boolean }) {
-    // The tab bar passes one of the theme's colours, always a string.
-    return <Ionicons name={focused ? focusedName : name} color={String(color)} size={24} />;
+function icon(name: GraffitiIconName) {
+  return function TabIcon({ color, focused, size }: { color: ColorValue; focused: boolean; size: number }) {
+    return <GraffitiIcon name={name} color={String(color)} size={size} emphasized={focused} />;
   };
 }
 
@@ -26,26 +22,26 @@ export default function TabsLayout() {
       screenOptions={{ headerShown: false }}>
       <Tabs.Screen
         name="index"
-        options={{ title: t('tabs.today'), tabBarIcon: icon('today-outline', 'today') }}
+        options={{ title: t('tabs.home'), tabBarIcon: icon('home') }}
       />
       <Tabs.Screen
         name="programs"
-        options={{ title: t('tabs.programs'), tabBarIcon: icon('list-outline', 'list') }}
+        options={{ title: t('tabs.programs'), tabBarIcon: icon('programs') }}
       />
       <Tabs.Screen
         name="exercises"
-        options={{ title: t('tabs.exercises'), tabBarIcon: icon('barbell-outline', 'barbell') }}
+        options={{ title: t('tabs.exercises'), tabBarIcon: icon('workout') }}
       />
       <Tabs.Screen
         name="progress"
         options={{
           title: t('tabs.progress'),
-          tabBarIcon: icon('stats-chart-outline', 'stats-chart'),
+          tabBarIcon: icon('progress'),
         }}
       />
       <Tabs.Screen
         name="profile"
-        options={{ title: t('tabs.profile'), tabBarIcon: icon('person-outline', 'person') }}
+        options={{ title: t('tabs.profile'), tabBarIcon: icon('profile') }}
       />
     </Tabs>
   );
