@@ -4,6 +4,8 @@ import { type ComponentProps, type ReactNode, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Animated,
+  Image,
+  type ImageSourcePropType,
   Pressable,
   ScrollView,
   type ScrollViewProps,
@@ -13,14 +15,14 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 
-import { FloatingTabBarSpace, MaxContentWidth, Radius, Spacing } from '@/constants/theme';
+import { FloatingTabBarSpace, MaxContentWidth, Radius, Spacing, Typeface } from '@/constants/theme';
 import { useLocale } from '@/hooks/use-locale';
 import { useTheme } from '@/hooks/use-theme';
 import { formatNumber } from '@/lib/format';
 
 import { Button } from './button';
+import { ScreenGlow } from './gradients';
 import { ThemedText } from './themed-text';
 import { ThemedView } from './themed-view';
 
@@ -34,28 +36,29 @@ const TITLE_SCROLL = 48;
  *
  * With a `title` it is a tab screen: it draws its own large title under the status bar, which
  * gives way to a compact one as the content scrolls, and leaves room for the floating tab bar.
- * `hero` lights the top of the screen with the accent.
  */
 export function Screen({
   children,
   title,
   headerRight,
-  hero,
   ...rest
-}: ScrollViewProps & { title?: string; headerRight?: ReactNode; hero?: boolean }) {
+}: ScrollViewProps & { title?: string; headerRight?: ReactNode }) {
   const theme = useTheme();
   const insets = useSafeAreaInsets();
   const [scrollY] = useState(() => new Animated.Value(0));
 
   if (title === undefined) {
     return (
-      <ScrollView
-        style={{ backgroundColor: theme.background }}
-        contentContainerStyle={styles.screen}
-        keyboardShouldPersistTaps="handled"
-        {...rest}>
-        {children}
-      </ScrollView>
+      <View style={[styles.fill, { backgroundColor: theme.background }]}>
+        <ScreenGlow />
+        <ScrollView
+          style={styles.fill}
+          contentContainerStyle={styles.screen}
+          keyboardShouldPersistTaps="handled"
+          {...rest}>
+          {children}
+        </ScrollView>
+      </View>
     );
   }
 
@@ -67,6 +70,7 @@ export function Screen({
 
   return (
     <View style={[styles.fill, { backgroundColor: theme.background }]}>
+      <ScreenGlow />
       <Animated.ScrollView
         style={styles.fill}
         contentContainerStyle={[
@@ -79,8 +83,6 @@ export function Screen({
           useNativeDriver: true,
         })}
         {...rest}>
-        {/* Inside the scroll, so the glow leaves with the title. */}
-        {hero && <Hero color={theme.hero} background={theme.background} />}
         <View style={styles.largeTitle}>
           <ThemedText type="largeTitle" accessibilityRole="header" style={styles.shrink}>
             {title}
@@ -108,23 +110,6 @@ export function Screen({
   );
 }
 
-/** The accent glow at the top of a screen, fading into the background. */
-function Hero({ color, background }: { color: string; background: string }) {
-  return (
-    <View style={styles.hero}>
-      <Svg width="100%" height="100%">
-        <Defs>
-          <LinearGradient id="hero" x1="0" y1="0" x2="0" y2="1">
-            <Stop offset="0" stopColor={color} />
-            <Stop offset="1" stopColor={background} />
-          </LinearGradient>
-        </Defs>
-        <Rect width="100%" height="100%" fill="url(#hero)" />
-      </Svg>
-    </View>
-  );
-}
-
 /** A round button with a person in it, the way to the profile. */
 export function Avatar({ label, onPress }: { label: string; onPress: () => void }) {
   const theme = useTheme();
@@ -135,10 +120,10 @@ export function Avatar({ label, onPress }: { label: string; onPress: () => void 
       onPress={onPress}
       style={({ pressed }) => [
         styles.avatar,
-        { backgroundColor: theme.accent, borderColor: theme.backgroundSelected },
+        { backgroundColor: theme.accentSoft, borderColor: theme.backgroundSelected },
         pressed && styles.pressed,
       ]}>
-      <Ionicons name="person" size={22} color={theme.onAccent} />
+      <Ionicons name="person" size={22} color={theme.accent} />
     </Pressable>
   );
 }
@@ -161,12 +146,16 @@ export function Section({
           {title}
         </ThemedText>
         {action && (
-          <Pressable accessibilityRole="button" onPress={action.onPress} hitSlop={8}>
-            {({ pressed }) => (
-              <ThemedText style={[{ color: theme.accent }, pressed && styles.pressed]}>
-                {action.title}
-              </ThemedText>
-            )}
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={action.title}
+            onPress={action.onPress}
+            hitSlop={8}
+            style={({ pressed }) => [styles.sectionAction, pressed && styles.pressed]}>
+            <ThemedText type="smallBold" style={{ color: theme.accent }}>
+              {action.title}
+            </ThemedText>
+            <Ionicons name="chevron-forward" size={18} color={theme.accent} />
           </Pressable>
         )}
       </View>
@@ -220,8 +209,9 @@ export function MiniBars({ values, label }: { values: readonly number[]; label?:
             styles.bar,
             {
               // An empty bar keeps a stub, so the row of bars reads as a row.
-              height: Math.max(4, high > 0 ? (value / high) * BARS_HEIGHT : 4),
-              backgroundColor: index === values.length - 1 ? theme.highlight : theme.backgroundSelected,
+              height: Math.max(8, high > 0 ? (value / high) * BARS_HEIGHT : 8),
+              // The latest bar in the accent, the ones before it in a soft emerald.
+              backgroundColor: index === values.length - 1 ? theme.accent : theme.chart,
             },
           ]}
         />
@@ -313,29 +303,40 @@ export function MetricCard({
   );
 }
 
-/** A square-ish button with a coloured icon, for a quick entry: two of them share a row. */
+/**
+ * A square-ish button for a quick entry, two to a row: the picture on top, the title under it
+ * across the whole width, so a long word never pushes the picture out of the tile.
+ */
 export function Tile({
   icon,
   color,
   title,
+  picture,
   onPress,
 }: {
   icon: IconName;
   color: string;
   title: string;
+  /** An illustration in place of the icon. */
+  picture?: ImageSourcePropType;
   onPress: () => void;
 }) {
   const theme = useTheme();
   return (
     <Pressable
       accessibilityRole="button"
+      accessibilityLabel={title}
       onPress={onPress}
       style={({ pressed }) => [
         styles.tile,
         { backgroundColor: theme.backgroundElement },
         pressed && styles.pressedCard,
       ]}>
-      <Ionicons name={icon} size={28} color={color} />
+      {picture ? (
+        <Image source={picture} style={styles.tilePicture} accessibilityIgnoresInvertColors />
+      ) : (
+        <IconPlate icon={icon} color={color} />
+      )}
       <ThemedText style={styles.tileTitle} numberOfLines={2}>
         {title}
       </ThemedText>
@@ -343,9 +344,52 @@ export function Tile({
   );
 }
 
+/** An icon on a soft rounded plate: the mark of a row or a tile. */
+export function IconPlate({ icon, color, size = 48 }: { icon: IconName; color?: string; size?: number }) {
+  const theme = useTheme();
+  return (
+    <View
+      style={[
+        styles.plate,
+        { width: size, height: size, borderRadius: size * 0.32, backgroundColor: theme.accentSoft },
+      ]}>
+      <Ionicons name={icon} size={size * 0.5} color={color ?? theme.accent} />
+    </View>
+  );
+}
+
 /** Tiles two to a row. */
 export function TileGrid({ children }: { children: ReactNode }) {
   return <View style={styles.tiles}>{children}</View>;
+}
+
+/**
+ * An empty-state card with an illustration, a title and a line on what to do.
+ * An action, if any, goes under the text.
+ */
+export function PictureNote({
+  picture,
+  title,
+  text,
+  children,
+}: {
+  picture: ImageSourcePropType;
+  title?: string;
+  text: string;
+  children?: ReactNode;
+}) {
+  return (
+    <ThemedView type="backgroundElement" style={styles.note}>
+      <Image source={picture} style={styles.notePicture} accessibilityIgnoresInvertColors />
+      <View style={styles.noteText}>
+        {title !== undefined && <ThemedText style={styles.noteTitle}>{title}</ThemedText>}
+        <ThemedText themeColor="textSecondary" style={styles.centered}>
+          {text}
+        </ThemedText>
+      </View>
+      {children}
+    </ThemedView>
+  );
 }
 
 /** One of a few options, side by side in a rounded track. */
@@ -360,23 +404,31 @@ export function Segmented<T extends string>({
 }) {
   const theme = useTheme();
   return (
-    <ThemedView type="backgroundElement" style={styles.segments} accessibilityRole="tablist">
+    <View style={styles.segments} accessibilityRole="tablist">
       {options.map((option) => {
         const selected = option.value === value;
         return (
           <Pressable
             key={option.value}
             accessibilityRole="tab"
+            accessibilityLabel={option.label}
             accessibilityState={{ selected }}
             onPress={() => onChange(option.value)}
-            style={[styles.segment, selected && { backgroundColor: theme.backgroundSelected }]}>
-            <ThemedText type={selected ? 'smallBold' : 'small'} numberOfLines={1}>
+            style={styles.segment}>
+            {/* Headings side by side: the chosen one in the accent, underlined. */}
+            <ThemedText
+              type="section"
+              numberOfLines={1}
+              style={[styles.segmentText, { color: selected ? theme.highlight : theme.text }]}>
               {option.label}
             </ThemedText>
+            <View
+              style={[styles.segmentLine, { backgroundColor: selected ? theme.bright : 'transparent' }]}
+            />
           </Pressable>
         );
       })}
-    </ThemedView>
+    </View>
   );
 }
 
@@ -426,10 +478,10 @@ export function LinkRow({
       accessibilityRole="button"
       onPress={onPress}
       style={({ pressed }) => [styles.row, pressed && styles.pressed]}>
-      {icon && <Ionicons name={icon} size={24} color={iconColor ?? theme.accent} style={styles.rowIcon} />}
+      {icon && <IconPlate icon={icon} color={iconColor} size={40} />}
       <View style={styles.rowText}>
         <View style={styles.rowTitle}>
-          <ThemedText style={styles.shrink}>{title}</ThemedText>
+          <ThemedText style={[styles.shrink, styles.linkRowTitle]}>{title}</ThemedText>
           {badge !== undefined && (
             <View style={[styles.badge, { backgroundColor: theme.backgroundSelected }]}>
               <ThemedText type="small">{badge}</ThemedText>
@@ -454,7 +506,11 @@ export function TextField({ label, style, ...rest }: TextInputProps & { label: s
     <TextInput
       accessibilityLabel={label}
       placeholderTextColor={theme.textSecondary}
-      style={[styles.input, { color: theme.text, backgroundColor: theme.backgroundElement }, style]}
+      style={[
+        styles.input,
+        { color: theme.text, backgroundColor: theme.backgroundElement, borderColor: theme.separator },
+        style,
+      ]}
       {...rest}
     />
   );
@@ -626,18 +682,11 @@ const styles = StyleSheet.create({
     fontSize: 17,
     paddingHorizontal: Spacing.five,
   },
-  hero: {
-    position: 'absolute',
-    pointerEvents: 'none',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: 360,
-  },
   avatar: {
     width: 48,
     height: 48,
     borderRadius: 24,
+    overflow: 'hidden',
     borderWidth: 2,
     alignItems: 'center',
     justifyContent: 'center',
@@ -652,6 +701,12 @@ const styles = StyleSheet.create({
     gap: Spacing.three,
     paddingHorizontal: Spacing.one,
     marginTop: Spacing.two,
+  },
+  sectionAction: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.half,
+    minHeight: 44,
   },
   cardLabel: {
     flexDirection: 'row',
@@ -669,8 +724,8 @@ const styles = StyleSheet.create({
     height: BARS_HEIGHT,
   },
   bar: {
-    width: 8,
-    borderRadius: 2,
+    width: 10,
+    borderRadius: 5,
   },
   metricCard: {
     padding: Spacing.three,
@@ -705,31 +760,67 @@ const styles = StyleSheet.create({
   tile: {
     flexGrow: 1,
     flexBasis: '40%',
-    flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     gap: Spacing.two + Spacing.one,
-    minHeight: 76,
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.three,
+    // The same room on every side.
+    padding: Spacing.three + Spacing.one,
     borderRadius: Radius.card,
+    overflow: 'hidden',
   },
   tileTitle: {
-    flexShrink: 1,
-    fontWeight: 600,
+    fontSize: 17,
+    lineHeight: 22,
+    fontFamily: Typeface.displayMedium,
+  },
+  tilePicture: {
+    width: 56,
+    height: 56,
+  },
+  note: {
+    alignItems: 'center',
+    gap: Spacing.three,
+    padding: Spacing.four,
+    paddingTop: Spacing.three,
+    borderRadius: Radius.card,
+  },
+  notePicture: {
+    width: 112,
+    height: 112,
+  },
+  noteText: {
+    alignItems: 'center',
+    gap: Spacing.one,
+  },
+  noteTitle: {
+    fontSize: 20,
+    lineHeight: 26,
+    fontFamily: Typeface.display,
+    textAlign: 'center',
+  },
+  centered: {
+    textAlign: 'center',
+  },
+  plate: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   segments: {
     flexDirection: 'row',
-    padding: Spacing.half,
-    borderRadius: Radius.field,
-    gap: Spacing.half,
+    gap: Spacing.four,
   },
   segment: {
-    flex: 1,
-    minHeight: 40,
-    paddingHorizontal: Spacing.two,
-    borderRadius: Radius.field - Spacing.half,
-    alignItems: 'center',
+    minHeight: 44,
     justifyContent: 'center',
+    gap: Spacing.one,
+  },
+  segmentText: {
+    fontSize: 22,
+    lineHeight: 28,
+  },
+  segmentLine: {
+    height: 3,
+    borderRadius: 2,
+    marginHorizontal: Spacing.two,
   },
   group: {
     gap: Spacing.two,
@@ -757,6 +848,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: Spacing.two,
   },
+  linkRowTitle: {
+    fontFamily: Typeface.displayMedium,
+  },
   shrink: {
     flexShrink: 1,
   },
@@ -771,7 +865,9 @@ const styles = StyleSheet.create({
     minHeight: 56,
     paddingHorizontal: Spacing.three,
     borderRadius: Radius.field,
-    fontSize: 18,
+    borderWidth: 1,
+    fontSize: 17,
+    fontFamily: Typeface.medium,
   },
   stepper: {
     flexDirection: 'row',
@@ -797,6 +893,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 600,
+    fontFamily: Typeface.semibold,
   },
   /** A value that can be typed in looks like a field: underlined. */
   stepTappable: {

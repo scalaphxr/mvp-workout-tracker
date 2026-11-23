@@ -123,12 +123,31 @@ export const DEFAULT_STEPS_LB: Record<StepGroup, number> = { dumbbells: 5, plate
 
 // Machines loaded with plates rather than a weight stack. Lives here until the catalog itself
 // says how a piece of equipment is loaded.
-const PLATE_LOADED_MACHINES = new Set(['smith_machine', 'hack_squat_machine', 'seated_calf_raise_machine']);
+const PLATE_LOADED_EQUIPMENT = new Set([
+  'smith_machine',
+  'hack_squat_machine',
+  'seated_calf_raise_machine',
+  'belt_squat_machine',
+  'chest_supported_t_bar',
+  'decline_chest_press_machine',
+  'high_row_machine',
+  'hip_thrust_machine',
+  'incline_chest_press_machine',
+  'iso_chest_press_machine',
+  'iso_row_machine',
+  'iso_shoulder_press_machine',
+  'kettlebell',
+  'low_row_machine',
+  'pendulum_squat_machine',
+  'v_squat_machine',
+  'vertical_leg_press_machine',
+  'weight_plate',
+]);
 
 /** Which of the three steps applies to a piece of equipment; `null` – it carries no load. */
 export function stepGroup(item: Equipment): StepGroup | null {
   if (item.default_increment_kg === null) return null;
   if (item.category === 'dumbbells') return 'dumbbells';
-  if (item.category === 'barbells' || PLATE_LOADED_MACHINES.has(item.code)) return 'plates';
+  if (item.category === 'barbells' || PLATE_LOADED_EQUIPMENT.has(item.code)) return 'plates';
   return 'stack';
 }

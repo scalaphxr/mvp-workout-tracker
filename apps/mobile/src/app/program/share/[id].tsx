@@ -40,7 +40,7 @@ export default function ShareProgramScreen() {
   const router = useRouter();
   const queryClient = useQueryClient();
   const signedIn = useAuthStore((state) => state.session !== null);
-  const tree = useLocal((ctx) => getProgramTree(ctx, id));
+  const tree = useLocal((ctx) => getProgramTree(ctx, id), [id]);
   const [expiry, setExpiry] = useState<7 | 30 | null>(null);
 
   const queryKey = ['share-codes', id];

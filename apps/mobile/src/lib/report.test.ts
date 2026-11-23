@@ -101,6 +101,19 @@ const chest = workout(12, 'Грудь', '2026-10-02', 58, 6840, [
 const plain = (text: string) => text.replace(/[  ]/g, ' ');
 
 describe('a report', () => {
+  it('names a workout without a program and lists its exercises', async () => {
+    const free = {
+      ...chest,
+      dayTitle: '',
+      programTitle: '',
+      exercises: chest.exercises.map((entry) => ({ ...entry, item: null, plan: null })),
+    };
+    const lines = plain(buildReport(await context('ru'), { kind: 'session', workout: free })).split('\n');
+
+    expect(lines.join('\n')).toContain('Свободная тренировка');
+    expect(lines.join('\n')).toContain(NAMES[chest.exercises[0]!.exercise.exercise_id]);
+  });
+
   it('for a workout reads as the example of the spec', async () => {
     const text = buildReport(await context('ru'), { kind: 'session', workout: chest });
 
@@ -116,6 +129,25 @@ describe('a report', () => {
         'Объём: 6 840 кг · Время: 58 мин',
       ].join('\n'),
     );
+  });
+
+  it('adds the calories and the sets per muscle group when it knows them', async () => {
+    const MUSCLES: Record<string, string[]> = {
+      bench: ['chest'],
+      incline: ['chest'],
+      hammer: ['biceps'],
+      pushdown: ['triceps'],
+    };
+    const ctx = {
+      ...(await context('ru')),
+      exerciseOf: (id: string) =>
+        MUSCLES[id] ? { kind: 'strength' as const, primary_muscles: MUSCLES[id] } : undefined,
+    };
+    const lines = plain(buildReport(ctx, { kind: 'session', workout: { ...chest, kcal: 350 } })).split('\n');
+
+    expect(lines).toContain('Объём: 6 840 кг · Время: 58 мин · ≈ 350 ккал');
+    // Bench 3 + incline 3 for the chest; hammers 2 + pushdowns 2 for the arms.
+    expect(lines).toContain('Подходы по мышцам: Грудь 6, Руки 4');
   });
 
   it('writes sets without a weight, with different weights and on time', async () => {

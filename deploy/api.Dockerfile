@@ -9,7 +9,6 @@ WORKDIR /app
 
 # Manifests first, so a change of the code does not reinstall the dependencies.
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY patches ./patches
 COPY apps/api/package.json apps/api/
 COPY apps/mobile/package.json apps/mobile/
 COPY packages/content/package.json packages/content/

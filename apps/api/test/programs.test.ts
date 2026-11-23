@@ -524,7 +524,7 @@ describe('program codes', () => {
     expect(tree.items[0]!.increment_kg).toBe(5);
   });
 
-  it('keeps an exercise nothing can replace, and says so', async () => {
+  it('replaces the row at home and keeps the pull-up when no substitute is available', async () => {
     const { root } = await pushedProgram(anna);
     const { code } = await createCode(anna, root.id);
     const gym = await pushedGym(boris, ['mat']);
@@ -534,9 +534,15 @@ describe('program codes', () => {
     });
     const { tree, substitutions } = (await response.json()) as AdoptResponse;
 
-    expect(substitutions.every((s) => s.to_exercise_id === null)).toBe(true);
     expect(substitutions).toHaveLength(2);
-    expect(tree.items.map((i) => i.exercise_id)).toEqual([exerciseId('t-bar-row'), exerciseId('pull-up')]);
+    expect(substitutions.map((s) => [s.from_exercise_id, s.to_exercise_id])).toEqual([
+      [exerciseId('t-bar-row'), exerciseId('prone-i-y-t-raise')],
+      [exerciseId('pull-up'), null],
+    ]);
+    expect(tree.items.map((i) => i.exercise_id)).toEqual([
+      exerciseId('prone-i-y-t-raise'),
+      exerciseId('pull-up'),
+    ]);
   });
 
   it("leaves the copy alone when the author edits the original afterwards", async () => {

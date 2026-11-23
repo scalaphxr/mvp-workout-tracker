@@ -2,10 +2,10 @@ import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 
 import { Radius, Spacing } from '@/constants/theme';
-import { workoutsSince } from '@/data/history';
+import { workoutTotalsSince } from '@/data/history';
 import { useLocale } from '@/hooks/use-locale';
 import { useTheme } from '@/hooks/use-theme';
-import { formatNumber } from '@/lib/format';
+import { formatNumber, formatTotalTime } from '@/lib/format';
 import { useLocal } from '@/lib/local';
 import { toUnits, useUnits } from '@/lib/units';
 
@@ -24,19 +24,39 @@ export function VolumeHighlight({ onShowAll }: { onShowAll: () => void }) {
   const locale = useLocale();
   const theme = useTheme();
   const units = useUnits();
-  const [recent, before] = useLocal((ctx) => {
+  const [recentWeek, beforeWeek] = useLocal((ctx) => {
     const now = new Date().getTime();
     const weekAgo = new Date(now - 7 * DAY_MS).toISOString();
     const twoWeeksAgo = new Date(now - 14 * DAY_MS).toISOString();
-    const workouts = workoutsSince(ctx, twoWeeksAgo);
-    const sum = (list: typeof workouts) => list.reduce((total, workout) => total + workout.volumeKg, 0);
+    const workouts = workoutTotalsSince(ctx, twoWeeksAgo);
+    const week = (list: typeof workouts) => ({
+      kg: list.reduce((total, workout) => total + workout.volumeKg, 0),
+      count: list.length,
+      durationSec: list.reduce((total, workout) => total + workout.durationSec, 0),
+      // Calories only of the workouts they could be counted for.
+      kcal: list.some((workout) => workout.kcal !== null)
+        ? list.reduce((total, workout) => total + (workout.kcal ?? 0), 0)
+        : null,
+    });
     return [
-      sum(workouts.filter((workout) => workout.session.started_at > weekAgo)),
-      sum(workouts.filter((workout) => workout.session.started_at <= weekAgo)),
+      week(workouts.filter((workout) => workout.session.started_at > weekAgo)),
+      week(workouts.filter((workout) => workout.session.started_at <= weekAgo)),
     ];
   });
+  const recent = recentWeek.kg;
+  const before = beforeWeek.kg;
 
   if (recent === 0 && before === 0) return null;
+
+  /** "2 workouts · 2 h 4 min · ≈ 640 kcal" – what a week took and burned. */
+  const spent = (week: typeof recentWeek) =>
+    [
+      t('highlights.workouts', { count: week.count }),
+      week.durationSec > 0 ? formatTotalTime(t, week.durationSec) : null,
+      week.kcal !== null ? t('summary.kcalValue', { kcal: formatNumber(week.kcal, locale) }) : null,
+    ]
+      .filter(Boolean)
+      .join(' · ');
 
   const high = Math.max(recent, before);
   const unit = t(units === 'lb' ? 'units.lb' : 'units.kg', {
@@ -49,12 +69,13 @@ export function VolumeHighlight({ onShowAll }: { onShowAll: () => void }) {
         ? t('highlights.volumeLess')
         : t('highlights.volumeSame');
   const rows = [
-    { key: 'recent', kg: recent, label: t('highlights.last7'), current: true },
+    { key: 'recent', kg: recent, label: t('highlights.last7'), current: true, spent: spent(recentWeek) },
     {
       key: 'before',
       kg: before,
       label: t('highlights.previous7'),
       current: false,
+      spent: spent(beforeWeek),
     },
   ];
 
@@ -73,7 +94,7 @@ export function VolumeHighlight({ onShowAll }: { onShowAll: () => void }) {
                 {
                   // A week with nothing lifted still gets a bar wide enough for its label.
                   width: `${Math.max(55, (row.kg / high) * 100)}%`,
-                  backgroundColor: row.current ? theme.highlight : theme.backgroundSelected,
+                  backgroundColor: row.current ? theme.hot : theme.backgroundSelected,
                 },
               ]}>
               <ThemedText
@@ -83,6 +104,9 @@ export function VolumeHighlight({ onShowAll }: { onShowAll: () => void }) {
                 {row.label}
               </ThemedText>
             </View>
+            <ThemedText type="small" themeColor="textSecondary">
+              {row.spent}
+            </ThemedText>
           </View>
         ))}
       </ThemedView>

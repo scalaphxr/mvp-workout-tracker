@@ -16,3 +16,6 @@ coverage/
 
 # database dumps of the production server
 deploy/backups/
+
+# Python scripts of the UI skill
+__pycache__/

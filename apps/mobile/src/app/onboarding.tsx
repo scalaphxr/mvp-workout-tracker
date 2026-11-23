@@ -1,12 +1,13 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { type Href, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { ScreenGlow } from '@/components/gradients';
 import { Button } from '@/components/button';
 import { ThemedText } from '@/components/themed-text';
+import { Pictures } from '@/constants/pictures';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { createProgram } from '@/data/programs';
 import { useTheme } from '@/hooks/use-theme';
@@ -14,9 +15,9 @@ import { mutate, useActiveProgram } from '@/lib/local';
 import { usePreferences } from '@/lib/preferences';
 
 const SLIDES = [
-  { key: 'gym', icon: 'barbell' },
-  { key: 'progress', icon: 'trending-up' },
-  { key: 'offline', icon: 'cloud-offline' },
+  { key: 'gym', picture: Pictures.dumbbell },
+  { key: 'progress', picture: Pictures.trophy },
+  { key: 'offline', picture: Pictures.clipboard },
 ] as const;
 
 /**
@@ -50,59 +51,64 @@ export default function OnboardingScreen() {
 
   const current = SLIDES[slide];
   return (
-    <View
-      style={[
-        styles.screen,
-        { backgroundColor: theme.background, paddingTop: insets.top + Spacing.five },
-        { paddingBottom: insets.bottom + Spacing.three },
-      ]}>
-      {current ? (
-        <>
-          <View style={styles.slide}>
-            <Ionicons name={current.icon} size={72} color={theme.accent} />
-            <ThemedText style={styles.title}>{t(`onboarding.${current.key}Title`)}</ThemedText>
-            <ThemedText themeColor="textSecondary" style={styles.text}>
-              {t(`onboarding.${current.key}Text`)}
-            </ThemedText>
-          </View>
-          <View style={styles.dots} accessibilityLabel={t('onboarding.step', { step: slide + 1, total: SLIDES.length })}>
-            {SLIDES.map((item, index) => (
-              <View
-                key={item.key}
-                style={[
-                  styles.dot,
-                  { backgroundColor: index === slide ? theme.accent : theme.backgroundSelected },
-                ]}
-              />
-            ))}
-          </View>
-          <View style={styles.actions}>
-            <Button title={t('onboarding.next')} onPress={() => setSlide(slide + 1)} />
-            <Button variant="secondary" title={t('onboarding.skip')} onPress={() => setSlide(SLIDES.length)} />
-          </View>
-        </>
-      ) : (
-        <>
-          <View style={styles.slide}>
-            <ThemedText style={styles.title}>{t('onboarding.startTitle')}</ThemedText>
-            <ThemedText themeColor="textSecondary" style={styles.text}>
-              {t('onboarding.startText')}
-            </ThemedText>
-          </View>
-          <View style={styles.actions}>
-            <Button title={t('questionnaire.open')} onPress={() => finish('/questionnaire')} />
-            <Button variant="secondary" title={t('importText.open')} onPress={() => finish('/import-text')} />
-            <Button variant="secondary" title={t('onboarding.own')} onPress={ownProgram} />
-            <Button variant="secondary" title={t('programs.enterCode')} onPress={() => finish('/code')} />
-            <Button variant="secondary" title={t('onboarding.later')} onPress={() => finish(null)} />
-          </View>
-        </>
-      )}
+    <View style={[styles.fill, { backgroundColor: theme.background }]}>
+      <ScreenGlow />
+      <View
+        style={[
+          styles.screen,
+          { paddingTop: insets.top + Spacing.five },
+          { paddingBottom: insets.bottom + Spacing.three },
+        ]}>
+        {current ? (
+          <>
+            <View style={styles.slide}>
+              <Image source={current.picture} style={styles.picture} accessibilityIgnoresInvertColors />
+              <ThemedText type="heading" style={styles.title}>{t(`onboarding.${current.key}Title`)}</ThemedText>
+              <ThemedText themeColor="textSecondary" style={styles.text}>
+                {t(`onboarding.${current.key}Text`)}
+              </ThemedText>
+            </View>
+            <View style={styles.dots} accessibilityLabel={t('onboarding.step', { step: slide + 1, total: SLIDES.length })}>
+              {SLIDES.map((item, index) => (
+                <View
+                  key={item.key}
+                  style={[
+                    styles.dot,
+                    { backgroundColor: index === slide ? theme.accent : theme.backgroundSelected },
+                  ]}
+                />
+              ))}
+            </View>
+            <View style={styles.actions}>
+              <Button title={t('onboarding.next')} onPress={() => setSlide(slide + 1)} />
+              <Button variant="secondary" title={t('onboarding.skip')} onPress={() => setSlide(SLIDES.length)} />
+            </View>
+          </>
+        ) : (
+          <>
+            <View style={styles.slide}>
+              <Image source={Pictures.flame} style={styles.pictureSmall} accessibilityIgnoresInvertColors />
+              <ThemedText type="heading" style={styles.title}>{t('onboarding.startTitle')}</ThemedText>
+              <ThemedText themeColor="textSecondary" style={styles.text}>
+                {t('onboarding.startText')}
+              </ThemedText>
+            </View>
+            <View style={styles.actions}>
+              <Button title={t('questionnaire.open')} onPress={() => finish('/questionnaire')} />
+              <Button variant="secondary" title={t('importText.open')} onPress={() => finish('/import-text')} />
+              <Button variant="secondary" title={t('onboarding.own')} onPress={ownProgram} />
+              <Button variant="secondary" title={t('programs.enterCode')} onPress={() => finish('/code')} />
+              <Button variant="secondary" title={t('onboarding.later')} onPress={() => finish(null)} />
+            </View>
+          </>
+        )}
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  fill: { flex: 1 },
   screen: {
     flex: 1,
     paddingHorizontal: Spacing.four,
@@ -116,6 +122,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: Spacing.three,
+  },
+  picture: {
+    width: 200,
+    height: 200,
+    marginBottom: Spacing.two,
+  },
+  // The last step holds five buttons: its picture is smaller to leave them room.
+  pictureSmall: {
+    width: 128,
+    height: 128,
   },
   title: {
     fontSize: 28,

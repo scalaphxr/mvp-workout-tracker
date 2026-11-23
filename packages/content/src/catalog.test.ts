@@ -8,13 +8,16 @@ import {
   generateProgram,
   isAvailable,
   planSubstitutions,
+  POPULAR_EXERCISES,
   rankAlternatives,
+  searchExercises,
   stepGroup,
 } from '@mvp/domain';
 import { CatalogSeedSchema, EXERCISE_KINDS } from '@mvp/schemas';
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 
+import exerciseAliases from '../catalog/exercise-aliases.json';
 import { catalogSeed, programTemplates } from './index';
 
 describe('catalog seed', () => {
@@ -40,6 +43,27 @@ describe('catalog seed', () => {
       .sort();
 
     expect(catalogSeed.exercises.map((exercise) => exercise.slug).sort()).toEqual(inFiles);
+  });
+
+  it('ranks known exercises at most once', () => {
+    const known = new Set(catalogSeed.exercises.map(({ slug }) => slug));
+    expect(new Set(POPULAR_EXERCISES).size).toBe(POPULAR_EXERCISES.length);
+    expect(POPULAR_EXERCISES.filter((slug) => !known.has(slug))).toEqual([]);
+  });
+
+  it('attaches search aliases only to catalog exercises', () => {
+    const known = new Set(catalogSeed.exercises.map(({ slug }) => slug));
+    expect(Object.keys(exerciseAliases).filter((slug) => !known.has(slug))).toEqual([]);
+  });
+
+  it.each([
+    ['Concept2 RowErg', 'rowing-machine'],
+    ['жим ногами матрикс', 'horizontal-leg-press'],
+    ['Panatta Super Vertical Leg Press', 'vertical-leg-press'],
+    ['AssaultRunner Pro', 'curved-manual-treadmill-run'],
+  ])('finds %s by the model name', (query, slug) => {
+    const found = searchExercises(catalogSeed.exercises, { query }, 'ru');
+    expect(found.map((exercise) => exercise.slug)).toEqual([slug]);
   });
 
   it('covers every kind of exercise', () => {

@@ -4,7 +4,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { shareAsync } from 'expo-sharing';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Platform, Share, StyleSheet, View } from 'react-native';
+import { Platform, Share, StyleSheet, View, type ViewInstance } from 'react-native';
 import { captureRef } from 'react-native-view-shot';
 
 import { Button } from '@/components/button';
@@ -30,7 +30,7 @@ export default function ReportScreen() {
   const { t } = useTranslation();
   const locale = useLocale();
   const { exerciseById } = useCatalog();
-  const card = useRef<View>(null);
+  const card = useRef<ViewInstance>(null);
   const [copied, setCopied] = useState(false);
 
   const today = toLocalDate(new Date());
@@ -56,7 +56,7 @@ export default function ReportScreen() {
       activities: activitiesSince(ctx, since),
       today,
     };
-  });
+  }, [params.kind, params.id, params.program, params.cycle, today]);
   const weights = useLocal(listWeights);
   const units = useUnits();
 
@@ -68,6 +68,7 @@ export default function ReportScreen() {
       weights,
       units,
       nameOf: (id) => exerciseById.get(id)?.translations[locale].name ?? t('program.unknownExercise'),
+      exerciseOf: (id) => exerciseById.get(id),
     },
     report,
   );

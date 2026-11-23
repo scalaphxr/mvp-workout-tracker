@@ -6,6 +6,24 @@ export function weekStart(date: string): string {
   return shiftDate(date, -((day + 6) % 7));
 }
 
+/** Consecutive weeks with a workout. The current week can add to the series as soon as it qualifies. */
+export function consecutiveWorkoutWeeks(workoutDays: Iterable<string>, today: string): number {
+  const trainedWeeks = new Set<string>();
+  for (const day of workoutDays) {
+    if (day <= today) trainedWeeks.add(weekStart(day));
+  }
+
+  let monday = weekStart(today);
+  if (!trainedWeeks.has(monday)) monday = shiftDate(monday, -7);
+
+  let count = 0;
+  while (trainedWeeks.has(monday)) {
+    count++;
+    monday = shiftDate(monday, -7);
+  }
+  return count;
+}
+
 export interface WeeklyStreak {
   /** Weeks in a row with the goal met, this week included once it is met. */
   current: number;

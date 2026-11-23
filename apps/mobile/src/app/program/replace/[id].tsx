@@ -20,7 +20,7 @@ export default function ReplaceExerciseScreen() {
   const router = useRouter();
   const { catalog, exerciseById, muscleByCode } = useCatalog();
   const gym = useGym();
-  const item = useLocal((ctx) => getItem(ctx, id));
+  const item = useLocal((ctx) => getItem(ctx, id), [id]);
 
   const exercise = item && exerciseById.get(item.exercise_id);
   if (!item || !exercise || !gym) {

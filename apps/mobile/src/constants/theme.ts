@@ -5,6 +5,11 @@
 
 import { Platform } from 'react-native';
 
+/**
+ * Emerald and gold. The page is a grey leaning green with white sheets on it; emerald is what can
+ * be pressed, gold is what was measured, amber marks what stands out (a record, something new).
+ * The dark theme turns it round: a near-black page, a brighter emerald and a yellow gold.
+ */
 export const Colors = {
   light: {
     text: '#0B1410',
@@ -13,17 +18,32 @@ export const Colors = {
     backgroundSelected: '#E2E9E5',
     // The greys lean slightly green, towards the accent.
     textSecondary: '#5B6B63',
-    // Emerald: what can be pressed – buttons, links, the chosen tab.
+    // Emerald: what can be pressed – buttons, links, the chosen tab and day.
     accent: '#047857',
     onAccent: '#FFFFFF',
-    // Gold: what was measured – metric labels, the latest bar of a chart.
-    highlight: '#A16207',
+    action: '#11666D',
+    actionEnd: '#087653',
+    onAction: '#FFFFFF',
+    // Gold: what was measured – metric labels, numbers.
+    highlight: '#AA640A',
+    highlightSoft: '#F4E4CD',
+    activityInk: '#525D9D',
+    activitySoft: '#E7E9F7',
+    nutritionInk: '#A34D52',
+    nutritionSoft: '#F6E2E1',
     onHighlight: '#FFFFFF',
+    // A bright emerald for marks: the line under a chosen heading, a day trained.
+    bright: '#10B981',
+    // Emerald as a soft surface: the plate under an icon.
+    accentSoft: '#D9F2E6',
+    // Bars of a chart other than the latest one.
+    chart: '#A7DFC3',
+    // Amber: a record, a badge, something new.
+    hot: '#F4A64C',
     // The glow behind the large title of the first screen, fading into the background.
-    hero: '#C9EBDB',
+    hero: '#D5EAE0',
     separator: '#D3DCD7',
-    // The floating tab bar: the content shows faintly through it.
-    tabBar: 'rgba(255, 255, 255, 0.92)',
+    tabBar: '#FFFFFF',
     danger: '#B3261E',
     // The body map: muscles an exercise works, on a neutral body.
     musclePrimary: '#D7263D',
@@ -38,11 +58,23 @@ export const Colors = {
     textSecondary: '#93A39B',
     accent: '#10B981',
     onAccent: '#03140D',
+    action: '#135F65',
+    actionEnd: '#157659',
+    onAction: '#FFFFFF',
     highlight: '#FACC15',
+    highlightSoft: '#483A12',
+    activityInk: '#AEB9FC',
+    activitySoft: '#2E3553',
+    nutritionInk: '#F3A69F',
+    nutritionSoft: '#442B2E',
     onHighlight: '#1A1400',
-    hero: '#0C3E2D',
+    bright: '#34D399',
+    accentSoft: '#0F3326',
+    chart: '#1E4D3A',
+    hot: '#FBBF24',
+    hero: '#112A21',
     separator: '#2A3530',
-    tabBar: 'rgba(17, 25, 22, 0.92)',
+    tabBar: '#161E1B',
     danger: '#FF8A80',
     musclePrimary: '#FF4D5E',
     muscleSecondary: '#8A3A44',
@@ -51,6 +83,28 @@ export const Colors = {
 } as const;
 
 export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
+
+/**
+ * The faces of the app: a condensed display face for headings and big numbers, set in capitals,
+ * and a geometric sans for everything else. Both have Cyrillic. Loaded in the root layout.
+ */
+export const Typeface = {
+  display: 'OswaldSoft_700Bold',
+  displayMedium: 'OswaldSoft_600SemiBold',
+  regular: 'Onest_400Regular',
+  medium: 'Onest_500Medium',
+  semibold: 'Onest_600SemiBold',
+  bold: 'Onest_700Bold',
+} as const;
+
+/** The body face for a weight: a custom face has a file per weight, not a weight per file. */
+export function bodyFace(weight: string | number | undefined): string {
+  const value = Number(weight ?? 400);
+  if (value >= 700 || weight === 'bold') return Typeface.bold;
+  if (value >= 600) return Typeface.semibold;
+  if (value >= 500) return Typeface.medium;
+  return Typeface.regular;
+}
 
 export const Fonts = Platform.select({
   ios: {
@@ -83,8 +137,8 @@ export const Spacing = {
 
 /** Rounded corners: a card, a tile, a field. */
 export const Radius = {
-  card: 22,
-  field: 14,
+  card: 28,
+  field: 16,
   pill: 999,
 } as const;
 

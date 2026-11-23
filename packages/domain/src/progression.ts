@@ -19,6 +19,11 @@ export interface ProgressionInput {
   work_sets: readonly WorkSet[];
   /** Workouts in a row before this one that failed the range. */
   fail_streak: number;
+  /**
+   * The weight with which the previous workout of this exercise reached the top of the range
+   * in every set; `null` – it did not.
+   */
+  top_weight_kg: number | null;
   /** Smart progression by RIR (a Pro feature). */
   smart: boolean;
 }
@@ -52,9 +57,15 @@ function workingWeight(sets: readonly WorkSet[]): number | null {
   return best;
 }
 
+const roundKg = (kg: number) => Math.round(kg * 1000) / 1000;
+
 /**
  * Double progression (spec 6.3): what to do next time, given how an exercise went. Returns
  * `null` when no set was done, so the previous plan stands.
+ *
+ * Muscles first, weight after: the top of the range in every set once is not yet a reason to
+ * add weight. Only the second workout in a row at the top with the same weight brings an offer
+ * to add a step, and the weight goes up only when the user agrees.
  */
 export function planNext(input: ProgressionInput): Plan | null {
   const { sets, rep_min, rep_max, step_kg } = input;
@@ -93,12 +104,28 @@ export function planNext(input: ProgressionInput): Plan | null {
         ? rirs.reduce((sum, rir) => sum + rir, 0) / rirs.length
         : 0;
     const steps = spare >= 3 ? 2 : 1;
+    const params = { step_kg: roundKg(steps * step_kg), sets, reps: rep_max };
+    // The first time at the top with this weight: the same weight, all of the range again.
+    if (input.top_weight_kg !== weight) {
+      return {
+        next_weight_kg: weight,
+        next_target_reps: rep_max,
+        fail_streak: 0,
+        reason_code: 'top_once',
+        reason_params: params,
+      };
+    }
+    // The second workout in a row: the app offers a step; the weight stays until the user agrees.
     return {
-      next_weight_kg: weight + steps * step_kg,
-      next_target_reps: rep_min,
+      next_weight_kg: weight,
+      next_target_reps: rep_max,
       fail_streak: 0,
-      reason_code: steps === 2 ? 'increase_fast' : 'increase',
-      reason_params: { step_kg: steps * step_kg, sets, reps: rep_max },
+      reason_code: 'increase_offer',
+      reason_params: {
+        ...params,
+        rep_min,
+        increased_weight_kg: roundKg(weight + steps * step_kg),
+      },
     };
   }
 
@@ -149,6 +176,35 @@ export function acceptReduction(plan: Plan): Plan {
     reason_params: params,
   };
 }
+
+/** The user agreed to add weight: a step up, aiming for the bottom of the range. */
+export function acceptIncrease(plan: Plan): Plan {
+  const { increased_weight_kg, rep_min, ...params } = plan.reason_params;
+  if (plan.reason_code !== 'increase_offer' || increased_weight_kg === undefined) return plan;
+  return {
+    next_weight_kg: increased_weight_kg,
+    next_target_reps: rep_min ?? plan.next_target_reps,
+    fail_streak: 0,
+    reason_code: 'increase',
+    reason_params: params,
+  };
+}
+
+/**
+ * The user kept the weight: it stays, and the next workout at the top of the range with it
+ * brings the offer back.
+ */
+export function declineIncrease(plan: Plan): Plan {
+  const { increased_weight_kg, rep_min: _min, ...params } = plan.reason_params;
+  if (plan.reason_code !== 'increase_offer' || increased_weight_kg === undefined) return plan;
+  return { ...plan, reason_code: 'top_once', reason_params: { ...params, declined: 1 } };
+}
+
+/** The weight a plan says the last workout reached the top of the range with, if it did. */
+export const topWeightOf = (plan: Pick<Plan, 'reason_code' | 'next_weight_kg'> | null) =>
+  plan && (plan.reason_code === 'top_once' || plan.reason_code === 'increase_offer')
+    ? plan.next_weight_kg
+    : null;
 
 // --- Deload (spec 6.4) ---
 

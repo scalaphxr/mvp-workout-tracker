@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { weekStart, weeklyStreak } from './streak';
+import { consecutiveWorkoutWeeks, weekStart, weeklyStreak } from './streak';
 
 /** Days of workouts: `n` workouts in the week that starts on a Monday. */
 const week = (monday: string, n: number) =>
@@ -25,6 +25,22 @@ describe('weeks', () => {
     expect(weekStart('2026-10-12')).toBe('2026-10-12');
     expect(weekStart('2026-10-18')).toBe('2026-10-12');
     expect(weekStart('2026-10-01')).toBe('2026-09-28');
+  });
+});
+
+describe('consecutive weeks with a workout', () => {
+  it('counts each Monday-to-Sunday week once', () => {
+    expect(consecutiveWorkoutWeeks(['2026-10-04', OCT5, '2026-10-09', OCT12], OCT12)).toBe(3);
+  });
+
+  it('keeps the series while this week is still open and ignores future workouts', () => {
+    expect(consecutiveWorkoutWeeks([SEP28, OCT5, '2026-10-16'], OCT12)).toBe(2);
+  });
+
+  it('breaks at the first missed completed week', () => {
+    expect(consecutiveWorkoutWeeks([SEP28], OCT12)).toBe(0);
+    expect(consecutiveWorkoutWeeks([SEP28, OCT12], OCT12)).toBe(1);
+    expect(consecutiveWorkoutWeeks([], OCT12)).toBe(0);
   });
 });
 

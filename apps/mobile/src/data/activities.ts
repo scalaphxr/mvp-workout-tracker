@@ -28,6 +28,15 @@ export function activitiesSince(ctx: DataContext, since: string): ActivityLogRow
     .all();
 }
 
+export function activityStartTimes(ctx: DataContext): string[] {
+  return ctx.db
+    .select({ started_at: activity_logs.started_at })
+    .from(activity_logs)
+    .where(alive)
+    .all()
+    .map(({ started_at }) => started_at);
+}
+
 export function getActivity(ctx: DataContext, id: string): ActivityLogRow | null {
   return (
     ctx.db

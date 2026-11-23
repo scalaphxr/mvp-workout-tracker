@@ -1744,7 +1744,7 @@
       },
       "en": {
         "name": "Swimming",
-        "aliases": ["pool swim", "freestyle swimming"],
+        "aliases": ["pool swim"],
         "description": "Swimming in a pool: whole-body cardio with no impact, good when the joints hurt.",
         "technique_steps": [
           "Warm up for 5 minutes swimming easily in any stroke.",
@@ -1972,6 +1972,114 @@
     "alternatives": [
       { "slug": "burpee", "weight_ratio": null, "priority": 10 },
       { "slug": "air-bike", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1cbb5-11a6-744d-a978-bb1a0f163a5e",
+    "slug": "machine-crunch",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "isolation",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques"],
+    "equipment": ["ab_crunch_machine"],
+    "translations": {
+      "ru": {
+        "name": "Скручивания в тренажёре",
+        "aliases": ["кранчи в тренажёре", "abdominal crunch", "пресс в тренажёре"],
+        "description": "Скручивания сидя в тренажёре для пресса: нагрузка задаётся весом стека, поэтому пресс прогрессирует как любая другая мышца.",
+        "technique_steps": [
+          "Настройте сиденье так, чтобы рукояти или валики были на уровне груди или плеч.",
+          "Возьмитесь за рукояти, прижмите спину к спинке.",
+          "На выдохе скрутите корпус вниз, приближая рёбра к тазу за счёт пресса.",
+          "Медленно вернитесь, не давая весу лечь на стек."
+        ],
+        "common_mistakes": [
+          "Тянуть руками вместо пресса.",
+          "Сгибаться в тазобедренных суставах, а не скручивать корпус.",
+          "Бросать вес в верхней точке."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Machine crunch",
+        "aliases": ["abdominal crunch machine", "ab machine crunch"],
+        "description": "Seated crunches on an ab machine: the weight stack sets the load, so the abs progress like any other muscle.",
+        "technique_steps": [
+          "Set the seat so the handles or pads sit at chest or shoulder height.",
+          "Hold the handles and keep your back against the pad.",
+          "Exhale and curl the torso down, bringing the ribs towards the pelvis with the abs.",
+          "Return slowly without letting the weight rest on the stack."
+        ],
+        "common_mistakes": [
+          "Pulling with the arms instead of the abs.",
+          "Bending at the hips instead of curling the torso.",
+          "Letting the weight drop at the top."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "cable-crunch", "weight_ratio": null, "priority": 10 },
+      { "slug": "crunch", "weight_ratio": null, "priority": 5 }
+    ]
+  },
+  {
+    "id": "01a1cbb5-11a6-744d-a978-bf685c23fffc",
+    "slug": "decline-crunch",
+    "kind": "strength",
+    "tracking": "weight_reps",
+    "movement_pattern": "core_flexion",
+    "mechanics": "isolation",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["abs"],
+    "secondary_muscles": ["obliques"],
+    "equipment": ["adjustable_bench", "barbell"],
+    "translations": {
+      "ru": {
+        "name": "Скручивания на наклонной скамье",
+        "aliases": ["скручивания на наклонной скамье с блином", "скручивания с блином", "скручивания головой вниз"],
+        "description": "Скручивания на скамье с отрицательным наклоном, с блином у груди или без него. С весом пресс можно прогрессировать как обычную мышцу.",
+        "technique_steps": [
+          "Закрепите ноги под валиками скамьи с наклоном вниз, блин держите у груди.",
+          "Лягте, сохраняя небольшое скругление спины.",
+          "На выдохе скрутите корпус, отрывая лопатки и приближая рёбра к тазу.",
+          "Медленно опуститесь, не ложась на скамью полностью."
+        ],
+        "common_mistakes": [
+          "Подниматься прямой спиной за счёт сгибателей бедра.",
+          "Рывки и раскачка.",
+          "Блин, вынесенный далеко вперёд и тянущий шею."
+        ],
+        "warnings": []
+      },
+      "en": {
+        "name": "Decline crunch",
+        "aliases": ["weighted decline crunch", "decline bench crunch"],
+        "description": "Crunches on a decline bench, holding a plate at the chest or with no load. With a plate the abs can progress like any other muscle.",
+        "technique_steps": [
+          "Hook your feet under the pads of a decline bench and hold a plate at your chest.",
+          "Lie back, keeping a slight round in the back.",
+          "Exhale and curl the torso, lifting the shoulder blades and bringing the ribs towards the pelvis.",
+          "Lower yourself slowly without lying flat on the bench."
+        ],
+        "common_mistakes": [
+          "Sitting up with a straight back using the hip flexors.",
+          "Jerking and swinging.",
+          "Holding the plate far forward and straining the neck."
+        ],
+        "warnings": []
+      }
+    },
+    "media": [],
+    "alternatives": [
+      { "slug": "crunch", "weight_ratio": null, "priority": 10 },
+      { "slug": "cable-crunch", "weight_ratio": null, "priority": 5 }
     ]
   }
 ]

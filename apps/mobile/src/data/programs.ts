@@ -52,13 +52,17 @@ const liveItems = (ctx: DataContext, dayIds: string[]) =>
         .orderBy(asc(program_items.position))
         .all();
 
-/** A program with its days and items in order, without what was deleted. */
-export function getProgramTree(ctx: DataContext, programId: string): ProgramTree | null {
-  const program = ctx.db
+export function getProgram(ctx: DataContext, programId: string): ProgramRow | null {
+  return ctx.db
     .select()
     .from(programs)
     .where(and(eq(programs.id, programId), isNull(programs.deleted_at)))
-    .get();
+    .get() ?? null;
+}
+
+/** A program with its days and items in order, without what was deleted. */
+export function getProgramTree(ctx: DataContext, programId: string): ProgramTree | null {
+  const program = getProgram(ctx, programId);
   if (!program) return null;
 
   const days = liveDays(ctx, programId);

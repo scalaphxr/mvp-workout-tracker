@@ -1,5 +1,5 @@
-import { shiftDate, type WeightEntry, weightStats } from '@mvp/domain';
-import type { ActivityLogRow, Units } from '@mvp/schemas';
+import { setsByMuscleGroup, shiftDate, type WeightEntry, weightStats } from '@mvp/domain';
+import type { ActivityLogRow, Exercise, Units } from '@mvp/schemas';
 import type { TFunction } from 'i18next';
 
 import type { WorkoutRecord } from '@/data/history';
@@ -22,6 +22,8 @@ interface ReportContext {
   nameOf: (exerciseId: string) => string;
   weights: readonly WeightEntry[];
   units: Units;
+  /** What the catalog says about an exercise, for the sets per muscle group. */
+  exerciseOf?: (exerciseId: string) => Pick<Exercise, 'kind' | 'primary_muscles'> | undefined;
 }
 
 const kg = ({ t, locale, units }: ReportContext, value: number) => formatWeight(t, locale, value, units);
@@ -120,10 +122,38 @@ function totals(ctx: ReportContext, workouts: readonly WorkoutRecord[]): string 
     // A report rounds the time to minutes.
     Math.max(60, Math.round(workouts.reduce((sum, w) => sum + w.durationSec, 0) / 60) * 60),
   );
+  // Calories only of the workouts they could be counted for.
+  const counted = workouts.filter((workout) => workout.kcal != null);
+  const kcal =
+    counted.length > 0
+      ? ` · ${ctx.t('summary.kcalValue', {
+          kcal: formatNumber(counted.reduce((sum, workout) => sum + (workout.kcal ?? 0), 0), ctx.locale),
+        })}`
+      : '';
   // Cardio alone lifts nothing: no "volume 0 kg".
-  return volume > 0
-    ? ctx.t('report.totals', { volume: kg(ctx, volume), duration })
-    : ctx.t('report.totalsTime', { duration });
+  return (
+    (volume > 0
+      ? ctx.t('report.totals', { volume: kg(ctx, volume), duration })
+      : ctx.t('report.totalsTime', { duration })) + kcal
+  );
+}
+
+/** "Подходы по мышцам: Грудь 12, Плечи 9" – work sets of the workouts per muscle group. */
+function muscleLine(ctx: ReportContext, workouts: readonly WorkoutRecord[]): string | null {
+  const { exerciseOf } = ctx;
+  if (!exerciseOf) return null;
+  const groups = setsByMuscleGroup(
+    workouts.flatMap((workout) =>
+      workout.exercises.flatMap(({ exercise, sets }) => {
+        const known = exerciseOf(exercise.exercise_id);
+        return known ? [{ exercise: known, sets: sets.filter((set) => !set.is_warmup).length }] : [];
+      }),
+    ),
+  );
+  if (groups.length === 0) return null;
+  return ctx.t('report.muscles', {
+    list: groups.map((group) => `${ctx.t(`muscleCategories.${group.category}`)} ${group.sets}`).join(', '),
+  });
 }
 
 /** The line about the morning weight on a day, if there is anything to say. */
@@ -147,7 +177,7 @@ function workoutBlock(ctx: ReportContext, workout: WorkoutRecord): string[] {
   return [
     ctx.t('report.workoutHeader', {
       number: workout.number,
-      day: workout.dayTitle,
+      day: workout.dayTitle || ctx.t('workout.freeTitle'),
       date: shortDate(ctx.locale, workout.session.started_at),
     }),
     ...exerciseLines(ctx, workout),
@@ -189,7 +219,7 @@ export function buildReport(ctx: ReportContext, report: ReportKind): string {
     blocks.push(
       [header ?? '', weightLine(ctx, toLocalDate(new Date(workout.session.started_at)))],
       lines,
-      [totals(ctx, [workout])],
+      [totals(ctx, [workout]), muscleLine(ctx, [workout])],
     );
   } else {
     const { workouts } = report;
@@ -209,6 +239,7 @@ export function buildReport(ctx: ReportContext, report: ReportKind): string {
     if (workouts.length > 0) {
       blocks.push([
         `${ctx.t('report.workouts', { count: workouts.length })} · ${totals(ctx, workouts)}`,
+        muscleLine(ctx, workouts),
       ]);
     }
     blocks.push(activityBlock(ctx, activities));

@@ -1,8 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  acceptIncrease,
   acceptReduction,
   advancePointer,
+  declineIncrease,
   deloadSets,
   epley,
   findRecords,
@@ -11,6 +13,7 @@ import {
   type ProgressionInput,
   reducedWeight,
   shouldOfferDeload,
+  topWeightOf,
   volumeKg,
   type WorkSet,
 } from './progression';
@@ -30,13 +33,69 @@ const plan = (reps: (number | null)[], overrides: Partial<ProgressionInput> = {}
     step_kg: 2.5,
     work_sets: reps.map((value) => set(value)),
     fail_streak: 0,
+    top_weight_kg: null,
     smart: false,
     ...overrides,
   });
 
-describe('planNext: the weight goes up', () => {
-  it('adds a step when every set reached the top of the range, and aims for the bottom', () => {
+describe('planNext: muscles first, weight after', () => {
+  it('keeps the weight the first time every set reaches the top, and aims for the top again', () => {
     expect(plan([12, 12, 12])).toEqual({
+      next_weight_kg: 80,
+      next_target_reps: 12,
+      fail_streak: 0,
+      reason_code: 'top_once',
+      reason_params: { step_kg: 2.5, sets: 3, reps: 12 },
+    });
+  });
+
+  it('offers a step after the second workout in a row at the top with the same weight', () => {
+    expect(plan([12, 12, 12], { top_weight_kg: 80 })).toEqual({
+      next_weight_kg: 80,
+      next_target_reps: 12,
+      fail_streak: 0,
+      reason_code: 'increase_offer',
+      reason_params: { step_kg: 2.5, sets: 3, reps: 12, rep_min: 10, increased_weight_kg: 82.5 },
+    });
+  });
+
+  it('starts the count over when the top was reached with another weight', () => {
+    expect(plan([12, 12, 12], { top_weight_kg: 77.5 })?.reason_code).toBe('top_once');
+  });
+
+  it('counts sets above the top and a last set done to failure (RIR 0)', () => {
+    const result = plan([], { work_sets: [set(13), set(12), set(12, 80, 0)], top_weight_kg: 80 });
+    expect(result?.reason_code).toBe('increase_offer');
+  });
+
+  it('offers nothing when one set is a rep short, or was skipped, or not done', () => {
+    expect(plan([12, 12, 11], { top_weight_kg: 80 })?.reason_code).toBe('same');
+    expect(plan([12, 12, null], { top_weight_kg: 80 })?.reason_code).toBe('same');
+    expect(plan([12, 12], { top_weight_kg: 80 })?.reason_code).toBe('same');
+  });
+
+  it('clears the count of failed workouts', () => {
+    expect(plan([12, 12, 12], { fail_streak: 1 })?.fail_streak).toBe(0);
+  });
+
+  it('offers two steps with smart progression when 3 or more reps were left in every set', () => {
+    const spare = [set(12, 80, 3), set(12, 80, 3), set(12, 80, 4)];
+    expect(plan([], { work_sets: spare, smart: true, top_weight_kg: 80 })).toMatchObject({
+      next_weight_kg: 80,
+      reason_code: 'increase_offer',
+      reason_params: { step_kg: 5, increased_weight_kg: 85 },
+    });
+    // Without the feature, with less to spare, or with RIR not marked: one step.
+    const offered = (work_sets: WorkSet[], smart: boolean) =>
+      plan([], { work_sets, smart, top_weight_kg: 80 })?.reason_params.increased_weight_kg;
+    expect(offered(spare, false)).toBe(82.5);
+    expect(offered([set(12, 80, 3), set(12, 80, 3), set(12, 80, 2)], true)).toBe(82.5);
+    expect(offered([set(12, 80, 4), set(12, 80, null), set(12, 80, 4)], true)).toBe(82.5);
+  });
+
+  it('adds the step and aims for the bottom of the range once the user agrees', () => {
+    const offer = plan([12, 12, 12], { top_weight_kg: 80 })!;
+    expect(acceptIncrease(offer)).toEqual({
       next_weight_kg: 82.5,
       next_target_reps: 10,
       fail_streak: 0,
@@ -45,34 +104,31 @@ describe('planNext: the weight goes up', () => {
     });
   });
 
-  it('counts sets above the top and a last set done to failure (RIR 0)', () => {
-    const result = plan([13, 12, 12], { work_sets: [set(13), set(12), set(12, 80, 0)] });
-    expect(result?.next_weight_kg).toBe(82.5);
-  });
-
-  it('does not add weight when one set is a rep short, or was skipped, or not done', () => {
-    expect(plan([12, 12, 11])?.reason_code).toBe('same');
-    expect(plan([12, 12, null])?.reason_code).toBe('same');
-    expect(plan([12, 12])?.reason_code).toBe('same');
-  });
-
-  it('clears the count of failed workouts', () => {
-    expect(plan([12, 12, 12], { fail_streak: 1 })?.fail_streak).toBe(0);
-  });
-
-  it('adds two steps with smart progression when 3 or more reps were left in every set', () => {
-    const spare = [set(12, 80, 3), set(12, 80, 3), set(12, 80, 4)];
-    expect(plan([], { work_sets: spare, smart: true })).toMatchObject({
-      next_weight_kg: 85,
-      reason_code: 'increase_fast',
-      reason_params: { step_kg: 5 },
+  it('keeps the weight when the user declines, and offers again after the next top', () => {
+    const offer = plan([12, 12, 12], { top_weight_kg: 80 })!;
+    const kept = declineIncrease(offer);
+    expect(kept).toEqual({
+      next_weight_kg: 80,
+      next_target_reps: 12,
+      fail_streak: 0,
+      reason_code: 'top_once',
+      reason_params: { step_kg: 2.5, sets: 3, reps: 12, declined: 1 },
     });
-    // Without the feature, with less to spare, or with RIR not marked: one step.
-    expect(plan([], { work_sets: spare })?.next_weight_kg).toBe(82.5);
-    const some = [set(12, 80, 3), set(12, 80, 3), set(12, 80, 2)];
-    expect(plan([], { work_sets: some, smart: true })?.next_weight_kg).toBe(82.5);
-    const unmarked = [set(12, 80, 4), set(12, 80, null), set(12, 80, 4)];
-    expect(plan([], { work_sets: unmarked, smart: true })?.next_weight_kg).toBe(82.5);
+    expect(plan([12, 12, 12], { top_weight_kg: topWeightOf(kept) })?.reason_code).toBe('increase_offer');
+  });
+
+  it('answers nothing in a plan that offers nothing', () => {
+    const once = plan([12, 12, 12])!;
+    expect(acceptIncrease(once)).toBe(once);
+    expect(declineIncrease(once)).toBe(once);
+  });
+
+  it('remembers the top only from a plan that reached it', () => {
+    expect(topWeightOf(plan([12, 12, 12]))).toBe(80);
+    expect(topWeightOf(plan([12, 12, 12], { top_weight_kg: 80 }))).toBe(80);
+    expect(topWeightOf(plan([12, 11, 10]))).toBeNull();
+    expect(topWeightOf(acceptIncrease(plan([12, 12, 12], { top_weight_kg: 80 })!))).toBeNull();
+    expect(topWeightOf(null)).toBeNull();
   });
 });
 
@@ -151,7 +207,8 @@ describe('planNext: the workout failed', () => {
 describe('planNext: the weight to go by', () => {
   it('follows the weight the sets were actually done with', () => {
     const lighter = [set(12, 77.5), set(12, 77.5), set(12, 77.5)];
-    expect(plan([], { work_sets: lighter })?.next_weight_kg).toBe(80);
+    expect(plan([], { work_sets: lighter })?.next_weight_kg).toBe(77.5);
+    expect(plan([], { work_sets: lighter, top_weight_kg: 77.5 })?.reason_params.increased_weight_kg).toBe(80);
   });
 
   it('takes the most common weight when it changed mid-way, the later of two equally common', () => {

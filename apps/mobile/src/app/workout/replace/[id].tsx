@@ -11,7 +11,6 @@ import { Card, Group, LinkRow, Screen } from '@/components/ui';
 import { Spacing } from '@/constants/theme';
 import { activeSession, getSession, lastPerformance, substituteExercise } from '@/data/sessions';
 import { useLocale } from '@/hooks/use-locale';
-import { ThemeOverride } from '@/hooks/use-theme';
 import { useCatalog } from '@/lib/catalog';
 import { useGym } from '@/lib/gym';
 import { mutate, useLocal } from '@/lib/local';
@@ -22,14 +21,6 @@ import { useUnits, useWeightFormat } from '@/lib/units';
  * of this one, each with the weight to start from.
  */
 export default function BusyScreen() {
-  return (
-    <ThemeOverride.Provider value="dark">
-      <Busy />
-    </ThemeOverride.Provider>
-  );
-}
-
-function Busy() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { t } = useTranslation();
   const locale = useLocale();
@@ -53,7 +44,7 @@ function Busy() {
       }),
     );
     return { entry, history };
-  });
+  }, [id, catalog]);
 
   const exercise = found && exerciseById.get(found.entry.exercise.exercise_id);
   if (!found || !exercise || !gym) {

@@ -1,3 +1,4 @@
+import { MUSCLE_CATEGORIES, MUSCLE_CATEGORY_KEYS } from '@mvp/domain';
 import { LEVELS } from '@mvp/schemas';
 import { useRouter } from 'expo-router';
 import type { ReactNode } from 'react';
@@ -5,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { ScreenGlow } from '@/components/gradients';
 import { Button } from '@/components/button';
 import { Chip } from '@/components/chip';
 import { ThemedText } from '@/components/themed-text';
@@ -20,14 +22,28 @@ export default function ExerciseFiltersScreen() {
   const locale = useLocale();
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const { catalog } = useCatalog();
+  const { catalog, muscleByCode } = useCatalog();
   const filters = useLibraryFilters();
 
   const found = useFoundExercises().length;
 
   return (
     <View style={[styles.screen, { backgroundColor: theme.background }]}>
+      <ScreenGlow />
       <ScrollView contentContainerStyle={styles.content}>
+        <Section title={t('filters.sort')}>
+          <Chip
+            label={t('filters.sortPopularity')}
+            selected={filters.sort === 'popularity'}
+            onPress={() => filters.setSort('popularity')}
+          />
+          <Chip
+            label={t('filters.sortAlphabet')}
+            selected={filters.sort === 'alphabet'}
+            onPress={() => filters.setSort('alphabet')}
+          />
+        </Section>
+
         <Section title={t('filters.availability')}>
           <Chip
             label={t('filters.onlyMyGym')}
@@ -47,16 +63,18 @@ export default function ExerciseFiltersScreen() {
           ))}
         </Section>
 
-        <Section title={t('filters.muscles')}>
-          {catalog.muscles.map((muscle) => (
-            <Chip
-              key={muscle.code}
-              label={muscle.name[locale]}
-              selected={filters.muscles.includes(muscle.code)}
-              onPress={() => filters.toggleMuscle(muscle.code)}
-            />
-          ))}
-        </Section>
+        {MUSCLE_CATEGORY_KEYS.map((category) => (
+          <Section key={category} title={t(`muscleCategories.${category}`)}>
+            {MUSCLE_CATEGORIES[category].map((code) => (
+              <Chip
+                key={code}
+                label={muscleByCode.get(code)?.name[locale] ?? code}
+                selected={filters.muscles.includes(code)}
+                onPress={() => filters.toggleMuscle(code)}
+              />
+            ))}
+          </Section>
+        ))}
 
         <Section title={t('filters.equipment')}>
           {catalog.equipment.map((item) => (
@@ -73,7 +91,7 @@ export default function ExerciseFiltersScreen() {
       <View
         style={[
           styles.footer,
-          { borderTopColor: theme.backgroundElement, paddingBottom: insets.bottom + Spacing.three },
+          { borderTopColor: theme.separator, paddingBottom: insets.bottom + Spacing.three },
         ]}>
         <Button
           variant="secondary"

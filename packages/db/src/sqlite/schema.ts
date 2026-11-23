@@ -109,6 +109,8 @@ export const progression_state = sqliteTable('progression_state', {
     enum: [
       'increase',
       'increase_fast',
+      'top_once',
+      'increase_offer',
       'same',
       'retry',
       'reduce_offer',
@@ -124,8 +126,9 @@ export const sessions = sqliteTable(
   'sessions',
   {
     ...sync,
-    program_id: text('program_id').notNull(),
-    program_day_id: text('program_day_id').notNull(),
+    // Both are null for a workout without a program.
+    program_id: text('program_id'),
+    program_day_id: text('program_day_id'),
     cycle_number: integer('cycle_number').notNull(),
     status: text('status', { enum: ['active', 'finished', 'abandoned'] }).notNull(),
     started_at: text('started_at').notNull(),
@@ -145,6 +148,7 @@ export const session_exercises = sqliteTable(
     program_item_id: text('program_item_id'),
     exercise_id: text('exercise_id').notNull(),
     substituted_from_id: text('substituted_from_id'),
+    planned_sets: integer('planned_sets'),
   },
   (t) => [
     index('session_exercises_session_id_idx').on(t.session_id),

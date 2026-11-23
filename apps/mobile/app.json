@@ -8,6 +8,7 @@
     "scheme": "mvp",
     "userInterfaceStyle": "automatic",
     "ios": {
+      "bundleIdentifier": "com.mvp.workouttracker",
       "icon": "./assets/expo.icon"
     },
     "android": {
@@ -52,6 +53,17 @@
           "microphonePermission": false,
           "recordAudioAndroid": false,
           "enableBackgroundPlayback": false
+        }
+      ],
+      "expo-font",
+      "expo-status-bar",
+      "expo-asset",
+      [
+        "@kingstinct/react-native-healthkit",
+        {
+          "NSHealthShareUsageDescription": "MVP читает шаги, тренировки и показатели активности, чтобы показать их в календаре.",
+          "NSHealthUpdateUsageDescription": false,
+          "background": false
         }
       ]
     ],

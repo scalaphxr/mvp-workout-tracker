@@ -32,7 +32,7 @@ export default function IntervalPresetScreen() {
   const { id } = useLocalSearchParams<{ id?: string }>();
   const { t } = useTranslation();
   const router = useRouter();
-  const existing = useLocal((ctx) => (id ? getIntervalPreset(ctx, id) : null));
+  const existing = useLocal((ctx) => (id ? getIntervalPreset(ctx, id) : null), [id]);
   const [form, setForm] = useState<IntervalPresetInput>(() => existing ?? { ...NEW_PRESET, title: '' });
 
   if (id && !existing) {

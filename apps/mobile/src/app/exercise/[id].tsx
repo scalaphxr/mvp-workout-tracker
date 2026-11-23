@@ -4,13 +4,14 @@ import type { Muscle } from '@mvp/schemas';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import { EmptyState } from '@/components/empty-state';
 import { ExerciseVideo } from '@/components/exercise-video';
 import { MuscleMap } from '@/components/muscle-map';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { Screen } from '@/components/ui';
 import { MaxContentWidth, Radius, Spacing } from '@/constants/theme';
 import { useLocale } from '@/hooks/use-locale';
 import { useTheme } from '@/hooks/use-theme';
@@ -47,11 +48,9 @@ export default function ExerciseScreen() {
   ];
 
   return (
-    <ScrollView
-      style={{ backgroundColor: theme.background }}
-      contentContainerStyle={styles.content}>
+    <Screen contentContainerStyle={styles.content}>
       <View style={styles.titleBlock}>
-        <ThemedText style={styles.title}>{text.name}</ThemedText>
+        <ThemedText type="heading" style={styles.title}>{text.name}</ThemedText>
         <View style={styles.tags}>
           {tags.map((tag) => (
             <ThemedView key={tag} type="backgroundElement" style={styles.tag}>
@@ -154,14 +153,14 @@ export default function ExerciseScreen() {
           </ThemedView>
         </Section>
       )}
-    </ScrollView>
+    </Screen>
   );
 }
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
     <View style={styles.block}>
-      <ThemedText style={styles.sectionTitle}>{title}</ThemedText>
+      <ThemedText type="heading" style={styles.sectionTitle}>{title}</ThemedText>
       {children}
     </View>
   );

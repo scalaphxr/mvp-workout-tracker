@@ -46,8 +46,8 @@ export default function ProgramItemScreen() {
   const gym = useGym();
   const units = useUnits();
   const kg = useWeightFormat();
-  const item = useLocal((ctx) => getItem(ctx, id));
-  const siblings = useLocal((ctx) => (item ? dayItems(ctx, item.program_day_id) : []));
+  const item = useLocal((ctx) => getItem(ctx, id), [id]);
+  const siblings = useLocal((ctx) => (item ? dayItems(ctx, item.program_day_id) : []), [item]);
   const [notes, setNotes] = useState(item?.notes ?? '');
 
   if (!item) {

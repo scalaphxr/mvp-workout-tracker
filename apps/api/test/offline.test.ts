@@ -23,6 +23,7 @@ import type { DataContext } from '../../mobile/src/data/context';
 import { createGymProfile } from '../../mobile/src/data/gym';
 import { addItem, createProgram, getProgramTree, updateProgram } from '../../mobile/src/data/programs';
 import {
+  addFreeExercise,
   type ExerciseFacts,
   finishSession,
   getSession,
@@ -30,6 +31,8 @@ import {
   logSet,
   nextWorkout,
   sessionSummary,
+  setPlannedSets,
+  startFreeSession,
   startSession,
 } from '../../mobile/src/data/sessions';
 import { pendingCount, runSync, type SyncTransport } from '../../mobile/src/data/sync';
@@ -203,8 +206,8 @@ describe('a workout done without a network', () => {
     expect(lastFinishedSession(second)!.id).toBe(sessionId);
     expect(nextWorkout(second, programId)).toMatchObject({ cycle: 2 });
     expect(sessionSummary(second, sessionId)!.exercises[0]!.plan).toMatchObject({
-      next_weight_kg: 82.5,
-      reason_code: 'increase',
+      next_weight_kg: 80,
+      reason_code: 'top_once',
     });
     // What came from the server is not sent back to it.
     expect(pendingCount(second)).toBe(0);
@@ -224,14 +227,14 @@ describe('a workout done without a network', () => {
     updateProgram(second, programId, { title: 'Bench, renamed' });
     const session = startSession(second, programId, dayId);
     const [bench] = getSession(second, session.id)!.exercises;
-    expect(bench!.plan?.next_weight_kg).toBe(82.5);
-    logSet(second, bench!.exercise.id, { weight_kg: 82.5, reps: 10, rir: 1 });
+    expect(bench!.plan?.next_weight_kg).toBe(80);
+    logSet(second, bench!.exercise.id, { weight_kg: 80, reps: 10, rir: 1 });
     finishSession(second, session.id, facts, { smart: false });
     await runSync(second, network);
 
     await runSync(first, network);
     expect(getProgramTree(first, programId)!.program.title).toBe('Bench, renamed');
-    expect(getSession(first, session.id)!.exercises[0]!.sets.map((set) => set.weight_kg)).toEqual([82.5]);
+    expect(getSession(first, session.id)!.exercises[0]!.sets.map((set) => set.weight_kg)).toEqual([80]);
     expect(pendingCount(first)).toBe(0);
     expect(await serverCounts()).toEqual({ programs: 1, sessions: 2, exercises: 2, sets: 4 });
   });
@@ -247,5 +250,54 @@ describe('a workout done without a network', () => {
       pulled: 0,
     });
     expect(lastFinishedSession(boriss)).toBeNull();
+  });
+});
+
+describe('a workout without a program', () => {
+  /** A finished workout of 2 sets of the bench press, out of 4 meant. */
+  function trainFree(ctx: DataContext) {
+    const session = startFreeSession(ctx);
+    const bench = addFreeExercise(ctx, session.id, BENCH);
+    setPlannedSets(ctx, bench.id, 4);
+    logSet(ctx, bench.id, { weight_kg: 80, reps: 10 });
+    logSet(ctx, bench.id, { weight_kg: 80, reps: 9 });
+    finishSession(ctx, session.id, facts, { smart: false });
+    return session.id;
+  }
+
+  it('reaches another phone of the same user', async () => {
+    const first = await phone(1);
+    const sessionId = trainFree(first);
+    const token = await signIn('anna@example.com');
+
+    await runSync(first, online(token));
+    expect(pendingCount(first)).toBe(0);
+    expect(await serverCounts()).toEqual({ programs: 0, sessions: 1, exercises: 1, sets: 2 });
+
+    const second = await phone(2);
+    await runSync(second, online(token));
+    expect(lastFinishedSession(second)).toMatchObject({ id: sessionId, program_id: null });
+    expect(getSession(second, sessionId)!.exercises).toMatchObject([
+      { plannedSets: 4, sets: [{ reps: 10 }, { reps: 9 }] },
+    ]);
+  });
+
+  it('cannot be overwritten by another user', async () => {
+    const ctx = await phone(1);
+    const sessionId = trainFree(ctx);
+    await runSync(ctx, online(await signIn('anna@example.com')));
+
+    const { session } = getSession(ctx, sessionId)!;
+    const response = await online(await signIn('boris@example.com')).push([
+      {
+        table: 'sessions',
+        op: 'upsert',
+        row: { ...session, notes: 'mine now', updated_at: '2026-10-05T10:00:00.000Z' },
+      },
+    ]);
+
+    expect(response.rejected).toEqual([{ id: sessionId, code: 'forbidden' }]);
+    const [stored] = await database.db.select().from(sessions);
+    expect(stored?.notes).toBe('');
   });
 });

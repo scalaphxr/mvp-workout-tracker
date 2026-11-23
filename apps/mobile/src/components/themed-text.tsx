@@ -1,12 +1,13 @@
 import { Platform, StyleSheet, Text, type TextProps } from 'react-native';
 
-import { Fonts, ThemeColor } from '@/constants/theme';
+import { bodyFace, Fonts, ThemeColor, Typeface } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 export type ThemedTextProps = TextProps & {
   type?:
     | 'default'
     | 'title'
+    | 'heading'
     | 'largeTitle'
     | 'section'
     | 'metric'
@@ -19,8 +20,17 @@ export type ThemedTextProps = TextProps & {
   themeColor?: ThemeColor;
 };
 
+const DISPLAY = new Set<ThemedTextProps['type']>([
+  'title', 'heading', 'largeTitle', 'section', 'metric', 'subtitle', 'smallBold',
+]);
+
 export function ThemedText({ style, type = 'default', themeColor, ...rest }: ThemedTextProps) {
   const theme = useTheme();
+  // A screen may set its own weight: the body face follows it, since every weight is a file.
+  const own = StyleSheet.flatten(style);
+  const face =
+    own?.fontFamily ??
+    (DISPLAY.has(type) ? Typeface.display : bodyFace(own?.fontWeight ?? WEIGHTS[type]));
 
   return (
     <Text
@@ -28,6 +38,7 @@ export function ThemedText({ style, type = 'default', themeColor, ...rest }: The
         { color: theme[themeColor ?? 'text'] },
         type === 'default' && styles.default,
         type === 'title' && styles.title,
+        type === 'heading' && styles.heading,
         type === 'largeTitle' && styles.largeTitle,
         type === 'section' && styles.section,
         type === 'metric' && styles.metric,
@@ -38,11 +49,22 @@ export function ThemedText({ style, type = 'default', themeColor, ...rest }: The
         type === 'linkPrimary' && [styles.linkPrimary, { color: theme.accent }],
         type === 'code' && styles.code,
         style,
+        { fontFamily: face },
+        // The weight lives in the face; a weight on top of it would make Android fall back.
+        type !== 'code' && { fontWeight: 'normal' },
       ]}
       {...rest}
     />
   );
 }
+
+/** The weight each body type is set in. */
+const WEIGHTS: Partial<Record<NonNullable<ThemedTextProps['type']>, number>> = {
+  default: 500,
+  small: 500,
+  link: 500,
+  linkPrimary: 600,
+};
 
 const styles = StyleSheet.create({
   small: {
@@ -62,34 +84,36 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 48,
-    fontWeight: 600,
-    lineHeight: 52,
+    lineHeight: 54,
+    textTransform: 'uppercase',
   },
-  /** The name of a tab screen, above everything on it. */
+  heading: {
+    fontSize: 24,
+    lineHeight: 30,
+  },
+  /** The name of a tab screen, above everything on it: a poster heading in capitals. */
   largeTitle: {
-    fontSize: 34,
-    lineHeight: 41,
-    fontWeight: 700,
-    letterSpacing: 0.4,
+    fontSize: 38,
+    lineHeight: 46,
+    textTransform: 'uppercase',
+    letterSpacing: 0.2,
   },
   /** The heading of a group of cards. */
   section: {
-    fontSize: 22,
-    lineHeight: 28,
-    fontWeight: 700,
+    fontSize: 26,
+    lineHeight: 32,
+    textTransform: 'uppercase',
+    letterSpacing: 0.2,
   },
-  /** A measured number, the largest thing on a card. */
+  /** A measured number, the largest thing on a card: condensed, so long numbers still fit. */
   metric: {
-    // The rounded face where the system has one; elsewhere the usual one, never a serif fallback.
-    fontFamily: Platform.select({ ios: Fonts.rounded, web: 'ui-rounded, system-ui, sans-serif' }),
-    fontSize: 34,
-    lineHeight: 40,
-    fontWeight: 600,
+    fontSize: 38,
+    lineHeight: 44,
   },
   subtitle: {
     fontSize: 32,
-    lineHeight: 44,
-    fontWeight: 600,
+    lineHeight: 40,
+    textTransform: 'uppercase',
   },
   link: {
     lineHeight: 30,

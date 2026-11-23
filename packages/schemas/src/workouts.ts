@@ -16,9 +16,10 @@ export type SessionStatus = (typeof SESSION_STATUSES)[number];
 
 export const SessionRowSchema = z.object({
   ...syncFields,
-  program_id: z.uuid(),
-  program_day_id: z.uuid(),
-  /** Which pass through the program this workout belongs to. */
+  /** Both are `null` for a workout without a program: the user picks exercises as they go. */
+  program_id: z.uuid().nullable(),
+  program_day_id: z.uuid().nullable(),
+  /** Which pass through the program this workout belongs to; 1 without a program. */
   cycle_number: z.number().int().min(1),
   status: z.enum(SESSION_STATUSES),
   started_at: z.iso.datetime(),
@@ -38,6 +39,8 @@ export const SessionExerciseRowSchema = z.object({
   exercise_id: z.uuid(),
   /** Set when the planned exercise was replaced for this workout. */
   substituted_from_id: z.uuid().nullable(),
+  /** The sets the user means to do, in a workout without a program. Older apps do not send it. */
+  planned_sets: z.number().int().min(1).nullable().default(null),
 });
 export type SessionExerciseRow = z.infer<typeof SessionExerciseRowSchema>;
 
@@ -70,10 +73,14 @@ export type SetLogRow = z.infer<typeof SetLogRowSchema>;
  * is put together on the phone in the user's language.
  */
 export const REASON_CODES = [
-  /** Every set reached the top of the range: the weight goes up a step. */
+  /** The weight went up a step: the user took the offer to add weight. */
   'increase',
-  /** The same, with reps to spare in every set: two steps (smart progression). */
+  /** Two steps at once (smart progression). Kept for plans made before the offer. */
   'increase_fast',
+  /** Every set reached the top of the range, the first time with this weight: the same weight. */
+  'top_once',
+  /** The second workout in a row at the top with this weight: the app offers to add a step. */
+  'increase_offer',
   /** Some set is short of the top: the same weight, one more rep in the weakest set. */
   'same',
   /** Half of the sets or more fell below the range, the first time: try the weight again. */
@@ -114,12 +121,14 @@ export const ProgramStateRowSchema = z.object({
 });
 export type ProgramStateRow = z.infer<typeof ProgramStateRowSchema>;
 
+export const BODY_WEIGHT_LIMITS = { min: 20, max: 400 } as const;
+
 /** A morning weight. The phone keeps one per calendar day: entering it again replaces it. */
 export const BodyLogRowSchema = z.object({
   ...syncFields,
   /** The calendar day in the user's own time zone, YYYY-MM-DD. */
   date: z.iso.date(),
-  weight_kg: z.number().min(20).max(400),
+  weight_kg: z.number().min(BODY_WEIGHT_LIMITS.min).max(BODY_WEIGHT_LIMITS.max),
   measured_at: z.iso.datetime(),
 });
 export type BodyLogRow = z.infer<typeof BodyLogRowSchema>;

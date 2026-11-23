@@ -53,7 +53,7 @@ export function RestTimer({ aside }: { aside?: ReactNode }) {
           <ThemedText type="smallBold" themeColor="textSecondary">
             {t('rest.title')}
           </ThemedText>
-          <ThemedText style={styles.time}>{clock(left)}</ThemedText>
+          <ThemedText type="metric" style={styles.time}>{clock(left)}</ThemedText>
         </View>
       </View>
       <View style={styles.actions}>

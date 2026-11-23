@@ -1,0 +1,553 @@
+[
+  {
+    "id": "68a1ba77-0c42-4459-a198-e5eb22b7f868",
+    "slug": "flat-treadmill-walk",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","calves"],
+    "secondary_muscles": ["glutes","hamstrings"],
+    "equipment": ["treadmill"],
+    "translations": {
+      "ru": {"name":"Ходьба по дорожке без наклона","aliases":[],"description":"Начните на небольшой скорости без наклона полотна. Идите естественным шагом, не опираясь на поручни.","technique_steps":["Плавно наберите темп, расслабив плечи. Перед остановкой постепенно замедлитесь."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Flat treadmill walk","aliases":[],"description":"Start at low speed with the deck level and take natural steps without leaning on the rails.","technique_steps":["Build your pace gradually with relaxed shoulders. Slow down smoothly before stopping."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "cd773386-b3c0-4c0e-b292-9daf9c863939",
+    "slug": "curved-manual-treadmill-run",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","calves"],
+    "secondary_muscles": ["glutes","hamstrings"],
+    "equipment": ["curved_treadmill"],
+    "translations": {
+      "ru": {"name":"Бег на изогнутой механической дорожке","aliases":[],"description":"Начните с ходьбы, чтобы понять, как положение на полотне влияет на скорость. Затем перейдите на лёгкий бег.","technique_steps":["Плавно наберите темп, расслабив плечи. Перед остановкой постепенно замедлитесь."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Curved manual treadmill run","aliases":[],"description":"Start with walking to learn how your position affects belt speed. Progress to an easy run.","technique_steps":["Build your pace gradually with relaxed shoulders. Slow down smoothly before stopping."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "d20f9160-4673-4fd1-a571-89a1780ed1f7",
+    "slug": "trail-running",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","calves"],
+    "secondary_muscles": ["glutes","hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Бег по пересечённой местности","aliases":[],"description":"Выберите маршрут с хорошим обзором вперёд. На неровной поверхности укорачивайте шаг.","technique_steps":["Плавно наберите темп, расслабив плечи. Перед остановкой постепенно замедлитесь."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Trail running","aliases":[],"description":"Choose a route you can see clearly ahead. Shorten your stride on uneven terrain.","technique_steps":["Build your pace gradually with relaxed shoulders. Slow down smoothly before stopping."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "98726f38-6ebf-4b79-a9e7-68a5bee4cbfa",
+    "slug": "uphill-outdoor-walk",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","calves"],
+    "secondary_muscles": ["glutes","hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Ходьба в подъём на улице","aliases":[],"description":"Выберите пологий подъём и укорачивайте шаг по мере увеличения уклона.","technique_steps":["Плавно наберите темп, расслабив плечи. Перед остановкой постепенно замедлитесь."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Uphill outdoor walk","aliases":[],"description":"Choose a gradual slope and shorten your steps as the gradient increases.","technique_steps":["Build your pace gradually with relaxed shoulders. Slow down smoothly before stopping."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "2e034023-d02a-4935-8208-0f66209751e5",
+    "slug": "track-running",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","calves"],
+    "secondary_muscles": ["glutes","hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Бег по стадиону","aliases":[],"description":"Выберите свободную дорожку стадиона и соблюдайте установленное направление движения.","technique_steps":["Плавно наберите темп, расслабив плечи. Перед остановкой постепенно замедлитесь."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Track running","aliases":[],"description":"Use a clear track lane and follow the direction posted at the facility.","technique_steps":["Build your pace gradually with relaxed shoulders. Slow down smoothly before stopping."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "30230578-2b3a-4fe8-8fa8-6afee1b7fc44",
+    "slug": "nordic-walking",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","calves"],
+    "secondary_muscles": ["glutes","hamstrings"],
+    "equipment": ["walking_poles"],
+    "translations": {
+      "ru": {"name":"Скандинавская ходьба","aliases":[],"description":"Используйте палки подходящей длины. При шаге ставьте противоположную палку позади передней стопы.","technique_steps":["Плавно наберите темп, расслабив плечи. Перед остановкой постепенно замедлитесь."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Nordic walking","aliases":[],"description":"Use poles sized for your stride. Plant the opposite pole behind the front foot as you step.","technique_steps":["Build your pace gradually with relaxed shoulders. Slow down smoothly before stopping."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "597916ba-ffa9-43f5-ad51-cc41e391bb00",
+    "slug": "indoor-walking-laps",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","calves"],
+    "secondary_muscles": ["glutes","hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Ходьба кругами в помещении","aliases":[],"description":"Выберите свободный круговой маршрут. Поворачивайте по широкой дуге, сохраняя ритм.","technique_steps":["Плавно наберите темп, расслабив плечи. Перед остановкой постепенно замедлитесь."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Indoor walking laps","aliases":[],"description":"Choose a clear loop and take wider turns to keep a steady rhythm.","technique_steps":["Build your pace gradually with relaxed shoulders. Slow down smoothly before stopping."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "c5dc8cff-8882-401b-8cca-b8f3e5efa76b",
+    "slug": "outdoor-stair-walking",
+    "kind": "cardio",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","calves"],
+    "secondary_muscles": ["glutes","hamstrings"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Ходьба по лестнице на улице","aliases":[],"description":"Выберите сухую лестницу и при необходимости держитесь за перила. Вниз спускайтесь под контролем.","technique_steps":["Плавно наберите темп, расслабив плечи. Перед остановкой постепенно замедлитесь."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Outdoor stair walking","aliases":[],"description":"Choose dry steps and use the handrail for balance if needed. Walk back down at a controlled pace.","technique_steps":["Build your pace gradually with relaxed shoulders. Slow down smoothly before stopping."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "57b1e6b5-464b-4f01-a06c-c67c7e562de2",
+    "slug": "recumbent-exercise-bike",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","hamstrings"],
+    "equipment": ["recumbent_bike"],
+    "translations": {
+      "ru": {"name":"Горизонтальный велотренажёр","aliases":[],"description":"Настройте сиденье так, чтобы колено оставалось немного согнутым в самой дальней точке педали.","technique_steps":["Крутите педали в ровном ритме и направляйте колени по линии стоп. Снизьте усилие перед остановкой."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Recumbent exercise bike","aliases":[],"description":"Adjust the seat so the farther knee stays slightly bent when the pedal is farthest away.","technique_steps":["Pedal with a smooth rhythm and keep both knees in line with your feet. Ease off the effort before stopping."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "b6479de4-eba1-49ec-bcb4-47eacaf1c09b",
+    "slug": "indoor-spin-bike",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","hamstrings"],
+    "equipment": ["spin_bike"],
+    "translations": {
+      "ru": {"name":"Сайклинг на спин-байке","aliases":[],"description":"Настройте высоту седла и руля, зафиксируйте обе стопы и начните с лёгкого сопротивления.","technique_steps":["Крутите педали в ровном ритме и направляйте колени по линии стоп. Снизьте усилие перед остановкой."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Indoor spin bike","aliases":[],"description":"Adjust seat and handlebar height and secure both feet before pedaling against light resistance.","technique_steps":["Pedal with a smooth rhythm and keep both knees in line with your feet. Ease off the effort before stopping."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "ac98afc8-5a2d-4eba-b801-92413265f414",
+    "slug": "indoor-cycling-on-bike-trainer",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","hamstrings"],
+    "equipment": ["bike_trainer"],
+    "translations": {
+      "ru": {"name":"Велотренировка на велостанке","aliases":[],"description":"Закрепите велосипед на совместимом велостанке и убедитесь, что он устойчив, прежде чем садиться.","technique_steps":["Крутите педали в ровном ритме и направляйте колени по линии стоп. Снизьте усилие перед остановкой."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Indoor cycling on bike trainer","aliases":[],"description":"Fix the bicycle to a compatible trainer and check that the bike is secure before mounting.","technique_steps":["Pedal with a smooth rhythm and keep both knees in line with your feet. Ease off the effort before stopping."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "764fa5f9-5af7-4ab8-a036-8ababc1a28e8",
+    "slug": "march-in-place",
+    "kind": "cardio",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Марш на месте","aliases":[],"description":"Встаньте прямо и поочерёдно поднимайте колени до удобной высоты, двигая противоположной рукой.","technique_steps":["Найдите ровный ритм с короткими контролируемыми движениями. Освободите место вокруг себя и завершите упражнение, замедляя темп."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"March in place","aliases":[],"description":"Stand tall and alternate lifting your knees to a comfortable height while swinging the opposite arm.","technique_steps":["Find a steady rhythm with short, controlled movements. Keep an open space around you and finish by slowing the movement."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "775fa69a-db01-41ef-8a37-4a33c67263cd",
+    "slug": "jog-in-place",
+    "kind": "cardio",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Бег на месте","aliases":[],"description":"Начните с марша, затем добавьте небольшую фазу отрыва и мягко приземляйтесь под тазом.","technique_steps":["Найдите ровный ритм с короткими контролируемыми движениями. Освободите место вокруг себя и завершите упражнение, замедляя темп."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Jog in place","aliases":[],"description":"Start with a march, then add a small spring and land softly under your hips.","technique_steps":["Find a steady rhythm with short, controlled movements. Keep an open space around you and finish by slowing the movement."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "a56b1b00-9b1f-4fd7-bb10-058a10c0e5c8",
+    "slug": "standing-high-knees",
+    "kind": "cardio",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Бег на месте с высоким подниманием коленей","aliases":[],"description":"Быстро чередуйте подъёмы коленей, держа корпус прямо и приземляясь мягко.","technique_steps":["Найдите ровный ритм с короткими контролируемыми движениями. Освободите место вокруг себя и завершите упражнение, замедляя темп."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Standing high knees","aliases":[],"description":"Quickly alternate knee drives while keeping your torso tall and your landings quiet.","technique_steps":["Find a steady rhythm with short, controlled movements. Keep an open space around you and finish by slowing the movement."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "68cd1842-e9e6-484d-912e-479587eaf020",
+    "slug": "butt-kicks",
+    "kind": "cardio",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Бег на месте с захлёстом голени","aliases":[],"description":"Бегите на месте и поочерёдно сгибайте колени, направляя пятки назад к тазу.","technique_steps":["Найдите ровный ритм с короткими контролируемыми движениями. Освободите место вокруг себя и завершите упражнение, замедляя темп."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Butt kicks","aliases":[],"description":"Jog in place and bend each knee so the heel travels back toward your hips.","technique_steps":["Find a steady rhythm with short, controlled movements. Keep an open space around you and finish by slowing the movement."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "e21c69b8-4d3e-4103-b64f-0bad6bd70a6a",
+    "slug": "step-jacks",
+    "kind": "cardio",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Джампинг-джек без прыжка","aliases":[],"description":"Шагните одной ногой в сторону с подъёмом рук над головой, вернитесь и смените ногу.","technique_steps":["Найдите ровный ритм с короткими контролируемыми движениями. Освободите место вокруг себя и завершите упражнение, замедляя темп."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Step jacks","aliases":[],"description":"Step one foot out while reaching your arms overhead, then return and alternate legs.","technique_steps":["Find a steady rhythm with short, controlled movements. Keep an open space around you and finish by slowing the movement."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "92fdd99d-bec0-4716-9aa4-1ad8d0df294c",
+    "slug": "low-impact-skater-step",
+    "kind": "cardio",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Шаги конькобежца без прыжка","aliases":[],"description":"Шагните в сторону, легко коснитесь пола второй стопой сзади и переместитесь обратно.","technique_steps":["Найдите ровный ритм с короткими контролируемыми движениями. Освободите место вокруг себя и завершите упражнение, замедляя темп."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Low-impact skater step","aliases":[],"description":"Step sideways, then lightly tap the other foot behind you before moving back across.","technique_steps":["Find a steady rhythm with short, controlled movements. Keep an open space around you and finish by slowing the movement."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "2d98b94a-b01e-4016-8c8d-912b77db40cd",
+    "slug": "cardio-side-shuffle",
+    "kind": "cardio",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Приставные шаги в стороны","aliases":[],"description":"Слегка согните колени и сделайте несколько быстрых приставных шагов, не скрещивая ноги. Смените сторону.","technique_steps":["Найдите ровный ритм с короткими контролируемыми движениями. Освободите место вокруг себя и завершите упражнение, замедляя темп."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Cardio side shuffle","aliases":[],"description":"Keep your knees soft and take several quick side steps without crossing your feet. Change directions.","technique_steps":["Find a steady rhythm with short, controlled movements. Keep an open space around you and finish by slowing the movement."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "b1369e86-6d8b-4b36-92c3-71ee35512e57",
+    "slug": "grapevine-step",
+    "kind": "cardio",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Аэробный шаг «виноградная лоза»","aliases":[],"description":"Шагните в сторону, заведите вторую стопу сзади, снова шагните в сторону и приставьте ногу. Повторите обратно.","technique_steps":["Найдите ровный ритм с короткими контролируемыми движениями. Освободите место вокруг себя и завершите упражнение, замедляя темп."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Grapevine step","aliases":[],"description":"Step side, cross the other foot behind, step side again, and tap. Repeat the pattern in reverse.","technique_steps":["Find a steady rhythm with short, controlled movements. Keep an open space around you and finish by slowing the movement."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "87269ab7-5911-4c3f-8831-4fc572dae757",
+    "slug": "step-aerobics-basic-step",
+    "kind": "cardio",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","abs"],
+    "equipment": ["aerobic_step"],
+    "translations": {
+      "ru": {"name":"Базовый шаг степ-аэробики","aliases":[],"description":"Поочерёдно поставьте обе стопы на середину низкой платформы, затем так же спуститесь. Меняйте ведущую ногу.","technique_steps":["Найдите ровный ритм с короткими контролируемыми движениями. Освободите место вокруг себя и завершите упражнение, замедляя темп."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Step aerobics basic step","aliases":[],"description":"Step onto the middle of a low platform with each foot in turn, then step down one foot at a time. Alternate the lead foot.","technique_steps":["Find a steady rhythm with short, controlled movements. Keep an open space around you and finish by slowing the movement."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "c4a00b4b-c071-4338-87cc-74587602d220",
+    "slug": "step-aerobics-knee-lift",
+    "kind": "cardio",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","abs"],
+    "equipment": ["aerobic_step"],
+    "translations": {
+      "ru": {"name":"Подъём колена на степ-платформе","aliases":[],"description":"Шагните одной ногой на низкую платформу и поднимите противоположное колено. Спуститесь и смените сторону.","technique_steps":["Найдите ровный ритм с короткими контролируемыми движениями. Освободите место вокруг себя и завершите упражнение, замедляя темп."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Step aerobics knee lift","aliases":[],"description":"Step onto a low platform with one foot and bring the other knee up. Step down and switch sides.","technique_steps":["Find a steady rhythm with short, controlled movements. Keep an open space around you and finish by slowing the movement."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "8339d587-1468-4efd-82fe-471b70c5f0ca",
+    "slug": "low-impact-dance-aerobics",
+    "kind": "cardio",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["calves","abs"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Танцевальная аэробика без прыжков","aliases":[],"description":"Соедините боковые шаги, касания и движения руками в ритм. Одна стопа всегда остаётся на полу.","technique_steps":["Найдите ровный ритм с короткими контролируемыми движениями. Освободите место вокруг себя и завершите упражнение, замедляя темп."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Low-impact dance aerobics","aliases":[],"description":"Link simple side steps, taps, and arm movements to a beat, keeping one foot grounded.","technique_steps":["Find a steady rhythm with short, controlled movements. Keep an open space around you and finish by slowing the movement."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "7c3cf56b-5c62-442e-843d-b9aa6e7b5296",
+    "slug": "shadowboxing",
+    "kind": "cardio",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "beginner",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["abs","obliques","calves"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Бой с тенью","aliases":[],"description":"Встаньте в разножку и чередуйте лёгкие прямые удары в воздух с небольшими шагами.","technique_steps":["Расслабьте плечи и после каждого удара возвращайте руки к лицу. Ускоряйтесь, пока сохраняете контроль."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Shadowboxing","aliases":[],"description":"Stand in a staggered stance and alternate light straight punches into the air with small steps.","technique_steps":["Keep your shoulders relaxed and let your hands come back toward your face between punches. Build speed only while you can keep control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "04b303ea-5a3e-4ac7-ba83-c39ebb0ce254",
+    "slug": "heavy-bag-boxing",
+    "kind": "cardio",
+    "tracking": "time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["front_delts"],
+    "secondary_muscles": ["abs","obliques","calves"],
+    "equipment": ["heavy_bag","boxing_gloves"],
+    "translations": {
+      "ru": {"name":"Удары по боксёрскому мешку","aliases":[],"description":"Наденьте перчатки и бинты. Начните с лёгких прямых ударов и держите кисть на линии предплечья при контакте.","technique_steps":["Расслабьте плечи и после каждого удара возвращайте руки к лицу. Ускоряйтесь, пока сохраняете контроль."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Heavy bag boxing","aliases":[],"description":"Put on gloves and wraps. Start with light straight punches, keeping your wrists aligned at contact.","technique_steps":["Keep your shoulders relaxed and let your hands come back toward your face between punches. Build speed only while you can keep control."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "e9f58011-c885-4566-b830-d686d157e616",
+    "slug": "sled-push",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["hamstrings","abs"],
+    "equipment": ["sled"],
+    "translations": {
+      "ru": {"name":"Толкание тренировочных саней","aliases":[],"description":"Возьмитесь за рукоятки, наклонитесь от голеностопов и толкайте сани по свободной дорожке.","technique_steps":["Удерживайте корпус устойчивым и делайте короткие контролируемые шаги. Плавно уменьшите усилие перед остановкой."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Sled push","aliases":[],"description":"Grip the handles, lean forward from the ankles, and drive the sled along a clear marked lane.","technique_steps":["Keep your torso stable and take short, deliberate steps. Ease off gradually before bringing the equipment to a stop."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "d0c48ec4-50c0-43ec-b4a8-7eefe1f772d5",
+    "slug": "reverse-sled-drag",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["quads","glutes"],
+    "secondary_muscles": ["hamstrings","abs"],
+    "equipment": ["sled","sled_strap"],
+    "translations": {
+      "ru": {"name":"Тяга тренировочных саней спиной вперёд","aliases":[],"description":"Возьмитесь за стропу лицом к саням и после проверки дорожки шагайте назад на слегка согнутых коленях.","technique_steps":["Удерживайте корпус устойчивым и делайте короткие контролируемые шаги. Плавно уменьшите усилие перед остановкой."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Reverse sled drag","aliases":[],"description":"Hold a strap facing the sled and step backward with knees soft after checking the lane.","technique_steps":["Keep your torso stable and take short, deliberate steps. Ease off gradually before bringing the equipment to a stop."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "057c435d-c9ad-407a-ba8d-db20f43729bd",
+    "slug": "freestyle-swimming",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","front_delts"],
+    "secondary_muscles": ["abs","glutes"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Плавание кролем на груди","aliases":[],"description":"Вытягивайте руки вперёд поочерёдно, поворачивайте голову набок для вдоха и делайте небольшие движения ногами.","technique_steps":["Сохраняйте расслабленный ритм гребков. Сделайте паузу для дыхания, если ритм сбивается."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Freestyle swimming","aliases":[],"description":"Reach forward one arm at a time, turn your head to the side to breathe, and keep your kick small.","technique_steps":["Keep your stroke relaxed enough to repeat smoothly. Take a breathing break whenever you lose rhythm."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "4f261b97-54b1-40c6-a77c-b624dc828105",
+    "slug": "backstroke-swimming",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","front_delts"],
+    "secondary_muscles": ["abs","glutes"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Плавание кролем на спине","aliases":[],"description":"Лягте на спину, чередуйте гребки руками и ориентируйтесь по разметке бассейна при приближении к стенке.","technique_steps":["Сохраняйте расслабленный ритм гребков. Сделайте паузу для дыхания, если ритм сбивается."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Backstroke swimming","aliases":[],"description":"Float on your back, alternate arm strokes, and use the pool markings to judge your approach to the wall.","technique_steps":["Keep your stroke relaxed enough to repeat smoothly. Take a breathing break whenever you lose rhythm."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  },
+  {
+    "id": "f1ef23bf-1a23-4dda-9862-4048e27cd81f",
+    "slug": "breaststroke-swimming",
+    "kind": "cardio",
+    "tracking": "distance_time",
+    "movement_pattern": "cardio",
+    "mechanics": "compound",
+    "level": "intermediate",
+    "is_unilateral": false,
+    "primary_muscles": ["lats","front_delts"],
+    "secondary_muscles": ["abs","glutes"],
+    "equipment": [],
+    "translations": {
+      "ru": {"name":"Плавание брассом","aliases":[],"description":"Выполните гребок руками, вытяните их вперёд, сведите ноги после толчка и ненадолго перейдите в скольжение.","technique_steps":["Сохраняйте расслабленный ритм гребков. Сделайте паузу для дыхания, если ритм сбивается."],"common_mistakes":[],"warnings":[]},
+      "en": {"name":"Breaststroke swimming","aliases":[],"description":"Pull the arms in, recover them forward, then close the legs after the kick and glide briefly.","technique_steps":["Keep your stroke relaxed enough to repeat smoothly. Take a breathing break whenever you lose rhythm."],"common_mistakes":[],"warnings":[]}
+    },
+    "media": [],
+    "alternatives": []
+  }
+]
